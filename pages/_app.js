@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 export default function App({ Component, pageProps }) {
   return (
     <>
+    
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -30,11 +31,9 @@ export default function App({ Component, pageProps }) {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
           
-          // Enable GA after short delay
           // CookieYes will manage consent when banner appears
           setTimeout(() => {
             gtag('config', 'G-QMD6NEPFWR');
-            console.log('✅ Analytics enabled');
           }, 2000);
         `}
       </Script>
