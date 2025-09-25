@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Layout({ 
   children, 
@@ -12,6 +13,17 @@ export default function Layout({
   structuredData,
   noIndex = false
 }) {
+  const router = useRouter();
+  
+  // Conditional navigation - uses window.location.href in development, router.push in production
+  const navigate = (path) => {
+    if (process.env.NODE_ENV === 'development') {
+      window.location.href = path;
+    } else {
+      router.push(path);
+    }
+  };
+  
   const defaultStructuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -120,7 +132,7 @@ export default function Layout({
           padding: '1rem 0',
           position: 'sticky',
           top: '0',
-          zIndex: '100'
+          zIndex: '10000'
         }}>
           <div style={{ 
             maxWidth: '1200px',
@@ -131,91 +143,137 @@ export default function Layout({
             alignItems: 'center'
           }}>
             {/* ✅ Logo */}
-            <Link href="/" style={{ 
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
+            <button 
+              onClick={() => navigate('/')}
+              style={{ 
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                color: '#2563eb',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                background: 'none',
+                border: 'none',
+                fontFamily: 'inherit',
+                position: 'relative',
+                zIndex: '10001'
+              }}
+            >
               StreamBackdrops
-            </Link>
+            </button>
             
             {/* ✅ Navigation */}
            <nav style={{ 
   display: 'flex',
   gap: '1.5rem',
   alignItems: 'center',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  position: 'relative',
+  zIndex: '10001'
 }}>
-  <Link href="/category/well-lit" style={{
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    textDecoration: 'none',
-    color: currentPage === 'well-lit' ? '#2563eb' : '#374151',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    background: '#f9fafb',
-    border: currentPage === 'well-lit' ? '2px solid #2563eb' : '1px solid #d1d5db',
-    transition: 'all 0.3s ease'
-  }}>
+  <button 
+    onClick={() => navigate('/category/well-lit')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'well-lit' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'well-lit' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
     Well Lit
-  </Link>
+  </button>
   
-  <Link href="/category/ambient-lighting" style={{
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    textDecoration: 'none',
-    color: currentPage === 'ambient-lighting' ? '#2563eb' : '#374151',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    background: '#f9fafb',
-    border: currentPage === 'ambient-lighting' ? '2px solid #2563eb' : '1px solid #d1d5db',
-    transition: 'all 0.3s ease'
-  }}>
+  <button 
+    onClick={() => navigate('/category/ambient-lighting')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'ambient-lighting' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'ambient-lighting' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
     Ambient Lighting
-  </Link>
+  </button>
   
-  <Link href="/category/office-spaces" style={{
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    textDecoration: 'none',
-    color: currentPage === 'office-spaces' ? '#2563eb' : '#374151',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    background: '#f9fafb',
-    border: currentPage === 'office-spaces' ? '2px solid #2563eb' : '1px solid #d1d5db',
-    transition: 'all 0.3s ease'
-  }}>
+  <button 
+    onClick={() => navigate('/category/office-spaces')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'office-spaces' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'office-spaces' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
     Office Spaces
-  </Link>
+  </button>
   
-  <Link href="/category/living-room" style={{
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    textDecoration: 'none',
-    color: currentPage === 'living-room' ? '#2563eb' : '#374151',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    background: '#f9fafb',
-    border: currentPage === 'living-room' ? '2px solid #2563eb' : '1px solid #d1d5db',
-    transition: 'all 0.3s ease'
-  }}>
+  <button 
+    onClick={() => navigate('/category/living-room')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'living-room' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'living-room' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
     Living Room
-  </Link>
+  </button>
   
-  <Link href="/category/kitchen" style={{
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    textDecoration: 'none',
-    color: currentPage === 'kitchen' ? '#2563eb' : '#374151',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    background: '#f9fafb',
-    border: currentPage === 'kitchen' ? '2px solid #2563eb' : '1px solid #d1d5db',
-    transition: 'all 0.3s ease'
-  }}>
+  <button 
+    onClick={() => navigate('/category/kitchen')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'kitchen' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'kitchen' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
     Kitchen
-  </Link>
+  </button>
 </nav>
           </div>
         </header>
@@ -245,54 +303,78 @@ export default function Layout({
               marginBottom: '1rem', 
               flexWrap: 'wrap' 
             }}>
-              <Link href="/about" style={{ 
-                color: 'white', 
-                textDecoration: 'none', 
-                margin: '0 15px' 
-              }}>
+              <div 
+                onClick={() => navigate('/about')}
+                style={{ 
+                  color: 'white', 
+                  textDecoration: 'none', 
+                  margin: '0 15px',
+                  cursor: 'pointer'
+                }}
+              >
                 About
-              </Link>
+              </div>
               <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <Link href="/license" style={{ 
-                color: '#fbbf24', 
-                textDecoration: 'none', 
-                margin: '0 15px', 
-                fontWeight: '600' 
-              }}>
+              <div 
+                onClick={() => navigate('/license')}
+                style={{ 
+                  color: '#fbbf24', 
+                  textDecoration: 'none', 
+                  margin: '0 15px', 
+                  fontWeight: '600',
+                  cursor: 'pointer'
+                }}
+              >
                 License & Usage
-              </Link>
+              </div>
               <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <Link href="/contact" style={{ 
-                color: 'white', 
-                textDecoration: 'none', 
-                margin: '0 15px' 
-              }}>
+              <div 
+                onClick={() => navigate('/contact')}
+                style={{ 
+                  color: 'white', 
+                  textDecoration: 'none', 
+                  margin: '0 15px',
+                  cursor: 'pointer'
+                }}
+              >
                 Contact
-              </Link>
+              </div>
               <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <Link href="/blog" style={{ 
-                color: 'white', 
-                textDecoration: 'none', 
-                margin: '0 15px' 
-              }}>
+              <div 
+                onClick={() => navigate('/blog')}
+                style={{ 
+                  color: 'white', 
+                  textDecoration: 'none', 
+                  margin: '0 15px',
+                  cursor: 'pointer'
+                }}
+              >
                 Blog
-              </Link>
+              </div>
               <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <Link href="/privacy" style={{ 
-                color: 'white', 
-                textDecoration: 'none', 
-                margin: '0 15px' 
-              }}>
+              <div 
+                onClick={() => navigate('/privacy')}
+                style={{ 
+                  color: 'white', 
+                  textDecoration: 'none', 
+                  margin: '0 15px',
+                  cursor: 'pointer'
+                }}
+              >
                 Privacy Policy
-              </Link>
+              </div>
               <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <Link href="/terms" style={{ 
-                color: 'white', 
-                textDecoration: 'none', 
-                margin: '0 15px' 
-              }}>
+              <div 
+                onClick={() => navigate('/terms')}
+                style={{ 
+                  color: 'white', 
+                  textDecoration: 'none', 
+                  margin: '0 15px',
+                  cursor: 'pointer'
+                }}
+              >
                 Terms of Service
-              </Link>
+              </div>
             </div>
             <p style={{ color: '#d1d5db', margin: 0 }}>
               © 2025 StreamBackdrops. All rights reserved.
