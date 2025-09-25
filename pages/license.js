@@ -7,6 +7,7 @@ export default function License() {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://streambackdrops.com/license" />
         <title>License & Usage Rights - StreamBackdrops</title>
         <meta name="description" content="StreamBackdrops License - Learn about usage rights for our free virtual backgrounds. Personal use allowed, commercial licensing available." />
         <meta name="robots" content="index, follow" />
