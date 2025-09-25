@@ -7,9 +7,13 @@ export default function handler(req, res) {
     const robotsTxt = `User-agent: *
 Allow: /
 
-Disallow: /api/
-Disallow: /_next/
+# Block sensitive API routes only
+Disallow: /api/track-
 Disallow: /admin/
+
+# Allow Next.js static assets (CSS, JS, images)
+Allow: /_next/static/
+Allow: /_next/image
 
 Sitemap: https://streambackdrops.com/api/sitemap
 
