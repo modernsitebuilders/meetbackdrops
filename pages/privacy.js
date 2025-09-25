@@ -7,6 +7,10 @@ export default function Privacy() {
   return (
     <>
       <Head>
+         <title>Privacy Policy - StreamBackdrops</title>
+  <meta name="description" content="StreamBackdrops Privacy Policy - Learn how we protect your privacy and handle your data." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://streambackdrops.com/privacy" />
         <title>Privacy Policy - StreamBackdrops</title>
         <meta name="description" content="StreamBackdrops Privacy Policy - Learn how we protect your privacy and handle your data." />
         <meta name="robots" content="index, follow" />

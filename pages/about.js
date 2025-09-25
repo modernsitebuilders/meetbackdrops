@@ -6,6 +6,10 @@ export default function About() {
   return (
     <>
       <Head>
+  <title>About Us - StreamBackdrops</title>
+  <meta name="description" content="Learn about StreamBackdrops - your source for professional HD virtual backgrounds for video calls. Discover our mission and commitment to quality." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://streambackdrops.com/about" />
         <title>About StreamBackdrops - Professional Virtual Backgrounds</title>
         <meta name="description" content="Learn about StreamBackdrops - your source for professional virtual backgrounds designed specifically for video calls, remote work, and online meetings." />
         <meta name="robots" content="index, follow" />

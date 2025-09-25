@@ -7,6 +7,7 @@ export default function Terms() {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://streambackdrops.com/terms" />
         <title>Terms of Service - StreamBackdrops</title>
         <meta name="description" content="Terms of Service for StreamBackdrops - Professional virtual backgrounds for video calls. Learn about usage rights, restrictions, and service terms." />
         <meta name="robots" content="index, follow" />
