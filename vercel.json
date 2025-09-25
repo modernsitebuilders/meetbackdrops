@@ -6,11 +6,6 @@
   },
   "redirects": [
     {
-      "source": "https://www.streambackdrops.com/:path*",
-      "destination": "https://streambackdrops.com/:path*",
-      "permanent": true
-    },
-    {
       "source": "/premium",
       "destination": "/category/office-spaces",
       "permanent": true
