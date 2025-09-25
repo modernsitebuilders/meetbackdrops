@@ -54,6 +54,16 @@
       "source": "/search",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap",
+      "permanent": true
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/api/robots",
+      "permanent": true
     }
   ],
   "headers": [
@@ -63,6 +73,32 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/api/sitemap",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/api/robots",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
         }
       ]
     }
