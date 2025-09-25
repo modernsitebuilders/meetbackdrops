@@ -64,6 +64,26 @@
       "source": "/robots.txt",
       "destination": "/api/robots",
       "permanent": true
+    },
+    {
+      "source": "/category/conference-rooms",
+      "destination": "/category/office-spaces",
+      "permanent": true
+    },
+    {
+      "source": "/category/minimalist",
+      "destination": "/category/well-lit",
+      "permanent": true
+    },
+    {
+      "source": "/category/ambiant-lighting",
+      "destination": "/category/ambient-lighting",
+      "permanent": true
+    },
+    {
+      "source": "/search*",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
