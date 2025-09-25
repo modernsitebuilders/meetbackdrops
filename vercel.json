@@ -79,11 +79,6 @@
       "source": "/category/ambiant-lighting",
       "destination": "/category/ambient-lighting",
       "permanent": true
-    },
-    {
-      "source": "/search*",
-      "destination": "/",
-      "permanent": true
     }
   ],
   "headers": [
