@@ -659,22 +659,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-
-      {/* Clean Preview Modal */}
-      {previewImage && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'rgba(0, 0, 0, 0.9)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 50,
-          padding: '4rem'
-        }}
-        onClick={() => setPreviewImage(null)}>
-          
-          {/* Add this section after your H1 and description */}
+{/* Add this section after your H1 and description */}
 <section style={{
   background: 'white',
   padding: '2rem',
@@ -725,6 +710,20 @@ useEffect(() => {
   </div>
 </section>
 
+      {/* Clean Preview Modal */}
+      {previewImage && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0, 0, 0, 0.9)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 50,
+          padding: '4rem'
+        }}
+        onClick={() => setPreviewImage(null)}>
+          
           {/* Close Button */}
           <button
             style={{
