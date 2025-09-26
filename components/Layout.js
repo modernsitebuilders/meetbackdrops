@@ -11,7 +11,8 @@ export default function Layout({
   keywords = 'virtual backgrounds, Zoom backgrounds, Teams backgrounds, professional video calls, free download',
   image = '/og-image.png',
   structuredData,
-  noIndex = false
+  noIndex = false,
+  h1 = null
 }) {
   const router = useRouter();
   
@@ -118,6 +119,24 @@ export default function Layout({
   </>
 )}
       </Head>
+
+      {/* Add this section after your header closes but before main content */}
+{h1 && (
+  <section style={{
+    background: 'white',
+    padding: '2rem 0',
+    textAlign: 'center'
+  }}>
+    <h1 style={{
+      fontSize: '2.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      margin: 0
+    }}>
+      {h1}
+    </h1>
+  </section>
+)}
 
       <div style={{ 
         minHeight: '100vh', 
