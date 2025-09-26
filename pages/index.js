@@ -40,10 +40,11 @@ export default function Home() {
 
   return (
   <Layout
-    title="Free Professional Virtual Backgrounds - StreamBackdrops"
-    description="Download 167+ free professional virtual backgrounds for Zoom, Teams & Google Meet..."
-    currentPage="home"
-  >
+  title="Free Professional Virtual Backgrounds - StreamBackdrops"
+  description="Download 167+ free professional virtual backgrounds..."
+  currentPage="home"
+  canonical="https://streambackdrops.com"
+>
 
         {/* Hero Section - OPTIMIZED VIDEO */}
 <section style={{

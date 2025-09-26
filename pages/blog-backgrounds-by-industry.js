@@ -10,6 +10,7 @@ export default function BlogIndustryBackgrounds() {
         <meta name="description" content="Choose the perfect virtual background for your industry. Complete guide covering healthcare, finance, education, tech, legal, and consulting professionals." />
         <meta name="keywords" content="virtual backgrounds, professional backgrounds, zoom backgrounds, teams backgrounds, healthcare backgrounds, finance backgrounds" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://streambackdrops.com/blog-backgrounds-by-industry" />
       </Head>
 
       {/* Clean Blog Header */}

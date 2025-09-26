@@ -10,6 +10,7 @@ export default function BlogLightingTips() {
         <meta name="description" content="Master video call lighting with our complete guide. Learn how to set up professional lighting for virtual backgrounds, avoid common mistakes, and look great on camera." />
         <meta name="keywords" content="video call lighting, virtual background lighting, home office lighting, video conferencing setup, professional lighting" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://streambackdrops.com/blog-lighting-tips" />
       </Head>
 
       {/* Clean Blog Header */}
