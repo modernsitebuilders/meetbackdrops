@@ -199,6 +199,18 @@ export default function Layout({
       <p style={{ marginBottom: '1rem' }}>
         These {seoContent.name.toLowerCase()} virtual backgrounds work seamlessly across all major video platforms including Zoom, Microsoft Teams, Google Meet, Skype, Discord, and WebEx. The high-resolution files ensure crisp, professional appearance regardless of your video call setup or internet connection speed.
       </p>
+      <h2 style={{
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#111827',
+        marginBottom: '1rem'
+      }}>
+        Setup Tips for Best Results
+      </h2>
+      
+      <p style={{ marginBottom: '1rem' }}>
+        For optimal virtual background performance, ensure you have adequate lighting facing toward you and avoid complex patterns in your clothing that may interfere with edge detection. Position your camera at eye level and maintain consistent distance from your webcam. Test your chosen background before important meetings to ensure smooth operation across your specific hardware setup.
+      </p>
     </div>
   </section>
 )}
