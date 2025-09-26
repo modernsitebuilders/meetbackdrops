@@ -76,32 +76,30 @@ export default function Home() {
   </video>
 </section>
 
-        {/* Text Section - SEPARATE */}
-        <section style={{
-          padding: '2rem 2rem',
-          textAlign: 'center',
-          background: 'white',
-          marginTop: '-10vh'
-        }}>
-          <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
-            fontWeight: '600',
-            marginBottom: '1.5rem',
-            color: '#111827'
-          }}>
-            Professional Virtual Backgrounds
-          </h2>
-          
-          <p style={{ 
-            fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
-            maxWidth: '700px',
-            margin: '0 auto',
-            lineHeight: '1.6',
-            color: '#6b7280'
-          }}>
-            Free high-quality backgrounds • No signup • No watermarks • Instant download
-          </p>
-        </section>
+        {/* Add this section after the video hero */}
+<section style={{ 
+  textAlign: 'center', 
+  padding: '3rem 2rem', 
+  background: 'white' 
+}}>
+  <h1 style={{
+    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+    fontWeight: 'bold',
+    color: '#111827',
+    marginBottom: '1rem',
+    lineHeight: '1.2'
+  }}>
+    Free Professional Virtual Backgrounds
+  </h1>
+  <p style={{
+    fontSize: '1.25rem',
+    color: '#6b7280',
+    maxWidth: '800px',
+    margin: '0 auto'
+  }}>
+    Download 167+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
+  </p>
+</section>
         <section style={{
   padding: '3rem 2rem',
   background: '#f8fafc',
