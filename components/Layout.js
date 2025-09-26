@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
+import Footer from '../components/Footer';
 export default function Layout({ 
   children, 
   title = 'StreamBackdrops - Free HD Virtual Backgrounds',
@@ -282,105 +282,7 @@ export default function Layout({
         <main style={{ flex: 1 }}>
           {children}
         </main>
-
-        {/* ✅ Consistent Footer */}
-        <footer style={{
-          background: '#1f2937',
-          color: 'white',
-          padding: '2rem 0',
-          marginTop: '3rem'
-        }}>
-          <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: '0 2rem',
-            textAlign: 'center'
-          }}>
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
-              alignItems: 'center', 
-              marginBottom: '1rem', 
-              flexWrap: 'wrap' 
-            }}>
-              <div 
-                onClick={() => navigate('/about')}
-                style={{ 
-                  color: 'white', 
-                  textDecoration: 'none', 
-                  margin: '0 15px',
-                  cursor: 'pointer'
-                }}
-              >
-                About
-              </div>
-              <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <div 
-                onClick={() => navigate('/license')}
-                style={{ 
-                  color: '#fbbf24', 
-                  textDecoration: 'none', 
-                  margin: '0 15px', 
-                  fontWeight: '600',
-                  cursor: 'pointer'
-                }}
-              >
-                License & Usage
-              </div>
-              <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <div 
-                onClick={() => navigate('/contact')}
-                style={{ 
-                  color: 'white', 
-                  textDecoration: 'none', 
-                  margin: '0 15px',
-                  cursor: 'pointer'
-                }}
-              >
-                Contact
-              </div>
-              <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <div 
-                onClick={() => navigate('/blog')}
-                style={{ 
-                  color: 'white', 
-                  textDecoration: 'none', 
-                  margin: '0 15px',
-                  cursor: 'pointer'
-                }}
-              >
-                Blog
-              </div>
-              <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <div 
-                onClick={() => navigate('/privacy')}
-                style={{ 
-                  color: 'white', 
-                  textDecoration: 'none', 
-                  margin: '0 15px',
-                  cursor: 'pointer'
-                }}
-              >
-                Privacy Policy
-              </div>
-              <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-              <div 
-                onClick={() => navigate('/terms')}
-                style={{ 
-                  color: 'white', 
-                  textDecoration: 'none', 
-                  margin: '0 15px',
-                  cursor: 'pointer'
-                }}
-              >
-                Terms of Service
-              </div>
-            </div>
-            <p style={{ color: '#d1d5db', margin: 0 }}>
-              © 2025 StreamBackdrops. All rights reserved.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
