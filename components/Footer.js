@@ -5,43 +5,113 @@ export default function Footer() {
     <footer style={{
       background: '#1f2937',
       color: 'white',
-      padding: '2rem 0',
+      padding: '3rem 0 2rem',
       marginTop: '3rem'
     }}>
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '0 2rem',
-        textAlign: 'center'
+        padding: '0 2rem'
       }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap' }}>
-          <Link href="/about" style={{ color: 'white', textDecoration: 'none', margin: '0 15px' }}>
-            About
-          </Link>
-          <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-          <Link href="/license" style={{ color: '#fbbf24', textDecoration: 'none', margin: '0 15px', fontWeight: '600' }}>
-            📋 License & Usage
-          </Link>
-          <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-          <Link href="/contact" style={{ color: 'white', textDecoration: 'none', margin: '0 15px' }}>
-            Contact
-          </Link>
-          <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-          <Link href="/blog" style={{ color: 'white', textDecoration: 'none', margin: '0 15px' }}>
-            Blog
-          </Link>
-          <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-          <Link href="/privacy" style={{ color: 'white', textDecoration: 'none', margin: '0 15px' }}>
-            Privacy Policy
-          </Link>
-          <span style={{ color: '#9ca3af', margin: '0 10px' }}>•</span>
-          <Link href="/terms" style={{ color: 'white', textDecoration: 'none', margin: '0 15px' }}>
-            Terms of Service
-          </Link>
+        
+        {/* Category Links Section */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '2rem',
+          marginBottom: '2rem',
+          textAlign: 'left'
+        }}>
+          <div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
+              Background Categories
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link href="/category/well-lit" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Well-Lit Backgrounds
+              </Link>
+              <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Office Spaces
+              </Link>
+              <Link href="/category/living-room" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Living Room
+              </Link>
+              <Link href="/category/kitchen" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Kitchen Backgrounds
+              </Link>
+              <Link href="/category/ambient-lighting" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Ambient Lighting
+              </Link>
+            </div>
+          </div>
+          
+          <div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
+              Helpful Guides
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link href="/blog-virtual-background-guide" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Setup Guide
+              </Link>
+              <Link href="/blog-background-mistakes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Common Mistakes
+              </Link>
+              <Link href="/blog-lighting-tips" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Lighting Tips
+              </Link>
+              <Link href="/blog" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                All Blog Posts
+              </Link>
+            </div>
+          </div>
+          
+          <div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
+              StreamBackdrops
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link href="/" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Home
+              </Link>
+              <Link href="/about" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                About Us
+              </Link>
+              <Link href="/contact" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Contact
+              </Link>
+            </div>
+          </div>
         </div>
-        <p style={{ color: '#d1d5db', margin: 0 }}>
-          © 2025 StreamBackdrops. All rights reserved.
-        </p>
+
+        {/* Divider */}
+        <div style={{ borderTop: '1px solid #374151', paddingTop: '2rem' }}>
+          {/* Legal Links */}
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            marginBottom: '1rem', 
+            flexWrap: 'wrap',
+            gap: '0.5rem'
+          }}>
+            <Link href="/license" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem' }}>
+              License & Usage
+            </Link>
+            <span style={{ color: '#9ca3af' }}>•</span>
+            <Link href="/privacy" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+              Privacy Policy
+            </Link>
+            <span style={{ color: '#9ca3af' }}>•</span>
+            <Link href="/terms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+              Terms of Service
+            </Link>
+          </div>
+          
+          {/* Copyright */}
+          <p style={{ color: '#9ca3af', margin: 0, textAlign: 'center', fontSize: '0.9rem' }}>
+            © 2025 StreamBackdrops. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
