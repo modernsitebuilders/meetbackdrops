@@ -12,7 +12,9 @@ export default function Layout({
   image = '/og-image.png',
   structuredData,
   noIndex = false,
-  h1 = null
+  h1 = null,
+  seoContent = null
+  
 }) {
   const router = useRouter();
   
