@@ -187,7 +187,18 @@ export default function Layout({
       <p style={{ marginBottom: '1rem' }}>
         Simply click on any image below to preview and download. Our {seoContent.name.toLowerCase()} backgrounds are designed to provide clear edge detection and work well with standard webcam setups and lighting conditions.
       </p>
+      <h2 style={{
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#111827',
+        marginBottom: '1rem'
+      }}>
+        Platform Compatibility
+      </h2>
       
+      <p style={{ marginBottom: '1rem' }}>
+        These {seoContent.name.toLowerCase()} virtual backgrounds work seamlessly across all major video platforms including Zoom, Microsoft Teams, Google Meet, Skype, Discord, and WebEx. The high-resolution files ensure crisp, professional appearance regardless of your video call setup or internet connection speed.
+      </p>
     </div>
   </section>
 )}
