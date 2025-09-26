@@ -540,8 +540,58 @@ useEffect(() => {
         <div style={{
           maxWidth: '1400px',
           margin: '0 auto'
-        }}>
           
+        }}>
+          {/* Add this section after your H1 and description */}
+<section style={{
+  background: 'white',
+  padding: '2rem',
+  marginBottom: '2rem',
+  borderRadius: '0.5rem'
+}}>
+  <div style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6', color: '#374151' }}>
+    
+    <h2 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem'
+    }}>
+      Professional {category.name} Virtual Backgrounds
+    </h2>
+    
+    <p style={{ marginBottom: '1.5rem' }}>
+      Our {category.name.toLowerCase()} virtual background collection features professionally designed backgrounds perfect for video conferencing, remote work, and online meetings. Each background is optimized for popular video platforms including Zoom, Microsoft Teams, Google Meet, and Skype.
+    </p>
+    
+    <h2 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem'
+    }}>
+      How to Use These Backgrounds
+    </h2>
+    
+    <p style={{ marginBottom: '1.5rem' }}>
+      These high-quality {category.name.toLowerCase()} backgrounds help create a professional appearance during video calls while maintaining privacy in your home or office space. All backgrounds are available as free HD downloads and work seamlessly with virtual background technology.
+    </p>
+    
+    <h2 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem'
+    }}>
+      Download Instructions
+    </h2>
+    
+    <p style={{ marginBottom: '1rem' }}>
+      Simply click on any image below to preview and download. Our {category.name.toLowerCase()} backgrounds are designed to provide clear edge detection and work well with standard webcam setups and lighting conditions.
+    </p>
+    
+  </div>
+</section>
           {/* Page Title */}
           <h1 style={{
             fontSize: '2.5rem',
