@@ -542,6 +542,24 @@ useEffect(() => {
           margin: '0 auto'
           
         }}>
+      
+          {/* Page Title */}
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            color: '#111827',
+            marginBottom: '0.5rem'
+          }}>
+            {category.name}
+          </h1>
+          
+          <p style={{
+            color: '#6b7280',
+            fontSize: '1.1rem',
+            marginBottom: '2rem'
+          }}>
+            {category.description}
+          </p>
           {/* Add this section after your H1 and description */}
 <section style={{
   background: 'white',
@@ -592,24 +610,6 @@ useEffect(() => {
     
   </div>
 </section>
-          {/* Page Title */}
-          <h1 style={{
-            fontSize: '2.5rem',
-            fontWeight: 'bold',
-            color: '#111827',
-            marginBottom: '0.5rem'
-          }}>
-            {category.name}
-          </h1>
-          
-          <p style={{
-            color: '#6b7280',
-            fontSize: '1.1rem',
-            marginBottom: '2rem'
-          }}>
-            {category.description}
-          </p>
-          
           {/* Clean Instructions */}
           <p style={{
             color: '#6b7280',
