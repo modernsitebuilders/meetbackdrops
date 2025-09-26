@@ -6,7 +6,7 @@ export default function BlogVirtualBackgroundGuide() {
   return (
     <>
       <Head>
-  <title>Complete Guide to Virtual Backgrounds for Video Calls 2025 | StreamBackdrops</title>
+  <title>Virtual Background Setup Guide - StreamBackdrops</title>
   <meta name="description" content="Master virtual backgrounds for Zoom, Teams & Google Meet. Setup guide, best practices, troubleshooting & 20+ free HD backgrounds. Updated for 2025." />
   <meta name="keywords" content="virtual background guide, Zoom setup, Teams backgrounds, video call tips, professional backgrounds, tutorial 2025" />
   <link rel="canonical" href="https://streambackdrops.com/blog-virtual-background-guide" />

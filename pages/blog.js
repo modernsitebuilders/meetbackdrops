@@ -73,7 +73,7 @@ export default function Blog() {
   return (
     <>
       <Head>
-        <title>Blog - StreamBackdrops | Professional Virtual Background Tips & Guides</title>
+        <title>Virtual Background Blog - StreamBackdrops</title>
         <meta name="description" content="Expert guides, tips, and insights about virtual backgrounds, remote work, video calls, and professional online presence." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog" />
