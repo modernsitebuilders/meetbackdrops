@@ -890,7 +890,6 @@ export default function CategoryPage({ slug }) {
   description={category ? category.seoDescription : 'Category not found'}
   canonical={`https://streambackdrops.com/category/${currentSlug}`}
   currentPage={currentSlug}
-  h1={category ? `${category.name} Virtual Backgrounds` : 'Category Not Found'}
   seoContent={null}  // <-- CHANGE THIS TO NULL
 >
     <DynamicCategoryContent slug={currentSlug} />
