@@ -1,35 +1,27 @@
-import fs from 'fs';
+import sharp from 'sharp';
 import path from 'path';
 
-export default function handler(req, res) {
-  const { filename } = req.query;
+export default async function handler(req, res) {
+  const { filename, folder } = req.query;
   
-  if (!filename) {
-    return res.status(400).json({ error: 'Filename required' });
+  if (!filename || !folder) {
+    return res.status(400).json({ error: 'Filename and folder required' });
   }
   
   try {
-    const filePath = path.join(process.cwd(), 'public', 'images', filename);
+    const filePath = path.join(process.cwd(), 'public', 'images', folder, filename);
     
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ error: 'File not found' });
-    }
+    // Convert WebP to PNG using sharp
+    const pngBuffer = await sharp(filePath)
+      .png()
+      .toBuffer();
     
-    const fileBuffer = fs.readFileSync(filePath);
-    const fileExtension = path.extname(filename).toLowerCase();
+    // Force download as PNG
+    res.setHeader('Content-Type', 'image/png');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename.replace('.webp', '.png')}"`);
+    res.setHeader('Content-Length', pngBuffer.length);
     
-    // Set appropriate content type
-    let contentType = 'application/octet-stream';
-    if (fileExtension === '.webp') contentType = 'image/webp';
-    if (fileExtension === '.png') contentType = 'image/png';
-    if (fileExtension === '.jpg' || fileExtension === '.jpeg') contentType = 'image/jpeg';
-    
-    // Force download with proper headers
-    res.setHeader('Content-Type', contentType);
-    res.setHeader('Content-Disposition', `attachment; filename="StreamBackdrops-Background${fileExtension}"`);
-    res.setHeader('Content-Length', fileBuffer.length);
-    
-    res.send(fileBuffer);
+    res.send(pngBuffer);
   } catch (error) {
     console.error('Download error:', error);
     res.status(500).json({ error: 'Download failed' });
