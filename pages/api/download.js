@@ -1,5 +1,6 @@
 import sharp from 'sharp';
 import path from 'path';
+import fs from 'fs';
 
 export default async function handler(req, res) {
   const { filename, folder } = req.query;
@@ -10,6 +11,11 @@ export default async function handler(req, res) {
   
   try {
     const filePath = path.join(process.cwd(), 'public', 'images', folder, filename);
+    
+    // Check if file exists
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: 'File not found' });
+    }
     
     // Convert WebP to PNG using sharp
     const pngBuffer = await sharp(filePath)
