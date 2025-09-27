@@ -399,8 +399,7 @@ useEffect(() => {
     const img = new window.Image();
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    
-    // ... rest of your existing code stays exactly the same
+  
       
       img.onload = () => {
         canvas.width = img.width;
@@ -543,23 +542,6 @@ useEffect(() => {
           
         }}>
       
-          {/* Page Title */}
-          <h1 style={{
-            fontSize: '2.5rem',
-            fontWeight: 'bold',
-            color: '#111827',
-            marginBottom: '0.5rem'
-          }}>
-            {category.name}
-          </h1>
-          
-          <p style={{
-            color: '#6b7280',
-            fontSize: '1.1rem',
-            marginBottom: '2rem'
-          }}>
-            {category.description}
-          </p>
           
           {/* Clean Instructions */}
           <p style={{
@@ -659,7 +641,23 @@ useEffect(() => {
           </div>
         </div>
       </div>
-
+{/* Page Title */}
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            color: '#111827',
+            marginBottom: '0.5rem'
+          }}>
+            {category.name}
+          </h1>
+          
+          <p style={{
+            color: '#6b7280',
+            fontSize: '1.1rem',
+            marginBottom: '2rem'
+          }}>
+            {category.description}
+          </p>
       {/* Clean Preview Modal */}
       {previewImage && (
         <div style={{
