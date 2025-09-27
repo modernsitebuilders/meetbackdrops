@@ -368,72 +368,79 @@ useEffect(() => {
 
   const handleDownload = async (image) => {
   try {
-    // Simplified, reliable tracking
+    // Track the download
     if (typeof window !== 'undefined' && window.gtag) {
-  window.gtag('event', 'click', {
-    'event_category': 'outbound',
-    'event_label': image.filename,
-    'transport_type': 'beacon',
-    'value': 1
-  });
-  console.log('✅ Download tracked as click:', image.filename);
-}
-
-    // Pinterest tracking (keep this as-is)
-    if (typeof window !== 'undefined' && window.pintrk) {
-      window.pintrk('track', 'custom', {
-        event_id: 'download',
-        value: 1,
-        currency: 'USD',
-        content_name: image.filename,
-        content_category: 'Virtual Background'
+      window.gtag('event', 'click', {
+        'event_category': 'outbound',
+        'event_label': image.filename,
+        'transport_type': 'beacon',
+        'value': 1
       });
     }
 
+    // Fetch the WebP image
     const response = await fetch(`/images/${folderMap[slug]}/${image.filename}`);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const blob = await response.blob();
     
-    const img = new window.Image();
+    // Convert WebP to PNG using canvas
+    const img = new Image();
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-  
+    
+    // Create object URL for the image (this is allowed by CSP)
+    const imageUrl = URL.createObjectURL(blob);
+    
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
       
-      img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
+      // Convert canvas to PNG and trigger download
+      canvas.toBlob((pngBlob) => {
+        // Create a download link using the blob
+        const url = URL.createObjectURL(pngBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `StreamBackdrops-${image.title.replace(/\s+/g, '-')}.png`;
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         
-        canvas.toBlob((pngBlob) => {
-          const url = window.URL.createObjectURL(pngBlob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = `StreamBackdrops-${image.title.replace(/\s+/g, '-')}.png`;
-          document.body.appendChild(link);
-          link.click();
-          fetch('/api/track-download', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    filename: image.filename,
-    category: category.name,  // Use category.name instead of slug
-    timestamp: new Date().toISOString()
-  })
-}).catch(err => console.log('Tracking failed:', err));
-          document.body.removeChild(link);
-          window.URL.revokeObjectURL(url);
-        }, 'image/png', 1.0);
-      };
+        // Clean up
+        setTimeout(() => URL.revokeObjectURL(url), 100);
+        
+        // Show success message
+        const message = document.createElement('div');
+        message.textContent = '✓ PNG download started!';
+        message.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #10b981;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          z-index: 10000;
+          font-weight: 500;
+        `;
+        document.body.appendChild(message);
+        setTimeout(() => document.body.removeChild(message), 3000);
+        
+      }, 'image/png', 1.0);
       
-      const imageUrl = window.URL.createObjectURL(blob);
-      img.src = imageUrl;
-      
-    } catch (error) {
-      console.error('Download failed:', error);
-    }
-  };
+      // Clean up image URL
+      URL.revokeObjectURL(imageUrl);
+    };
+    
+    img.src = imageUrl;
+    
+  } catch (error) {
+    console.error('Download failed:', error);
+    alert('Download failed. Please try again.');
+  }
+};
 
   return (
     <>
