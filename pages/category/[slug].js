@@ -639,9 +639,7 @@ useEffect(() => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-{/* Page Title */}
+          {/* Page Title */}
           <h1 style={{
             fontSize: '2.5rem',
             fontWeight: 'bold',
@@ -658,6 +656,9 @@ useEffect(() => {
           }}>
             {category.description}
           </p>
+        </div>
+      </div>
+
       {/* Clean Preview Modal */}
       {previewImage && (
         <div style={{
