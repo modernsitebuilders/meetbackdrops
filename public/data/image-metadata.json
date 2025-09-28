@@ -1,2201 +1,3098 @@
 {
-  "home-lifestyle-cozy-home-office-6": {
-    "filename": "well-lit-cozy-home-office-1.webp",
-    "title": "Cozy Home Office",
-    "description": "cozy home office virtual background perfect for relaxed video calls and remote work",
-    "category": "well-lit",
+  "living-room-01": {
+    "filename": "living-room-01.webp",
+    "downloadName": "living-room-01.png",
+    "category": "living-room",
+    "title": "Living Room Background 1",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 1",
     "keywords": [
       "virtual background",
-      "home office",
-      "remote work",
+      "zoom background",
       "video call",
-      "relaxed workspace",
-      "informal meeting",
-      "home office",
-      "lifestyle",
-      "home workspace"
-    ],
-    "alt": "Cozy Home Office - Home office virtual background for comfortable video calls"
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "home-lifestyle-minimalist-home-office-10": {
-    "filename": "well-lit-minimalist-office-1.webp",
-    "title": "Home lifestyle minimalist home office 10",
-    "description": "Home lifestyle minimalist home office 10 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-11": {
-    "filename": "well-lit-minimalist-office-2.webp",
-    "title": "Home lifestyle minimalist home office 11",
-    "description": "Home lifestyle minimalist home office 11 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-12": {
-    "filename": "well-lit-minimalist-office-3.webp",
-    "title": "Home lifestyle minimalist home office 12",
-    "description": "Home lifestyle minimalist home office 12 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-13": {
-    "filename": "well-lit-minimalist-office-4.webp",
-    "title": "Home lifestyle minimalist home office 13",
-    "description": "Home lifestyle minimalist home office 13 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-14": {
-    "filename": "well-lit-minimalist-office-5.webp",
-    "title": "Home lifestyle minimalist home office 14",
-    "description": "Home lifestyle minimalist home office 14 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-15": {
-    "filename": "well-lit-minimalist-office-6.webp",
-    "title": "Home lifestyle minimalist home office 15",
-    "description": "Home lifestyle minimalist home office 15 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-16": {
-    "filename": "well-lit-minimalist-office-7.webp",
-    "title": "Home lifestyle minimalist home office 16",
-    "description": "Home lifestyle minimalist home office 16 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-17": {
-    "filename": "well-lit-minimalist-office-8.webp",
-    "title": "Home lifestyle minimalist home office 17",
-    "description": "Home lifestyle minimalist home office 17 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-18": {
-    "filename": "well-lit-minimalist-office-9.webp",
-    "title": "Home lifestyle minimalist home office 18",
-    "description": "Home lifestyle minimalist home office 18 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-2": {
-    "filename": "well-lit-minimalist-office-10.webp",
-    "title": "Home lifestyle minimalist home office 2",
-    "description": "Home lifestyle minimalist home office 2 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-23": {
-    "filename": "well-lit-minimalist-office-11.webp",
-    "title": "Home lifestyle minimalist home office 23",
-    "description": "Home lifestyle minimalist home office 23 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-24": {
-    "filename": "well-lit-minimalist-office-12.webp",
-    "title": "Home lifestyle minimalist home office 24",
-    "description": "Home lifestyle minimalist home office 24 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-29": {
-    "filename": "well-lit-minimalist-office-13.webp",
-    "title": "Home lifestyle minimalist home office 29",
-    "description": "Home lifestyle minimalist home office 29 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-3": {
-    "filename": "well-lit-minimalist-office-14.webp",
-    "title": "Home lifestyle minimalist home office 3",
-    "description": "Home lifestyle minimalist home office 3 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-31": {
-    "filename": "well-lit-minimalist-office-15.webp",
-    "title": "Home lifestyle minimalist home office 31",
-    "description": "Home lifestyle minimalist home office 31 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-33": {
-    "filename": "well-lit-minimalist-office-16.webp",
-    "title": "Home lifestyle minimalist home office 33",
-    "description": "Home lifestyle minimalist home office 33 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-34": {
-    "filename": "well-lit-minimalist-office-17.webp",
-    "title": "Home lifestyle minimalist home office 34",
-    "description": "Home lifestyle minimalist home office 34 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-35": {
-    "filename": "well-lit-minimalist-office-18.webp",
-    "title": "Home lifestyle minimalist home office 35",
-    "description": "Home lifestyle minimalist home office 35 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-36": {
-    "filename": "well-lit-minimalist-office-19.webp",
-    "title": "Home lifestyle minimalist home office 36",
-    "description": "Home lifestyle minimalist home office 36 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-37": {
-    "filename": "well-lit-minimalist-office-20.webp",
-    "title": "Home lifestyle minimalist home office 37",
-    "description": "Home lifestyle minimalist home office 37 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-4": {
-    "filename": "well-lit-minimalist-office-21.webp",
-    "title": "Home lifestyle minimalist home office 4",
-    "description": "Home lifestyle minimalist home office 4 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-42": {
-    "filename": "well-lit-minimalist-office-22.webp",
-    "title": "Home lifestyle minimalist home office 42",
-    "description": "Home lifestyle minimalist home office 42 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-43": {
-    "filename": "well-lit-minimalist-office-23.webp",
-    "title": "Home lifestyle minimalist home office 43",
-    "description": "Home lifestyle minimalist home office 43 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-47": {
-    "filename": "well-lit-minimalist-office-24.webp",
-    "title": "Home lifestyle minimalist home office 47",
-    "description": "Home lifestyle minimalist home office 47 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-5": {
-    "filename": "well-lit-minimalist-office-25.webp",
-    "title": "Home lifestyle minimalist home office 5",
-    "description": "Home lifestyle minimalist home office 5 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-8": {
-    "filename": "well-lit-minimalist-office-26.webp",
-    "title": "Home lifestyle minimalist home office 8",
-    "description": "Home lifestyle minimalist home office 8 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-9": {
-    "filename": "well-lit-minimalist-office-27.webp",
-    "title": "Home lifestyle minimalist home office 9",
-    "description": "Home lifestyle minimalist home office 9 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office": {
-    "filename": "well-lit-minimalist-office-28.webp",
-    "title": "Home lifestyle minimalist home office",
-    "description": "Home lifestyle minimalist home office virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "professional-shelves-glass-professional-shelves-33": {
-    "filename": "well-lit-glass-shelves-1.webp",
-    "title": "Professional shelves glass professional shelves 33",
-    "description": "Professional shelves glass professional shelves 33 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-glass-professional-shelves-34": {
-    "filename": "well-lit-glass-shelves-2.webp",
-    "title": "Professional shelves glass professional shelves 34",
-    "description": "Professional shelves glass professional shelves 34 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-metal-professional-shelves-39": {
-    "filename": "well-lit-metal-shelves-1.webp",
-    "title": "Professional shelves metal professional shelves 39",
-    "description": "Professional shelves metal professional shelves 39 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-metal-professional-shelves-40": {
-    "filename": "well-lit-metal-shelves-2.webp",
-    "title": "Professional shelves metal professional shelves 40",
-    "description": "Professional shelves metal professional shelves 40 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-12": {
-    "filename": "well-lit-wood-shelves-1.webp",
-    "title": "Professional shelves professional shelves 12",
-    "description": "Professional shelves professional shelves 12 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-13": {
-    "filename": "well-lit-wood-shelves-2.webp",
-    "title": "Professional shelves professional shelves 13",
-    "description": "Professional shelves professional shelves 13 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-18": {
-    "filename": "well-lit-wood-shelves-3.webp",
-    "title": "Professional shelves professional shelves 18",
-    "description": "Professional shelves professional shelves 18 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-19": {
-    "filename": "well-lit-wood-shelves-4.webp",
-    "title": "Professional shelves professional shelves 19",
-    "description": "Professional shelves professional shelves 19 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-2": {
-    "filename": "well-lit-wood-shelves-5.webp",
-    "title": "Professional shelves professional shelves 2",
-    "description": "Professional shelves professional shelves 2 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-20": {
-    "filename": "well-lit-wood-shelves-6.webp",
-    "title": "Professional shelves professional shelves 20",
-    "description": "Professional shelves professional shelves 20 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-30": {
-    "filename": "well-lit-wood-shelves-7.webp",
-    "title": "Professional shelves professional shelves 30",
-    "description": "Professional shelves professional shelves 30 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-31": {
-    "filename": "well-lit-wood-shelves-8.webp",
-    "title": "Professional shelves professional shelves 31",
-    "description": "Professional shelves professional shelves 31 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-32": {
-    "filename": "well-lit-wood-shelves-9.webp",
-    "title": "Professional shelves professional shelves 32",
-    "description": "Professional shelves professional shelves 32 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-6": {
-    "filename": "well-lit-wood-shelves-10.webp",
-    "title": "Professional shelves professional shelves 6",
-    "description": "Professional shelves professional shelves 6 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-7": {
-    "filename": "well-lit-wood-shelves-11.webp",
-    "title": "Professional shelves professional shelves 7",
-    "description": "Professional shelves professional shelves 7 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves": {
-    "filename": "well-lit-wood-shelves-12.webp",
-    "title": "Professional shelves professional shelves",
-    "description": "Professional shelves professional shelves virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-stone-professional-shelves-11": {
-    "filename": "well-lit-stone-shelves-1.webp",
-    "title": "Professional shelves stone professional shelves 11",
-    "description": "Professional shelves stone professional shelves 11 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-stone-professional-shelves-3": {
-    "filename": "well-lit-stone-shelves-2.webp",
-    "title": "Professional shelves stone professional shelves 3",
-    "description": "Professional shelves stone professional shelves 3 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-stone-professional-shelves-8": {
-    "filename": "well-lit-stone-shelves-3.webp",
-    "title": "Professional shelves stone professional shelves 8",
-    "description": "Professional shelves stone professional shelves 8 virtual background perfect for video calls",
-    "category": "well-lit",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "home-lifestyle-basement-office-1": {
-    "filename": "ambient-basement-office-1.webp",
-    "title": "Casual Basement Office",
-    "description": "basement office virtual background perfect for relaxed video calls and remote work",
-    "category": "ambient-lighting",
+  "living-room-02": {
+    "filename": "living-room-02.webp",
+    "downloadName": "living-room-02.png",
+    "category": "living-room",
+    "title": "Living Room Background 2",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 2",
     "keywords": [
       "virtual background",
-      "home office",
-      "remote work",
+      "zoom background",
       "video call",
-      "relaxed workspace",
-      "informal meeting",
-      "home office",
-      "lifestyle",
-      "home workspace"
-    ],
-    "alt": "Casual Basement Office - Home office virtual background for comfortable video calls"
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "home-lifestyle-cozy-student-workspace-5": {
-    "filename": "ambient-cozy-student-workspace-1.webp",
-    "title": "Cozy Student Workspace",
-    "description": "cozy student workspace virtual background perfect for relaxed video calls and remote work",
-    "category": "ambient-lighting",
+  "living-room-03": {
+    "filename": "living-room-03.webp",
+    "downloadName": "living-room-03.png",
+    "category": "living-room",
+    "title": "Living Room Background 3",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 3",
     "keywords": [
       "virtual background",
-      "home office",
-      "remote work",
+      "zoom background",
       "video call",
-      "relaxed workspace",
-      "informal meeting",
-      "home office",
-      "lifestyle",
-      "home workspace"
-    ],
-    "alt": "Cozy Student Workspace - Home office virtual background for comfortable video calls"
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "home-lifestyle-garden-shed-office-7": {
-    "filename": "ambient-garden-shed-office-1.webp",
-    "title": "Garden Shed Office",
-    "description": "garden shed office virtual background perfect for relaxed video calls and remote work",
-    "category": "ambient-lighting",
+  "living-room-04": {
+    "filename": "living-room-04.webp",
+    "downloadName": "living-room-04.png",
+    "category": "living-room",
+    "title": "Living Room Background 4",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 4",
     "keywords": [
       "virtual background",
-      "home office",
-      "remote work",
+      "zoom background",
       "video call",
-      "relaxed workspace",
-      "informal meeting",
-      "home office",
-      "lifestyle",
-      "home workspace"
-    ],
-    "alt": "Garden Shed Office - Home office virtual background for comfortable video calls"
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "home-lifestyle-kitchen-workspace-2": {
-    "filename": "ambient-kitchen-workspace-1.webp",
-    "title": "Kitchen Workspace",
-    "description": "kitchen workspace virtual background perfect for relaxed video calls and remote work",
-    "category": "ambient-lighting",
+  "living-room-05": {
+    "filename": "living-room-05.webp",
+    "downloadName": "living-room-05.png",
+    "category": "living-room",
+    "title": "Living Room Background 5",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 5",
     "keywords": [
       "virtual background",
-      "home office",
-      "remote work",
+      "zoom background",
       "video call",
-      "relaxed workspace",
-      "informal meeting",
-      "home office",
-      "lifestyle",
-      "home workspace"
-    ],
-    "alt": "Kitchen Workspace - Home office virtual background for comfortable video calls"
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "home-lifestyle-minimalist-home-office-19": {
-    "filename": "ambient-minimalist-office-1.webp",
-    "title": "Home lifestyle minimalist home office 19",
-    "description": "Home lifestyle minimalist home office 19 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-20": {
-    "filename": "ambient-minimalist-office-2.webp",
-    "title": "Home lifestyle minimalist home office 20",
-    "description": "Home lifestyle minimalist home office 20 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-21": {
-    "filename": "ambient-minimalist-office-3.webp",
-    "title": "Home lifestyle minimalist home office 21",
-    "description": "Home lifestyle minimalist home office 21 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-22": {
-    "filename": "ambient-minimalist-office-4.webp",
-    "title": "Home lifestyle minimalist home office 22",
-    "description": "Home lifestyle minimalist home office 22 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-25": {
-    "filename": "ambient-minimalist-office-5.webp",
-    "title": "Home lifestyle minimalist home office 25",
-    "description": "Home lifestyle minimalist home office 25 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-26": {
-    "filename": "ambient-minimalist-office-6.webp",
-    "title": "Home lifestyle minimalist home office 26",
-    "description": "Home lifestyle minimalist home office 26 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-27": {
-    "filename": "ambient-minimalist-office-7.webp",
-    "title": "Home lifestyle minimalist home office 27",
-    "description": "Home lifestyle minimalist home office 27 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-28": {
-    "filename": "ambient-minimalist-office-8.webp",
-    "title": "Home lifestyle minimalist home office 28",
-    "description": "Home lifestyle minimalist home office 28 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-30": {
-    "filename": "ambient-minimalist-office-9.webp",
-    "title": "Home lifestyle minimalist home office 30",
-    "description": "Home lifestyle minimalist home office 30 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-32": {
-    "filename": "ambient-minimalist-office-10.webp",
-    "title": "Home lifestyle minimalist home office 32",
-    "description": "Home lifestyle minimalist home office 32 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-38": {
-    "filename": "ambient-minimalist-office-11.webp",
-    "title": "Home lifestyle minimalist home office 38",
-    "description": "Home lifestyle minimalist home office 38 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-39": {
-    "filename": "ambient-minimalist-office-12.webp",
-    "title": "Home lifestyle minimalist home office 39",
-    "description": "Home lifestyle minimalist home office 39 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-40": {
-    "filename": "ambient-minimalist-office-13.webp",
-    "title": "Home lifestyle minimalist home office 40",
-    "description": "Home lifestyle minimalist home office 40 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-41": {
-    "filename": "ambient-minimalist-office-14.webp",
-    "title": "Home lifestyle minimalist home office 41",
-    "description": "Home lifestyle minimalist home office 41 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-44": {
-    "filename": "ambient-minimalist-office-15.webp",
-    "title": "Home lifestyle minimalist home office 44",
-    "description": "Home lifestyle minimalist home office 44 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-45": {
-    "filename": "ambient-minimalist-office-16.webp",
-    "title": "Home lifestyle minimalist home office 45",
-    "description": "Home lifestyle minimalist home office 45 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-46": {
-    "filename": "ambient-minimalist-office-17.webp",
-    "title": "Home lifestyle minimalist home office 46",
-    "description": "Home lifestyle minimalist home office 46 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-48": {
-    "filename": "ambient-minimalist-office-18.webp",
-    "title": "Home lifestyle minimalist home office 48",
-    "description": "Home lifestyle minimalist home office 48 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-6": {
-    "filename": "ambient-minimalist-office-19.webp",
-    "title": "Home lifestyle minimalist home office 6",
-    "description": "Home lifestyle minimalist home office 6 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-minimalist-home-office-7": {
-    "filename": "ambient-minimalist-office-20.webp",
-    "title": "Home lifestyle minimalist home office 7",
-    "description": "Home lifestyle minimalist home office 7 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, home lifestyle, video calls, zoom background"
-  },
-  "home-lifestyle-spare-room-office-3": {
-    "filename": "ambient-spare-room-office-1.webp",
-    "title": "Spare Room Office",
-    "description": "spare room office virtual background perfect for relaxed video calls and remote work",
-    "category": "ambient-lighting",
+  "living-room-06": {
+    "filename": "living-room-06.webp",
+    "downloadName": "living-room-06.png",
+    "category": "living-room",
+    "title": "Living Room Background 6",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 6",
     "keywords": [
       "virtual background",
-      "home office",
-      "remote work",
+      "zoom background",
       "video call",
-      "relaxed workspace",
-      "informal meeting",
-      "home office",
-      "lifestyle",
-      "home workspace"
-    ],
-    "alt": "Spare Room Office - Home office virtual background for comfortable video calls"
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "home-lifestyle-student-bedroom-office-4": {
-    "filename": "ambient-student-bedroom-office-1.webp",
-    "title": "Student Bedroom Office",
-    "description": "student bedroom office virtual background perfect for relaxed video calls and remote work",
-    "category": "ambient-lighting",
+  "living-room-07": {
+    "filename": "living-room-07.webp",
+    "downloadName": "living-room-07.png",
+    "category": "living-room",
+    "title": "Living Room Background 7",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 7",
     "keywords": [
       "virtual background",
-      "home office",
-      "remote work",
+      "zoom background",
       "video call",
-      "relaxed workspace",
-      "informal meeting",
-      "home office",
-      "lifestyle",
-      "home workspace"
-    ],
-    "alt": "Student Bedroom Office - Home office virtual background for comfortable video calls"
-  },
-  "professional-shelves-concrete-professional-shelves-23": {
-    "filename": "ambient-concrete-shelves-1.webp",
-    "title": "Professional shelves concrete professional shelves 23",
-    "description": "Professional shelves concrete professional shelves 23 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-concrete-professional-shelves-24": {
-    "filename": "ambient-concrete-shelves-2.webp",
-    "title": "Professional shelves concrete professional shelves 24",
-    "description": "Professional shelves concrete professional shelves 24 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-concrete-professional-shelves-25": {
-    "filename": "ambient-concrete-shelves-3.webp",
-    "title": "Professional shelves concrete professional shelves 25",
-    "description": "Professional shelves concrete professional shelves 25 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-concrete-professional-shelves-26": {
-    "filename": "ambient-concrete-shelves-4.webp",
-    "title": "Professional shelves concrete professional shelves 26",
-    "description": "Professional shelves concrete professional shelves 26 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-glass-professional-shelves-14": {
-    "filename": "ambient-glass-shelves-1.webp",
-    "title": "Professional shelves glass professional shelves 14",
-    "description": "Professional shelves glass professional shelves 14 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-glass-professional-shelves-15": {
-    "filename": "ambient-glass-shelves-2.webp",
-    "title": "Professional shelves glass professional shelves 15",
-    "description": "Professional shelves glass professional shelves 15 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-glass-professional-shelves-16": {
-    "filename": "ambient-glass-shelves-3.webp",
-    "title": "Professional shelves glass professional shelves 16",
-    "description": "Professional shelves glass professional shelves 16 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-glass-professional-shelves-17": {
-    "filename": "ambient-glass-shelves-4.webp",
-    "title": "Professional shelves glass professional shelves 17",
-    "description": "Professional shelves glass professional shelves 17 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-industrial-professional-shelves-21": {
-    "filename": "professional-shelves-industrial-professional-shelves-21.webp",
-    "title": "Professional shelves industrial professional shelves 21",
-    "description": "Professional shelves industrial professional shelves 21 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-industrial-professional-shelves-22": {
-    "filename": "professional-shelves-industrial-professional-shelves-22.webp",
-    "title": "Professional shelves industrial professional shelves 22",
-    "description": "Professional shelves industrial professional shelves 22 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-industrial-professional-shelves-27": {
-    "filename": "professional-shelves-industrial-professional-shelves-27.webp",
-    "title": "Professional shelves industrial professional shelves 27",
-    "description": "Professional shelves industrial professional shelves 27 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-industrial-professional-shelves-28": {
-    "filename": "professional-shelves-industrial-professional-shelves-28.webp",
-    "title": "Professional shelves industrial professional shelves 28",
-    "description": "Professional shelves industrial professional shelves 28 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-metal-professional-shelves-5": {
-    "filename": "ambient-metal-shelves-1.webp",
-    "title": "Professional shelves metal professional shelves 5",
-    "description": "Professional shelves metal professional shelves 5 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-29": {
-    "filename": "ambient-wood-shelves-1.webp",
-    "title": "Professional shelves professional shelves 29",
-    "description": "Professional shelves professional shelves 29 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-35": {
-    "filename": "ambient-wood-shelves-2.webp",
-    "title": "Professional shelves professional shelves 35",
-    "description": "Professional shelves professional shelves 35 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-36": {
-    "filename": "ambient-wood-shelves-3.webp",
-    "title": "Professional shelves professional shelves 36",
-    "description": "Professional shelves professional shelves 36 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-37": {
-    "filename": "ambient-wood-shelves-4.webp",
-    "title": "Professional shelves professional shelves 37",
-    "description": "Professional shelves professional shelves 37 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-38": {
-    "filename": "ambient-wood-shelves-5.webp",
-    "title": "Professional shelves professional shelves 38",
-    "description": "Professional shelves professional shelves 38 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-41": {
-    "filename": "ambient-wood-shelves-6.webp",
-    "title": "Professional shelves professional shelves 41",
-    "description": "Professional shelves professional shelves 41 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-professional-shelves-42": {
-    "filename": "ambient-wood-shelves-7.webp",
-    "title": "Professional shelves professional shelves 42",
-    "description": "Professional shelves professional shelves 42 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-stone-professional-shelves-10": {
-    "filename": "ambient-stone-shelves-1.webp",
-    "title": "Professional shelves stone professional shelves 10",
-    "description": "Professional shelves stone professional shelves 10 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-stone-professional-shelves-4": {
-    "filename": "ambient-stone-shelves-2.webp",
-    "title": "Professional shelves stone professional shelves 4",
-    "description": "Professional shelves stone professional shelves 4 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "professional-shelves-stone-professional-shelves-9": {
-    "filename": "ambient-stone-shelves-3.webp",
-    "title": "Professional shelves stone professional shelves 9",
-    "description": "Professional shelves stone professional shelves 9 virtual background perfect for video calls",
-    "category": "ambient-lighting",
-    "keywords": "virtual background, professional shelves, video calls, zoom background"
-  },
-  "corner-office-with-floor-to-ceiling-windows-8": {
-    "filename": "office-spaces-corner-office-windows-1.webp",
-    "title": "Corner Office with Floor-to-Ceiling Windows",
-    "description": "Professional corner office with floor-to-ceiling windows virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "corner",
-      "windows"
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
     ]
   },
-  "home-office-with-light-wood-accent-9": {
-    "filename": "office-spaces-light-wood-accent-1.webp",
-    "title": "Home Office with Light Wood Accent",
-    "description": "Professional home office with light wood accent virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "light",
-      "wood"
-    ]
-  },
-  "home-office-with-wood-accent-wall-2": {
-    "filename": "office-spaces-wood-accent-wall-1.webp",
-    "title": "Home Office with Wood Accent Wall",
-    "description": "Professional home office with wood accent wall virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "wood",
-      "accent"
-    ]
-  },
-  "home-office-with-wood-accent-wall-3": {
-    "filename": "office-spaces-wood-accent-wall-2.webp",
-    "title": "Home Office with Wood Accent Wall",
-    "description": "Professional home office with wood accent wall virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "wood",
-      "accent"
-    ]
-  },
-  "minimalist-executive-office-1": {
-    "filename": "office-spaces-minimalist-executive-1.webp",
-    "title": "Minimalist Executive Office",
-    "description": "Professional minimalist executive office virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "minimalist",
-      "executive"
-    ]
-  },
-  "modern-home-office-with-concrete-wall-10": {
-    "filename": "office-spaces-concrete-wall-1.webp",
-    "title": "Modern Home Office with Concrete Wall",
-    "description": "Professional modern home office with concrete wall virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "modern",
-      "concrete"
-    ]
-  },
-  "office-with-dark-wood-accent-14": {
-    "filename": "office-spaces-dark-wood-accent-1.webp",
-    "title": "Office with Dark Wood Accent",
-    "description": "Professional office with dark wood accent virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "dark",
-      "wood"
-    ]
-  },
-  "office-with-dark-wood-accent-15": {
-    "filename": "office-spaces-dark-wood-accent-2.webp",
-    "title": "Office with Dark Wood Accent",
-    "description": "Professional office with dark wood accent virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "dark",
-      "wood"
-    ]
-  },
-  "office-with-marble-accent-wall-11": {
-    "filename": "office-spaces-marble-accent-1.webp",
-    "title": "Office with Marble Accent Wall",
-    "description": "Professional office with marble accent wall virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "marble",
-      "accent"
-    ]
-  },
-  "office-with-marble-accent-wall-12": {
-    "filename": "office-spaces-marble-accent-2.webp",
-    "title": "Office with Marble Accent Wall",
-    "description": "Professional office with marble accent wall virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "marble",
-      "accent"
-    ]
-  },
-  "office-with-marble-accent-wall-13": {
-    "filename": "office-spaces-marble-accent-3.webp",
-    "title": "Office with Marble Accent Wall",
-    "description": "Professional office with marble accent wall virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "marble",
-      "accent"
-    ]
-  },
-  "professional-consultation-office-4": {
-    "filename": "office-spaces-consultation-office-1.webp",
-    "title": "Professional Consultation Office",
-    "description": "Professional professional consultation office virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "consultation"
-    ]
-  },
-  "professional-consultation-office-5": {
-    "filename": "office-spaces-consultation-office-2.webp",
-    "title": "Professional Consultation Office",
-    "description": "Professional professional consultation office virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "consultation"
-    ]
-  },
-  "professional-office-interior-6": {
-    "filename": "office-spaces-office-interior-1.webp",
-    "title": "Professional Office Interior",
-    "description": "Professional professional office interior virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "interior"
-    ]
-  },
-  "professional-office-interior-7": {
-    "filename": "office-spaces-office-interior-2.webp",
-    "title": "Professional Office Interior",
-    "description": "Professional professional office interior virtual background perfect for business meetings and video conferences",
-    "category": "office-spaces",
-    "keywords": [
-      "office space",
-      "virtual background",
-      "professional",
-      "business meeting",
-      "video conference",
-      "corporate",
-      "workplace",
-      "interior"
-    ]
-  },
-  "living-room-1": {
-    "filename": "living-room-1.webp",
-    "title": "Living Room 1",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+  "living-room-08": {
+    "filename": "living-room-08.webp",
+    "downloadName": "living-room-08.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 8",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 8",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "fileSize": "125KB",
-    "lastModified": "2025-08-20T23:19:46.287Z"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "living-room-2": {
-    "filename": "living-room-2.webp",
-    "title": "Living Room 2",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+  "living-room-09": {
+    "filename": "living-room-09.webp",
+    "downloadName": "living-room-09.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 9",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 9",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "fileSize": "184KB",
-    "lastModified": "2025-08-20T23:19:46.699Z"
-  },
-  "living-room-4": {
-    "filename": "living-room-4.webp",
-    "title": "Living Room 4",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
-    "category": "living-room",
-    "isPremium": false,
-    "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:55.086Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_tidy_li_1b2a9082-2a27-4035-ac31-bb4d23f37f36_0.png",
-    "fileSize": "165KB"
-  },
-  "living-room-5": {
-    "filename": "living-room-5.webp",
-    "title": "Living Room 5",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
-    "category": "living-room",
-    "isPremium": false,
-    "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:55.597Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_tidy_li_1b2a9082-2a27-4035-ac31-bb4d23f37f36_1.png",
-    "fileSize": "251KB"
-  },
-  "living-room-6": {
-    "filename": "living-room-6.webp",
-    "title": "Living Room 6",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
-    "category": "living-room",
-    "isPremium": false,
-    "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:56.036Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_tidy_li_1b2a9082-2a27-4035-ac31-bb4d23f37f36_2.png",
-    "fileSize": "149KB"
-  },
-  "living-room-7": {
-    "filename": "living-room-7.webp",
-    "title": "Living Room 7",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
-    "category": "living-room",
-    "isPremium": false,
-    "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:56.381Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_tidy_li_1b2a9082-2a27-4035-ac31-bb4d23f37f36_3.png",
-    "fileSize": "105KB"
-  },
-  "living-room-8": {
-    "filename": "living-room-8.webp",
-    "title": "Living Room 8",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
-    "category": "living-room",
-    "isPremium": false,
-    "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:56.770Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_tidy_li_afc51098-14bd-4d30-bb44-8e2ae7cd3cc5_3.png",
-    "fileSize": "146KB"
-  },
-  "living-room-9": {
-    "filename": "living-room-9.webp",
-    "title": "Living Room 9",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
-    "category": "living-room",
-    "isPremium": false,
-    "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:57.088Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_tidy_li_e2092965-a107-44d7-b138-b2cfc81c5392_2.png",
-    "fileSize": "97KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-10": {
     "filename": "living-room-10.webp",
-    "title": "Living Room 10",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-10.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 10",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 10",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:57.518Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_shot_with__4d625ec4-44ee-42be-b88c-3d9038041908_0.png",
-    "fileSize": "176KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-11": {
     "filename": "living-room-11.webp",
-    "title": "Living Room 11",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-11.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 11",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 11",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:57.873Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_shot_with__a5a06d76-a370-4931-ae99-8d999fc2546c_3.png",
-    "fileSize": "124KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-12": {
     "filename": "living-room-12.webp",
-    "title": "Living Room 12",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-12.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 12",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 12",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:58.348Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_shot_with__b379419b-3ad5-4fd8-8b7d-b34eb7d5cbe5_0.png",
-    "fileSize": "232KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-13": {
     "filename": "living-room-13.webp",
-    "title": "Living Room 13",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-13.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 13",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 13",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:58.714Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_shot_with__b379419b-3ad5-4fd8-8b7d-b34eb7d5cbe5_1.png",
-    "fileSize": "137KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-14": {
     "filename": "living-room-14.webp",
-    "title": "Living Room 14",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-14.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 14",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 14",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:59.063Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_shot_with__b379419b-3ad5-4fd8-8b7d-b34eb7d5cbe5_2 (1).png",
-    "fileSize": "114KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-15": {
     "filename": "living-room-15.webp",
-    "title": "Living Room 15",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-15.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 15",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 15",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:59.408Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_shot_with__b379419b-3ad5-4fd8-8b7d-b34eb7d5cbe5_3.png",
-    "fileSize": "124KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-16": {
     "filename": "living-room-16.webp",
-    "title": "Living Room 16",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-16.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 16",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 16",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:40:59.771Z",
-    "originalFile": "u9972584128_Wide_angle_photorealistic_photograph_taken_from_s_19d0ed26-467c-4d22-995d-0da580f43310_0.png",
-    "fileSize": "137KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-17": {
     "filename": "living-room-17.webp",
-    "title": "Living Room 17",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-17.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 17",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 17",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T01:41:00.123Z",
-    "originalFile": "u9972584128_Wide_angle_photorealistic_shot_of_complete_living_30bd7c83-cc36-43c2-a4e8-879a07f4b36f_3 (1).png",
-    "fileSize": "114KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-18": {
     "filename": "living-room-18.webp",
-    "title": "Living Room 18",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-18.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 18",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 18",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:48.509Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_coastal_4ca8c62e-87c9-4b3b-bf46-2b59985947f7_0.png",
-    "fileSize": "160KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-19": {
     "filename": "living-room-19.webp",
-    "title": "Living Room 19",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-19.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 19",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 19",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:49.008Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_coastal_4ca8c62e-87c9-4b3b-bf46-2b59985947f7_1.png",
-    "fileSize": "189KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-20": {
     "filename": "living-room-20.webp",
-    "title": "Living Room 20",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-20.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 20",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 20",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:49.396Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_coastal_4ca8c62e-87c9-4b3b-bf46-2b59985947f7_3.png",
-    "fileSize": "159KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-21": {
     "filename": "living-room-21.webp",
-    "title": "Living Room 21",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-21.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 21",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 21",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:49.900Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_English_e65a58f2-4635-4115-a1b4-c87e0563fe22_2.png",
-    "fileSize": "270KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-22": {
     "filename": "living-room-22.webp",
-    "title": "Living Room 22",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-22.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 22",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 22",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:50.472Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_industr_9fa69930-bb3b-4c48-bdce-e65cdd0191b8_0.png",
-    "fileSize": "274KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-23": {
     "filename": "living-room-23.webp",
-    "title": "Living Room 23",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-23.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 23",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 23",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:50.959Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_industr_9fa69930-bb3b-4c48-bdce-e65cdd0191b8_1.png",
-    "fileSize": "214KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-24": {
     "filename": "living-room-24.webp",
-    "title": "Living Room 24",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-24.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 24",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 24",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:51.433Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_Mediter_b1445fdc-d9f4-40a9-94f9-fe55c74de023_2.png",
-    "fileSize": "223KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-25": {
     "filename": "living-room-25.webp",
-    "title": "Living Room 25",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-25.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 25",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 25",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:51.937Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_mid-cen_7b67c796-dd3f-4fd1-b7c9-095defd22ee7_3.png",
-    "fileSize": "244KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-26": {
     "filename": "living-room-26.webp",
-    "title": "Living Room 26",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-26.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 26",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 26",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:52.352Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_modern__83b30073-fbee-4dee-aaa4-bf6444bece99_0.png",
-    "fileSize": "157KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-27": {
     "filename": "living-room-27.webp",
-    "title": "Living Room 27",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-27.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 27",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 27",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:52.765Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_modern__83b30073-fbee-4dee-aaa4-bf6444bece99_1.png",
-    "fileSize": "172KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-28": {
     "filename": "living-room-28.webp",
-    "title": "Living Room 28",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-28.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 28",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 28",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:53.185Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_modern__83b30073-fbee-4dee-aaa4-bf6444bece99_2.png",
-    "fileSize": "168KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-29": {
     "filename": "living-room-29.webp",
-    "title": "Living Room 29",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-29.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 29",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 29",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:53.687Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_modern__83b30073-fbee-4dee-aaa4-bf6444bece99_3.png",
-    "fileSize": "243KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-30": {
     "filename": "living-room-30.webp",
-    "title": "Living Room 30",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-30.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 30",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 30",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:54.118Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_modern__d9078398-6ece-431f-a178-a41e1a23f5ab_3.png",
-    "fileSize": "188KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-31": {
     "filename": "living-room-31.webp",
-    "title": "Living Room 31",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-31.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 31",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 31",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:54.627Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_mountai_f57d84a3-7316-4235-a253-5f16cac0734c_0.png",
-    "fileSize": "252KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-32": {
     "filename": "living-room-32.webp",
-    "title": "Living Room 32",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-32.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 32",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 32",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:55.088Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_mountai_f57d84a3-7316-4235-a253-5f16cac0734c_1.png",
-    "fileSize": "189KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-33": {
     "filename": "living-room-33.webp",
-    "title": "Living Room 33",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-33.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 33",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 33",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:55.657Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_mountai_f57d84a3-7316-4235-a253-5f16cac0734c_2.png",
-    "fileSize": "318KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-34": {
     "filename": "living-room-34.webp",
-    "title": "Living Room 34",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-34.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 34",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 34",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:56.132Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_mountai_f57d84a3-7316-4235-a253-5f16cac0734c_3.png",
-    "fileSize": "211KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-35": {
     "filename": "living-room-35.webp",
-    "title": "Living Room 35",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-35.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 35",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 35",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:56.595Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_Scandin_2f2b73c1-cedd-44c4-acb6-406a46f667c7_0.png",
-    "fileSize": "227KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-36": {
     "filename": "living-room-36.webp",
-    "title": "Living Room 36",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-36.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 36",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 36",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:57.044Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_Southwe_f010b395-34e6-45e9-abe5-8a5f1977e54f_0.png",
-    "fileSize": "185KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-37": {
     "filename": "living-room-37.webp",
-    "title": "Living Room 37",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-37.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 37",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 37",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:57.555Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_Southwe_f010b395-34e6-45e9-abe5-8a5f1977e54f_2.png",
-    "fileSize": "245KB"
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
   "living-room-38": {
     "filename": "living-room-38.webp",
-    "title": "Living Room 38",
-    "description": "Comfortable living room background perfect for casual video calls and personal meetings",
+    "downloadName": "living-room-38.png",
     "category": "living-room",
-    "isPremium": false,
+    "title": "Living Room Background 38",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 38",
     "keywords": [
-      "living room background",
-      "home background",
-      "casual video calls",
-      "comfortable setting",
-      "personal meetings",
-      "relaxed atmosphere",
-      "cozy living room",
-      "home office alternative"
-    ],
-    "dimensions": {
-      "width": 1920,
-      "height": 1080
-    },
-    "lastModified": "2025-08-21T22:17:58.078Z",
-    "originalFile": "u9972584128_Photorealistic_real_estate_photography_of_starter_d21091b3-db51-499d-a360-d375011f3303_0.png",
-    "fileSize": "243KB"
-  },
-  "kitchen1": {
-    "filename": "kitchen1.webp",
-    "title": "Minimalist Kitchen Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
-    "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Minimalist Kitchen Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen2": {
-    "filename": "kitchen2.webp",
-    "title": "Scandinavian Kitchen Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-39": {
+    "filename": "living-room-39.webp",
+    "downloadName": "living-room-39.png",
+    "category": "living-room",
+    "title": "Living Room Background 39",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 39",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Scandinavian Kitchen Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen3": {
-    "filename": "kitchen3.webp",
-    "title": "Scandinavian Kitchen Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-40": {
+    "filename": "living-room-40.webp",
+    "downloadName": "living-room-40.png",
+    "category": "living-room",
+    "title": "Living Room Background 40",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 40",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Scandinavian Kitchen Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen4": {
-    "filename": "kitchen4.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-41": {
+    "filename": "living-room-41.webp",
+    "downloadName": "living-room-41.png",
+    "category": "living-room",
+    "title": "Living Room Background 41",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 41",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen5": {
-    "filename": "kitchen5.webp",
-    "title": "Luxury Kitchen Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-42": {
+    "filename": "living-room-42.webp",
+    "downloadName": "living-room-42.png",
+    "category": "living-room",
+    "title": "Living Room Background 42",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 42",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Luxury Kitchen Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen6": {
-    "filename": "kitchen6.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-43": {
+    "filename": "living-room-43.webp",
+    "downloadName": "living-room-43.png",
+    "category": "living-room",
+    "title": "Living Room Background 43",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 43",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen7": {
-    "filename": "kitchen7.webp",
-    "title": "Minimalist Kitchen Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-44": {
+    "filename": "living-room-44.webp",
+    "downloadName": "living-room-44.png",
+    "category": "living-room",
+    "title": "Living Room Background 44",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 44",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Minimalist Kitchen Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen8": {
-    "filename": "kitchen8.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-45": {
+    "filename": "living-room-45.webp",
+    "downloadName": "living-room-45.png",
+    "category": "living-room",
+    "title": "Living Room Background 45",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 45",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen9": {
-    "filename": "kitchen9.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-46": {
+    "filename": "living-room-46.webp",
+    "downloadName": "living-room-46.png",
+    "category": "living-room",
+    "title": "Living Room Background 46",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 46",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen10": {
-    "filename": "kitchen10.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
-    "category": "kitchen",
+  "living-room-47": {
+    "filename": "living-room-47.webp",
+    "downloadName": "living-room-47.png",
+    "category": "living-room",
+    "title": "Living Room Background 47",
+    "description": "Cozy living room virtual background perfect for casual video calls",
+    "alt": "living room background 47",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "home",
+      "cozy",
+      "casual",
+      "living room"
+    ]
   },
-  "kitchen11": {
-    "filename": "kitchen11.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-01": {
+    "filename": "kitchen-01.webp",
+    "downloadName": "kitchen-01.png",
     "category": "kitchen",
+    "title": "Kitchen Background 1",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 1",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
   },
-  "kitchen12": {
-    "filename": "kitchen12.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-02": {
+    "filename": "kitchen-02.webp",
+    "downloadName": "kitchen-02.png",
     "category": "kitchen",
+    "title": "Kitchen Background 2",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 2",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
   },
-  "kitchen13": {
-    "filename": "kitchen13.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-03": {
+    "filename": "kitchen-03.webp",
+    "downloadName": "kitchen-03.png",
     "category": "kitchen",
+    "title": "Kitchen Background 3",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 3",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
   },
-  "kitchen14": {
-    "filename": "kitchen14.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-04": {
+    "filename": "kitchen-04.webp",
+    "downloadName": "kitchen-04.png",
     "category": "kitchen",
+    "title": "Kitchen Background 4",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 4",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
   },
-  "kitchen15": {
-    "filename": "kitchen15.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-05": {
+    "filename": "kitchen-05.webp",
+    "downloadName": "kitchen-05.png",
     "category": "kitchen",
+    "title": "Kitchen Background 5",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 5",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
   },
-  "kitchen16": {
-    "filename": "kitchen16.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-06": {
+    "filename": "kitchen-06.webp",
+    "downloadName": "kitchen-06.png",
     "category": "kitchen",
+    "title": "Kitchen Background 6",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 6",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
   },
-  "kitchen17": {
-    "filename": "kitchen17.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-07": {
+    "filename": "kitchen-07.webp",
+    "downloadName": "kitchen-07.png",
     "category": "kitchen",
+    "title": "Kitchen Background 7",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 7",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
   },
-  "kitchen18": {
-    "filename": "kitchen18.webp",
-    "title": "Kitchen Virtual Background",
-    "description": "Professional kitchen virtual background perfect for cooking shows, food blogs, culinary consultations, and chef video calls",
+  "kitchen-08": {
+    "filename": "kitchen-08.webp",
+    "downloadName": "kitchen-08.png",
     "category": "kitchen",
+    "title": "Kitchen Background 8",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 8",
     "keywords": [
-      "kitchen background",
-      "culinary virtual background",
-      "cooking show background",
-      "food blog",
-      "kitchen workspace",
-      "chef background",
       "virtual background",
-      "video calls"
-    ],
-    "alt": "Kitchen Virtual Background for professional video calls and cooking content"
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-09": {
+    "filename": "kitchen-09.webp",
+    "downloadName": "kitchen-09.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 9",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 9",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-10": {
+    "filename": "kitchen-10.webp",
+    "downloadName": "kitchen-10.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 10",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 10",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-11": {
+    "filename": "kitchen-11.webp",
+    "downloadName": "kitchen-11.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 11",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 11",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-12": {
+    "filename": "kitchen-12.webp",
+    "downloadName": "kitchen-12.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 12",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 12",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-13": {
+    "filename": "kitchen-13.webp",
+    "downloadName": "kitchen-13.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 13",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 13",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-14": {
+    "filename": "kitchen-14.webp",
+    "downloadName": "kitchen-14.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 14",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 14",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-15": {
+    "filename": "kitchen-15.webp",
+    "downloadName": "kitchen-15.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 15",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 15",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-16": {
+    "filename": "kitchen-16.webp",
+    "downloadName": "kitchen-16.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 16",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 16",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-17": {
+    "filename": "kitchen-17.webp",
+    "downloadName": "kitchen-17.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 17",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 17",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "kitchen-18": {
+    "filename": "kitchen-18.webp",
+    "downloadName": "kitchen-18.png",
+    "category": "kitchen",
+    "title": "Kitchen Background 18",
+    "description": "Modern kitchen background ideal for cooking shows or casual meetings",
+    "alt": "kitchen background 18",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "cooking",
+      "culinary",
+      "home",
+      "kitchen"
+    ]
+  },
+  "office-spaces-01": {
+    "filename": "office-spaces-01.webp",
+    "downloadName": "office-spaces-01.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 1",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 1",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-02": {
+    "filename": "office-spaces-02.webp",
+    "downloadName": "office-spaces-02.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 2",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 2",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-03": {
+    "filename": "office-spaces-03.webp",
+    "downloadName": "office-spaces-03.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 3",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 3",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-04": {
+    "filename": "office-spaces-04.webp",
+    "downloadName": "office-spaces-04.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 4",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 4",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-05": {
+    "filename": "office-spaces-05.webp",
+    "downloadName": "office-spaces-05.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 5",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 5",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-06": {
+    "filename": "office-spaces-06.webp",
+    "downloadName": "office-spaces-06.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 6",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 6",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-07": {
+    "filename": "office-spaces-07.webp",
+    "downloadName": "office-spaces-07.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 7",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 7",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-08": {
+    "filename": "office-spaces-08.webp",
+    "downloadName": "office-spaces-08.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 8",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 8",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-09": {
+    "filename": "office-spaces-09.webp",
+    "downloadName": "office-spaces-09.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 9",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 9",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-10": {
+    "filename": "office-spaces-10.webp",
+    "downloadName": "office-spaces-10.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 10",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 10",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-11": {
+    "filename": "office-spaces-11.webp",
+    "downloadName": "office-spaces-11.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 11",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 11",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-12": {
+    "filename": "office-spaces-12.webp",
+    "downloadName": "office-spaces-12.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 12",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 12",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-13": {
+    "filename": "office-spaces-13.webp",
+    "downloadName": "office-spaces-13.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 13",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 13",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-14": {
+    "filename": "office-spaces-14.webp",
+    "downloadName": "office-spaces-14.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 14",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 14",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-15": {
+    "filename": "office-spaces-15.webp",
+    "downloadName": "office-spaces-15.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 15",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 15",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-16": {
+    "filename": "office-spaces-16.webp",
+    "downloadName": "office-spaces-16.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 16",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 16",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-17": {
+    "filename": "office-spaces-17.webp",
+    "downloadName": "office-spaces-17.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 17",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 17",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-18": {
+    "filename": "office-spaces-18.webp",
+    "downloadName": "office-spaces-18.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 18",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 18",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "office-spaces-19": {
+    "filename": "office-spaces-19.webp",
+    "downloadName": "office-spaces-19.png",
+    "category": "office-spaces",
+    "title": "Office Space Background 19",
+    "description": "Professional office background for business video conferences",
+    "alt": "office spaces background 19",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "professional",
+      "business",
+      "office",
+      "workspace"
+    ]
+  },
+  "well-lit-01": {
+    "filename": "well-lit-01.webp",
+    "downloadName": "well-lit-01.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 1",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 1",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-02": {
+    "filename": "well-lit-02.webp",
+    "downloadName": "well-lit-02.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 2",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 2",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-03": {
+    "filename": "well-lit-03.webp",
+    "downloadName": "well-lit-03.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 3",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 3",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-04": {
+    "filename": "well-lit-04.webp",
+    "downloadName": "well-lit-04.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 4",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 4",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-05": {
+    "filename": "well-lit-05.webp",
+    "downloadName": "well-lit-05.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 5",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 5",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-06": {
+    "filename": "well-lit-06.webp",
+    "downloadName": "well-lit-06.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 6",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 6",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-07": {
+    "filename": "well-lit-07.webp",
+    "downloadName": "well-lit-07.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 7",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 7",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-08": {
+    "filename": "well-lit-08.webp",
+    "downloadName": "well-lit-08.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 8",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 8",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-09": {
+    "filename": "well-lit-09.webp",
+    "downloadName": "well-lit-09.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 9",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 9",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-10": {
+    "filename": "well-lit-10.webp",
+    "downloadName": "well-lit-10.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 10",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 10",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-11": {
+    "filename": "well-lit-11.webp",
+    "downloadName": "well-lit-11.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 11",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 11",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-12": {
+    "filename": "well-lit-12.webp",
+    "downloadName": "well-lit-12.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 12",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 12",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-13": {
+    "filename": "well-lit-13.webp",
+    "downloadName": "well-lit-13.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 13",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 13",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-14": {
+    "filename": "well-lit-14.webp",
+    "downloadName": "well-lit-14.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 14",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 14",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-15": {
+    "filename": "well-lit-15.webp",
+    "downloadName": "well-lit-15.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 15",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 15",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-16": {
+    "filename": "well-lit-16.webp",
+    "downloadName": "well-lit-16.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 16",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 16",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-17": {
+    "filename": "well-lit-17.webp",
+    "downloadName": "well-lit-17.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 17",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 17",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-18": {
+    "filename": "well-lit-18.webp",
+    "downloadName": "well-lit-18.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 18",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 18",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-19": {
+    "filename": "well-lit-19.webp",
+    "downloadName": "well-lit-19.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 19",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 19",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-20": {
+    "filename": "well-lit-20.webp",
+    "downloadName": "well-lit-20.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 20",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 20",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-21": {
+    "filename": "well-lit-21.webp",
+    "downloadName": "well-lit-21.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 21",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 21",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-22": {
+    "filename": "well-lit-22.webp",
+    "downloadName": "well-lit-22.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 22",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 22",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-23": {
+    "filename": "well-lit-23.webp",
+    "downloadName": "well-lit-23.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 23",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 23",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-24": {
+    "filename": "well-lit-24.webp",
+    "downloadName": "well-lit-24.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 24",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 24",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-25": {
+    "filename": "well-lit-25.webp",
+    "downloadName": "well-lit-25.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 25",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 25",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-26": {
+    "filename": "well-lit-26.webp",
+    "downloadName": "well-lit-26.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 26",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 26",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-27": {
+    "filename": "well-lit-27.webp",
+    "downloadName": "well-lit-27.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 27",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 27",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-28": {
+    "filename": "well-lit-28.webp",
+    "downloadName": "well-lit-28.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 28",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 28",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-29": {
+    "filename": "well-lit-29.webp",
+    "downloadName": "well-lit-29.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 29",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 29",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-30": {
+    "filename": "well-lit-30.webp",
+    "downloadName": "well-lit-30.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 30",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 30",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-31": {
+    "filename": "well-lit-31.webp",
+    "downloadName": "well-lit-31.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 31",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 31",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-32": {
+    "filename": "well-lit-32.webp",
+    "downloadName": "well-lit-32.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 32",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 32",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-33": {
+    "filename": "well-lit-33.webp",
+    "downloadName": "well-lit-33.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 33",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 33",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-34": {
+    "filename": "well-lit-34.webp",
+    "downloadName": "well-lit-34.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 34",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 34",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-35": {
+    "filename": "well-lit-35.webp",
+    "downloadName": "well-lit-35.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 35",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 35",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-36": {
+    "filename": "well-lit-36.webp",
+    "downloadName": "well-lit-36.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 36",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 36",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-37": {
+    "filename": "well-lit-37.webp",
+    "downloadName": "well-lit-37.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 37",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 37",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-38": {
+    "filename": "well-lit-38.webp",
+    "downloadName": "well-lit-38.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 38",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 38",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-39": {
+    "filename": "well-lit-39.webp",
+    "downloadName": "well-lit-39.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 39",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 39",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-40": {
+    "filename": "well-lit-40.webp",
+    "downloadName": "well-lit-40.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 40",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 40",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-41": {
+    "filename": "well-lit-41.webp",
+    "downloadName": "well-lit-41.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 41",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 41",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-42": {
+    "filename": "well-lit-42.webp",
+    "downloadName": "well-lit-42.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 42",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 42",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-43": {
+    "filename": "well-lit-43.webp",
+    "downloadName": "well-lit-43.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 43",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 43",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-44": {
+    "filename": "well-lit-44.webp",
+    "downloadName": "well-lit-44.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 44",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 44",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-45": {
+    "filename": "well-lit-45.webp",
+    "downloadName": "well-lit-45.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 45",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 45",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-46": {
+    "filename": "well-lit-46.webp",
+    "downloadName": "well-lit-46.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 46",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 46",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "well-lit-47": {
+    "filename": "well-lit-47.webp",
+    "downloadName": "well-lit-47.png",
+    "category": "well-lit",
+    "title": "Well-Lit Professional Background 47",
+    "description": "Bright, well-lit professional setting for important video calls",
+    "alt": "well lit background 47",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "bright",
+      "professional",
+      "clear",
+      "well-lit"
+    ]
+  },
+  "ambient-01": {
+    "filename": "ambient-01.webp",
+    "downloadName": "ambient-01.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 1",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 1",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-02": {
+    "filename": "ambient-02.webp",
+    "downloadName": "ambient-02.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 2",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 2",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-03": {
+    "filename": "ambient-03.webp",
+    "downloadName": "ambient-03.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 3",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 3",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-04": {
+    "filename": "ambient-04.webp",
+    "downloadName": "ambient-04.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 4",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 4",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-05": {
+    "filename": "ambient-05.webp",
+    "downloadName": "ambient-05.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 5",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 5",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-06": {
+    "filename": "ambient-06.webp",
+    "downloadName": "ambient-06.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 6",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 6",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-07": {
+    "filename": "ambient-07.webp",
+    "downloadName": "ambient-07.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 7",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 7",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-08": {
+    "filename": "ambient-08.webp",
+    "downloadName": "ambient-08.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 8",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 8",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-09": {
+    "filename": "ambient-09.webp",
+    "downloadName": "ambient-09.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 9",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 9",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-10": {
+    "filename": "ambient-10.webp",
+    "downloadName": "ambient-10.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 10",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 10",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-11": {
+    "filename": "ambient-11.webp",
+    "downloadName": "ambient-11.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 11",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 11",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-12": {
+    "filename": "ambient-12.webp",
+    "downloadName": "ambient-12.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 12",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 12",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-13": {
+    "filename": "ambient-13.webp",
+    "downloadName": "ambient-13.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 13",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 13",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-14": {
+    "filename": "ambient-14.webp",
+    "downloadName": "ambient-14.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 14",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 14",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-15": {
+    "filename": "ambient-15.webp",
+    "downloadName": "ambient-15.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 15",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 15",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-16": {
+    "filename": "ambient-16.webp",
+    "downloadName": "ambient-16.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 16",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 16",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-17": {
+    "filename": "ambient-17.webp",
+    "downloadName": "ambient-17.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 17",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 17",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-18": {
+    "filename": "ambient-18.webp",
+    "downloadName": "ambient-18.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 18",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 18",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-19": {
+    "filename": "ambient-19.webp",
+    "downloadName": "ambient-19.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 19",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 19",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-20": {
+    "filename": "ambient-20.webp",
+    "downloadName": "ambient-20.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 20",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 20",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-21": {
+    "filename": "ambient-21.webp",
+    "downloadName": "ambient-21.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 21",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 21",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-22": {
+    "filename": "ambient-22.webp",
+    "downloadName": "ambient-22.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 22",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 22",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-23": {
+    "filename": "ambient-23.webp",
+    "downloadName": "ambient-23.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 23",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 23",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-24": {
+    "filename": "ambient-24.webp",
+    "downloadName": "ambient-24.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 24",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 24",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-25": {
+    "filename": "ambient-25.webp",
+    "downloadName": "ambient-25.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 25",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 25",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-26": {
+    "filename": "ambient-26.webp",
+    "downloadName": "ambient-26.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 26",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 26",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-27": {
+    "filename": "ambient-27.webp",
+    "downloadName": "ambient-27.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 27",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 27",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-28": {
+    "filename": "ambient-28.webp",
+    "downloadName": "ambient-28.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 28",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 28",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-29": {
+    "filename": "ambient-29.webp",
+    "downloadName": "ambient-29.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 29",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 29",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-30": {
+    "filename": "ambient-30.webp",
+    "downloadName": "ambient-30.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 30",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 30",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-31": {
+    "filename": "ambient-31.webp",
+    "downloadName": "ambient-31.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 31",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 31",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-32": {
+    "filename": "ambient-32.webp",
+    "downloadName": "ambient-32.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 32",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 32",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-33": {
+    "filename": "ambient-33.webp",
+    "downloadName": "ambient-33.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 33",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 33",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-34": {
+    "filename": "ambient-34.webp",
+    "downloadName": "ambient-34.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 34",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 34",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-35": {
+    "filename": "ambient-35.webp",
+    "downloadName": "ambient-35.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 35",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 35",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-36": {
+    "filename": "ambient-36.webp",
+    "downloadName": "ambient-36.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 36",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 36",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-37": {
+    "filename": "ambient-37.webp",
+    "downloadName": "ambient-37.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 37",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 37",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-38": {
+    "filename": "ambient-38.webp",
+    "downloadName": "ambient-38.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 38",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 38",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-39": {
+    "filename": "ambient-39.webp",
+    "downloadName": "ambient-39.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 39",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 39",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-40": {
+    "filename": "ambient-40.webp",
+    "downloadName": "ambient-40.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 40",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 40",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
+  },
+  "ambient-41": {
+    "filename": "ambient-41.webp",
+    "downloadName": "ambient-41.png",
+    "category": "ambient",
+    "title": "Ambient Lighting Background 41",
+    "description": "Soft ambient lighting creates a warm, inviting atmosphere",
+    "alt": "ambient background 41",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "mood",
+      "soft lighting",
+      "ambient",
+      "warm"
+    ]
   }
 }

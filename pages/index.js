@@ -447,7 +447,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <img
-                  src="/images/kitchen/kitchen9.webp"
+                 src="/images/kitchen/kitchen-09.webp"
                   alt="Kitchen virtual background"
                   style={{
                     width: '100%',

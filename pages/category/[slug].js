@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { event } from '../../lib/gtag';
 import Layout from '../../components/Layout';
+import cloudinaryUrls from '../../cloudinary-urls.json';
 
 // Simple SocialShare component
 function SocialShare({ image, title, size = "large", showLabels = false, vertical = true }) {
@@ -126,218 +127,63 @@ const categoryInfo = {
     name: 'Well Lit',
     description: 'Bright, well-lit backgrounds perfect for professional video calls',
     seoDescription: 'Download free well-lit virtual backgrounds for video calls. Bright, professional backgrounds.',
-    images: [
-      { filename: 'well-lit-cozy-home-office-1.webp', title: 'Cozy Home Office' },
-      { filename: 'well-lit-glass-shelves-1.webp', title: 'Glass Shelves' },
-      { filename: 'well-lit-glass-shelves-2.webp', title: 'Glass Shelves' },
-      { filename: 'well-lit-metal-shelves-1.webp', title: 'Metal Shelves' },
-      { filename: 'well-lit-metal-shelves-2.webp', title: 'Metal Shelves' },
-      { filename: 'well-lit-minimalist-office-1.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-10.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-11.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-12.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-13.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-14.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-15.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-16.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-17.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-18.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-19.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-2.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-20.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-21.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-22.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-23.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-24.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-25.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-26.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-27.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-28.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-3.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-4.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-5.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-6.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-7.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-8.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-minimalist-office-9.webp', title: 'Minimalist Office' },
-      { filename: 'well-lit-stone-shelves-1.webp', title: 'Stone Shelves' },
-      { filename: 'well-lit-stone-shelves-2.webp', title: 'Stone Shelves' },
-      { filename: 'well-lit-stone-shelves-3.webp', title: 'Stone Shelves' },
-      { filename: 'well-lit-wood-shelves-1.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-10.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-11.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-12.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-2.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-3.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-4.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-5.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-6.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-7.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-8.webp', title: 'Wood Shelves' },
-      { filename: 'well-lit-wood-shelves-9.webp', title: 'Wood Shelves' }
-    ]
+    images: Array.from({length: 47}, (_, i) => ({
+      filename: `well-lit-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Well Lit Background ${i + 1}`
+    }))
   },
   
   'ambient-lighting': {
     name: 'Ambient Lighting',
     description: 'Atmospheric backgrounds with ambient lighting for sophisticated video calls',
     seoDescription: 'Download free ambient virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
-    images: [
-      { filename: 'ambient-basement-office-1.webp', title: 'Basement Office' },
-      { filename: 'ambient-concrete-shelves-1.webp', title: 'Concrete Shelves' },
-      { filename: 'ambient-concrete-shelves-2.webp', title: 'Concrete Shelves' },
-      { filename: 'ambient-concrete-shelves-3.webp', title: 'Concrete Shelves' },
-      { filename: 'ambient-concrete-shelves-4.webp', title: 'Concrete Shelves' },
-      { filename: 'ambient-cozy-student-workspace-1.webp', title: 'Cozy Student Workspace' },
-      { filename: 'ambient-garden-shed-office-1.webp', title: 'Garden Shed Office' },
-      { filename: 'ambient-glass-shelves-1.webp', title: 'Glass Shelves' },
-      { filename: 'ambient-glass-shelves-2.webp', title: 'Glass Shelves' },
-      { filename: 'ambient-glass-shelves-3.webp', title: 'Glass Shelves' },
-      { filename: 'ambient-glass-shelves-4.webp', title: 'Glass Shelves' },
-      { filename: 'ambient-industrial-shelves-1.webp', title: 'Industrial Shelves' },
-      { filename: 'ambient-industrial-shelves-2.webp', title: 'Industrial Shelves' },
-      { filename: 'ambient-industrial-shelves-3.webp', title: 'Industrial Shelves' },
-      { filename: 'ambient-industrial-shelves-4.webp', title: 'Industrial Shelves' },
-      { filename: 'ambient-kitchen-workspace-1.webp', title: 'Kitchen Workspace' },
-      { filename: 'ambient-metal-shelves-1.webp', title: 'Metal Shelves' },
-      { filename: 'ambient-minimalist-office-1.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-10.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-11.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-12.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-13.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-14.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-15.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-16.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-17.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-18.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-19.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-2.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-20.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-3.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-4.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-5.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-6.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-7.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-8.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-minimalist-office-9.webp', title: 'Minimalist Office' },
-      { filename: 'ambient-spare-room-office-1.webp', title: 'Spare Room Office' },
-      { filename: 'ambient-stone-shelves-1.webp', title: 'Stone Shelves' },
-      { filename: 'ambient-stone-shelves-2.webp', title: 'Stone Shelves' },
-      { filename: 'ambient-stone-shelves-3.webp', title: 'Stone Shelves' },
-      { filename: 'ambient-student-bedroom-office-1.webp', title: 'Student Bedroom Office' },
-      { filename: 'ambient-wood-shelves-1.webp', title: 'Wood Shelves' },
-      { filename: 'ambient-wood-shelves-2.webp', title: 'Wood Shelves' },
-      { filename: 'ambient-wood-shelves-3.webp', title: 'Wood Shelves' },
-      { filename: 'ambient-wood-shelves-4.webp', title: 'Wood Shelves' },
-      { filename: 'ambient-wood-shelves-5.webp', title: 'Wood Shelves' },
-      { filename: 'ambient-wood-shelves-6.webp', title: 'Wood Shelves' },
-      { filename: 'ambient-wood-shelves-7.webp', title: 'Wood Shelves' }
-    ]
+    images: Array.from({length: 41}, (_, i) => ({
+      filename: `ambient-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Ambient Background ${i + 1}`
+    }))
   },
   
   'office-spaces': {
     name: 'Office Spaces',
     description: 'Professional office backgrounds for business video calls',
     seoDescription: 'Download free professional office virtual backgrounds for video calls. Executive office backgrounds.',
-    images: [
-      { filename: 'office-spaces-concrete-wall-1.webp', title: 'Concrete Wall Office' },
-      { filename: 'office-spaces-consultation-office-1.webp', title: 'Consultation Office' },
-      { filename: 'office-spaces-consultation-office-2.webp', title: 'Consultation Office' },
-      { filename: 'office-spaces-corner-office-windows-1.webp', title: 'Corner Office with Windows' },
-      { filename: 'office-spaces-dark-wood-accent-1.webp', title: 'Dark Wood Accent Office' },
-      { filename: 'office-spaces-dark-wood-accent-2.webp', title: 'Dark Wood Accent Office' },
-      { filename: 'office-spaces-light-wood-accent-1.webp', title: 'Light Wood Accent Office' },
-      { filename: 'office-spaces-marble-accent-1.webp', title: 'Marble Accent Office' },
-      { filename: 'office-spaces-marble-accent-2.webp', title: 'Marble Accent Office' },
-      { filename: 'office-spaces-marble-accent-3.webp', title: 'Marble Accent Office' },
-      { filename: 'office-spaces-minimalist-executive-1.webp', title: 'Minimalist Executive Office' },
-      { filename: 'office-spaces-office-interior-1.webp', title: 'Professional Office Interior' },
-      { filename: 'office-spaces-office-interior-2.webp', title: 'Professional Office Interior' },
-      { filename: 'office-spaces-wood-accent-wall-1.webp', title: 'Wood Accent Wall Office' },
-      { filename: 'office-spaces-wood-accent-wall-2.webp', title: 'Wood Accent Wall Office' }
-    ]
+    images: Array.from({length: 19}, (_, i) => ({
+      filename: `office-spaces-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Office Space Background ${i + 1}`
+    }))
   },
   
-    'living-room': {
+  'living-room': {
     name: 'Living Room',
     description: 'Comfortable living room backgrounds for casual meetings and personal video calls',
     seoDescription: 'Download free living room virtual backgrounds for video calls. Comfortable home settings for casual meetings.',
-    images: [
-      { filename: 'living-room-1.webp', title: 'Living Room 1' },
-      { filename: 'living-room-2.webp', title: 'Living Room 2' },
-      { filename: 'living-room-4.webp', title: 'Living Room 4' },
-      { filename: 'living-room-5.webp', title: 'Living Room 5' },
-      { filename: 'living-room-6.webp', title: 'Living Room 6' },
-      { filename: 'living-room-7.webp', title: 'Living Room 7' },
-      { filename: 'living-room-8.webp', title: 'Living Room 8' },
-      { filename: 'living-room-9.webp', title: 'Living Room 9' },
-      { filename: 'living-room-10.webp', title: 'Living Room 10' },
-      { filename: 'living-room-11.webp', title: 'Living Room 11' },
-      { filename: 'living-room-12.webp', title: 'Living Room 12' },
-      { filename: 'living-room-13.webp', title: 'Living Room 13' },
-      { filename: 'living-room-14.webp', title: 'Living Room 14' },
-      { filename: 'living-room-15.webp', title: 'Living Room 15' },
-      { filename: 'living-room-16.webp', title: 'Living Room 16' },
-      { filename: 'living-room-17.webp', title: 'Living Room 17' },
-      { filename: 'living-room-18.webp', title: 'Living Room 18' },
-      { filename: 'living-room-19.webp', title: 'Living Room 19' },
-      { filename: 'living-room-20.webp', title: 'Living Room 20' },
-      { filename: 'living-room-21.webp', title: 'Living Room 21' },
-      { filename: 'living-room-22.webp', title: 'Living Room 22' },
-      { filename: 'living-room-23.webp', title: 'Living Room 23' },
-      { filename: 'living-room-24.webp', title: 'Living Room 24' },
-      { filename: 'living-room-25.webp', title: 'Living Room 25' },
-      { filename: 'living-room-26.webp', title: 'Living Room 26' },
-      { filename: 'living-room-27.webp', title: 'Living Room 27' },
-      { filename: 'living-room-28.webp', title: 'Living Room 28' },
-      { filename: 'living-room-29.webp', title: 'Living Room 29' },
-      { filename: 'living-room-30.webp', title: 'Living Room 30' },
-      { filename: 'living-room-31.webp', title: 'Living Room 31' },
-      { filename: 'living-room-32.webp', title: 'Living Room 32' },
-      { filename: 'living-room-33.webp', title: 'Living Room 33' },
-      { filename: 'living-room-34.webp', title: 'Living Room 34' },
-      { filename: 'living-room-35.webp', title: 'Living Room 35' },
-      { filename: 'living-room-36.webp', title: 'Living Room 36' },
-      { filename: 'living-room-37.webp', title: 'Living Room 37' },
-      { filename: 'living-room-38.webp', title: 'Living Room 38' }
-    ]
+    images: Array.from({length: 47}, (_, i) => ({
+      filename: `living-room-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Living Room Background ${i + 1}`
+    }))
   },
-
   
   'kitchen': {
     name: 'Kitchen Backgrounds',
     description: 'Professional kitchen backgrounds for cooking shows, food blogs, and culinary video calls',
     seoDescription: 'Download free kitchen virtual backgrounds for video calls. Professional kitchen environments for cooking content.',
-    images: [
-      { filename: 'kitchen1.webp', title: 'Minimalist Kitchen Background' },
-      { filename: 'kitchen2.webp', title: 'Scandinavian Kitchen Background' },
-      { filename: 'kitchen3.webp', title: 'Scandinavian Kitchen Background' },
-      { filename: 'kitchen4.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen5.webp', title: 'Luxury Kitchen Background' },
-      { filename: 'kitchen6.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen7.webp', title: 'Minimalist Kitchen Background' },
-      { filename: 'kitchen8.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen9.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen10.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen11.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen12.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen13.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen14.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen15.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen16.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen17.webp', title: 'Kitchen Virtual Background' },
-      { filename: 'kitchen18.webp', title: 'Kitchen Virtual Background' }
-    ]
+    images: Array.from({length: 18}, (_, i) => ({
+      filename: `kitchen-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Kitchen Background ${i + 1}`
+    }))
   }
 };
+
 function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
-  const folderMap = {'well-lit': 'well-lit',
-    'ambient-lighting': 'ambient-lighting', 
+  const folderMap = {
+    'well-lit': 'well-lit',
+    'ambient-lighting': 'ambient',  // <- Changed this!
     'office-spaces': 'office-spaces',
     'living-room': 'living-room',
     'kitchen': 'kitchen'
   };
+
   const category = categoryInfo[slug];
 // Track page view when component loads
 useEffect(() => {
@@ -378,16 +224,40 @@ useEffect(() => {
       });
     }
 
-    // Use the API route for download
-    const link = document.createElement('a');
-    link.href = `/api/download?filename=${image.filename}&folder=${folderMap[slug]}`;
-    link.download = `StreamBackdrops-${image.title.replace(/\s+/g, '-')}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Get the base filename without extension
+    const baseFilename = image.filename.replace('.webp', '');
+    
+    // Get the Cloudinary URL
+    const imageUrl = cloudinaryUrls[baseFilename];
+    
+    if (imageUrl) {
+      // Fetch the image and trigger download
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `StreamBackdrops-${baseFilename}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Clean up
+      window.URL.revokeObjectURL(url);
+    } else {
+      console.error(`No Cloudinary URL found for ${baseFilename}`);
+      // Fallback to opening local WebP
+      window.open(`/images/${folderMap[slug]}/${image.filename}`, '_blank');
+    }
     
   } catch (error) {
     console.error('Download failed:', error);
+    // Fallback to opening in new tab
+    const imageUrl = cloudinaryUrls[image.filename.replace('.webp', '')];
+    if (imageUrl) {
+      window.open(imageUrl, '_blank');
+    }
   }
 };
 
