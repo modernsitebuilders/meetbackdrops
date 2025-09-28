@@ -231,15 +231,17 @@ useEffect(() => {
     const imageUrl = cloudinaryUrls[baseFilename];
     
     if (imageUrl) {
-      // Add fl_attachment with custom filename
-      const customFilename = `StreamBackdrops-${baseFilename}.png`;
-      const downloadUrl = imageUrl.replace(
-        '/upload/', 
-        `/upload/fl_attachment:${customFilename}/`
-      );
+      // Force download using Cloudinary's fl_attachment parameter
+      const downloadUrl = imageUrl.replace('/upload/', '/upload/fl_attachment/');
       
-      // Open the URL directly - Cloudinary will force download with correct name
-      window.location.href = downloadUrl;
+      // Create a link and trigger download
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `StreamBackdrops-${baseFilename}.png`;
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } else {
       console.error(`No Cloudinary URL found for ${baseFilename}`);
     }
