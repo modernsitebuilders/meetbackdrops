@@ -231,33 +231,23 @@ useEffect(() => {
     const imageUrl = cloudinaryUrls[baseFilename];
     
     if (imageUrl) {
-      // Fetch the image and trigger download
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      // Force download using Cloudinary's fl_attachment parameter
+      const downloadUrl = imageUrl.replace('/upload/', '/upload/fl_attachment/');
       
+      // Create a link and trigger download
       const link = document.createElement('a');
-      link.href = url;
+      link.href = downloadUrl;
       link.download = `StreamBackdrops-${baseFilename}.png`;
+      link.target = '_blank';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      // Clean up
-      window.URL.revokeObjectURL(url);
     } else {
       console.error(`No Cloudinary URL found for ${baseFilename}`);
-      // Fallback to opening local WebP
-      window.open(`/images/${folderMap[slug]}/${image.filename}`, '_blank');
     }
     
   } catch (error) {
     console.error('Download failed:', error);
-    // Fallback to opening in new tab
-    const imageUrl = cloudinaryUrls[image.filename.replace('.webp', '')];
-    if (imageUrl) {
-      window.open(imageUrl, '_blank');
-    }
   }
 };
 
