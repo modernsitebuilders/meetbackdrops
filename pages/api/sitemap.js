@@ -5,7 +5,7 @@ export default function handler(req, res) {
   // Force HTTPS and consistent domain
   const baseUrl = 'https://streambackdrops.com';
 
-  // CURRENT ACTIVE CATEGORIES ONLY - as per categories-config.js
+  // CURRENT ACTIVE CATEGORIES ONLY
   const categories = [
     'well-lit',
     'ambient-lighting', 
@@ -68,10 +68,40 @@ export default function handler(req, res) {
     priority: '0.8'
   }));
 
-  // Blog posts - only if they exist
+  // ALL Blog posts
   const blogPosts = [
     {
+      url: `${baseUrl}/blog-background-mistakes`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: '0.7'
+    },
+    {
+      url: `${baseUrl}/blog-backgrounds-by-industry`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: '0.7'
+    },
+    {
       url: `${baseUrl}/blog-best-virtual-background-sites-2025`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: '0.7'
+    },
+    {
+      url: `${baseUrl}/blog-lighting-tips`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: '0.7'
+    },
+    {
+      url: `${baseUrl}/blog-professional-video-calls`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: '0.7'
+    },
+    {
+      url: `${baseUrl}/blog-remote-work-productivity`,
       lastmod: new Date().toISOString(),
       changefreq: 'monthly',
       priority: '0.7'
@@ -83,7 +113,7 @@ export default function handler(req, res) {
       priority: '0.7'
     },
     {
-      url: `${baseUrl}/blog-remote-work-productivity`,
+      url: `${baseUrl}/blog-zoom-teams-google`,
       lastmod: new Date().toISOString(),
       changefreq: 'monthly',
       priority: '0.7'
@@ -116,4 +146,4 @@ export const config = {
       sizeLimit: '1mb',
     },
   },
-}
+};
