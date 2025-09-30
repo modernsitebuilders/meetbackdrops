@@ -46,27 +46,27 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
-              Helpful Guides
-            </h3>
-            <Link href="/blog-video-call-etiquette" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Video Call Etiquette
-              </Link>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <Link href="/blog-virtual-background-guide" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Setup Guide
-              </Link>
-              <Link href="/blog-background-mistakes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Common Mistakes
-              </Link>
-              <Link href="/blog-lighting-tips" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Lighting Tips
-              </Link>
-              <Link href="/blog" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                All Blog Posts
-              </Link>
-            </div>
-          </div>
+  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
+    Helpful Guides
+  </h3>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+    <Link href="/blog-video-call-etiquette" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      Video Call Etiquette
+    </Link>
+    <Link href="/blog-virtual-background-guide" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      Setup Guide
+    </Link>
+    <Link href="/blog-background-mistakes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      Common Mistakes
+    </Link>
+    <Link href="/blog-lighting-tips" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      Lighting Tips
+    </Link>
+    <Link href="/blog" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      All Blog Posts
+    </Link>
+  </div>
+</div>
           
           <div>
             <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
