@@ -21,6 +21,14 @@ export default function Blog() {
       category: "Video Call Tips"
     },
     {
+    title: "Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings",
+    slug: "blog-video-call-etiquette",
+    excerpt: "Master video call etiquette with our complete guide. Learn professional meeting behavior, technical best practices, and communication tips for Zoom, Teams, and Google Meet.",
+    date: "October 1, 2025",
+    readTime: "14 min read",
+    category: "Professional Skills"
+  },
+    {
       title: "Best Virtual Backgrounds by Industry",
       slug: "blog-backgrounds-by-industry", 
       excerpt: "Choose the perfect virtual background for your industry. Complete guide covering healthcare, finance, education, tech, legal, and consulting professionals.",
