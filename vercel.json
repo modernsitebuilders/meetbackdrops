@@ -56,11 +56,6 @@
       "permanent": true
     },
     {
-      "source": "/robots.txt",
-      "destination": "/api/robots",
-      "permanent": true
-    },
-    {
       "source": "/category/conference-rooms",
       "destination": "/category/office-spaces",
       "permanent": true
