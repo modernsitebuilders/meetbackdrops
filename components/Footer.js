@@ -1,4 +1,23 @@
 import Link from 'next/link';
+import CityGuideNav from '@/app/components/CityGuideNav';
+
+export const metadata = {
+  title: 'SF Dumpster Rental | Permits & Local Companies',
+  description: 'Complete guide to San Francisco dumpster rental. Nation\'s highest permit fees ($3,076/year), strict environmental rules, and trusted Bay Area providers.',
+  alternates: {
+    canonical: 'https://dumpster-size-calculator.com/dumpster-rental-san-francisco'
+  },
+  openGraph: {
+    title: 'SF Dumpster Rental | Permits & Local Companies',
+    description: 'Complete guide to San Francisco dumpster rental with permit requirements and local providers.',
+    url: 'https://dumpster-size-calculator.com/dumpster-rental-san-francisco',
+    type: 'article',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
+};
 
 export default function Footer() {
   return (
