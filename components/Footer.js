@@ -1,23 +1,4 @@
 import Link from 'next/link';
-import CityGuideNav from '@/app/components/CityGuideNav';
-
-export const metadata = {
-  title: 'SF Dumpster Rental | Permits & Local Companies',
-  description: 'Complete guide to San Francisco dumpster rental. Nation\'s highest permit fees ($3,076/year), strict environmental rules, and trusted Bay Area providers.',
-  alternates: {
-    canonical: 'https://dumpster-size-calculator.com/dumpster-rental-san-francisco'
-  },
-  openGraph: {
-    title: 'SF Dumpster Rental | Permits & Local Companies',
-    description: 'Complete guide to San Francisco dumpster rental with permit requirements and local providers.',
-    url: 'https://dumpster-size-calculator.com/dumpster-rental-san-francisco',
-    type: 'article',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  }
-};
 
 export default function Footer() {
   return (
@@ -65,27 +46,27 @@ export default function Footer() {
           </div>
           
           <div>
-  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
-    Helpful Guides
-  </h3>
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-    <Link href="/blog-video-call-etiquette" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-      Video Call Etiquette
-    </Link>
-    <Link href="/blog-virtual-background-guide" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-      Setup Guide
-    </Link>
-    <Link href="/blog-background-mistakes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-      Common Mistakes
-    </Link>
-    <Link href="/blog-lighting-tips" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-      Lighting Tips
-    </Link>
-    <Link href="/blog" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-      All Blog Posts
-    </Link>
-  </div>
-</div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
+              Helpful Guides
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link href="/blog-video-call-etiquette" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Video Call Etiquette
+              </Link>
+              <Link href="/blog-virtual-background-guide" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Setup Guide
+              </Link>
+              <Link href="/blog-background-mistakes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Common Mistakes
+              </Link>
+              <Link href="/blog-lighting-tips" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Lighting Tips
+              </Link>
+              <Link href="/blog" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                All Blog Posts
+              </Link>
+            </div>
+          </div>
           
           <div>
             <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
