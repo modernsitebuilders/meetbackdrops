@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import { event } from '../../lib/gtag';
 import Layout from '../../components/Layout';
 import cloudinaryUrls from '../../cloudinary-urls.json';
@@ -164,7 +163,7 @@ const categoryInfo = {
   },
   
   'kitchen': {
-    name: 'Kitchen Backgrounds',
+    name: 'Kitchen',
     description: 'Professional kitchen backgrounds for cooking shows, food blogs, and culinary video calls',
     seoDescription: 'Download free kitchen virtual backgrounds for video calls. Professional kitchen environments for cooking content.',
     images: Array.from({length: 18}, (_, i) => ({
@@ -256,18 +255,18 @@ useEffect(() => {
       <Head>
         {/* ✅ NEW: Conditional title that works for both found/not found */}
         <title>
-          {category 
-            ? `${category.name} Virtual Backgrounds - Free HD Downloads | StreamBackdrops`
-            : 'Category Not Found - StreamBackdrops'
-          }
-        </title>
+  {category 
+    ? `${category.name} Backgrounds - Free HD | StreamBackdrops`
+    : 'Category Not Found - StreamBackdrops'
+  }
+</title>
         
         {/* ✅ NEW: Conditional description */}
         <meta name="description" content={
-          category 
-            ? `Download free ${category.name.toLowerCase()} virtual backgrounds in HD quality. Perfect for Zoom, Teams & Google Meet video calls. ${category.description}`
-            : 'The requested category was not found. Browse our collection of free HD virtual backgrounds.'
-        } />
+  category 
+    ? `Download free ${category.name.toLowerCase()} backgrounds in HD. Perfect for Zoom, Teams & Google Meet. ${category.description}`
+    : 'Category not found. Browse our free HD virtual backgrounds.'
+} />
         
         {/* ✅ KEEPING: Basic viewport (you already had this) */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -288,17 +287,16 @@ useEffect(() => {
             <link rel="canonical" href={`https://streambackdrops.com/category/${slug}`} />
             
             {/* ✅ NEW: Enhanced Open Graph tags */}
-            <meta property="og:title" content={`${category.name} Virtual Backgrounds - StreamBackdrops`} />
-            <meta property="og:description" content={`Download free ${category.name.toLowerCase()} virtual backgrounds in HD quality. Perfect for professional video calls.`} />
-            <meta property="og:url" content={`https://streambackdrops.com/category/${slug}`} />
-            <meta property="og:type" content="website" />
-            <meta property="og:site_name" content="StreamBackdrops" />
-            
-            {/* ✅ NEW: Twitter Card tags */}
-            <meta property="twitter:card" content="summary_large_image" />
-            <meta property="twitter:title" content={`${category.name} Virtual Backgrounds`} />
-            <meta property="twitter:description" content={`Free HD ${category.name.toLowerCase()} backgrounds for video calls`} />
-            
+<meta property="og:title" content={`${category.name} Backgrounds - Free HD | StreamBackdrops`} />
+<meta property="og:description" content={`Download free ${category.name.toLowerCase()} backgrounds in HD quality. Perfect for professional video calls.`} />
+<meta property="og:url" content={`https://streambackdrops.com/category/${slug}`} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="StreamBackdrops" />
+
+{/* ✅ NEW: Twitter Card tags */}
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={`${category.name} Backgrounds - Free HD`} />
+<meta property="twitter:description" content={`Free HD ${category.name.toLowerCase()} backgrounds for video calls`} />
             {/* ✅ NEW: Structured Data for better Google results */}
             <script
               type="application/ld+json"
@@ -306,7 +304,7 @@ useEffect(() => {
                 __html: JSON.stringify({
                   "@context": "https://schema.org",
                   "@type": "ImageGallery",
-                  "name": `${category.name} Virtual Backgrounds`,
+                  "name": `${category.name} Backgrounds`,
                   "description": category.description,
                   "url": `https://streambackdrops.com/category/${slug}`,
                   "breadcrumb": {
@@ -633,10 +631,6 @@ useEffect(() => {
 );
 }
 
-const DynamicCategoryContent = dynamic(() => Promise.resolve(CategoryContent), {
-  ssr: false
-});
-
 export default function CategoryPage({ slug }) {
   const router = useRouter();
   const currentSlug = slug || router.query.slug;
@@ -644,11 +638,11 @@ export default function CategoryPage({ slug }) {
 
   return (
   <Layout
-  title={category ? `${category.name} Virtual Backgrounds - StreamBackdrops` : 'Category Not Found'}
+  title={category ? `${category.name} Backgrounds - Free HD | StreamBackdrops` : 'Category Not Found'}
   description={category ? category.seoDescription : 'Category not found'}
   canonical={`https://streambackdrops.com/category/${currentSlug}`}
   currentPage={currentSlug}
-  seoContent={null}  // <-- CHANGE THIS TO NULL
+  seoContent={null}
 >
     <CategoryContent slug={currentSlug} />
   </Layout>
