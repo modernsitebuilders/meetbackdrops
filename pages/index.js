@@ -71,25 +71,24 @@ export default function Home() {
   </p>
 </section>
 
-        {/* Video Section - OPTIMIZED */}
+        {/* Hero Section - OPTIMIZED VIDEO */}
 <section style={{
   position: 'relative',
-  height: '60vh',
+  height: '80vh',
   overflow: 'hidden',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: '#000'
+  background: '#f9fafb'
 }}>
   <video 
     autoPlay 
     muted 
-    loop
     playsInline 
     preload="metadata"
     style={{
       position: 'absolute',
-      top: '50%',
+      top: '45%',
       left: '50%',
       width: '55%',
       height: 'auto',

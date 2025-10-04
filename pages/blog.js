@@ -152,9 +152,18 @@ export default function Blog() {
                   {post.excerpt}
                 </p>
                 
-                <div style={{color: '#2563eb', fontWeight: '500', fontSize: '0.9rem'}}>
-                  Coming Soon →
-                </div>
+               <Link 
+                  href={`/${post.slug}`}
+                  style={{
+                    color: '#2563eb', 
+                    fontWeight: '500', 
+                    fontSize: '0.9rem',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}
+                >
+                  Read More →
+                </Link>
               </article>
             ))}
           </div>
