@@ -264,7 +264,7 @@ useEffect(() => {
         {/* ✅ NEW: Conditional description */}
         <meta name="description" content={
   category 
-    ? `Download free ${category.name.toLowerCase()} backgrounds in HD. Perfect for Zoom, Teams & Google Meet. ${category.description}`
+    ? `Download free ${category.name.toLowerCase()} backgrounds in HD. Perfect for Zoom, Teams & Google Meet.`
     : 'Category not found. Browse our free HD virtual backgrounds.'
 } />
         

@@ -7,7 +7,7 @@ export default function BlogVideoCallEtiquette() {
     <>
       <Head>
 <title>Video Call Etiquette Do's and Don'ts | StreamBackdrops</title>
-        <meta name="description" content="Master video call etiquette with our complete guide. Learn professional meeting behavior, technical best practices, and communication tips for Zoom, Teams, and Google Meet." />
+        <meta name="description" content="Master video call etiquette. Learn professional behavior, technical tips, and communication best practices for Zoom, Teams, and Google Meet calls." />
         <meta name="keywords" content="video call etiquette, virtual meeting tips, professional video calls, zoom etiquette, teams etiquette, meeting behavior" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-video-call-etiquette" />
