@@ -344,7 +344,7 @@ useEffect(() => {
           <Link href="/">Back to Home</Link>
         </div>
       ) : (
-        /* ✅ KEEPING: All your existing content stays exactly the same */
+
         <>
       {/* Page Content */}
       <div style={{
@@ -626,10 +626,10 @@ useEffect(() => {
         div:hover .image-overlay {
           opacity: 1;
         }
-      `}</style>
+     `}</style>
+        </>
+      )}
     </>
-  )}
-</>
 );
 }
 
