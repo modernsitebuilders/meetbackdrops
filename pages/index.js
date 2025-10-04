@@ -49,7 +49,7 @@ export default function Home() {
  {/* Hero Section with H1 FIRST */}
 <section style={{ 
   textAlign: 'center', 
-  padding: '3rem 2rem 2rem', 
+  padding: '1.5rem 2rem 1rem', 
   background: 'white' 
 }}>
   <h1 style={{
