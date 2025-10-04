@@ -7,8 +7,7 @@ export default function BlogBackgroundMistakes() {
     <>
       <Head>
         <title>Virtual Background Mistakes to Avoid - StreamBackdrops</title>
-        <meta name="description" content="Avoid these common virtual background mistakes that make you look unprofessional. Expert tips to fix technical issues and choose the right backgrounds for business calls." />
-        <meta name="keywords" content="virtual background mistakes, professional video calls, zoom background errors, teams background problems, business call setup" />
+<meta name="description" content="Avoid common virtual background mistakes that make you look unprofessional. Expert tips to fix issues and choose the right backgrounds." />        <meta name="keywords" content="virtual background mistakes, professional video calls, zoom background errors, teams background problems, business call setup" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-background-mistakes" />
       </Head>

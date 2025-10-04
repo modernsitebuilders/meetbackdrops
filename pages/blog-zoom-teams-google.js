@@ -8,8 +8,7 @@ export default function BlogZoomTeamsGoogle() {
     <>
       <Head>
         <title>Zoom vs Teams vs Meet Backgrounds - StreamBackdrops</title>
-        <meta name="description" content="Complete comparison of virtual backgrounds on Zoom, Microsoft Teams, and Google Meet. Setup guides, troubleshooting tips, and platform-specific best practices." />
-        <meta name="keywords" content="zoom backgrounds, teams backgrounds, google meet backgrounds, virtual background comparison, video conferencing" />
+<meta name="description" content="Compare virtual backgrounds on Zoom, Microsoft Teams, and Google Meet. Setup guides, troubleshooting tips, and platform-specific best practices." />        <meta name="keywords" content="zoom backgrounds, teams backgrounds, google meet backgrounds, virtual background comparison, video conferencing" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-zoom-teams-google" />
       </Head>

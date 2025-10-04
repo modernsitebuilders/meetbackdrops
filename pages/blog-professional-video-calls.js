@@ -7,7 +7,7 @@ export default function BlogProfessionalVideoCalls() {
     <>
       <Head>
         <title>10 Tips for Professional Video Calls - StreamBackdrops</title>
-        <meta name="description" content="Master professional video calls with these 10 essential tips covering lighting, backgrounds, camera positioning, and video call etiquette for remote work success." />
+<meta name="description" content="Master professional video calls with 10 essential tips covering lighting, backgrounds, camera positioning, and etiquette for remote work success." />
         <meta name="keywords" content="video calls, professional meetings, remote work, video conferencing, zoom tips, teams meetings" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-professional-video-calls" />
