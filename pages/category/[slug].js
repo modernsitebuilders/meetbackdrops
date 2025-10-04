@@ -283,9 +283,6 @@ useEffect(() => {
             {/* ✅ NEW: Author meta tag */}
             <meta name="author" content="StreamBackdrops" />
             
-            {/* ✅ NEW: Canonical URL for SEO */}
-            <link rel="canonical" href={`https://streambackdrops.com/category/${slug}`} />
-            
             {/* ✅ NEW: Enhanced Open Graph tags */}
 <meta property="og:title" content={`${category.name} Backgrounds - Free HD | StreamBackdrops`} />
 <meta property="og:description" content={`Download free ${category.name.toLowerCase()} backgrounds in HD quality. Perfect for professional video calls.`} />
