@@ -650,7 +650,7 @@ export default function CategoryPage({ slug }) {
   currentPage={currentSlug}
   seoContent={null}  // <-- CHANGE THIS TO NULL
 >
-    <DynamicCategoryContent slug={currentSlug} />
+    <CategoryContent slug={currentSlug} />
   </Layout>
 );
 }
