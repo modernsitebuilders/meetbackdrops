@@ -456,6 +456,8 @@ export default function Home() {
                     objectFit: 'cover'
                   }}
                   loading="eager"
+                   quality={75}
+  sizes="(max-width: 768px) 100vw, 300px"
                 />
               </div>
               <div style={{ padding: '1.5rem' }}>
