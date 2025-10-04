@@ -59,7 +59,7 @@ const shareLinks = [
           key={link.name}
           href={link.url}
           target="_blank"
-          rel="noopener noreferrer"
+rel="noopener noreferrer nofollow"
           onClick={link.action === 'copy' ? (e) => {
             e.preventDefault();
             navigator.clipboard.writeText(url);
