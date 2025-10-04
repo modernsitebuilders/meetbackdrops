@@ -252,7 +252,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                 src="/images/well-lit/well-lit-minimalist-office-1.webp"
+                 src="/images/well-lit/well-lit-12.webp"
                   alt="Well-lit professional office background for video calls"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -302,7 +302,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                 src="/images/ambient-lighting/ambient-industrial-shelves-1.webp"
+                 src="/images/ambient-lighting/ambient-lighting-01.webp"
                  alt="Ambient lighting office background for video meetings"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -351,7 +351,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                 src="/images/office-spaces/office-spaces-minimalist-executive-1.webp"
+                 src="/images/office-spaces/office-spaces-01.webp"
                   alt="Professional office space background for business calls"
                   fill
                   style={{ objectFit: 'cover' }}

@@ -13,7 +13,10 @@ export default function Layout({
   structuredData,
   noIndex = false,
   h1 = null,
-  seoContent = null
+  seoContent = null,
+  alternates = {
+    canonical: '/',
+  },
   
 }) {
   const router = useRouter();
