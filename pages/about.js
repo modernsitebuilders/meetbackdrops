@@ -138,10 +138,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                   Our Mission
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  In today's remote-first world, your virtual presence matters more than ever. StreamBackdrops was created to help professionals, freelancers, and remote workers present their best selves during video calls, regardless of their physical environment.
+                  Remote work is here to stay. Your video presence matters now more than ever. StreamBackdrops helps you look professional on every video call.
                 </p>
                 <p style={{color: '#6b7280'}}>
-                  We believe that everyone deserves access to high-quality, professional virtual backgrounds that enhance their online presence without breaking the budget.
+                  We believe everyone deserves quality virtual backgrounds. You shouldn't have to pay for them. That's why all our backgrounds are free.
                 </p>
               </section>
 
@@ -166,10 +166,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                       color: '#111827',
                       marginBottom: '0.75rem'
                     }}>
-                      Free Collection
+                      Free Backgrounds
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Professional virtual backgrounds across multiple categories - from home offices to conference rooms - all completely free to download and use.
+                      Over 167 professional virtual backgrounds. Home offices, conference rooms, and more. All completely free to download and use.
                     </p>
                   </div>
                   <div>
@@ -179,10 +179,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                       color: '#111827',
                       marginBottom: '0.75rem'
                     }}>
-                      Expert Guidance
+                      Setup Guides
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Comprehensive guides and tutorials covering everything from technical setup to professional video call etiquette and lighting optimization.
+                      Step-by-step guides for Zoom, Teams, and Google Meet. Tips for better lighting. Advice on professional video call etiquette.
                     </p>
                   </div>
                 </div>
@@ -195,7 +195,7 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
-                  Our Commitment
+                  Our Promise
                 </h3>
                 <div style={{
                   background: '#f0fdf4',
@@ -209,22 +209,23 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                     color: '#15803d',
                     marginBottom: '1rem'
                   }}>
-                    Always Free for Personal Use
+                    Always Free
                   </h3>
                   <p style={{color: '#15803d'}}>
-                    We're committed to keeping our core collection free for personal and professional video calls. No signup required, no watermarks, and no hidden fees.
+                    Our backgrounds will always be free. No signup needed. No watermarks. No hidden fees. Just download and use.
                   </p>
                 </div>
                 <ul style={{
                   listStyle: 'disc',
                   paddingLeft: '1.5rem',
-                  color: '#6b7280'
+                  color: '#6b7280',
+                  lineHeight: '2'
                 }}>
-                  <li>High-quality backgrounds optimized for video conferencing</li>
-                  <li>Regular updates with new designs and categories</li>
-                  <li>Comprehensive setup guides for all major platforms</li>
-                  <li>Responsive customer support for technical questions</li>
-                  <li>Continuous improvement based on user feedback</li>
+                  <li>High-quality backgrounds for video calls</li>
+                  <li>New designs added regularly</li>
+                  <li>Setup guides for all major platforms</li>
+                  <li>Fast customer support</li>
+                  <li>We listen to your feedback</li>
                 </ul>
               </section>
 
@@ -235,10 +236,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
-                  Quality Standards
+                  Our Quality Standards
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  Every background in our collection is carefully designed and tested to ensure optimal performance across different video conferencing platforms. We focus on:
+                  Every background is tested before we publish it. We make sure each one works perfectly on video calls. Here's what we focus on:
                 </p>
                 <div style={{
                   display: 'grid',
@@ -256,10 +257,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                       color: '#1e40af',
                       marginBottom: '0.5rem'
                     }}>
-                      Technical Excellence
+                      Works Great
                     </h4>
                     <p style={{color: '#1e40af', fontSize: '0.9rem'}}>
-                      Proper resolution, compression, and edge detection optimization
+                      The right file size and quality for smooth video calls
                     </p>
                   </div>
                   <div style={{
@@ -272,10 +273,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                       color: '#15803d',
                       marginBottom: '0.5rem'
                     }}>
-                      Professional Design
+                      Looks Professional
                     </h4>
                     <p style={{color: '#15803d', fontSize: '0.9rem'}}>
-                      Industry-appropriate aesthetics that enhance credibility
+                      Designs that make you look good in any industry
                     </p>
                   </div>
                   <div style={{
@@ -288,10 +289,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                       color: '#92400e',
                       marginBottom: '0.5rem'
                     }}>
-                      Platform Compatibility
+                      Works Everywhere
                     </h4>
                     <p style={{color: '#92400e', fontSize: '0.9rem'}}>
-                      Tested across Zoom, Teams, Google Meet, and other platforms
+                      Tested on Zoom, Teams, Google Meet, and more
                     </p>
                   </div>
                 </div>
@@ -304,10 +305,10 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
-                  Contact Us
+                  Get in Touch
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  We value your feedback and are always looking to improve our service. Whether you have technical questions, suggestions for new backgrounds, or general feedback, we'd love to hear from you.
+                  We love hearing from you. Got questions? Want to suggest new backgrounds? Have feedback? We're here to help.
                 </p>
                 <div style={{
                   background: '#f8fafc',
@@ -316,11 +317,12 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                   border: '1px solid #e5e7eb'
                 }}>
                   <p style={{color: '#374151', marginBottom: '1rem'}}>
-                    <strong>Get in touch:</strong>
+                    <strong>Contact us:</strong>
                   </p>
                   <ul style={{
                     listStyle: 'none',
-                    color: '#6b7280'
+                    color: '#6b7280',
+                    lineHeight: '2'
                   }}>
                     <li>📧 Email: support@streambackdrops.com</li>
                     <li>💬 <Link href="/contact" style={{color: '#2563eb', textDecoration: 'none'}}>Contact Form</Link></li>

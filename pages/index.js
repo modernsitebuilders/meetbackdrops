@@ -518,7 +518,6 @@ export default function Home() {
             View Complete Setup Guide
           </Link>
         </section>
-        // Add this section AFTER your category grid and BEFORE the Footer in pages/index.js
 
 {/* SEO-Rich Content Section */}
 <section style={{
