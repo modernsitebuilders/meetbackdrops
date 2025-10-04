@@ -41,7 +41,7 @@ export default function Home() {
   return (
   <Layout
   title="Free Professional Virtual Backgrounds - StreamBackdrops"
-  description="Download 167+ free professional virtual backgrounds..."
+  description="Download 167+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
   currentPage="home"
   canonical="https://streambackdrops.com"
 >
@@ -107,7 +107,7 @@ export default function Home() {
   maxWidth: '1200px',
   margin: '0 auto'
 }}>
-  <h2 style={{
+  <h3 style={{
     textAlign: 'center',
     fontSize: '2rem',
     fontWeight: 'bold',
@@ -115,7 +115,7 @@ export default function Home() {
     color: '#1e293b'
   }}>
     Expert Tips for Video Call Success
-  </h2>
+  </h3>
   
   <p style={{
     textAlign: 'center',

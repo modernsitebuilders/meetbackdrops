@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-          <title>Contact Us - StreamBackdrops</title>
+          <title>Contact Us - Virtual Background Help & Support</title>
   <meta name="description" content="Contact StreamBackdrops for questions, feedback, or support. We'd love to hear from you." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://streambackdrops.com/contact" />
