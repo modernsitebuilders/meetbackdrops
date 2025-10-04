@@ -107,6 +107,15 @@ export default function BlogZoomTeamsGoogle() {
             <article>
               <header style={{marginBottom: '2rem'}}>
                 <h1 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#2563eb',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.2'
+                }}>
+                  Platform Comparison Guide
+                </h1>
+                <h2 style={{
                   fontSize: '2.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -114,7 +123,7 @@ export default function BlogZoomTeamsGoogle() {
                   lineHeight: '1.2'
                 }}>
                   Zoom vs Teams vs Google Meet: Virtual Background Setup & Best Practices
-                </h1>
+                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 6, 2025
                 </p>
@@ -125,9 +134,9 @@ export default function BlogZoomTeamsGoogle() {
                   Each major video conferencing platform handles virtual backgrounds differently. Understanding these differences helps you optimize your setup for the best professional appearance across all platforms.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Platform Comparison Overview
-                </h2>
+                </h3>
 
                 <div style={{
                   background: '#eff6ff',
@@ -201,9 +210,9 @@ export default function BlogZoomTeamsGoogle() {
                   </div>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Setup Instructions by Platform
-                </h2>
+                </h3>
 
                 <h3 style={{fontSize: '1.25rem', fontWeight: '600', color: '#111827', marginTop: '1.5rem', marginBottom: '0.75rem'}}>
                   Zoom Detailed Setup
@@ -242,9 +251,9 @@ export default function BlogZoomTeamsGoogle() {
                   <li>Note: Custom uploads may require Google Workspace account</li>
                 </ol>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Platform-Specific Best Practices
-                </h2>
+                </h3>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
                   <div style={{
@@ -293,9 +302,9 @@ export default function BlogZoomTeamsGoogle() {
                   </div>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Performance Comparison
-                </h2>
+                </h3>
                 <div style={{
                   background: '#f8fafc',
                   borderRadius: '0.5rem',
@@ -310,9 +319,9 @@ export default function BlogZoomTeamsGoogle() {
                   </ul>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Conclusion
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Each platform has its strengths. Zoom offers the most features and best quality, Teams excels in enterprise environments, and Google Meet provides simplicity and accessibility. Choose based on your primary use case and system capabilities.
                 </p>
