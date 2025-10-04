@@ -124,9 +124,9 @@ export default function BlogBackgroundMistakes() {
               </header>
 
               <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
-                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                <h2 style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   Virtual backgrounds can transform your video calls from amateur to professional—or they can make you look completely unprepared. Avoid these critical mistakes that undermine your professional image.
-                </p>
+                </h2>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
                   {/* Mistake 1 */}
@@ -137,9 +137,9 @@ export default function BlogBackgroundMistakes() {
                     padding: '1rem',
                     borderRadius: '0 0.5rem 0.5rem 0'
                   }}>
-                    <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#991b1b', marginBottom: '0.75rem'}}>
+                    <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#991b1b', marginBottom: '0.75rem'}}>
                       1. Using Distracting or Inappropriate Backgrounds
-                    </h2>
+                    </h3>
                     <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem'}}>
                       <div>
                         <h3 style={{fontWeight: '600', color: '#dc2626', marginBottom: '0.5rem'}}>The Problem:</h3>
@@ -178,9 +178,9 @@ export default function BlogBackgroundMistakes() {
                     padding: '1rem',
                     borderRadius: '0 0.5rem 0.5rem 0'
                   }}>
-                    <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#991b1b', marginBottom: '0.75rem'}}>
+                    <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#991b1b', marginBottom: '0.75rem'}}>
                       2. Poor Edge Detection ("Halo Effect")
-                    </h2>
+                    </h3>
                     <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem'}}>
                       <div>
                         <h3 style={{fontWeight: '600', color: '#dc2626', marginBottom: '0.5rem'}}>The Problem:</h3>
@@ -219,9 +219,9 @@ export default function BlogBackgroundMistakes() {
                     padding: '1rem',
                     borderRadius: '0 0.5rem 0.5rem 0'
                   }}>
-                    <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#991b1b', marginBottom: '0.75rem'}}>
+                    <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#991b1b', marginBottom: '0.75rem'}}>
                       3. Ignoring System Requirements
-                    </h2>
+                    </h3>
                     <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem'}}>
                       <div>
                         <h3 style={{fontWeight: '600', color: '#dc2626', marginBottom: '0.5rem'}}>The Problem:</h3>
@@ -253,9 +253,9 @@ export default function BlogBackgroundMistakes() {
                     padding: '1.5rem',
                     marginTop: '2rem'
                   }}>
-                    <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#1e40af', marginBottom: '1.5rem'}}>
+                    <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#1e40af', marginBottom: '1.5rem'}}>
                       Quick Fix Checklist
-                    </h2>
+                    </h3>
                     <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem'}}>
                       <div>
                         <h3 style={{fontWeight: '600', color: '#1e40af', marginBottom: '0.75rem'}}>Technical Setup</h3>
@@ -289,9 +289,9 @@ export default function BlogBackgroundMistakes() {
 
                   {/* Conclusion */}
                   <div style={{marginTop: '2rem'}}>
-                    <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
+                    <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
                       Conclusion
-                    </h2>
+                    </h3>
                     <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                       <p style={{color: '#6b7280'}}>
                         Virtual backgrounds are powerful tools that can enhance your professional image, but only when used correctly. Avoid these common mistakes, and you'll project competence and attention to detail in every video call.

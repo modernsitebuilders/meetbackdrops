@@ -122,13 +122,13 @@ export default function BlogLightingTips() {
               </header>
 
               <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
-                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                <h2 style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   The difference between looking professional and looking amateurish on video calls often comes down to one thing: lighting. Even the most expensive virtual background won't help if you're poorly lit. Here's everything you need to know about creating the perfect lighting setup for virtual backgrounds.
-                </p>
-
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  Why Lighting Matters More Than Your Camera
                 </h2>
+
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                  Why Lighting Matters More Than Your Camera
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   You might think upgrading your camera is the solution to better video calls, but lighting has a much bigger impact on your appearance. Good lighting can make a basic webcam look professional, while poor lighting will make even a 4K camera look terrible.
                 </p>
@@ -139,9 +139,9 @@ export default function BlogLightingTips() {
                   <li>Shadows can cause parts of your body to disappear into the background</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   The Golden Rules of Video Call Lighting
-                </h2>
+                </h3>
                 
                 <h3 style={{fontSize: '1.25rem', fontWeight: '600', color: '#111827', marginTop: '1.5rem', marginBottom: '0.75rem'}}>
                   1. Face Your Light Source
@@ -166,9 +166,9 @@ export default function BlogLightingTips() {
                   <li>Use lampshades to soften direct bulbs</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Lighting Setups by Budget
-                </h2>
+                </h3>
 
                 <div style={{
                   background: '#ecfdf5',
@@ -223,9 +223,9 @@ export default function BlogLightingTips() {
                   </ul>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Common Lighting Problems and Solutions
-                </h2>
+                </h3>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem'}}>
                   <div style={{borderLeft: '4px solid #ef4444', paddingLeft: '1rem'}}>
@@ -244,9 +244,9 @@ export default function BlogLightingTips() {
                   </div>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Quick Lighting Checklist
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '0.5rem'}}>Before every important video call:</p>
                 <ul style={{listStyle: 'none', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li>☐ Primary light source is in front of me</li>
@@ -257,9 +257,9 @@ export default function BlogLightingTips() {
                   <li>☐ I've tested the setup in current lighting conditions</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Conclusion
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Great lighting doesn't require expensive equipment - it requires understanding the principles and working with what you have. Start with natural window light, add affordable LED lights as needed, and always prioritize soft, even illumination over harsh, direct lighting.
                 </p>

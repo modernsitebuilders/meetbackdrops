@@ -122,9 +122,9 @@ export default function BlogIndustryBackgrounds() {
               </header>
 
               <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
-                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                <h2 style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   Working from home has transformed how we present ourselves professionally, but not all virtual backgrounds work for every industry. What projects authority in a law firm might seem too formal for a creative agency, and what works for healthcare may not suit finance. Here's your complete guide to choosing industry-appropriate virtual backgrounds that enhance your credibility.
-                </p>
+                </h2>
 
                 <div style={{
                   background: '#eff6ff',
@@ -132,9 +132,9 @@ export default function BlogIndustryBackgrounds() {
                   padding: '1.5rem',
                   marginBottom: '2rem'
                 }}>
-                  <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#1e40af', marginBottom: '1rem'}}>
+                  <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#1e40af', marginBottom: '1rem'}}>
                     Why Industry-Specific Virtual Backgrounds Matter
-                  </h2>
+                  </h3>
                   <p style={{color: '#1e40af', marginBottom: '1rem'}}>
                     Your virtual background sends a message before you even speak. It communicates your understanding of professional norms, attention to detail, and respect for your audience's expectations.
                   </p>
@@ -146,9 +146,9 @@ export default function BlogIndustryBackgrounds() {
                   </ul>
                 </div>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2.5rem', marginBottom: '1.5rem', borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2.5rem', marginBottom: '1.5rem', borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem'}}>
                   Industry-Specific Background Recommendations
-                </h2>
+                </h3>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
                   {/* Healthcare */}
@@ -274,9 +274,9 @@ export default function BlogIndustryBackgrounds() {
 
                 {/* Conclusion */}
                 <div style={{marginTop: '3rem'}}>
-                  <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
+                  <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
                     Conclusion
-                  </h2>
+                  </h3>
                   <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                     <p style={{color: '#6b7280'}}>
                       Your virtual background is an extension of your professional brand. The right choice enhances credibility and shows respect for industry norms while considering your specific audience.
