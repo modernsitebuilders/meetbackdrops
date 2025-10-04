@@ -120,24 +120,24 @@ export default function About() {
               }}>
                 About StreamBackdrops
               </h1>
-              <p style={{
+              <h2 style={{
                 fontSize: '1.2rem',
                 opacity: 0.9
               }}>
                 Creating professional virtual backgrounds for the modern remote workforce
-              </p>
+              </h2>
             </div>
 
             <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
               <section style={{marginBottom: '3rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '2rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
                   Our Mission
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   In today's remote-first world, your virtual presence matters more than ever. StreamBackdrops was created to help professionals, freelancers, and remote workers present their best selves during video calls, regardless of their physical environment.
                 </p>
@@ -147,14 +147,14 @@ export default function About() {
               </section>
 
               <section style={{marginBottom: '3rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '2rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
                   What We Offer
-                </h2>
+                </h3>
                 <div style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -190,14 +190,14 @@ export default function About() {
               </section>
 
               <section style={{marginBottom: '3rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '2rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
                   Our Commitment
-                </h2>
+                </h3>
                 <div style={{
                   background: '#f0fdf4',
                   borderRadius: '0.5rem',
@@ -230,14 +230,14 @@ export default function About() {
               </section>
 
               <section style={{marginBottom: '3rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '2rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
                   Quality Standards
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Every background in our collection is carefully designed and tested to ensure optimal performance across different video conferencing platforms. We focus on:
                 </p>
@@ -299,14 +299,14 @@ export default function About() {
               </section>
 
               <section style={{marginBottom: '3rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '2rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
                   Contact Us
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   We value your feedback and are always looking to improve our service. Whether you have technical questions, suggestions for new backgrounds, or general feedback, we'd love to hear from you.
                 </p>

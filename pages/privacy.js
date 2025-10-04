@@ -90,14 +90,14 @@ export default function Privacy() {
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Information We Collect
-                </h2>
+                </h3>
                 
                 <h3 style={{
                   fontSize: '1.2rem',
@@ -137,14 +137,14 @@ export default function Privacy() {
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   How We Use Your Information
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   We use the information we collect to:
                 </p>
@@ -159,14 +159,14 @@ export default function Privacy() {
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Information Sharing
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   We do not sell, trade, or otherwise transfer your personal information to third parties, except in the following circumstances:
                 </p>
@@ -178,14 +178,14 @@ export default function Privacy() {
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Cookies and Tracking
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   We use cookies and similar tracking technologies to enhance your experience on our website:
                 </p>
@@ -200,14 +200,14 @@ export default function Privacy() {
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Data Security
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   We implement appropriate security measures to protect your personal information:
                 </p>
@@ -223,14 +223,14 @@ export default function Privacy() {
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Your Rights
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Depending on your location, you may have certain rights regarding your personal information:
                 </p>
@@ -247,42 +247,42 @@ export default function Privacy() {
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Children's Privacy
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280'}}>
                   Our Service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.
                 </p>
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Changes to This Policy
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280'}}>
                   We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this Privacy Policy periodically.
                 </p>
               </section>
 
               <section style={{marginBottom: '2rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
                   Contact Us
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   If you have any questions about this Privacy Policy, please contact us:
                 </p>

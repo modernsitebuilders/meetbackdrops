@@ -367,13 +367,13 @@ useEffect(() => {
             {category.name}
           </h1>
           
-          <p style={{
+          <h2 style={{
             color: '#6b7280',
             fontSize: '1.1rem',
             marginBottom: '2rem'
           }}>
             {category.description}
-          </p>
+          </h2>
           
           {/* Clean Instructions */}
           <p style={{
@@ -480,66 +480,66 @@ useEffect(() => {
 }}>
   <div style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6', color: '#374151' }}>
     
-    <h2 style={{
+    <h3 style={{
       fontSize: '1.5rem',
       fontWeight: 'bold',
       color: '#111827',
       marginBottom: '1rem'
     }}>
       Professional {category.name} Virtual Backgrounds
-    </h2>
+    </h3>
     
     <p style={{ marginBottom: '1.5rem' }}>
       Our {category.name.toLowerCase()} virtual background collection features professionally designed backgrounds perfect for video conferencing, remote work, and online meetings. Each background is optimized for popular video platforms including Zoom, Microsoft Teams, Google Meet, and Skype.
     </p>
     
-    <h2 style={{
+    <h3 style={{
       fontSize: '1.5rem',
       fontWeight: 'bold',
       color: '#111827',
       marginBottom: '1rem'
     }}>
       How to Use These Backgrounds
-    </h2>
+    </h3>
     
     <p style={{ marginBottom: '1.5rem' }}>
       These high-quality {category.name.toLowerCase()} backgrounds help create a professional appearance during video calls while maintaining privacy in your home or office space. All backgrounds are available as free HD downloads and work seamlessly with virtual background technology.
     </p>
     
-    <h2 style={{
+    <h3 style={{
       fontSize: '1.5rem',
       fontWeight: 'bold',
       color: '#111827',
       marginBottom: '1rem'
     }}>
       Download Instructions
-    </h2>
+    </h3>
     
     <p style={{ marginBottom: '1rem' }}>
       Simply click on any image below to preview and download. Our {category.name.toLowerCase()} backgrounds are designed to provide clear edge detection and work well with standard webcam setups and lighting conditions.
     </p>
     
-    <h2 style={{
+    <h3 style={{
       fontSize: '1.5rem',
       fontWeight: 'bold',
       color: '#111827',
       marginBottom: '1rem'
     }}>
       Platform Compatibility
-    </h2>
+    </h3>
     
     <p style={{ marginBottom: '1rem' }}>
       These {category.name.toLowerCase()} virtual backgrounds work seamlessly across all major video platforms including Zoom, Microsoft Teams, Google Meet, Skype, Discord, and WebEx. The high-resolution files ensure crisp, professional appearance regardless of your video call setup or internet connection speed.
     </p>
     
-    <h2 style={{
+    <h3 style={{
       fontSize: '1.5rem',
       fontWeight: 'bold',
       color: '#111827',
       marginBottom: '1rem'
     }}>
       Setup Tips for Best Results
-    </h2>
+    </h3>
     
     <p style={{ marginBottom: '1rem' }}>
       For optimal virtual background performance, ensure you have adequate lighting facing toward you and avoid complex patterns in your clothing that may interfere with edge detection. Position your camera at eye level and maintain consistent distance from your webcam. Test your chosen background before important meetings to ensure smooth operation across your specific hardware setup.

@@ -97,9 +97,9 @@ export default function Blog() {
             <h1 style={{fontSize: '3rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
               StreamBackdrops Blog
             </h1>
-            <p style={{fontSize: '1.25rem', color: '#6b7280'}}>
+            <h2 style={{fontSize: '1.25rem', color: '#6b7280'}}>
               Expert tips, guides, and insights for professional video calls and remote work
-            </p>
+            </h2>
           </div>
         </header>
 
@@ -134,7 +134,7 @@ export default function Blog() {
                   <span style={{color: '#6b7280', fontSize: '0.875rem'}}>{post.readTime}</span>
                 </div>
                 
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -142,7 +142,7 @@ export default function Blog() {
                   lineHeight: '1.3'
                 }}>
                   {post.title}
-                </h2>
+                </h3>
                 
                 <p style={{
                   color: '#6b7280',

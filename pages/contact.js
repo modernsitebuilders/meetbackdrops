@@ -115,12 +115,12 @@ export default function Contact() {
               }}>
                 Contact Us
               </h1>
-              <p style={{
+              <h2 style={{
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
                 We'd love to hear from you! Get in touch with questions, feedback, or suggestions.
-              </p>
+              </h2>
             </div>
 
             <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
@@ -187,14 +187,14 @@ export default function Contact() {
               </div>
 
               <section style={{marginBottom: '3rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.8rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
                   Frequently Asked Questions
-                </h2>
+                </h3>
                 
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
                   <div style={{
@@ -272,14 +272,14 @@ export default function Contact() {
               </section>
 
               <section style={{marginBottom: '3rem'}}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.8rem',
                   fontWeight: 'bold',
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
                   Response Times
-                </h2>
+                </h3>
                 <div style={{
                   background: '#fef3c7',
                   padding: '1.5rem',

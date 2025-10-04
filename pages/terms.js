@@ -140,7 +140,7 @@ export default function Terms() {
                 By accessing and using StreamBackdrops ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -148,12 +148,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 2. Description of Service
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 StreamBackdrops provides high-quality virtual background images for personal use in video conferencing, online meetings, and related communications. All backgrounds are provided free of charge for personal use only.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -161,7 +161,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 3. Use License - Personal Use Only
-              </h2>
+              </h3>
               
               {/* Personal Use Section */}
               <div style={{
@@ -197,7 +197,7 @@ export default function Terms() {
                 </ul>
               </div>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -205,7 +205,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 4. Restrictions - Commercial Use Prohibited
-              </h2>
+              </h3>
               
               {/* Commercial Restrictions */}
               <div style={{
@@ -243,7 +243,7 @@ export default function Terms() {
                 </ul>
               </div>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -251,12 +251,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 5. Intellectual Property Rights
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 All virtual backgrounds, website content, and related materials are the original intellectual property of StreamBackdrops and are protected by applicable copyright and trademark law. We retain all rights, title, and interest in our virtual backgrounds.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -264,7 +264,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 6. Commercial Licensing Available
-              </h2>
+              </h3>
               
               {/* Commercial Licensing */}
               <div style={{
@@ -300,7 +300,7 @@ export default function Terms() {
                 </div>
               </div>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -308,12 +308,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 7. User Conduct
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 You agree not to use our backgrounds in any way that is unlawful, harmful, or could damage our reputation. You also agree not to claim ownership or authorship of our virtual backgrounds.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -321,12 +321,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 8. Disclaimer
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 The information and backgrounds on this website are provided on an "as is" basis. To the fullest extent permitted by law, StreamBackdrops excludes all representations, warranties, and conditions relating to our website and backgrounds.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -334,12 +334,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 9. Limitation of Liability
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 In no event shall StreamBackdrops, nor any of its officers, directors, and employees, be held liable for anything arising out of or in any way connected with your use of our virtual backgrounds, whether such liability is under contract, tort, or otherwise.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -347,12 +347,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 10. Privacy Policy
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the Service, to understand our practices.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -360,12 +360,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 11. Termination
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 We may terminate or suspend your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -373,12 +373,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 12. Changes to Terms
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -386,12 +386,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 13. Governing Law
-              </h2>
+              </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 These Terms shall be interpreted and governed by the laws of the State of Pennsylvania, United States, without regard to its conflict of law provisions.
               </p>
 
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -399,7 +399,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 14. Contact Information
-              </h2>
+              </h3>
               <p style={{ marginBottom: '2rem' }}>
                 If you have any questions about these Terms of Service, please contact us through our website contact form or at the address provided on our Contact page.
               </p>

@@ -117,12 +117,12 @@ export default function License() {
               }}>
                 License & Usage Rights
               </h1>
-              <p style={{
+              <h2 style={{
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
                 Clear guidelines for using StreamBackdrops virtual backgrounds
-              </p>
+              </h2>
             </div>
 
             {/* Personal Use Section */}
@@ -133,7 +133,7 @@ export default function License() {
                 borderRadius: '1rem',
                 padding: '2rem'
               }}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.8rem',
                   fontWeight: 'bold',
                   color: '#065f46',
@@ -143,7 +143,7 @@ export default function License() {
                   gap: '0.5rem'
                 }}>
                   ✅ Personal Use - FREE
-                </h2>
+                </h3>
                 <p style={{
                   color: '#065f46',
                   fontSize: '1.1rem',
@@ -187,7 +187,7 @@ export default function License() {
                 borderRadius: '1rem',
                 padding: '2rem'
               }}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.8rem',
                   fontWeight: 'bold',
                   color: '#991b1b',
@@ -197,7 +197,7 @@ export default function License() {
                   gap: '0.5rem'
                 }}>
                   ❌ Commercial Use - NOT ALLOWED
-                </h2>
+                </h3>
                 <p style={{
                   color: '#991b1b',
                   fontSize: '1.1rem',
@@ -233,7 +233,7 @@ export default function License() {
                 borderRadius: '1rem',
                 padding: '2rem'
               }}>
-                <h2 style={{
+                <h3 style={{
                   fontSize: '1.8rem',
                   fontWeight: 'bold',
                   color: '#92400e',
@@ -243,7 +243,7 @@ export default function License() {
                   gap: '0.5rem'
                 }}>
                   💼 Need Commercial Rights?
-                </h2>
+                </h3>
                 <p style={{
                   color: '#92400e',
                   fontSize: '1.1rem',
@@ -303,14 +303,14 @@ export default function License() {
 
             {/* Important Notes */}
             <section style={{ marginBottom: '2rem' }}>
-              <h2 style={{
+              <h3 style={{
                 fontSize: '1.5rem',
                 fontWeight: 'bold',
                 color: '#111827',
                 marginBottom: '1rem'
               }}>
                 📋 Important Notes
-              </h2>
+              </h3>
               <div style={{
                 background: '#f8fafc',
                 padding: '1.5rem',
