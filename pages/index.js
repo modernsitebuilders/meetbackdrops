@@ -46,18 +46,45 @@ export default function Home() {
   canonical="https://streambackdrops.com"
 >
 
-        {/* Hero Section - OPTIMIZED VIDEO */}
+ {/* Hero Section with H1 FIRST */}
+<section style={{ 
+  textAlign: 'center', 
+  padding: '3rem 2rem 2rem', 
+  background: 'white' 
+}}>
+  <h1 style={{
+    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+    fontWeight: 'bold',
+    color: '#111827',
+    marginBottom: '1rem',
+    lineHeight: '1.2'
+  }}>
+    Free Professional Virtual Backgrounds
+  </h1>
+  <p style={{
+    fontSize: '1.25rem',
+    color: '#6b7280',
+    maxWidth: '800px',
+    margin: '0 auto 2rem'
+  }}>
+    Download 167+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
+  </p>
+</section>
+
+        {/* Video Section - OPTIMIZED */}
 <section style={{
   position: 'relative',
-  height: '80vh',
+  height: '60vh',
   overflow: 'hidden',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  background: '#000'
 }}>
   <video 
     autoPlay 
     muted 
+    loop
     playsInline 
     preload="metadata"
     style={{
@@ -74,31 +101,6 @@ export default function Home() {
   >
     <source src="https://stream-backdrops-videos.s3.amazonaws.com/u9972584128_Subtle_floating_light_particles_drifting_through__b01c2a5c-5dc6-410a-bbdb-704fa53bf572_0.mp4" type="video/mp4" />
   </video>
-</section>
-
-        {/* Add this section after the video hero */}
-<section style={{ 
-  textAlign: 'center', 
-  padding: '3rem 2rem', 
-  background: 'white' 
-}}>
-  <h1 style={{
-    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-    fontWeight: 'bold',
-    color: '#111827',
-    marginBottom: '1rem',
-    lineHeight: '1.2'
-  }}>
-    Free Professional Virtual Backgrounds
-  </h1>
-  <p style={{
-    fontSize: '1.25rem',
-    color: '#6b7280',
-    maxWidth: '800px',
-    margin: '0 auto'
-  }}>
-    Download 167+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
-  </p>
 </section>
         <section style={{
   padding: '3rem 2rem',
