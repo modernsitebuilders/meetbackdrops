@@ -106,6 +106,15 @@ export default function BlogVideoCallEtiquette() {
             <article>
               <header style={{marginBottom: '2rem'}}>
                 <h1 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#2563eb',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.2'
+                }}>
+                  Professional Meeting Etiquette Guide
+                </h1>
+                <h2 style={{
                   fontSize: '2.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -113,7 +122,7 @@ export default function BlogVideoCallEtiquette() {
                   lineHeight: '1.2'
                 }}>
                   Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings
-                </h1>
+                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: October 2025 | 14 min read
                 </p>
@@ -124,9 +133,9 @@ export default function BlogVideoCallEtiquette() {
                   Virtual meetings have become the backbone of modern business communication. Whether you're joining a team standup, presenting to clients, or interviewing for your dream job, your video call etiquette can make or break professional relationships. This comprehensive guide covers everything you need to know to conduct yourself professionally in virtual meetings.
                 </p>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Quick Reference: Video Call Etiquette Essentials
-                </h2>
+                </h3>
                 <ol style={{listStyle: 'decimal', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li><strong>Test your tech 30 minutes early</strong> - Camera, audio, and internet connection</li>
                   <li><strong>Position camera at eye level</strong> - Maintain natural eye contact</li>
@@ -135,9 +144,9 @@ export default function BlogVideoCallEtiquette() {
                   <li><strong>Dress appropriately</strong> - Business attire builds confidence</li>
                 </ol>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Pre-Meeting Preparation: Setting Yourself Up for Success
-                </h2>
+                </h3>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Technical Setup Checklist
@@ -171,9 +180,9 @@ export default function BlogVideoCallEtiquette() {
                   Inform household members about your meeting schedule to minimize interruptions. If you have pets or children, have a backup plan for unexpected appearances - acknowledge them briefly and move on professionally.
                 </p>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
                   During the Meeting: Professional Behavior Guidelines
-                </h2>
+                </h3>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Arrival and Muting Etiquette
@@ -216,9 +225,9 @@ export default function BlogVideoCallEtiquette() {
                   <strong>Engagement Signals:</strong> Nod occasionally to show you're listening, and avoid excessive fidgeting or movement that can be distracting on video. If you need to take notes, mention it briefly: "I'm taking notes" so others know you're engaged.
                 </p>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
                   Communication Excellence in Virtual Meetings
-                </h2>
+                </h3>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Speaking Clearly and Managing Interruptions
@@ -249,9 +258,9 @@ export default function BlogVideoCallEtiquette() {
                   </ul>
                 </div>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
                   Common Video Call Mistakes to Avoid
-                </h2>
+                </h3>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Technical and Behavioral Pitfalls
@@ -273,9 +282,9 @@ export default function BlogVideoCallEtiquette() {
                   <strong>Time Zone Confusion:</strong> Always confirm meeting times in your local time zone. Use calendar invites that automatically adjust for participants' time zones, and when scheduling verbally, specify the time zone clearly.
                 </p>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
                   Platform-Specific Etiquette Tips
-                </h2>
+                </h3>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Zoom, Teams, and Google Meet Best Practices
@@ -317,9 +326,9 @@ export default function BlogVideoCallEtiquette() {
                   </ul>
                 </div>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
                   Emergency Troubleshooting Guide
-                </h2>
+                </h3>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Quick Fixes for Common Issues
@@ -337,9 +346,9 @@ export default function BlogVideoCallEtiquette() {
                   <strong>Connection Problems:</strong> Turn off video to save bandwidth. Close unnecessary applications and browser tabs. Move closer to your WiFi router or switch to ethernet. Always have the phone number ready as a backup connection method.
                 </p>
 
-                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '3rem', marginBottom: '1rem'}}>
                   Conclusion: Mastering Professional Virtual Presence
-                </h2>
+                </h3>
 
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Mastering video call etiquette is essential for professional success in our increasingly digital world. The key is preparation, respect for others, and maintaining the same level of professionalism you would in face-to-face meetings.
