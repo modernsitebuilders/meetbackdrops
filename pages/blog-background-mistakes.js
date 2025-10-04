@@ -110,6 +110,15 @@ export default function BlogBackgroundMistakes() {
             <article>
               <header style={{marginBottom: '2rem'}}>
                 <h1 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#2563eb',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.2'
+                }}>
+                  Virtual Background Setup Guide
+                </h1>
+                <h2 style={{
                   fontSize: '2.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -117,16 +126,16 @@ export default function BlogBackgroundMistakes() {
                   lineHeight: '1.2'
                 }}>
                   15 Virtual Background Mistakes That Make You Look Unprofessional (And How to Fix Them)
-                </h1>
+                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 6, 2025
                 </p>
               </header>
 
               <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
-                <h2 style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   Virtual backgrounds can transform your video calls from amateur to professional—or they can make you look completely unprepared. Avoid these critical mistakes that undermine your professional image.
-                </h2>
+                </p>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
                   {/* Mistake 1 */}

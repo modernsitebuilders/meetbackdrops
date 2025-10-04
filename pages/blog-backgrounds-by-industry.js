@@ -108,6 +108,15 @@ export default function BlogIndustryBackgrounds() {
             <article>
               <header style={{marginBottom: '2rem'}}>
                 <h1 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#2563eb',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.2'
+                }}>
+                  Industry-Specific Background Guide
+                </h1>
+                <h2 style={{
                   fontSize: '2.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -115,16 +124,16 @@ export default function BlogIndustryBackgrounds() {
                   lineHeight: '1.2'
                 }}>
                   Best Virtual Backgrounds for Different Industries: A Professional's Guide
-                </h1>
+                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 6, 2025
                 </p>
               </header>
 
               <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
-                <h2 style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   Working from home has transformed how we present ourselves professionally, but not all virtual backgrounds work for every industry. What projects authority in a law firm might seem too formal for a creative agency, and what works for healthcare may not suit finance. Here's your complete guide to choosing industry-appropriate virtual backgrounds that enhance your credibility.
-                </h2>
+                </p>
 
                 <div style={{
                   background: '#eff6ff',

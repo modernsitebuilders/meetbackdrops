@@ -106,6 +106,15 @@ export default function BlogProfessionalVideoCalls() {
             <article>
               <header style={{marginBottom: '2rem'}}>
                 <h1 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#2563eb',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.2'
+                }}>
+                  Professional Video Call Guide
+                </h1>
+                <h2 style={{
                   fontSize: '2.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -113,7 +122,7 @@ export default function BlogProfessionalVideoCalls() {
                   lineHeight: '1.2'
                 }}>
                   10 Essential Tips for Professional Video Calls
-                </h1>
+                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 2, 2025
                 </p>
@@ -124,9 +133,9 @@ export default function BlogProfessionalVideoCalls() {
                   Working from home has made video calls a cornerstone of professional communication. Whether you're meeting with clients, presenting to your team, or interviewing for your dream job, your video presence matters more than ever.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   1. Perfect Your Lighting Setup
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Good lighting can make or break your video call appearance. Position yourself facing a window or invest in a simple ring light. Avoid having bright lights behind you, which will turn you into a silhouette.
                 </p>
@@ -134,9 +143,9 @@ export default function BlogProfessionalVideoCalls() {
                   <strong>Quick tip:</strong> The light source should be in front of you, not behind you.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   2. Choose the Right Background
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Your background should be professional but not distracting. A cluttered or inappropriate background can take attention away from what you're saying. Consider using virtual backgrounds if your actual space isn't ideal.
                 </p>
@@ -148,30 +157,30 @@ export default function BlogProfessionalVideoCalls() {
                   <li>Modern office environments</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   3. Position Your Camera at Eye Level
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
                   Nobody wants to look up your nose during a meeting. Position your camera at eye level to create a natural, confident appearance. Use books or a laptop stand to adjust your camera height.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   4. Test Your Audio Quality
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
                   Poor audio is more distracting than poor video. Use a dedicated microphone or headset when possible, and always test your audio before important calls.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   5. Dress Appropriately
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
                   Dress as you would for an in-person meeting. Even if only your upper body is visible, wearing professional attire helps you feel more confident and puts you in the right mindset.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   6. Minimize Distractions
-                </h2>
+                </h3>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li>Close unnecessary applications</li>
                   <li>Put your phone on silent</li>
@@ -179,23 +188,23 @@ export default function BlogProfessionalVideoCalls() {
                   <li>Have water nearby to avoid mid-call interruptions</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   7. Make Eye Contact with the Camera
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
                   Look at your camera lens, not your screen, when speaking. This creates the impression of eye contact with other participants.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   8. Use Gestures Purposefully
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
                   Keep your gestures within the camera frame and use them naturally to emphasize points. Avoid excessive movement that can be distracting.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   9. Have a Backup Plan
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '0.5rem'}}>Technical issues happen. Know how to:</p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li>Dial in via phone if your internet fails</li>
@@ -203,9 +212,9 @@ export default function BlogProfessionalVideoCalls() {
                   <li>Quickly restart your application if needed</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   10. Practice Good Video Call Etiquette
-                </h2>
+                </h3>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li>Join meetings on time</li>
                   <li>Mute yourself when not speaking</li>
@@ -213,9 +222,9 @@ export default function BlogProfessionalVideoCalls() {
                   <li>End calls gracefully</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Conclusion
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Professional video calls are here to stay. By following these tips, you'll project confidence and competence in every virtual meeting. Remember, preparation is key – test your setup, choose appropriate backgrounds, and always have a backup plan.
                 </p>

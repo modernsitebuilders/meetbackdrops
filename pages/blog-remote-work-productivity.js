@@ -106,6 +106,15 @@ export default function BlogRemoteWorkProductivity() {
             <article>
               <header style={{marginBottom: '2rem'}}>
                 <h1 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#2563eb',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.2'
+                }}>
+                  Home Office Setup Guide
+                </h1>
+                <h2 style={{
                   fontSize: '2.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -113,7 +122,7 @@ export default function BlogRemoteWorkProductivity() {
                   lineHeight: '1.2'
                 }}>
                   Remote Work Productivity: Creating Your Perfect Home Office Environment
-                </h1>
+                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 2, 2025
                 </p>
@@ -124,9 +133,9 @@ export default function BlogRemoteWorkProductivity() {
                   Working from home has become the new normal for millions of professionals worldwide. Creating an environment that promotes productivity, focus, and work-life balance is essential for long-term success and wellbeing.
                 </p>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Designing Your Physical Workspace
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Your physical environment directly impacts your mental state and productivity. Even in limited space, small changes can make a significant difference.
                 </p>
@@ -142,9 +151,9 @@ export default function BlogRemoteWorkProductivity() {
                   <li><strong>Organization systems:</strong> Keep frequently used items within reach and maintain a clutter-free environment</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Managing Distractions and Maintaining Focus
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Home environments present unique distractions that don't exist in traditional offices. Developing strategies to manage these is crucial for productivity.
                 </p>
@@ -163,9 +172,9 @@ export default function BlogRemoteWorkProductivity() {
                   </div>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Establishing Routines and Boundaries
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Without the natural structure of commuting and office environments, remote workers must create their own routines and boundaries.
                 </p>
@@ -192,9 +201,9 @@ export default function BlogRemoteWorkProductivity() {
                   <li>Resist the urge to check work emails after hours</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Technology and Tools for Remote Productivity
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   The right technology stack can significantly improve your remote work experience and productivity.
                 </p>
@@ -214,9 +223,9 @@ export default function BlogRemoteWorkProductivity() {
                   </div>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Maintaining Mental Health and Wellbeing
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Remote work can lead to isolation and burnout if mental health isn't prioritized. Building wellbeing practices into your routine is essential.
                 </p>
@@ -243,9 +252,9 @@ export default function BlogRemoteWorkProductivity() {
                   <li>Maintain a regular exercise routine</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Optimizing Communication and Collaboration
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Effective communication becomes even more critical in remote work environments where spontaneous interactions are limited.
                 </p>
@@ -266,9 +275,9 @@ export default function BlogRemoteWorkProductivity() {
                   </ul>
                 </div>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Time Management and Productivity Techniques
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Remote work requires excellent time management skills. Without external structure, you must create your own systems for staying productive.
                 </p>
@@ -284,9 +293,9 @@ export default function BlogRemoteWorkProductivity() {
                   <li><strong>Regular reviews:</strong> Weekly planning sessions to assess progress and adjust priorities</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Professional Appearance for Video Calls
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Your professional image in video calls is crucial for career advancement and client relationships.
                 </p>
@@ -298,9 +307,9 @@ export default function BlogRemoteWorkProductivity() {
                   <li>Position your camera at eye level for a more natural appearance</li>
                 </ul>
 
-                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Conclusion
-                </h2>
+                </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Creating a productive remote work environment requires intentional planning and ongoing adjustment. Focus on the fundamentals: a dedicated workspace, clear boundaries, effective communication, and attention to your physical and mental wellbeing.
                 </p>

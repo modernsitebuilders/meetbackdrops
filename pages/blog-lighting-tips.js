@@ -108,6 +108,15 @@ export default function BlogLightingTips() {
             <article>
               <header style={{marginBottom: '2rem'}}>
                 <h1 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#2563eb',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.2'
+                }}>
+                  Video Call Lighting Guide
+                </h1>
+                <h2 style={{
                   fontSize: '2.5rem',
                   fontWeight: 'bold',
                   color: '#111827',
@@ -115,16 +124,16 @@ export default function BlogLightingTips() {
                   lineHeight: '1.2'
                 }}>
                   Perfect Lighting Setup for Virtual Backgrounds: A Complete Guide
-                </h1>
+                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 2, 2025
                 </p>
               </header>
 
               <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
-                <h2 style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   The difference between looking professional and looking amateurish on video calls often comes down to one thing: lighting. Even the most expensive virtual background won't help if you're poorly lit. Here's everything you need to know about creating the perfect lighting setup for virtual backgrounds.
-                </h2>
+                </p>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Why Lighting Matters More Than Your Camera
