@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Footer from '../components/Footer';
+
 export default function Layout({ 
   children, 
   title = 'StreamBackdrops - Free HD Virtual Backgrounds',
@@ -56,8 +57,8 @@ export default function Layout({
         {/* ✅ Robots directive */}
         <meta name="robots" content={noIndex ? 'noindex' : 'index, follow, max-image-preview:large'} />
         
-        {/* ✅ Canonical URL */}
-        {canonical && <link rel="canonical" href={canonical} />}
+        {/* ✅ Canonical URL - UPDATED */}
+<link rel="canonical" href={canonical || `https://streambackdrops.com${router.asPath.split('?')[0]}`} />
         
         {/* ✅ Open Graph for Social Sharing */}
         <meta property="og:title" content={title} />
@@ -151,68 +152,17 @@ export default function Layout({
     borderRadius: '0.5rem'
   }}>
     <div style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6', color: '#374151' }}>
-      
       <h2 style={{
         fontSize: '1.5rem',
         fontWeight: 'bold',
         color: '#111827',
         marginBottom: '1rem'
       }}>
-        Professional {seoContent.name} Virtual Backgrounds
-      </h2>
-      
-      <p style={{ marginBottom: '1.5rem' }}>
-        Our {seoContent.name.toLowerCase()} virtual background collection features professionally designed backgrounds perfect for video conferencing, remote work, and online meetings. Each background is optimized for popular video platforms including Zoom, Microsoft Teams, Google Meet, and Skype.
-      </p>
-      
-      <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        color: '#111827',
-        marginBottom: '1rem'
-      }}>
-        How to Use These Backgrounds
-      </h2>
-      
-      <p style={{ marginBottom: '1.5rem' }}>
-        These high-quality {seoContent.name.toLowerCase()} backgrounds help create a professional appearance during video calls while maintaining privacy in your home or office space. All backgrounds are available as free HD downloads and work seamlessly with virtual background technology.
-      </p>
-      
-      <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        color: '#111827',
-        marginBottom: '1rem'
-      }}>
-        Download Instructions
+        {seoContent.name} Virtual Backgrounds
       </h2>
       
       <p style={{ marginBottom: '1rem' }}>
-        Simply click on any image below to preview and download. Our {seoContent.name.toLowerCase()} backgrounds are designed to provide clear edge detection and work well with standard webcam setups and lighting conditions.
-      </p>
-      <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        color: '#111827',
-        marginBottom: '1rem'
-      }}>
-        Platform Compatibility
-      </h2>
-      
-      <p style={{ marginBottom: '1rem' }}>
-        These {seoContent.name.toLowerCase()} virtual backgrounds work seamlessly across all major video platforms including Zoom, Microsoft Teams, Google Meet, Skype, Discord, and WebEx. The high-resolution files ensure crisp, professional appearance regardless of your video call setup or internet connection speed.
-      </p>
-      <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        color: '#111827',
-        marginBottom: '1rem'
-      }}>
-        Setup Tips for Best Results
-      </h2>
-      
-      <p style={{ marginBottom: '1rem' }}>
-        For optimal virtual background performance, ensure you have adequate lighting facing toward you and avoid complex patterns in your clothing that may interfere with edge detection. Position your camera at eye level and maintain consistent distance from your webcam. Test your chosen background before important meetings to ensure smooth operation across your specific hardware setup.
+        Browse our collection of professional {seoContent.name.toLowerCase()} virtual backgrounds. Download free HD backgrounds for Zoom, Teams, and Google Meet.
       </p>
     </div>
   </section>
