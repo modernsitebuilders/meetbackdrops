@@ -107,7 +107,7 @@ export default function Home() {
   maxWidth: '1200px',
   margin: '0 auto'
 }}>
-  <h3 style={{
+  <h2 style={{
     textAlign: 'center',
     fontSize: '2rem',
     fontWeight: 'bold',
@@ -115,7 +115,7 @@ export default function Home() {
     color: '#1e293b'
   }}>
     Expert Tips for Video Call Success
-  </h3>
+  </h2>
   
   <p style={{
     textAlign: 'center',
@@ -528,7 +528,7 @@ export default function Home() {
 }}>
   <div style={{ maxWidth: '900px', margin: '0 auto' }}>
     
-    <h2 style={{
+    <h3 style={{
       fontSize: '2rem',
       fontWeight: 'bold',
       color: '#111827',
@@ -536,7 +536,7 @@ export default function Home() {
       textAlign: 'center'
     }}>
       Professional Virtual Backgrounds for Every Video Call
-    </h2>
+    </h3>
     
     <p style={{
       fontSize: '1.1rem',
