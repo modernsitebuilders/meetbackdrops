@@ -7,7 +7,7 @@ export default function BlogRemoteWorkProductivity() {
     <>
       <Head>
         <link rel="canonical" href="https://streambackdrops.com/blog-remote-work-productivity" />
-        <title>Remote Work Productivity: Creating Your Perfect Home Office Environment - StreamBackdrops</title>
+<title>Remote Work: Perfect Home Office Setup | StreamBackdrops</title>
         <meta name="description" content="Boost your remote work productivity with expert tips for creating the perfect home office environment, managing distractions, and maintaining work-life balance." />
         <meta name="keywords" content="remote work, home office, productivity, work from home, home office setup, remote work tips" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
