@@ -7,8 +7,8 @@ export default function handler(req, res) {
     const robotsTxt = `User-agent: *
 Allow: /
 
-# Block sensitive API routes only
-Disallow: /api/track-
+Disallow: /api/track-page-view
+Disallow: /api/track-download
 
 Sitemap: https://streambackdrops.com/sitemap.xml
 
