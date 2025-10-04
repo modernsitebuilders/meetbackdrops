@@ -7,13 +7,10 @@ export default function Contact() {
   return (
     <>
       <Head>
-          <title>Contact Us - Virtual Background Help & Support</title>
+<title>Contact StreamBackdrops - Virtual Background Help & Support</title>
   <meta name="description" content="Contact StreamBackdrops for questions, feedback, or support. We'd love to hear from you." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://streambackdrops.com/contact" />
-        <title>Contact Us - StreamBackdrops</title>
-        <meta name="description" content="Get in touch with StreamBackdrops for support, feedback, or questions about our professional virtual backgrounds and setup guides." />
-        <meta name="robots" content="index, follow" />
       </Head>
 
       <header style={{
