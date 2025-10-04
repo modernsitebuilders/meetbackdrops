@@ -229,9 +229,9 @@ export default function BlogVideoCallEtiquette() {
                   Communication Excellence in Virtual Meetings
                 </h3>
 
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h4 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Speaking Clearly and Managing Interruptions
-                </h3>
+                </h4>
 
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   <strong>Clear Communication:</strong> Speak slightly slower than you would in person and enunciate clearly. Digital audio can sometimes lag or compress, making fast speech harder to understand. Pause briefly between major points to ensure others can process the information.
@@ -286,9 +286,9 @@ export default function BlogVideoCallEtiquette() {
                   Platform-Specific Etiquette Tips
                 </h3>
 
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h4 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Zoom, Teams, and Google Meet Best Practices
-                </h3>
+                </h4>
 
                 <div style={{background: '#fafafa', padding: '1.5rem', borderRadius: '0.5rem', marginBottom: '1.5rem', border: '1px solid #e5e7eb'}}>
                   <h4 style={{fontSize: '1.25rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
@@ -330,9 +330,9 @@ export default function BlogVideoCallEtiquette() {
                   Emergency Troubleshooting Guide
                 </h3>
 
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h4 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Quick Fixes for Common Issues
-                </h3>
+                </h4>
 
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   <strong>Audio Problems:</strong> Check system volume and meeting app volume separately. If computer audio fails, switch to phone dial-in immediately. Close other applications that might be using your microphone.
