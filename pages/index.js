@@ -302,7 +302,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                 src="/images/ambient-lighting/ambient-01.webp"
+                 src="/images/ambient/ambient-01.webp"
                  alt="Ambient lighting office background for video meetings"
                   fill
                   style={{ objectFit: 'cover' }}
