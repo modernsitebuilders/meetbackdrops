@@ -124,7 +124,7 @@ const shareLinks = [
 const categoryInfo = {
   'well-lit': {
     name: 'Well Lit',
-    description: 'Bright, well-lit backgrounds perfect for professional video calls',
+    description: 'Bright backgrounds for professional video calls', // 47 chars
     seoDescription: 'Download free well-lit virtual backgrounds for video calls. Bright, professional backgrounds.',
     images: Array.from({length: 47}, (_, i) => ({
       filename: `well-lit-${String(i + 1).padStart(2, '0')}.webp`,
@@ -134,7 +134,7 @@ const categoryInfo = {
   
   'ambient-lighting': {
     name: 'Ambient Lighting',
-    description: 'Atmospheric backgrounds with ambient lighting for sophisticated video calls',
+    description: 'Warm backgrounds with ambient lighting for video calls', // 55 chars
     seoDescription: 'Download free ambient virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
     images: Array.from({length: 41}, (_, i) => ({
       filename: `ambient-${String(i + 1).padStart(2, '0')}.webp`,
@@ -144,7 +144,7 @@ const categoryInfo = {
   
   'office-spaces': {
     name: 'Office Spaces',
-    description: 'Professional office backgrounds for business video calls',
+    description: 'Professional office backgrounds for business calls', // 52 chars
     seoDescription: 'Download free professional office virtual backgrounds for video calls. Executive office backgrounds.',
     images: Array.from({length: 19}, (_, i) => ({
       filename: `office-spaces-${String(i + 1).padStart(2, '0')}.webp`,
@@ -154,7 +154,7 @@ const categoryInfo = {
   
   'living-room': {
     name: 'Living Room',
-    description: 'Comfortable living room backgrounds for casual meetings and personal video calls',
+    description: 'Comfortable home backgrounds for casual video calls', // 54 chars
     seoDescription: 'Download free living room virtual backgrounds for video calls. Comfortable home settings for casual meetings.',
     images: Array.from({length: 47}, (_, i) => ({
       filename: `living-room-${String(i + 1).padStart(2, '0')}.webp`,
@@ -164,7 +164,7 @@ const categoryInfo = {
   
   'kitchen': {
     name: 'Kitchen',
-    description: 'Professional kitchen backgrounds for cooking shows, food blogs, and culinary video calls',
+    description: 'Kitchen backgrounds for cooking shows and casual calls', // 58 chars
     seoDescription: 'Download free kitchen virtual backgrounds for video calls. Professional kitchen environments for cooking content.',
     images: Array.from({length: 18}, (_, i) => ({
       filename: `kitchen-${String(i + 1).padStart(2, '0')}.webp`,

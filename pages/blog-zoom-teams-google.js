@@ -121,7 +121,7 @@ export default function BlogZoomTeamsGoogle() {
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-                  Zoom vs Teams vs Google Meet: Virtual Background Setup & Best Practices
+Zoom vs Teams vs Google Meet: Virtual Background Setup Guide
                 </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 6, 2025
