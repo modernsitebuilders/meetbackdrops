@@ -471,81 +471,23 @@ useEffect(() => {
               </div>
             ))}
           </div>
-          {/* SEO Content Section - to add after image grid in [slug].js */}
-<section style={{
-  background: 'white',
-  padding: '2rem',
-  marginTop: '3rem',
-  borderRadius: '0.5rem'
-}}>
-  <div style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6', color: '#374151' }}>
-    
-    <h3 style={{
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      color: '#111827',
-      marginBottom: '1rem'
-    }}>
-      Professional {category.name} Virtual Backgrounds
-    </h3>
-    
-    <p style={{ marginBottom: '1.5rem' }}>
-      Our {category.name.toLowerCase()} virtual background collection features professionally designed backgrounds perfect for video conferencing, remote work, and online meetings. Each background is optimized for popular video platforms including Zoom, Microsoft Teams, Google Meet, and Skype.
-    </p>
-    
-    <h3 style={{
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      color: '#111827',
-      marginBottom: '1rem'
-    }}>
-      How to Use These Backgrounds
-    </h3>
-    
-    <p style={{ marginBottom: '1.5rem' }}>
-      These high-quality {category.name.toLowerCase()} backgrounds help create a professional appearance during video calls while maintaining privacy in your home or office space. All backgrounds are available as free HD downloads and work seamlessly with virtual background technology.
-    </p>
-    
-    <h3 style={{
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      color: '#111827',
-      marginBottom: '1rem'
-    }}>
-      Download Instructions
-    </h3>
-    
-    <p style={{ marginBottom: '1rem' }}>
-      Simply click on any image below to preview and download. Our {category.name.toLowerCase()} backgrounds are designed to provide clear edge detection and work well with standard webcam setups and lighting conditions.
-    </p>
-    
-    <h3 style={{
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      color: '#111827',
-      marginBottom: '1rem'
-    }}>
-      Platform Compatibility
-    </h3>
-    
-    <p style={{ marginBottom: '1rem' }}>
-      These {category.name.toLowerCase()} virtual backgrounds work seamlessly across all major video platforms including Zoom, Microsoft Teams, Google Meet, Skype, Discord, and WebEx. The high-resolution files ensure crisp, professional appearance regardless of your video call setup or internet connection speed.
-    </p>
-    
-    <h3 style={{
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      color: '#111827',
-      marginBottom: '1rem'
-    }}>
-      Setup Tips for Best Results
-    </h3>
-    
-    <p style={{ marginBottom: '1rem' }}>
-      For optimal virtual background performance, ensure you have adequate lighting facing toward you and avoid complex patterns in your clothing that may interfere with edge detection. Position your camera at eye level and maintain consistent distance from your webcam. Test your chosen background before important meetings to ensure smooth operation across your specific hardware setup.
-    </p>
-  </div>
-</section>
+          {/* Simple SEO content - after image grid */}
+          <section style={{
+            background: 'white',
+            padding: '2rem',
+            marginTop: '3rem',
+            borderRadius: '0.5rem',
+            maxWidth: '800px',
+            margin: '3rem auto 0'
+          }}>
+            <p style={{ 
+              lineHeight: '1.8', 
+              color: '#374151',
+              fontSize: '1.05rem'
+            }}>
+              Download free {category.name.toLowerCase()} virtual backgrounds optimized for Zoom, Microsoft Teams, Google Meet, and other video conferencing platforms. These professional HD backgrounds are designed specifically for video calls, providing excellent edge detection and clear image quality even with standard webcam setups. Perfect for remote work, online meetings, and professional presentations. All backgrounds are free to download and use for personal or commercial purposes. Simply click any image to preview in full size, then download directly to your device. For best results, ensure adequate front-facing lighting and position your camera at eye level before your video calls.
+            </p>
+          </section>
         </div>
       </div>
 
