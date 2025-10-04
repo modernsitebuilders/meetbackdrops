@@ -121,7 +121,7 @@ export default function BlogRemoteWorkProductivity() {
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-                  Remote Work Productivity: Creating Your Perfect Home Office Environment
+                  Remote Work Productivity: Creating Your Perfect Home Office Setup
                 </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 2, 2025

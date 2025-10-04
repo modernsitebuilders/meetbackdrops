@@ -121,8 +121,7 @@ export default function BlogVideoCallEtiquette() {
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-                  Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings
-                </h2>
+Video Call Etiquette: Essential Do's and Don'ts for Virtual Meetings                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: October 2025 | 14 min read
                 </p>

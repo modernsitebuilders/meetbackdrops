@@ -125,8 +125,7 @@ export default function BlogBackgroundMistakes() {
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-                  15 Virtual Background Mistakes That Make You Look Unprofessional (And How to Fix Them)
-                </h2>
+15 Virtual Background Mistakes That Ruin Your Professional Image                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 6, 2025
                 </p>

@@ -119,8 +119,7 @@ export default function Contact() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                We'd love to hear from you! Get in touch with questions, feedback, or suggestions.
-              </h2>
+We'd love to hear from you! Get in touch with questions or feedback.              </h2>
             </div>
 
             <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>

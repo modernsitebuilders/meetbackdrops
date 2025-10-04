@@ -98,8 +98,7 @@ export default function Blog() {
               StreamBackdrops Blog
             </h1>
             <h2 style={{fontSize: '1.25rem', color: '#6b7280'}}>
-              Expert tips, guides, and insights for professional video calls and remote work
-            </h2>
+Expert tips, guides, and insights for professional video calls & work            </h2>
           </div>
         </header>
 

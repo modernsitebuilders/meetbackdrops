@@ -124,8 +124,7 @@ export default function About() {
                 fontSize: '1.2rem',
                 opacity: 0.9
               }}>
-                Creating professional virtual backgrounds for the modern remote workforce
-              </h2>
+Creating Professional Virtual Backgrounds for Modern Remote Workers              </h2>
             </div>
 
             <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>

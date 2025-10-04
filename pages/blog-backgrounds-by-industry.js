@@ -123,8 +123,7 @@ export default function BlogIndustryBackgrounds() {
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-                  Best Virtual Backgrounds for Different Industries: A Professional's Guide
-                </h2>
+Best Virtual Backgrounds for Different Industries: A Pro's Guide                </h2>
                 <p style={{color: '#6b7280', fontStyle: 'italic'}}>
                   Published: August 6, 2025
                 </p>
