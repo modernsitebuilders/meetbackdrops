@@ -518,6 +518,205 @@ export default function Home() {
             View Complete Setup Guide
           </Link>
         </section>
+        // Add this section AFTER your category grid and BEFORE the Footer in pages/index.js
+
+{/* SEO-Rich Content Section */}
+<section style={{
+  background: 'white',
+  padding: '4rem 2rem',
+  maxWidth: '1200px',
+  margin: '0 auto'
+}}>
+  <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+    
+    <h2 style={{
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1.5rem',
+      textAlign: 'center'
+    }}>
+      Professional Virtual Backgrounds for Every Video Call
+    </h2>
+    
+    <p style={{
+      fontSize: '1.1rem',
+      lineHeight: '1.8',
+      color: '#374151',
+      marginBottom: '2rem'
+    }}>
+      StreamBackdrops offers the largest collection of free, high-quality virtual backgrounds designed specifically for professional video conferencing. Whether you're joining a Zoom meeting, Microsoft Teams call, or Google Meet session, our curated backgrounds help you maintain a polished, professional appearance from any location.
+    </p>
+
+    <h3 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem',
+      marginTop: '3rem'
+    }}>
+      Why Choose Our Virtual Backgrounds?
+    </h3>
+    
+    <p style={{
+      fontSize: '1.1rem',
+      lineHeight: '1.8',
+      color: '#374151',
+      marginBottom: '1.5rem'
+    }}>
+      Unlike generic stock photo sites, every background in our collection is optimized for video calls. We carefully design each image with proper lighting, color balance, and composition to ensure you look your best on camera. Our backgrounds work seamlessly with all major video platforms including Zoom, Microsoft Teams, Google Meet, Skype, and WebEx.
+    </p>
+
+    <h3 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem',
+      marginTop: '3rem'
+    }}>
+      Perfect for Remote Work and Hybrid Teams
+    </h3>
+    
+    <p style={{
+      fontSize: '1.1rem',
+      lineHeight: '1.8',
+      color: '#374151',
+      marginBottom: '1.5rem'
+    }}>
+      The modern workplace demands flexibility. Whether you're working from home, a coffee shop, or traveling, our virtual backgrounds ensure you always present a professional image. Choose from well-lit office spaces for client meetings, ambient-lit environments for casual team calls, or comfortable living room settings for 1-on-1 conversations.
+    </p>
+
+    <h3 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem',
+      marginTop: '3rem'
+    }}>
+      Free HD Downloads - No Signup Required
+    </h3>
+    
+    <p style={{
+      fontSize: '1.1rem',
+      lineHeight: '1.8',
+      color: '#374151',
+      marginBottom: '1.5rem'
+    }}>
+      All our virtual backgrounds are completely free to download and use. No subscription fees, no watermarks, no hidden costs. Simply browse our categories, click your favorite background, and download instantly in HD quality. We believe professional video call backgrounds should be accessible to everyone.
+    </p>
+
+    <h3 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem',
+      marginTop: '3rem'
+    }}>
+      How to Use Virtual Backgrounds
+    </h3>
+    
+    <p style={{
+      fontSize: '1.1rem',
+      lineHeight: '1.8',
+      color: '#374151',
+      marginBottom: '1rem'
+    }}>
+      Setting up a virtual background is simple across all platforms:
+    </p>
+
+    <div style={{
+      background: '#f9fafb',
+      padding: '2rem',
+      borderRadius: '0.5rem',
+      marginBottom: '2rem',
+      border: '1px solid #e5e7eb'
+    }}>
+      <p style={{
+        fontSize: '1.05rem',
+        lineHeight: '1.8',
+        color: '#374151',
+        marginBottom: '1rem'
+      }}>
+        <strong>Zoom:</strong> Click the arrow next to "Stop Video" → Choose "Virtual Background" → Click the + icon to upload your downloaded background.
+      </p>
+      
+      <p style={{
+        fontSize: '1.05rem',
+        lineHeight: '1.8',
+        color: '#374151',
+        marginBottom: '1rem'
+      }}>
+        <strong>Microsoft Teams:</strong> In a meeting, click the three dots → "Apply background effects" → "+ Add new" to upload your background.
+      </p>
+      
+      <p style={{
+        fontSize: '1.05rem',
+        lineHeight: '1.8',
+        color: '#374151',
+        marginBottom: '0'
+      }}>
+        <strong>Google Meet:</strong> Before joining, click "Change background" → Click the + icon → Select your downloaded image.
+      </p>
+    </div>
+
+    <h3 style={{
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#111827',
+      marginBottom: '1rem',
+      marginTop: '2.5rem'
+    }}>
+      Tips for Best Results
+    </h3>
+    
+    <p style={{
+      fontSize: '1.1rem',
+      lineHeight: '1.8',
+      color: '#374151',
+      marginBottom: '1rem'
+    }}>
+      For optimal virtual background performance, ensure good lighting facing you, avoid busy patterns in your clothing, and position yourself at a consistent distance from your webcam. Our backgrounds are designed to work with standard webcam setups, but better lighting always improves edge detection and overall video quality.
+    </p>
+
+    <div style={{
+      background: '#eff6ff',
+      padding: '2rem',
+      borderRadius: '0.5rem',
+      marginTop: '3rem',
+      border: '1px solid #bfdbfe',
+      textAlign: 'center'
+    }}>
+      <h3 style={{
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#1e40af',
+        marginBottom: '1rem'
+      }}>
+        Ready to Elevate Your Video Calls?
+      </h3>
+      <p style={{
+        fontSize: '1.1rem',
+        color: '#1e40af',
+        marginBottom: '1.5rem'
+      }}>
+        Browse our collection of 167+ professional virtual backgrounds and find the perfect backdrop for your next meeting.
+      </p>
+      <Link href="/category/well-lit" style={{
+        display: 'inline-block',
+        background: '#2563eb',
+        color: 'white',
+        padding: '1rem 2rem',
+        borderRadius: '0.5rem',
+        textDecoration: 'none',
+        fontWeight: '600',
+        fontSize: '1.1rem',
+        transition: 'background 0.2s'
+      }}>
+        Browse Backgrounds →
+      </Link>
+    </div>
+  </div>
+</section>
       </Layout>
 );
 }
