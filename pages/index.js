@@ -49,14 +49,14 @@ export default function Home() {
  {/* Hero Section with H1 FIRST */}
 <section style={{ 
   textAlign: 'center', 
-  padding: '1.5rem 2rem 1rem', 
+  padding: '0.5rem 2rem 0.5rem', 
   background: 'white' 
 }}>
   <h1 style={{
     fontSize: 'clamp(2.5rem, 5vw, 4rem)',
     fontWeight: 'bold',
     color: '#111827',
-    marginBottom: '1rem',
+    marginBottom: '.5rem',
     lineHeight: '1.2'
   }}>
     Free Professional Virtual Backgrounds
