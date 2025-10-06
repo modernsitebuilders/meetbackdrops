@@ -5,10 +5,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { filename, category, timestamp } = req.body;
+  const { filename, category } = req.body;
   
   try {
-    // Fix private key format (same as working test-sheets endpoint)
+    // Fix private key format
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
       privateKey = privateKey.slice(1, -1);

@@ -213,6 +213,15 @@ useEffect(() => {
 
   const handleDownload = async (image) => {
   try {
+    // Track download to Google Sheets
+fetch('/api/track-download', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    filename: image.filename,
+    category: slug
+  })
+}).catch(() => {}); // Fail silently
     // Track the download
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'download', {
