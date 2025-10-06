@@ -19,12 +19,13 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://cdn-cookieyes.com https://cloudinary.com https://*.cloudinary.com",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://s.pinimg.com https://cdn-cookieyes.com",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://region1.google-analytics.com https://cdn-cookieyes.com https://res.cloudinary.com https://*.cloudinary.com",
               "img-src 'self' data: https: blob:",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
-              "frame-src 'self'"
+              "frame-src 'self'",
+              "media-src 'self' https://*.amazonaws.com"
             ].join('; ')
           }
         ]
