@@ -215,10 +215,11 @@ useEffect(() => {
   try {
     // Track the download
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'click', {
-        'event_category': 'outbound',
+      window.gtag('event', 'download', {
+        'event_category': 'engagement',
         'event_label': image.filename,
-        'transport_type': 'beacon',
+        'image_name': image.filename,
+        'category': slug,
         'value': 1
       });
     }
