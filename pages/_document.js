@@ -4,7 +4,15 @@ export default function Document() {
   return (
     <Html lang="en" data-scroll-behavior="smooth">
       <Head>
-        {/* Critical CSS for immediate styling */}
+        {/* Google Tag Manager */}
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MZT8B48G');`
+        }} />
+        
         <style dangerouslySetInnerHTML={{
           __html: `
             body { 
@@ -17,31 +25,18 @@ export default function Document() {
             .loading { opacity: 0.6; }
           `
         }} />
-        {/* ADD THIS: Video performance hints */}
-<link rel="preload" as="image" href="/video-poster.jpg" />
-<link 
-  rel="preload" 
-  as="video" 
-  href="https://stream-backdrops-videos.s3.amazonaws.com/u9972584128_Subtle_floating_light_particles_drifting_through__b01c2a5c-5dc6-410a-bbdb-704fa53bf572_0.mp4"
-  media="(min-width: 769px)"
-/>
         
-        {/* Preconnect to external domains for faster loading */}
+        <link rel="preload" as="image" href="/video-poster.jpg" />
+        <link 
+          rel="preload" 
+          as="video" 
+          href="https://stream-backdrops-videos.s3.amazonaws.com/u9972584128_Subtle_floating_light_particles_drifting_through__b01c2a5c-5dc6-410a-bbdb-704fa53bf572_0.mp4"
+          media="(min-width: 769px)"
+        />
+        
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         
-        {/* Google Tag Manager */}
-        <script dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.defer=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TS54MCGR');`
-        }} />
-        
-        {/* Basic structured data (site-level only) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -54,21 +49,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.defer=true;j.sr
           }}
         />
         
-        {/* Performance optimizations */}
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="referrer" content="origin-when-cross-origin" />
         <meta name="color-scheme" content="light" />
       </Head>
       <body>
+        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TS54MCGR"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MZT8B48G"
             height="0" 
             width="0" 
             style={{display:'none',visibility:'hidden'}}
           />
         </noscript>
+        
         <Main />
         <NextScript />
       </body>
