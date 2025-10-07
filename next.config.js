@@ -100,6 +100,11 @@ const nextConfig = {
         destination: '/category/living-room',
         permanent: true,
       },
+      {
+        source: '/category/private-offices',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
     ];
   },
 };
