@@ -126,7 +126,7 @@ const categoryInfo = {
     name: 'Bookshelves - Bright',
     description: 'Bright bookshelf backgrounds for professional video calls',
     seoDescription: 'Download free well-lit bookshelf virtual backgrounds for video calls. Bright, professional backgrounds.',
-    images: Array.from({length: 48}, (_, i) => ({
+    images: Array.from({length: 47}, (_, i) => ({
       filename: `well-lit-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Bright Bookshelf Background ${i + 1}`
     }))
@@ -136,7 +136,7 @@ const categoryInfo = {
     name: 'Bookshelves - Dark',
     description: 'Warm bookshelf backgrounds with ambient lighting',
     seoDescription: 'Download free ambient bookshelf virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
-    images: Array.from({length: 49}, (_, i) => ({
+    images: Array.from({length: 41}, (_, i) => ({
       filename: `ambient-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Dark Bookshelf Background ${i + 1}`
     }))
@@ -146,7 +146,7 @@ const categoryInfo = {
     name: 'Office Spaces',
     description: 'Professional office backgrounds for business calls',
     seoDescription: 'Download free professional office virtual backgrounds for video calls. Executive office backgrounds.',
-    images: Array.from({length: 15}, (_, i) => ({
+    images: Array.from({length: 19}, (_, i) => ({
       filename: `office-spaces-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Office Space Background ${i + 1}`
     }))
@@ -156,7 +156,7 @@ const categoryInfo = {
     name: 'Living Rooms',
     description: 'Comfortable home backgrounds for casual video calls',
     seoDescription: 'Download free living room virtual backgrounds for video calls. Comfortable home settings for casual meetings.',
-    images: Array.from({length: 37}, (_, i) => ({
+    images: Array.from({length: 47}, (_, i) => ({
       filename: `living-room-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Living Room Background ${i + 1}`
     }))
@@ -216,7 +216,7 @@ const categoryInfo = {
     name: 'Historic Spaces',
     description: 'Elegant historic interiors and architectural spaces',
     seoDescription: 'Download free historic space virtual backgrounds for video calls. Ballrooms and Art Deco spaces for distinguished calls.',
-    images: Array.from({length: 8}, (_, i) => ({
+    images: Array.from({length: 7}, (_, i) => ({
       filename: `historic-space-${i + 1}.webp`,
       title: `Historic Space Background ${i + 1}`
     }))
