@@ -119,56 +119,126 @@ rel="noopener noreferrer nofollow"
       ))}
     </div>
   );
-}
+};
 // Categories with all your actual images
 const categoryInfo = {
-  'well-lit': {
-    name: 'Well Lit',
-    description: 'Bright backgrounds for professional video calls', // 47 chars
-    seoDescription: 'Download free well-lit virtual backgrounds for video calls. Bright, professional backgrounds.',
-    images: Array.from({length: 47}, (_, i) => ({
+  'bookshelves-bright': {
+    name: 'Bookshelves - Bright',
+    description: 'Bright bookshelf backgrounds for professional video calls',
+    seoDescription: 'Download free well-lit bookshelf virtual backgrounds for video calls. Bright, professional backgrounds.',
+    images: Array.from({length: 48}, (_, i) => ({
       filename: `well-lit-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Well Lit Background ${i + 1}`
+      title: `Bright Bookshelf Background ${i + 1}`
     }))
   },
   
-  'ambient-lighting': {
-    name: 'Ambient Lighting',
-    description: 'Warm backgrounds with ambient lighting for video calls', // 55 chars
-    seoDescription: 'Download free ambient virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
-    images: Array.from({length: 41}, (_, i) => ({
+  'bookshelves-dark': {
+    name: 'Bookshelves - Dark',
+    description: 'Warm bookshelf backgrounds with ambient lighting',
+    seoDescription: 'Download free ambient bookshelf virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
+    images: Array.from({length: 49}, (_, i) => ({
       filename: `ambient-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Ambient Background ${i + 1}`
+      title: `Dark Bookshelf Background ${i + 1}`
     }))
   },
   
   'office-spaces': {
     name: 'Office Spaces',
-    description: 'Professional office backgrounds for business calls', // 52 chars
+    description: 'Professional office backgrounds for business calls',
     seoDescription: 'Download free professional office virtual backgrounds for video calls. Executive office backgrounds.',
-    images: Array.from({length: 19}, (_, i) => ({
+    images: Array.from({length: 15}, (_, i) => ({
       filename: `office-spaces-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Office Space Background ${i + 1}`
     }))
   },
   
-  'living-room': {
-    name: 'Living Room',
-    description: 'Comfortable home backgrounds for casual video calls', // 54 chars
+  'living-rooms': {
+    name: 'Living Rooms',
+    description: 'Comfortable home backgrounds for casual video calls',
     seoDescription: 'Download free living room virtual backgrounds for video calls. Comfortable home settings for casual meetings.',
-    images: Array.from({length: 47}, (_, i) => ({
+    images: Array.from({length: 37}, (_, i) => ({
       filename: `living-room-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Living Room Background ${i + 1}`
     }))
   },
   
-  'kitchen': {
-    name: 'Kitchen',
-    description: 'Kitchen backgrounds for cooking shows and casual calls', // 58 chars
+  'kitchens': {
+    name: 'Kitchens',
+    description: 'Kitchen backgrounds for cooking shows and casual calls',
     seoDescription: 'Download free kitchen virtual backgrounds for video calls. Professional kitchen environments for cooking content.',
     images: Array.from({length: 18}, (_, i) => ({
       filename: `kitchen-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Kitchen Background ${i + 1}`
+    }))
+  },
+  
+  'coffee-shops': {
+    name: 'Coffee Shops',
+    description: 'Cozy coffee shop backgrounds for casual meetings',
+    seoDescription: 'Download free coffee shop virtual backgrounds for video calls. Perfect for casual meetings and creative collaboration.',
+    images: Array.from({length: 3}, (_, i) => ({
+      filename: `coffee-shop-${i + 1}.webp`,
+      title: `Coffee Shop Background ${i + 1}`
+    }))
+  },
+  
+  'art-galleries': {
+    name: 'Art Galleries',
+    description: 'Sophisticated art gallery spaces with clean walls',
+    seoDescription: 'Download free art gallery virtual backgrounds for video calls. Clean, artistic spaces for professional presentations.',
+    images: Array.from({length: 17}, (_, i) => ({
+      filename: `art-gallery-${i + 1}.webp`,
+      title: `Art Gallery Background ${i + 1}`
+    }))
+  },
+  
+  'urban-lofts': {
+    name: 'Urban Lofts',
+    description: 'Modern industrial loft spaces with contemporary design',
+    seoDescription: 'Download free urban loft virtual backgrounds for video calls. Industrial spaces for creative professionals.',
+    images: Array.from({length: 17}, (_, i) => ({
+      filename: `urban-loft-${i + 1}.webp`,
+      title: `Urban Loft Background ${i + 1}`
+    }))
+  },
+  
+  'gardens-patios': {
+    name: 'Gardens & Patios',
+    description: 'Beautiful outdoor garden and patio backgrounds',
+    seoDescription: 'Download free garden and patio virtual backgrounds for video calls. Natural outdoor beauty for your meetings.',
+    images: Array.from({length: 13}, (_, i) => ({
+      filename: `garden-patio-${i + 1}.webp`,
+      title: `Garden Patio Background ${i + 1}`
+    }))
+  },
+  
+  'historic-spaces': {
+    name: 'Historic Spaces',
+    description: 'Elegant historic interiors and architectural spaces',
+    seoDescription: 'Download free historic space virtual backgrounds for video calls. Ballrooms and Art Deco spaces for distinguished calls.',
+    images: Array.from({length: 8}, (_, i) => ({
+      filename: `historic-space-${i + 1}.webp`,
+      title: `Historic Space Background ${i + 1}`
+    }))
+  },
+  
+  'nature-landscapes': {
+    name: 'Nature & Landscapes',
+    description: 'Stunning natural landscapes and scenic outdoor views',
+    seoDescription: 'Download free nature and landscape virtual backgrounds for video calls. Mountains, deserts, and scenic environments.',
+    images: Array.from({length: 49}, (_, i) => ({
+      filename: `nature-landscape-${i + 1}.webp`,
+      title: `Nature Landscape Background ${i + 1}`
+    }))
+  },
+  
+  'libraries': {
+    name: 'Libraries',
+    description: 'Classic library rooms with floor-to-ceiling books',
+    seoDescription: 'Download free library virtual backgrounds for video calls. Perfect for academic presentations and professional settings.',
+    images: Array.from({length: 18}, (_, i) => ({
+      filename: `library-${i + 1}.webp`,
+      title: `Library Background ${i + 1}`
     }))
   }
 };
@@ -176,12 +246,19 @@ const categoryInfo = {
 function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
   const folderMap = {
-    'well-lit': 'well-lit',
-    'ambient-lighting': 'ambient',  // <- Changed this!
-    'office-spaces': 'office-spaces',
-    'living-room': 'living-room',
-    'kitchen': 'kitchen'
-  };
+  'bookshelves-bright': 'bookshelves-bright',
+  'bookshelves-dark': 'bookshelves-dark',
+  'office-spaces': 'office-spaces',
+  'living-rooms': 'living-rooms',
+  'kitchens': 'kitchens',
+  'coffee-shops': 'coffee-shops',
+  'art-galleries': 'art-galleries',
+  'urban-lofts': 'urban-lofts',
+  'gardens-patios': 'gardens-patios',
+  'historic-spaces': 'historic-spaces',
+  'nature-landscapes': 'nature-landscapes',
+  'libraries': 'libraries'
+};
 
   const category = categoryInfo[slug];
 // Track page view when component loads
@@ -657,7 +734,20 @@ export default function CategoryPage({ slug }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ['well-lit', 'ambient-lighting', 'office-spaces', 'living-room', 'kitchen'].map((slug) => ({
+  const paths = [
+    'bookshelves-bright',
+    'bookshelves-dark',
+    'office-spaces',
+    'living-rooms',
+    'kitchens',
+    'coffee-shops',
+    'art-galleries',
+    'urban-lofts',
+    'gardens-patios',
+    'historic-spaces',
+    'nature-landscapes',
+    'libraries'
+  ].map((slug) => ({
     params: { slug }
   }));
 

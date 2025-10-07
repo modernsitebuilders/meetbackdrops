@@ -27,22 +27,43 @@ export default function Footer() {
               Background Categories
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <Link href="/category/well-lit" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Well-Lit Backgrounds
-              </Link>
-              <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Office Spaces
-              </Link>
-              <Link href="/category/living-room" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Living Room
-              </Link>
-              <Link href="/category/kitchen" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Kitchen Backgrounds
-              </Link>
-              <Link href="/category/ambient-lighting" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Ambient Lighting
-              </Link>
-            </div>
+  <Link href="/category/bookshelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Bookshelves - Bright
+  </Link>
+  <Link href="/category/bookshelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Bookshelves - Dark
+  </Link>
+  <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Office Spaces
+  </Link>
+  <Link href="/category/living-rooms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Living Rooms
+  </Link>
+  <Link href="/category/kitchens" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Kitchens
+  </Link>
+  <Link href="/category/coffee-shops" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Coffee Shops
+  </Link>
+  <Link href="/category/art-galleries" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Art Galleries
+  </Link>
+  <Link href="/category/urban-lofts" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Urban Lofts
+  </Link>
+  <Link href="/category/gardens-patios" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Gardens & Patios
+  </Link>
+  <Link href="/category/historic-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Historic Spaces
+  </Link>
+  <Link href="/category/nature-landscapes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Nature & Landscapes
+  </Link>
+  <Link href="/category/libraries" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Libraries
+  </Link>
+</div>
           </div>
           
           <div>

@@ -47,7 +47,7 @@ const nextConfig = {
       // Old category redirects
       {
         source: '/category/ambiant-lighting',
-        destination: '/category/ambient',
+        destination: '/category/bookshelves-dark',
         permanent: true,
       },
       {
@@ -57,12 +57,12 @@ const nextConfig = {
       },
       {
         source: '/category/minimalist',
-        destination: '/category/well-lit',
+        destination: '/category/bookshelves-bright',
         permanent: true,
       },
       {
         source: '/category/home-lifestyle',
-        destination: '/category/living-room',
+        destination: '/category/living-rooms',
         permanent: true,
       },
       {
@@ -97,12 +97,38 @@ const nextConfig = {
       },
       {
         source: '/category/lounges',
-        destination: '/category/living-room',
+        destination: '/category/living-rooms',
         permanent: true,
       },
       {
         source: '/category/private-offices',
         destination: '/category/office-spaces',
+        permanent: true,
+      },
+      // New redirects for renamed categories
+      {
+        source: '/category/well-lit',
+        destination: '/category/bookshelves-bright',
+        permanent: true,
+      },
+      {
+        source: '/category/ambient-lighting',
+        destination: '/category/bookshelves-dark',
+        permanent: true,
+      },
+      {
+        source: '/category/ambient',
+        destination: '/category/bookshelves-dark',
+        permanent: true,
+      },
+      {
+        source: '/category/living-room',
+        destination: '/category/living-rooms',
+        permanent: true,
+      },
+      {
+        source: '/category/kitchen',
+        destination: '/category/kitchens',
         permanent: true,
       },
     ];

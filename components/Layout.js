@@ -118,10 +118,18 @@ export default function Layout({
 {/* Add prefetching for popular categories on homepage */}
 {currentPage === 'home' && (
   <>
-    <link rel="prefetch" href="/category/well-lit" />
-    <link rel="prefetch" href="/category/office-spaces" />
-    <link rel="prefetch" href="/category/living-room" />
-    <link rel="prefetch" href="/category/kitchen" />
+    <link rel="prefetch" href="/category/bookshelves-bright" />
+<link rel="prefetch" href="/category/bookshelves-dark" />
+<link rel="prefetch" href="/category/office-spaces" />
+<link rel="prefetch" href="/category/living-rooms" />
+<link rel="prefetch" href="/category/kitchens" />
+<link rel="prefetch" href="/category/coffee-shops" />
+<link rel="prefetch" href="/category/art-galleries" />
+<link rel="prefetch" href="/category/urban-lofts" />
+<link rel="prefetch" href="/category/gardens-patios" />
+<link rel="prefetch" href="/category/historic-spaces" />
+<link rel="prefetch" href="/category/nature-landscapes" />
+<link rel="prefetch" href="/category/libraries" />
   </>
 )}
       </Head>
@@ -219,46 +227,46 @@ export default function Layout({
   zIndex: '10001'
 }}>
   <button 
-    onClick={() => navigate('/category/well-lit')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'well-lit' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'well-lit' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Well Lit
-  </button>
+  onClick={() => navigate('/category/bookshelves-bright')}
+  style={{
+    padding: '0.5rem 1rem',
+    borderRadius: '0.5rem',
+    textDecoration: 'none',
+    color: currentPage === 'bookshelves-bright' ? '#2563eb' : '#374151',
+    fontWeight: '500',
+    fontSize: '0.9rem',
+    background: '#f9fafb',
+    border: currentPage === 'bookshelves-bright' ? '2px solid #2563eb' : '1px solid #d1d5db',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    position: 'relative',
+    zIndex: '10002'
+  }}
+>
+  Bookshelves - Bright
+</button>
   
   <button 
-    onClick={() => navigate('/category/ambient-lighting')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'ambient-lighting' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'ambient-lighting' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Ambient Lighting
-  </button>
+  onClick={() => navigate('/category/bookshelves-dark')}
+  style={{
+    padding: '0.5rem 1rem',
+    borderRadius: '0.5rem',
+    textDecoration: 'none',
+    color: currentPage === 'bookshelves-dark' ? '#2563eb' : '#374151',
+    fontWeight: '500',
+    fontSize: '0.9rem',
+    background: '#f9fafb',
+    border: currentPage === 'bookshelves-dark' ? '2px solid #2563eb' : '1px solid #d1d5db',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    position: 'relative',
+    zIndex: '10002'
+  }}
+>
+  Bookshelves - Dark
+</button>
   
   <button 
     onClick={() => navigate('/category/office-spaces')}
@@ -282,16 +290,16 @@ export default function Layout({
   </button>
   
   <button 
-    onClick={() => navigate('/category/living-room')}
+    onClick={() => navigate('/category/living-rooms')}
     style={{
       padding: '0.5rem 1rem',
       borderRadius: '0.5rem',
       textDecoration: 'none',
-      color: currentPage === 'living-room' ? '#2563eb' : '#374151',
+      color: currentPage === 'living-rooms' ? '#2563eb' : '#374151',
       fontWeight: '500',
       fontSize: '0.9rem',
       background: '#f9fafb',
-      border: currentPage === 'living-room' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      border: currentPage === 'living-rooms' ? '2px solid #2563eb' : '1px solid #d1d5db',
       transition: 'all 0.3s ease',
       cursor: 'pointer',
       fontFamily: 'inherit',
@@ -299,20 +307,20 @@ export default function Layout({
       zIndex: '10002'
     }}
   >
-    Living Room
+    Living Rooms
   </button>
   
   <button 
-    onClick={() => navigate('/category/kitchen')}
+    onClick={() => navigate('/category/kitchens')}
     style={{
       padding: '0.5rem 1rem',
       borderRadius: '0.5rem',
       textDecoration: 'none',
-      color: currentPage === 'kitchen' ? '#2563eb' : '#374151',
+      color: currentPage === 'kitchens' ? '#2563eb' : '#374151',
       fontWeight: '500',
       fontSize: '0.9rem',
       background: '#f9fafb',
-      border: currentPage === 'kitchen' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      border: currentPage === 'kitchens' ? '2px solid #2563eb' : '1px solid #d1d5db',
       transition: 'all 0.3s ease',
       cursor: 'pointer',
       fontFamily: 'inherit',
@@ -320,7 +328,153 @@ export default function Layout({
       zIndex: '10002'
     }}
   >
-    Kitchen
+    Kitchens
+  </button>
+  <button 
+    onClick={() => navigate('/category/coffee-shops')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'coffee-shops' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'coffee-shops' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
+    Coffee Shops
+  </button>
+  
+  <button 
+    onClick={() => navigate('/category/art-galleries')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'art-galleries' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'art-galleries' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
+    Art Galleries
+  </button>
+  
+  <button 
+    onClick={() => navigate('/category/urban-lofts')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'urban-lofts' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'urban-lofts' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
+    Urban Lofts
+  </button>
+  
+  <button 
+    onClick={() => navigate('/category/gardens-patios')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'gardens-patios' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'gardens-patios' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
+    Gardens & Patios
+  </button>
+  
+  <button 
+    onClick={() => navigate('/category/historic-spaces')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'historic-spaces' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'historic-spaces' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
+    Historic Spaces
+  </button>
+  
+  <button 
+    onClick={() => navigate('/category/nature-landscapes')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'nature-landscapes' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'nature-landscapes' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
+    Nature & Landscapes
+  </button>
+  
+  <button 
+    onClick={() => navigate('/category/libraries')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'libraries' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.9rem',
+      background: '#f9fafb',
+      border: currentPage === 'libraries' ? '2px solid #2563eb' : '1px solid #d1d5db',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      position: 'relative',
+      zIndex: '10002'
+    }}
+  >
+    Libraries
   </button>
 </nav>
           </div>

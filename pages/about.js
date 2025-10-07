@@ -169,7 +169,7 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                       Free Backgrounds
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Over 167 professional virtual backgrounds. Home offices, conference rooms, and more. All completely free to download and use.
+                      Over 290 professional virtual backgrounds. Home offices, conference rooms, and more. All completely free to download and use.
                     </p>
                   </div>
                   <div>

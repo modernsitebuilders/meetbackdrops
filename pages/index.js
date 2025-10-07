@@ -41,7 +41,7 @@ export default function Home() {
   return (
   <Layout
   title="Free Professional Virtual Backgrounds - StreamBackdrops"
-  description="Download 167+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
+  description="Download 290+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
   currentPage="home"
   canonical="https://streambackdrops.com"
 >
@@ -67,7 +67,7 @@ export default function Home() {
     maxWidth: '800px',
     margin: '0 auto 2rem'
   }}>
-    Download 167+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
+    Download 290+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
   </p>
 </section>
 
@@ -227,15 +227,15 @@ export default function Home() {
           margin: '0 auto 4rem auto',
           padding: '0 2rem'
         }}>
-          
-          {/* Well Lit - with REAL IMAGE */}
-           <Link href="/category/well-lit" style={{ textDecoration: 'none' }}>
-              <div 
+
+          {/* Bookshelves Bright - with REAL IMAGE */}
+<Link href="/category/bookshelves-bright" style={{ textDecoration: 'none' }}>
+              <div
                onClick={(e) => {
     if (process.env.NODE_ENV === 'development') {
       e.preventDefault();
       e.stopPropagation();
-      navigate('/category/well-lit');
+      navigate('/category/bookshelves-bright');
     }
   }}
                 style={{
@@ -253,8 +253,8 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                 src="/images/well-lit/well-lit-12.webp"
-                  alt="Well-lit professional office background for video calls"
+  src="/images/bookshelves-bright/well-lit-12.webp"
+  alt="Bright bookshelf background for video calls"
                   fill
                   style={{ objectFit: 'cover' }}
                   quality={75}
@@ -264,28 +264,28 @@ export default function Home() {
               </div>
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Well Lit
-                </h3>
-                <p style={{ color: '#6b7280', marginBottom: '1rem' }}>
-                  Bright, professional backgrounds perfect for video calls and meetings
-                </p>
+  fontSize: '1.25rem',
+  fontWeight: '600',
+  marginBottom: '0.5rem',
+  color: '#111827'
+}}>
+  Bookshelves - Bright
+</h3>
+<p style={{ color: '#6b7280', marginBottom: '1rem' }}>
+  Bright bookshelf backgrounds perfect for professional video calls
+</p>
               </div>
             </div>
           </Link>
 
-          {/* Ambient Lighting - with REAL IMAGE */}
-          <Link href="/category/ambient-lighting" style={{ textDecoration: 'none' }}>
+          {/* Bookshelves Dark - with REAL IMAGE */}
+          <Link href="/category/bookshelves-dark" style={{ textDecoration: 'none' }}>
               <div 
               onClick={(e) => {
     if (process.env.NODE_ENV === 'development') {
       e.preventDefault();
       e.stopPropagation();
-      navigate('/category/ambient-lighting');
+      navigate('/category/bookshelves-dark');
     }
   }}
                 style={{
@@ -303,8 +303,8 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                 src="/images/ambient/ambient-01.webp"
-                 alt="Ambient lighting office background for video meetings"
+  src="/images/bookshelves-dark/ambient-01.webp"
+  alt="Dark bookshelf background for video meetings"
                   fill
                   style={{ objectFit: 'cover' }}
                   quality={75}
@@ -313,16 +313,16 @@ export default function Home() {
               </div>
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Ambient Lighting
-                </h3>
-                <p style={{ color: '#6b7280', marginBottom: '1rem' }}>
-                  Soft lighting backgrounds for a warm, professional appearance
-                </p>
+  fontSize: '1.25rem',
+  fontWeight: '600',
+  marginBottom: '0.5rem',
+  color: '#111827'
+}}>
+  Bookshelves - Dark
+</h3>
+<p style={{ color: '#6b7280', marginBottom: '1rem' }}>
+  Warm bookshelf backgrounds with ambient lighting for professional calls
+</p>
               </div>
             </div>
           </Link>
@@ -376,14 +376,14 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Living Room - with REAL IMAGE */}
-          <Link href="/category/living-room" style={{ textDecoration: 'none' }}>
+          {/* Living Rooms- with REAL IMAGE */}
+          <Link href="/category/living-rooms" style={{ textDecoration: 'none' }}>
               <div 
                onClick={(e) => {
     if (process.env.NODE_ENV === 'development') {
       e.preventDefault();
       e.stopPropagation();
-      navigate('/category/living-room');
+      navigate('/category/living-rooms');
     }
   }} 
                 style={{
@@ -401,7 +401,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                 src="/images/living-room/living-room-29.webp"
+                 src="/images/living-rooms/living-room-29.webp"
                   alt="Comfortable living room backgrounds for casual meetings and personal video calls"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -416,7 +416,7 @@ export default function Home() {
                   marginBottom: '0.5rem',
                   color: '#111827'
                 }}>
-                  Living Room
+                  Living Rooms
                 </h3>
                 <p style={{ color: '#6b7280', marginBottom: '1rem' }}>
                   Comfortable home settings that feel welcoming and professional
@@ -424,14 +424,14 @@ export default function Home() {
               </div>
             </div>
           </Link>
-          {/* Kitchen Backgrounds */}
-          <Link href="/category/kitchen" style={{ textDecoration: 'none' }}>
+          {/* Kitchens Backgrounds */}
+          <Link href="/category/kitchens" style={{ textDecoration: 'none' }}>
             <div 
             onClick={(e) => {
     if (process.env.NODE_ENV === 'development') {
       e.preventDefault();
       e.stopPropagation();
-      navigate('/category/kitchen');
+      navigate('/category/kitchens');
     }
   }} 
               style={{
@@ -448,7 +448,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <img
-                 src="/images/kitchen/kitchen-09.webp"
+                 src="/images/kitchens/kitchen-09.webp"
                   alt="Kitchen virtual background"
                   style={{
                     width: '100%',
@@ -474,6 +474,362 @@ export default function Home() {
   marginBottom: '1rem' 
 }}>
                   Warm kitchen spaces that create a friendly, approachable atmosphere
+                </p>
+              </div>
+            </div>
+          </Link>
+          {/* Coffee Shops */}
+          <Link href="/category/coffee-shops" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/coffee-shops');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/coffee-shops/coffee-shop-1.webp"
+                  alt="Coffee shop virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Coffee Shops
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Cozy coffee shop backgrounds for casual meetings and creative collaborations
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Art Galleries */}
+          <Link href="/category/art-galleries" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/art-galleries');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/art-galleries/art-gallery-1.webp"
+                  alt="Art gallery virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Art Galleries
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Sophisticated art gallery spaces with clean walls and artistic flair
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Urban Lofts */}
+          <Link href="/category/urban-lofts" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/urban-lofts');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/urban-lofts/urban-loft-1.webp"
+                  alt="Urban loft virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Urban Lofts
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Modern industrial loft spaces with exposed brick and contemporary design
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Gardens & Patios */}
+          <Link href="/category/gardens-patios" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/gardens-patios');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/gardens-patios/garden-patio-1.webp"
+                  alt="Garden and patio virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Gardens & Patios
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Beautiful outdoor garden and patio backgrounds that bring natural beauty
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Historic Spaces */}
+          <Link href="/category/historic-spaces" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/historic-spaces');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/historic-spaces/historic-space-6.webp"
+                  alt="Historic space virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Historic Spaces
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Elegant historic interiors including ballrooms and Art Deco corridors
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Nature & Landscapes */}
+          <Link href="/category/nature-landscapes" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/nature-landscapes');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/nature-landscapes/nature-landscape-1.webp"
+                  alt="Nature landscape virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Nature & Landscapes
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Stunning natural landscapes including mountains, deserts, and scenic views
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Libraries */}
+          <Link href="/category/libraries" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/libraries');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/libraries/library-1.webp"
+                  alt="Library virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Libraries
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Classic library rooms with floor-to-ceiling books for academic settings
                 </p>
               </div>
             </div>
@@ -700,21 +1056,21 @@ export default function Home() {
         color: '#1e40af',
         marginBottom: '1.5rem'
       }}>
-        Browse our collection of 167+ professional virtual backgrounds and find the perfect backdrop for your next meeting.
+        Browse our collection of 290+ professional virtual backgrounds and find the perfect backdrop for your next meeting.
       </p>
-      <Link href="/category/well-lit" style={{
-        display: 'inline-block',
-        background: '#2563eb',
-        color: 'white',
-        padding: '1rem 2rem',
-        borderRadius: '0.5rem',
-        textDecoration: 'none',
-        fontWeight: '600',
-        fontSize: '1.1rem',
-        transition: 'background 0.2s'
-      }}>
-        Browse Backgrounds →
-      </Link>
+      <Link href="/category/bookshelves-bright" style={{
+  display: 'inline-block',
+  background: '#2563eb',
+  color: 'white',
+  padding: '1rem 2rem',
+  borderRadius: '0.5rem',
+  textDecoration: 'none',
+  fontWeight: '600',
+  fontSize: '1.1rem',
+  transition: 'background 0.2s'
+}}>
+  Browse Backgrounds →
+</Link>
     </div>
   </div>
 </section>
