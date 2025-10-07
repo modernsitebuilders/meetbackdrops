@@ -50,7 +50,7 @@ export default function Home() {
 <section style={{ 
   textAlign: 'center', 
   padding: '0.5rem 2rem 0.5rem', 
-  background: 'white' 
+  background: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #f9fafb 100%)'
 }}>
   <h1 style={{
     fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -71,36 +71,7 @@ export default function Home() {
   </p>
 </section>
 
-        {/* Hero Section - OPTIMIZED VIDEO */}
-<section style={{
-  position: 'relative',
-  height: '80vh',
-  overflow: 'hidden',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: '#f9fafb'
-}}>
-  <video 
-    autoPlay 
-    muted 
-    playsInline 
-    preload="metadata"
-    style={{
-      position: 'absolute',
-      top: '45%',
-      left: '50%',
-      width: '55%',
-      height: 'auto',
-      aspectRatio: '16/9',
-      transform: 'translate(-50%, -50%)',
-      objectFit: 'cover',
-      zIndex: 1
-    }}
-  >
-    <source src="https://stream-backdrops-videos.s3.amazonaws.com/u9972584128_Subtle_floating_light_particles_drifting_through__b01c2a5c-5dc6-410a-bbdb-704fa53bf572_0.mp4" type="video/mp4" />
-  </video>
-</section>
+       
         <section style={{
   padding: '3rem 2rem',
   background: '#f8fafc',
@@ -132,18 +103,9 @@ export default function Home() {
     gap: '1.5rem'
   }}>
 {/* Card 1 - Best Virtual Background Sites 2025 */}
-<Link href="/blog-best-virtual-background-sites-2025" style={{ 
-  textDecoration: 'none'
-}}>
-<div style={{
-  background: 'white',
-  padding: '1rem',
-  borderRadius: '0.5rem',
-  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  cursor: 'pointer',
-  height: '100%'
-}}>
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+<Link href="/blog-best-virtual-background-sites-2025" style={{ textDecoration: 'none' }}>
+  <div className="blog-card">
+    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
       Best Free Background Sites 2025
     </h3>
     <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
@@ -153,18 +115,9 @@ export default function Home() {
 </Link>
 
 {/* Card 2 - Perfect Lighting Setup */}
-<Link href="/blog-background-mistakes" style={{ 
-  textDecoration: 'none'
-}}>
-<div style={{
-  background: 'white',
-  padding: '1rem',
-  borderRadius: '0.5rem',
-  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  cursor: 'pointer',
-  height: '100%'
-}}>
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+<Link href="/blog-background-mistakes" style={{ textDecoration: 'none' }}>
+  <div className="blog-card">
+    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
       Perfect Lighting Setup
     </h3>
     <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
@@ -174,18 +127,9 @@ export default function Home() {
 </Link>
 
 {/* Card 3 - 5-Minute Setup Guide */}
-<Link href="/blog-background-mistakes" style={{ 
-  textDecoration: 'none'
-}}>
-<div style={{
-  background: 'white',
-  padding: '1rem',
-  borderRadius: '0.5rem',
-  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  cursor: 'pointer',
-  height: '100%'
-}}>
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+<Link href="/blog-background-mistakes" style={{ textDecoration: 'none' }}>
+  <div className="blog-card">
+    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
       5-Minute Setup Guide
     </h3>
     <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
@@ -195,18 +139,9 @@ export default function Home() {
 </Link>
 
 {/* Card 4 - Choose the Right Style */}
-<Link href="/blog-background-mistakes" style={{ 
-  textDecoration: 'none'
-}}>
-<div style={{
-  background: 'white',
-  padding: '1rem',
-  borderRadius: '0.5rem',
-  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  cursor: 'pointer',
-  height: '100%'
-}}>
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+<Link href="/blog-background-mistakes" style={{ textDecoration: 'none' }}>
+  <div className="blog-card">
+    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
       Choose the Right Style
     </h3>
     <p style={{ color: '#64748b', fontSize: '0.9rem' }}>

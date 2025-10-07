@@ -46,7 +46,20 @@ export default function Layout({
     "query-input": "required name=search_term_string"
   }
 };
-
+const dropdownItemStyle = {
+  display: 'block',
+  width: '100%',
+  padding: '0.75rem 1rem',
+  textAlign: 'left',
+  background: 'transparent',
+  border: 'none',
+  color: '#374151',
+  fontSize: '0.9rem',
+  cursor: 'pointer',
+  borderRadius: '0.375rem',
+  fontFamily: 'inherit',
+  transition: 'background 0.2s ease'
+};
   return (
     <>
       <Head>
@@ -226,55 +239,32 @@ export default function Layout({
             </button>
             
             {/* ✅ Navigation */}
-           <nav style={{ 
+          <nav style={{ 
   display: 'flex',
   gap: '1.5rem',
   alignItems: 'center',
-  flexWrap: 'wrap',
   position: 'relative',
   zIndex: '10001'
 }}>
+  {/* Featured Categories */}
   <button 
-  onClick={() => navigate('/category/bookshelves-bright')}
-  style={{
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    textDecoration: 'none',
-    color: currentPage === 'bookshelves-bright' ? '#2563eb' : '#374151',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    background: '#f9fafb',
-    border: currentPage === 'bookshelves-bright' ? '2px solid #2563eb' : '1px solid #d1d5db',
-    transition: 'all 0.3s ease',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    position: 'relative',
-    zIndex: '10002'
-  }}
->
-  Bookshelves - Bright
-</button>
-  
-  <button 
-  onClick={() => navigate('/category/bookshelves-dark')}
-  style={{
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    textDecoration: 'none',
-    color: currentPage === 'bookshelves-dark' ? '#2563eb' : '#374151',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    background: '#f9fafb',
-    border: currentPage === 'bookshelves-dark' ? '2px solid #2563eb' : '1px solid #d1d5db',
-    transition: 'all 0.3s ease',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    position: 'relative',
-    zIndex: '10002'
-  }}
->
-  Bookshelves - Dark
-</button>
+    onClick={() => navigate('/category/bookshelves-bright')}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      color: currentPage === 'bookshelves-bright' ? '#2563eb' : '#374151',
+      fontWeight: '500',
+      fontSize: '0.95rem',
+      background: 'transparent',
+      border: 'none',
+      transition: 'color 0.2s ease',
+      cursor: 'pointer',
+      fontFamily: 'inherit'
+    }}
+  >
+    Bookshelves
+  </button>
   
   <button 
     onClick={() => navigate('/category/office-spaces')}
@@ -284,19 +274,17 @@ export default function Layout({
       textDecoration: 'none',
       color: currentPage === 'office-spaces' ? '#2563eb' : '#374151',
       fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'office-spaces' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
+      fontSize: '0.95rem',
+      background: 'transparent',
+      border: 'none',
+      transition: 'color 0.2s ease',
       cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
+      fontFamily: 'inherit'
     }}
   >
     Office Spaces
   </button>
-  
+
   <button 
     onClick={() => navigate('/category/living-rooms')}
     style={{
@@ -305,185 +293,68 @@ export default function Layout({
       textDecoration: 'none',
       color: currentPage === 'living-rooms' ? '#2563eb' : '#374151',
       fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'living-rooms' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
+      fontSize: '0.95rem',
+      background: 'transparent',
+      border: 'none',
+      transition: 'color 0.2s ease',
       cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
+      fontFamily: 'inherit'
     }}
   >
     Living Rooms
   </button>
   
-  <button 
-    onClick={() => navigate('/category/kitchens')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'kitchens' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'kitchens' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Kitchens
-  </button>
-  <button 
-    onClick={() => navigate('/category/coffee-shops')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'coffee-shops' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'coffee-shops' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Coffee Shops
-  </button>
-  
-  <button 
-    onClick={() => navigate('/category/art-galleries')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'art-galleries' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'art-galleries' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Art Galleries
-  </button>
-  
-  <button 
-    onClick={() => navigate('/category/urban-lofts')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'urban-lofts' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'urban-lofts' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Urban Lofts
-  </button>
-  
-  <button 
-    onClick={() => navigate('/category/gardens-patios')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'gardens-patios' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'gardens-patios' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Gardens & Patios
-  </button>
-  
-  <button 
-    onClick={() => navigate('/category/historic-spaces')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'historic-spaces' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'historic-spaces' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Historic Spaces
-  </button>
-  
-  <button 
-    onClick={() => navigate('/category/nature-landscapes')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'nature-landscapes' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'nature-landscapes' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Nature & Landscapes
-  </button>
-  
-  <button 
-    onClick={() => navigate('/category/libraries')}
-    style={{
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      color: currentPage === 'libraries' ? '#2563eb' : '#374151',
-      fontWeight: '500',
-      fontSize: '0.9rem',
-      background: '#f9fafb',
-      border: currentPage === 'libraries' ? '2px solid #2563eb' : '1px solid #d1d5db',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      position: 'relative',
-      zIndex: '10002'
-    }}
-  >
-    Libraries
-  </button>
+  {/* More Dropdown */}
+  <div style={{ position: 'relative' }}>
+    <button
+      onClick={(e) => {
+        const dropdown = e.currentTarget.nextElementSibling;
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      }}
+      style={{
+        padding: '0.5rem 1rem',
+        borderRadius: '0.5rem',
+        color: '#374151',
+        fontWeight: '500',
+        fontSize: '0.95rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        fontFamily: 'inherit',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.25rem'
+      }}
+    >
+      More <span style={{ fontSize: '0.7rem' }}>▼</span>
+    </button>
+    
+    <div
+      style={{
+        display: 'none',
+        position: 'absolute',
+        top: '100%',
+        right: 0,
+        marginTop: '0.5rem',
+        background: 'white',
+        borderRadius: '0.5rem',
+        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+        padding: '0.5rem',
+        minWidth: '200px',
+        zIndex: 10002
+      }}
+    >
+      <button onClick={() => navigate('/category/bookshelves-dark')} style={dropdownItemStyle}>Bookshelves - Dark</button>
+      <button onClick={() => navigate('/category/kitchens')} style={dropdownItemStyle}>Kitchens</button>
+      <button onClick={() => navigate('/category/coffee-shops')} style={dropdownItemStyle}>Coffee Shops</button>
+      <button onClick={() => navigate('/category/art-galleries')} style={dropdownItemStyle}>Art Galleries</button>
+      <button onClick={() => navigate('/category/urban-lofts')} style={dropdownItemStyle}>Urban Lofts</button>
+      <button onClick={() => navigate('/category/gardens-patios')} style={dropdownItemStyle}>Gardens & Patios</button>
+      <button onClick={() => navigate('/category/historic-spaces')} style={dropdownItemStyle}>Historic Spaces</button>
+      <button onClick={() => navigate('/category/nature-landscapes')} style={dropdownItemStyle}>Nature & Landscapes</button>
+      <button onClick={() => navigate('/category/libraries')} style={dropdownItemStyle}>Libraries</button>
+    </div>
+  </div>
 </nav>
           </div>
         </header>
