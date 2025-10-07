@@ -9,7 +9,99 @@ const nextConfig = {
       };
     }
     return config;
-  }
+  },
   // CSP removed temporarily to test tracking
+  
+  // Redirects for old URLs
+  async redirects() {
+    return [
+      // Redirect www to non-www
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.streambackdrops.com',
+          },
+        ],
+        destination: 'https://streambackdrops.com/:path*',
+        permanent: true,
+      },
+      // Redirect http to https
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'streambackdrops.com',
+          },
+          {
+            type: 'header',
+            key: 'x-forwarded-proto',
+            value: 'http',
+          },
+        ],
+        destination: 'https://streambackdrops.com/:path*',
+        permanent: true,
+      },
+      // Old category redirects
+      {
+        source: '/category/ambiant-lighting',
+        destination: '/category/ambient',
+        permanent: true,
+      },
+      {
+        source: '/category/conference-rooms',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/minimalist',
+        destination: '/category/well-lit',
+        permanent: true,
+      },
+      {
+        source: '/category/home-lifestyle',
+        destination: '/category/living-room',
+        permanent: true,
+      },
+      {
+        source: '/category/professional-shelves',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/open-offices',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/executive-offices',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/home-offices',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/premium-4k',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/category/lobbies',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/lounges',
+        destination: '/category/living-room',
+        permanent: true,
+      },
+    ];
+  },
 };
+
 module.exports = nextConfig;
