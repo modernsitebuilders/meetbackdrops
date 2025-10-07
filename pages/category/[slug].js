@@ -537,25 +537,42 @@ fetch('/api/track-download', {
             gap: '1.5rem'
           }}>
             {category.images.map((image, index) => (
-              <div
-                key={image.filename}
-                style={{
-                  position: 'relative',
-                  cursor: 'pointer',
-                  borderRadius: '0.5rem',
-                  overflow: 'hidden',
-                  transition: 'transform 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-                onClick={() => setPreviewImage(image)}
-              >
-                <div style={{
-                  position: 'relative',
+  <div
+    key={image.filename}
+    style={{
+      position: 'relative',
+      cursor: 'pointer',
+      borderRadius: '0.5rem',
+      overflow: 'hidden',
+      transition: 'transform 0.2s ease'
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = 'translateY(-2px)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = 'translateY(0)';
+    }}
+    onClick={() => setPreviewImage(image)}
+  >
+    {/* ImageObject Schema for each image */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          "contentUrl": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
+          "name": image.title,
+          "description": `Free ${image.title} - HD virtual background for Zoom, Teams, and Google Meet`,
+          "thumbnail": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "acquireLicensePage": "https://streambackdrops.com/about"
+        })
+      }}
+    />
+
+    <div style={{
+      position: 'relative',
                   width: '100%',
                   aspectRatio: '16/9',
                   overflow: 'hidden'
