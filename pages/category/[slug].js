@@ -411,6 +411,50 @@ fetch('/api/track-download', {
                 })
               }}
             />
+            {/* FAQ Schema */}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": [
+                    {
+                      "@type": "Question",
+                      "name": `How do I use ${category.name.toLowerCase()} virtual backgrounds?`,
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": `To use these ${category.name.toLowerCase()} backgrounds, download your chosen image, then upload it in your video conferencing app's virtual background settings. For Zoom, go to Settings > Background & Effects. For Teams, go to Settings > Devices > Background effects.`
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "What format are these backgrounds in?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "All backgrounds are available in high-quality PNG format, optimized for video calls. They work with Zoom, Microsoft Teams, Google Meet, and other video conferencing platforms."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "Can I use these backgrounds for commercial purposes?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, all backgrounds on StreamBackdrops are free to download and use for both personal and commercial purposes, including business meetings, webinars, and professional presentations."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "What's the best lighting for virtual backgrounds?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "For best results with virtual backgrounds, ensure you have good front-facing lighting. Natural light from a window or a ring light works well. Avoid backlighting, which can cause poor edge detection."
+                      }
+                    }
+                  ]
+                })
+              }}
+            />
           </>
         ) : (
           /* ✅ NEW: For not-found pages, tell search engines not to index */
@@ -439,6 +483,27 @@ fetch('/api/track-download', {
           margin: '0 auto'
           
         }}>
+          {/* Breadcrumbs */}
+<nav style={{
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+  marginBottom: '1.5rem',
+  fontSize: '0.9rem',
+  color: '#6b7280'
+}}>
+  <Link href="/" style={{
+    color: '#2563eb',
+    textDecoration: 'none',
+    transition: 'color 0.2s'
+  }}>
+    Home
+  </Link>
+  <span>›</span>
+  <span style={{ color: '#111827', fontWeight: '500' }}>
+    {category.name}
+  </span>
+</nav>
          {/* Page Title */}
           <h1 style={{
             fontSize: '2.5rem',
