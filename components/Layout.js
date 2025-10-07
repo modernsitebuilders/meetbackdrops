@@ -31,13 +31,21 @@ export default function Layout({
     }
   };
   
-  const defaultStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "StreamBackdrops",
-    "description": "Free professional virtual backgrounds for video calls",
-    "url": "https://streambackdrops.com"
-  };
+ const defaultStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "StreamBackdrops",
+  "description": "Free professional virtual backgrounds for video calls",
+  "url": "https://streambackdrops.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://streambackdrops.com/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
 
   return (
     <>
