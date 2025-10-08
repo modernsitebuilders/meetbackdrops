@@ -26,7 +26,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           `
         }} />
         
-        <link rel="preload" as="image" href="/video-poster.jpg" />
         <link 
           rel="preload" 
           as="video" 

@@ -8,6 +8,17 @@ export default async function handler(req, res) {
   const { page, category, referrer } = req.body;
   
   try {
+    // Check if environment variables exist
+    if (!process.env.GOOGLE_SERVICE_EMAIL) {
+      throw new Error('GOOGLE_SERVICE_EMAIL not set');
+    }
+    if (!process.env.GOOGLE_PRIVATE_KEY) {
+      throw new Error('GOOGLE_PRIVATE_KEY not set');
+    }
+    if (!process.env.GOOGLE_SHEET_ID) {
+      throw new Error('GOOGLE_SHEET_ID not set');
+    }
+
     // Fix private key format
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
@@ -61,7 +72,7 @@ export default async function handler(req, res) {
     res.status(200).json({ success: true });
     
   } catch (error) {
-    console.error('Page view tracking failed:', error);
-    res.status(500).json({ error: 'Tracking failed' });
+    console.error('Page view tracking failed:', error.message);
+    res.status(500).json({ error: error.message });
   }
 }
