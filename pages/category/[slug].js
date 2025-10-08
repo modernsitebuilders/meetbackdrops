@@ -412,34 +412,26 @@ const handleDownload = async (image) => {
 <meta property="twitter:description" content={`Free HD ${category.name.toLowerCase()} backgrounds for video calls`} />
             {/* ✅ NEW: Structured Data for better Google results */}
             <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "ImageGallery",
-                  "name": `${category.name} Backgrounds`,
-                  "description": category.description,
-                  "url": `https://streambackdrops.com/category/${slug}`,
-                  "breadcrumb": {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                      {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://streambackdrops.com"
-                      },
-                      {
-                        "@type": "ListItem", 
-                        "position": 2,
-                        "name": category.name,
-                        "item": `https://streambackdrops.com/category/${slug}`
-                      }
-                    ]
-                  }
-                })
-              }}
-            />
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          "contentUrl": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
+          "name": image.title,
+          "description": `Free ${image.title} - HD virtual background for Zoom, Teams, and Google Meet`,
+          "thumbnail": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "acquireLicensePage": "https://streambackdrops.com/about",
+          "creditText": "StreamBackdrops",
+          "creator": {
+            "@type": "Organization",
+            "name": "StreamBackdrops"
+          },
+          "copyrightNotice": "© 2025 StreamBackdrops. Available under CC0 1.0 Universal Public Domain Dedication."
+        })
+      }}
+    />
             {/* FAQ Schema */}
             <script
               type="application/ld+json"
