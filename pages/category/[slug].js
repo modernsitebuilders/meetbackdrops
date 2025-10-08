@@ -481,6 +481,55 @@ const handleDownload = async (image) => {
           /* ✅ NEW: For not-found pages, tell search engines not to index */
           <meta name="robots" content="noindex" />
         )}
+      {/* Breadcrumb Schema for better navigation in search results */}
+            {category && (
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                      {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://streambackdrops.com"
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": category.name,
+                        "item": `https://streambackdrops.com/category/${slug}`
+                      }
+                    ]
+                  })
+                }}
+              />
+            )}
+            
+            {/* ItemList Schema for category pages */}
+            {category && (
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "ItemList",
+                    "name": `${category.name} Virtual Backgrounds Collection`,
+                    "description": category.description,
+                    "numberOfItems": category.images.length,
+                    "itemListElement": category.images.slice(0, 10).map((image, index) => ({
+                      "@type": "ListItem",
+                      "position": index + 1,
+                      "url": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
+                      "name": image.title,
+                      "image": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`
+                    }))
+                  })
+                }}
+              />
+            )}
       </Head>
 
       {/* ✅ NEW: Single conditional content section (replaces early return) */}
@@ -588,10 +637,10 @@ const handleDownload = async (image) => {
           "thumbnail": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
           "license": "https://creativecommons.org/publicdomain/zero/1.0/",
           "acquireLicensePage": "https://streambackdrops.com/about"
+        
         })
       }}
     />
-
     <div style={{
       position: 'relative',
                   width: '100%',
