@@ -350,21 +350,21 @@ export default function HalloweenBackgrounds() {
               color: '#374151'
             }}>
               <li style={{ marginBottom: '0.75rem', paddingLeft: '2rem', position: 'relative' }}>
-                <span style={{ position: 'absolute', left: 0 }}>🎃</span>
-                <strong>Fall Porches:</strong> Cozy screened porches decorated with pumpkins and autumn decor
-              </li>
-              <li style={{ marginBottom: '0.75rem', paddingLeft: '2rem', position: 'relative' }}>
-                <span style={{ position: 'absolute', left: 0 }}>🍂</span>
-                <strong>Seasonal Patios:</strong> Outdoor living spaces with festive Halloween touches
-              </li>
-              <li style={{ marginBottom: '0.75rem', paddingLeft: '2rem', position: 'relative' }}>
-                <span style={{ position: 'absolute', left: 0 }}>🕯️</span>
-                <strong>Warm Atmospheres:</strong> Ambient lighting and cozy fall vibes
-              </li>
-              <li style={{ marginBottom: '0.75rem', paddingLeft: '2rem', position: 'relative' }}>
-                <span style={{ position: 'absolute', left: 0 }}>🏡</span>
-                <strong>Indoor Spaces:</strong> Living areas with tasteful Halloween decorations
-              </li>
+  <span style={{ position: 'absolute', left: 0 }}>🎃</span>
+  <strong>Festive Living Rooms:</strong> Cozy indoor spaces decorated with pumpkins and autumn accents
+</li>
+<li style={{ marginBottom: '0.75rem', paddingLeft: '2rem', position: 'relative' }}>
+  <span style={{ position: 'absolute', left: 0 }}>🍂</span>
+  <strong>Seasonal Offices:</strong> Professional workspaces with tasteful Halloween touches
+</li>
+<li style={{ marginBottom: '0.75rem', paddingLeft: '2rem', position: 'relative' }}>
+  <span style={{ position: 'absolute', left: 0 }}>🕯️</span>
+  <strong>Warm Atmospheres:</strong> Ambient lighting with candles and cozy fall vibes
+</li>
+<li style={{ marginBottom: '0.75rem', paddingLeft: '2rem', position: 'relative' }}>
+  <span style={{ position: 'absolute', left: 0 }}>🏡</span>
+  <strong>Decorated Interiors:</strong> Kitchens, dining rooms, and entryways with Halloween charm
+</li>
             </ul>
 
             <p style={{
