@@ -288,17 +288,18 @@ useEffect(() => {
   });
 }, [slug, category]);
 
-  const handleDownload = async (image) => {
+ const handleDownload = async (image) => {
   try {
     // Track download to Google Sheets
-fetch('/api/track-download', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    filename: image.filename,
-    category: slug
-  })
-}).catch(() => {}); // Fail silently
+    fetch('/api/track-download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        filename: image.filename,
+        category: slug
+      })
+    }).catch(() => {}); // Fail silently
+    
     // Track the download
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'download', {
@@ -317,13 +318,16 @@ fetch('/api/track-download', {
     const imageUrl = cloudinaryUrls[baseFilename];
     
     if (imageUrl) {
-      // Force download using Cloudinary's fl_attachment parameter
-      const downloadUrl = imageUrl.replace('/upload/', '/upload/fl_attachment/');
+      // Create clean download filename from category and title
+      const cleanFilename = `StreamBackdrops-${slug}-${baseFilename}.png`;
+      
+      // Force download using Cloudinary's fl_attachment parameter with custom filename
+      const downloadUrl = imageUrl.replace('/upload/', `/upload/fl_attachment:${encodeURIComponent(cleanFilename)}/`);
       
       // Create a link and trigger download
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = `StreamBackdrops-${baseFilename}.png`;
+      link.download = cleanFilename;
       link.target = '_blank';
       document.body.appendChild(link);
       link.click();

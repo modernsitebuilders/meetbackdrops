@@ -176,9 +176,6 @@
   "cld-sample-4": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759067651/cld-sample-4.jpg",
   "cld-sample-2": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759067650/cld-sample-2.jpg",
   "upscale-face-1": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759067647/samples/upscale-face-1.jpg",
-  "coffee-shop-1": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759868693/coffee-shop-1.png",
-  "coffee-shop-2": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759868698/coffee-shop-2.png",
-  "coffee-shop-3": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759868703/coffee-shop-3.png",
   "art-gallery-1": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759868704/art-gallery-1.png",
   "art-gallery-10": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759868705/art-gallery-10.png",
   "art-gallery-11": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759868711/art-gallery-11.png",
@@ -315,5 +312,8 @@
   "coffee-shop-16": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759885256/coffee-shop-16.png",
   "coffee-shop-17": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759885257/coffee-shop-17.png",
   "coffee-shop-18": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759885258/coffee-shop-18.png",
-  "coffee-shop-19": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759885261/coffee-shop-19.png"
+  "coffee-shop-19": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759885261/coffee-shop-19.png",
+  "coffee-shop-01": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759886024/coffee-shop-01.png",
+  "coffee-shop-02": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759886024/coffee-shop-02.png",
+  "coffee-shop-03": "https://res.cloudinary.com/dnhju6mhg/image/upload/v1759886025/coffee-shop-03.png"
 }
