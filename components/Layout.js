@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import Footer from '../components/Footer';
 
 export default function Layout({ 
@@ -60,7 +61,16 @@ const dropdownItemStyle = {
   fontFamily: 'inherit',
   transition: 'background 0.2s ease'
 };
-  return (
+useEffect(() => {
+  const dropdowns = document.querySelectorAll('nav div[style*="position: absolute"]');
+  dropdowns.forEach(dropdown => {
+    if (dropdown.style.display === 'block') {
+      dropdown.style.display = 'none';
+    }
+  });
+}, [router.asPath]);
+
+return (
     <>
       <Head>
   <title>{title}</title>
