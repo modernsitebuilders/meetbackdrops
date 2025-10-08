@@ -12,27 +12,27 @@ const nextConfig = {
   },
   
   // Content Security Policy
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cdn-cookieyes.com",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://log.cookieyes.com",
-              "img-src 'self' data: https: blob:",
-              "style-src 'self' 'unsafe-inline'",
-              "font-src 'self' data:",
-              "frame-src 'self' https://www.google.com",
-            ].join('; ')
-          }
-        ]
-      }
-    ];
-  },
+ async headers() {
+  return [
+    {
+      source: '/:path*',
+      headers: [
+        {
+          key: 'Content-Security-Policy',
+          value: [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://cdn-cookieyes.com",
+            "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://log.cookieyes.com",
+            "img-src 'self' data: https: blob:",
+            "style-src 'self' 'unsafe-inline'",
+            "font-src 'self' data:",
+            "frame-src 'self' https://www.google.com",
+          ].join('; ')
+        }
+      ]
+    }
+  ];
+},
   
   // Redirects for old URLs
   async redirects() {
