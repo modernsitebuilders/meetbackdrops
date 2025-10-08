@@ -121,11 +121,83 @@ export default function Blog() {
   return (
     <>
       <Head>
-        <title>Virtual Background Blog - StreamBackdrops</title>
-        <meta name="description" content="Expert guides, tips, and insights about virtual backgrounds, remote work, video calls, and professional online presence." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://streambackdrops.com/blog" />
-      </Head>
+  <title>Virtual Background Blog - StreamBackdrops</title>
+  <meta name="description" content="Expert guides, tips, and insights about virtual backgrounds, remote work, video calls, and professional online presence." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://streambackdrops.com/blog" />
+  
+  {/* Blog/Collection Page structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "StreamBackdrops Blog",
+      "description": "Expert guides and tips about virtual backgrounds, remote work, and professional video calls",
+      "url": "https://streambackdrops.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Best Free Virtual Background Sites in 2025: Complete Comparison",
+          "url": "https://streambackdrops.com/blog-best-virtual-background-sites-2025"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "10 Essential Tips for Professional Video Calls",
+          "url": "https://streambackdrops.com/blog-professional-video-calls"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings",
+          "url": "https://streambackdrops.com/blog-video-call-etiquette"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Best Virtual Backgrounds by Industry: Complete Professional Guide",
+          "url": "https://streambackdrops.com/blog-backgrounds-by-industry"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "15 Virtual Background Mistakes That Ruin Your Professional Image",
+          "url": "https://streambackdrops.com/blog-background-mistakes"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Perfect Lighting Setup for Virtual Backgrounds: Complete Guide",
+          "url": "https://streambackdrops.com/blog-lighting-tips"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Complete Guide to Virtual Backgrounds for Video Calls 2025",
+          "url": "https://streambackdrops.com/blog-virtual-background-guide"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Zoom vs Teams vs Google Meet: Virtual Background Setup & Best Practices",
+          "url": "https://streambackdrops.com/blog-zoom-teams-google"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Remote Work Productivity: Creating Your Perfect Home Office Environment",
+          "url": "https://streambackdrops.com/blog-remote-work-productivity"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Best Halloween Virtual Backgrounds for Video Calls 2025",
+          "url": "https://streambackdrops.com/blog-halloween-backgrounds"
+        }
+      ]
+    })}
+  </script>
+</Head>
 
       <div style={{minHeight: '100vh', background: '#f9fafb'}}>
         {/* Header */}
