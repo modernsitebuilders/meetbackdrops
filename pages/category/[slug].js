@@ -172,15 +172,15 @@ const categoryInfo = {
     }))
   },
   
-  'coffee-shops': {
-    name: 'Coffee Shops',
-    description: 'Cozy coffee shop backgrounds for casual meetings',
-    seoDescription: 'Download free coffee shop virtual backgrounds for video calls. Perfect for casual meetings and creative collaboration.',
-    images: Array.from({length: 3}, (_, i) => ({
-      filename: `coffee-shop-${i + 1}.webp`,
-      title: `Coffee Shop Background ${i + 1}`
-    }))
-  },
+ 'coffee-shops': {
+  name: 'Coffee Shops',
+  description: 'Cozy coffee shop backgrounds for casual meetings',
+  seoDescription: 'Download free coffee shop virtual backgrounds for video calls. Perfect for casual meetings and creative collaboration.',
+  images: Array.from({length: 19}, (_, i) => ({
+    filename: `coffee-shop-${String(i + 1).padStart(2, '0')}.webp`,
+    title: `Coffee Shop Background ${i + 1}`
+  }))
+},
   
   'art-galleries': {
     name: 'Art Galleries',

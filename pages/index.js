@@ -41,7 +41,7 @@ export default function Home() {
   return (
   <Layout
   title="Free Professional Virtual Backgrounds - StreamBackdrops"
-  description="Download 290+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
+  description="Download 300+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
   currentPage="home"
   canonical="https://streambackdrops.com"
 >
@@ -67,7 +67,7 @@ export default function Home() {
     maxWidth: '800px',
     margin: '0 auto 2rem'
   }}>
-    Download 290+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
+    Download 300+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
   </p>
 </section>
 
@@ -991,7 +991,7 @@ export default function Home() {
         color: '#1e40af',
         marginBottom: '1.5rem'
       }}>
-        Browse our collection of 290+ professional virtual backgrounds and find the perfect backdrop for your next meeting.
+        Browse our collection of 300+ professional virtual backgrounds and find the perfect backdrop for your next meeting.
       </p>
       <Link href="/category/bookshelves-bright" style={{
   display: 'inline-block',
