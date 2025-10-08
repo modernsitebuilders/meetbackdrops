@@ -288,7 +288,7 @@ useEffect(() => {
   });
 }, [slug, category]);
 
- const handleDownload = async (image) => {
+const handleDownload = async (image) => {
   try {
     // Track download to Google Sheets
     fetch('/api/track-download', {
@@ -318,21 +318,17 @@ useEffect(() => {
     const imageUrl = cloudinaryUrls[baseFilename];
     
     if (imageUrl) {
-      // Use fetch to download the image as a blob
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
+      // Force download using Cloudinary's fl_attachment parameter
+      const downloadUrl = imageUrl.replace('/upload/', '/upload/fl_attachment/');
       
-      // Create a download link
-      const blobUrl = window.URL.createObjectURL(blob);
+      // Create a link and trigger download
       const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = `StreamBackdrops-${slug}-${baseFilename}.png`;
+      link.href = downloadUrl;
+      link.download = `StreamBackdrops-${baseFilename}.png`;
+      link.target = '_blank';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      // Clean up the blob URL
-      window.URL.revokeObjectURL(blobUrl);
     } else {
       console.error(`No Cloudinary URL found for ${baseFilename}`);
     }
