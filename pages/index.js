@@ -16,27 +16,30 @@ export default function Home() {
     }
   };
   // ADD THIS: Track homepage visits
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Enhanced referrer tracking for homepage
-      let referrer = document.referrer || 'direct';
-      
-      // Store original referrer for session
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/',
-          category: 'homepage',
-          referrer: referrer
-        })
-      }).catch(err => console.log('Homepage tracking failed:', err));
+ useEffect(() => {
+  if (typeof window !== 'undefined') {
+    // Skip tracking if admin
+    if (localStorage.getItem('streambackdrops_admin') === 'true') {
+      return;
     }
-  }, []);
+    
+    let referrer = document.referrer || 'direct';
+    
+    if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
+      sessionStorage.setItem('entry_referrer', document.referrer);
+    }
+    
+    fetch('/api/track-page-view', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        page: '/',
+        category: 'homepage',
+        referrer: referrer
+      })
+    }).catch(err => console.log('Homepage tracking failed:', err));
+  }
+}, []);
 
   return (
   <Layout

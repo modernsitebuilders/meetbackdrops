@@ -301,6 +301,18 @@ useEffect(() => {
 
 const handleDownload = async (image) => {
   try {
+    // Skip tracking if admin
+    if (localStorage.getItem('streambackdrops_admin') === 'true') {
+      // Still do the actual download, just skip tracking
+      const link = document.createElement('a');
+      link.href = `/images/${folderMap[slug]}/${image.filename}`;
+      link.download = image.filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+    
     // Track download to Google Sheets
     fetch('/api/track-download', {
       method: 'POST',
