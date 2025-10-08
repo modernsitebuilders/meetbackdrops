@@ -8,6 +8,11 @@ import Footer from '../components/Footer';
 export default function HalloweenBackgrounds() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // Skip tracking if admin
+      if (localStorage.getItem('streambackdrops_admin') === 'true') {
+        return;
+      }
+      
       let referrer = document.referrer || 'direct';
       
       if (!sessionStorage.getItem('entry_referrer') && document.referrer) {

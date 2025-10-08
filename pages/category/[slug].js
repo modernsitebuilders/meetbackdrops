@@ -274,6 +274,11 @@ function CategoryContent({ slug }) {
   const category = categoryInfo[slug];
 // Track page view when component loads
 useEffect(() => {
+  // Skip tracking if admin
+  if (typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true') {
+    return;
+  }
+  
   // Enhanced referrer tracking
   let referrer = document.referrer || 'direct';
   

@@ -1,8 +1,39 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
+import { useEffect } from 'react';
 
 export default function BlogVirtualBackgroundGuide() {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Skip tracking if admin
+      if (localStorage.getItem('streambackdrops_admin') === 'true') {
+        return;
+      }
+      
+      let referrer = document.referrer || 'direct';
+      
+      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
+        sessionStorage.setItem('entry_referrer', document.referrer);
+      }
+      
+      const sessionReferrer = sessionStorage.getItem('entry_referrer');
+      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
+        referrer = sessionReferrer;
+      }
+
+      fetch('/api/track-page-view', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          page: '/blog-virtual-background-guide',
+          category: 'blog',
+          referrer: referrer
+        })
+      }).catch(() => {});
+    }
+  }, []);
+
   return (
     <>
       <Head>
