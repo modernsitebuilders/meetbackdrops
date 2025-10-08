@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import { useEffect } from 'react';
+import { homepageStructuredData } from '../data/homepageSchema';
+import Card from '../components/Card';
+
 export default function Home() {
   const router = useRouter();
   const navigate = (path) => {
@@ -41,143 +44,6 @@ export default function Home() {
   }
 }, []);
 
-    // Add this complete structured data object before the return statement
-  const homepageStructuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "StreamBackdrops",
-        "description": "Free professional virtual backgrounds for video calls",
-        "url": "https://streambackdrops.com",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://streambackdrops.com/?q={search_term_string}"
-          },
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "Organization",
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com",
-        "logo": "https://streambackdrops.com/logo.png",
-        "description": "Provider of free HD virtual backgrounds for professional video calls",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Norristown",
-          "addressRegion": "PA",
-          "addressCountry": "US"
-        }
-      },
-      {
-        "@type": "CollectionPage",
-        "name": "Virtual Background Collections",
-        "description": "Browse our collection of 330+ free HD virtual backgrounds",
-        "url": "https://streambackdrops.com",
-        "hasPart": [
-          {
-            "@type": "Collection",
-            "name": "Bookshelves - Bright",
-            "url": "https://streambackdrops.com/category/bookshelves-bright",
-            "description": "47 bright bookshelf backgrounds for professional video calls"
-          },
-          {
-            "@type": "Collection",
-            "name": "Bookshelves - Dark",
-            "url": "https://streambackdrops.com/category/bookshelves-dark",
-            "description": "41 warm bookshelf backgrounds with ambient lighting"
-          },
-          {
-            "@type": "Collection",
-            "name": "Office Spaces",
-            "url": "https://streambackdrops.com/category/office-spaces",
-            "description": "19 professional office backgrounds for business calls"
-          },
-          {
-            "@type": "Collection",
-            "name": "Living Rooms",
-            "url": "https://streambackdrops.com/category/living-rooms",
-            "description": "47 comfortable home backgrounds for casual video calls"
-          },
-          {
-            "@type": "Collection",
-            "name": "Kitchens",
-            "url": "https://streambackdrops.com/category/kitchens",
-            "description": "18 kitchen backgrounds for cooking shows and casual calls"
-          },
-          {
-            "@type": "Collection",
-            "name": "Coffee Shops",
-            "url": "https://streambackdrops.com/category/coffee-shops",
-            "description": "19 cozy coffee shop backgrounds for casual meetings"
-          },
-          {
-            "@type": "Collection",
-            "name": "Art Galleries",
-            "url": "https://streambackdrops.com/category/art-galleries",
-            "description": "17 sophisticated art gallery spaces with clean walls"
-          },
-          {
-            "@type": "Collection",
-            "name": "Urban Lofts",
-            "url": "https://streambackdrops.com/category/urban-lofts",
-            "description": "17 modern industrial loft spaces with contemporary design"
-          },
-          {
-            "@type": "Collection",
-            "name": "Gardens & Patios",
-            "url": "https://streambackdrops.com/category/gardens-patios",
-            "description": "13 beautiful outdoor garden and patio backgrounds"
-          },
-          {
-            "@type": "Collection",
-            "name": "Historic Spaces",
-            "url": "https://streambackdrops.com/category/historic-spaces",
-            "description": "7 elegant historic interiors and architectural spaces"
-          },
-          {
-            "@type": "Collection",
-            "name": "Nature & Landscapes",
-            "url": "https://streambackdrops.com/category/nature-landscapes",
-            "description": "49 stunning natural landscapes and scenic outdoor views"
-          },
-          {
-            "@type": "Collection",
-            "name": "Libraries",
-            "url": "https://streambackdrops.com/category/libraries",
-            "description": "18 classic library rooms with floor-to-ceiling books"
-          },
-          {
-            "@type": "Collection",
-            "name": "Halloween Backgrounds",
-            "url": "https://streambackdrops.com/category/halloween-backgrounds",
-            "description": "25 festive Halloween backgrounds with seasonal atmosphere"
-          }
-        ]
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "StreamBackdrops Virtual Background Library",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Web Browser",
-        "url": "https://streambackdrops.com",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "1250"
-        }
-      }
-    ]
-  };
-
   return (
     <Layout
       title="Free Professional Virtual Backgrounds - StreamBackdrops"
@@ -211,9 +77,9 @@ export default function Home() {
     Download 330+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
   </p>
 </section>
-
-       
-        <section style={{
+  
+{/* Blog Cards Section */}
+<section style={{
   padding: '3rem 2rem',
   background: '#f8fafc',
   maxWidth: '1200px',
@@ -243,769 +109,171 @@ export default function Home() {
     gridAutoRows: '1fr',
     gap: '1.5rem'
   }}>
-{/* Card 1 - Best Virtual Background Sites 2025 */}
-<Link href="/blog-best-virtual-background-sites-2025" style={{ textDecoration: 'none' }}>
-  <div className="blog-card">
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
-      Best Free Background Sites 2025
-    </h3>
-    <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
-      Complete comparison: StreamBackdrops vs competitors
-    </p>
+    <Card 
+      href="/blog-best-virtual-background-sites-2025"
+      title="Best Free Background Sites 2025"
+      description="Complete comparison: StreamBackdrops vs competitors"
+      className="blog-card"
+    />
+    
+    <Card
+      href="/blog-background-mistakes"
+      title="Perfect Lighting Setup"
+      description="Look professional with proper lighting"
+      className="blog-card"
+    />
+    
+    <Card
+      href="/blog-background-mistakes"
+      title="5-Minute Setup Guide"
+      description="Quick steps for perfect video calls"
+      className="blog-card"
+    />
+    
+    <Card
+      href="/blog-halloween-backgrounds"
+      title="Halloween Backgrounds 2025"
+      description="25 free spooky backgrounds for October"
+      emoji="🎃"
+      className="blog-card"
+      customStyles={{
+        background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+        border: '2px solid #ff6b35',
+        titleColor: 'white',
+        descColor: 'rgba(255,255,255,0.9)'
+      }}
+    />
   </div>
-</Link>
-
-{/* Card 2 - Perfect Lighting Setup */}
-<Link href="/blog-background-mistakes" style={{ textDecoration: 'none' }}>
-  <div className="blog-card">
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
-      Perfect Lighting Setup
-    </h3>
-    <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
-      Look professional with proper lighting
-    </p>
-  </div>
-</Link>
-
-{/* Card 3 - 5-Minute Setup Guide */}
-<Link href="/blog-background-mistakes" style={{ textDecoration: 'none' }}>
-  <div className="blog-card">
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
-      5-Minute Setup Guide
-    </h3>
-    <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
-      Quick steps for perfect video calls
-    </p>
-  </div>
-</Link>
-
-{/* Card 4 - Halloween Backgrounds (SEASONAL) */}
-<Link href="/blog-halloween-backgrounds" style={{ textDecoration: 'none' }}>
-  <div className="blog-card" style={{
-    background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-    border: '2px solid #ff6b35'
-  }}>
-    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎃</div>
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: 'white' }}>
-      Halloween Backgrounds 2025
-    </h3>
-    <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.9rem' }}>
-      25 free spooky backgrounds for October
-    </p>
-  </div>
-</Link>
-</div>
 </section>
 
-        {/* 3-Column Grid with REAL IMAGES like Image 2 */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem',
-          marginBottom: '4rem',
-          maxWidth: '1200px',
-          margin: '0 auto 4rem auto',
-          padding: '0 2rem'
-        }}>
-
-          {/* Bookshelves Bright - with REAL IMAGE */}
-<Link href="/category/bookshelves-bright" style={{ textDecoration: 'none' }}>
-              <div
-               onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/bookshelves-bright');
-    }
-  }}
-                style={{
-                background: 'white',
-                borderRadius: '1rem',
-                overflow: 'hidden',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                cursor: 'pointer'
-              }}>
-              {/* Real Background Image */}
-              <div style={{
-                position: 'relative',
-                height: '200px',
-                overflow: 'hidden'
-              }}>
-                <Image
-  src="/images/bookshelves-bright/well-lit-12.webp"
-  alt="Bright bookshelf background for video calls"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                  priority={true}
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-  fontSize: '1.25rem',
-  fontWeight: '600',
-  marginBottom: '0.5rem',
-  color: '#111827'
+{/* Category Cards Grid */}
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  gap: '2rem',
+  marginBottom: '4rem',
+  maxWidth: '1200px',
+  margin: '0 auto 4rem auto',
+  padding: '0 2rem'
 }}>
-  Bookshelves - Bright
-</h3>
-<p style={{ color: '#6b7280', marginBottom: '1rem' }}>
-  Bright bookshelf backgrounds perfect for professional video calls
-</p>
-              </div>
-            </div>
-          </Link>
+  <Card
+    href="/category/bookshelves-bright"
+    title="Bookshelves - Bright"
+    description="Bright bookshelf backgrounds perfect for professional video calls"
+    imageSrc="/images/bookshelves-bright/well-lit-12.webp"
+    imageAlt="Bright bookshelf background for video calls"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/bookshelves-dark"
+    title="Bookshelves - Dark"
+    description="Warm bookshelf backgrounds with ambient lighting for professional calls"
+    imageSrc="/images/bookshelves-dark/ambient-01.webp"
+    imageAlt="Dark bookshelf background for video meetings"
+    navigate={navigate}
+  />
+  
+ <Card
+    href="/category/office-spaces"
+    title="Office Spaces"
+    description="Modern office settings that convey professionalism and focus"
+    imageSrc="/images/office-spaces/office-spaces-01.webp"
+    imageAlt="Professional office space background for business calls"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/living-rooms"
+    title="Living Rooms"
+    description="Comfortable home settings that feel welcoming and professional"
+    imageSrc="/images/living-rooms/living-room-29.webp"
+    imageAlt="Comfortable living room backgrounds for casual meetings and personal video calls"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/kitchens"
+    title="Kitchen Backgrounds"
+    description="Warm kitchen spaces that create a friendly, approachable atmosphere"
+    imageSrc="/images/kitchens/kitchen-09.webp"
+    imageAlt="Kitchen virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/coffee-shops"
+    title="Coffee Shops"
+    description="Cozy coffee shop backgrounds for casual meetings and creative collaborations"
+    imageSrc="/images/coffee-shops/coffee-shop-10.webp"
+    imageAlt="Coffee shop virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/art-galleries"
+    title="Art Galleries"
+    description="Sophisticated art gallery spaces with clean walls and artistic flair"
+    imageSrc="/images/art-galleries/art-gallery-1.webp"
+    imageAlt="Art gallery virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/urban-lofts"
+    title="Urban Lofts"
+    description="Modern industrial loft spaces with exposed brick and contemporary design"
+    imageSrc="/images/urban-lofts/urban-loft-1.webp"
+    imageAlt="Urban loft virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/gardens-patios"
+    title="Gardens & Patios"
+    description="Beautiful outdoor garden and patio backgrounds that bring natural beauty"
+    imageSrc="/images/gardens-patios/garden-patio-1.webp"
+    imageAlt="Garden and patio virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/historic-spaces"
+    title="Historic Spaces"
+    description="Elegant historic interiors including ballrooms and Art Deco corridors"
+    imageSrc="/images/historic-spaces/historic-space-6.webp"
+    imageAlt="Historic space virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/nature-landscapes"
+    title="Nature & Landscapes"
+    description="Stunning natural landscapes including mountains, deserts, and scenic views"
+    imageSrc="/images/nature-landscapes/nature-landscape-1.webp"
+    imageAlt="Nature landscape virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/libraries"
+    title="Libraries"
+    description="Classic library rooms with floor-to-ceiling books for academic settings"
+    imageSrc="/images/libraries/library-1.webp"
+    imageAlt="Library virtual background"
+    navigate={navigate}
+  />
+  
+  <Card
+    href="/category/halloween-backgrounds"
+    title="Halloween Backgrounds 🎃"
+    description="Festive Halloween backgrounds with pumpkins and fall decor for seasonal calls"
+    imageSrc="/images/halloween-backgrounds/halloween-background-11.webp"
+    imageAlt="Halloween virtual background"
+    navigate={navigate}
+  />
+   </div>
 
-          {/* Bookshelves Dark - with REAL IMAGE */}
-          <Link href="/category/bookshelves-dark" style={{ textDecoration: 'none' }}>
-              <div 
-              onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/bookshelves-dark');
-    }
-  }}
-                style={{
-                background: 'white',
-                borderRadius: '1rem',
-                overflow: 'hidden',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                cursor: 'pointer'
-              }}>
-              {/* Real Background Image */}
-              <div style={{
-                position: 'relative',
-                height: '200px',
-                overflow: 'hidden'
-              }}>
-                <Image
-  src="/images/bookshelves-dark/ambient-01.webp"
-  alt="Dark bookshelf background for video meetings"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-  fontSize: '1.25rem',
-  fontWeight: '600',
-  marginBottom: '0.5rem',
-  color: '#111827'
-}}>
-  Bookshelves - Dark
-</h3>
-<p style={{ color: '#6b7280', marginBottom: '1rem' }}>
-  Warm bookshelf backgrounds with ambient lighting for professional calls
-</p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Office Spaces - with REAL IMAGE */}
-          <Link href="/category/office-spaces" style={{ textDecoration: 'none' }}>
-              <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/office-spaces');
-    }
-  }}            
-                style={{
-                background: 'white',
-                borderRadius: '1rem',
-                overflow: 'hidden',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                cursor: 'pointer'
-              }}>
-              {/* Real Background Image */}
-              <div style={{
-                position: 'relative',
-                height: '200px',
-                overflow: 'hidden'
-              }}>
-                <Image
-                 src="/images/office-spaces/office-spaces-01.webp"
-                  alt="Professional office space background for business calls"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Office Spaces
-                </h3>
-                <p style={{ color: '#6b7280', marginBottom: '1rem' }}>
-                  Modern office settings that convey professionalism and focus
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Living Rooms- with REAL IMAGE */}
-          <Link href="/category/living-rooms" style={{ textDecoration: 'none' }}>
-              <div 
-               onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/living-rooms');
-    }
-  }} 
-                style={{
-                background: 'white',
-                borderRadius: '1rem',
-                overflow: 'hidden',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                cursor: 'pointer'
-              }}>
-              {/* Real Background Image */}
-              <div style={{
-                position: 'relative',
-                height: '200px',
-                overflow: 'hidden'
-              }}>
-                <Image
-                 src="/images/living-rooms/living-room-29.webp"
-                  alt="Comfortable living room backgrounds for casual meetings and personal video calls"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Living Rooms
-                </h3>
-                <p style={{ color: '#6b7280', marginBottom: '1rem' }}>
-                  Comfortable home settings that feel welcoming and professional
-                </p>
-              </div>
-            </div>
-          </Link>
-          {/* Kitchens Backgrounds */}
-          <Link href="/category/kitchens" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/kitchens');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <img
-                 src="/images/kitchens/kitchen-09.webp"
-                  alt="Kitchen virtual background"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover'
-                  }}
-                  loading="eager"
-                   quality={75}
-  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-  fontSize: '1.25rem',
-  fontWeight: '600',
-  marginBottom: '0.5rem',
-  color: '#111827'
-}}>
-                  Kitchen Backgrounds
-                </h3>
-                <p style={{ 
-  color: '#6b7280', 
-  marginBottom: '1rem' 
-}}>
-                  Warm kitchen spaces that create a friendly, approachable atmosphere
-                </p>
-              </div>
-            </div>
-          </Link>
-          {/* Coffee Shops */}
-          <Link href="/category/coffee-shops" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/coffee-shops');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/coffee-shops/coffee-shop-10.webp"
-                  alt="Coffee shop virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Coffee Shops
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Cozy coffee shop backgrounds for casual meetings and creative collaborations
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Art Galleries */}
-          <Link href="/category/art-galleries" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/art-galleries');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/art-galleries/art-gallery-1.webp"
-                  alt="Art gallery virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Art Galleries
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Sophisticated art gallery spaces with clean walls and artistic flair
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Urban Lofts */}
-          <Link href="/category/urban-lofts" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/urban-lofts');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/urban-lofts/urban-loft-1.webp"
-                  alt="Urban loft virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Urban Lofts
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Modern industrial loft spaces with exposed brick and contemporary design
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Gardens & Patios */}
-          <Link href="/category/gardens-patios" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/gardens-patios');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/gardens-patios/garden-patio-1.webp"
-                  alt="Garden and patio virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Gardens & Patios
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Beautiful outdoor garden and patio backgrounds that bring natural beauty
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Historic Spaces */}
-          <Link href="/category/historic-spaces" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/historic-spaces');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/historic-spaces/historic-space-6.webp"
-                  alt="Historic space virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Historic Spaces
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Elegant historic interiors including ballrooms and Art Deco corridors
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Nature & Landscapes */}
-          <Link href="/category/nature-landscapes" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/nature-landscapes');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/nature-landscapes/nature-landscape-1.webp"
-                  alt="Nature landscape virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Nature & Landscapes
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Stunning natural landscapes including mountains, deserts, and scenic views
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Libraries */}
-          <Link href="/category/libraries" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/libraries');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/libraries/library-1.webp"
-                  alt="Library virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Libraries
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Classic library rooms with floor-to-ceiling books for academic settings
-                </p>
-              </div>
-            </div>
-          </Link>
-          {/* Halloween Backgrounds */}
-          <Link href="/category/halloween-backgrounds" style={{ textDecoration: 'none' }}>
-            <div 
-            onClick={(e) => {
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
-      e.stopPropagation();
-      navigate('/category/halloween-backgrounds');
-    }
-  }} 
-              style={{
-              background: 'white',
-              borderRadius: '1rem',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
-            }}>
-              <div style={{
-                height: '200px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <Image
-                  src="/images/halloween-backgrounds/halloween-background-11.webp"
-                  alt="Halloween virtual background"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                  color: '#111827'
-                }}>
-                  Halloween Backgrounds 🎃
-                </h3>
-                <p style={{ 
-                  color: '#6b7280', 
-                  marginBottom: '1rem' 
-                }}>
-                  Festive Halloween backgrounds with pumpkins and fall decor for seasonal calls
-                </p>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* Setup Guide Section - like in Image 2 */}
-        <section style={{
-          textAlign: 'center',
-          padding: '4rem 2rem',
-          background: 'white',
-          margin: '0 2rem',
-          borderRadius: '1rem',
-          marginBottom: '4rem'
-        }}>
-          <h3 style={{
-            fontSize: '1.75rem',
-            fontWeight: '600',
-            marginBottom: '1rem',
-            color: '#111827'
-          }}>
-            Need help setting up virtual backgrounds?
-          </h3>
-          <p style={{
-            color: '#6b7280',
-            fontSize: '1.1rem',
-            marginBottom: '2rem'
-          }}>
-            Check out our comprehensive setup guides for perfect results every time.
-          </p>
-          <Link 
-            href="/blog-virtual-background-guide"
-            style={{
-              background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
-              color: 'white',
-              padding: '1rem 2rem',
-              borderRadius: '2rem',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '1rem',
-              display: 'inline-block'
-            }}
-          >
-            View Complete Setup Guide
-          </Link>
-        </section>
 
 {/* SEO-Rich Content Section */}
 <section style={{

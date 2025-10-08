@@ -1,131 +1,112 @@
-// Create this file: components/SocialShare.js
-import {
-  TwitterShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  PinterestShareButton,
-  TwitterIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  PinterestIcon
-} from 'react-share';
-import { useState } from 'react';
+// components/SocialShare.js
+export default function SocialShare({ image, title, size = "large", showLabels = false, vertical = true }) {
+  const url = typeof window !== 'undefined' ? window.location.href : '';
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
 
-export default function SocialShare({ 
-  image, 
-  title, 
-  size = 'small', 
-  showLabels = false, 
-  vertical = false 
-}) {
-  const [copied, setCopied] = useState(false);
-  
-  // Create the share URL for the specific image/category
-  const shareUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://streambackdrops.com'}/category/${image.category}`;
-  
-  // Share text
-  const shareText = title || `Check out this professional virtual background from StreamBackdrops!`;
-  
-  // Pinterest needs an image URL
-  const imageUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://streambackdrops.com'}/images/${image.category}/${image.filename}`;
-  
-  // Icon size based on size prop
-  const iconSize = size === 'large' ? 40 : size === 'small' ? 28 : 32;
-  
-  // Container styles
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: vertical ? 'column' : 'row',
-    gap: '0.5rem',
-    alignItems: 'center'
-  };
-
-  // Copy link function
-  const copyToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy: ', err);
+  const shareLinks = [
+    {
+      name: 'Twitter',
+      url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+      icon: 'X',
+      hoverColor: '#1DA1F2'
+    },
+    {
+      name: 'Facebook',
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      icon: 'f',
+      hoverColor: '#4267B2'
+    },
+    {
+      name: 'LinkedIn',
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      icon: 'in',
+      hoverColor: '#0077B5'
+    },
+    {
+      name: 'Pinterest',
+      url: `https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedTitle}`,
+      icon: 'P',
+      hoverColor: '#BD081C'
+    },
+    {
+      name: 'Copy Link',
+      url: '#',
+      icon: '🔗',
+      hoverColor: '#10B981',
+      action: 'copy'
     }
-  };
+  ];
 
   return (
-    <div style={containerStyle}>
-      {/* X (formerly Twitter) - Custom X Icon */}
-      <TwitterShareButton url={shareUrl} title={shareText}>
-        <div style={{
-          background: '#000000',
-          borderRadius: '50%',
-          width: iconSize,
-          height: iconSize,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          <svg width={iconSize * 0.6} height={iconSize * 0.6} fill="white" viewBox="0 0 24 24">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-        </div>
-        {showLabels && <span style={{ fontSize: '0.75rem', color: 'white' }}>X</span>}
-      </TwitterShareButton>
-
-      {/* Facebook */}
-      <FacebookShareButton url={shareUrl} quote={shareText}>
-        <FacebookIcon size={iconSize} round />
-        {showLabels && <span style={{ fontSize: '0.75rem', color: 'white' }}>Facebook</span>}
-      </FacebookShareButton>
-
-      {/* LinkedIn */}
-      <LinkedinShareButton url={shareUrl} title={shareText}>
-        <LinkedinIcon size={iconSize} round />
-        {showLabels && <span style={{ fontSize: '0.75rem', color: 'white' }}>LinkedIn</span>}
-      </LinkedinShareButton>
-
-      {/* Pinterest */}
-      <PinterestShareButton 
-        url={shareUrl} 
-        media={imageUrl}
-        description={shareText}
-      >
-        <PinterestIcon size={iconSize} round />
-        {showLabels && <span style={{ fontSize: '0.75rem', color: 'white' }}>Pinterest</span>}
-      </PinterestShareButton>
-
-      {/* Copy Link */}
-      <button
-        onClick={copyToClipboard}
-        style={{
-          background: copied ? '#059669' : '#6b7280',
-          border: 'none',
-          borderRadius: '50%',
-          width: iconSize,
-          height: iconSize,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          transition: 'background-color 0.2s ease'
-        }}
-        title={copied ? 'Copied!' : 'Copy link'}
-      >
-        <svg 
-          width={iconSize * 0.6} 
-          height={iconSize * 0.6} 
-          fill="white" 
-          viewBox="0 0 24 24"
+    <div style={{
+      display: 'flex',
+      flexDirection: vertical ? 'column' : 'row',
+      gap: '0.5rem'
+    }}>
+      {shareLinks.map((link) => (
+        <a 
+          key={link.name}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          onClick={link.action === 'copy' ? (e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(url);
+            alert('Link copied to clipboard!');
+          } : undefined}
+          style={{
+            padding: '0.5rem',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            borderRadius: '0.5rem',
+            color: 'white',
+            textDecoration: 'none',
+            fontSize: size === 'large' ? '1.5rem' : '1rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: '3rem',
+            minHeight: '3rem',
+            transition: 'all 0.3s ease',
+            cursor: 'pointer',
+            position: 'relative'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = link.hoverColor;
+            e.target.style.transform = 'scale(1.1)';
+            
+            // Create tooltip
+            const tooltip = document.createElement('div');
+            tooltip.textContent = `Share on ${link.name}`;
+            tooltip.style.cssText = `
+              position: absolute;
+              bottom: 120%;
+              left: 50%;
+              transform: translateX(-50%);
+              background: #333;
+              color: white;
+              padding: 8px 12px;
+              border-radius: 6px;
+              font-size: 14px;
+              white-space: nowrap;
+              z-index: 1000;
+              pointer-events: none;
+            `;
+            e.target.appendChild(tooltip);
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            e.target.style.transform = 'scale(1)';
+            
+            // Remove tooltip
+            const tooltip = e.target.querySelector('div');
+            if (tooltip) tooltip.remove();
+          }}
         >
-          {copied ? (
-            // Checkmark icon
-            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-          ) : (
-            // Copy/link icon
-            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-          )}
-        </svg>
-        {showLabels && <span style={{ fontSize: '0.75rem', color: 'white' }}>{copied ? 'Copied!' : 'Copy'}</span>}
-      </button>
+          {link.icon}
+          {showLabels && <span style={{ marginLeft: '0.5rem' }}>{link.name}</span>}
+        </a>
+      ))}
     </div>
   );
 }

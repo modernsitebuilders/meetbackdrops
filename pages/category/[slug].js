@@ -1,4 +1,3 @@
-// Complete pages/category/[slug].js file - Replace your entire file with this
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,273 +6,15 @@ import { useState, useEffect } from 'react';
 import { event } from '../../lib/gtag';
 import Layout from '../../components/Layout';
 import cloudinaryUrls from '../../cloudinary-urls.json';
+import SocialShare from '../../components/SocialShare';
+import { categoryInfo, folderMap } from '../../data/categoryData';
 
-// Simple SocialShare component
-function SocialShare({ image, title, size = "large", showLabels = false, vertical = true }) {
-  const url = typeof window !== 'undefined' ? window.location.href : '';
-  const encodedUrl = encodeURIComponent(url);
-  const encodedTitle = encodeURIComponent(title);
-
-const shareLinks = [
-  {
-    name: 'Twitter',
-    url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-    icon: 'X',  // ✅ Simple X for Twitter/X
-    hoverColor: '#1DA1F2'
-  },
-  {
-    name: 'Facebook',
-    url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-    icon: 'f',  // ✅ Simple f for Facebook
-    hoverColor: '#4267B2'
-  },
-  {
-    name: 'LinkedIn',
-    url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-    icon: 'in', // ✅ Simple in for LinkedIn
-    hoverColor: '#0077B5'
-  },
-  {
-    name: 'Pinterest',
-    url: `https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedTitle}`,
-    icon: 'P',  // ✅ Simple P for Pinterest
-    hoverColor: '#BD081C'
-  },
-  {
-    name: 'Copy Link',
-    url: '#',
-    icon: '🔗', // ✅ Keep link icon - this one is clear
-    hoverColor: '#10B981',
-    action: 'copy'
-  }
-];
-
-  return (
-    <div style={{
-      display: 'flex',
-      flexDirection: vertical ? 'column' : 'row',
-      gap: '0.5rem'
-    }}>
-      {shareLinks.map((link) => (
-        <a
-          key={link.name}
-          href={link.url}
-          target="_blank"
-rel="noopener noreferrer nofollow"
-          onClick={link.action === 'copy' ? (e) => {
-            e.preventDefault();
-            navigator.clipboard.writeText(url);
-            alert('Link copied to clipboard!');
-          } : undefined}
-          style={{
-            padding: '0.5rem',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '0.5rem',
-            color: 'white',
-            textDecoration: 'none',
-            fontSize: size === 'large' ? '1.5rem' : '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            minWidth: '3rem',
-            minHeight: '3rem',
-            transition: 'all 0.3s ease',
-            cursor: 'pointer',
-            position: 'relative'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = link.hoverColor;
-            e.target.style.transform = 'scale(1.1)';
-            
-            // Create tooltip
-            const tooltip = document.createElement('div');
-            tooltip.textContent = `Share on ${link.name}`;
-            tooltip.style.cssText = `
-              position: absolute;
-              bottom: 120%;
-              left: 50%;
-              transform: translateX(-50%);
-              background: #333;
-              color: white;
-              padding: 8px 12px;
-              border-radius: 6px;
-              font-size: 14px;
-              white-space: nowrap;
-              z-index: 1000;
-              pointer-events: none;
-            `;
-            e.target.appendChild(tooltip);
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-            e.target.style.transform = 'scale(1)';
-            
-            // Remove tooltip
-            const tooltip = e.target.querySelector('div');
-            if (tooltip) tooltip.remove();
-          }}
-        >
-          {link.icon}
-          {showLabels && <span style={{ marginLeft: '0.5rem' }}>{link.name}</span>}
-        </a>
-      ))}
-    </div>
-  );
-};
-// Categories with all your actual images
-const categoryInfo = {
-  'bookshelves-bright': {
-    name: 'Bookshelves - Bright',
-    description: 'Bright bookshelf backgrounds for professional video calls',
-    seoDescription: 'Download free well-lit bookshelf virtual backgrounds for video calls. Bright, professional backgrounds.',
-    images: Array.from({length: 47}, (_, i) => ({
-      filename: `well-lit-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Bright Bookshelf Background ${i + 1}`
-    }))
-  },
-  
-  'bookshelves-dark': {
-    name: 'Bookshelves - Dark',
-    description: 'Warm bookshelf backgrounds with ambient lighting',
-    seoDescription: 'Download free ambient bookshelf virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
-    images: Array.from({length: 41}, (_, i) => ({
-      filename: `ambient-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Dark Bookshelf Background ${i + 1}`
-    }))
-  },
-  
-  'office-spaces': {
-    name: 'Office Spaces',
-    description: 'Professional office backgrounds for business calls',
-    seoDescription: 'Download free professional office virtual backgrounds for video calls. Executive office backgrounds.',
-    images: Array.from({length: 19}, (_, i) => ({
-      filename: `office-spaces-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Office Space Background ${i + 1}`
-    }))
-  },
-  
-  'living-rooms': {
-    name: 'Living Rooms',
-    description: 'Comfortable home backgrounds for casual video calls',
-    seoDescription: 'Download free living room virtual backgrounds for video calls. Comfortable home settings for casual meetings.',
-    images: Array.from({length: 47}, (_, i) => ({
-      filename: `living-room-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Living Room Background ${i + 1}`
-    }))
-  },
-  
-  'kitchens': {
-    name: 'Kitchens',
-    description: 'Kitchen backgrounds for cooking shows and casual calls',
-    seoDescription: 'Download free kitchen virtual backgrounds for video calls. Professional kitchen environments for cooking content.',
-    images: Array.from({length: 18}, (_, i) => ({
-      filename: `kitchen-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Kitchen Background ${i + 1}`
-    }))
-  },
-  
- 'coffee-shops': {
-  name: 'Coffee Shops',
-  description: 'Cozy coffee shop backgrounds for casual meetings',
-  seoDescription: 'Download free coffee shop virtual backgrounds for video calls. Perfect for casual meetings and creative collaboration.',
-  images: Array.from({length: 19}, (_, i) => ({
-    filename: `coffee-shop-${String(i + 1).padStart(2, '0')}.webp`,
-    title: `Coffee Shop Background ${i + 1}`
-  }))
-},
-  
-  'art-galleries': {
-    name: 'Art Galleries',
-    description: 'Sophisticated art gallery spaces with clean walls',
-    seoDescription: 'Download free art gallery virtual backgrounds for video calls. Clean, artistic spaces for professional presentations.',
-    images: Array.from({length: 17}, (_, i) => ({
-      filename: `art-gallery-${i + 1}.webp`,
-      title: `Art Gallery Background ${i + 1}`
-    }))
-  },
-  
-  'urban-lofts': {
-    name: 'Urban Lofts',
-    description: 'Modern industrial loft spaces with contemporary design',
-    seoDescription: 'Download free urban loft virtual backgrounds for video calls. Industrial spaces for creative professionals.',
-    images: Array.from({length: 17}, (_, i) => ({
-      filename: `urban-loft-${i + 1}.webp`,
-      title: `Urban Loft Background ${i + 1}`
-    }))
-  },
-  
-  'gardens-patios': {
-    name: 'Gardens & Patios',
-    description: 'Beautiful outdoor garden and patio backgrounds',
-    seoDescription: 'Download free garden and patio virtual backgrounds for video calls. Natural outdoor beauty for your meetings.',
-    images: Array.from({length: 13}, (_, i) => ({
-      filename: `garden-patio-${i + 1}.webp`,
-      title: `Garden Patio Background ${i + 1}`
-    }))
-  },
-  
-  'historic-spaces': {
-    name: 'Historic Spaces',
-    description: 'Elegant historic interiors and architectural spaces',
-    seoDescription: 'Download free historic space virtual backgrounds for video calls. Ballrooms and Art Deco spaces for distinguished calls.',
-    images: Array.from({length: 7}, (_, i) => ({
-      filename: `historic-space-${i + 1}.webp`,
-      title: `Historic Space Background ${i + 1}`
-    }))
-  },
-  
-  'nature-landscapes': {
-    name: 'Nature & Landscapes',
-    description: 'Stunning natural landscapes and scenic outdoor views',
-    seoDescription: 'Download free nature and landscape virtual backgrounds for video calls. Mountains, deserts, and scenic environments.',
-    images: Array.from({length: 49}, (_, i) => ({
-      filename: `nature-landscape-${i + 1}.webp`,
-      title: `Nature Landscape Background ${i + 1}`
-    }))
-  },
-  
-  'libraries': {
-  name: 'Libraries',
-  description: 'Classic library rooms with floor-to-ceiling books',
-  seoDescription: 'Download free library virtual backgrounds for video calls. Perfect for academic presentations and professional settings.',
-  images: Array.from({length: 18}, (_, i) => ({
-    filename: `library-${i + 1}.webp`,
-    title: `Library Background ${i + 1}`
-  }))
-},
-
-'halloween-backgrounds': {
-  name: 'Halloween Backgrounds',
-  description: 'Festive Halloween backgrounds with pumpkins, fall decor, and seasonal atmosphere',
-  seoDescription: 'Download free Halloween virtual backgrounds for video calls. Spooky seasonal backgrounds with pumpkins and autumn decor.',
-  images: Array.from({length: 25}, (_, i) => ({
-    filename: `halloween-background-${String(i + 1).padStart(2, '0')}.webp`,
-    title: `Halloween Background ${i + 1}`
-  }))
-}
-};
-
-function CategoryContent({ slug }) {
+  function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
-  const folderMap = {
-  'bookshelves-bright': 'bookshelves-bright',
-  'bookshelves-dark': 'bookshelves-dark',
-  'office-spaces': 'office-spaces',
-  'living-rooms': 'living-rooms',
-  'kitchens': 'kitchens',
-  'coffee-shops': 'coffee-shops',
-  'art-galleries': 'art-galleries',
-  'urban-lofts': 'urban-lofts',
-  'gardens-patios': 'gardens-patios',
-  'historic-spaces': 'historic-spaces',
-  'nature-landscapes': 'nature-landscapes',
-  'libraries': 'libraries',
-  'halloween-backgrounds': 'halloween-backgrounds'
-};
-
   const category = categoryInfo[slug];
-// Track page view when component loads
-useEffect(() => {
+  
+  // Track page view when component loads
+  useEffect(() => {
   // Skip tracking if admin
   if (typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true') {
     return;
@@ -410,28 +151,7 @@ const handleDownload = async (image) => {
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={`${category.name} Backgrounds - Free HD`} />
 <meta property="twitter:description" content={`Free HD ${category.name.toLowerCase()} backgrounds for video calls`} />
-            {/* ✅ NEW: Structured Data for better Google results */}
-            <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ImageObject",
-          "contentUrl": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
-          "name": image.title,
-          "description": `Free ${image.title} - HD virtual background for Zoom, Teams, and Google Meet`,
-          "thumbnail": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
-          "license": "https://creativecommons.org/publicdomain/zero/1.0/",
-          "acquireLicensePage": "https://streambackdrops.com/about",
-          "creditText": "StreamBackdrops",
-          "creator": {
-            "@type": "Organization",
-            "name": "StreamBackdrops"
-          },
-          "copyrightNotice": "© 2025 StreamBackdrops. Available under CC0 1.0 Universal Public Domain Dedication."
-        })
-      }}
-    />
+         
             {/* FAQ Schema */}
             <script
               type="application/ld+json"
@@ -865,7 +585,7 @@ const handleDownload = async (image) => {
       )}
     </>
 );
-}
+  }
 
 export default function CategoryPage({ slug }) {
   const router = useRouter();
