@@ -81,8 +81,8 @@ export default function Footer() {
                 Setup Guide
               </Link>
               <Link href="/blog-background-mistakes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Common Mistakes
-              </Link>
+  Common Mistakes
+</Link>
               <Link href="/blog-lighting-tips" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Lighting Tips
               </Link>

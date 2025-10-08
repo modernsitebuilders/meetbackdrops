@@ -138,14 +138,18 @@ export default function Home() {
   </div>
 </Link>
 
-{/* Card 4 - Choose the Right Style */}
-<Link href="/blog-background-mistakes" style={{ textDecoration: 'none' }}>
-  <div className="blog-card">
-    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
-      Choose the Right Style
+{/* Card 4 - Halloween Backgrounds (SEASONAL) */}
+<Link href="/blog-halloween-backgrounds" style={{ textDecoration: 'none' }}>
+  <div className="blog-card" style={{
+    background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+    border: '2px solid #ff6b35'
+  }}>
+    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎃</div>
+    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: 'white' }}>
+      Halloween Backgrounds 2025
     </h3>
-    <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
-      Match your background to your industry
+    <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.9rem' }}>
+      25 free spooky backgrounds for October
     </p>
   </div>
 </Link>
