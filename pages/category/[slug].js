@@ -318,20 +318,21 @@ useEffect(() => {
     const imageUrl = cloudinaryUrls[baseFilename];
     
     if (imageUrl) {
-      // Create clean download filename from category and title
-      const cleanFilename = `StreamBackdrops-${slug}-${baseFilename}.png`;
+      // Use fetch to download the image as a blob
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
       
-      // Force download using Cloudinary's fl_attachment parameter with custom filename
-      const downloadUrl = imageUrl.replace('/upload/', `/upload/fl_attachment:${encodeURIComponent(cleanFilename)}/`);
-      
-      // Create a link and trigger download
+      // Create a download link
+      const blobUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = cleanFilename;
-      link.target = '_blank';
+      link.href = blobUrl;
+      link.download = `StreamBackdrops-${slug}-${baseFilename}.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      
+      // Clean up the blob URL
+      window.URL.revokeObjectURL(blobUrl);
     } else {
       console.error(`No Cloudinary URL found for ${baseFilename}`);
     }
