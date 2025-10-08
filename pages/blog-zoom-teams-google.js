@@ -42,6 +42,35 @@ export default function BlogZoomTeamsGoogle() {
 <meta name="description" content="Compare virtual backgrounds on Zoom, Microsoft Teams, and Google Meet. Setup guides, troubleshooting tips, and platform-specific best practices." />        <meta name="keywords" content="zoom backgrounds, teams backgrounds, google meet backgrounds, virtual background comparison, video conferencing" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-zoom-teams-google" />
+        {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Best Free Virtual Background Sites in 2025: Complete Comparison", 
+      "image": "https://streambackdrops.com/images/office-spaces/office-space-10.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15",  
+      "dateModified": "2025-07-15",  
+      "description": "Compare virtual backgrounds on Zoom, Microsoft Teams, and Google Meet. Setup guides, troubleshooting tips, and platform-specific best practices.", 
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-zoom-teams-google"  
+      }
+    })}
+  </script>
       </Head>
 
       <header style={{

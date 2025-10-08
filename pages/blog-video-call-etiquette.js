@@ -42,6 +42,35 @@ export default function BlogVideoCallEtiquette() {
         <meta name="keywords" content="video call etiquette, virtual meeting tips, professional video calls, zoom etiquette, teams etiquette, meeting behavior" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-video-call-etiquette" />
+        {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings",  
+      "image": "https://streambackdrops.com/images/office-spaces/office-space-5.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15", 
+      "dateModified": "2025-07-15",  
+      "description": "Master video call etiquette. Learn professional behavior, technical tips, and communication best practices for Zoom, Teams, and Google Meet calls.", 
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-video-call-etiquette"  
+      }
+    })}
+  </script>
       </Head>
 
       <header style={{

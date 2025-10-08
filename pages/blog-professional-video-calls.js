@@ -42,6 +42,35 @@ export default function BlogProfessionalVideoCalls() {
         <meta name="keywords" content="video calls, professional meetings, remote work, video conferencing, zoom tips, teams meetings" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-professional-video-calls" />
+        {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "10 Essential Tips for Professional Video Calls", 
+      "image": "https://streambackdrops.com/images/bookshelves-bright/well-lit-12.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15", 
+      "dateModified": "2025-07-15",  
+      "description": "Master professional video calls with 10 essential tips covering lighting, backgrounds, camera positioning, and etiquette for remote work success.", 
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-professional-video-calls" 
+      }
+    })}
+  </script>
       </Head>
 
       <header style={{

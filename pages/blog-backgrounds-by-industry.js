@@ -41,6 +41,35 @@ export default function BlogIndustryBackgrounds() {
         <meta name="keywords" content="virtual backgrounds, professional backgrounds, zoom backgrounds, teams backgrounds, healthcare backgrounds, finance backgrounds" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-backgrounds-by-industry" />
+        {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "YBest Virtual Backgrounds by Industry: Complete Professional Guide", 
+      "image": "https://streambackdrops.com/images/bookshelves-bright/ambient-01.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15", 
+      "dateModified": "2025-07-15",   
+      "description": "Choose the perfect virtual background for your industry. Complete guide covering healthcare, finance, education, tech, legal, and consulting professionals.", 
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-backgrounds-by-industry"  
+      }
+    })}
+  </script>
       </Head>
 
       {/* Clean Blog Header */}

@@ -42,6 +42,35 @@ export default function BlogLightingTips() {
         <meta name="keywords" content="video call lighting, virtual background lighting, home office lighting, video conferencing setup, professional lighting" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://streambackdrops.com/blog-lighting-tips" />
+        {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Perfect Lighting Setup for Virtual Backgrounds: Complete Guide",  
+      "image": "https://streambackdrops.com/images/bookshelves-bright/well-lit-05.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15", 
+      "dateModified": "2025-07-15",  
+      "description": "Master video call lighting. Learn professional lighting setup for virtual backgrounds, avoid common mistakes, and look great on camera.", 
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-lighting-tips" 
+      }
+    })}
+  </script>
       </Head>
 
       {/* Clean Blog Header */}

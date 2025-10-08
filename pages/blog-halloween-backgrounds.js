@@ -47,6 +47,35 @@ export default function HalloweenBackgrounds() {
         <meta property="og:description" content="Download 25 free Halloween virtual backgrounds perfect for your October video calls. Festive, professional, and completely free." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://streambackdrops.com/blog-halloween-backgrounds" />
+        {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Best Halloween Virtual Backgrounds for Video Calls 2025",  
+      "image": "https://streambackdrops.com/images/halloween-backgrounds/halloween-background-20.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15",  
+      "dateModified": "2025-07-15",   
+      "description": "Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Spooky seasonal backgrounds with pumpkins, fall decor, and autumn atmosphere for October video calls.", 
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-halloween-backgrounds"  
+      }
+    })}
+  </script>
       </Head>
 
       {/* Header */}

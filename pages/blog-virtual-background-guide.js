@@ -41,6 +41,35 @@ export default function BlogVirtualBackgroundGuide() {
   <meta name="description" content="Master virtual backgrounds for Zoom, Teams & Google Meet. Setup guide, best practices, troubleshooting & 20+ free HD backgrounds. Updated for 2025." />
   <meta name="keywords" content="virtual background guide, Zoom setup, Teams backgrounds, video call tips, professional backgrounds, tutorial 2025" />
   <link rel="canonical" href="https://streambackdrops.com/blog-virtual-background-guide" />
+  {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Complete Guide to Virtual Backgrounds for Video Calls 2025",  
+      "image": "https://streambackdrops.com/images/bookshelves-dark/ambient-01.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15", 
+      "dateModified": "2025-07-15",  
+      "description": "Master virtual backgrounds for Zoom, Teams & Google Meet. Setup guide, best practices, troubleshooting & 20+ free HD backgrounds. Updated for 2025.",  // ← Change this for each blog
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-virtual-background-guide"  
+      }
+    })}
+  </script>
   
   {/* Article structured data */}
   <script type="application/ld+json">

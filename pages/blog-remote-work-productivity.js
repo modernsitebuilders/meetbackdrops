@@ -41,6 +41,35 @@ export default function BlogRemoteWorkProductivity() {
 <title>Remote Work: Perfect Home Office Setup | StreamBackdrops</title>
 <meta name="description" content="Boost remote work productivity with expert tips for creating the perfect home office, managing distractions, and maintaining work-life balance." />        <meta name="keywords" content="remote work, home office, productivity, work from home, home office setup, remote work tips" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Remote Work Productivity: Creating Your Perfect Home Office Environment",  
+      "image": "https://streambackdrops.com/images/living-rooms/living-room-15.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15",  
+      "dateModified": "2025-07-15", 
+      "description": "Boost remote work productivity with expert tips for creating the perfect home office, managing distractions, and maintaining work-life balance.",  
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-remote-work-productivity"  
+      }
+    })}
+  </script>
       </Head>
 
       <header style={{

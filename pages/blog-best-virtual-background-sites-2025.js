@@ -41,6 +41,35 @@ export default function BlogBestVirtualBackgroundSites() {
         <meta name="keywords" content="best free virtual background sites, virtual backgrounds, zoom backgrounds, teams backgrounds, professional video calls" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="canonical" href="https://streambackdrops.com/blog-best-virtual-background-sites-2025" />
+          {/* Article structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Best Free Virtual Background Sites in 2025: Complete Comparison", 
+      "image": "https://streambackdrops.com/images/office-spaces/office-space-1.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "StreamBackdrops"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "StreamBackdrops",
+        "url": "https://streambackdrops.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://streambackdrops.com/logo.png"
+        }
+      },
+      "datePublished": "2025-07-15", 
+      "dateModified": "2025-07-15",   
+      "description": "Compare the best free virtual background sites in 2025. Learn why StreamBackdrops beats stock photo sites for professional video calls.", 
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://streambackdrops.com/blog-best-virtual-background-sites-2025"  
+      }
+    })}
+  </script>
 
       </Head>
 
