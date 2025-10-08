@@ -161,6 +161,8 @@ return (
 <link rel="prefetch" href="/category/historic-spaces" />
 <link rel="prefetch" href="/category/nature-landscapes" />
 <link rel="prefetch" href="/category/libraries" />
+<link rel="prefetch" href="/category/halloween-backgrounds" />
+
   </>
 )}
       </Head>
@@ -363,6 +365,8 @@ return (
       <button onClick={() => navigate('/category/historic-spaces')} style={dropdownItemStyle}>Historic Spaces</button>
       <button onClick={() => navigate('/category/nature-landscapes')} style={dropdownItemStyle}>Nature & Landscapes</button>
       <button onClick={() => navigate('/category/libraries')} style={dropdownItemStyle}>Libraries</button>
+            <button onClick={() => navigate('/category/halloween-backgrounds')} style={dropdownItemStyle}>Halloween 🎃</button>
+
     </div>
   </div>
 </nav>

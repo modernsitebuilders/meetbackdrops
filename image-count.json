@@ -1,0 +1,20 @@
+{
+  "totalImages": 337,
+  "totalCategories": 13,
+  "categories": {
+    "art-galleries": 17,
+    "bookshelves-bright": 47,
+    "bookshelves-dark": 41,
+    "coffee-shops": 19,
+    "gardens-patios": 13,
+    "halloween-backgrounds": 25,
+    "historic-spaces": 7,
+    "kitchens": 18,
+    "libraries": 18,
+    "living-rooms": 47,
+    "nature-landscapes": 49,
+    "office-spaces": 19,
+    "urban-lofts": 17
+  },
+  "generatedAt": "2025-10-08T15:52:33.125Z"
+}

@@ -41,7 +41,7 @@ export default function Home() {
   return (
   <Layout
   title="Free Professional Virtual Backgrounds - StreamBackdrops"
-  description="Download 300+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
+  description="Download 330+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
   currentPage="home"
   canonical="https://streambackdrops.com"
 >
@@ -67,7 +67,7 @@ export default function Home() {
     maxWidth: '800px',
     margin: '0 auto 2rem'
   }}>
-    Download 300+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
+    Download 330+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
   </p>
 </section>
 
@@ -437,7 +437,7 @@ export default function Home() {
                 overflow: 'hidden'
               }}>
                 <Image
-                  src="/images/coffee-shops/coffee-shop-1.webp"
+                  src="/images/coffee-shops/coffee-shop-10.webp"
                   alt="Coffee shop virtual background"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -769,6 +769,56 @@ export default function Home() {
               </div>
             </div>
           </Link>
+          {/* Halloween Backgrounds */}
+          <Link href="/category/halloween-backgrounds" style={{ textDecoration: 'none' }}>
+            <div 
+            onClick={(e) => {
+    if (process.env.NODE_ENV === 'development') {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate('/category/halloween-backgrounds');
+    }
+  }} 
+              style={{
+              background: 'white',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/halloween-backgrounds/halloween-background-11.webp"
+                  alt="Halloween virtual background"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem',
+                  color: '#111827'
+                }}>
+                  Halloween Backgrounds 🎃
+                </h3>
+                <p style={{ 
+                  color: '#6b7280', 
+                  marginBottom: '1rem' 
+                }}>
+                  Festive Halloween backgrounds with pumpkins and fall decor for seasonal calls
+                </p>
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* Setup Guide Section - like in Image 2 */}
@@ -991,7 +1041,7 @@ export default function Home() {
         color: '#1e40af',
         marginBottom: '1.5rem'
       }}>
-        Browse our collection of 300+ professional virtual backgrounds and find the perfect backdrop for your next meeting.
+        Browse our collection of 330+ professional virtual backgrounds and find the perfect backdrop for your next meeting.
       </p>
       <Link href="/category/bookshelves-bright" style={{
   display: 'inline-block',

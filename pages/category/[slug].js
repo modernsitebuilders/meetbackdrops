@@ -233,14 +233,24 @@ const categoryInfo = {
   },
   
   'libraries': {
-    name: 'Libraries',
-    description: 'Classic library rooms with floor-to-ceiling books',
-    seoDescription: 'Download free library virtual backgrounds for video calls. Perfect for academic presentations and professional settings.',
-    images: Array.from({length: 18}, (_, i) => ({
-      filename: `library-${i + 1}.webp`,
-      title: `Library Background ${i + 1}`
-    }))
-  }
+  name: 'Libraries',
+  description: 'Classic library rooms with floor-to-ceiling books',
+  seoDescription: 'Download free library virtual backgrounds for video calls. Perfect for academic presentations and professional settings.',
+  images: Array.from({length: 18}, (_, i) => ({
+    filename: `library-${i + 1}.webp`,
+    title: `Library Background ${i + 1}`
+  }))
+},
+
+'halloween-backgrounds': {
+  name: 'Halloween Backgrounds',
+  description: 'Festive Halloween backgrounds with pumpkins, fall decor, and seasonal atmosphere',
+  seoDescription: 'Download free Halloween virtual backgrounds for video calls. Spooky seasonal backgrounds with pumpkins and autumn decor.',
+  images: Array.from({length: 25}, (_, i) => ({
+    filename: `halloween-background-${String(i + 1).padStart(2, '0')}.webp`,
+    title: `Halloween Background ${i + 1}`
+  }))
+}
 };
 
 function CategoryContent({ slug }) {
@@ -257,7 +267,8 @@ function CategoryContent({ slug }) {
   'gardens-patios': 'gardens-patios',
   'historic-spaces': 'historic-spaces',
   'nature-landscapes': 'nature-landscapes',
-  'libraries': 'libraries'
+  'libraries': 'libraries',
+  'halloween-backgrounds': 'halloween-backgrounds'
 };
 
   const category = categoryInfo[slug];
@@ -829,7 +840,8 @@ export async function getStaticPaths() {
     'gardens-patios',
     'historic-spaces',
     'nature-landscapes',
-    'libraries'
+    'libraries',
+    'halloween-backgrounds'
   ].map((slug) => ({
     params: { slug }
   }));
