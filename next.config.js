@@ -21,12 +21,12 @@ const nextConfig = {
           key: 'Content-Security-Policy',
           value: [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://cdn-cookieyes.com https://cookieyes.com",
-            "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://*.cookieyes.com https://cookieyes.com",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://cdn-cookieyes.com",
+            "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://cdn-cookieyes.com https://log.cookieyes.com https://api.cookieyes.com",
             "img-src 'self' data: https: blob:",
             "style-src 'self' 'unsafe-inline' https://cdn-cookieyes.com",
             "font-src 'self' data: https://cdn-cookieyes.com",
-            "frame-src 'self' https://www.google.com https://cookieyes.com",
+            "frame-src 'self' https://www.google.com",
           ].join('; ')
         }
       ]
