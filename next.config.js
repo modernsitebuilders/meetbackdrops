@@ -11,25 +11,6 @@ const nextConfig = {
     return config;
   },
   
-  // Content Security Policy - COMPLETELY OPEN FOR TESTING
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"
-          },
-          {
-            key: 'X-Cache-Buster',
-            value: 'v3-force-new-cache'
-          }
-        ]
-      }
-    ];
-  },
-  
   // Redirects for old URLs
   async redirects() {
     return [
