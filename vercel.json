@@ -89,7 +89,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn-cookieyes.com https://stream-backdrops-videos.s3.amazonaws.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com; media-src 'self' https://stream-backdrops-videos.s3.amazonaws.com;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn-cookieyes.com https://stream-backdrops-videos.s3.amazonaws.com; style-src 'self' 'unsafe-inline' https://cdn-cookieyes.com; img-src 'self' data: https:; font-src 'self' data: https://cdn-cookieyes.com; connect-src 'self' https://www.google-analytics.com https://cdn-cookieyes.com https://log.cookieyes.com https://api.cookieyes.com; media-src 'self' https://stream-backdrops-videos.s3.amazonaws.com;"
         }
       ]
     },
