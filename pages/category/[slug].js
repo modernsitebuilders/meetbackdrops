@@ -374,7 +374,7 @@ const handleDownload = async (image) => {
     onClick={() => setPreviewImage(image)}
   >
     {/* ImageObject Schema for each image */}
-    <script
+   <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify({
@@ -385,8 +385,13 @@ const handleDownload = async (image) => {
           "description": `Free ${image.title} - HD virtual background for Zoom, Teams, and Google Meet`,
           "thumbnail": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
           "license": "https://creativecommons.org/publicdomain/zero/1.0/",
-          "acquireLicensePage": "https://streambackdrops.com/about"
-        
+          "acquireLicensePage": "https://streambackdrops.com/about",
+          "creator": {
+            "@type": "Organization",
+            "name": "StreamBackdrops"
+          },
+          "creditText": "StreamBackdrops",
+          "copyrightNotice": "© 2025 StreamBackdrops - CC0 Public Domain"
         })
       }}
     />
