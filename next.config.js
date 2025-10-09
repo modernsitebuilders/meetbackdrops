@@ -20,6 +20,10 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"
+          },
+          {
+            key: 'X-Cache-Buster',
+            value: 'v3-force-new-cache'
           }
         ]
       }
