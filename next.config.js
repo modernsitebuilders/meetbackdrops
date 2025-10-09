@@ -11,28 +11,28 @@ const nextConfig = {
     return config;
   },
   
-  // Content Security Policy - TEMPORARILY RELAXED FOR COOKIEYES TESTING
- async headers() {
-  return [
-    {
-      source: '/:path*',
-      headers: [
-        {
-          key: 'Content-Security-Policy',
-          value: [
-            "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
-            "connect-src 'self' https:",
-            "img-src 'self' data: https: blob:",
-            "style-src 'self' 'unsafe-inline' https:",
-            "font-src 'self' data: https:",
-            "frame-src 'self' https:",
-          ].join('; ')
-        }
-      ]
-    }
-  ];
-},
+  // Content Security Policy - TEMPORARILY DISABLED
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       headers: [
+  //         {
+  //           key: 'Content-Security-Policy',
+  //           value: [
+  //             "default-src 'self'",
+  //             "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
+  //             "connect-src 'self' https:",
+  //             "img-src 'self' data: https: blob:",
+  //             "style-src 'self' 'unsafe-inline' https:",
+  //             "font-src 'self' data: https:",
+  //             "frame-src 'self' https:",
+  //           ].join('; ')
+  //         }
+  //       ]
+  //     }
+  //   ];
+  // },
   
   // Redirects for old URLs
   async redirects() {
