@@ -70,6 +70,68 @@ export default function BlogBackgroundMistakes() {
       }
     })}
   </script>
+  
+  {/* Breadcrumb Schema */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://streambackdrops.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://streambackdrops.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Virtual Background Mistakes",
+          "item": "https://streambackdrops.com/blog-background-mistakes"
+        }
+      ]
+    })}
+  </script>
+  
+  {/* FAQ Schema */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does my virtual background look blurry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Blurry backgrounds are usually caused by low-resolution images or poor lighting. Use HD images (1920x1080 or higher) and ensure you have good front-facing lighting to improve background quality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my virtual background cut off parts of me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This happens when your background contrasts poorly with your clothing or lighting. Avoid wearing colors that match your background, ensure good lighting, and sit still to help your camera detect edges properly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What backgrounds should I avoid for professional meetings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avoid distracting patterns, overly casual settings like bedrooms, meme backgrounds, anything political or controversial, and low-quality pixelated images. Choose professional, subtle backgrounds instead."
+          }
+        }
+      ]
+    })}
+  </script>
       </Head>
 
       {/* Clean Blog Header */}

@@ -41,57 +41,99 @@ export default function BlogVirtualBackgroundGuide() {
   <meta name="description" content="Master virtual backgrounds for Zoom, Teams & Google Meet. Setup guide, best practices, troubleshooting & 20+ free HD backgrounds. Updated for 2025." />
   <meta name="keywords" content="virtual background guide, Zoom setup, Teams backgrounds, video call tips, professional backgrounds, tutorial 2025" />
   <link rel="canonical" href="https://streambackdrops.com/blog-virtual-background-guide" />
-  {/* Article structured data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Complete Guide to Virtual Backgrounds for Video Calls 2025",  
-      "image": "https://streambackdrops.com/images/bookshelves-dark/ambient-01.webp",
-      "author": {
-        "@type": "Organization",
-        "name": "StreamBackdrops"
-      },
-      "publisher": {
-        "@type": "Organization", 
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://streambackdrops.com/logo.png"
-        }
-      },
-      "datePublished": "2025-07-15", 
-      "dateModified": "2025-07-15",  
-      "description": "Master virtual backgrounds for Zoom, Teams & Google Meet. Setup guide, best practices, troubleshooting & 20+ free HD backgrounds. Updated for 2025.",  // ← Change this for each blog
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://streambackdrops.com/blog-virtual-background-guide"  
-      }
-    })}
-  </script>
-  
-  {/* Article structured data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Complete Guide to Virtual Backgrounds for Video Calls 2025",
-      "author": {
-        "@type": "Organization",
-        "name": "StreamBackdrops"
-      },
-      "publisher": {
-        "@type": "Organization", 
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com"
-      },
-      "datePublished": "2025-01-15",
-      "dateModified": "2025-01-15",
-      "description": "Master virtual backgrounds for Zoom, Teams & Google Meet. Complete setup guide, best practices, and troubleshooting tips."
-    })}
-  </script>
-</Head>
+        
+        {/* Article structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Complete Guide to Virtual Backgrounds for Video Calls 2025",
+            "image": "https://streambackdrops.com/images/bookshelves-dark/bookshelf-dark-1.webp",
+            "author": {
+              "@type": "Organization",
+              "name": "StreamBackdrops"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "StreamBackdrops",
+              "url": "https://streambackdrops.com",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://streambackdrops.com/logo.png"
+              }
+            },
+            "datePublished": "2025-08-02",
+            "dateModified": "2025-10-09",
+            "description": "Master virtual backgrounds for Zoom, Teams & Google Meet. Setup guide, best practices, troubleshooting & 20+ free HD backgrounds. Updated for 2025.",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://streambackdrops.com/blog-virtual-background-guide"
+            }
+          })}
+        </script>
+        
+        {/* Breadcrumb Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://streambackdrops.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://streambackdrops.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Virtual Background Guide",
+                "item": "https://streambackdrops.com/blog-virtual-background-guide"
+              }
+            ]
+          })}
+        </script>
+        
+        {/* FAQ Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do I add a virtual background in Zoom?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In Zoom, go to Settings > Background & Effects > Virtual Backgrounds. Click the + icon to upload your image. Select your background and it will apply to your video feed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What image size is best for virtual backgrounds?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Use 1920x1080 pixels (16:9 aspect ratio) for best results. This HD resolution works across all major video platforms including Zoom, Teams, and Google Meet."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need a green screen for virtual backgrounds?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No, most modern video platforms can use virtual backgrounds without a green screen. However, a green screen improves edge detection and reduces glitching, especially with movement."
+                }
+              }
+            ]
+          })}
+        </script>
+      </Head>
 
       <header style={{
         background: 'white',

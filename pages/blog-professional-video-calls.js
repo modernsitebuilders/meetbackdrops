@@ -71,6 +71,68 @@ export default function BlogProfessionalVideoCalls() {
       }
     })}
   </script>
+  
+  {/* Breadcrumb Schema */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://streambackdrops.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://streambackdrops.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Professional Video Calls Tips",
+          "item": "https://streambackdrops.com/blog-professional-video-calls"
+        }
+      ]
+    })}
+  </script>
+  
+  {/* FAQ Schema */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best lighting for professional video calls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Position yourself facing a window for natural light, or use a ring light at eye level. Avoid backlighting from windows behind you. Soft, diffused lighting from the front creates the most professional appearance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I position my camera for video calls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Place your camera at eye level, about arm's length away. Center yourself in the frame with a little headroom at the top. This creates a natural, professional perspective."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a good professional virtual background?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose backgrounds that are professional but not distracting. Bookshelf backgrounds, office spaces, or subtle interiors work well. Avoid busy patterns, bright colors, or anything too casual for business settings."
+          }
+        }
+      ]
+    })}
+  </script>
       </Head>
 
       <header style={{

@@ -41,36 +41,99 @@ export default function BlogVideoCallEtiquette() {
         <meta name="description" content="Master video call etiquette. Learn professional behavior, technical tips, and communication best practices for Zoom, Teams, and Google Meet calls." />
         <meta name="keywords" content="video call etiquette, virtual meeting tips, professional video calls, zoom etiquette, teams etiquette, meeting behavior" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://streambackdrops.com/blog-video-call-etiquette" />
+       <link rel="canonical" href="https://streambackdrops.com/blog-video-call-etiquette" />
+        
         {/* Article structured data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings",  
-      "image": "https://streambackdrops.com/images/office-spaces/office-space-5.webp",
-      "author": {
-        "@type": "Organization",
-        "name": "StreamBackdrops"
-      },
-      "publisher": {
-        "@type": "Organization", 
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://streambackdrops.com/logo.png"
-        }
-      },
-      "datePublished": "2025-07-15", 
-      "dateModified": "2025-07-15",  
-      "description": "Master video call etiquette. Learn professional behavior, technical tips, and communication best practices for Zoom, Teams, and Google Meet calls.", 
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://streambackdrops.com/blog-video-call-etiquette"  
-      }
-    })}
-  </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings",
+            "image": "https://streambackdrops.com/images/coffee-shops/coffee-shop-01.webp",
+            "author": {
+              "@type": "Organization",
+              "name": "StreamBackdrops"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "StreamBackdrops",
+              "url": "https://streambackdrops.com",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://streambackdrops.com/logo.png"
+              }
+            },
+            "datePublished": "2025-10-01",
+            "dateModified": "2025-10-09",
+            "description": "Master video call etiquette with our complete guide. Learn professional meeting behavior, technical best practices, and communication tips for Zoom, Teams, and Google Meet.",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://streambackdrops.com/blog-video-call-etiquette"
+            }
+          })}
+        </script>
+        
+        {/* Breadcrumb Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://streambackdrops.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://streambackdrops.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Video Call Etiquette",
+                "item": "https://streambackdrops.com/blog-video-call-etiquette"
+              }
+            ]
+          })}
+        </script>
+        
+        {/* FAQ Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Should I keep my camera on during video calls?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, for professional meetings, keeping your camera on shows engagement and professionalism. It helps build rapport and ensures better communication. Only turn it off if you have technical issues or if it's a large webinar-style call."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "When should I mute myself on video calls?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Mute yourself when not speaking, especially in larger meetings. Background noise, typing, or household sounds can be distracting. Unmute only when you need to contribute to the conversation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What should I wear for professional video calls?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dress as you would for an in-person meeting in that context. Business casual is generally safe for most professional calls. Avoid busy patterns, solid colors work best, and dress fully even if only your upper half is visible."
+                }
+              }
+            ]
+          })}
+        </script>
       </Head>
 
       <header style={{

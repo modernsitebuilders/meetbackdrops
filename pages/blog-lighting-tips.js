@@ -71,6 +71,68 @@ export default function BlogLightingTips() {
       }
     })}
   </script>
+  
+  {/* Breadcrumb Schema */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://streambackdrops.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://streambackdrops.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Lighting Setup Guide",
+          "item": "https://streambackdrops.com/blog-lighting-tips"
+        }
+      ]
+    })}
+  </script>
+  
+  {/* FAQ Schema */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best affordable lighting for video calls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A basic ring light (10-18 inches) positioned at eye level provides excellent, affordable lighting for video calls. Natural window light is also free and effective if positioned correctly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where should I position my lights for video calls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Position your main light source in front of you at eye level or slightly above. If using two lights, place them at 45-degree angles on either side. Avoid backlighting from windows behind you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I improve video call lighting without buying equipment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Face a window for natural light, use a white poster board as a reflector, turn on all room lights, and adjust your camera settings. These free solutions can dramatically improve your lighting."
+          }
+        }
+      ]
+    })}
+  </script>
       </Head>
 
       {/* Clean Blog Header */}
