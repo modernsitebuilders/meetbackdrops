@@ -45,8 +45,19 @@ export default function HalloweenBackgrounds() {
         <link rel="canonical" href="https://streambackdrops.com/blog-halloween-backgrounds" />
         <meta property="og:title" content="Best Halloween Virtual Backgrounds for Video Calls 2025" />
         <meta property="og:description" content="Download 25 free Halloween virtual backgrounds perfect for your October video calls. Festive, professional, and completely free." />
+        <meta property="og:image" content="https://streambackdrops.com/images/halloween-backgrounds/halloween-background-20.webp" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta property="og:image:alt" content="Halloween Virtual Background Preview" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://streambackdrops.com/blog-halloween-backgrounds" />
+        
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best Halloween Virtual Backgrounds for Video Calls 2025" />
+        <meta name="twitter:description" content="Download 25 free Halloween virtual backgrounds perfect for your October video calls." />
+        <meta name="twitter:image" content="https://streambackdrops.com/images/halloween-backgrounds/halloween-background-20.webp" />
+        
         {/* Article structured data */}
   <script type="application/ld+json">
     {JSON.stringify({

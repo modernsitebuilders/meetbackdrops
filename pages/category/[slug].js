@@ -140,18 +140,47 @@ const handleDownload = async (image) => {
             {/* ✅ NEW: Author meta tag */}
             <meta name="author" content="StreamBackdrops" />
             
-            {/* ✅ NEW: Enhanced Open Graph tags */}
-<meta property="og:title" content={`${category.name} Backgrounds - Free HD | StreamBackdrops`} />
-<meta property="og:description" content={`Download free ${category.name.toLowerCase()} backgrounds in HD quality. Perfect for professional video calls.`} />
-<meta property="og:url" content={`https://streambackdrops.com/category/${slug}`} />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="StreamBackdrops" />
-
-{/* ✅ NEW: Twitter Card tags */}
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content={`${category.name} Backgrounds - Free HD`} />
-<meta property="twitter:description" content={`Free HD ${category.name.toLowerCase()} backgrounds for video calls`} />
-         
+           {/* ✅ NEW: Enhanced Open Graph tags */}
+{(() => {
+  // Define featured images for each category
+  const featuredImages = {
+    'halloween-backgrounds': 'halloween-background-20.webp',
+    'bookshelves-bright': 'bookshelf-bright-1.webp',
+    'bookshelves-dark': 'bookshelf-dark-1.webp',
+    'office-spaces': 'office-1.webp',
+    'living-rooms': 'living-room-1.webp',
+    'kitchens': 'kitchen-1.webp',
+    'coffee-shops': 'coffee-shop-01.webp',
+    'art-galleries': 'art-gallery-1.webp',
+    'urban-lofts': 'urban-loft-1.webp',
+    'gardens-patios': 'garden-patio-1.webp',
+    'historic-spaces': 'historic-1.webp',
+    'nature-landscapes': 'nature-1.webp',
+    'libraries': 'library-1.webp'
+  };
+  
+  const featuredImage = featuredImages[slug] || category.images[0]?.filename || 'default.webp';
+  const imageUrl = `https://streambackdrops.com/images/${slug}/${featuredImage}`;
+  
+  return (
+    <>
+      <meta property="og:title" content={`${category.name} Backgrounds - Free HD | StreamBackdrops`} />
+      <meta property="og:description" content={`Download free ${category.name.toLowerCase()} backgrounds in HD quality. Perfect for professional video calls.`} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content="1920" />
+      <meta property="og:image:height" content="1080" />
+      <meta property="og:image:alt" content={`${category.name} Virtual Background Preview`} />
+      <meta property="og:url" content={`https://streambackdrops.com/category/${slug}`} />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="StreamBackdrops" />
+      
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:title" content={`${category.name} Backgrounds - Free HD`} />
+      <meta property="twitter:description" content={`Free HD ${category.name.toLowerCase()} backgrounds for video calls`} />
+      <meta property="twitter:image" content={imageUrl} />
+    </>
+  );
+})()}
             {/* FAQ Schema */}
             <script
               type="application/ld+json"
