@@ -145,8 +145,7 @@ export default function ReviewModal({ isOpen, onClose, imageName }) {
                   }
                   
                   // Open Google review form (you'll need to add your actual Google Business review link)
-                  window.open('https://www.trustpilot.com/evaluate/streambackdrops.com', '_blank');
-                  onClose();
+window.open('https://www.trustpilot.com/review/streambackdrops.com', '_blank');                  onClose();
                 }}
                 style={{
                   background: 'transparent',
