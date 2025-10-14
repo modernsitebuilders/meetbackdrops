@@ -94,10 +94,11 @@ const handleDownload = async (image) => {
       const downloadUrl = imageUrl.replace('/upload/', '/upload/fl_attachment/');
       
       // Create a link and trigger download
+      // Create a link and trigger download
       const link = document.createElement('a');
       link.href = downloadUrl;
       link.download = `StreamBackdrops-${baseFilename}.png`;
-      link.target = '_blank';
+      // REMOVED: link.target = '_blank';  // This was causing new tab to open
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -106,8 +107,7 @@ const handleDownload = async (image) => {
       setDownloadedImage(image.filename);
       setTimeout(() => {
         setShowReviewModal(true);
-      }, 1000); // Show modal 1 second after download starts
-    } else {
+      }, 2000); // Show modal 2 seconds after download starts
       console.error(`No Cloudinary URL found for ${baseFilename}`);
     }
     
