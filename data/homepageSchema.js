@@ -127,8 +127,33 @@ export const homepageStructuredData = {
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "1250"
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "reviewCount": "127"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "StreamBackdrops",
+        "image": "https://streambackdrops.com/logo.png",
+        "url": "https://streambackdrops.com",
+        "telephone": "",
+        "priceRange": "Free",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "Norristown",
+          "addressRegion": "PA",
+          "postalCode": "",
+          "addressCountry": "US"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "reviewCount": "127"
         }
       }
     ]

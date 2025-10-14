@@ -8,9 +8,12 @@ import Layout from '../../components/Layout';
 import cloudinaryUrls from '../../cloudinary-urls.json';
 import SocialShare from '../../components/SocialShare';
 import { categoryInfo, folderMap } from '../../data/categoryData';
+import ReviewModal from '../../components/ReviewModal';
 
   function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [downloadedImage, setDownloadedImage] = useState(null);
   const category = categoryInfo[slug];
   
   // Track page view when component loads
@@ -98,6 +101,12 @@ const handleDownload = async (image) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      
+      // Show review modal after download
+      setDownloadedImage(image.filename);
+      setTimeout(() => {
+        setShowReviewModal(true);
+      }, 1000); // Show modal 1 second after download starts
     } else {
       console.error(`No Cloudinary URL found for ${baseFilename}`);
     }
@@ -617,6 +626,13 @@ const handleDownload = async (image) => {
      `}</style>
         </>
       )}
+      
+      {/* Review Modal */}
+      <ReviewModal 
+        isOpen={showReviewModal}
+        onClose={() => setShowReviewModal(false)}
+        imageName={downloadedImage}
+      />
     </>
 );
   }

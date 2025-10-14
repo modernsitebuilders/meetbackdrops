@@ -50,7 +50,7 @@ export default function Home() {
       description="Download 330+ free HD virtual backgrounds for Zoom, Teams & Google Meet. Professional quality backgrounds perfect for video calls and remote work."
       currentPage="home"
       canonical="https://streambackdrops.com"
-      structuredData={homepageStructuredData} // ← Add this line
+      structuredData={homepageStructuredData} 
     >
 
  {/* Hero Section with H1 FIRST */}
