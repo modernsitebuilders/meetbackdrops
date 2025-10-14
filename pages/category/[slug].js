@@ -67,7 +67,7 @@ const handleDownload = async (image) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        filename: image.filename,
+        filename: image.filename.replace('.webp', '.png'),
         category: slug
       })
     }).catch(() => {}); // Fail silently
