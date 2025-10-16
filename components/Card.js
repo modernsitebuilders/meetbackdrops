@@ -47,7 +47,7 @@ export default function Card({
               fill
               style={{ objectFit: 'cover' }}
               quality={75}
-              sizes="(max-width: 768px) 100vw, 300px"
+              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 300px"
               priority={priority}
               loading={priority ? 'eager' : 'lazy'}
             />
