@@ -12,15 +12,6 @@ export default function Home() {
   const router = useRouter();
   
   useEffect(() => {
-    // Preload first image on desktop only (improves desktop, doesn't hurt mobile)
-    if (typeof window !== 'undefined' && window.innerWidth > 768) {
-      const preload = document.createElement('link');
-      preload.rel = 'preload';
-      preload.as = 'image';
-      preload.href = '/images/bookshelves-bright/well-lit-12.webp';
-      document.head.appendChild(preload);
-    }
-    
     // Preconnect to external domains
     const link = document.createElement('link');
     link.rel = 'preconnect';
@@ -168,12 +159,12 @@ export default function Home() {
 {/* Category Cards Grid */}
 <div style={{
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-  gap: '2rem',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: '1.5rem',
   marginBottom: '4rem',
   maxWidth: '1200px',
   margin: '0 auto 4rem auto',
-  padding: '0 2rem'
+  padding: '0 1.5rem'
 }}>
   <Card
     href="/category/bookshelves-bright"
