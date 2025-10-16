@@ -12,6 +12,15 @@ export default function Home() {
   const router = useRouter();
   
   useEffect(() => {
+    // Preload first image on desktop only (improves desktop, doesn't hurt mobile)
+    if (typeof window !== 'undefined' && window.innerWidth > 768) {
+      const preload = document.createElement('link');
+      preload.rel = 'preload';
+      preload.as = 'image';
+      preload.href = '/images/bookshelves-bright/well-lit-12.webp';
+      document.head.appendChild(preload);
+    }
+    
     // Preconnect to external domains
     const link = document.createElement('link');
     link.rel = 'preconnect';
