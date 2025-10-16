@@ -84,6 +84,7 @@ const handleDownload = async (image) => {
     }
 
     // Get the base filename without extension
+    // Get the base filename without extension
     const baseFilename = image.filename.replace('.webp', '');
     
     // Get the Cloudinary URL
