@@ -92,7 +92,8 @@ export default function Home() {
   padding: '3rem 2rem',
   background: '#f8fafc',
   maxWidth: '1200px',
-  margin: '0 auto'
+  margin: '0 auto',
+  willChange: 'auto'
 }}>
   <h2 style={{
     textAlign: 'center',
