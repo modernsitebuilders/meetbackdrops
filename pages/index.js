@@ -10,6 +10,15 @@ import Card from '../components/Card';
 
 export default function Home() {
   const router = useRouter();
+  
+  useEffect(() => {
+    // Preconnect to external domains
+    const link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = 'https://fonts.googleapis.com';
+    document.head.appendChild(link);
+  }, []);
+  
   const navigate = (path) => {
     if (process.env.NODE_ENV === 'development') {
       window.location.href = path;
@@ -163,6 +172,7 @@ export default function Home() {
     imageSrc="/images/bookshelves-bright/well-lit-12.webp"
     imageAlt="Bright bookshelf background for video calls"
     navigate={navigate}
+    priority={true}
   />
   
   <Card

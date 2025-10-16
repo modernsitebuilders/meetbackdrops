@@ -12,6 +12,7 @@ export default function Card({
   customStyles = {},
   navigate,
   className = '',
+  priority = false,
 }) {
   const hasImage = !!imageSrc;
   
@@ -47,6 +48,8 @@ export default function Card({
               style={{ objectFit: 'cover' }}
               quality={75}
               sizes="(max-width: 768px) 100vw, 300px"
+              priority={priority}
+              loading={priority ? 'eager' : 'lazy'}
             />
           </div>
         )}
