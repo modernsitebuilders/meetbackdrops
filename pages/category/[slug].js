@@ -87,7 +87,6 @@ const handleDownload = async (image) => {
     }
 
    // Get the base filename without extension
-    // Get the base filename without extension
     const baseFilename = image.filename.replace('.webp', '');
     
     // Get the Cloudinary URL
@@ -95,25 +94,17 @@ const handleDownload = async (image) => {
     
     if (imageUrl) {
       // Convert to PNG format
-      const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png/');
+      const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
+      const filename = `StreamBackdrops-${baseFilename}.png`;
       
-      // Create download link with custom filename
+      // Use our API to proxy the download
       const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `StreamBackdrops-${baseFilename}.png`;
-      link.target = '_blank'; // Open in new tab to avoid CSP issues
+      link.href = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } else {
       console.error(`No Cloudinary URL found for ${baseFilename}`);
-      // Fallback to local file
-      const link = document.createElement('a');
-      link.href = `/images/${folderMap[slug]}/${image.filename}`;
-      link.download = `StreamBackdrops-${baseFilename}.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
     }
     
     setDownloadedImage(image.filename);
