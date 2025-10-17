@@ -1,0 +1,69 @@
+/* styles/HomePage.module.css */
+.hero {
+  text-align: center;
+  padding: 0.5rem 2rem;
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #f9fafb 100%);
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+}
+
+.heroHighlight {
+  color: #2563eb;
+}
+
+.blogSection {
+  padding: 3rem 2rem;
+  background: #f8fafc;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 3rem;
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.seoSection {
+  background: white;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
