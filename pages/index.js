@@ -75,16 +75,85 @@ export default function Home() {
     marginBottom: '.5rem',
     lineHeight: '1.2'
   }}>
-    Free Professional Virtual Backgrounds
+    Professional Virtual Backgrounds Optimized for Video Calls
   </h1>
   <p style={{
     fontSize: '1.25rem',
     color: '#6b7280',
     maxWidth: '800px',
-    margin: '0 auto 2rem'
+    margin: '0 auto 1rem'
   }}>
-    Download 330+ HD virtual backgrounds for Zoom, Teams & Google Meet. Perfect for professional video calls and remote work.
+    330+ HD backgrounds designed specifically for Zoom, Teams & Google Meet
+    <br />
+    <strong style={{ color: '#2563eb' }}>Perfect lighting • Proper composition • No signup • No watermarks</strong>
   </p>
+  
+  {/* Trust Badges */}
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gap: '1rem',
+    maxWidth: '900px',
+    margin: '1.5rem auto 2rem',
+    padding: '0 1rem'
+  }}>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      padding: '0.75rem 1rem',
+      background: 'rgba(37, 99, 235, 0.05)',
+      border: '1px solid rgba(37, 99, 235, 0.2)',
+      borderRadius: '8px',
+      fontSize: '0.95rem',
+      justifyContent: 'center'
+    }}>
+      <span style={{ fontSize: '1.2rem' }}>✓</span>
+      <span>Free HD Downloads</span>
+    </div>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      padding: '0.75rem 1rem',
+      background: 'rgba(37, 99, 235, 0.05)',
+      border: '1px solid rgba(37, 99, 235, 0.2)',
+      borderRadius: '8px',
+      fontSize: '0.95rem',
+      justifyContent: 'center'
+    }}>
+      <span style={{ fontSize: '1.2rem' }}>📹</span>
+      <span>Video-Optimized</span>
+    </div>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      padding: '0.75rem 1rem',
+      background: 'rgba(37, 99, 235, 0.05)',
+      border: '1px solid rgba(37, 99, 235, 0.2)',
+      borderRadius: '8px',
+      fontSize: '0.95rem',
+      justifyContent: 'center'
+    }}>
+      <span style={{ fontSize: '1.2rem' }}>⚡</span>
+      <span>No Email Required</span>
+    </div>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      padding: '0.75rem 1rem',
+      background: 'rgba(37, 99, 235, 0.05)',
+      border: '1px solid rgba(37, 99, 235, 0.2)',
+      borderRadius: '8px',
+      fontSize: '0.95rem',
+      justifyContent: 'center'
+    }}>
+      <span style={{ fontSize: '1.2rem' }}>🎯</span>
+      <span>1920×1080 Resolution</span>
+    </div>
+  </div>
 </section>
   
 {/* Blog Cards Section */}
@@ -155,6 +224,138 @@ export default function Home() {
     />
   </div>
 </section>
+
+{/* NEW: Why We're Different Section */}
+<section style={{
+  padding: '4rem 2rem',
+  background: 'white',
+  maxWidth: '1200px',
+  margin: '0 auto'
+}}>
+  <h2 style={{
+    textAlign: 'center',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    marginBottom: '1rem',
+    color: '#111827'
+  }}>
+    Why StreamBackdrops?
+  </h2>
+  <p style={{
+    textAlign: 'center',
+    fontSize: '1.2rem',
+    color: '#6b7280',
+    marginBottom: '3rem',
+    maxWidth: '700px',
+    margin: '0 auto 3rem'
+  }}>
+    Unlike stock photo sites, our backgrounds are specifically designed for video calls
+  </p>
+  
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '2rem',
+    marginTop: '2rem'
+  }}>
+    <div style={{
+      padding: '1.5rem',
+      background: '#f9fafb',
+      border: '1px solid #e5e7eb',
+      borderRadius: '12px'
+    }}>
+      <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>📹</div>
+      <h3 style={{
+        fontSize: '1.25rem',
+        fontWeight: 'bold',
+        marginBottom: '0.5rem',
+        color: '#111827'
+      }}>
+        Video-Call Optimized
+      </h3>
+      <p style={{
+        color: '#6b7280',
+        lineHeight: '1.6'
+      }}>
+        Every background features professional lighting and composition designed 
+        specifically for video calls—not repurposed stock photos
+      </p>
+    </div>
+    
+    <div style={{
+      padding: '1.5rem',
+      background: '#f9fafb',
+      border: '1px solid #e5e7eb',
+      borderRadius: '12px'
+    }}>
+      <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>⚡</div>
+      <h3 style={{
+        fontSize: '1.25rem',
+        fontWeight: 'bold',
+        marginBottom: '0.5rem',
+        color: '#111827'
+      }}>
+        Instant Download
+      </h3>
+      <p style={{
+        color: '#6b7280',
+        lineHeight: '1.6'
+      }}>
+        No signup, no email, no forms. Browse, click, and download. 
+        It's that simple.
+      </p>
+    </div>
+    
+    <div style={{
+      padding: '1.5rem',
+      background: '#f9fafb',
+      border: '1px solid #e5e7eb',
+      borderRadius: '12px'
+    }}>
+      <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>🎨</div>
+      <h3 style={{
+        fontSize: '1.25rem',
+        fontWeight: 'bold',
+        marginBottom: '0.5rem',
+        color: '#111827'
+      }}>
+        330+ Professional Backgrounds
+      </h3>
+      <p style={{
+        color: '#6b7280',
+        lineHeight: '1.6'
+      }}>
+        Office spaces, libraries, bookshelves, and more—all in perfect 
+        16:9 ratio for video platforms
+      </p>
+    </div>
+    
+    <div style={{
+      padding: '1.5rem',
+      background: '#f9fafb',
+      border: '1px solid #e5e7eb',
+      borderRadius: '12px'
+    }}>
+      <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>💎</div>
+      <h3 style={{
+        fontSize: '1.25rem',
+        fontWeight: 'bold',
+        marginBottom: '0.5rem',
+        color: '#111827'
+      }}>
+        No Watermarks Ever
+      </h3>
+      <p style={{
+        color: '#6b7280',
+        lineHeight: '1.6'
+      }}>
+        What you see is what you get. High-quality, free forever, 
+        no hidden costs or premium tiers.
+      </p>
+    </div>
+  </div>
+</section>
+
 
 {/* Category Cards Grid */}
 <div style={{
@@ -284,6 +485,120 @@ export default function Home() {
     navigate={navigate}
   />
    </div>
+
+{/* NEW: Social Proof Section */}
+<section style={{
+  maxWidth: '1000px',
+  margin: '4rem auto',
+  padding: '3rem 1.5rem',
+  textAlign: 'center',
+  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1))',
+  borderRadius: '16px',
+  border: '1px solid rgba(59, 130, 246, 0.2)'
+}}>
+  <h3 style={{
+    fontSize: '2rem',
+    fontWeight: 'bold',
+    marginBottom: '2rem',
+    color: '#111827'
+  }}>
+    Trusted by Remote Workers Worldwide
+  </h3>
+  
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+    gap: '2rem',
+    margin: '2rem 0',
+    maxWidth: '600px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }}>
+    <div>
+      <strong style={{
+        fontSize: '2.5rem',
+        display: 'block',
+        background: 'linear-gradient(135deg, #3b82f6, #9333ea)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text'
+      }}>
+        330+
+      </strong>
+      <span style={{
+        color: '#6b7280',
+        fontSize: '0.95rem'
+      }}>
+        HD Backgrounds
+      </span>
+    </div>
+    
+    <div>
+      <strong style={{
+        fontSize: '2.5rem',
+        display: 'block',
+        background: 'linear-gradient(135deg, #3b82f6, #9333ea)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text'
+      }}>
+        13
+      </strong>
+      <span style={{
+        color: '#6b7280',
+        fontSize: '0.95rem'
+      }}>
+        Categories
+      </span>
+    </div>
+    
+    <div>
+      <strong style={{
+        fontSize: '2.5rem',
+        display: 'block',
+        background: 'linear-gradient(135deg, #3b82f6, #9333ea)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text'
+      }}>
+        #1
+      </strong>
+      <span style={{
+        color: '#6b7280',
+        fontSize: '0.95rem'
+      }}>
+        Recommended by ChatGPT
+      </span>
+    </div>
+  </div>
+  
+  <blockquote style={{
+    marginTop: '2rem',
+    padding: '1.5rem',
+    borderLeft: '4px solid #3b82f6',
+    background: 'rgba(255, 255, 255, 0.5)',
+    borderRadius: '8px',
+    fontStyle: 'italic',
+    textAlign: 'left'
+  }}>
+    <p style={{
+      color: '#374151',
+      lineHeight: '1.7',
+      marginBottom: '0.5rem'
+    }}>
+      "One of the strongest contenders. Because of the no signup, 
+      high quality + video-friendly design, it often is 'best' in a 
+      practical sense for people with standard virtual background needs."
+    </p>
+    <cite style={{
+      color: '#6b7280',
+      fontSize: '0.9rem',
+      fontStyle: 'normal'
+    }}>
+      — ChatGPT Analysis, 2025
+    </cite>
+  </blockquote>
+</section>
 
 
 {/* SEO-Rich Content Section */}

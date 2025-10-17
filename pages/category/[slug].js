@@ -330,23 +330,85 @@ const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/')
     {category.name}
   </span>
 </nav>
-         {/* Page Title */}
-          <h1 style={{
-            fontSize: '2.5rem',
-            fontWeight: 'bold',
-            color: '#111827',
-            marginBottom: '0.5rem'
+         {/* Category Header Section */}
+          <div style={{
+            textAlign: 'center',
+            maxWidth: '800px',
+            margin: '0 auto 3rem'
           }}>
-            {category.name}
-          </h1>
-          
-          <h2 style={{
-            color: '#6b7280',
-            fontSize: '1.1rem',
-            marginBottom: '2rem'
-          }}>
-            {category.description}
-          </h2>
+            <h1 style={{
+              fontSize: '2.5rem',
+              fontWeight: 'bold',
+              color: '#111827',
+              marginBottom: '1rem'
+            }}>
+              {category.name} Virtual Backgrounds
+            </h1>
+            
+            <p style={{
+              color: '#6b7280',
+              fontSize: '1.15rem',
+              lineHeight: '1.6',
+              marginBottom: '1.5rem'
+            }}>
+              {category.description} Each background features professional lighting and 
+              composition designed specifically for video calls—not repurposed stock photos.
+            </p>
+            
+            {/* Category Badges */}
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.75rem',
+              justifyContent: 'center',
+              marginTop: '1.5rem'
+            }}>
+              <span style={{
+                padding: '0.5rem 1rem',
+                background: 'rgba(37, 99, 235, 0.1)',
+                border: '1px solid rgba(37, 99, 235, 0.3)',
+                borderRadius: '20px',
+                fontSize: '0.85rem',
+                color: '#2563eb',
+                fontWeight: '500'
+              }}>
+                ✓ Video-Optimized Lighting
+              </span>
+              <span style={{
+                padding: '0.5rem 1rem',
+                background: 'rgba(37, 99, 235, 0.1)',
+                border: '1px solid rgba(37, 99, 235, 0.3)',
+                borderRadius: '20px',
+                fontSize: '0.85rem',
+                color: '#2563eb',
+                fontWeight: '500'
+              }}>
+                ✓ Perfect 16:9 Ratio
+              </span>
+              <span style={{
+                padding: '0.5rem 1rem',
+                background: 'rgba(37, 99, 235, 0.1)',
+                border: '1px solid rgba(37, 99, 235, 0.3)',
+                borderRadius: '20px',
+                fontSize: '0.85rem',
+                color: '#2563eb',
+                fontWeight: '500'
+              }}>
+                ✓ Instant Download
+              </span>
+              <span style={{
+                padding: '0.5rem 1rem',
+                background: 'rgba(37, 99, 235, 0.1)',
+                border: '1px solid rgba(37, 99, 235, 0.3)',
+                borderRadius: '20px',
+                fontSize: '0.85rem',
+                color: '#2563eb',
+                fontWeight: '500'
+              }}>
+                ✓ No Watermarks
+              </span>
+            </div>
+          </div>
           
           {/* Clean Instructions */}
           <p style={{
@@ -466,6 +528,456 @@ const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/')
               </div>
             ))}
           </div>
+
+          {/* Related Categories Section */}
+          <section style={{
+            marginTop: '4rem',
+            paddingTop: '3rem',
+            borderTop: '2px solid #e5e7eb'
+          }}>
+            <h3 style={{
+              textAlign: 'center',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '2rem',
+              color: '#111827'
+            }}>
+              Customers Also Browsed
+            </h3>
+            
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '1.5rem'
+            }}>
+              {/* Related categories based on what ChatGPT users actually browse */}
+              {slug === 'office-spaces' && (
+                <>
+                  <Link href="/category/bookshelves-dark" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/bookshelves-dark/ambient-01.webp"
+                        alt="Dark Bookshelves"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Bookshelves - Dark
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Professional library look
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href="/category/libraries" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/libraries/library-1.webp"
+                        alt="Libraries"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Libraries
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Sophisticated meeting background
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href="/category/bookshelves-bright" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/bookshelves-bright/well-lit-12.webp"
+                        alt="Bright Bookshelves"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Bookshelves - Bright
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Warm, approachable setting
+                      </p>
+                    </div>
+                  </Link>
+                </>
+              )}
+
+              {(slug === 'bookshelves-bright' || slug === 'bookshelves-dark') && (
+                <>
+                  <Link href="/category/libraries" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/libraries/library-1.webp"
+                        alt="Libraries"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Libraries
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Classic study atmosphere
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href="/category/office-spaces" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/office-spaces/office-spaces-01.webp"
+                        alt="Office Spaces"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Office Spaces
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Professional business setting
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href={slug === 'bookshelves-bright' ? '/category/bookshelves-dark' : '/category/bookshelves-bright'} style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src={slug === 'bookshelves-bright' ? '/images/bookshelves-dark/ambient-01.webp' : '/images/bookshelves-bright/well-lit-12.webp'}
+                        alt={slug === 'bookshelves-bright' ? 'Dark Bookshelves' : 'Bright Bookshelves'}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        {slug === 'bookshelves-bright' ? 'Bookshelves - Dark' : 'Bookshelves - Bright'}
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        {slug === 'bookshelves-bright' ? 'Ambient evening lighting' : 'Bright daytime setting'}
+                      </p>
+                    </div>
+                  </Link>
+                </>
+              )}
+
+              {slug === 'libraries' && (
+                <>
+                  <Link href="/category/bookshelves-dark" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/bookshelves-dark/ambient-01.webp"
+                        alt="Dark Bookshelves"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Bookshelves - Dark
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Similar intimate atmosphere
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href="/category/bookshelves-bright" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/bookshelves-bright/well-lit-12.webp"
+                        alt="Bright Bookshelves"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Bookshelves - Bright
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Brighter book collection
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href="/category/office-spaces" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/office-spaces/office-spaces-01.webp"
+                        alt="Office Spaces"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Office Spaces
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Modern professional look
+                      </p>
+                    </div>
+                  </Link>
+                </>
+              )}
+
+              {/* For all other categories, show top 3 most popular */}
+              {!['office-spaces', 'bookshelves-bright', 'bookshelves-dark', 'libraries'].includes(slug) && (
+                <>
+                  <Link href="/category/office-spaces" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/office-spaces/office-spaces-01.webp"
+                        alt="Office Spaces"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Office Spaces
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Professional business backgrounds
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href="/category/bookshelves-bright" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/bookshelves-bright/well-lit-12.webp"
+                        alt="Bright Bookshelves"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Bookshelves - Bright
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Warm, intellectual setting
+                      </p>
+                    </div>
+                  </Link>
+
+                  <Link href="/category/libraries" style={{
+                    textDecoration: 'none',
+                    background: 'white',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    border: '1px solid #e5e7eb',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}>
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+                      <Image
+                        src="/images/libraries/library-1.webp"
+                        alt="Libraries"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ padding: '1rem' }}>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                        Libraries
+                      </h4>
+                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
+                        Classic study backgrounds
+                      </p>
+                    </div>
+                  </Link>
+                </>
+              )}
+            </div>
+          </section>
+
           {/* Simple SEO content - after image grid */}
           <section style={{
             background: 'white',

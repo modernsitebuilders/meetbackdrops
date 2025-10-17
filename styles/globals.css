@@ -76,3 +76,22 @@ nav div[style*="position: absolute"] button:hover {
   background: #f0f9ff !important;
   color: #2563eb !important;
 }
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+  /* Trust badges stack better on mobile */
+  section div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  /* Features grid stacks on mobile */
+  section div[style*="minmax(250px"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Hover effect for feature cards */
+section div[style*="background: #f9fafb"]:hover {
+  transform: translateY(-4px);
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
