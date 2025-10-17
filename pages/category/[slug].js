@@ -85,14 +85,15 @@ const handleDownload = async (image) => {
     }
 
     // Get the base filename without extension
+    // Get the base filename without extension
     const baseFilename = image.filename.replace('.webp', '');
     
     // Get the Cloudinary URL
     const imageUrl = cloudinaryUrls[baseFilename];
     
     if (imageUrl) {
-      // Force download using Cloudinary's fl_attachment parameter
-      const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/');      
+      // Force download using Cloudinary's fl_attachment parameter with custom filename
+      const downloadUrl = imageUrl.replace('/upload/', `/upload/f_png,fl_attachment:StreamBackdrops-${baseFilename}.png/`);      
       // Create a link and trigger download
       const link = document.createElement('a');
       link.href = downloadUrl;
