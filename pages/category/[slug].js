@@ -92,8 +92,8 @@ const handleDownload = async (image) => {
     
     if (imageUrl) {
       // Force download using Cloudinary's fl_attachment parameter with custom filename
-      const downloadUrl = imageUrl.replace('/upload/', `/upload/f_png,fl_attachment:StreamBackdrops-${baseFilename}.png/`);      
-      // Create a link and trigger download
+// Force download using Cloudinary's fl_attachment parameter
+      const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/');      // Create a link and trigger download
       const link = document.createElement('a');
       link.href = downloadUrl;
       link.download = `StreamBackdrops-${baseFilename}.png`;
