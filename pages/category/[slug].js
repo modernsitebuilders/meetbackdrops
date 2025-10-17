@@ -85,7 +85,6 @@ const handleDownload = async (image) => {
     }
 
     // Get the base filename without extension
-    // Get the base filename without extension
     const baseFilename = image.filename.replace('.webp', '');
     
     // Get the Cloudinary URL
@@ -101,14 +100,21 @@ const handleDownload = async (image) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      setDownloadedImage(image.filename);
-      setTimeout(() => {
-        setShowReviewModal(true);
-      }, 2000);
     } else {
+      // Fallback if no Cloudinary URL found
       console.error(`No Cloudinary URL found for ${baseFilename}`);
+      const link = document.createElement('a');
+      link.href = `/images/${folderMap[slug]}/${image.filename}`;
+      link.download = `StreamBackdrops-${baseFilename}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
+    
+    setDownloadedImage(image.filename);
+    setTimeout(() => {
+      setShowReviewModal(true);
+    }, 2000);
     
   } catch (error) {
     console.error('Download failed:', error);
