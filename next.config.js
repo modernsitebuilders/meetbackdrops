@@ -11,21 +11,6 @@ const nextConfig = {
     return config;
   },
   
-  // Add headers to allow Cloudinary
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; img-src 'self' data: https://res.cloudinary.com; connect-src 'self' https://res.cloudinary.com https://*.google-analytics.com https://*.googletagmanager.com https://*.doubleclick.net https://log.cookieyes.com https://api.cookieyes.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://www.google-analytics.com https://cdn.cookieyes.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src 'self'; base-uri 'self'; form-action 'self';"
-          }
-        ]
-      }
-    ];
-  },
-  
   // Redirects for old URLs
   async redirects() {
     return [
