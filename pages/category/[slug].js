@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { event } from '../../lib/gtag';
 import Layout from '../../components/Layout';
-import cloudinaryUrls from '../../cloudinary-urls.json';
 import SocialShare from '../../components/SocialShare';
 import { categoryInfo, folderMap } from '../../data/categoryData';
 import ReviewModal from '../../components/ReviewModal';
@@ -54,9 +53,10 @@ const handleDownload = async (image) => {
     // Skip tracking if admin
     if (localStorage.getItem('streambackdrops_admin') === 'true') {
       // Still do the actual download, just skip tracking
+      const baseFilename = image.filename.replace('.webp', '');
       const link = document.createElement('a');
       link.href = `/images/${folderMap[slug]}/${image.filename}`;
-      link.download = image.filename;
+      link.download = `StreamBackdrops-${baseFilename}.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -87,29 +87,16 @@ const handleDownload = async (image) => {
     // Get the base filename without extension
     const baseFilename = image.filename.replace('.webp', '');
     
-    // Get the Cloudinary URL
-    const imageUrl = cloudinaryUrls[baseFilename];
+    // Use API route to force correct download filename
+    const downloadUrl = `/api/download?folder=${folderMap[slug]}&filename=${image.filename}`;
     
-    if (imageUrl) {
-      // Force download using Cloudinary's fl_attachment parameter with custom filename
-// Force download using Cloudinary's fl_attachment parameter
-      const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/');      // Create a link and trigger download
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `StreamBackdrops-${baseFilename}.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } else {
-      // Fallback if no Cloudinary URL found
-      console.error(`No Cloudinary URL found for ${baseFilename}`);
-      const link = document.createElement('a');
-      link.href = `/images/${folderMap[slug]}/${image.filename}`;
-      link.download = `StreamBackdrops-${baseFilename}.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+    // Create a link and trigger download
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = `StreamBackdrops-${baseFilename}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     
     setDownloadedImage(image.filename);
     setTimeout(() => {
