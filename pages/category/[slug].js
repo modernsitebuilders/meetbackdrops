@@ -93,23 +93,24 @@ const handleDownload = async (image) => {
     const imageUrl = cloudinaryUrls[baseFilename];
     
     if (imageUrl) {
-      // Convert to PNG and force download
-      const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/');
-      
-      // Fetch the file and download with custom name
-      const response = await fetch(downloadUrl);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      
+      // Use Cloudinary's public_id transformation to force download with custom filename
+      // Extract the public_id from the URL
+      const urlParts = imageUrl.split('/upload/');
+      if (urlParts.length === 2) {
+        const downloadUrl = `${urlParts[0]}/upload/fl_attachment:StreamBackdrops-${baseFilename},f_png/${urlParts[1].replace('.png', '')}`;
+        
+        // Simple direct download
+        window.location.href = downloadUrl;
+      }
+    } else {
+      console.error(`No Cloudinary URL found for ${baseFilename}`);
+      // Fallback to local file
       const link = document.createElement('a');
-      link.href = url;
+      link.href = `/images/${folderMap[slug]}/${image.filename}`;
       link.download = `StreamBackdrops-${baseFilename}.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } else {
-      console.error(`No Cloudinary URL found for ${baseFilename}`);
     }
     
     setDownloadedImage(image.filename);
