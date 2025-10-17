@@ -85,7 +85,6 @@ const handleDownload = async (image) => {
     }
 
     // Get the base filename without extension
-    // Get the base filename without extension
     const baseFilename = image.filename.replace('.webp', '');
     
     // Get the Cloudinary URL
@@ -93,7 +92,7 @@ const handleDownload = async (image) => {
     
     if (imageUrl) {
       // Force download using Cloudinary's fl_attachment parameter
-const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/');      
+      const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/');      
       // Create a link and trigger download
       const link = document.createElement('a');
       link.href = downloadUrl;
@@ -102,11 +101,11 @@ const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/')
       link.click();
       document.body.removeChild(link);
       
-
       setDownloadedImage(image.filename);
       setTimeout(() => {
         setShowReviewModal(true);
-      }, 2000); 
+      }, 2000);
+    } else {
       console.error(`No Cloudinary URL found for ${baseFilename}`);
     }
     
