@@ -97,7 +97,7 @@ const handleDownload = async (image) => {
       // Extract the public_id from the URL
       const urlParts = imageUrl.split('/upload/');
       if (urlParts.length === 2) {
-        const downloadUrl = `${urlParts[0]}/upload/fl_attachment:StreamBackdrops-${baseFilename},f_png/${urlParts[1].replace('.png', '')}`;
+const downloadUrl = `${urlParts[0]}/upload/fl_attachment:StreamBackdrops-${baseFilename}.png,f_png/${urlParts[1].replace('.png', '')}`;
         
         // Simple direct download
         window.location.href = downloadUrl;
