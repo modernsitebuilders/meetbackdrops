@@ -9,6 +9,8 @@ import SocialShare from '../../components/SocialShare';
 import { categoryInfo, folderMap } from '../../data/categoryData';
 import ReviewModal from '../../components/ReviewModal';
 import RelatedCategories from '../../components/RelatedCategories';
+import cloudinaryUrls from '../../cloudinary-urls.json';
+
 
   function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -84,19 +86,31 @@ const handleDownload = async (image) => {
       });
     }
 
-    // Get the base filename without extension
+   // Get the base filename without extension
     const baseFilename = image.filename.replace('.webp', '');
     
-    // Use API route to force correct download filename
-    const downloadUrl = `/api/download?folder=${folderMap[slug]}&filename=${image.filename}`;
+    // Get the Cloudinary URL
+    const imageUrl = cloudinaryUrls[baseFilename];
     
-    // Create a link and trigger download
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = `StreamBackdrops-${baseFilename}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (imageUrl) {
+      // Convert to PNG and force download
+      const downloadUrl = imageUrl.replace('/upload/', '/upload/f_png,fl_attachment/');
+      
+      // Fetch the file and download with custom name
+      const response = await fetch(downloadUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `StreamBackdrops-${baseFilename}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } else {
+      console.error(`No Cloudinary URL found for ${baseFilename}`);
+    }
     
     setDownloadedImage(image.filename);
     setTimeout(() => {
