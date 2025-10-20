@@ -1,15 +1,15 @@
 // components/CategoryHeader.js
 import styles from '../styles/CategoryHeader.module.css';
 
-export default function CategoryHeader({ categoryName, description }) {
+export default function CategoryHeader({ category }) {
   return (
     <div className={styles.header}>
       <h1 className={styles.title}>
-        {categoryName} Virtual Backgrounds
+        {category.name} Virtual Backgrounds
       </h1>
       
       <p className={styles.description}>
-        {description} Each background features professional lighting and 
+        {category.description} Each background features professional lighting and 
         composition designed specifically for video calls—not repurposed stock photos.
       </p>
       
