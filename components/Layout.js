@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 export default function Layout({ 
   children, 
   title = 'StreamBackdrops - Free HD Virtual Backgrounds',
-  description = 'Download free HD virtual backgrounds for Zoom, Teams, and Google Meet. Professional quality backgrounds for video calls.',
+  description = 'Download 330+ free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. No signup required, no watermarks - just high-quality backgrounds perfect for video calls, remote work, and online meetings.',
   currentPage = null,
   canonical,
   keywords = 'virtual backgrounds, Zoom backgrounds, Teams backgrounds, professional video calls, free download',
