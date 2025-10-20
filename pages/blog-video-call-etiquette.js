@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function BlogVideoCallEtiquette() {
   useEffect(() => {
@@ -100,40 +102,7 @@ export default function BlogVideoCallEtiquette() {
             ]
           })}
         </script>
-        
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Should I keep my camera on during video calls?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, for professional meetings, keeping your camera on shows engagement and professionalism. It helps build rapport and ensures better communication. Only turn it off if you have technical issues or if it's a large webinar-style call."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "When should I mute myself on video calls?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Mute yourself when not speaking, especially in larger meetings. Background noise, typing, or household sounds can be distracting. Unmute only when you need to contribute to the conversation."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What should I wear for professional video calls?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Dress as you would for an in-person meeting in that context. Business casual is generally safe for most professional calls. Avoid busy patterns, solid colors work best, and dress fully even if only your upper half is visible."
-                }
-              }
-            ]
-          })}
-        </script>
+        <FAQSchema questions={getFAQs('blog-video-call-etiquitte')} />
       </Head>
 
       <header style={{

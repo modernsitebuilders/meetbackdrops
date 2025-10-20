@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function BlogIndustryBackgrounds() {
   useEffect(() => {
@@ -99,40 +101,7 @@ export default function BlogIndustryBackgrounds() {
             ]
           })}
         </script>
-        
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What virtual backgrounds are best for healthcare professionals?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Healthcare professionals should use clean, minimal backgrounds that convey professionalism and trust. Subtle office spaces, bright well-lit rooms, or soft neutral tones work best. Avoid anything too casual or distracting for patient consultations."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What backgrounds should lawyers and legal professionals use?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Lawyers should choose conservative, professional backgrounds like traditional office spaces with bookshelves, minimal modern offices, or subtle corporate settings. Dark wood tones and library backgrounds convey authority and credibility."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are creative backgrounds appropriate for tech industry calls?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, tech professionals have more flexibility. Modern lofts, creative studio spaces, or trendy coffee shop backgrounds work well. You can be slightly more casual while still maintaining professionalism depending on the company culture."
-                }
-              }
-            ]
-          })}
-        </script>
+        <FAQSchema questions={getFAQs('blog-backgrounds-by-industry')} />
       </Head>
 
       {/* Clean Blog Header */}

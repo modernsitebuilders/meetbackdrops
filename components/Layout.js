@@ -119,36 +119,7 @@ return (
     __html: JSON.stringify(structuredData || defaultStructuredData)
   }}
 />
-{/* Add FAQ schema for homepage */}
-{currentPage === 'home' && (
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How do I download virtual backgrounds?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Simply browse our categories, click on any background image, and download it instantly. No signup required - all backgrounds are completely free."
-            }
-          },
-          {
-            "@type": "Question", 
-            "name": "What video platforms support virtual backgrounds?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our backgrounds work with Zoom, Microsoft Teams, Google Meet, Skype, Discord, and most video calling platforms that support custom virtual backgrounds."
-            }
-          }
-        ]
-      })
-    }}  
-  />
-)}
+
 {/* Add prefetching for popular categories on homepage */}
 {currentPage === 'home' && (
   <>

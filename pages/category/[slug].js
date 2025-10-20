@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import { categoryInfo, folderMap } from '../../data/categoryData';
 import ReviewModal from '../../components/ReviewModal';
+import Head from 'next/head';
 import RelatedCategories from '../../components/RelatedCategories';
 import CategoryMeta from '../../components/CategoryMeta';
 import CategoryHeader from '../../components/CategoryHeader';
@@ -11,6 +12,8 @@ import ImageGrid from '../../components/ImageGrid';
 import ImagePreviewModal from '../../components/ImagePreviewModal';
 import CategorySEOContent from '../../components/CategorySEOContent';
 import cloudinaryUrls from '../../cloudinary-urls.json';
+import FAQSchema from '../../components/FAQSchema';
+import { getFAQs } from '../../data/faqData';
 
 function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -107,7 +110,6 @@ function CategoryContent({ slug }) {
   return (
     <>
       <CategoryMeta category={category} slug={slug} />
-
       {!category ? (
         <div style={{ padding: '2rem', textAlign: 'center' }}>
           <h1>Category Not Found</h1>
@@ -191,6 +193,9 @@ export default function CategoryPage({ slug }) {
       currentPage={currentSlug}
       seoContent={null}
     >
+      <Head>
+        <FAQSchema questions={getFAQs(currentSlug)} />
+      </Head>
       <CategoryContent slug={currentSlug} />
     </Layout>
   );

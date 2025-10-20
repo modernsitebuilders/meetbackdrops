@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function BlogVirtualBackgroundGuide() {
   useEffect(() => {
@@ -99,40 +101,7 @@ export default function BlogVirtualBackgroundGuide() {
             ]
           })}
         </script>
-        
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "How do I add a virtual background in Zoom?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "In Zoom, go to Settings > Background & Effects > Virtual Backgrounds. Click the + icon to upload your image. Select your background and it will apply to your video feed."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What image size is best for virtual backgrounds?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Use 1920x1080 pixels (16:9 aspect ratio) for best results. This HD resolution works across all major video platforms including Zoom, Teams, and Google Meet."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Do I need a green screen for virtual backgrounds?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No, most modern video platforms can use virtual backgrounds without a green screen. However, a green screen improves edge detection and reduces glitching, especially with movement."
-                }
-              }
-            ]
-          })}
-        </script>
+        <FAQSchema questions={getFAQs('blog-virtual-background-guide')} />
       </Head>
 
       <header style={{

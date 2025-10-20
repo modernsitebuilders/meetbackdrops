@@ -1,4 +1,3 @@
-// pages/index.js - REFACTORED VERSION
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -10,6 +9,8 @@ import TrustBadges from '../components/TrustBadges';
 import WhyDifferent from '../components/WhyDifferent';
 import SocialProof from '../components/SocialProof';
 import styles from '../styles/HomePage.module.css';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function Home() {
   const router = useRouter();
@@ -59,6 +60,10 @@ export default function Home() {
       canonical="https://streambackdrops.com"
       structuredData={homepageStructuredData} 
     >
+      <Head>
+        <FAQSchema questions={getFAQs('homepage')} />
+      </Head>
+      
       {/* Hero Section */}
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import Footer from '../components/Footer';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function HalloweenBackgrounds() {
   useEffect(() => {
@@ -51,7 +53,7 @@ export default function HalloweenBackgrounds() {
         <meta property="og:image:alt" content="Halloween Virtual Background Preview" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://streambackdrops.com/blog-halloween-backgrounds" />
-        
+      
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Halloween Virtual Backgrounds for Video Calls 2025" />
@@ -115,48 +117,7 @@ export default function HalloweenBackgrounds() {
       ]
     })}
   </script>
-  
-  {/* FAQ Schema for Featured Snippets */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Are these Halloween backgrounds free to use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! All 25 Halloween virtual backgrounds are completely free to download and use. No signup required, no watermarks, and free for both personal and commercial use."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What video platforms work with these Halloween backgrounds?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "These Halloween backgrounds work with Zoom, Microsoft Teams, Google Meet, Skype, Discord, and any video conferencing platform that supports custom virtual backgrounds."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I use a Halloween virtual background?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Download your chosen Halloween background, then upload it in your video app's virtual background settings. For Zoom, go to Settings > Background & Effects. For Teams, go to Settings > Devices > Background effects."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are these backgrounds professional enough for work meetings?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Our Halloween backgrounds strike a balance between festive and professional. They feature tasteful seasonal decor like pumpkins and fall colors without being too distracting for work calls."
-          }
-        }
-      ]
-    })}
-  </script>
+  <FAQSchema questions={getFAQs('blog-halloween-backgrounds')} />
       </Head>
 
       {/* Header */}

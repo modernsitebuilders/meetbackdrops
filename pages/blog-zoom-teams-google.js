@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function BlogZoomTeamsGoogle() {
   useEffect(() => {
@@ -100,40 +102,7 @@ export default function BlogZoomTeamsGoogle() {
             ]
           })}
         </script>
-        
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Which platform has the best virtual background feature?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Zoom offers the most advanced virtual background features with the best edge detection and customization options. Teams and Google Meet have solid implementations but with fewer customization features."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can I use the same background image on all platforms?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes! Images in 1920x1080 resolution (16:9 aspect ratio) work perfectly across Zoom, Teams, and Google Meet. Simply download once and upload to each platform."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Which platform works best without a green screen?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "All three platforms work well without a green screen. Zoom has the most advanced AI background removal, but Teams and Meet also provide quality results with good lighting."
-                }
-              }
-            ]
-          })}
-        </script>
+        <FAQSchema questions={getFAQs('blog-zoom-teams-google')} />
       </Head>
 
       <header style={{

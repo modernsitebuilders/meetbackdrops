@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function BlogRemoteWorkProductivity() {
   useEffect(() => {
@@ -100,40 +102,7 @@ export default function BlogRemoteWorkProductivity() {
             ]
           })}
         </script>
-        
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What are the essentials for a productive home office?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "A comfortable ergonomic chair, proper desk at the right height, good lighting (natural or artificial), reliable internet connection, and a quiet dedicated workspace separate from living areas."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How do I stay focused while working from home?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Set clear work hours, create a dedicated workspace, use time-blocking techniques, minimize distractions, take regular breaks, and establish boundaries with household members during work time."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How can I maintain work-life balance when working remotely?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Establish firm start and end times, physically leave your workspace after hours, schedule breaks and leisure time, maintain social connections, and create rituals that signal the transition between work and personal time."
-                }
-              }
-            ]
-          })}
-        </script>
+        <FAQSchema questions={getFAQs('blog-remote-work-productivity')} />
       </Head>
 
       <header style={{

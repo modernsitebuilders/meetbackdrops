@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import FAQSchema from '../components/FAQSchema';
+import { getFAQs } from '../data/faqData';
 
 export default function BlogBestVirtualBackgroundSites() {
   useEffect(() => {
@@ -99,40 +101,7 @@ export default function BlogBestVirtualBackgroundSites() {
             ]
           })}
         </script>
-        
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the best free virtual background site?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "StreamBackdrops offers the largest collection of purpose-built virtual backgrounds completely free. Unlike stock photo sites, every image is specifically designed for video calls with proper framing and professional quality."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can I use stock photos as virtual backgrounds?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "While possible, stock photos aren't optimized for video calls. They often have wrong aspect ratios, distracting elements, or licensing restrictions. Purpose-built virtual backgrounds work much better."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Do I need to pay for good virtual backgrounds?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No! StreamBackdrops offers 300+ professional HD virtual backgrounds completely free with no watermarks, no signup required, and free for commercial use. Quality virtual backgrounds don't require payment."
-                }
-              }
-            ]
-          })}
-        </script>
+        <FAQSchema questions={getFAQs('blog-best-virtual-background-sites-2025')} />
       </Head>
 
       <header style={{
