@@ -4,6 +4,9 @@ import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
+import BlogPostSchema from '../components/BlogPostSchema';
+import { blogMetadata } from '../data/blogMetadata';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function BlogVirtualBackgroundGuide() {
   useEffect(() => {
@@ -74,33 +77,15 @@ export default function BlogVirtualBackgroundGuide() {
           })}
         </script>
         
-        {/* Breadcrumb Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://streambackdrops.com"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://streambackdrops.com/blog"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Virtual Background Guide",
-                "item": "https://streambackdrops.com/blog-virtual-background-guide"
-              }
-            ]
-          })}
-        </script>
+        <BlogPostSchema 
+  {...blogMetadata['blog-virtual-background-guide']}
+  url="https://streambackdrops.com/blog-virtual-background-guide"
+/>
+<BreadcrumbSchema items={[
+  { name: "Home", url: "https://streambackdrops.com" },
+  { name: "Blog", url: "https://streambackdrops.com/blog" },
+  { name: "Virtual-Background-Guide", url: "https://streambackdrops.com/blog-virtual-background-guide" }
+]} />
         <FAQSchema questions={getFAQs('blog-virtual-background-guide')} />
       </Head>
 

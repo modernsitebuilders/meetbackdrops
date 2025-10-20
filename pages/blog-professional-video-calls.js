@@ -4,6 +4,9 @@ import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
+import BlogPostSchema from '../components/BlogPostSchema';
+import { blogMetadata } from '../data/blogMetadata';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function BlogProfessionalVideoCalls() {
   useEffect(() => {
@@ -74,33 +77,15 @@ export default function BlogProfessionalVideoCalls() {
     })}
   </script>
   
-  {/* Breadcrumb Schema */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://streambackdrops.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": "https://streambackdrops.com/blog"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Professional Video Calls Tips",
-          "item": "https://streambackdrops.com/blog-professional-video-calls"
-        }
-      ]
-    })}
-  </script>
+  <BlogPostSchema 
+  {...blogMetadata['blog-professional-video-calls']}
+  url="https://streambackdrops.com/blog-professional-video-calls"
+/>
+<BreadcrumbSchema items={[
+  { name: "Home", url: "https://streambackdrops.com" },
+  { name: "Blog", url: "https://streambackdrops.com/blog" },
+  { name: "Professional-Video-Calls", url: "https://streambackdrops.com/blog-professional-video-calls" }
+]} />
   <FAQSchema questions={getFAQs('blog-professional-video-calls')} />
       </Head>
 

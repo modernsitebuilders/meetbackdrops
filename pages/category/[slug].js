@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import Layout from '../../components/Layout';
 import { categoryInfo, folderMap } from '../../data/categoryData';
 import ReviewModal from '../../components/ReviewModal';
-import Head from 'next/head';
 import RelatedCategories from '../../components/RelatedCategories';
 import CategoryMeta from '../../components/CategoryMeta';
 import CategoryHeader from '../../components/CategoryHeader';
@@ -14,6 +14,8 @@ import CategorySEOContent from '../../components/CategorySEOContent';
 import cloudinaryUrls from '../../cloudinary-urls.json';
 import FAQSchema from '../../components/FAQSchema';
 import { getFAQs } from '../../data/faqData';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema'; 
+import ImageObjectSchema from '../../components/ImageObjectSchema';  
 
 function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -195,6 +197,15 @@ export default function CategoryPage({ slug }) {
     >
       <Head>
         <FAQSchema questions={getFAQs(currentSlug)} />
+         <BreadcrumbSchema items={[
+    { name: "Home", url: "https://streambackdrops.com" },
+    { name: category.name, url: `https://streambackdrops.com/category/${currentSlug}` }
+  ]} />
+  <ImageObjectSchema 
+  images={category.images} 
+  category={category.name}
+  baseUrl="https://streambackdrops.com"
+/>
       </Head>
       <CategoryContent slug={currentSlug} />
     </Layout>

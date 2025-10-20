@@ -5,6 +5,9 @@ import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
+import BlogPostSchema from '../components/BlogPostSchema';
+import { blogMetadata } from '../data/blogMetadata';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function BlogZoomTeamsGoogle() {
   useEffect(() => {
@@ -75,33 +78,15 @@ export default function BlogZoomTeamsGoogle() {
           })}
         </script>
         
-        {/* Breadcrumb Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://streambackdrops.com"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://streambackdrops.com/blog"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Zoom vs Teams vs Meet",
-                "item": "https://streambackdrops.com/blog-zoom-teams-google"
-              }
-            ]
-          })}
-        </script>
+        <BlogPostSchema 
+  {...blogMetadata['blog-zoom-teams-google']}
+  url="https://streambackdrops.com/blog-zoom-teams-google"
+/>
+<BreadcrumbSchema items={[
+  { name: "Home", url: "https://streambackdrops.com" },
+  { name: "Blog", url: "https://streambackdrops.com/blog" },
+  { name: "Zoom-Teams-Google", url: "https://streambackdrops.com/blog-zoom-teams-google" }
+]} />
         <FAQSchema questions={getFAQs('blog-zoom-teams-google')} />
       </Head>
 
