@@ -7,6 +7,7 @@ import { getFAQs } from '../data/faqData';
 import BlogPostSchema from '../components/BlogPostSchema';
 import { blogMetadata } from '../data/blogMetadata';
 import BreadcrumbSchema from '../components/BreadcrumbSchema';
+import { categoryInfo } from '../data/categoryData';
 
 export default function BlogJobInterviewBackgrounds() {
   useEffect(() => {
@@ -37,6 +38,11 @@ export default function BlogJobInterviewBackgrounds() {
       }).catch(() => {});
     }
   }, []);
+
+  // Get dynamic image counts
+  const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
+  const brightBookshelvesCount = categoryInfo['bookshelves-bright']?.images?.length || 0;
+  const darkBookshelvesCount = categoryInfo['bookshelves-dark']?.images?.length || 0;
 
   return (
     <>
@@ -269,7 +275,7 @@ export default function BlogJobInterviewBackgrounds() {
                 borderRadius: '0.25rem'
               }}>
                 <p style={{ margin: 0, fontWeight: '500', color: '#0c4a6e' }}>
-                  💡 Pro Tip: StreamBackdrops offers 19 free professional office backgrounds perfect for interviews. Browse the <Link href="/office-spaces" style={{ color: '#0284c7', textDecoration: 'underline' }}>Office Spaces collection</Link> to find your ideal match.
+                  💡 Pro Tip: StreamBackdrops offers {officeSpacesCount} free professional office backgrounds perfect for interviews. Browse the <Link href="/category/office-spaces" style={{ color: '#0284c7', textDecoration: 'underline' }}>Office Spaces collection</Link> to find your ideal match.
                 </p>
               </div>
 
@@ -299,7 +305,7 @@ export default function BlogJobInterviewBackgrounds() {
                 borderRadius: '0.25rem'
               }}>
                 <p style={{ margin: 0, fontWeight: '500', color: '#0c4a6e' }}>
-                  💡 Browse 47 free <Link href="/bookshelves-bright" style={{ color: '#0284c7', textDecoration: 'underline' }}>bright bookshelf backgrounds</Link> or 41 <Link href="/bookshelves-dark" style={{ color: '#0284c7', textDecoration: 'underline' }}>sophisticated dark bookshelves</Link> on StreamBackdrops.
+                  💡 Browse {brightBookshelvesCount} free <Link href="/category/bookshelves-bright" style={{ color: '#0284c7', textDecoration: 'underline' }}>bright bookshelf backgrounds</Link> or {darkBookshelvesCount} <Link href="/category/bookshelves-dark" style={{ color: '#0284c7', textDecoration: 'underline' }}>sophisticated dark bookshelves</Link> on StreamBackdrops.
                 </p>
               </div>
 
@@ -709,18 +715,18 @@ export default function BlogJobInterviewBackgrounds() {
 
               <ul style={{ marginBottom: '1.25rem', paddingLeft: '1.5rem' }}>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <Link href="/office-spaces" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
-                    Professional Office Spaces (19 backgrounds)
+                  <Link href="/category/office-spaces" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                    Professional Office Spaces ({officeSpacesCount} backgrounds)
                   </Link>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <Link href="/bookshelves-bright" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
-                    Bright Bookshelves (47 backgrounds)
+                  <Link href="/category/bookshelves-bright" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                    Bright Bookshelves ({brightBookshelvesCount} backgrounds)
                   </Link>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <Link href="/bookshelves-dark" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
-                    Dark Bookshelves (41 backgrounds)
+                  <Link href="/category/bookshelves-dark" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                    Dark Bookshelves ({darkBookshelvesCount} backgrounds)
                   </Link>
                 </li>
               </ul>
