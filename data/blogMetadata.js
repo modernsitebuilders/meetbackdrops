@@ -1,5 +1,12 @@
 // data/blogMetadata.js
 export const blogMetadata = {
+  "blog-job-interview-backgrounds": {
+    headline: "Best Virtual Backgrounds for Job Interviews 2025: Complete Guide",
+    description: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression.",
+    image: "/images/office-spaces/office-spaces-05.webp",
+    datePublished: "2025-01-21",
+    dateModified: "2025-01-21"
+  },
   "blog-halloween-backgrounds": {
     headline: "Best Halloween Virtual Backgrounds for Video Calls 2025",
     description: "Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Spooky seasonal backgrounds with pumpkins, fall decor, and autumn atmosphere for October video calls.",

@@ -224,6 +224,7 @@ export const faqData = {
 
   // Blog pages
   blog: [
+    
     {
       question: "How often do you publish new blog posts?",
       answer: "We regularly publish helpful content about virtual backgrounds, video call tips, remote work productivity, and professional video conferencing best practices."
@@ -238,7 +239,24 @@ export const faqData = {
     }
   ],
   // Blog pages - add these after your category FAQs
-
+"blog-job-interview-backgrounds": [
+    {
+      question: "What is the best virtual background for a job interview?",
+      answer: "The best virtual backgrounds for job interviews are professional office spaces, well-lit bookshelves, or clean home office settings. Choose neutral colors and avoid anything distracting or too casual."
+    },
+    {
+      question: "Should I use a virtual background for a job interview?",
+      answer: "Use a virtual background if your real background isn't professional-looking, has clutter, movement, or reveals too much personal information. A good virtual background is better than a messy real one."
+    },
+    {
+      question: "What backgrounds should I avoid in job interviews?",
+      answer: "Avoid beaches, bedrooms, memes, political imagery, blurry images, busy patterns, and anything too casual. Your background should be professional and not compete for attention with you."
+    },
+    {
+      question: "Do hiring managers care about virtual backgrounds?",
+      answer: "Yes! Hiring managers make snap judgments about professionalism based on your appearance, including your background. A professional background shows attention to detail and respect for the interview process."
+    }
+  ],
   "blog-halloween-backgrounds": [
     {
       question: "Are these Halloween backgrounds free to use?",

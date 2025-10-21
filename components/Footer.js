@@ -74,6 +74,9 @@ export default function Footer() {
               Helpful Guides
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link href="/blog-job-interview-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Job Interview Backgrounds
+              </Link>
               <Link href="/blog-video-call-etiquette" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Video Call Etiquette
               </Link>

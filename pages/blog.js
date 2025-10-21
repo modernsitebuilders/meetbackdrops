@@ -35,6 +35,14 @@ export default function Blog() {
   }, []);
 
   const blogPosts = [
+    {
+    title: "Best Virtual Backgrounds for Job Interviews 2025: Complete Guide",
+    slug: "blog-job-interview-backgrounds",
+    excerpt: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression on video calls.",
+    date: "January 2025",
+    readTime: "12 min read",
+    category: "Career Guide"
+  },
      {
     title: "Best Free Virtual Background Sites in 2025: Complete Comparison",
     slug: "blog-best-virtual-background-sites-2025",

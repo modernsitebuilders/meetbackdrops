@@ -15,6 +15,12 @@
   
   <!-- High Priority Blog Posts -->
   <url>
+    <loc>https://streambackdrops.com/blog-job-interview-backgrounds</loc>
+    <lastmod>2025-01-21T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://streambackdrops.com/blog-halloween-backgrounds</loc>
     <lastmod>2025-10-09T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
