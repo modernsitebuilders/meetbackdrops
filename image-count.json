@@ -1,5 +1,5 @@
 {
-  "totalImages": 337,
+  "totalImages": 362,
   "totalCategories": 13,
   "categories": {
     "art-galleries": 17,
@@ -13,8 +13,8 @@
     "libraries": 18,
     "living-rooms": 47,
     "nature-landscapes": 49,
-    "office-spaces": 19,
+    "office-spaces": 44,
     "urban-lofts": 17
   },
-  "generatedAt": "2025-10-08T15:52:33.125Z"
+  "generatedAt": "2025-10-21T18:30:00.000Z"
 }

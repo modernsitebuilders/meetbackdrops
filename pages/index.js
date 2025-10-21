@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <Layout
       title="Free Professional Virtual Backgrounds - StreamBackdrops"
-      description="Download 330+ free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks - instant download of high-quality backgrounds including offices, bookshelves, living rooms, and more."
+      description="Download 350+ free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks - instant download of high-quality backgrounds including offices, bookshelves, living rooms, and more."
       currentPage="home"
       canonical="https://streambackdrops.com"
       structuredData={homepageStructuredData} 
@@ -70,7 +70,7 @@ export default function Home() {
           Professional Virtual Backgrounds Optimized for Video Calls
         </h1>
         <p className={styles.heroSubtitle}>
-          330+ HD backgrounds designed specifically for Zoom, Teams & Google Meet
+          350+ HD backgrounds designed specifically for Zoom, Teams & Google Meet
           <br />
           <strong className={styles.heroHighlight}>
             Perfect lighting • Proper composition • No signup • No watermarks

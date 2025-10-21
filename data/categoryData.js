@@ -24,7 +24,7 @@ export const categoryInfo = {
     name: 'Office Spaces',
     description: 'Professional office backgrounds for business calls',
     seoDescription: 'Download free professional office virtual backgrounds for video calls. Executive office backgrounds.',
-    images: Array.from({length: 19}, (_, i) => ({
+    images: Array.from({length: 44}, (_, i) => ({
       filename: `office-spaces-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Office Space Background ${i + 1}`
     }))

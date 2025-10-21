@@ -18,7 +18,7 @@ export default function handler(req, res) {
   },
   'office-spaces': {
     name: 'Office Spaces',
-    count: 15,
+    count: 44,
     description: 'Professional corporate office environments perfect for business video conferencing'
   },
   'living-rooms': {
