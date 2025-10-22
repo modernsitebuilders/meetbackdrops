@@ -5,7 +5,6 @@ import Head from 'next/head';
 import { categoryInfo, folderMap } from '../../data/categoryData';
 import ReviewModal from '../../components/ReviewModal';
 import RelatedCategories from '../../components/RelatedCategories';
-import CategoryMeta from '../../components/CategoryMeta';
 import CategoryHeader from '../../components/CategoryHeader';
 import ImageGrid from '../../components/ImageGrid';
 import ImagePreviewModal from '../../components/ImagePreviewModal';
@@ -23,7 +22,6 @@ function CategoryContent({ slug }) {
   const [downloadedImage, setDownloadedImage] = useState(null);
   const category = categoryInfo[slug];
   
-  // Track page view when component loads
   useEffect(() => {
     if (typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true') {
       return;
@@ -111,7 +109,6 @@ function CategoryContent({ slug }) {
 
   return (
     <>
-      <CategoryMeta category={category} slug={slug} />
       {!category ? (
         <div style={{ padding: '2rem', textAlign: 'center' }}>
           <h1>Category Not Found</h1>
@@ -128,7 +125,6 @@ function CategoryContent({ slug }) {
               maxWidth: '1400px',
               margin: '0 auto'
             }}>
-              {/* Breadcrumbs */}
               <nav style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -187,7 +183,6 @@ export default function CategoryPage({ slug }) {
   const currentSlug = slug || router.query.slug;
   const category = categoryInfo[currentSlug];
 
-  // If category doesn't exist, show error page
   if (!category) {
     return (
       <>
@@ -205,41 +200,68 @@ export default function CategoryPage({ slug }) {
     );
   }
 
-  // ALL Head content in ONE place - this is the key fix!
+  // CRITICAL: Build title string BEFORE using it - ensure it's never undefined
+  const categoryName = String(category.name || 'Virtual');
+  const pageTitle = categoryName + ' Backgrounds - Free HD | StreamBackdrops';
+  const pageDescription = String(category.seoDescription || `Download free ${categoryName.toLowerCase()} backgrounds in HD. Perfect for Zoom, Teams & Google Meet.`);
+  
+  const featuredImages = {
+    'halloween-backgrounds': 'halloween-background-20.webp',
+    'bookshelves-bright': 'bookshelf-bright-1.webp',
+    'bookshelves-dark': 'bookshelf-dark-1.webp',
+    'office-spaces': 'office-1.webp',
+    'living-rooms': 'living-room-1.webp',
+    'kitchens': 'kitchen-1.webp',
+    'coffee-shops': 'coffee-shop-01.webp',
+    'art-galleries': 'art-gallery-1.webp',
+    'urban-lofts': 'urban-loft-1.webp',
+    'gardens-patios': 'garden-patio-1.webp',
+    'historic-spaces': 'historic-1.webp',
+    'nature-landscapes': 'nature-1.webp',
+    'libraries': 'library-1.webp'
+  };
+  
+  const featuredImage = featuredImages[currentSlug] || 'og-image.png';
+  const imageUrl = `https://streambackdrops.com/images/${currentSlug}/${featuredImage}`;
+
   return (
     <>
       <Head>
-        {/* CRITICAL: Title tag - must be first and explicit */}
-        <title>{`${category.name} Backgrounds - Free HD | StreamBackdrops`}</title>
+        {/* Use the pre-built string - never use template literals in title tag */}
+        <title>{pageTitle}</title>
         
-        {/* Meta tags */}
-        <meta name="description" content={category.seoDescription} />
+        <meta name="description" content={pageDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content={`${category.name} virtual backgrounds, ${category.name} Zoom backgrounds, professional video call backgrounds`} />
+        <meta name="keywords" content={categoryName.toLowerCase() + ' virtual backgrounds, ' + categoryName.toLowerCase() + ' Zoom backgrounds, professional video call backgrounds'} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="author" content="StreamBackdrops" />
         
-        {/* Canonical */}
-        <link rel="canonical" href={`https://streambackdrops.com/category/${currentSlug}`} />
+        <link rel="canonical" href={'https://streambackdrops.com/category/' + currentSlug} />
         
-        {/* Open Graph */}
-        <meta property="og:title" content={`${category.name} Backgrounds - Free HD | StreamBackdrops`} />
-        <meta property="og:description" content={category.seoDescription} />
-        <meta property="og:url" content={`https://streambackdrops.com/category/${currentSlug}`} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={'https://streambackdrops.com/category/' + currentSlug} />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="StreamBackdrops" />
+        <meta property="og:image" content={imageUrl} />
         
-        {/* Structured Data Schemas */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+        
         <FAQSchema questions={getFAQs(currentSlug)} />
         <BreadcrumbSchema items={[
           { name: "Home", url: "https://streambackdrops.com" },
-          { name: category.name, url: `https://streambackdrops.com/category/${currentSlug}` }
+          { name: categoryName, url: 'https://streambackdrops.com/category/' + currentSlug }
         ]} />
         <ImageObjectSchema 
           images={category.images} 
-          category={category.name}
+          category={categoryName}
           baseUrl="https://streambackdrops.com"
         />
       </Head>
       
-      {/* Navigation Header */}
       <header style={{
         background: 'white',
         borderBottom: '1px solid #e5e7eb',
@@ -260,7 +282,6 @@ export default function CategoryPage({ slug }) {
         </div>
       </header>
       
-      {/* Main Content */}
       <main>
         <CategoryContent slug={currentSlug} />
       </main>
