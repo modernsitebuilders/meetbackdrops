@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Layout from '../../components/Layout';
 import { categoryInfo, folderMap } from '../../data/categoryData';
 import ReviewModal from '../../components/ReviewModal';
 import RelatedCategories from '../../components/RelatedCategories';
@@ -15,7 +14,8 @@ import cloudinaryUrls from '../../cloudinary-urls.json';
 import FAQSchema from '../../components/FAQSchema';
 import { getFAQs } from '../../data/faqData';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema'; 
-import ImageObjectSchema from '../../components/ImageObjectSchema';  
+import ImageObjectSchema from '../../components/ImageObjectSchema';
+import Footer from '../../components/Footer';
 
 function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -187,13 +187,15 @@ export default function CategoryPage({ slug }) {
   const currentSlug = slug || router.query.slug;
   const category = categoryInfo[currentSlug];
 
-  // If category doesn't exist, show error page with proper title
+  // If category doesn't exist, show error page
   if (!category) {
     return (
       <>
         <Head>
           <title>Category Not Found - StreamBackdrops</title>
           <meta name="description" content="The category you're looking for doesn't exist." />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="canonical" href="https://streambackdrops.com" />
         </Head>
         <div style={{ padding: '2rem', textAlign: 'center' }}>
           <h1>Category Not Found</h1>
@@ -203,15 +205,28 @@ export default function CategoryPage({ slug }) {
     );
   }
 
+  // ALL Head content in ONE place - this is the key fix!
   return (
-    <Layout
-      title={`${category.name} Backgrounds - Free HD | StreamBackdrops`}
-      description={category.seoDescription}
-      canonical={`https://streambackdrops.com/category/${currentSlug}`}
-      currentPage={currentSlug}
-      seoContent={null}
-    >
+    <>
       <Head>
+        {/* CRITICAL: Title tag - must be first and explicit */}
+        <title>{`${category.name} Backgrounds - Free HD | StreamBackdrops`}</title>
+        
+        {/* Meta tags */}
+        <meta name="description" content={category.seoDescription} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content={`${category.name} virtual backgrounds, ${category.name} Zoom backgrounds, professional video call backgrounds`} />
+        
+        {/* Canonical */}
+        <link rel="canonical" href={`https://streambackdrops.com/category/${currentSlug}`} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={`${category.name} Backgrounds - Free HD | StreamBackdrops`} />
+        <meta property="og:description" content={category.seoDescription} />
+        <meta property="og:url" content={`https://streambackdrops.com/category/${currentSlug}`} />
+        <meta property="og:type" content="website" />
+        
+        {/* Structured Data Schemas */}
         <FAQSchema questions={getFAQs(currentSlug)} />
         <BreadcrumbSchema items={[
           { name: "Home", url: "https://streambackdrops.com" },
@@ -223,8 +238,35 @@ export default function CategoryPage({ slug }) {
           baseUrl="https://streambackdrops.com"
         />
       </Head>
-      <CategoryContent slug={currentSlug} />
-    </Layout>
+      
+      {/* Navigation Header */}
+      <header style={{
+        background: 'white',
+        borderBottom: '1px solid #e5e7eb',
+        padding: '1rem 0',
+        position: 'sticky',
+        top: 0,
+        zIndex: 50
+      }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <Link href="/" style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: '#2563eb',
+            textDecoration: 'none'
+          }}>
+            StreamBackdrops
+          </Link>
+        </div>
+      </header>
+      
+      {/* Main Content */}
+      <main>
+        <CategoryContent slug={currentSlug} />
+      </main>
+      
+      <Footer />
+    </>
   );
 }
 
