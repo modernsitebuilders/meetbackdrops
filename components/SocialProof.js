@@ -8,7 +8,7 @@ export default function SocialProof() {
       
       <div className={styles.stats}>
         <div className={styles.stat}>
-          <strong className={styles.statNumber}>330+</strong>
+          <strong className={styles.statNumber}>350+</strong>
           <span className={styles.statLabel}>HD Backgrounds</span>
         </div>
         
