@@ -1,3 +1,5 @@
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+
 export const homepageStructuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -31,7 +33,7 @@ export const homepageStructuredData = {
       {
         "@type": "CollectionPage",
         "name": "Virtual Background Collections",
-        "description": "Browse our collection of 330+ free HD virtual backgrounds",
+        "description": "Browse our collection of ${TOTAL_IMAGES_FORMATTED} free HD virtual backgrounds",
         "url": "https://streambackdrops.com",
         "hasPart": [
           {
