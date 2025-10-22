@@ -11,7 +11,8 @@ import SocialProof from '../components/SocialProof';
 import styles from '../styles/HomePage.module.css';
 import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
-import { getFormattedTotalCount } from '../lib/getImageCounts';
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+
 
 export default function Home() {
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function Home() {
   return (
     <Layout
       title="Free Professional Virtual Backgrounds - StreamBackdrops"
-      description="Download ${getFormattedTotalCount()} free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks - instant download of high-quality backgrounds including offices, bookshelves, living rooms, and more."
+      description="Download ${TOTAL_IMAGES_FORMATTED} free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks - instant download of high-quality backgrounds including offices, bookshelves, living rooms, and more."
       currentPage="home"
       canonical="https://streambackdrops.com"
       structuredData={homepageStructuredData} 
@@ -71,7 +72,7 @@ export default function Home() {
           Professional Virtual Backgrounds Optimized for Video Calls
         </h1>
         <p className={styles.heroSubtitle}>
-          {getFormattedTotalCount()} HD backgrounds designed specifically for Zoom, Teams & Google Meet
+          {TOTAL_IMAGES_FORMATTED} HD backgrounds designed specifically for Zoom, Teams & Google Meet
           <br />
           <strong className={styles.heroHighlight}>
             Perfect lighting • Proper composition • No signup • No watermarks

@@ -1,6 +1,6 @@
 // components/WhyDifferent.js
 import styles from '../styles/WhyDifferent.module.css';
-import { getFormattedTotalCount } from '../lib/getImageCounts';
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
 export default function WhyDifferent() {
   const features = [
@@ -16,7 +16,7 @@ export default function WhyDifferent() {
     },
     {
       icon: '🎨',
-      title: `${getFormattedTotalCount()} Professional Backgrounds`,
+      title: `${TOTAL_IMAGES_FORMATTED} Professional Backgrounds`,
       description: 'Office spaces, libraries, bookshelves, and more—all in perfect 16:9 ratio for video platforms'
     },
     {
