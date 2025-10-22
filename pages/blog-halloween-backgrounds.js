@@ -6,8 +6,8 @@ import Image from 'next/image';
 export default function BlogHalloweenBackgrounds() {
   return (
     <BlogLayout
-      title="Best Halloween Virtual Backgrounds for Video Calls 2025"
-      description="Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Spooky seasonal backgrounds with pumpkins, fall decor, and autumn atmosphere for October video calls."
+      title="Best Halloween Virtual Backgrounds for 2025"
+      description="Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Seasonal backgrounds with pumpkins, and autumn atmosphere for October video calls."
       keywords="halloween backgrounds, fall backgrounds, october backgrounds, seasonal backgrounds, halloween zoom"
       canonical="https://streambackdrops.com/blog-halloween-backgrounds"
       headline="Best Halloween Virtual Backgrounds for Video Calls 2025"

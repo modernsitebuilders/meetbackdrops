@@ -5,8 +5,8 @@ import { getFAQs } from '../data/faqData';
 export default function BlogBackgroundMistakes() {
   return (
     <BlogLayout
-      title="Virtual Background Mistakes to Avoid - StreamBackdrops"
-      description="Avoid common virtual background mistakes. Expert tips to fix blurry backgrounds, poor lighting, and distracting settings for professional video calls."
+      title="Virtual Background Mistakes to Avoid"
+      description="Avoid common virtual background mistakes. Expert tips to fix blurry backgrounds, poor lighting, and distractions for professional video calls."
       keywords="virtual background mistakes, professional video calls, zoom background errors, teams background problems, business call setup"
       canonical="https://streambackdrops.com/blog-background-mistakes"
       headline="7 Virtual Background Mistakes That Make You Look Unprofessional"
