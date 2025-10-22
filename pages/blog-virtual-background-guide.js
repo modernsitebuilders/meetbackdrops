@@ -100,9 +100,9 @@ export default function BlogVirtualBackgroundGuide() {
                   marginBottom: '2rem',
                   border: '1px solid #bfdbfe'
                 }}>
-                  <h3 style={{color: '#1e40af', fontWeight: '600', marginBottom: '1rem'}}>
+                  <h2 style={{color: '#1e40af', fontWeight: '600', marginBottom: '1rem'}}>
                     📋 Quick Navigation
-                  </h3>
+                  </h2>
                   <ul style={{color: '#1e40af', listStyle: 'none', padding: 0}}>
                     <li style={{marginBottom: '0.5rem'}}>
                       <a href="#system-requirements" style={{color: '#1e40af', textDecoration: 'none'}}>

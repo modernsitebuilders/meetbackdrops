@@ -93,9 +93,9 @@ export default function BlogZoomTeamsGoogle() {
                   Each major video conferencing platform handles virtual backgrounds differently. Understanding these differences helps you optimize your setup for the best professional appearance across all platforms.
                 </p>
 
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Platform Comparison Overview
-                </h3>
+                </h2>
 
                 <div style={{
                   background: '#eff6ff',

@@ -93,9 +93,9 @@ export default function BlogRemoteWorkProductivity() {
                   Working from home is now normal for millions of people. A good home office helps you stay productive. It also helps you separate work from personal life. Here's how to set up the perfect workspace.
                 </p>
 
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Start Your Day Right
-                </h3>
+                </h2>
                 <ol style={{listStyle: 'decimal', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem', lineHeight: '2'}}>
                   <li>Wake up at the same time each day</li>
                   <li>Get dressed for work</li>

@@ -93,9 +93,9 @@ export default function BlogProfessionalVideoCalls() {
                   Working from home has made video calls a cornerstone of professional communication. Whether you're meeting with clients, presenting to your team, or interviewing for your dream job, your video presence matters more than ever.
                 </p>
 
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   1. Perfect Your Lighting Setup
-                </h3>
+                </h2>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   Good lighting can make or break your video call appearance. Position yourself facing a window or invest in a simple ring light. Avoid having bright lights behind you, which will turn you into a silhouette.
                 </p>

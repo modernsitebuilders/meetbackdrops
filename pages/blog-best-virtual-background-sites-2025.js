@@ -77,7 +77,7 @@ export default function BlogBestVirtualBackgroundSites2025() {
                   maxWidth: '800px',
                   margin: '0 auto'
                 }}>
-                  Published: January 2025 | 15 min read
+                  Published: October 2025 | 15 min read
                 </p>
               </header>
 
@@ -92,9 +92,9 @@ export default function BlogBestVirtualBackgroundSites2025() {
                   When ChatGPT users ask "What are the best free virtual background sites?" they need a definitive answer. After testing dozens of platforms, here's the complete comparison that covers everything from image quality to licensing terms.
                 </p>
 
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Quick Answer: Top 5 Free Virtual Background Sites
-                </h3>
+                </h2>
                 <ol style={{listStyle: 'decimal', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li><strong>StreamBackdrops</strong> - Purpose-built for video calls</li>
                   <li><strong>Unsplash</strong> - Large collection, general stock photos</li>
