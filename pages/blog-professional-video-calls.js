@@ -1,210 +1,94 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import FAQSchema from '../components/FAQSchema';
+import BlogLayout from '../components/BlogLayout';
 import { getFAQs } from '../data/faqData';
-import BlogPostSchema from '../components/BlogPostSchema';
-import { blogMetadata } from '../data/blogMetadata';
-import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function BlogProfessionalVideoCalls() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/blog-professional-video-calls',
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
-
   return (
-    <>
-      <Head>
-        <title>10 Tips for Professional Video Calls - StreamBackdrops</title>
-<meta name="description" content="Master professional video calls with 10 essential tips covering lighting, backgrounds, camera positioning, and etiquette for remote work success." />
-        <meta name="keywords" content="video calls, professional meetings, remote work, video conferencing, zoom tips, teams meetings" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://streambackdrops.com/blog-professional-video-calls" />
-        {/* Article structured data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "10 Essential Tips for Professional Video Calls", 
-      "image": "https://streambackdrops.com/images/bookshelves-bright/well-lit-12.webp",
-      "author": {
-        "@type": "Organization",
-        "name": "StreamBackdrops"
-      },
-      "publisher": {
-        "@type": "Organization", 
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://streambackdrops.com/logo.png"
-        }
-      },
-      "datePublished": "2025-07-15", 
-      "dateModified": "2025-07-15",  
-      "description": "Master professional video calls with 10 essential tips covering lighting, backgrounds, camera positioning, and etiquette for remote work success.", 
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://streambackdrops.com/blog-professional-video-calls" 
-      }
-    })}
-  </script>
-  
-  <BlogPostSchema 
-  {...blogMetadata['blog-professional-video-calls']}
-  url="https://streambackdrops.com/blog-professional-video-calls"
-/>
-<BreadcrumbSchema items={[
-  { name: "Home", url: "https://streambackdrops.com" },
-  { name: "Blog", url: "https://streambackdrops.com/blog" },
-  { name: "Professional-Video-Calls", url: "https://streambackdrops.com/blog-professional-video-calls" }
-]} />
-  <FAQSchema questions={getFAQs('blog-professional-video-calls')} />
-      </Head>
+    <BlogLayout
+      title="10 Tips for Professional Video Calls - StreamBackdrops"
+      description="Master professional video calls with 10 essential tips covering lighting, backgrounds, camera positioning, and etiquette for remote work success."
+      keywords="video calls, professional meetings, remote work, video conferencing, zoom tips, teams meetings"
+      canonical="https://streambackdrops.com/blog-professional-video-calls"
+      headline="How to Look Professional on Video Calls: Complete Guide"
+      image="/images/office-spaces/office-spaces-05.webp"
+      datePublished="2025-03-01"
+      dateModified="2025-10-09"
+      faqQuestions={getFAQs('blog-professional-video-calls')}
+    >
 
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-              
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
-              }}>
-                ✨ 100% FREE
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <div style={{ 
+      {/* ARTICLE WRAPPER - Wraps everything */}
+      <article style={{ 
         background: '#f8fafc', 
-        minHeight: '100vh',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
+        minHeight: '100vh'
       }}>
-        <div style={{ 
-          maxWidth: '800px', 
-          margin: '0 auto', 
-          padding: '2rem 0'
+        
+        {/* PADDING WRAPPER */}
+        <div style={{
+          paddingLeft: '2rem',
+          paddingRight: '2rem'
         }}>
-          <div style={{
-            background: 'white',
-            borderRadius: '1rem',
-            padding: '3rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            border: '1px solid #e5e7eb'
+          
+          {/* MAX-WIDTH CONTAINER */}
+          <div style={{ 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            paddingTop: '2rem', 
+            paddingBottom: '2rem' 
           }}>
             
-            <article>
-              <header style={{marginBottom: '2rem'}}>
-                <h1 style={{
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  color: '#2563eb',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.2'
+            {/* WHITE CARD WRAPPER */}
+            <div style={{ 
+              background: 'white',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
+            }}>
+              
+              {/* HERO/HEADER SECTION */}
+              <header style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  opacity: '0.9'
                 }}>
                   Professional Video Call Guide
-                </h1>
-                <h2 style={{
-                  fontSize: '2.5rem',
+                </div>
+                
+                <h1 style={{
+                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
                   fontWeight: 'bold',
-                  color: '#111827',
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
                   10 Essential Tips for Professional Video Calls
-                </h2>
-                <p style={{color: '#6b7280', fontStyle: 'italic'}}>
-                  Published: August 2, 2025
+                </h1>
+                
+                <p style={{
+                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                  opacity: '0.95',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Master video call professionalism with essential tips
                 </p>
               </header>
 
-              <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
+              {/* ARTICLE CONTENT SECTION */}
+              <div style={{
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                lineHeight: '1.75'
+              }}>
+
                 <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   Working from home has made video calls a cornerstone of professional communication. Whether you're meeting with clients, presenting to your team, or interviewing for your dream job, your video presence matters more than ever.
                 </p>
@@ -331,13 +215,10 @@ export default function BlogProfessionalVideoCalls() {
                   </Link>
                 </div>
               </div>
-            </article>
-            
-          </div>
-        </div>
-      </div>
-      
-      <Footer />
-    </>
+            </div>
+         </div>
+  </div>
+</article>
+    </BlogLayout>
   );
 }

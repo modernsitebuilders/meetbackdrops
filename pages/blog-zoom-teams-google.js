@@ -1,211 +1,94 @@
-// ===== blog-zoom-teams-google.js =====
-import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import FAQSchema from '../components/FAQSchema';
+import BlogLayout from '../components/BlogLayout';
 import { getFAQs } from '../data/faqData';
-import BlogPostSchema from '../components/BlogPostSchema';
-import { blogMetadata } from '../data/blogMetadata';
-import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function BlogZoomTeamsGoogle() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/blog-zoom-teams-google',
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
-
   return (
-    <>
-      <Head>
-        <title>Zoom vs Teams vs Meet Backgrounds - StreamBackdrops</title>
-<meta name="description" content="Compare virtual backgrounds on Zoom, Microsoft Teams, and Google Meet. Setup guides, troubleshooting tips, and platform-specific best practices." />        <meta name="keywords" content="zoom backgrounds, teams backgrounds, google meet backgrounds, virtual background comparison, video conferencing" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://streambackdrops.com/blog-zoom-teams-google" />
-        
-        {/* Article structured data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Zoom vs Teams vs Google Meet: Virtual Background Setup & Best Practices",
-            "image": "https://streambackdrops.com/images/office-spaces/office-2.webp",
-            "author": {
-              "@type": "Organization",
-              "name": "StreamBackdrops"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "StreamBackdrops",
-              "url": "https://streambackdrops.com",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://streambackdrops.com/logo.png"
-              }
-            },
-            "datePublished": "2025-08-06",
-            "dateModified": "2025-10-09",
-            "description": "Complete comparison of virtual backgrounds on Zoom, Microsoft Teams, and Google Meet. Setup guides, troubleshooting tips, and platform-specific best practices.",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "https://streambackdrops.com/blog-zoom-teams-google"
-            }
-          })}
-        </script>
-        
-        <BlogPostSchema 
-  {...blogMetadata['blog-zoom-teams-google']}
-  url="https://streambackdrops.com/blog-zoom-teams-google"
-/>
-<BreadcrumbSchema items={[
-  { name: "Home", url: "https://streambackdrops.com" },
-  { name: "Blog", url: "https://streambackdrops.com/blog" },
-  { name: "Zoom-Teams-Google", url: "https://streambackdrops.com/blog-zoom-teams-google" }
-]} />
-        <FAQSchema questions={getFAQs('blog-zoom-teams-google')} />
-      </Head>
+    <BlogLayout
+      title="Zoom vs Teams vs Google Meet: Virtual Background Comparison 2025"
+      description="Compare virtual backgrounds across Zoom, Microsoft Teams, and Google Meet. Which platform offers the best quality and features?"
+      keywords="zoom vs teams, google meet, virtual background comparison, platform comparison, video conferencing"
+      canonical="https://streambackdrops.com/blog-zoom-teams-google"
+      headline="Zoom vs Teams vs Google Meet: Virtual Background Comparison 2025"
+      image="/images/coffee-shops/coffee-shop-10.webp"
+      datePublished="2025-08-01"
+      dateModified="2025-10-09"
+      faqQuestions={getFAQs('blog-zoom-teams-google')}
+    >
 
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-              
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
-              }}>
-                ✨ 100% FREE
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <div style={{ 
+      {/* ARTICLE WRAPPER - Wraps everything */}
+      <article style={{ 
         background: '#f8fafc', 
-        minHeight: '100vh',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
+        minHeight: '100vh'
       }}>
-        <div style={{ 
-          maxWidth: '800px', 
-          margin: '0 auto', 
-          padding: '2rem 0'
+        
+        {/* PADDING WRAPPER */}
+        <div style={{
+          paddingLeft: '2rem',
+          paddingRight: '2rem'
         }}>
-          <div style={{
-            background: 'white',
-            borderRadius: '1rem',
-            padding: '3rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            border: '1px solid #e5e7eb'
+          
+          {/* MAX-WIDTH CONTAINER */}
+          <div style={{ 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            paddingTop: '2rem', 
+            paddingBottom: '2rem' 
           }}>
             
-            <article>
-              <header style={{marginBottom: '2rem'}}>
-                <h1 style={{
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  color: '#2563eb',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.2'
+            {/* WHITE CARD WRAPPER */}
+            <div style={{ 
+              background: 'white',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
+            }}>
+              
+              {/* HERO/HEADER SECTION */}
+              <header style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  opacity: '0.9'
                 }}>
                   Platform Comparison Guide
-                </h1>
-                <h2 style={{
-                  fontSize: '2.5rem',
+                </div>
+                
+                <h1 style={{
+                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
                   fontWeight: 'bold',
-                  color: '#111827',
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-Zoom vs Teams vs Google Meet: Virtual Background Setup Guide
-                </h2>
-                <p style={{color: '#6b7280', fontStyle: 'italic'}}>
-                  Published: August 6, 2025
+                  Zoom vs Teams vs Google Meet: Virtual Background Setup Guide
+                </h1>
+                
+                <p style={{
+                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                  opacity: '0.95',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Compare virtual background features across all platforms
                 </p>
               </header>
 
-              <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
+              {/* ARTICLE CONTENT SECTION */}
+              <div style={{
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                lineHeight: '1.75'
+              }}>
+
                 <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   Each major video conferencing platform handles virtual backgrounds differently. Understanding these differences helps you optimize your setup for the best professional appearance across all platforms.
                 </p>
@@ -428,13 +311,10 @@ Zoom vs Teams vs Google Meet: Virtual Background Setup Guide
                   </Link>
                 </div>
               </div>
-            </article>
-            
-          </div>
-        </div>
-      </div>
-      
-      <Footer />
-    </>
+            </div>
+         </div>
+  </div>
+</article>
+    </BlogLayout>
   );
 }

@@ -1,262 +1,99 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import FAQSchema from '../components/FAQSchema';
+import BlogLayout from '../components/BlogLayout';
 import { getFAQs } from '../data/faqData';
-import BlogPostSchema from '../components/BlogPostSchema';
-import { blogMetadata } from '../data/blogMetadata';
-import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function BlogRemoteWorkProductivity() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/blog-remote-work-productivity',
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
-
   return (
-    <>
-      <Head>
-<title>Remote Work: Perfect Home Office Setup | StreamBackdrops</title>
-<meta name="description" content="Boost remote work productivity with expert tips for creating the perfect home office, managing distractions, and maintaining work-life balance." />        <meta name="keywords" content="remote work, home office, productivity, work from home, home office setup, remote work tips" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://streambackdrops.com/blog-remote-work-productivity" />
-       <link rel="canonical" href="https://streambackdrops.com/blog-remote-work-productivity" />
-        
-        {/* Article structured data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Remote Work Productivity: Creating Your Perfect Home Office Environment",
-            "image": "https://streambackdrops.com/images/living-rooms/living-room-15.webp",
-            "author": {
-              "@type": "Organization",
-              "name": "StreamBackdrops"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "StreamBackdrops",
-              "url": "https://streambackdrops.com",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://streambackdrops.com/logo.png"
-              }
-            },
-            "datePublished": "2025-08-02",
-            "dateModified": "2025-10-09",
-            "description": "Boost your remote work productivity with expert tips for creating the perfect home office environment, managing distractions, and maintaining work-life balance.",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "https://streambackdrops.com/blog-remote-work-productivity"
-            }
-          })}
-        </script>
-        
-        <BlogPostSchema 
-  {...blogMetadata['blog-remote-work-productivity']}
-  url="https://streambackdrops.com/blog-remote-work-productivity"
-/>
-<BreadcrumbSchema items={[
-  { name: "Home", url: "https://streambackdrops.com" },
-  { name: "Blog", url: "https://streambackdrops.com/blog" },
-  { name: "Remote-Work-Productivity", url: "https://streambackdrops.com/blog-remote-work-productivity" }
-]} />
-        <FAQSchema questions={getFAQs('blog-remote-work-productivity')} />
-      </Head>
-
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-              
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
-              }}>
-                ✨ 100% FREE
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <div style={{ 
+    <BlogLayout
+      title="Remote Work Productivity: Creating Your Perfect Home Office Environment"
+      description="Boost remote work productivity with expert tips for creating the perfect home office environment, managing distractions, and maintaining work-life balance."
+      keywords="remote work, productivity tips, home office, work from home, remote work setup"
+      canonical="https://streambackdrops.com/blog-remote-work-productivity"
+      headline="Remote Work Productivity: Creating Your Perfect Home Office Environment"
+      image="/images/living-rooms/living-room-15.webp"
+      datePublished="2025-08-02"
+      dateModified="2025-10-09"
+      faqQuestions={getFAQs('blog-remote-work-productivity')}
+    >
+      
+      {/* ARTICLE WRAPPER - Wraps everything */}
+      <article style={{ 
         background: '#f8fafc', 
-        minHeight: '100vh',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
+        minHeight: '100vh'
       }}>
-        <div style={{ 
-          maxWidth: '800px', 
-          margin: '0 auto', 
-          padding: '2rem 0'
+        
+        {/* PADDING WRAPPER */}
+        <div style={{
+          paddingLeft: '2rem',
+          paddingRight: '2rem'
         }}>
-          <div style={{
-            background: 'white',
-            borderRadius: '1rem',
-            padding: '3rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            border: '1px solid #e5e7eb'
+          
+          {/* MAX-WIDTH CONTAINER */}
+          <div style={{ 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            paddingTop: '2rem', 
+            paddingBottom: '2rem' 
           }}>
             
-            <article>
-              <header style={{marginBottom: '2rem'}}>
-                <h1 style={{
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  color: '#2563eb',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.2'
+            {/* WHITE CARD WRAPPER */}
+            <div style={{ 
+              background: 'white',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
+            }}>
+              
+              {/* HERO/HEADER SECTION */}
+              <header style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  opacity: '0.9'
                 }}>
                   Home Office Setup Guide
-                </h1>
-                <h2 style={{
-                  fontSize: '2.5rem',
+                </div>
+                
+                <h1 style={{
+                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
                   fontWeight: 'bold',
-                  color: '#111827',
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
                   Remote Work Productivity: Creating Your Perfect Home Office Setup
-                </h2>
-                <p style={{color: '#6b7280', fontStyle: 'italic'}}>
-                  Published: August 2, 2025
+                </h1>
+                
+                <p style={{
+                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                  opacity: '0.95',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Build a productive home office environment
                 </p>
               </header>
 
-              <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
+              {/* ARTICLE CONTENT SECTION */}
+              <div style={{
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                lineHeight: '1.75'
+              }}>
+
                 <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
                   Working from home is now normal for millions of people. A good home office helps you stay productive. It also helps you separate work from personal life. Here's how to set up the perfect workspace.
                 </p>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  Setting Up Your Workspace
-                </h3>
-                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  Your workspace affects how well you work. Even small changes can make a big difference. You don't need a lot of space to create a good office.
-                </p>
-
-                <h3 style={{fontSize: '1.25rem', fontWeight: '600', color: '#111827', marginTop: '1.5rem', marginBottom: '0.75rem'}}>
-                  What You Need for a Good Home Office
-                </h3>
-                <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem', lineHeight: '2'}}>
-                  <li><strong>A work area:</strong> Pick one spot just for work, even if it's small</li>
-                  <li><strong>Comfortable setup:</strong> Adjust your chair and desk to avoid pain</li>
-                  <li><strong>Good lighting:</strong> Use natural light when you can. Add a desk lamp if needed</li>
-                  <li><strong>Quiet space:</strong> Find ways to reduce noise around you</li>
-                  <li><strong>Stay organized:</strong> Keep things you need close by</li>
-                </ul>
-
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  Staying Focused at Home
-                </h3>
-                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  Home has many distractions. Kids, pets, TV, chores. You need a plan to stay focused on work.
-                </p>
-
-                <div style={{
-                  background: '#fef3c7',
-                  borderRadius: '0.5rem',
-                  padding: '1.5rem',
-                  marginBottom: '1.5rem'
-                }}>
-                  <h4 style={{fontWeight: '600', color: '#92400e', marginBottom: '1rem'}}>Common Distractions and How to Fix Them</h4>
-                  <div style={{color: '#92400e', lineHeight: '1.8'}}>
-                    <p><strong>Family members:</strong> Set clear work hours. Close your door or wear headphones to show you're busy.</p>
-                    <p style={{marginTop: '0.5rem'}}><strong>Household chores:</strong> Pick a time for chores. Don't do dishes during work hours.</p>
-                    <p style={{marginTop: '0.5rem'}}><strong>Social media:</strong> Use apps that block websites during work. Keep your phone in another room.</p>
-                  </div>
-                </div>
-
-                <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  Building Good Routines
-                </h3>
-                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  Without a commute, you need to create your own structure. A daily routine helps you stay on track.
-                </p>
-
-                <h3 style={{fontSize: '1.25rem', fontWeight: '600', color: '#111827', marginTop: '1.5rem', marginBottom: '0.75rem'}}>
                   Start Your Day Right
                 </h3>
                 <ol style={{listStyle: 'decimal', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem', lineHeight: '2'}}>
@@ -417,13 +254,10 @@ export default function BlogRemoteWorkProductivity() {
                   </Link>
                 </div>
               </div>
-            </article>
-            
-          </div>
-        </div>
-      </div>
-      
-      <Footer />
-    </>
+            </div>
+         </div>
+  </div>
+</article>
+    </BlogLayout>
   );
 }

@@ -1,224 +1,106 @@
-// pages/blog-halloween-backgrounds.js
-import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import Footer from '../components/Footer';
-import FAQSchema from '../components/FAQSchema';
+import BlogLayout from '../components/BlogLayout';
 import { getFAQs } from '../data/faqData';
-import BlogPostSchema from '../components/BlogPostSchema';
-import { blogMetadata } from '../data/blogMetadata';
-import BreadcrumbSchema from '../components/BreadcrumbSchema';
+import Image from 'next/image'; 
 
-export default function HalloweenBackgrounds() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/blog-halloween-backgrounds',
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
-
+export default function BlogHalloweenBackgrounds() {
   return (
-    <>
-      <Head>
-        <title>Best Halloween Virtual Backgrounds for Video Calls 2025 | StreamBackdrops</title>
-        <meta name="description" content="Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Spooky seasonal backgrounds with pumpkins, fall decor, and autumn atmosphere for October video calls." />
-        <meta name="keywords" content="halloween virtual backgrounds, halloween zoom backgrounds, halloween video call backgrounds, spooky backgrounds, fall backgrounds, october backgrounds, seasonal backgrounds" />
-        <link rel="canonical" href="https://streambackdrops.com/blog-halloween-backgrounds" />
-        <meta property="og:title" content="Best Halloween Virtual Backgrounds for Video Calls 2025" />
-        <meta property="og:description" content="Download 25 free Halloween virtual backgrounds perfect for your October video calls. Festive, professional, and completely free." />
-        <meta property="og:image" content="https://streambackdrops.com/images/halloween-backgrounds/halloween-background-20.webp" />
-        <meta property="og:image:width" content="1920" />
-        <meta property="og:image:height" content="1080" />
-        <meta property="og:image:alt" content="Halloween Virtual Background Preview" />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://streambackdrops.com/blog-halloween-backgrounds" />
-      
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Halloween Virtual Backgrounds for Video Calls 2025" />
-        <meta name="twitter:description" content="Download 25 free Halloween virtual backgrounds perfect for your October video calls." />
-        <meta name="twitter:image" content="https://streambackdrops.com/images/halloween-backgrounds/halloween-background-20.webp" />
+    <BlogLayout
+      title="Best Halloween Virtual Backgrounds for Video Calls 2025"
+      description="Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Spooky seasonal backgrounds with pumpkins, fall decor, and autumn atmosphere for October video calls."
+      keywords="halloween backgrounds, fall backgrounds, october backgrounds, seasonal backgrounds, halloween zoom"
+      canonical="https://streambackdrops.com/blog-halloween-backgrounds"
+      headline="Best Halloween Virtual Backgrounds for Video Calls 2025"
+      image="/images/halloween-backgrounds/halloween-background-20.webp"
+      datePublished="2025-07-15"
+      dateModified="2025-10-09"
+      faqQuestions={getFAQs('blog-halloween-backgrounds')}
+    >
+
+      {/* ARTICLE WRAPPER - Wraps everything */}
+      <article style={{ 
+        background: '#f8fafc', 
+        minHeight: '100vh'
+      }}>
         
-        {/* Article structured data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Best Halloween Virtual Backgrounds for Video Calls 2025",  
-      "image": "https://streambackdrops.com/images/halloween-backgrounds/halloween-background-20.webp",
-      "author": {
-        "@type": "Organization",
-        "name": "StreamBackdrops"
-      },
-      "publisher": {
-        "@type": "Organization", 
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://streambackdrops.com/logo.png"
-        }
-      },
-      "datePublished": "2025-07-15",  
-      "dateModified": "2025-07-15",   
-      "description": "Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Spooky seasonal backgrounds with pumpkins, fall decor, and autumn atmosphere for October video calls.", 
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://streambackdrops.com/blog-halloween-backgrounds"  
-      }
-   })}
-  </script>
-  
-  <BlogPostSchema 
-  {...blogMetadata['blog-halloween-backgrounds']}
-  url="https://streambackdrops.com/blog-halloween-backgrounds"
-/>
-<BreadcrumbSchema items={[
-  { name: "Home", url: "https://streambackdrops.com" },
-  { name: "Blog", url: "https://streambackdrops.com/blog" },
-  { name: "Halloween Backgrounds", url: "https://streambackdrops.com/blog-halloween-backgrounds" }
-]} />
-  <FAQSchema questions={getFAQs('blog-halloween-backgrounds')} />
-      </Head>
-
-      {/* Header */}
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero Section with Halloween Theme */}
-      <div style={{
-        background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #1e3a8a 100%)',
-        padding: '3rem 2rem',
-        textAlign: 'center',
-        color: 'white'
-      }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎃</div>
-          <h1 style={{
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            fontWeight: 'bold',
-            marginBottom: '1rem',
-            lineHeight: '1.2'
-          }}>
-            Best Halloween Virtual Backgrounds for 2025
-          </h1>
-          <p style={{
-            fontSize: '1.2rem',
-            opacity: 0.95,
-            maxWidth: '600px',
-            margin: '0 auto'
-          }}>
-            Make your October video calls festive with our free collection of 25 professional Halloween backgrounds
-          </p>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <article style={{
-        background: '#f8fafc',
-        minHeight: '100vh',
-        padding: '3rem 2rem'
-      }}>
+        {/* PADDING WRAPPER */}
         <div style={{
-          maxWidth: '800px',
-          margin: '0 auto',
-          background: 'white',
-          padding: 'clamp(2rem, 5vw, 4rem)',
-          borderRadius: '1rem',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+          paddingLeft: '2rem',
+          paddingRight: '2rem'
         }}>
-
-          {/* Introduction */}
-          <section style={{ marginBottom: '3rem' }}>
-            <p style={{
-              fontSize: '1.1rem',
-              lineHeight: '1.8',
-              color: '#374151',
-              marginBottom: '1.5rem'
+          
+          {/* MAX-WIDTH CONTAINER */}
+          <div style={{ 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            paddingTop: '2rem', 
+            paddingBottom: '2rem' 
+          }}>
+            
+            {/* WHITE CARD WRAPPER */}
+            <div style={{ 
+              background: 'white',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
             }}>
-              Halloween is the perfect time to add some festive flair to your video calls. Whether you're working remotely, teaching online classes, or hosting virtual Halloween parties, the right background can set the mood without being too distracting.
-            </p>
+              
+              {/* HERO/HEADER SECTION */}
+              <header style={{
+                background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #1e3a8a 100%)',
+                color: 'white',
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  opacity: '0.9'
+                }}>
+                  🎃 Seasonal Backgrounds
+                </div>
+                
+                <h1 style={{
+                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                  fontWeight: 'bold',
+                  marginBottom: '1rem',
+                  lineHeight: '1.2'
+                }}>
+                  Best Halloween Virtual Backgrounds for Video Calls 2025
+                </h1>
+                
+                <p style={{
+                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                  opacity: '0.95',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Make your October video calls festive with professional Halloween backgrounds
+                </p>
+              </header>
+
+              {/* ARTICLE CONTENT SECTION */}
+              <div style={{
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                lineHeight: '1.75'
+              }}>
+                
+                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                  Halloween is the perfect time to add festive flair to your video calls without being too distracting.
+                </p>
+
+                <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                  Professional Halloween Backgrounds for Work
+                </h2>
+                
+                <p style={{color: '#6b7280', marginBottom: '2rem'}}>
+                  Whether you're working remotely, teaching online, or hosting virtual parties, the right background sets the mood.
+                </p>
             <p style={{
               fontSize: '1.1rem',
               lineHeight: '1.8',
@@ -227,7 +109,6 @@ export default function HalloweenBackgrounds() {
             }}>
               We've curated <strong>25 free Halloween virtual backgrounds</strong> that strike the perfect balance between festive and professional. From cozy fall porches to decorated seasonal spaces, these backgrounds work great for any October video call.
             </p>
-          </section>
 
           {/* Preview Image */}
           <div style={{
@@ -625,12 +506,12 @@ export default function HalloweenBackgrounds() {
             }}>
               ← Back to All Guides
             </Link>
-          </div>
-
-        </div>
-      </article>
-
-      <Footer />
-    </>
+                </div>
+              </div>
+            </div>
+         </div>
+  </div>
+</article>
+    </BlogLayout>
   );
 }

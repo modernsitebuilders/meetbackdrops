@@ -1,214 +1,104 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import FAQSchema from '../components/FAQSchema';
+import BlogLayout from '../components/BlogLayout';
 import { getFAQs } from '../data/faqData';
-import BlogPostSchema from '../components/BlogPostSchema';
-import { blogMetadata } from '../data/blogMetadata';
-import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function BlogBackgroundMistakes() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/blog-background-mistakes',
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
   return (
-    <>
-      <Head>
-        <title>Virtual Background Mistakes to Avoid - StreamBackdrops</title>
-<meta name="description" content="Avoid common virtual background mistakes that make you look unprofessional. Expert tips to fix issues and choose the right backgrounds." /> 
-       <meta name="keywords" content="virtual background mistakes, professional video calls, zoom background errors, teams background problems, business call setup" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://streambackdrops.com/blog-background-mistakes" />
-        {/* Article structured data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "15 Virtual Background Mistakes That Ruin Your Professional Image", 
-      "image": "https://streambackdrops.com/images/living-rooms/living-room-1.webp",
-      "author": {
-        "@type": "Organization",
-        "name": "StreamBackdrops"
-      },
-      "publisher": {
-        "@type": "Organization", 
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://streambackdrops.com/logo.png"
-        }
-      },
-      "datePublished": "2025-07-15",  
-      "dateModified": "2025-07-15",   
-      "description": "Avoid common virtual background mistakes that make you look unprofessional. Expert tips to fix issues and choose the right backgrounds.", 
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://streambackdrops.com/blog-background-mistakes"  
-      }
-    })}
-  </script>
-  
-  <BlogPostSchema 
-  {...blogMetadata['blog-background-mistakes']}
-  url="https://streambackdrops.com/blog-background-mistakes"
-/>
-<BreadcrumbSchema items={[
-  { name: "Home", url: "https://streambackdrops.com" },
-  { name: "Blog", url: "https://streambackdrops.com/blog" },
-  { name: "Background-Mistakes", url: "https://streambackdrops.com/blog-background-mistakes" }
-]} />
-  <FAQSchema questions={getFAQs('blog-background-mistakes')} />
-      </Head>
+    <BlogLayout
+      title="Virtual Background Mistakes to Avoid - StreamBackdrops"
+      description="Avoid common virtual background mistakes. Expert tips to fix blurry backgrounds, poor lighting, and distracting settings for professional video calls."
+      keywords="virtual background mistakes, professional video calls, zoom background errors, teams background problems, business call setup"
+      canonical="https://streambackdrops.com/blog-background-mistakes"
+      headline="7 Virtual Background Mistakes That Make You Look Unprofessional"
+      image="/images/living-rooms/living-room-29.webp"
+      datePublished="2025-05-20"
+      dateModified="2025-10-09"
+      faqQuestions={getFAQs('blog-background-mistakes')}
+    >
 
-      {/* Clean Blog Header */}
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            {/* StreamBackdrops Brand */}
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            {/* Navigation Links */}
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-              
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
-              }}>
-                ✨ 100% FREE
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      {/* Blog Content Container */}
-      <div style={{ 
+     {/* ARTICLE WRAPPER - Wraps everything */}
+      <article style={{ 
         background: '#f8fafc', 
-        minHeight: '100vh',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
+        minHeight: '100vh'
       }}>
-        <div style={{ 
-          maxWidth: '800px', 
-          margin: '0 auto', 
-          padding: '2rem 0'
+        
+        {/* PADDING WRAPPER */}
+        <div style={{
+          paddingLeft: '2rem',
+          paddingRight: '2rem'
         }}>
-          <div style={{
-            background: 'white',
-            borderRadius: '1rem',
-            padding: '3rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            border: '1px solid #e5e7eb'
+          
+          {/* MAX-WIDTH CONTAINER */}
+          <div style={{ 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            paddingTop: '2rem', 
+            paddingBottom: '2rem' 
           }}>
             
-            <article>
-              <header style={{marginBottom: '2rem'}}>
-                <h1 style={{
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  color: '#2563eb',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.2'
-                }}>
+            {/* WHITE CARD WRAPPER */}
+            <div style={{ 
+              background: 'white',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
+            }}>
+              
+              {/* HERO/HEADER SECTION */}
+              <header style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  opacity: '0.9'
+               }}>
                   Virtual Background Setup Guide
-                </h1>
-                <h2 style={{
-                  fontSize: '2.5rem',
+                </div>
+                
+                <h1 style={{
+                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
                   fontWeight: 'bold',
-                  color: '#111827',
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-15 Virtual Background Mistakes That Ruin Your Professional Image                </h2>
-                <p style={{color: '#6b7280', fontStyle: 'italic'}}>
-                  Published: August 6, 2025
+                  15 Virtual Background Mistakes That Ruin Your Professional Image
+                </h1>
+                
+                <p style={{
+                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                  opacity: '0.95',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Avoid critical mistakes that undermine your professional image
                 </p>
-              </header>
+             </header>
 
-              <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
+              {/* ARTICLE CONTENT SECTION */}
+              <div style={{
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                lineHeight: '1.75'
+              }}>
+                
                 <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
-                  Virtual backgrounds can transform your video calls from amateur to professional—or they can make you look completely unprepared. Avoid these critical mistakes that undermine your professional image.
+                  Virtual backgrounds can transform your video calls from amateur to professional—or they can make you look completely unprepared.
+                </p>
+
+                <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                  Why Virtual Background Mistakes Matter
+                </h2>
+                
+                <p style={{color: '#6b7280', marginBottom: '2rem'}}>
+                  Avoid these critical mistakes that undermine your professional image.
                 </p>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
@@ -413,13 +303,10 @@ export default function BlogBackgroundMistakes() {
                   </div>
                 </div>
               </div>
-            </article>
-            
+            </div>
           </div>
         </div>
-      </div>
-      
-      <Footer />
-    </>
+      </article>
+    </BlogLayout>
   );
 }

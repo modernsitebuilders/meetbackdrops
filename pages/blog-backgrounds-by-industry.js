@@ -1,234 +1,111 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import FAQSchema from '../components/FAQSchema';
+import BlogLayout from '../components/BlogLayout';
 import { getFAQs } from '../data/faqData';
-import BlogPostSchema from '../components/BlogPostSchema';
-import { blogMetadata } from '../data/blogMetadata';
-import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
-export default function BlogIndustryBackgrounds() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/blog-backgrounds-by-industry',
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
+export default function BlogBackgroundsByIndustry() {
   return (
-    <>
-      <Head>
-        <title>Virtual Backgrounds by Industry - StreamBackdrops</title>
-        <meta name="description" content="Choose the perfect virtual background for your industry. Complete guide covering healthcare, finance, education, tech, legal, and consulting professionals." />
-        <meta name="keywords" content="virtual backgrounds, professional backgrounds, zoom backgrounds, teams backgrounds, healthcare backgrounds, finance backgrounds" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="canonical" href="https://streambackdrops.com/blog-backgrounds-by-industry" />
-        
-        {/* Article structured data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Best Virtual Backgrounds by Industry: Complete Professional Guide",
-            "image": "https://streambackdrops.com/images/libraries/library-1.webp",
-            "author": {
-              "@type": "Organization",
-              "name": "StreamBackdrops"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "StreamBackdrops",
-              "url": "https://streambackdrops.com",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://streambackdrops.com/logo.png"
-              }
-            },
-            "datePublished": "2025-08-06",
-            "dateModified": "2025-10-09",
-            "description": "Choose the perfect virtual background for your industry. Complete guide covering healthcare, finance, education, tech, legal, and consulting professionals.",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "https://streambackdrops.com/blog-backgrounds-by-industry"
-            }
-          })}
-        </script>
-        
-        <BlogPostSchema 
-  {...blogMetadata['blog-backgrounds-by-industry']}
-  url="https://streambackdrops.com/blog-backgrounds-by-industry"
-/>
-<BreadcrumbSchema items={[
-  { name: "Home", url: "https://streambackdrops.com" },
-  { name: "Blog", url: "https://streambackdrops.com/blog" },
-  { name: "Backgrounds-by-Industry", url: "https://streambackdrops.com/blog-backgrounds-by-industry" }
-]} />
-        <FAQSchema questions={getFAQs('blog-backgrounds-by-industry')} />
-      </Head>
+    <BlogLayout
+      title="Best Virtual Backgrounds by Industry - StreamBackdrops"
+      description="Discover the best virtual backgrounds for your industry. From teachers to consultants, find perfect backgrounds for your profession."
+      keywords="industry backgrounds, professional backgrounds, teacher backgrounds, consultant backgrounds, industry-specific"
+      canonical="https://streambackdrops.com/blog-backgrounds-by-industry"
+      headline="Best Virtual Backgrounds by Industry: Professional Guide 2025"
+      image="/images/bookshelves-bright/well-lit-12.webp"
+      datePublished="2025-04-15"
+      dateModified="2025-10-09"
+      faqQuestions={getFAQs('blog-backgrounds-by-industry')}
+    >
 
-      {/* Clean Blog Header */}
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-              
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
-              }}>
-                ✨ 100% FREE
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      {/* Blog Content Container */}
-      <div style={{ 
+      {/* ARTICLE WRAPPER - Wraps everything */}
+      <article style={{ 
         background: '#f8fafc', 
-        minHeight: '100vh',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
+        minHeight: '100vh'
       }}>
-        <div style={{ 
-          maxWidth: '800px', 
-          margin: '0 auto', 
-          padding: '2rem 0'
+        
+        {/* PADDING WRAPPER */}
+        <div style={{
+          paddingLeft: '2rem',
+          paddingRight: '2rem'
         }}>
-          <div style={{
-            background: 'white',
-            borderRadius: '1rem',
-            padding: '3rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            border: '1px solid #e5e7eb'
+          
+          {/* MAX-WIDTH CONTAINER */}
+          <div style={{ 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            paddingTop: '2rem', 
+            paddingBottom: '2rem' 
           }}>
             
-            <article>
-              <header style={{marginBottom: '2rem'}}>
-                <h1 style={{
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  color: '#2563eb',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.2'
+            {/* WHITE CARD WRAPPER */}
+            <div style={{ 
+              background: 'white',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
+            }}>
+              
+              {/* HERO/HEADER SECTION */}
+              <header style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  opacity: '0.9'
                 }}>
                   Industry-Specific Background Guide
-                </h1>
-                <h2 style={{
-                  fontSize: '2.5rem',
+                </div>
+                
+                <h1 style={{
+                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
                   fontWeight: 'bold',
-                  color: '#111827',
                   marginBottom: '1rem',
                   lineHeight: '1.2'
                 }}>
-Best Virtual Backgrounds for Different Industries: A Pro's Guide                </h2>
-                <p style={{color: '#6b7280', fontStyle: 'italic'}}>
-                  Published: August 6, 2025
+                  Best Virtual Backgrounds by Industry: Professional Guide 2025
+                </h1>
+                
+                <p style={{
+                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                  opacity: '0.95',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Find the perfect background for your profession
                 </p>
               </header>
 
-              <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
+              {/* ARTICLE CONTENT SECTION */}
+              <div style={{
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                lineHeight: '1.75'
+              }}>
+                
                 <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
-                  Your virtual background matters. Different industries need different looks. What works for a lawyer won't work for a creative designer. This guide helps you pick the right background for your field.
+                  Your virtual background matters. Different industries need different looks. What works for a lawyer won't work for a creative designer.
                 </p>
 
-                <div style={{
-                  background: '#eff6ff',
-                  borderRadius: '0.5rem',
-                  padding: '1.5rem',
-                  marginBottom: '2rem'
-                }}>
-                  <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#1e40af', marginBottom: '1rem'}}>
-                    Why Your Background Choice Matters
-                  </h3>
-                  <p style={{color: '#1e40af', marginBottom: '1rem'}}>
-                    Your background sends a message before you speak. It shows you understand your industry. It proves you pay attention to details.
-                  </p>
+                <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                  Why Background Choice Matters by Industry
+                </h2>
+                
+                <p style={{color: '#6b7280', marginBottom: '2rem'}}>
+                  Your background sends a message before you speak. It shows you understand your industry and pay attention to details.
+                </p>
                   <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#1e40af'}}>
                     <li>First impressions happen in seconds</li>
                     <li>The right background builds trust</li>
                     <li>Wrong choices can hurt your credibility</li>
                     <li>Industry norms matter</li>
                   </ul>
-                </div>
 
                 <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2.5rem', marginBottom: '1.5rem', borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem'}}>
                   Best Backgrounds by Industry
@@ -537,13 +414,10 @@ Best Virtual Backgrounds for Different Industries: A Pro's Guide                
                   </Link>
                 </div>
               </div>
-            </article>
-            
-          </div>
-        </div>
-      </div>
-      
-      <Footer />
-    </>
+            </div>
+         </div>
+         </div>
+</article>
+    </BlogLayout>
   );
 }

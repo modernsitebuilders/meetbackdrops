@@ -43,12 +43,12 @@ export const blogMetadata = {
     dateModified: "2025-10-09"
   },
   "blog-background-mistakes": {
-    headline: "7 Virtual Background Mistakes That Make You Look Unprofessional",
-    description: "Avoid common virtual background mistakes. Expert tips to fix blurry backgrounds, poor lighting, and distracting settings for professional video calls.",
-    image: "/images/living-rooms/living-room-29.webp",
-    datePublished: "2025-05-20",
-    dateModified: "2025-10-09"
-  },
+  headline: "7 Virtual Background Mistakes That Make You Look Unprofessional",
+  description: "Avoid common virtual background mistakes. Expert tips to fix blurry backgrounds, poor lighting, and distracting settings for professional video calls.",
+  image: "/images/living-rooms/living-room-29.webp",
+  datePublished: "2025-05-20",
+  dateModified: "2025-10-09"
+},
   "blog-lighting-tips": {
     headline: "Perfect Video Call Lighting: Complete Setup Guide 2025",
     description: "Master video call lighting with expert tips on ring lights, natural light, and professional setups for Zoom, Teams, and online meetings.",

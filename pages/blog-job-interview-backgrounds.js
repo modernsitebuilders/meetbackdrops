@@ -1,243 +1,114 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import FAQSchema from '../components/FAQSchema';
+import BlogLayout from '../components/BlogLayout';
 import { getFAQs } from '../data/faqData';
-import BlogPostSchema from '../components/BlogPostSchema';
-import { blogMetadata } from '../data/blogMetadata';
-import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import { categoryInfo } from '../data/categoryData';
 
+
 export default function BlogJobInterviewBackgrounds() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/blog-job-interview-backgrounds',
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
-
-  // Get dynamic image counts
+  // Get dynamic image counts from categoryData
   const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
+  const homeOfficesCount = categoryInfo['home-offices']?.images?.length || 0;
+  const conferenceRoomsCount = categoryInfo['conference-rooms']?.images?.length || 0;
   const brightBookshelvesCount = categoryInfo['bookshelves-bright']?.images?.length || 0;
   const darkBookshelvesCount = categoryInfo['bookshelves-dark']?.images?.length || 0;
-
+  
   return (
-    <>
-      <Head>
-        <title>Best Virtual Backgrounds for Job Interviews 2025 - Complete Guide</title>
-        <meta name="description" content="Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression on video calls." />
-        <meta name="keywords" content="job interview backgrounds, virtual interview, zoom interview, professional backgrounds, interview tips, remote interview" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://streambackdrops.com/blog-job-interview-backgrounds" />
-        
-        <BlogPostSchema 
-          {...blogMetadata['blog-job-interview-backgrounds']}
-          url="https://streambackdrops.com/blog-job-interview-backgrounds"
-        />
-        <BreadcrumbSchema items={[
-          { name: "Home", url: "https://streambackdrops.com" },
-          { name: "Blog", url: "https://streambackdrops.com/blog" },
-          { name: "Job Interview Backgrounds", url: "https://streambackdrops.com/blog-job-interview-backgrounds" }
-        ]} />
-        <FAQSchema questions={getFAQs('blog-job-interview-backgrounds')} />
-      </Head>
+    <BlogLayout
+      title="Best Virtual Backgrounds for Job Interviews 2025: Complete Guide"
+      description="Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression."
+      keywords="job interview backgrounds, interview tips, professional backgrounds, virtual interview, career advice"
+      canonical="https://streambackdrops.com/blog-job-interview-backgrounds"
+      headline="Best Virtual Backgrounds for Job Interviews 2025: Complete Guide"
+      image="/images/office-spaces/office-spaces-05.webp"
+      datePublished="2025-01-21"
+      dateModified="2025-01-21"
+      faqQuestions={getFAQs('blog-job-interview-backgrounds')}
+    >
 
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-              
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
-              }}>
-                ✨ 100% FREE
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <div style={{ 
+      {/* ARTICLE WRAPPER - Wraps everything */}
+      <article style={{ 
         background: '#f8fafc', 
-        minHeight: '100vh',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
+        minHeight: '100vh'
       }}>
-        <div style={{ 
-          maxWidth: '800px', 
-          margin: '0 auto', 
-          padding: '3rem 1rem'
+        
+        {/* PADDING WRAPPER */}
+        <div style={{
+          paddingLeft: '2rem',
+          paddingRight: '2rem'
         }}>
           
-          <article>
-            <header style={{ marginBottom: '3rem' }}>
-              <div style={{
-                display: 'flex',
-                gap: '0.75rem',
-                alignItems: 'center',
-                marginBottom: '1.5rem',
-                flexWrap: 'wrap'
-              }}>
-                <span style={{
-                  background: '#dbeafe',
-                  color: '#1e40af',
-                  padding: '0.375rem 0.875rem',
-                  borderRadius: '9999px',
-                  fontSize: '0.875rem',
-                  fontWeight: '600'
-                }}>
-                  Career Guide
-                </span>
-                <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>
-                  January 2025
-                </span>
-                <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>•</span>
-                <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>
-                  12 min read
-                </span>
-              </div>
-
-              <h1 style={{
-                fontSize: '2.5rem',
-                fontWeight: 'bold',
-                lineHeight: '1.2',
-                color: '#111827',
-                marginBottom: '1.5rem'
-              }}>
-                Best Virtual Backgrounds for Job Interviews in 2025: Complete Guide
-              </h1>
-
-              <p style={{
-                fontSize: '1.25rem',
-                color: '#4b5563',
-                lineHeight: '1.7'
-              }}>
-                Your virtual background can make or break your first impression in a video interview. Learn which backgrounds hiring managers trust, what to avoid, and how to look polished and professional from home.
-              </p>
-            </header>
-
-            <div style={{
-              background: '#fef3c7',
-              border: '2px solid #fbbf24',
-              borderRadius: '0.75rem',
-              padding: '1.5rem',
-              marginBottom: '3rem'
-            }}>
-              <h3 style={{
-                fontSize: '1.125rem',
-                fontWeight: 'bold',
-                color: '#92400e',
-                marginBottom: '0.75rem'
-              }}>
-                📋 Quick Answer
-              </h3>
-              <p style={{
-                color: '#78350f',
-                lineHeight: '1.7',
-                margin: 0
-              }}>
-                The best virtual backgrounds for job interviews are professional office spaces, well-lit bookshelves, or neutral home office settings. Avoid busy patterns, personal items, and anything distracting. Your background should be clean, simple, and help you stand out—not compete for attention.
-              </p>
-            </div>
-
+          {/* MAX-WIDTH CONTAINER */}
+          <div style={{ 
+            maxWidth: '1200px', 
+            margin: '0 auto', 
+            paddingTop: '2rem', 
+            paddingBottom: '2rem' 
+          }}>
+            
+            {/* WHITE CARD WRAPPER */}
             <div style={{ 
-              color: '#374151', 
-              lineHeight: '1.8',
-              fontSize: '1.05rem'
+              background: 'white',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
             }}>
               
-              <h2 style={{
-                fontSize: '1.875rem',
-                fontWeight: 'bold',
-                color: '#111827',
-                marginTop: '3rem',
-                marginBottom: '1.25rem'
+              {/* HERO/HEADER SECTION */}
+              <header style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                textAlign: 'center'
               }}>
-                Why Your Virtual Background Matters in Job Interviews
-              </h2>
+                <div style={{
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  opacity: '0.9'
+                }}>
+                  Career & Interview Tips
+                </div>
+                
+                <h1 style={{
+                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                  fontWeight: 'bold',
+                  marginBottom: '1rem',
+                  lineHeight: '1.2'
+                }}>
+                  Best Virtual Backgrounds for Job Interviews 2025
+                </h1>
+                
+                <p style={{
+                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                  opacity: '0.95',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Make a great first impression with professional interview backgrounds
+                </p>
+              </header>
 
-              <p style={{ marginBottom: '1.25rem' }}>
-                In 2025, video interviews are the norm, not the exception. Whether you're interviewing for a corporate position, remote role, or creative job, your virtual background sends a message before you even speak. Hiring managers make snap judgments about your professionalism, attention to detail, and cultural fit based on what they see behind you.
-              </p>
+              {/* ARTICLE CONTENT SECTION */}
+              <div style={{
+                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                lineHeight: '1.75'
+              }}>
+                
+                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                  Your virtual background can make or break a job interview. Choose wisely to make a professional first impression.
+                </p>
+
+                <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                  Why Your Interview Background Matters
+                </h2>
+                
+                <p style={{color: '#6b7280', marginBottom: '2rem'}}>
+                  Hiring managers form opinions in seconds. Your background communicates professionalism before you say a word.
+                </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
                 A well-chosen virtual background shows you understand professional standards, respect the interviewer's time, and care about presentation. It eliminates distractions from your real environment and lets the focus stay where it belongs: on you and your qualifications.
@@ -794,7 +665,7 @@ export default function BlogJobInterviewBackgrounds() {
               </div>
 
             </div>
-          </article>
+          
 
           <div style={{
             marginTop: '4rem',
@@ -875,13 +746,12 @@ export default function BlogJobInterviewBackgrounds() {
                   Choose the perfect background for your profession
                 </div>
               </Link>
+                </div>
+              </div>
             </div>
-          </div>
-
-        </div>
-      </div>
-
-      <Footer />
-    </>
+         </div>
+  </div>
+</article>
+    </BlogLayout>
   );
 }
