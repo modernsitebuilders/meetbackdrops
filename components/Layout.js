@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+import Footer from './Footer';
 
 
 export default function Layout({
