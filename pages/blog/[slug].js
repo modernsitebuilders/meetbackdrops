@@ -12,8 +12,7 @@ import { remoteWorkProductivityContent } from '../../data/blog-content/remote-wo
 import { virtualBackgroundGuideContent } from '../../data/blog-content/virtual-background-guide';
 import { zoomTeamsGoogleContent } from '../../data/blog-content/zoom-teams-google';
 import { lightingTipsContent } from '../../data/blog-content/lighting-tips';
-
-// Import the missing blogs
+import { videoCallEtiquetteContent } from '../../data/blog-content/video-call-etiquette';
 import { backgroundsByIndustryContent } from '../../data/blog-content/backgrounds-by-industry';
 import { bestVirtualBackgroundSites2025Content } from '../../data/blog-content/best-virtual-background-sites-2025';
 import { halloweenBackgroundsContent } from '../../data/blog-content/halloween-backgrounds';
@@ -140,7 +139,20 @@ const blogPosts = {
     datePublished: "2025-10-01",
     dateModified: "2025-10-09",
     faqKey: 'halloween-backgrounds'
-  }
+  },
+  // Add this to your blogPosts object
+'video-call-etiquette': {
+  content: videoCallEtiquetteContent,
+  title: "Video Call Etiquette: Professional Guide for Virtual Meetings - StreamBackdrops",
+  description: "Master video call etiquette with professional guidelines for virtual meetings. Learn proper behavior, communication tips, and platform-specific best practices.",
+  keywords: "video call etiquette, meeting etiquette, virtual meeting tips, professional communication, remote work etiquette",
+  canonical: "https://streambackdrops.com/blog/video-call-etiquette",
+  headline: "Video Call Etiquette: Professional Guide for Virtual Meetings",
+  image: "/images/office-spaces/office-spaces-02.webp",
+  datePublished: "2025-09-15",
+  dateModified: "2025-10-09",
+  faqKey: 'video-call-etiquette'
+}
 };
 
 export default function BlogPost() {
