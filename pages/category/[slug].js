@@ -243,9 +243,12 @@ export default function CategoryPage({ slug }) {
         <meta property="og:url" content={'https://streambackdrops.com/category/' + currentSlug} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="StreamBackdrops" />
-        <meta property="og:image" content={imageUrl} />
+       <meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1920" />
+<meta property="og:image:height" content="1080" />
+<meta property="og:image:alt" content={categoryName + ' Virtual Background Preview'} />
         
-        <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={imageUrl} />
