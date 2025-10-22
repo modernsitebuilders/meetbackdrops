@@ -2,12 +2,13 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import styles from '../styles/Layout.module.css';
-import { getFormattedTotalCount } from '../lib/getImageCounts';
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+
 
 export default function Layout({
   children,
   title = 'StreamBackdrops - Free Professional Virtual Backgrounds',
-  description = `Download free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Over ${getFormattedTotalCount()} premium images for video calls.
+  description = `Download free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Over ${TOTAL_IMAGES_FORMATTED} premium images for video calls.
 No signup required, no watermarks - just high-quality backgrounds perfect for video calls, remote work, and online meetings.`,
   currentPage = null,
   canonical,
