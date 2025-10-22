@@ -201,8 +201,8 @@ export default function CategoryPage({ slug }) {
   }
 
   // CRITICAL: Build title string BEFORE using it - ensure it's never undefined
-  const categoryName = String(category.name || 'Virtual');
-  const pageTitle = categoryName + ' Backgrounds - Free HD | StreamBackdrops';
+const categoryName = String(category.name || 'Virtual');
+const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
   const pageDescription = String(category.seoDescription || `Download free ${categoryName.toLowerCase()} backgrounds in HD. Perfect for Zoom, Teams & Google Meet.`);
   
   const featuredImages = {

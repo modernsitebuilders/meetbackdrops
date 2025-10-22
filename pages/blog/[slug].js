@@ -21,7 +21,7 @@ import { halloweenBackgroundsContent } from '../../data/blog-content/halloween-b
 const blogPosts = {
   'background-mistakes': {
     content: backgroundMistakesContent,
-    title: "15 Virtual Background Mistakes That Ruin Your Professional Image - StreamBackdrops",
+    title: "15 Virtual Background Mistakes to Avoid - StreamBackdrops",
     description: "Avoid critical virtual background mistakes that undermine your professional image. Learn what not to do and how to fix common issues.",
     keywords: "virtual background mistakes, professional image, video call tips, zoom backgrounds, teams backgrounds",
     canonical: "https://streambackdrops.com/blog/background-mistakes",
@@ -33,7 +33,7 @@ const blogPosts = {
   },
   'job-interview-backgrounds': {
     content: () => jobInterviewBackgroundsContent(categoryInfo),
-    title: "Best Virtual Backgrounds for Job Interviews 2025 - StreamBackdrops",
+    title: "Job Interview Virtual Backgrounds 2025 - StreamBackdrops",
     description: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression.",
     keywords: "job interview backgrounds, interview tips, professional backgrounds, virtual interview, career advice",
     canonical: "https://streambackdrops.com/blog/job-interview-backgrounds",
@@ -57,7 +57,7 @@ const blogPosts = {
   },
   'remote-work-productivity': {
     content: remoteWorkProductivityContent,
-    title: "Remote Work Productivity: Creating Your Perfect Home Office Environment",
+    title: "Remote Work Productivity Guide - StreamBackdrops",
     description: "Boost remote work productivity with expert tips for creating the perfect home office environment, managing distractions, and maintaining work-life balance.",
     keywords: "remote work, productivity tips, home office, work from home, remote work setup",
     canonical: "https://streambackdrops.com/blog/remote-work-productivity",
@@ -81,7 +81,7 @@ const blogPosts = {
   },
   'zoom-teams-google': {
     content: zoomTeamsGoogleContent,
-    title: "Zoom vs Teams vs Google Meet: Virtual Background Comparison 2025",
+    title: "Zoom vs Teams vs Meet Backgrounds 2025 - StreamBackdrops",
     description: "Compare virtual backgrounds across Zoom, Microsoft Teams, and Google Meet. Which platform offers the best quality and features?",
     keywords: "zoom vs teams, google meet, virtual background comparison, platform comparison, video conferencing",
     canonical: "https://streambackdrops.com/blog/zoom-teams-google",
@@ -143,7 +143,7 @@ const blogPosts = {
   // Add this to your blogPosts object
 'video-call-etiquette': {
   content: videoCallEtiquetteContent,
-  title: "Video Call Etiquette: Professional Guide for Virtual Meetings - StreamBackdrops",
+  title: "15 Virtual Background Mistakes to Avoid - StreamBackdrops",
   description: "Master video call etiquette with professional guidelines for virtual meetings. Learn proper behavior, communication tips, and platform-specific best practices.",
   keywords: "video call etiquette, meeting etiquette, virtual meeting tips, professional communication, remote work etiquette",
   canonical: "https://streambackdrops.com/blog/video-call-etiquette",
