@@ -102,6 +102,42 @@ export default function BlogLayout({
 
         {/* Main Content */}
         <main style={{ flex: 1 }}>
+          {/* Breadcrumbs */}
+          <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '1rem 2rem 0'
+          }}>
+            <nav style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontSize: '0.9rem',
+              color: '#6b7280',
+              marginBottom: '1rem'
+            }}>
+              <Link href="/" style={{
+                color: '#2563eb',
+                textDecoration: 'none',
+                transition: 'color 0.2s'
+              }}>
+                Home
+              </Link>
+              <span>›</span>
+              <Link href="/blog" style={{
+                color: '#2563eb',
+                textDecoration: 'none',
+                transition: 'color 0.2s'
+              }}>
+                Blog
+              </Link>
+              <span>›</span>
+              <span style={{ color: '#111827', fontWeight: '500' }}>
+                {headline}
+              </span>
+            </nav>
+          </div>
+          
           {children}
         </main>
 
