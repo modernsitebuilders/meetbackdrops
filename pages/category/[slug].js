@@ -187,25 +187,41 @@ export default function CategoryPage({ slug }) {
   const currentSlug = slug || router.query.slug;
   const category = categoryInfo[currentSlug];
 
+  // If category doesn't exist, show error page with proper title
+  if (!category) {
+    return (
+      <>
+        <Head>
+          <title>Category Not Found - StreamBackdrops</title>
+          <meta name="description" content="The category you're looking for doesn't exist." />
+        </Head>
+        <div style={{ padding: '2rem', textAlign: 'center' }}>
+          <h1>Category Not Found</h1>
+          <Link href="/">Back to Home</Link>
+        </div>
+      </>
+    );
+  }
+
   return (
     <Layout
-      title={category ? `${category.name} Backgrounds - Free HD | StreamBackdrops` : 'Category Not Found'}
-      description={category ? category.seoDescription : 'Category not found'}
+      title={`${category.name} Backgrounds - Free HD | StreamBackdrops`}
+      description={category.seoDescription}
       canonical={`https://streambackdrops.com/category/${currentSlug}`}
       currentPage={currentSlug}
       seoContent={null}
     >
       <Head>
         <FAQSchema questions={getFAQs(currentSlug)} />
-         <BreadcrumbSchema items={[
-    { name: "Home", url: "https://streambackdrops.com" },
-    { name: category.name, url: `https://streambackdrops.com/category/${currentSlug}` }
-  ]} />
-  <ImageObjectSchema 
-  images={category.images} 
-  category={category.name}
-  baseUrl="https://streambackdrops.com"
-/>
+        <BreadcrumbSchema items={[
+          { name: "Home", url: "https://streambackdrops.com" },
+          { name: category.name, url: `https://streambackdrops.com/category/${currentSlug}` }
+        ]} />
+        <ImageObjectSchema 
+          images={category.images} 
+          category={category.name}
+          baseUrl="https://streambackdrops.com"
+        />
       </Head>
       <CategoryContent slug={currentSlug} />
     </Layout>
