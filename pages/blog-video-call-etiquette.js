@@ -93,9 +93,9 @@ export default function BlogVideoCallEtiquette() {
                   Virtual meetings have become the backbone of modern business communication. Whether you're joining a team standup, presenting to clients, or interviewing for your dream job, your video call etiquette can make or break professional relationships. This comprehensive guide covers everything you need to know to conduct yourself professionally in virtual meetings.
                 </p>
 
-                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                <h2 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   Quick Reference: Video Call Etiquette Essentials
-                </h3>
+                </h2>
                 <ol style={{listStyle: 'decimal', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li><strong>Test your tech 30 minutes early</strong> - Camera, audio, and internet connection</li>
                   <li><strong>Position camera at eye level</strong> - Maintain natural eye contact</li>
