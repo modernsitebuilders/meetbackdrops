@@ -13,6 +13,11 @@ import { virtualBackgroundGuideContent } from '../../data/blog-content/virtual-b
 import { zoomTeamsGoogleContent } from '../../data/blog-content/zoom-teams-google';
 import { lightingTipsContent } from '../../data/blog-content/lighting-tips';
 
+// Import the missing blogs
+import { backgroundsByIndustryContent } from '../../data/blog-content/backgrounds-by-industry';
+import { bestVirtualBackgroundSites2025Content } from '../../data/blog-content/best-virtual-background-sites-2025';
+import { halloweenBackgroundsContent } from '../../data/blog-content/halloween-backgrounds';
+
 // Map slugs to their respective content and metadata
 const blogPosts = {
   'background-mistakes': {
@@ -98,6 +103,43 @@ const blogPosts = {
     datePublished: "2025-06-10",
     dateModified: "2025-10-09",
     faqKey: 'lighting-tips'
+  },
+  // Add the missing blogs
+  'backgrounds-by-industry': {
+    content: backgroundsByIndustryContent,
+    title: "Best Virtual Backgrounds by Industry - StreamBackdrops",
+    description: "Choose the perfect virtual background for your industry. Professional background recommendations for finance, tech, healthcare, education and more.",
+    keywords: "virtual backgrounds by industry, professional backgrounds, industry-specific backgrounds, corporate backgrounds",
+    canonical: "https://streambackdrops.com/blog/backgrounds-by-industry",
+    headline: "Best Virtual Backgrounds by Industry",
+    image: "/images/office-spaces/office-spaces-03.webp",
+    datePublished: "2025-04-15",
+    dateModified: "2025-10-09",
+    faqKey: 'backgrounds-by-industry'
+  },
+  'best-virtual-background-sites-2025': {
+    content: bestVirtualBackgroundSites2025Content,
+    title: "Best Virtual Background Sites 2025 - StreamBackdrops",
+    description: "Discover the best websites for free virtual backgrounds in 2025. Compare features, quality, and download options across top platforms.",
+    keywords: "virtual background sites, free backgrounds, zoom backgrounds, teams backgrounds, background websites",
+    canonical: "https://streambackdrops.com/blog/best-virtual-background-sites-2025",
+    headline: "Best Virtual Background Sites 2025",
+    image: "/images/office-spaces/office-spaces-07.webp",
+    datePublished: "2025-02-10",
+    dateModified: "2025-10-09",
+    faqKey: 'best-virtual-background-sites-2025'
+  },
+  'halloween-backgrounds': {
+    content: halloweenBackgroundsContent,
+    title: "Halloween Virtual Backgrounds - StreamBackdrops",
+    description: "Spook up your video calls with Halloween virtual backgrounds. Fun, professional Halloween themes for Zoom, Teams and Google Meet.",
+    keywords: "halloween backgrounds, spooky backgrounds, holiday backgrounds, themed backgrounds, halloween zoom backgrounds",
+    canonical: "https://streambackdrops.com/blog/halloween-backgrounds",
+    headline: "Halloween Virtual Backgrounds",
+    image: "/images/holiday/halloween-01.webp",
+    datePublished: "2025-10-01",
+    dateModified: "2025-10-09",
+    faqKey: 'halloween-backgrounds'
   }
 };
 
