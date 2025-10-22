@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import BlogLayout from '../../components/BlogLayout';
 import { getFAQs } from '../../data/faqData';
 import { categoryInfo } from '../../data/categoryData';
+import HowToSchema from '../../components/HowToSchema';
+import { howToData } from '../../data/howToData';
 
 // Import from the correct file names (without -content suffix)
 import { backgroundMistakesContent } from '../../data/blog-content/background-mistakes';
@@ -173,18 +175,28 @@ export default function BlogPost() {
 
   return (
     <BlogLayout
-      title={blogPost.title}
-      description={blogPost.description}
-      keywords={blogPost.keywords}
-      canonical={blogPost.canonical}
-      headline={blogPost.headline}
+  title={blogPost.title}
+  description={blogPost.description}
+  keywords={blogPost.keywords}
+  canonical={blogPost.canonical}
+  headline={blogPost.headline}
+  image={blogPost.image}
+  datePublished={blogPost.datePublished}
+  dateModified={blogPost.dateModified}
+  faqQuestions={faqQuestions}
+>
+  {/* Add HowTo schema for tutorial posts */}
+  {howToData[slug] && (
+    <HowToSchema 
+      name={howToData[slug].name}
+      description={howToData[slug].description}
       image={blogPost.image}
-      datePublished={blogPost.datePublished}
-      dateModified={blogPost.dateModified}
-      faqQuestions={faqQuestions}
-    >
-      <ContentComponent />
-    </BlogLayout>
+      totalTime={howToData[slug].totalTime}
+      steps={howToData[slug].steps}
+    />
+  )}
+  <ContentComponent />
+</BlogLayout>
   );
 }
 
