@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogZoomTeamsGoogle() {
+export default function ZoomTeamsGoogle() {
   return (
     <BlogLayout
       title="Zoom vs Teams vs Google Meet: Virtual Background Comparison 2025"
       description="Compare virtual backgrounds across Zoom, Microsoft Teams, and Google Meet. Which platform offers the best quality and features?"
       keywords="zoom vs teams, google meet, virtual background comparison, platform comparison, video conferencing"
-      canonical="https://streambackdrops.com/blog-zoom-teams-google"
+      canonical="https://streambackdrops.com/blog/zoom-teams-google"
       headline="Zoom vs Teams vs Google Meet: Virtual Background Comparison 2025"
       image="/images/coffee-shops/coffee-shop-10.webp"
       datePublished="2025-08-01"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-zoom-teams-google')}
+      faqQuestions={getFAQs('zoom-teams-google')}
     >
 
       {/* ARTICLE WRAPPER - Wraps everything */}

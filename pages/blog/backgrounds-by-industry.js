@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogBackgroundsByIndustry() {
+export default function BackgroundsByIndustry() {
   return (
     <BlogLayout
       title="Best Virtual Backgrounds by Industry - StreamBackdrops"
       description="Discover the best virtual backgrounds for your industry. From teachers to consultants, find perfect backgrounds for your profession."
       keywords="industry backgrounds, professional backgrounds, teacher backgrounds, consultant backgrounds, industry-specific"
-      canonical="https://streambackdrops.com/blog-backgrounds-by-industry"
+      canonical="https://streambackdrops.com/blog/backgrounds-by-industry"
       headline="Best Virtual Backgrounds by Industry: Professional Guide 2025"
       image="/images/bookshelves-bright/well-lit-12.webp"
       datePublished="2025-04-15"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-backgrounds-by-industry')}
+      faqQuestions={getFAQs('backgrounds-by-industry')}
     >
 
       {/* ARTICLE WRAPPER - Wraps everything */}

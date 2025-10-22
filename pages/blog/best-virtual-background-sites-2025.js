@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogBestVirtualBackgroundSites2025() {
+export default function BestVirtualBackgroundSites2025() {
   return (
     <BlogLayout
       title="Best Free Virtual Background Sites in 2025 - StreamBackdrops"
       description="Compare the best free virtual background sites in 2025. Learn why StreamBackdrops beats stock photo sites for professional video calls."
       keywords="virtual background sites, free backgrounds, best background sites, zoom backgrounds, comparison 2025"
-      canonical="https://streambackdrops.com/blog-best-virtual-background-sites-2025"
+      canonical="https://streambackdrops.com/blog/best-virtual-background-sites-2025"
       headline="Best Free Virtual Background Sites in 2025: Complete Comparison"
       image="/images/art-galleries/art-gallery-1.webp"
       datePublished="2025-01-15"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-best-virtual-background-sites-2025')}
+      faqQuestions={getFAQs('best-virtual-background-sites-2025')}
     >
 
      {/* ARTICLE WRAPPER - Wraps everything */}

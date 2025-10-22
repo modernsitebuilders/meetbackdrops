@@ -240,7 +240,7 @@ export const faqData = {
     }
   ],
   // Blog pages - add these after your category FAQs
-"blog-job-interview-backgrounds": [
+"job-interview-backgrounds": [
     {
       question: "What is the best virtual background for a job interview?",
       answer: "The best virtual backgrounds for job interviews are professional office spaces, well-lit bookshelves, or clean home office settings. Choose neutral colors and avoid anything distracting or too casual."
@@ -258,7 +258,7 @@ export const faqData = {
       answer: "Yes! Hiring managers make snap judgments about professionalism based on your appearance, including your background. A professional background shows attention to detail and respect for the interview process."
     }
   ],
-  "blog-halloween-backgrounds": [
+  "halloween-backgrounds": [
     {
       question: "Are these Halloween backgrounds free to use?",
       answer: "Yes! All 25 Halloween virtual backgrounds are completely free to download and use. No signup required, no watermarks, and free for both personal and commercial use."
@@ -277,7 +277,7 @@ export const faqData = {
     }
   ],
 
-  "blog-best-virtual-background-sites-2025": [
+  "best-virtual-background-sites-2025": [
     {
       question: "What's the best site for free virtual backgrounds?",
       answer: "StreamBackdrops offers 337+ free HD virtual backgrounds specifically optimized for video calls, with no signup required and no watermarks. Unlike stock photo sites, all our backgrounds are curated for professional video conferencing."
@@ -296,7 +296,7 @@ export const faqData = {
     }
   ],
 
-  "blog-video-call-etiquette": [
+  "video-call-etiquette": [
     {
       question: "What are the most important video call etiquette rules?",
       answer: "Key video call etiquette includes being on time, muting when not speaking, looking at the camera, dressing professionally, using appropriate backgrounds, and minimizing distractions."
@@ -315,7 +315,7 @@ export const faqData = {
     }
   ],
 
-  "blog-professional-video-calls": [
+  "professional-video-calls": [
     {
       question: "What makes a video call look professional?",
       answer: "Professional video calls require good lighting, appropriate backgrounds, proper camera positioning at eye level, professional attire, and a quiet environment without distractions."
@@ -334,7 +334,7 @@ export const faqData = {
     }
   ],
 
-  "blog-backgrounds-by-industry": [
+  "backgrounds-by-industry": [
     {
       question: "What virtual backgrounds should teachers use?",
       answer: "Teachers should use bright bookshelf backgrounds, library settings, or educational environments that convey knowledge and learning. Avoid distracting backgrounds that might take attention away from instruction."
@@ -353,7 +353,7 @@ export const faqData = {
     }
   ],
 
-  "blog-background-mistakes": [
+  "background-mistakes": [
     {
       question: "Why does my virtual background look blurry?",
       answer: "Blurry backgrounds are usually caused by low-resolution images or poor lighting. Use HD images (1920x1080 or higher) and ensure you have good front-facing lighting to improve background quality."
@@ -372,7 +372,7 @@ export const faqData = {
     }
   ],
 
-  "blog-lighting-tips": [
+  "lighting-tips": [
     {
       question: "What's the best lighting setup for video calls?",
       answer: "The best setup uses natural window light from the front or a ring light at eye level. Three-point lighting (key light, fill light, and back light) is ideal for professional results."
@@ -391,7 +391,7 @@ export const faqData = {
     }
   ],
 
-  "blog-virtual-background-guide": [
+  "virtual-background-guide": [
     {
       question: "How do I set up a virtual background on Zoom?",
       answer: "In Zoom, go to Settings > Background & Effects, choose a virtual background or upload your own image. Enable 'I have a green screen' if using one for better results."
@@ -410,7 +410,7 @@ export const faqData = {
     }
   ],
 
-  "blog-zoom-teams-google": [
+  "zoom-teams-google": [
     {
       question: "Which video platform has the best virtual backgrounds?",
       answer: "Zoom, Teams, and Google Meet all support virtual backgrounds well. Zoom offers the most customization options, Teams has good integration with Microsoft 365, and Google Meet is simple and reliable."
@@ -429,7 +429,7 @@ export const faqData = {
     }
   ],
 
-  "blog-remote-work-productivity": [
+  "remote-work-productivity": [
     {
       question: "How can I stay productive while working from home?",
       answer: "Create a dedicated workspace, maintain regular hours, use professional virtual backgrounds for calls, minimize distractions, take regular breaks, and establish clear boundaries between work and personal time."

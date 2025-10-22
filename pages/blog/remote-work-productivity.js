@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogRemoteWorkProductivity() {
+export default function RemoteWorkProductivity() {
   return (
     <BlogLayout
       title="Remote Work Productivity: Creating Your Perfect Home Office Environment"
       description="Boost remote work productivity with expert tips for creating the perfect home office environment, managing distractions, and maintaining work-life balance."
       keywords="remote work, productivity tips, home office, work from home, remote work setup"
-      canonical="https://streambackdrops.com/blog-remote-work-productivity"
+      canonical="https://streambackdrops.com/blog/remote-work-productivity"
       headline="Remote Work Productivity: Creating Your Perfect Home Office Environment"
       image="/images/living-rooms/living-room-15.webp"
       datePublished="2025-08-02"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-remote-work-productivity')}
+      faqQuestions={getFAQs('remote-work-productivity')}
     >
       
       {/* ARTICLE WRAPPER - Wraps everything */}

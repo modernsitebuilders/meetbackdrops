@@ -130,6 +130,62 @@ const nextConfig = {
         destination: '/category/kitchens',
         permanent: true,
       },
+      // 🔥 BLOG REDIRECTS - Add these for your old blog URLs
+      {
+        source: '/blog-background-mistakes',
+        destination: '/blog/background-mistakes',
+        permanent: true,
+      },
+      {
+        source: '/blog-job-interview-backgrounds',
+        destination: '/blog/job-interview-backgrounds',
+        permanent: true,
+      },
+      {
+        source: '/blog-halloween-backgrounds',
+        destination: '/blog/halloween-backgrounds',
+        permanent: true,
+      },
+      {
+        source: '/blog-best-virtual-background-sites-2025',
+        destination: '/blog/best-virtual-background-sites-2025',
+        permanent: true,
+      },
+      {
+        source: '/blog-video-call-etiquette',
+        destination: '/blog/video-call-etiquette',
+        permanent: true,
+      },
+      {
+        source: '/blog-professional-video-calls',
+        destination: '/blog/professional-video-calls',
+        permanent: true,
+      },
+      {
+        source: '/blog-backgrounds-by-industry',
+        destination: '/blog/backgrounds-by-industry',
+        permanent: true,
+      },
+      {
+        source: '/blog-lighting-tips',
+        destination: '/blog/lighting-tips',
+        permanent: true,
+      },
+      {
+        source: '/blog-virtual-background-guide',
+        destination: '/blog/virtual-background-guide',
+        permanent: true,
+      },
+      {
+        source: '/blog-zoom-teams-google',
+        destination: '/blog/zoom-teams-google',
+        permanent: true,
+      },
+      {
+        source: '/blog-remote-work-productivity',
+        destination: '/blog/remote-work-productivity',
+        permanent: true,
+      },
     ];
   },
 };

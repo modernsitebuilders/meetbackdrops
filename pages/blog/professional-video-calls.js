@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogProfessionalVideoCalls() {
+export default function ProfessionalVideoCalls() {
   return (
     <BlogLayout
       title="10 Tips for Professional Video Calls - StreamBackdrops"
       description="Master professional video calls with 10 essential tips covering lighting, backgrounds, camera positioning, and etiquette for remote work success."
       keywords="video calls, professional meetings, remote work, video conferencing, zoom tips, teams meetings"
-      canonical="https://streambackdrops.com/blog-professional-video-calls"
+      canonical="https://streambackdrops.com/blog/professional-video-calls"
       headline="How to Look Professional on Video Calls: Complete Guide"
       image="/images/office-spaces/office-spaces-05.webp"
       datePublished="2025-03-01"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-professional-video-calls')}
+      faqQuestions={getFAQs('professional-video-calls')}
     >
 
       {/* ARTICLE WRAPPER - Wraps everything */}

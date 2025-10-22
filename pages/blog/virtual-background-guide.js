@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogVirtualBackgroundGuide() {
+export default function VirtualBackgroundGuide() {
   return (
     <BlogLayout
       title="Virtual Background Setup Guide - StreamBackdrops"
       description="Master virtual backgrounds for Zoom, Teams & Google Meet. Setup guide, best practices, troubleshooting & 20+ free HD backgrounds. Updated for 2025."
       keywords="virtual background guide, Zoom setup, Teams backgrounds, video call tips, professional backgrounds, tutorial 2025"
-      canonical="https://streambackdrops.com/blog-virtual-background-guide"
+      canonical="https://streambackdrops.com/blog/virtual-background-guide"
       headline="Complete Virtual Background Guide: Setup, Tips & Best Practices"
       image="/images/bookshelves-dark/ambient-01.webp"
       datePublished="2025-07-05"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-virtual-background-guide')}
+      faqQuestions={getFAQs('virtual-background-guide')}
     >
 
       {/* ARTICLE WRAPPER - Wraps everything */}

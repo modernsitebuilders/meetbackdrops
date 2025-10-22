@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogLightingTips() {
+export default function LightingTips() {
   return (
     <BlogLayout
       title="Virtual Background Lighting Tips - StreamBackdrops"
       description="Master video call lighting. Learn professional lighting setup for virtual backgrounds, avoid common mistakes, and look great on camera."
       keywords="video call lighting, virtual background lighting, home office lighting, video conferencing setup, professional lighting"
-      canonical="https://streambackdrops.com/blog-lighting-tips"
+      canonical="https://streambackdrops.com/blog/lighting-tips"
       headline="Perfect Video Call Lighting: Complete Setup Guide 2025"
       image="/images/office-spaces/office-spaces-10.webp"
       datePublished="2025-06-10"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-lighting-tips')}
+      faqQuestions={getFAQs('lighting-tips')}
     >
       <article style={{ 
         background: '#f8fafc', 

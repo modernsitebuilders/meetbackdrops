@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
-import { categoryInfo } from '../data/categoryData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
+import { categoryInfo } from '../../data/categoryData';
 
 
-export default function BlogJobInterviewBackgrounds() {
+export default function JobInterviewBackgrounds() {
   // Get dynamic image counts from categoryData
   const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
   const homeOfficesCount = categoryInfo['home-offices']?.images?.length || 0;
@@ -14,15 +14,15 @@ export default function BlogJobInterviewBackgrounds() {
   
   return (
     <BlogLayout
-      title="Best Virtual Backgrounds for Job Interviews 2025: Complete Guide"
+      title="Best Virtual Backgrounds for Job Interviews 2025"
       description="Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression."
       keywords="job interview backgrounds, interview tips, professional backgrounds, virtual interview, career advice"
-      canonical="https://streambackdrops.com/blog-job-interview-backgrounds"
-      headline="Best Virtual Backgrounds for Job Interviews 2025: Complete Guide"
+      canonical="https://streambackdrops.com/blog/job-interview-backgrounds"
+      headline="Best Virtual Backgrounds for Job Interviews 2025"
       image="/images/office-spaces/office-spaces-05.webp"
       datePublished="2025-01-21"
       dateModified="2025-01-21"
-      faqQuestions={getFAQs('blog-job-interview-backgrounds')}
+      faqQuestions={getFAQs('job-interview-backgrounds')}
     >
 
       {/* ARTICLE WRAPPER - Wraps everything */}

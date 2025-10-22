@@ -91,25 +91,25 @@ export default function Home() {
 
         <div className={styles.blogGrid}>
           <Card 
-            href="/blog-best-virtual-background-sites-2025"
+            href="/blog/best-virtual-background-sites-2025"
             title="Best Free Background Sites 2025"
             description="Complete comparison: StreamBackdrops vs competitors"
             className="blog-card"
           />
           <Card
-            href="/blog-background-mistakes"
+            href="/blog/background-mistakes"
             title="Perfect Lighting Setup"
             description="Look professional with proper lighting"
             className="blog-card"
           />
           <Card
-            href="/blog-background-mistakes"
+            href="/blog/background-mistakes"
             title="5-Minute Setup Guide"
             description="Quick steps for perfect video calls"
             className="blog-card"
           />
           <Card
-            href="/blog-halloween-backgrounds"
+            href="/blog/halloween-backgrounds"
             title="Halloween Backgrounds 2025"
             description="25 free spooky backgrounds for October"
             emoji="🎃"

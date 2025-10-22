@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import BlogLayout from '../components/BlogLayout';
-import { getFAQs } from '../data/faqData';
+import BlogLayout from '../../components/BlogLayout';
+import { getFAQs } from '../../data/faqData';
 
-export default function BlogBackgroundMistakes() {
+export default function BackgroundMistakes() {
   return (
     <BlogLayout
       title="Virtual Background Mistakes to Avoid"
       description="Avoid common virtual background mistakes. Expert tips to fix blurry backgrounds, poor lighting, and distractions for professional video calls."
       keywords="virtual background mistakes, professional video calls, zoom background errors, teams background problems, business call setup"
-      canonical="https://streambackdrops.com/blog-background-mistakes"
+      canonical="https://streambackdrops.com/blog/background-mistakes"
       headline="7 Virtual Background Mistakes That Make You Look Unprofessional"
       image="/images/living-rooms/living-room-29.webp"
       datePublished="2025-05-20"
       dateModified="2025-10-09"
-      faqQuestions={getFAQs('blog-background-mistakes')}
+      faqQuestions={getFAQs('background-mistakes')}
     >
 
      {/* ARTICLE WRAPPER - Wraps everything */}
