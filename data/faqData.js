@@ -1,12 +1,12 @@
 // data/faqData.js
 // Centralized FAQ data for all pages
-
+import { getFormattedTotalCount } from '../lib/getImageCounts';
 export const faqData = {
   // Homepage FAQs
   homepage: [
     {
       question: "Are your virtual backgrounds really free?",
-      answer: "Yes, all 337+ virtual backgrounds on StreamBackdrops are completely free to download and use for personal and commercial purposes. No signup required, no watermarks."
+      answer: `Yes, all ${getFormattedTotalCount()} virtual backgrounds on StreamBackdrops are completely free to download and use for personal and commercial purposes. No signup required, no watermarks.`
     },
     {
       question: "What video platforms work with these backgrounds?",

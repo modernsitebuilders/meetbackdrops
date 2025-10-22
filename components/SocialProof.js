@@ -1,5 +1,6 @@
 // components/SocialProof.js
 import styles from '../styles/SocialProof.module.css';
+import { getFormattedTotalCount } from '../lib/getImageCounts';
 
 export default function SocialProof() {
   return (
@@ -8,7 +9,7 @@ export default function SocialProof() {
       
       <div className={styles.stats}>
         <div className={styles.stat}>
-          <strong className={styles.statNumber}>350+</strong>
+          <strong className={styles.statNumber}>{getFormattedTotalCount()}</strong>
           <span className={styles.statLabel}>HD Backgrounds</span>
         </div>
         

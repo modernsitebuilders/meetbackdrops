@@ -1,13 +1,14 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import Footer from '../components/Footer';
+import { useState, useEffect } from 'react';
+import styles from '../styles/Layout.module.css';
+import { getFormattedTotalCount } from '../lib/getImageCounts';
 
-export default function Layout({ 
-  children, 
-  title = 'StreamBackdrops - Free HD Virtual Backgrounds',
-  description = 'Download 330+ free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. No signup required, no watermarks - just high-quality backgrounds perfect for video calls, remote work, and online meetings.',
+export default function Layout({
+  children,
+  title = 'StreamBackdrops - Free Professional Virtual Backgrounds',
+  description = `Download free professional HD virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Over ${getFormattedTotalCount()} premium images for video calls.
+No signup required, no watermarks - just high-quality backgrounds perfect for video calls, remote work, and online meetings.`,
   currentPage = null,
   canonical,
   keywords = 'virtual backgrounds, Zoom backgrounds, Teams backgrounds, professional video calls, free download',
