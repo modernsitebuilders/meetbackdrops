@@ -15,7 +15,7 @@ export default function WhyDifferent() {
     },
     {
       icon: '🎨',
-      title: '330+ Professional Backgrounds',
+      title: '350+ Professional Backgrounds',
       description: 'Office spaces, libraries, bookshelves, and more—all in perfect 16:9 ratio for video platforms'
     },
     {
