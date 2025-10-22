@@ -1,82 +1,69 @@
 import Link from 'next/link';
-import BlogLayout from '../../components/BlogLayout';
-import { getFAQs } from '../../data/faqData';
 
-export default function LightingTips() {
+export const lightingTipsContent = () => {
   return (
-    <BlogLayout
-      title="Virtual Background Lighting Tips - StreamBackdrops"
-      description="Master video call lighting. Learn professional lighting setup for virtual backgrounds, avoid common mistakes, and look great on camera."
-      keywords="video call lighting, virtual background lighting, home office lighting, video conferencing setup, professional lighting"
-      canonical="https://streambackdrops.com/blog/lighting-tips"
-      headline="Perfect Video Call Lighting: Complete Setup Guide 2025"
-      image="/images/office-spaces/office-spaces-10.webp"
-      datePublished="2025-06-10"
-      dateModified="2025-10-09"
-      faqQuestions={getFAQs('lighting-tips')}
-    >
-      <article style={{ 
-        background: '#f8fafc', 
-        minHeight: '100vh'
+    <article style={{ 
+      background: '#f8fafc', 
+      minHeight: '100vh'
+    }}>
+      <div style={{
+        paddingLeft: '2rem',
+        paddingRight: '2rem'
       }}>
-        <div style={{
-          paddingLeft: '2rem',
-          paddingRight: '2rem'
+        <div style={{ 
+          maxWidth: '1200px', 
+          margin: '0 auto', 
+          paddingTop: '2rem', 
+          paddingBottom: '2rem' 
         }}>
           <div style={{ 
-            maxWidth: '1200px', 
-            margin: '0 auto', 
-            paddingTop: '2rem', 
-            paddingBottom: '2rem' 
+            background: 'white',
+            borderRadius: '0.75rem',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            overflow: 'hidden'
           }}>
-            <div style={{ 
-              background: 'white',
-              borderRadius: '0.75rem',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-              overflow: 'hidden'
+            {/* Hero Section acts as the header */}
+            <header style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+              textAlign: 'center'
             }}>
-              {/* Hero Section acts as the header */}
-              <header style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: 'white',
-                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
-                textAlign: 'center'
-              }}>
-                <div style={{
-                  fontSize: '0.9rem',
-                  fontWeight: '600',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  marginBottom: '1rem',
-                  opacity: '0.9'
-                }}>
-                  Professional Video Tips
-                </div>
-                <h1 style={{
-                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-                  fontWeight: 'bold',
-                  marginBottom: '1rem',
-                  lineHeight: '1.2'
-                }}>
-                  Perfect Lighting Setup for Virtual Backgrounds
-                </h1>
-                <p style={{
-                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                  opacity: '0.95',
-                  maxWidth: '800px',
-                  margin: '0 auto'
-                }}>
-                  Master professional lighting techniques and look great on every video call
-                </p>
-              </header>
-
-              {/* Article Content */}
               <div style={{
-                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
-                maxWidth: '800px',
-                margin: '0 auto',
-                lineHeight: '1.75'
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                marginBottom: '1rem',
+                opacity: '0.9'
               }}>
+                Professional Video Tips
+              </div>
+              <h1 style={{
+                fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                fontWeight: 'bold',
+                marginBottom: '1rem',
+                lineHeight: '1.2'
+              }}>
+                Perfect Lighting Setup for Virtual Backgrounds
+              </h1>
+              <p style={{
+                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                opacity: '0.95',
+                maxWidth: '800px',
+                margin: '0 auto'
+              }}>
+                Master professional lighting techniques and look great on every video call
+              </p>
+            </header>
+
+            {/* Article Content */}
+            <div style={{
+              padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+              maxWidth: '800px',
+              margin: '0 auto',
+              lineHeight: '1.75'
+            }}>
               <div style={{
                 background: '#fef3c7',
                 borderLeft: '4px solid #f59e0b',
@@ -271,12 +258,10 @@ export default function LightingTips() {
                   Browse Backgrounds →
                 </Link>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </article>
-    </BlogLayout>
   );
-}
+};

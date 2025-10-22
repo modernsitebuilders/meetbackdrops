@@ -1,106 +1,90 @@
 import Link from 'next/link';
-import BlogLayout from '../../components/BlogLayout';
-import { getFAQs } from '../../data/faqData';
 import Image from 'next/image'; 
 
-export default function HalloweenBackgrounds() {
-  return (
-    <BlogLayout
-      title="Best Halloween Virtual Backgrounds for 2025"
-      description="Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Seasonal backgrounds with pumpkins, and autumn atmosphere for October video calls."
-      keywords="halloween backgrounds, fall backgrounds, october backgrounds, seasonal backgrounds, halloween zoom"
-      canonical="https://streambackdrops.com/blog/halloween-backgrounds"
-      headline="Best Halloween Virtual Backgrounds for Video Calls 2025"
-      image="/images/halloween-backgrounds/halloween-background-20.webp"
-      datePublished="2025-07-15"
-      dateModified="2025-10-09"
-      faqQuestions={getFAQs('halloween-backgrounds')}
-    >
-
-      {/* ARTICLE WRAPPER - Wraps everything */}
-      <article style={{ 
-        background: '#f8fafc', 
-        minHeight: '100vh'
+export const halloweenBackgroundsContent = () => (
+  <article style={{ 
+    background: '#f8fafc', 
+    minHeight: '100vh'
+  }}>
+    
+    {/* PADDING WRAPPER */}
+    <div style={{
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }}>
+      
+      {/* MAX-WIDTH CONTAINER */}
+      <div style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        paddingTop: '2rem', 
+        paddingBottom: '2rem' 
       }}>
         
-        {/* PADDING WRAPPER */}
-        <div style={{
-          paddingLeft: '2rem',
-          paddingRight: '2rem'
+        {/* WHITE CARD WRAPPER */}
+        <div style={{ 
+          background: 'white',
+          borderRadius: '0.75rem',
+          boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+          overflow: 'hidden'
         }}>
           
-          {/* MAX-WIDTH CONTAINER */}
-          <div style={{ 
-            maxWidth: '1200px', 
-            margin: '0 auto', 
-            paddingTop: '2rem', 
-            paddingBottom: '2rem' 
+          {/* HERO/HEADER SECTION */}
+          <header style={{
+            background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #1e3a8a 100%)',
+            color: 'white',
+            padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              fontSize: '0.9rem',
+              fontWeight: '600',
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
+              marginBottom: '1rem',
+              opacity: '0.9'
+            }}>
+              🎃 Seasonal Backgrounds
+            </div>
+            
+            <h1 style={{
+              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+              fontWeight: 'bold',
+              marginBottom: '1rem',
+              lineHeight: '1.2'
+            }}>
+              Best Halloween Virtual Backgrounds for Video Calls 2025
+            </h1>
+            
+            <p style={{
+              fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+              opacity: '0.95',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
+              Make your October video calls festive with professional Halloween backgrounds
+            </p>
+          </header>
+
+          {/* ARTICLE CONTENT SECTION */}
+          <div style={{
+            padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+            maxWidth: '800px',
+            margin: '0 auto',
+            lineHeight: '1.75'
           }}>
             
-            {/* WHITE CARD WRAPPER */}
-            <div style={{ 
-              background: 'white',
-              borderRadius: '0.75rem',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-              overflow: 'hidden'
-            }}>
-              
-              {/* HERO/HEADER SECTION */}
-              <header style={{
-                background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #1e3a8a 100%)',
-                color: 'white',
-                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
-                textAlign: 'center'
-              }}>
-                <div style={{
-                  fontSize: '0.9rem',
-                  fontWeight: '600',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  marginBottom: '1rem',
-                  opacity: '0.9'
-                }}>
-                  🎃 Seasonal Backgrounds
-                </div>
-                
-                <h1 style={{
-                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-                  fontWeight: 'bold',
-                  marginBottom: '1rem',
-                  lineHeight: '1.2'
-                }}>
-                  Best Halloween Virtual Backgrounds for Video Calls 2025
-                </h1>
-                
-                <p style={{
-                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                  opacity: '0.95',
-                  maxWidth: '800px',
-                  margin: '0 auto'
-                }}>
-                  Make your October video calls festive with professional Halloween backgrounds
-                </p>
-              </header>
+            <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+              Halloween is the perfect time to add festive flair to your video calls without being too distracting.
+            </p>
 
-              {/* ARTICLE CONTENT SECTION */}
-              <div style={{
-                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
-                maxWidth: '800px',
-                margin: '0 auto',
-                lineHeight: '1.75'
-              }}>
-                
-                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
-                  Halloween is the perfect time to add festive flair to your video calls without being too distracting.
-                </p>
-
-                <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  Professional Halloween Backgrounds for Work
-                </h2>
-                
-                <p style={{color: '#6b7280', marginBottom: '2rem'}}>
-                  Whether you're working remotely, teaching online, or hosting virtual parties, the right background sets the mood.
-                </p>
+            <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+              Professional Halloween Backgrounds for Work
+            </h2>
+            
+            <p style={{color: '#6b7280', marginBottom: '2rem'}}>
+              Whether you're working remotely, teaching online, or hosting virtual parties, the right background sets the mood.
+            </p>
             <p style={{
               fontSize: '1.1rem',
               lineHeight: '1.8',
@@ -332,7 +316,7 @@ export default function HalloweenBackgrounds() {
               lineHeight: '1.8',
               color: '#374151'
             }}>
-              Need help setting up virtual backgrounds? Check out our <Link href="/blog-virtual-background-guide" style={{ color: '#2563eb', fontWeight: '600' }}>complete setup guide</Link> for step-by-step instructions for every major platform.
+              Need help setting up virtual backgrounds? Check out our <Link href="/blog/virtual-background-guide" style={{ color: '#2563eb', fontWeight: '600' }}>complete setup guide</Link> for step-by-step instructions for every major platform.
             </p>
           </section>
 
@@ -512,6 +496,4 @@ export default function HalloweenBackgrounds() {
          </div>
   </div>
 </article>
-    </BlogLayout>
-  );
-}
+);

@@ -1,48 +1,32 @@
 import Link from 'next/link';
-import BlogLayout from '../../components/BlogLayout';
-import { getFAQs } from '../../data/faqData';
 
-export default function BestVirtualBackgroundSites2025() {
-  return (
-    <BlogLayout
-      title="Best Free Virtual Background Sites in 2025 - StreamBackdrops"
-      description="Compare the best free virtual background sites in 2025. Learn why StreamBackdrops beats stock photo sites for professional video calls."
-      keywords="virtual background sites, free backgrounds, best background sites, zoom backgrounds, comparison 2025"
-      canonical="https://streambackdrops.com/blog/best-virtual-background-sites-2025"
-      headline="Best Free Virtual Background Sites in 2025: Complete Comparison"
-      image="/images/art-galleries/art-gallery-1.webp"
-      datePublished="2025-01-15"
-      dateModified="2025-10-09"
-      faqQuestions={getFAQs('best-virtual-background-sites-2025')}
-    >
-
-     {/* ARTICLE WRAPPER - Wraps everything */}
-      <article style={{ 
-        background: '#f8fafc', 
-        minHeight: '100vh'
+export const bestVirtualBackgroundSites2025Content = () => (
+  <article style={{ 
+    background: '#f8fafc', 
+    minHeight: '100vh'
+  }}>
+    
+    {/* PADDING WRAPPER */}
+    <div style={{
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }}>
+      
+      {/* MAX-WIDTH CONTAINER */}
+      <div style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        paddingTop: '2rem', 
+        paddingBottom: '2rem' 
       }}>
         
-        {/* PADDING WRAPPER */}
-        <div style={{
-          paddingLeft: '2rem',
-          paddingRight: '2rem'
+        {/* WHITE CARD WRAPPER */}
+        <div style={{ 
+          background: 'white',
+          borderRadius: '0.75rem',
+          boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+          overflow: 'hidden'
         }}>
-          
-          {/* MAX-WIDTH CONTAINER */}
-          <div style={{ 
-            maxWidth: '1200px', 
-            margin: '0 auto', 
-            paddingTop: '2rem', 
-            paddingBottom: '2rem' 
-          }}>
-            
-            {/* WHITE CARD WRAPPER */}
-            <div style={{ 
-              background: 'white',
-              borderRadius: '0.75rem',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-              overflow: 'hidden'
-            }}>
     
       {/* HERO/HEADER SECTION */}
               <header style={{
@@ -291,7 +275,7 @@ export default function BestVirtualBackgroundSites2025() {
                   }}>
                     Browse Backgrounds
                   </Link>
-                  <Link href="/blog-virtual-background-guide" style={{
+                  <Link href="/blog/virtual-background-guide" style={{
                     background: 'transparent',
                     color: '#2563eb',
                     padding: '0.75rem 1.5rem',
@@ -310,6 +294,4 @@ export default function BestVirtualBackgroundSites2025() {
          </div>
   </div>
 </article>
-    </BlogLayout>
-  );
-}
+);

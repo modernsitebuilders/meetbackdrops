@@ -1,10 +1,6 @@
 import Link from 'next/link';
-import BlogLayout from '../../components/BlogLayout';
-import { getFAQs } from '../../data/faqData';
-import { categoryInfo } from '../../data/categoryData';
 
-
-export default function JobInterviewBackgrounds() {
+export const jobInterviewBackgroundsContent = (categoryInfo) => {
   // Get dynamic image counts from categoryData
   const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
   const homeOfficesCount = categoryInfo['home-offices']?.images?.length || 0;
@@ -13,102 +9,89 @@ export default function JobInterviewBackgrounds() {
   const darkBookshelvesCount = categoryInfo['bookshelves-dark']?.images?.length || 0;
   
   return (
-    <BlogLayout
-      title="Best Virtual Backgrounds for Job Interviews 2025"
-      description="Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression."
-      keywords="job interview backgrounds, interview tips, professional backgrounds, virtual interview, career advice"
-      canonical="https://streambackdrops.com/blog/job-interview-backgrounds"
-      headline="Best Virtual Backgrounds for Job Interviews 2025"
-      image="/images/office-spaces/office-spaces-05.webp"
-      datePublished="2025-01-21"
-      dateModified="2025-01-21"
-      faqQuestions={getFAQs('job-interview-backgrounds')}
-    >
-
-      {/* ARTICLE WRAPPER - Wraps everything */}
-      <article style={{ 
-        background: '#f8fafc', 
-        minHeight: '100vh'
+    <article style={{ 
+      background: '#f8fafc', 
+      minHeight: '100vh'
+    }}>
+      
+      {/* PADDING WRAPPER */}
+      <div style={{
+        paddingLeft: '2rem',
+        paddingRight: '2rem'
       }}>
         
-        {/* PADDING WRAPPER */}
-        <div style={{
-          paddingLeft: '2rem',
-          paddingRight: '2rem'
+        {/* MAX-WIDTH CONTAINER */}
+        <div style={{ 
+          maxWidth: '1200px', 
+          margin: '0 auto', 
+          paddingTop: '2rem', 
+          paddingBottom: '2rem' 
         }}>
           
-          {/* MAX-WIDTH CONTAINER */}
+          {/* WHITE CARD WRAPPER */}
           <div style={{ 
-            maxWidth: '1200px', 
-            margin: '0 auto', 
-            paddingTop: '2rem', 
-            paddingBottom: '2rem' 
+            background: 'white',
+            borderRadius: '0.75rem',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            overflow: 'hidden'
           }}>
             
-            {/* WHITE CARD WRAPPER */}
-            <div style={{ 
-              background: 'white',
-              borderRadius: '0.75rem',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-              overflow: 'hidden'
+            {/* HERO/HEADER SECTION */}
+            <header style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+              textAlign: 'center'
+            }}>
+              <div style={{
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                marginBottom: '1rem',
+                opacity: '0.9'
+              }}>
+                Career & Interview Tips
+              </div>
+              
+              <h1 style={{
+                fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                fontWeight: 'bold',
+                marginBottom: '1rem',
+                lineHeight: '1.2'
+              }}>
+                Best Virtual Backgrounds for Job Interviews 2025
+              </h1>
+              
+              <p style={{
+                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                opacity: '0.95',
+                maxWidth: '800px',
+                margin: '0 auto'
+              }}>
+                Make a great first impression with professional interview backgrounds
+              </p>
+            </header>
+
+            {/* ARTICLE CONTENT SECTION */}
+            <div style={{
+              padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
+              maxWidth: '800px',
+              margin: '0 auto',
+              lineHeight: '1.75'
             }}>
               
-              {/* HERO/HEADER SECTION */}
-              <header style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: 'white',
-                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
-                textAlign: 'center'
-              }}>
-                <div style={{
-                  fontSize: '0.9rem',
-                  fontWeight: '600',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  marginBottom: '1rem',
-                  opacity: '0.9'
-                }}>
-                  Career & Interview Tips
-                </div>
-                
-                <h1 style={{
-                  fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-                  fontWeight: 'bold',
-                  marginBottom: '1rem',
-                  lineHeight: '1.2'
-                }}>
-                  Best Virtual Backgrounds for Job Interviews 2025
-                </h1>
-                
-                <p style={{
-                  fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                  opacity: '0.95',
-                  maxWidth: '800px',
-                  margin: '0 auto'
-                }}>
-                  Make a great first impression with professional interview backgrounds
-                </p>
-              </header>
+              <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
+                Your virtual background can make or break a job interview. Choose wisely to make a professional first impression.
+              </p>
 
-              {/* ARTICLE CONTENT SECTION */}
-              <div style={{
-                padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
-                maxWidth: '800px',
-                margin: '0 auto',
-                lineHeight: '1.75'
-              }}>
-                
-                <p style={{fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem'}}>
-                  Your virtual background can make or break a job interview. Choose wisely to make a professional first impression.
-                </p>
-
-                <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  Why Your Interview Background Matters
-                </h2>
-                
-                <p style={{color: '#6b7280', marginBottom: '2rem'}}>
-                  Hiring managers form opinions in seconds. Your background communicates professionalism before you say a word.
-                </p>
+              <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                Why Your Interview Background Matters
+              </h2>
+              
+              <p style={{color: '#6b7280', marginBottom: '2rem'}}>
+                Hiring managers form opinions in seconds. Your background communicates professionalism before you say a word.
+              </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
                 A well-chosen virtual background shows you understand professional standards, respect the interviewer's time, and care about presentation. It eliminates distractions from your real environment and lets the focus stay where it belongs: on you and your qualifications.
@@ -664,94 +647,91 @@ export default function JobInterviewBackgrounds() {
                 </Link>
               </div>
 
-            </div>
-          
+              <div style={{
+                marginTop: '4rem',
+                paddingTop: '2rem',
+                borderTop: '2px solid #e5e7eb'
+              }}>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                  color: '#111827',
+                  marginBottom: '1.5rem'
+                }}>
+                  Related Guides
+                </h3>
+                <div style={{
+                  display: 'grid',
+                  gap: '1rem'
+                }}>
+                  <Link
+                    href="/blog-professional-video-calls"
+                    style={{
+                      display: 'block',
+                      padding: '1.25rem',
+                      background: 'white',
+                      borderRadius: '0.5rem',
+                      border: '1px solid #e5e7eb',
+                      textDecoration: 'none',
+                      color: '#111827',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#2563eb' }}>
+                      10 Tips for Professional Video Calls →
+                    </div>
+                    <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+                      Master lighting, camera position, and presentation
+                    </div>
+                  </Link>
+                  
+                  <Link
+                    href="/blog-video-call-etiquette"
+                    style={{
+                      display: 'block',
+                      padding: '1.25rem',
+                      background: 'white',
+                      borderRadius: '0.5rem',
+                      border: '1px solid #e5e7eb',
+                      textDecoration: 'none',
+                      color: '#111827',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#2563eb' }}>
+                      Video Call Etiquette Guide →
+                    </div>
+                    <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+                      Professional behavior for virtual meetings
+                    </div>
+                  </Link>
 
-          <div style={{
-            marginTop: '4rem',
-            paddingTop: '2rem',
-            borderTop: '2px solid #e5e7eb'
-          }}>
-            <h3 style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#111827',
-              marginBottom: '1.5rem'
-            }}>
-              Related Guides
-            </h3>
-            <div style={{
-              display: 'grid',
-              gap: '1rem'
-            }}>
-              <Link
-                href="/blog-professional-video-calls"
-                style={{
-                  display: 'block',
-                  padding: '1.25rem',
-                  background: 'white',
-                  borderRadius: '0.5rem',
-                  border: '1px solid #e5e7eb',
-                  textDecoration: 'none',
-                  color: '#111827',
-                  transition: 'all 0.2s'
-                }}
-              >
-                <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#2563eb' }}>
-                  10 Tips for Professional Video Calls →
-                </div>
-                <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
-                  Master lighting, camera position, and presentation
-                </div>
-              </Link>
-              
-              <Link
-                href="/blog-video-call-etiquette"
-                style={{
-                  display: 'block',
-                  padding: '1.25rem',
-                  background: 'white',
-                  borderRadius: '0.5rem',
-                  border: '1px solid #e5e7eb',
-                  textDecoration: 'none',
-                  color: '#111827',
-                  transition: 'all 0.2s'
-                }}
-              >
-                <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#2563eb' }}>
-                  Video Call Etiquette Guide →
-                </div>
-                <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
-                  Professional behavior for virtual meetings
-                </div>
-              </Link>
-
-              <Link
-                href="/blog-backgrounds-by-industry"
-                style={{
-                  display: 'block',
-                  padding: '1.25rem',
-                  background: 'white',
-                  borderRadius: '0.5rem',
-                  border: '1px solid #e5e7eb',
-                  textDecoration: 'none',
-                  color: '#111827',
-                  transition: 'all 0.2s'
-                }}
-              >
-                <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#2563eb' }}>
-                  Best Backgrounds by Industry →
-                </div>
-                <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
-                  Choose the perfect background for your profession
-                </div>
-              </Link>
+                  <Link
+                    href="/blog-backgrounds-by-industry"
+                    style={{
+                      display: 'block',
+                      padding: '1.25rem',
+                      background: 'white',
+                      borderRadius: '0.5rem',
+                      border: '1px solid #e5e7eb',
+                      textDecoration: 'none',
+                      color: '#111827',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#2563eb' }}>
+                      Best Backgrounds by Industry →
+                    </div>
+                    <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+                      Choose the perfect background for your profession
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
-         </div>
-  </div>
-</article>
-    </BlogLayout>
+          </div>
+        </div>
+      </div>
+    </article>
   );
-}
+};
