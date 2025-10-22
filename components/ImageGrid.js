@@ -5,6 +5,15 @@ import { folderMap } from '../data/categoryData';
 export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
   return (
     <>
+      <h2 style={{
+        fontSize: '1.5rem',
+        fontWeight: '600',
+        color: '#111827',
+        marginBottom: '1rem'
+      }}>
+        Browse {images.length} Free HD Backgrounds
+      </h2>
+      
       <p style={{
         color: '#6b7280',
         marginBottom: '2rem'
@@ -53,7 +62,9 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
                     "name": "StreamBackdrops"
                   },
                   "creditText": "StreamBackdrops",
-                  "copyrightNotice": "© 2025 StreamBackdrops - CC0 Public Domain"
+                  "copyrightNotice": "© 2025 StreamBackdrops - CC0 Public Domain",
+                  "width": "1920",
+                  "height": "1080"
                 })
               }}
             />
@@ -67,8 +78,13 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
               <Image
                 src={`/images/${folderMap[slug]}/${image.filename}`}
                 alt={image.title}
-                fill
-                style={{ objectFit: 'cover' }}
+                width={1920}
+                height={1080}
+                style={{ 
+                  objectFit: 'cover',
+                  width: '100%',
+                  height: '100%'
+                }}
                 loading={index < 8 ? 'eager' : 'lazy'}
                 quality={75}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
