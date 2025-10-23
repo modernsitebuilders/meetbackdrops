@@ -16,10 +16,10 @@ export default function CategoryHeader({ category }) {
       </p>
       
       <div className={styles.badges}>
-        <span className={styles.badge}>✓ Video-Optimized Lighting</span>
-        <span className={styles.badge}>✓ Perfect 16:9 Ratio</span>
-        <span className={styles.badge}>✓ Instant Download</span>
-        <span className={styles.badge}>✓ No Watermarks</span>
+        <span className={styles.badge}>Video-Optimized Lighting</span>
+        <span className={styles.badge}>Perfect 16:9 Ratio</span>
+        <span className={styles.badge}>Instant Download</span>
+        <span className={styles.badge}>No Watermarks</span>
       </div>
     </div>
   );
