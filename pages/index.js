@@ -145,11 +145,6 @@ export default function Home() {
 
       {/* Social Proof */}
       <SocialProof />
-
-      {/* SEO Content (keep your existing SEO section here) */}
-      <section className={styles.seoSection}>
-        {/* Your existing SEO content */}
-      </section>
     </Layout>
   );
 }
