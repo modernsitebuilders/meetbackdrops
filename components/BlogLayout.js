@@ -6,6 +6,13 @@ import FAQSchema from './FAQSchema';
 import BlogPostSchema from './BlogPostSchema';
 import BreadcrumbSchema from './BreadcrumbSchema';
 
+// Utility function for consistent image URLs
+const getFullImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('http')) return imagePath;
+  return `https://streambackdrops.com${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`;
+};
+
 export default function BlogLayout({ 
   children, 
   title, 
@@ -20,33 +27,43 @@ export default function BlogLayout({
 }) {
   // Tracking code that was duplicated in every blog page
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-      
-      let referrer = document.referrer || 'direct';
-      
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-      
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
+    const trackPageView = async () => {
+      if (typeof window !== 'undefined') {
+        try {
+          if (localStorage.getItem('streambackdrops_admin') === 'true') {
+            return;
+          }
+          
+          let referrer = document.referrer || 'direct';
+          
+          if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
+            sessionStorage.setItem('entry_referrer', document.referrer);
+          }
+          
+          const sessionReferrer = sessionStorage.getItem('entry_referrer');
+          if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
+            referrer = sessionReferrer;
+          }
 
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: canonical.replace('https://streambackdrops.com', ''),
-          category: 'blog',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
+          await fetch('/api/track-page-view', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              page: canonical.replace('https://streambackdrops.com', ''),
+              category: 'blog',
+              referrer: referrer
+            })
+          });
+        } catch (error) {
+          console.error('Tracking failed:', error);
+        }
+      }
+    };
+
+    trackPageView();
   }, [canonical]);
+
+  const fullImageUrl = getFullImageUrl(image);
 
   return (
     <>
@@ -60,7 +77,7 @@ export default function BlogLayout({
         <BlogPostSchema 
           headline={headline}
           description={description}
-          image={image.startsWith('/') ? image : `/${image}`}
+          image={fullImageUrl}
           datePublished={datePublished}
           dateModified={dateModified}
           url={canonical}
