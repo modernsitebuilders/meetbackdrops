@@ -88,9 +88,8 @@ nav div[style*="position: absolute"] button:hover {
     grid-template-columns: 1fr !important;
   }
 }
-
-/* Hover effect for feature cards */
-section div[style*="background: #f9fafb"]:hover {
+/* Hover effect for feature cards - more specific selector */
+.feature-card:hover {
   transform: translateY(-4px);
   transition: transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
