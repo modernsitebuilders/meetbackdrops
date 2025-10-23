@@ -1,6 +1,11 @@
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
+  // Skip tracking during build process
+  if (process.env.VERCEL_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+    return res.status(200).json({ success: true, skipped: 'build' });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
