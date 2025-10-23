@@ -1,15 +1,17 @@
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
-  // Only track in production environment, skip preview deployments
-  if (process.env.VERCEL_ENV !== 'production') {
-    return res.status(200).json({ success: true, skipped: 'non-production' });
-  }
-
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
+  // Block tracking from bots, crawlers, and build processes
+  const userAgent = req.headers['user-agent'] || '';
+  const blockedAgents = ['bot', 'crawler', 'spider', 'vercel', 'headless'];
+  
+  if (blockedAgents.some(agent => userAgent.toLowerCase().includes(agent))) {
+    return res.status(200).json({ success: true, skipped: 'bot' });
+  }
   const { page, category, referrer } = req.body;
   
   try {
