@@ -30,24 +30,8 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
     setIsDropdownOpen(false);
   }, [router.asPath]);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = () => {
-      setIsDropdownOpen(false);
-    };
-
-    if (isDropdownOpen) {
-      document.addEventListener('click', handleClickOutside);
-      return () => document.removeEventListener('click', handleClickOutside);
-    }
-  }, [isDropdownOpen]);
-
   const navigate = (path) => {
-    if (process.env.NODE_ENV === 'development') {
-      window.location.href = path;
-    } else {
-      router.push(path);
-    }
+    router.push(path);
   };
 
   const defaultStructuredData = {
@@ -66,48 +50,56 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
     }
   };
 
+  // Navigation items - RESTORED to original structure
+  const navItems = [
+    { 
+      name: 'Bookshelves', 
+      path: '/category/bookshelves-bright', 
+      key: 'bookshelves-bright',
+      isActive: currentPage === 'bookshelves-bright'
+    },
+    { 
+      name: 'Office Spaces', 
+      path: '/category/office-spaces', 
+      key: 'office-spaces',
+      isActive: currentPage === 'office-spaces'
+    },
+    { 
+      name: 'Living Rooms', 
+      path: '/category/living-rooms', 
+      key: 'living-rooms',
+      isActive: currentPage === 'living-rooms'
+    }
+  ];
+
+  const dropdownCategories = [
+    { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark', key: 'bookshelves-dark' },
+    { name: 'Kitchens', path: '/category/kitchens', key: 'kitchens' },
+    { name: 'Coffee Shops', path: '/category/coffee-shops', key: 'coffee-shops' },
+    { name: 'Art Galleries', path: '/category/art-galleries', key: 'art-galleries' },
+    { name: 'Urban Lofts', path: '/category/urban-lofts', key: 'urban-lofts' },
+    { name: 'Gardens & Patios', path: '/category/gardens-patios', key: 'gardens-patios' },
+    { name: 'Historic Spaces', path: '/category/historic-spaces', key: 'historic-spaces' },
+    { name: 'Nature & Landscapes', path: '/category/nature-landscapes', key: 'nature-landscapes' },
+    { name: 'Libraries', path: '/category/libraries', key: 'libraries' },
+    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' }
+  ];
+
   const navButtonStyle = (isActive = false, isHovered = false) => ({
     padding: '0.5rem 1rem',
     borderRadius: '0.5rem',
     textDecoration: 'none',
     color: isActive ? '#2563eb' : '#374151',
-    fontWeight: '500',
+    fontWeight: isActive ? '600' : '500',
     fontSize: '0.95rem',
     background: isHovered ? '#f3f4f6' : 'transparent',
     border: 'none',
     transition: 'all 0.2s ease',
     cursor: 'pointer',
     fontFamily: 'inherit',
-    transform: isHovered ? 'translateY(-1px)' : 'none'
+    transform: isHovered ? 'translateY(-1px)' : 'none',
+    borderBottom: isActive ? '2px solid #2563eb' : '2px solid transparent'
   });
-
-  const dropdownItemStyle = (isHovered = false) => ({
-    display: 'block',
-    width: '100%',
-    padding: '0.75rem 1rem',
-    textAlign: 'left',
-    background: isHovered ? '#f3f4f6' : 'transparent',
-    border: 'none',
-    color: '#374151',
-    fontSize: '0.9rem',
-    cursor: 'pointer',
-    borderRadius: '0.375rem',
-    fontFamily: 'inherit',
-    transition: 'background 0.2s ease'
-  });
-
-  const dropdownCategories = [
-    { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark' },
-    { name: 'Kitchens', path: '/category/kitchens' },
-    { name: 'Coffee Shops', path: '/category/coffee-shops' },
-    { name: 'Art Galleries', path: '/category/art-galleries' },
-    { name: 'Urban Lofts', path: '/category/urban-lofts' },
-    { name: 'Gardens & Patios', path: '/category/gardens-patios' },
-    { name: 'Historic Spaces', path: '/category/historic-spaces' },
-    { name: 'Nature & Landscapes', path: '/category/nature-landscapes' },
-    { name: 'Libraries', path: '/category/libraries' },
-    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' }
-  ];
 
   return (
     <>
@@ -119,21 +111,17 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
         <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         
-        {/* ✅ SEO Meta Tags */}
+        {/* SEO Meta Tags */}
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="StreamBackdrops" />
-        {/* TrustPilot Verification */}
         <meta name="trustpilot-one-time-domain-verification-id" content="464ce567-7be5-4bea-a773-e336059256ad"/>
 
-        {/* ✅ Robots directive */}
         <meta name="robots" content={noIndex ? 'noindex' : 'index, follow, max-image-preview:large'} />
-        
-        {/* ✅ Canonical URL */}
         <link rel="canonical" href={canonical || `https://streambackdrops.com${router.asPath.split('?')[0]}`} />
         
-        {/* ✅ Open Graph for Social Sharing */}
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={`https://streambackdrops.com${image}`} />
@@ -141,17 +129,16 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
         <meta property="og:site_name" content="StreamBackdrops" />
         {canonical && <meta property="og:url" content={canonical} />}
         
-        {/* ✅ Twitter Cards */}
+        {/* Twitter Cards */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={`https://streambackdrops.com${image}`} />
         
-        {/* ✅ Theme and additional meta */}
         <meta name="theme-color" content="#2563eb" />
         <meta name="format-detection" content="telephone=no" />
         
-        {/* ✅ Structured Data */}
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -159,22 +146,12 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
           }}
         />
 
-        {/* Add prefetching for popular categories on homepage */}
+        {/* Prefetching */}
         {currentPage === 'home' && (
           <>
-            <link rel="prefetch" href="/category/bookshelves-bright" />
-            <link rel="prefetch" href="/category/bookshelves-dark" />
-            <link rel="prefetch" href="/category/office-spaces" />
-            <link rel="prefetch" href="/category/living-rooms" />
-            <link rel="prefetch" href="/category/kitchens" />
-            <link rel="prefetch" href="/category/coffee-shops" />
-            <link rel="prefetch" href="/category/art-galleries" />
-            <link rel="prefetch" href="/category/urban-lofts" />
-            <link rel="prefetch" href="/category/gardens-patios" />
-            <link rel="prefetch" href="/category/historic-spaces" />
-            <link rel="prefetch" href="/category/nature-landscapes" />
-            <link rel="prefetch" href="/category/libraries" />
-            <link rel="prefetch" href="/category/halloween-backgrounds" />
+            {[...navItems, ...dropdownCategories].map((category) => (
+              <link key={category.path} rel="prefetch" href={category.path} />
+            ))}
           </>
         )}
       </Head>
@@ -197,37 +174,13 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
         </section>
       )}
 
-      {/* SEO Content Section */}
-      {seoContent && (
-        <section style={{
-          background: 'white',
-          padding: '2rem',
-          margin: '2rem',
-          borderRadius: '0.5rem'
-        }}>
-          <div style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6', color: '#374151' }}>
-            <h2 style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#111827',
-              marginBottom: '1rem'
-            }}>
-              {seoContent.name} Virtual Backgrounds
-            </h2>
-            <p style={{ marginBottom: '1rem' }}>
-              Browse our collection of professional {seoContent.name.toLowerCase()} virtual backgrounds. Download free HD backgrounds for Zoom, Teams, and Google Meet.
-            </p>
-          </div>
-        </section>
-      )}
-
       <div style={{ 
         minHeight: '100vh', 
         display: 'flex', 
         flexDirection: 'column',
         background: '#f9fafb'
       }}>
-        {/* Header */}
+        {/* Header - RESTORED with proper category navigation */}
         <header style={{ 
           background: 'white',
           borderBottom: '1px solid #e5e7eb',
@@ -255,35 +208,24 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
                 cursor: 'pointer',
                 background: 'none',
                 border: 'none',
-                fontFamily: 'inherit',
-                position: 'relative',
-                zIndex: '10001',
-                transition: 'opacity 0.2s ease'
+                fontFamily: 'inherit'
               }}
-              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
-              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               StreamBackdrops
             </button>
             
-            {/* Navigation */}
+            {/* Navigation - RESTORED to original working structure */}
             <nav style={{ 
               display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              position: 'relative',
-              zIndex: '10001'
+              gap: '0.5rem',
+              alignItems: 'center'
             }}>
-              {/* Featured Categories */}
-              {[
-                { name: 'Bookshelves', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
-                { name: 'Office Spaces', path: '/category/office-spaces', key: 'office-spaces' },
-                { name: 'Living Rooms', path: '/category/living-rooms', key: 'living-rooms' }
-              ].map((item) => (
+              {/* Main category buttons */}
+              {navItems.map((item) => (
                 <button 
                   key={item.key}
                   onClick={() => navigate(item.path)}
-                  style={navButtonStyle(currentPage === item.key, hoveredNav === item.key)}
+                  style={navButtonStyle(item.isActive, hoveredNav === item.key)}
                   onMouseEnter={() => setHoveredNav(item.key)}
                   onMouseLeave={() => setHoveredNav(null)}
                 >
@@ -291,7 +233,7 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
                 </button>
               ))}
               
-              {/* More Dropdown */}
+              {/* More dropdown */}
               <div style={{ position: 'relative' }}>
                 <button
                   onClick={(e) => {
@@ -326,13 +268,35 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
                       border: '1px solid #e5e7eb'
                     }}
                   >
-                    {dropdownCategories.map((category, index) => (
+                    {dropdownCategories.map((category) => (
                       <button 
                         key={category.path}
-                        onClick={() => navigate(category.path)}
-                        style={dropdownItemStyle(hoveredNav === `dropdown-${index}`)}
-                        onMouseEnter={() => setHoveredNav(`dropdown-${index}`)}
-                        onMouseLeave={() => setHoveredNav(null)}
+                        onClick={() => {
+                          navigate(category.path);
+                          setIsDropdownOpen(false);
+                        }}
+                        style={{
+                          display: 'block',
+                          width: '100%',
+                          padding: '0.75rem 1rem',
+                          textAlign: 'left',
+                          background: 'transparent',
+                          border: 'none',
+                          color: '#374151',
+                          fontSize: '0.9rem',
+                          cursor: 'pointer',
+                          borderRadius: '0.375rem',
+                          fontFamily: 'inherit',
+                          transition: 'background 0.2s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.background = '#f0f9ff';
+                          e.target.style.color = '#2563eb';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.background = 'transparent';
+                          e.target.style.color = '#374151';
+                        }}
                       >
                         {category.name}
                       </button>
