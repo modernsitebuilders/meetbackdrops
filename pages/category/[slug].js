@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import Layout from '../../components/Layout';
 import Head from 'next/head';
 import { categoryInfo, folderMap } from '../../data/categoryData';
 import ReviewModal from '../../components/ReviewModal';
@@ -108,6 +109,7 @@ function CategoryContent({ slug }) {
   };
 
   return (
+    
     <>
       {!category ? (
         <div style={{ padding: '2rem', textAlign: 'center' }}>
@@ -225,72 +227,30 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
   const imageUrl = `https://streambackdrops.com/images/${currentSlug}/${featuredImage}`;
 
   return (
-    <>
-      <Head>
-        {/* Use the pre-built string - never use template literals in title tag */}
-        <title>{pageTitle}</title>
-        
-        <meta name="description" content={pageDescription} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content={categoryName.toLowerCase() + ' virtual backgrounds, ' + categoryName.toLowerCase() + ' Zoom backgrounds, professional video call backgrounds'} />
-        <meta name="robots" content="index, follow, max-image-preview:large" />
-        <meta name="author" content="StreamBackdrops" />
-        
-        <link rel="canonical" href={'https://streambackdrops.com/category/' + currentSlug} />
-        
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={'https://streambackdrops.com/category/' + currentSlug} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="StreamBackdrops" />
-       <meta property="og:image" content={imageUrl} />
-<meta property="og:image:width" content="1920" />
-<meta property="og:image:height" content="1080" />
-<meta property="og:image:alt" content={categoryName + ' Virtual Background Preview'} />
-        
-<meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={imageUrl} />
-        
-        <FAQSchema questions={getFAQs(currentSlug)} />
-        <BreadcrumbSchema items={[
-          { name: "Home", url: "https://streambackdrops.com" },
-          { name: categoryName, url: 'https://streambackdrops.com/category/' + currentSlug }
-        ]} />
-        <ImageObjectSchema 
-          images={category.images} 
-          category={categoryName}
-          baseUrl="https://streambackdrops.com"
-        />
-      </Head>
       
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <Link href="/" style={{
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-            color: '#2563eb',
-            textDecoration: 'none'
-          }}>
-            StreamBackdrops
-          </Link>
-        </div>
-      </header>
-      
-      <main>
-        <CategoryContent slug={currentSlug} />
-      </main>
-      
-      <Footer />
-    </>
+      <Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={'https://streambackdrops.com/category/' + currentSlug}
+  currentPage={currentSlug}
+  keywords={categoryName.toLowerCase() + ' virtual backgrounds'}
+  image={'/images/' + currentSlug + '/' + featuredImage}
+>
+  <Head>
+    <FAQSchema questions={getFAQs(currentSlug)} />
+    <BreadcrumbSchema items={[
+      { name: "Home", url: "https://streambackdrops.com" },
+      { name: categoryName, url: 'https://streambackdrops.com/category/' + currentSlug }
+    ]} />
+    <ImageObjectSchema 
+      images={category.images} 
+      category={categoryName}
+      baseUrl="https://streambackdrops.com"
+    />
+  </Head>
+  
+  <CategoryContent slug={currentSlug} />
+</Layout>
   );
 }
 
