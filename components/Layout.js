@@ -24,10 +24,13 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
   const router = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [hoveredNav, setHoveredNav] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Close dropdown when route changes
   // Close dropdown when route changes
   useEffect(() => {
     setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
   }, [router.asPath]);
 
   // Close dropdown when clicking outside
@@ -41,6 +44,18 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
       return () => document.removeEventListener('click', handleClickOutside);
     }
   }, [isDropdownOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const navigate = (path) => {
     if (process.env.NODE_ENV === 'development') {
@@ -107,6 +122,23 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
     { name: 'Nature & Landscapes', path: '/category/nature-landscapes' },
     { name: 'Libraries', path: '/category/libraries' },
     { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' }
+  ];
+
+  // All categories for mobile menu
+  const allCategories = [
+    { name: 'Bookshelves - Bright', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
+    { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark', key: 'bookshelves-dark' },
+    { name: 'Office Spaces', path: '/category/office-spaces', key: 'office-spaces' },
+    { name: 'Living Rooms', path: '/category/living-rooms', key: 'living-rooms' },
+    { name: 'Kitchens', path: '/category/kitchens', key: 'kitchens' },
+    { name: 'Coffee Shops', path: '/category/coffee-shops', key: 'coffee-shops' },
+    { name: 'Art Galleries', path: '/category/art-galleries', key: 'art-galleries' },
+    { name: 'Urban Lofts', path: '/category/urban-lofts', key: 'urban-lofts' },
+    { name: 'Gardens & Patios', path: '/category/gardens-patios', key: 'gardens-patios' },
+    { name: 'Historic Spaces', path: '/category/historic-spaces', key: 'historic-spaces' },
+    { name: 'Nature & Landscapes', path: '/category/nature-landscapes', key: 'nature-landscapes' },
+    { name: 'Libraries', path: '/category/libraries', key: 'libraries' },
+    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' }
   ];
 
   return (
@@ -266,14 +298,33 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
               StreamBackdrops
             </button>
             
-            {/* Navigation */}
+            {/* Hamburger Menu Button (Mobile Only) */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              style={{
+                display: 'none',
+                background: 'none',
+                border: 'none',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                padding: '0.5rem',
+                color: '#374151',
+                zIndex: '10001'
+              }}
+              className="mobile-menu-btn"
+            >
+              {isMobileMenuOpen ? '✕' : '☰'}
+            </button>
+
+            {/* Navigation (Desktop Only) */}
             <nav style={{ 
               display: 'flex',
               gap: '1rem',
               alignItems: 'center',
               position: 'relative',
               zIndex: '10001'
-            }}>
+            }}
+            className="desktop-nav">
               {/* Featured Categories */}
               {[
                 { name: 'Bookshelves', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
@@ -340,16 +391,142 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
                   </div>
                 )}
               </div>
-            </nav>
+           </nav>
           </div>
+
+          {/* Mobile Menu Overlay */}
+          {isMobileMenuOpen && (
+            <>
+              {/* Dark Overlay */}
+              <div
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'rgba(0, 0, 0, 0.5)',
+                  zIndex: '9998'
+                }}
+              />
+              
+              {/* Slide-in Menu */}
+              <div style={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                width: '80%',
+                maxWidth: '300px',
+                background: 'white',
+                zIndex: '9999',
+                overflowY: 'auto',
+                boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.1)',
+                animation: 'slideIn 0.3s ease-out'
+              }}>
+                {/* Close Button */}
+                <div style={{
+                  padding: '1rem',
+                  borderBottom: '1px solid #e5e7eb',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <span style={{ fontWeight: 'bold', color: '#2563eb' }}>Categories</span>
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      fontSize: '1.5rem',
+                      cursor: 'pointer',
+                      color: '#6b7280'
+                    }}
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* Menu Items */}
+                <div style={{ padding: '0.5rem' }}>
+                  {allCategories.map((category) => (
+                    <button
+                      key={category.key}
+                      onClick={() => {
+                        navigate(category.path);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      style={{
+                        display: 'block',
+                        width: '100%',
+                        padding: '1rem',
+                        textAlign: 'left',
+                        background: currentPage === category.key ? '#eff6ff' : 'transparent',
+                        border: 'none',
+                        borderRadius: '0.5rem',
+                        color: currentPage === category.key ? '#2563eb' : '#374151',
+                        fontWeight: currentPage === category.key ? '600' : '500',
+                        fontSize: '0.95rem',
+                        cursor: 'pointer',
+                        fontFamily: 'inherit',
+                        transition: 'background 0.2s ease',
+                        marginBottom: '0.25rem'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (currentPage !== category.key) {
+                          e.target.style.background = '#f3f4f6';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (currentPage !== category.key) {
+                          e.target.style.background = 'transparent';
+                        }
+                      }}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </header>
 
         {/* Main Content */}
         <main style={{ flex: 1 }}>
           {children}
         </main>
-        <Footer />
+       <Footer />
       </div>
+      
+      {/* Mobile Styles */}
+      <style jsx global>{`
+        @keyframes slideIn {
+          from {
+            transform: translateX(100%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          
+          .mobile-menu-btn {
+            display: block !important;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .mobile-menu-btn {
+            display: none !important;
+          }
+        }
+      `}</style>
     </>
   );
 }
