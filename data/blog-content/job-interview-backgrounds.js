@@ -319,7 +319,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </h3>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Always use high-resolution images (1920x1080 minimum). Pixelated or blurry backgrounds look unprofessional and suggest you didn't prepare properly. StreamBackdrops provides HD-quality backgrounds optimized specifically for video calls.
+                Always use high-resolution images (1456×816 minimum). Pixelated or blurry backgrounds look unprofessional and suggest you didn't prepare properly. StreamBackdrops provides HD-quality backgrounds optimized specifically for video calls.
               </p>
 
               <h3 style={{
@@ -556,7 +556,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </p>
 
               <ul style={{ marginBottom: '1.25rem', paddingLeft: '1.5rem' }}>
-                <li style={{ marginBottom: '0.5rem' }}>HD quality (1920x1080 or higher)</li>
+                <li style={{ marginBottom: '0.5rem' }}>HD quality (1456×816 or higher)</li>
                 <li style={{ marginBottom: '0.5rem' }}>Professionally designed for video calls</li>
                 <li style={{ marginBottom: '0.5rem' }}>Free to download without signup</li>
                 <li style={{ marginBottom: '0.5rem' }}>Appropriate for professional settings</li>

@@ -335,7 +335,7 @@ export const virtualBackgroundGuideContent = () => {
                     <strong>GPU Acceleration:</strong> Enable hardware acceleration in your video platform settings
                   </li>
                   <li style={{marginBottom: '0.5rem'}}>
-                    <strong>Background Resolution:</strong> Use backgrounds with 1920x1080 resolution for best quality
+                    <strong>Background Resolution:</strong> Use backgrounds with 1456×816 resolution for best quality
                   </li>
                   <li style={{marginBottom: '0.5rem'}}>
                     <strong>File Format:</strong> JPEG backgrounds load faster than PNG, but PNG supports transparency

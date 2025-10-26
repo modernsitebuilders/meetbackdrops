@@ -54,7 +54,7 @@ export const faqData = {
     },
     {
       question: "Are these dark bookshelf images high quality?",
-      answer: "All our backgrounds are HD quality (1920x1080 or higher) and optimized specifically for video conferencing platforms like Zoom and Teams."
+      answer: "All our backgrounds are HD quality (1456×816 or higher) and optimized specifically for video conferencing platforms like Zoom and Teams."
     }
   ],
 
@@ -356,7 +356,7 @@ export const faqData = {
   "background-mistakes": [
     {
       question: "Why does my virtual background look blurry?",
-      answer: "Blurry backgrounds are usually caused by low-resolution images or poor lighting. Use HD images (1920x1080 or higher) and ensure you have good front-facing lighting to improve background quality."
+      answer: "Blurry backgrounds are usually caused by low-resolution images or poor lighting. Use HD images (1456×816 or higher) and ensure you have good front-facing lighting to improve background quality."
     },
     {
       question: "Why does my virtual background cut off parts of me?",
@@ -406,7 +406,7 @@ export const faqData = {
     },
     {
       question: "What resolution should virtual backgrounds be?",
-      answer: "Virtual backgrounds should be at least 1920x1080 pixels (Full HD) for best quality. Higher resolutions work fine, but anything lower than 1280x720 may appear pixelated."
+      answer: "Virtual backgrounds should be at least 1456×816 pixels (Full HD) for best quality. Higher resolutions work fine, but anything lower than 1280x720 may appear pixelated."
     }
   ],
 
