@@ -15,7 +15,7 @@ import FAQSchema from '../../components/FAQSchema';
 import { getFAQs } from '../../data/faqData';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema'; 
 import ImageObjectSchema from '../../components/ImageObjectSchema';
-import Footer from '../../components/Footer';
+import BackToTop from '../../components/BackToTop';
 
 function CategoryContent({ slug }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -227,7 +227,7 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
   const imageUrl = `https://streambackdrops.com/images/${currentSlug}/${featuredImage}`;
 
   return (
-      
+      <>
       <Layout
   title={pageTitle}
   description={pageDescription}
@@ -251,6 +251,8 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
   
   <CategoryContent slug={currentSlug} />
 </Layout>
+<BackToTop />
+</>
   );
 }
 
