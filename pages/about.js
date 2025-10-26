@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import Layout from '../components/Layout';
 
 export default function About() {
   useEffect(() => {
@@ -35,87 +35,11 @@ export default function About() {
   }, []);
 
   return (
-    <>
-      <Head>
-  <title>About Us - StreamBackdrops</title>
-  <meta name="description" content="Learn about StreamBackdrops - your source for professional HD virtual backgrounds for video calls. Discover our mission and commitment to quality." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://streambackdrops.com/about" />
-        <title>About StreamBackdrops - Professional Virtual Backgrounds</title>
-        <meta name="description" content="Learn about StreamBackdrops - your source for professional virtual backgrounds designed specifically for video calls, remote work, and online meetings." />
-        <meta name="robots" content="index, follow" />
-      </Head>
-
-      <header style={{
-        background: 'white',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
-              textDecoration: 'none'
-            }}>
-              🎥 StreamBackdrops
-            </Link>
-            
-            <div style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}>
-              <Link href="/" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                🏠 Home
-              </Link>
-              
-              <Link href="/blog" style={{
-                color: '#374151',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                background: '#f3f4f6',
-                transition: 'all 0.2s'
-              }}>
-                📚 All Guides
-              </Link>
-              
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
-              }}>
-                ✨ 100% FREE
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+    <Layout
+      title="Frequently Asked Questions - StreamBackdrops"
+      description="Get answers to common questions about using free virtual backgrounds for Zoom, Teams, and Google Meet."
+      canonical="https://streambackdrops.com/about"
+    >
 
       <div style={{ 
         background: '#f8fafc', 
@@ -386,8 +310,6 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
           </div>
         </div>
       </div>
-      
-      <Footer />
-    </>
+     </Layout>
   );
 }
