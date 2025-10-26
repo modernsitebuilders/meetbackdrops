@@ -63,8 +63,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
                   },
                   "creditText": "StreamBackdrops",
                   "copyrightNotice": "© 2025 StreamBackdrops - CC0 Public Domain",
-                  "width": "1920",
-                  "height": "1080"
+                  "width": "1456",
+                  "height": "816"
                 })
               }}
             />
@@ -78,8 +78,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
               <Image
                 src={`/images/${folderMap[slug]}/${image.filename}`}
                 alt={image.title}
-                width={1920}
-                height={1080}
+                width={1456}
+                height={816}
                 style={{ 
                   objectFit: 'cover',
                   width: '100%',

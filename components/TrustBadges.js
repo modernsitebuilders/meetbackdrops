@@ -18,7 +18,7 @@ export default function TrustBadges() {
       </div>
       <div className={styles.badge}>
         <span className={styles.icon}>🎯</span>
-        <span>1920×1080 Resolution</span>
+        <span>1456×816 Resolution</span>
       </div>
     </div>
   );
