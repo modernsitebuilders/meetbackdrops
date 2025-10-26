@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import Layout from '../components/Layout';
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
 export default function About() {
   useEffect(() => {
@@ -124,7 +125,7 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                       Free Backgrounds
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Over 290 professional virtual backgrounds. Home offices, conference rooms, and more. All completely free to download and use.
+                      Over {TOTAL_IMAGES_FORMATTED} professional virtual backgrounds. Home offices, conference rooms, and more. All completely free to download and use.
                     </p>
                   </div>
                   <div>
