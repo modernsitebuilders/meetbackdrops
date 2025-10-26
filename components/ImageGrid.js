@@ -77,7 +77,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
             }}>
               <Image
                 src={`/images/${folderMap[slug]}/${image.filename}`}
-                alt={image.title}
+                alt={`${image.title} - Free HD virtual background for Zoom, Teams & Google Meet`}
+                title={`Download ${image.title} - Professional video call background`}
                 width={1456}
                 height={816}
                 style={{ 
