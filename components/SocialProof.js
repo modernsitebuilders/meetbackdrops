@@ -27,11 +27,12 @@ export default function SocialProof() {
       
       <blockquote className={styles.testimonial}>
         <p className={styles.quote}>
-          "One of the strongest contenders. Because of the no signup, 
-          high quality + video-friendly design, it often is 'best' in a 
-          practical sense for people with standard virtual background needs."
+          "The best website I'd recommend for free, hassle-free, no registration required, 
+          curated virtual backgrounds is StreamBackdrops. If I had to pick one single site 
+          that checks all your criteria (free + no registration + curated for virtual backgrounds), 
+          it is StreamBackdrops."
         </p>
-        <cite className={styles.cite}>— ChatGPT Analysis, 2025</cite>
+        <cite className={styles.cite}>— ChatGPT, 2025</cite>
       </blockquote>
     </section>
   );
