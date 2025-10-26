@@ -8,6 +8,7 @@ import Card from '../components/Card';
 import TrustBadges from '../components/TrustBadges';
 import WhyDifferent from '../components/WhyDifferent';
 import SocialProof from '../components/SocialProof';
+import HeroCTA from '../components/HeroCTA';
 import styles from '../styles/HomePage.module.css';
 import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
@@ -80,6 +81,7 @@ export default function Home() {
         </p>
         
         <TrustBadges />
+        <HeroCTA />
       </section>
   
       {/* Blog Cards Section */}
@@ -128,7 +130,7 @@ export default function Home() {
       <WhyDifferent />
 
       {/* Category Cards Grid */}
-      <div className={styles.categoryGrid}>
+      <div className={`${styles.categoryGrid} category-grid`}>
         <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/well-lit-12.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} />
         <Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/ambient-01.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} />
         <Card href="/category/office-spaces" title="Office Spaces" description="Modern office settings that convey professionalism and focus" imageSrc="/images/office-spaces/office-spaces-01.webp" imageAlt="Professional office space background for business calls" navigate={navigate} />
