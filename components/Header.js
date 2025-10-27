@@ -111,7 +111,7 @@ export default function Header({ currentPage }) {
         borderBottom: '1px solid #e5e7eb',
         position: 'sticky',
         top: 0,
-        zIndex: 10000,
+        zIndex: 1000,
         backdropFilter: 'blur(8px)'
       }}>
         <div style={{
@@ -256,7 +256,7 @@ export default function Header({ currentPage }) {
                 right: 0,
                 bottom: 0,
                 background: 'rgba(0, 0, 0, 0.5)',
-                zIndex: '9998'
+                zIndex: '99998'
               }}
             />
             
@@ -269,7 +269,7 @@ export default function Header({ currentPage }) {
               width: '80%',
               maxWidth: '300px',
               background: 'white',
-              zIndex: '9999',
+              zIndex: '99999',
               overflowY: 'auto',
               boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.1)',
               animation: 'slideIn 0.3s ease-out'
