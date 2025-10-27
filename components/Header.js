@@ -242,7 +242,7 @@ export default function Header({ currentPage }) {
             </button>
          </nav>
         </div>
-
+       </header>
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
           <>
@@ -378,7 +378,7 @@ export default function Header({ currentPage }) {
             </div>
           </>
         )}
-      </header>
+      
 
       {/* Mobile Styles */}
       <style jsx global>{`
