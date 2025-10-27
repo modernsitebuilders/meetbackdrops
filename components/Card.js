@@ -34,7 +34,7 @@ export default function Card({
   return (
     <Link 
       href={href} 
-      style={{ textDecoration: 'none' }}
+      style={{ textDecoration: 'none', position: 'relative', display: 'block' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
