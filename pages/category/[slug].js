@@ -251,7 +251,7 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
   
   <CategoryContent slug={currentSlug} />
 </Layout>
-<BackToTop />
+<BackToTop hide={!!previewImage} />
 </>
   );
 }

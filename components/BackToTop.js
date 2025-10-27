@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function BackToTop() {
+export default function BackToTop({ hide = false }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function BackToTop() {
 
   return (
     <>
-      {isVisible && (
+      {isVisible && !hide && (
         <button
           onClick={scrollToTop}
           style={{
