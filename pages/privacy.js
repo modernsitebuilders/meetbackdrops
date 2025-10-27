@@ -113,7 +113,7 @@ export default function Privacy() {
                   Introduction
                 </h2>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  StreamBackdrops ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website streambackdrops.com (the "Service").
+                  StreamBackdrops is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website streambackdrops.com (the "Service").
                 </p>
                 <p style={{color: '#6b7280'}}>
                   By using our Service, you agree to the collection and use of information in accordance with this policy.
