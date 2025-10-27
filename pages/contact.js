@@ -39,7 +39,7 @@ export default function Contact() {
     <Layout
           title="Frequently Asked Questions - StreamBackdrops"
           description="Get answers to common questions about using free virtual backgrounds for Zoom, Teams, and Google Meet."
-          canonical="https://streambackdrops.com/contact"
+          canonical="dave@modernsitebuilders.com"
         >
 
       <div style={{ 
@@ -80,64 +80,39 @@ We'd love to hear from you! Get in touch with questions or feedback.            
             <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
               
               <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '2rem',
+                background: '#eff6ff',
+                padding: '2.5rem',
+                borderRadius: '1rem',
+                textAlign: 'center',
                 marginBottom: '3rem'
               }}>
-                <div style={{
-                  background: '#eff6ff',
-                  padding: '2rem',
-                  borderRadius: '1rem',
-                  textAlign: 'center'
+                <div style={{fontSize: '3rem', marginBottom: '1rem'}}>📧</div>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                  color: '#1e40af',
+                  marginBottom: '1rem'
                 }}>
-                  <div style={{fontSize: '2.5rem', marginBottom: '1rem'}}>📧</div>
-                  <h3 style={{
-                    fontSize: '1.25rem',
-                    fontWeight: 'bold',
-                    color: '#1e40af',
-                    marginBottom: '0.5rem'
-                  }}>
-                    Email Support
-                  </h3>
-                  <p style={{color: '#1e40af', marginBottom: '1rem'}}>
-                    For technical support, feedback, or general inquiries
-                  </p>
-                  <p style={{
-                    color: '#1e40af',
+                  Get In Touch
+                </h3>
+                <p style={{color: '#1e40af', marginBottom: '1.5rem', fontSize: '1.1rem'}}>
+                  Questions, feedback, or suggestions? We'd love to hear from you.
+                </p>
+                <a 
+                  href="mailto:dave@modernsitebuilders.com"
+                  style={{
+                    display: 'inline-block',
+                    background: '#2563eb',
+                    color: 'white',
+                    padding: '1rem 2rem',
+                    borderRadius: '0.5rem',
+                    textDecoration: 'none',
                     fontWeight: '600',
                     fontSize: '1.1rem'
-                  }}>
-                    support@streambackdrops.com
-                  </p>
-                </div>
-
-                <div style={{
-                  background: '#f0fdf4',
-                  padding: '2rem',
-                  borderRadius: '1rem',
-                  textAlign: 'center'
-                }}>
-                  <div style={{fontSize: '2.5rem', marginBottom: '1rem'}}>💡</div>
-                  <h3 style={{
-                    fontSize: '1.25rem',
-                    fontWeight: 'bold',
-                    color: '#15803d',
-                    marginBottom: '0.5rem'
-                  }}>
-                    Suggestions
-                  </h3>
-                  <p style={{color: '#15803d', marginBottom: '1rem'}}>
-                    Have an idea for new backgrounds or features?
-                  </p>
-                  <p style={{
-                    color: '#15803d',
-                    fontWeight: '600',
-                    fontSize: '1.1rem'
-                  }}>
-                    ideas@streambackdrops.com
-                  </p>
-                </div>
+                  }}
+                >
+                  dave@modernsitebuilders.com
+                </a>
               </div>
 
               <section style={{marginBottom: '3rem'}}>
