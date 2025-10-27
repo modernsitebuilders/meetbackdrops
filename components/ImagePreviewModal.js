@@ -50,9 +50,10 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '3rem',
+          gap: '1rem',
           maxWidth: '95vw',
-          maxHeight: '90vh'
+          maxHeight: '90vh',
+          flexDirection: window.innerWidth < 768 ? 'column' : 'row'
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -81,14 +82,15 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
         }}>
           <div style={{
             position: 'relative',
-            maxWidth: '70vw',
-            maxHeight: '70vh'
+            width: '100%',
+            maxWidth: '90vw',
+            maxHeight: '80vh'
           }}>
             <Image
               src={`/images/${folderMap[slug]}/${image.filename}`}
               alt={image.title}
-              width={800}
-              height={450}
+              width={1456}
+              height={816}
               style={{
                 maxWidth: '100%',
                 height: 'auto',
