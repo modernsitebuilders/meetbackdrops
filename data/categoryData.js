@@ -14,7 +14,7 @@ export const categoryInfo = {
   
   'bookshelves-dark': {
     name: 'Bookshelves - Dark',
-    description: 'Warm bookshelf backgrounds with ambient lighting',
+    description: 'Warm bookshelf backgrounds with ambient lighting for professional video calls',
     seoDescription: 'Download free ambient bookshelf virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
     images: Array.from({length: CATEGORIES['bookshelves-dark'].count}, (_, i) => ({
       filename: `ambient-${String(i + 1).padStart(2, '0')}.webp`,
@@ -64,7 +64,7 @@ export const categoryInfo = {
   
   'art-galleries': {
     name: 'Art Galleries',
-    description: 'Sophisticated art gallery spaces with clean walls',
+    description: 'Sophisticated art gallery spaces with clean walls and/or artwork',
     seoDescription: 'Download free art gallery virtual backgrounds for video calls. Clean, artistic spaces for professional presentations.',
     images: Array.from({length: CATEGORIES['art-galleries'].count}, (_, i) => ({
       filename: `art-gallery-${i + 1}.webp`,
