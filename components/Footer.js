@@ -144,6 +144,11 @@ export default function Footer() {
           <p style={{ color: '#9ca3af', margin: 0, textAlign: 'center', fontSize: '0.9rem' }}>
             © 2025 StreamBackdrops. All rights reserved.
           </p>
+          
+          {/* Modern Site Builders Credit */}
+          <p style={{ color: '#6b7280', margin: '0.5rem 0 0 0', textAlign: 'center', fontSize: '0.85rem' }}>
+            A Modern Site Builders Production
+          </p>
         </div>
       </div>
     </footer>
