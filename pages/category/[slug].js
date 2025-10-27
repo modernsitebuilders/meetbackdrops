@@ -176,6 +176,8 @@ function CategoryContent({ slug }) {
         onClose={() => setShowReviewModal(false)}
         imageName={downloadedImage}
       />
+      
+      <BackToTop hide={!!previewImage} />
     </>
   );
 }
@@ -251,7 +253,6 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
   
   <CategoryContent slug={currentSlug} />
 </Layout>
-<BackToTop hide={!!previewImage} />
 </>
   );
 }
