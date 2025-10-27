@@ -97,7 +97,7 @@ export default function Privacy() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: August 7, 2025
+                Last updated: October 27, 2025
               </p>
             </div>
 
@@ -159,7 +159,6 @@ export default function Privacy() {
                   When you visit our website, we may automatically collect certain information:
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
-                  <li>IP address and location information</li>
                   <li>Browser type and version</li>
                   <li>Pages you visit and time spent on our site</li>
                   <li>Referring website information</li>
