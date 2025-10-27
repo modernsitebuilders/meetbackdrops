@@ -14,6 +14,7 @@ export default function Card({
   navigate,
   className = '',
   priority = false,
+  count,
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const hasImage = !!imageSrc;
@@ -37,6 +38,24 @@ export default function Card({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {count && (
+        <div style={{
+          position: 'absolute',
+          top: '1rem',
+          right: '1rem',
+          background: 'rgba(37, 99, 235, 0.95)',
+          color: 'white',
+          padding: '0.4rem 0.8rem',
+          borderRadius: '20px',
+          fontSize: '0.85rem',
+          fontWeight: 'bold',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          zIndex: 10
+        }}>
+          {count}+ images
+        </div>
+      )}
+
       <div 
         className={className}
         onClick={(e) => {
