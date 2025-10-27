@@ -111,7 +111,7 @@ export default function Header({ currentPage }) {
         borderBottom: '1px solid #e5e7eb',
         position: 'sticky',
         top: 0,
-        zIndex: 1000,
+        zIndex: 100,
         backdropFilter: 'blur(8px)'
       }}>
         <div style={{
