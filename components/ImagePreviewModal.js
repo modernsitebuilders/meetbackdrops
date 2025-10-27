@@ -23,20 +23,23 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
       <button
         style={{
           position: 'fixed',
-          top: '2rem',
-          right: '2rem',
-          background: 'rgba(255, 255, 255, 0.1)',
-          color: 'white',
+          top: window.innerWidth < 768 ? 'auto' : '2rem',
+          bottom: window.innerWidth < 768 ? '2rem' : 'auto',
+          right: '1rem',
+          background: 'rgba(255, 255, 255, 0.9)',
+          color: '#000',
           border: '2px solid rgba(255, 255, 255, 0.3)',
           borderRadius: '50%',
-          width: '3rem',
-          height: '3rem',
+          width: '3.5rem',
+          height: '3.5rem',
           cursor: 'pointer',
-          fontSize: '1.5rem',
+          fontSize: '2rem',
+          fontWeight: 'bold',
           zIndex: 100,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
         }}
         onClick={(e) => {
           e.stopPropagation();
@@ -57,21 +60,23 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Vertical Social Share */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          alignItems: 'center'
-        }}>
-          <SocialShare 
-            image={{...image, category: slug}}
-            title={`${image.title} - Free Virtual Background`}
-            size="large"
-            showLabels={false}
-            vertical={true}
-          />
-        </div>
+        {/* Vertical Social Share - Hidden on mobile */}
+        {window.innerWidth >= 768 && (
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            alignItems: 'center'
+          }}>
+            <SocialShare 
+              image={{...image, category: slug}}
+              title={`${image.title} - Free Virtual Background`}
+              size="large"
+              showLabels={false}
+              vertical={true}
+            />
+          </div>
+        )}
         
         {/* Image Container */}
         <div style={{
