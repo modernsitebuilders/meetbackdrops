@@ -1,16 +1,15 @@
 // pages/category/ambiant-lighting.js
 
-// This will run at build time
-export async function getStaticProps() {
+export default function AmbiantLightingRedirect() {
+  return null;
+}
+
+// Use getServerSideProps instead of getStaticProps
+export async function getServerSideProps() {
   return {
     redirect: {
       destination: '/category/bookshelves-dark',
       permanent: true,
     },
   };
-}
-
-// Component never renders because of redirect
-export default function AmbiantLightingRedirect() {
-  return null;
 }
