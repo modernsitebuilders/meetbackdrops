@@ -44,11 +44,7 @@ const nextConfig = {
         permanent: true,
       },
       // Old category redirects
-      {
-        source: '/category/ambiant-lighting',
-        destination: '/category/bookshelves-dark',
-        permanent: true,
-      },
+      
       {
         source: '/category/conference-rooms',
         destination: '/category/office-spaces',
