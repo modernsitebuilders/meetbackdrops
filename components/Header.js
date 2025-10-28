@@ -166,7 +166,7 @@ export default function Header({ currentPage }) {
           className="desktop-nav">
             {/* Featured Categories */}
             {[
-              { name: 'Bookshelves', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
+              { name: 'Bookshelves-Bright', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
               { name: 'Office Spaces', path: '/category/office-spaces', key: 'office-spaces' },
               { name: 'Living Rooms', path: '/category/living-rooms', key: 'living-rooms' }
             ].map((item) => (
