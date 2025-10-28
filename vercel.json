@@ -4,25 +4,19 @@
       "maxDuration": 10
     }
   },
-  "headers": [
+  "redirects": [
     {
       "source": "/category/ambiant-lighting",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-        }
-      ]
+      "destination": "/category/bookshelves-dark",
+      "permanent": true
     },
     {
-      "source": "/category/ambient-lighting",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-        }
-      ]
-    },
+      "source": "/category/ambient-lighting", 
+      "destination": "/category/bookshelves-dark",
+      "permanent": true
+    }
+  ],
+  "headers": [
     {
       "source": "/(.*)",
       "headers": [

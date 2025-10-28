@@ -107,16 +107,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/category/ambient-lighting',
-        destination: '/category/bookshelves-dark',
-        permanent: true,
-      },
-      {
-        source: '/category/ambient',
-        destination: '/category/bookshelves-dark',
-        permanent: true,
-      },
-      {
         source: '/category/living-room',
         destination: '/category/living-rooms',
         permanent: true,
