@@ -2,12 +2,6 @@
   "functions": {
     "pages/api/sitemap.js": {
       "maxDuration": 10
-    },
-    "pages/category/ambiant-lighting.js": {
-      "maxDuration": 10
-    },
-    "pages/category/ambient-lighting.js": {
-      "maxDuration": 10
     }
   },
   "headers": [
@@ -17,10 +11,6 @@
         {
           "key": "Cache-Control",
           "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-        },
-        {
-          "key": "X-Robots-Tag", 
-          "value": "noindex"
         }
       ]
     },
@@ -30,10 +20,6 @@
         {
           "key": "Cache-Control",
           "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-        },
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
         }
       ]
     },
