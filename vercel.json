@@ -4,18 +4,6 @@
       "maxDuration": 10
     }
   },
-  "redirects": [
-    {
-      "source": "/category/ambiant-lighting",
-      "destination": "/category/bookshelves-dark",
-      "permanent": true
-    },
-    {
-      "source": "/category/ambient-lighting", 
-      "destination": "/category/bookshelves-dark",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
