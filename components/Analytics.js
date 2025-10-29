@@ -1,25 +1,37 @@
 // components/Analytics.js
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Analytics() {
   const router = useRouter();
+  const lastTrackedPath = useRef(null);
 
   useEffect(() => {
     const trackPageView = async () => {
-  // Skip tracking during build or in development
-  if (typeof window === 'undefined' || 
-      window.location.hostname === 'localhost') {
-    return;
-  }
+      // Skip tracking during build or in development
+      if (typeof window === 'undefined' || 
+          window.location.hostname === 'localhost') {
+        return;
+      }
 
-  console.log('🔍 Analytics: trackPageView called for:', window.location.pathname);
-  console.log('🔍 Analytics: referrer:', document.referrer);
-  
-  // Get UTM parameters from the URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const utm_source = urlParams.get('utm_source');
-  console.log('🔍 Analytics: UTM source from URL:', utm_source);
+      const currentPath = window.location.pathname;
+      
+      // Prevent duplicate tracking for the same path within 1 second
+      if (lastTrackedPath.current === currentPath && 
+          Date.now() - (lastTrackedPath.currentTime || 0) < 1000) {
+        console.log('🔍 Analytics: Skipping duplicate track for:', currentPath);
+        return;
+      }
+
+      console.log('🔍 Analytics: Tracking page view for:', currentPath);
+
+      // Update tracking reference
+      lastTrackedPath.current = currentPath;
+      lastTrackedPath.currentTime = Date.now();
+
+      // Get UTM parameters from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const utm_source = urlParams.get('utm_source');
       const utm_medium = urlParams.get('utm_medium');
       const utm_campaign = urlParams.get('utm_campaign');
       
@@ -46,15 +58,15 @@ export default function Analytics() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            page: window.location.pathname,
-            category: window.location.pathname === '/' ? 'homepage' : 
-                     window.location.pathname.startsWith('/blog/') ? 'blog' :
-                     window.location.pathname.startsWith('/category/') ? 'category-page' :
-                     window.location.pathname.includes('/gallery') ? 'gallery' :
-                     window.location.pathname.includes('/about') ? 'about' :
-                     window.location.pathname.includes('/contact') ? 'contact' :
-                     window.location.pathname.includes('/privacy') ? 'legal' :
-                     window.location.pathname.includes('/terms') ? 'legal' :
+            page: currentPath,
+            category: currentPath === '/' ? 'homepage' : 
+                     currentPath.startsWith('/blog/') ? 'blog' :
+                     currentPath.startsWith('/category/') ? 'category-page' :
+                     currentPath.includes('/gallery') ? 'gallery' :
+                     currentPath.includes('/about') ? 'about' :
+                     currentPath.includes('/contact') ? 'contact' :
+                     currentPath.includes('/privacy') ? 'legal' :
+                     currentPath.includes('/terms') ? 'legal' :
                      'other',
             referrer: document.referrer || 'direct',
             utm_source: stored_utm_source || utm_source || null,
@@ -65,14 +77,17 @@ export default function Analytics() {
       } catch (error) {
         console.error('Failed to track page view:', error);
       }
-    };  // <-- This closing brace should be AFTER the trackPageView function definition
+    };
 
-    // Track initial page view
+    // Track initial page view only
     trackPageView();
 
     // Track route changes
-    const handleRouteChange = () => {
-      trackPageView();
+    const handleRouteChange = (url) => {
+      // Small delay to ensure the route has fully changed
+      setTimeout(() => {
+        trackPageView();
+      }, 100);
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
