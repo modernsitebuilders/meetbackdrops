@@ -43,9 +43,14 @@ export default function Analytics() {
           },
           body: JSON.stringify({
             page: window.location.pathname,
-            category: window.location.pathname === '/' ? 'home' : 
+            category: window.location.pathname === '/' ? 'homepage' : 
+                     window.location.pathname.startsWith('/blog/') ? 'blog' :
+                     window.location.pathname.startsWith('/category/') ? 'category-page' :
                      window.location.pathname.includes('/gallery') ? 'gallery' :
                      window.location.pathname.includes('/about') ? 'about' :
+                     window.location.pathname.includes('/contact') ? 'contact' :
+                     window.location.pathname.includes('/privacy') ? 'legal' :
+                     window.location.pathname.includes('/terms') ? 'legal' :
                      'other',
             referrer: document.referrer || 'direct',
             utm_source: stored_utm_source || utm_source || null,
@@ -56,7 +61,6 @@ export default function Analytics() {
       } catch (error) {
         console.error('Failed to track page view:', error);
       }
-    };
 
     // Track initial page view
     trackPageView();
