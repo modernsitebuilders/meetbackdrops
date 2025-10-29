@@ -12,7 +12,16 @@ export default async function handler(req, res) {
   if (blockedAgents.some(agent => userAgent.toLowerCase().includes(agent))) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
-  const { page, category, referrer } = req.body;
+  
+  // Get the tracking data including UTM parameters
+  const { 
+    page, 
+    category, 
+    referrer,
+    utm_source,     // This is NEW - captures where they came from
+    utm_medium,     // This is NEW - captures the type of link
+    utm_campaign    // This is NEW - captures which campaign
+  } = req.body;
   
   try {
     // Check if environment variables exist
@@ -41,6 +50,20 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
+    // Build the source string from UTM parameters
+    let trafficSource = 'direct';
+    if (utm_source) {
+      trafficSource = `${utm_source}`;
+      if (utm_medium) {
+        trafficSource += `/${utm_medium}`;
+      }
+      if (utm_campaign) {
+        trafficSource += `/${utm_campaign}`;
+      }
+    } else if (referrer && referrer !== 'direct') {
+      trafficSource = referrer;
+    }
+
     const pageViewData = [
       new Date().toLocaleString('en-US', {
         timeZone: 'America/New_York',
@@ -54,8 +77,10 @@ export default async function handler(req, res) {
       'page_view',
       page,
       category || 'n/a',
-      referrer || 'direct',
-      'not-collected',
+      trafficSource,  // This now includes UTM data
+      utm_source || 'not-set',     // Track UTM source separately
+      utm_medium || 'not-set',     // Track UTM medium separately
+      utm_campaign || 'not-set',   // Track UTM campaign separately
       req.headers['user-agent'] || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
@@ -68,7 +93,7 @@ export default async function handler(req, res) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I',
+      range: 'Analytics!A:K',  // CHANGED from A:I to A:K to include new columns
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {

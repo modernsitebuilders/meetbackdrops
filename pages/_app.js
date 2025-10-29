@@ -1,17 +1,20 @@
-// pages/_app.js - DEPLOY THIS VERSION NOW
+// pages/_app.js
 import '../styles/globals.css';
 import Head from 'next/head';
 import Script from 'next/script';
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/react';
+import CustomAnalytics from '../components/Analytics';  // This is NEW
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-    
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
+      {/* Your custom analytics tracker - This is NEW */}
+      <CustomAnalytics />
       
       {/* CookieYes - Will work when banner shows */}
       <Script
@@ -39,7 +42,7 @@ export default function App({ Component, pageProps }) {
       </Script>
       
       <Component {...pageProps} />
-{typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && <Analytics />}
+      {typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && <Analytics />}
     </>
   );
 }
