@@ -68,6 +68,7 @@ export default function Analytics() {
     // Track route changes
     const handleRouteChange = () => {
       trackPageView();
+    }
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
