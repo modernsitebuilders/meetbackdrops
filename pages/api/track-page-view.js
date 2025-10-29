@@ -93,7 +93,7 @@ export default async function handler(req, res) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:K',  // CHANGED from A:I to A:K to include new columns
+      range: 'Analytics!A:I', 
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {
