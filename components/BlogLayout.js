@@ -25,43 +25,6 @@ export default function BlogLayout({
   dateModified,
   faqQuestions = null 
 }) {
-  // Tracking code that was duplicated in every blog page
-  useEffect(() => {
-    const trackPageView = async () => {
-      if (typeof window !== 'undefined') {
-        try {
-          if (localStorage.getItem('streambackdrops_admin') === 'true') {
-            return;
-          }
-          
-          let referrer = document.referrer || 'direct';
-          
-          if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-            sessionStorage.setItem('entry_referrer', document.referrer);
-          }
-          
-          const sessionReferrer = sessionStorage.getItem('entry_referrer');
-          if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-            referrer = sessionReferrer;
-          }
-
-          await fetch('/api/track-page-view', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              page: canonical.replace('https://streambackdrops.com', ''),
-              category: 'blog',
-              referrer: referrer
-            })
-          });
-        } catch (error) {
-          console.error('Tracking failed:', error);
-        }
-      }
-    };
-
-    trackPageView();
-  }, [canonical]);
 
   const fullImageUrl = getFullImageUrl(image);
 

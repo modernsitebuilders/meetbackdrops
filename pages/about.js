@@ -5,35 +5,6 @@ import Layout from '../components/Layout';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
 export default function About() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        return;
-      }
-
-      let referrer = document.referrer || 'direct';
-
-      if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-        sessionStorage.setItem('entry_referrer', document.referrer);
-      }
-
-      const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-        referrer = sessionReferrer;
-      }
-
-      fetch('/api/track-page-view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: '/about',
-          category: 'info',
-          referrer: referrer
-        })
-      }).catch(() => {});
-    }
-  }, []);
 
   return (
     <Layout

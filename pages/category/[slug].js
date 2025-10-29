@@ -23,33 +23,6 @@ function CategoryContent({ slug }) {
   const [downloadedImage, setDownloadedImage] = useState(null);
   const category = categoryInfo[slug];
   
-  useEffect(() => {
-    if (typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true') {
-      return;
-    }
-    
-    let referrer = document.referrer || 'direct';
-    
-    if (!sessionStorage.getItem('entry_referrer') && document.referrer) {
-      sessionStorage.setItem('entry_referrer', document.referrer);
-    }
-    
-    const sessionReferrer = sessionStorage.getItem('entry_referrer');
-    if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
-      referrer = sessionReferrer;
-    }
-
-    fetch('/api/track-page-view', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        page: `/category/${slug}`,
-        category: category?.name || slug,
-        referrer: referrer
-      })
-    });
-  }, [slug, category]);
-
   const handleDownload = async (image) => {
     try {
       if (localStorage.getItem('streambackdrops_admin') === 'true') {
