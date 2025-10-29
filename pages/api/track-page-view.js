@@ -77,10 +77,8 @@ export default async function handler(req, res) {
       'page_view',
       page,
       category || 'n/a',
-      trafficSource,  // This now includes UTM data
-      utm_source || 'not-set',     // Track UTM source separately
-      utm_medium || 'not-set',     // Track UTM medium separately
-      utm_campaign || 'not-set',   // Track UTM campaign separately
+      trafficSource,
+      'not-collected',
       req.headers['user-agent'] || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
