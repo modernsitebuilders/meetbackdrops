@@ -61,6 +61,7 @@ export default function Analytics() {
       } catch (error) {
         console.error('Failed to track page view:', error);
       }
+    };  // <-- MOVED THIS CLOSING BRACE HERE
 
     // Track initial page view
     trackPageView();
@@ -68,7 +69,6 @@ export default function Analytics() {
     // Track route changes
     const handleRouteChange = () => {
       trackPageView();
-    }
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
