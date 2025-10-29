@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       
       {/* Your custom analytics tracker - This is NEW */}
-      <CustomAnalytics />
+      <Analytics />
       
       {/* CookieYes - Will work when banner shows */}
       <Script
