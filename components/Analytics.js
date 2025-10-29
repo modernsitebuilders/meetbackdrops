@@ -61,7 +61,7 @@ export default function Analytics() {
       } catch (error) {
         console.error('Failed to track page view:', error);
       }
-    };  // <-- MOVED THIS CLOSING BRACE HERE
+    };  // <-- This closing brace should be AFTER the trackPageView function definition
 
     // Track initial page view
     trackPageView();
