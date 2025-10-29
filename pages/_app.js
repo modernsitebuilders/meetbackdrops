@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
-import CustomAnalytics from '../components/Analytics';
+import SheetsTracking from '../components/Analytics';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       
       {/* Google Sheets tracking - THIS WAS MISSING */}
-      <CustomAnalytics />
+      <SheetsTracking />
       
       <Script
         id="cookieyes"
