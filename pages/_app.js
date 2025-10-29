@@ -1,9 +1,7 @@
-// pages/_app.js
 import '../styles/globals.css';
 import Head from 'next/head';
 import Script from 'next/script';
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
-import CustomAnalytics from '../components/Analytics';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,17 +11,12 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      {/* Your custom analytics tracker */}
-      <CustomAnalytics />
-      
-      {/* CookieYes - Will work when banner shows */}
       <Script
         id="cookieyes"
         src="https://cdn-cookieyes.com/client_data/8eb30da506758a4631261b2a/script.js"
         strategy="beforeInteractive"
       />
       
-      {/* Google Analytics - Enable after delay */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-QMD6NEPFWR"
         strategy="afterInteractive"
@@ -33,16 +26,12 @@ export default function App({ Component, pageProps }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
-          
-          // CookieYes will manage consent when banner appears
-          setTimeout(() => {
-            gtag('config', 'G-QMD6NEPFWR');
-          }, 2000);
+          gtag('config', 'G-QMD6NEPFWR');
         `}
       </Script>
       
       <Component {...pageProps} />
-      {typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && <VercelAnalytics />}
+      <Analytics />
     </>
   );
 }
