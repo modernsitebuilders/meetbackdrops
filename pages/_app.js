@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
-import CustomAnalytics from '../components/Analytics';  // This is NEW
+import Analytics from '../components/Analytics';  // This is NEW
 
 export default function App({ Component, pageProps }) {
   return (
