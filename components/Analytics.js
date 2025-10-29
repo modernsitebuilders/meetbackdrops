@@ -7,15 +7,19 @@ export default function Analytics() {
 
   useEffect(() => {
     const trackPageView = async () => {
-      // Skip tracking during build or in development
-      if (typeof window === 'undefined' || 
-          window.location.hostname === 'localhost') {
-        return;
-      }
+  // Skip tracking during build or in development
+  if (typeof window === 'undefined' || 
+      window.location.hostname === 'localhost') {
+    return;
+  }
 
-      // Get UTM parameters from the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const utm_source = urlParams.get('utm_source');
+  console.log('🔍 Analytics: trackPageView called for:', window.location.pathname);
+  console.log('🔍 Analytics: referrer:', document.referrer);
+  
+  // Get UTM parameters from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const utm_source = urlParams.get('utm_source');
+  console.log('🔍 Analytics: UTM source from URL:', utm_source);
       const utm_medium = urlParams.get('utm_medium');
       const utm_campaign = urlParams.get('utm_campaign');
       
