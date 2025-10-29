@@ -2,8 +2,8 @@
 import '../styles/globals.css';
 import Head from 'next/head';
 import Script from 'next/script';
-import { Analytics } from '@vercel/analytics/react';
-import Analytics from '../components/Analytics';  // This is NEW
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import CustomAnalytics from '../components/Analytics';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,8 +13,8 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      {/* Your custom analytics tracker - This is NEW */}
-      <Analytics />
+      {/* Your custom analytics tracker */}
+      <CustomAnalytics />
       
       {/* CookieYes - Will work when banner shows */}
       <Script
@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }) {
       </Script>
       
       <Component {...pageProps} />
-      {typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && <Analytics />}
+      {typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && <VercelAnalytics />}
     </>
   );
 }
