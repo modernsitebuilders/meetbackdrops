@@ -176,6 +176,16 @@ const nextConfig = {
         destination: '/410',
         permanent: true,
       },
+      {
+        source: '/category/private-offices',
+        destination: '/410',
+        permanent: true,
+      },
+      {
+        source: '/category/home-offices',
+        destination: '/410',
+        permanent: true,
+      },
       
       // Search page
       {
