@@ -37,9 +37,9 @@ export default function Contact() {
 
   return (
     <Layout
-          title="Frequently Asked Questions - StreamBackdrops"
-          description="Get answers to common questions about using free virtual backgrounds for Zoom, Teams, and Google Meet."
-          canonical="dave@modernsitebuilders.com"
+          title="Contact Us - StreamBackdrops"
+          description="Get in touch with StreamBackdrops for any inquiries or support."
+          canonical="https://streambackdrops.com/contact"
         >
 
       <div style={{ 
