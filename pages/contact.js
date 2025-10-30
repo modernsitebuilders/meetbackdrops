@@ -194,7 +194,7 @@ We'd love to hear from you! Get in touch with questions or feedback.            
                       My virtual background isn't working properly. What should I do?
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Check out our <Link href="/blog-virtual-background-guide" style={{color: '#2563eb'}}>complete technical guide</Link> for troubleshooting tips. If you're still having issues, email us with details about your setup and the specific problem you're experiencing.
+                      Check out our <Link href="/blog/virtual-background-guide" style={{color: '#2563eb'}}>complete technical guide</Link> for troubleshooting tips. If you're still having issues, email us with details about your setup and the specific problem you're experiencing.
                     </p>
                   </div>
                 </div>
@@ -254,7 +254,7 @@ We'd love to hear from you! Get in touch with questions or feedback.            
                   gap: '1rem',
                   flexWrap: 'wrap'
                 }}>
-                  <Link href="/blog-virtual-background-guide" style={{
+                  <Link href="/blog/virtual-background-guide" style={{
                     background: 'white',
                     color: '#1e40af',
                     padding: '0.75rem 1.5rem',
@@ -265,7 +265,7 @@ We'd love to hear from you! Get in touch with questions or feedback.            
                   }}>
                     Technical Guide
                   </Link>
-                  <Link href="/blog-lighting-tips" style={{
+                  <Link href="/blog/lighting-tips" style={{
                     background: 'white',
                     color: '#1e40af',
                     padding: '0.75rem 1.5rem',
@@ -276,7 +276,7 @@ We'd love to hear from you! Get in touch with questions or feedback.            
                   }}>
                     Lighting Tips
                   </Link>
-                  <Link href="/blog-background-mistakes" style={{
+                  <Link href="/blog/background-mistakes" style={{
                     background: 'white',
                     color: '#1e40af',
                     padding: '0.75rem 1.5rem',
