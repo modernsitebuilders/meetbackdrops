@@ -332,6 +332,63 @@ export default function License() {
               </div>
             </section>
 
+           {/* Download Limits Section */}
+            <section style={{ marginBottom: '3rem' }}>
+              <div style={{
+                background: '#eff6ff',
+                border: '2px solid #3b82f6',
+                borderRadius: '1rem',
+                padding: '2rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.8rem',
+                  fontWeight: 'bold',
+                  color: '#1e40af',
+                  marginBottom: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  ⬇️ Download Limits
+                </h3>
+                <p style={{
+                  color: '#1e40af',
+                  fontSize: '1.1rem',
+                  marginBottom: '1.5rem',
+                  fontWeight: '600'
+                }}>
+                  To ensure fair access for everyone, we have the following limits:
+                </p>
+                <div style={{
+                  background: 'white',
+                  padding: '1.5rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid #93c5fd',
+                  marginBottom: '1rem'
+                }}>
+                  <ul style={{
+                    color: '#1e3a8a',
+                    lineHeight: '2',
+                    fontSize: '1rem',
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: 0
+                  }}>
+                    <li style={{ marginBottom: '0.75rem' }}>📅 <strong>Daily Limit:</strong> 5 downloads per day</li>
+                    <li style={{ marginBottom: '0.75rem' }}>📊 <strong>Weekly Limit:</strong> 30 downloads per week maximum</li>
+                    <li style={{ marginBottom: '0.75rem' }}>⚠️ <strong>Excessive Use:</strong> Exceeding 30 downloads per week results in a 90-day ban</li>
+                  </ul>
+                </div>
+                <p style={{
+                  color: '#1e40af',
+                  fontSize: '0.95rem',
+                  fontStyle: 'italic'
+                }}>
+                  These limits help us keep the service free and available to everyone. If you need more downloads for legitimate use, please contact us about commercial licensing options.
+                </p>
+              </div>
+            </section>
+
             {/* Important Notes */}
             <section style={{ marginBottom: '2rem' }}>
               <h3 style={{
