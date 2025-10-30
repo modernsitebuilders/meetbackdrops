@@ -79,6 +79,31 @@ const nextConfig = {
         destination: '/410',
         permanent: true,
       },
+      {
+        source: '//blog-zoom-teams-google',
+        destination: '/410',
+        permanent: true,
+      },
+      {
+        source: '//blog-video-call-etiquette',
+        destination: '/410',
+        permanent: true,
+      },
+      {
+        source: '//blog-lighting-tips',
+        destination: '/410',
+        permanent: true,
+      },
+      {
+        source: '//blog-remote-work-productivity',
+        destination: '/410',
+        permanent: true,
+      },
+      {
+        source: '//blog-professional-video-calls',
+        destination: '/410',
+        permanent: true,
+      },
       
       // Category pages
       {
