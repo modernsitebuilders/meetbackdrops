@@ -113,6 +113,11 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
               onDownload(image);
             }}
             style={{
+              position: window.innerWidth >= 768 ? 'absolute' : 'static',
+              bottom: window.innerWidth >= 768 ? '2.5rem' : 'auto',
+              left: window.innerWidth >= 768 ? '50%' : 'auto',
+              transform: window.innerWidth >= 768 ? 'translateX(-50%)' : 'none',
+              marginTop: window.innerWidth < 768 ? '1rem' : '0',
               backgroundColor: '#2563eb',
               color: '#ffffff',
               padding: '12px 24px',
@@ -122,7 +127,8 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
               fontWeight: '600',
               cursor: 'pointer',
               transition: 'background-color 0.2s ease',
-              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)'
+              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.5)',
+              zIndex: 10
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = '#1d4ed8';
