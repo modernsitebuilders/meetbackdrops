@@ -665,7 +665,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   gap: '1rem'
                 }}>
                   <Link
-                    href="/blog-professional-video-calls"
+                    href="/blog/professional-video-calls"
                     style={{
                       display: 'block',
                       padding: '1.25rem',
@@ -686,7 +686,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   </Link>
                   
                   <Link
-                    href="/blog-video-call-etiquette"
+                    href="/blog/video-call-etiquette"
                     style={{
                       display: 'block',
                       padding: '1.25rem',
@@ -707,7 +707,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   </Link>
 
                   <Link
-                    href="/blog-backgrounds-by-industry"
+                    href="/blog/backgrounds-by-industry"
                     style={{
                       display: 'block',
                       padding: '1.25rem',
