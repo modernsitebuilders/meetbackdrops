@@ -23,7 +23,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
       <button
         style={{
           position: 'fixed',
-          top: window.innerWidth < 768 ? 'auto' : '2rem',
+          top: window.innerWidth < 768 ? 'auto' : '5rem',
           bottom: window.innerWidth < 768 ? '2rem' : 'auto',
           right: '1rem',
           background: 'rgba(255, 255, 255, 0.9)',
