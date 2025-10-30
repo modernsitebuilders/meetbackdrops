@@ -542,7 +542,7 @@ export const virtualBackgroundGuideContent = () => {
                   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                   marginBottom: '2rem'
                 }}>
-                  <Link href="/blog-lighting-tips" style={{
+                  <Link href="/blog/lighting-tips" style={{
                     background: '#f8fafc',
                     padding: '1.5rem',
                     borderRadius: '0.5rem',
@@ -567,7 +567,7 @@ export const virtualBackgroundGuideContent = () => {
                     </p>
                   </Link>
 
-                  <Link href="/blog-background-mistakes" style={{
+                  <Link href="/blog/background-mistakes" style={{
                     background: '#f8fafc',
                     padding: '1.5rem',
                     borderRadius: '0.5rem',
@@ -592,7 +592,7 @@ export const virtualBackgroundGuideContent = () => {
                     </p>
                   </Link>
 
-                  <Link href="/blog-zoom-teams-google" style={{
+                  <Link href="/blog/zoom-teams-google" style={{
                     background: '#f8fafc',
                     padding: '1.5rem',
                     borderRadius: '0.5rem',
@@ -617,7 +617,7 @@ export const virtualBackgroundGuideContent = () => {
                     </p>
                   </Link>
 
-                  <Link href="/blog-backgrounds-by-industry" style={{
+                  <Link href="/blog/backgrounds-by-industry" style={{
                     background: '#f8fafc',
                     padding: '1.5rem',
                     borderRadius: '0.5rem',
