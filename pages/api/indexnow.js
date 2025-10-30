@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   }
 
   // Your Bing API key
-  const apiKey = 'FE9180B910F8D83B232E915510BB8017';
+  const apiKey = '4676dabfb9404e62ab7240abb51205de';
   
   // IndexNow endpoint
   const indexNowUrl = 'https://api.indexnow.org/indexnow';
