@@ -13,6 +13,10 @@ export default function Analytics() {
           window.location.hostname === 'localhost') {
         return;
       }
+      if (localStorage.getItem('streambackdrops_admin') === 'true') {
+        console.log('🔍 Analytics: Skipping - Admin mode enabled');
+        return;
+      }
 
       const currentPath = window.location.pathname;
       
