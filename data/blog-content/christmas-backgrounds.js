@@ -740,7 +740,7 @@ export const christmasBackgroundsContent = () => (
             }}>
               Browse our collection of free Christmas virtual backgrounds and download your favorites today.
             </p>
-            <Link href="/" style={{
+            <Link href="/category/christmas-backgrounds" style={{
               background: 'white',
               color: '#c41e3a',
               padding: '0.875rem 2rem',
@@ -751,7 +751,7 @@ export const christmasBackgroundsContent = () => (
               fontSize: '1.1rem',
               transition: 'transform 0.2s'
             }}>
-              Get Free Christmas Backgrounds →
+              Browse All 46 Christmas Backgrounds →
             </Link>
           </div>
         </div>
