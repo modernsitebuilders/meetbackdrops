@@ -87,14 +87,14 @@ export default function Home() {
             className="blog-card"
           />
           <Card
-            href="/blog/halloween-backgrounds"
-            title="Halloween Backgrounds 2025"
-            description="25 free spooky backgrounds for October"
-            emoji="🎃"
+            href="/blog/christmas-backgrounds"
+            title="Christmas Backgrounds 2025"
+            description="46 free festive backgrounds for December"
+            emoji="🎄"
             className="blog-card"
             customStyles={{
-              background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-              border: '2px solid #ff6b35',
+              background: 'linear-gradient(135deg, #ef4444 0%, #22c55e 100%)',
+              border: '2px solid #22c55e',
               titleColor: 'white',
               descColor: 'rgba(255,255,255,0.9)'
             }}
@@ -119,6 +119,7 @@ export default function Home() {
         <Card href="/category/historic-spaces" title="Historic Spaces" description="Elegant historic interiors including ballrooms" imageSrc="/images/historic-spaces/historic-space-6.webp" imageAlt="Historic space virtual background" navigate={navigate} count={CATEGORIES['historic-spaces'].count} />
         <Card href="/category/nature-landscapes" title="Nature & Landscapes" description="Stunning natural landscapes and scenic outdoor views for nature-inspired calls" imageSrc="/images/nature-landscapes/nature-landscape-1.webp" imageAlt="Nature landscape virtual background" navigate={navigate} count={CATEGORIES['nature-landscapes'].count} />        
         <Card href="/category/libraries" title="Libraries" description="Classic library rooms with floor-to-ceiling books" imageSrc="/images/libraries/library-1.webp" imageAlt="Library virtual background" navigate={navigate} count={CATEGORIES['libraries'].count} />
+        <Card href="/category/christmas-backgrounds" title="Christmas Backgrounds 🎄" description="Festive Christmas backgrounds with holiday decorations" imageSrc="/images/christmas-backgrounds/christmas-background-01.webp" imageAlt="Christmas virtual background" navigate={navigate} count={CATEGORIES['christmas-backgrounds'].count} />
         <Card href="/category/halloween-backgrounds" title="Halloween Backgrounds 🎃" description="Festive Halloween backgrounds with pumpkins" imageSrc="/images/halloween-backgrounds/halloween-background-11.webp" imageAlt="Halloween virtual background" navigate={navigate} count={CATEGORIES['halloween-backgrounds'].count} />
       </div>
       {/* Social Proof */}

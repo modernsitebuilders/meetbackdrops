@@ -122,6 +122,16 @@ export const categoryInfo = {
     }))
   },
 
+  'christmas-backgrounds': {
+    name: 'Christmas Backgrounds',
+    description: 'Festive Christmas backgrounds with holiday decorations for seasonal video calls',
+    seoDescription: 'Download free Christmas virtual backgrounds for video calls. Festive holiday backgrounds with Christmas trees and decorations.',
+    images: Array.from({length: 46}, (_, i) => ({
+      filename: `christmas-background-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Christmas Background ${i + 1}`
+    }))
+  },
+
   'halloween-backgrounds': {
     name: 'Halloween Backgrounds',
     description: 'Festive Halloween backgrounds with pumpkins, fall decor, and seasonal atmosphere',
@@ -146,5 +156,6 @@ export const folderMap = {
   'historic-spaces': 'historic-spaces',
   'nature-landscapes': 'nature-landscapes',
   'libraries': 'libraries',
+  'christmas-backgrounds': 'christmas-backgrounds',
   'halloween-backgrounds': 'halloween-backgrounds'
 };

@@ -49,6 +49,13 @@ export const blogMetadata = {
   datePublished: "2025-05-20",
   dateModified: "2025-10-09"
 },
+"christmas-backgrounds": {
+    headline: "Free Christmas Virtual Backgrounds for Video Calls 2025",
+    description: "Download free Christmas virtual backgrounds for Zoom, Teams, and Google Meet. Festive holiday backgrounds with Christmas trees, decorations, and cozy winter atmosphere for December video calls.",
+    image: "/images/christmas-backgrounds/christmas-background-01.webp",
+    datePublished: "2025-11-01",
+    dateModified: "2025-11-01"
+  },
   "lighting-tips": {
     headline: "Perfect Video Call Lighting: Complete Setup Guide 2025",
     description: "Master video call lighting with expert tips on ring lights, natural light, and professional setups for Zoom, Teams, and online meetings.",

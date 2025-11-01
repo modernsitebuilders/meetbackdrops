@@ -244,6 +244,7 @@ export async function getStaticPaths() {
     'historic-spaces',
     'nature-landscapes',
     'libraries',
+    'christmas-backgrounds',
     'halloween-backgrounds'
   ].map((slug) => ({
     params: { slug }

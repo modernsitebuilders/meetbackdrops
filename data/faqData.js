@@ -429,6 +429,25 @@ export const faqData = {
     }
   ],
 
+  'christmas-backgrounds': [
+    {
+      question: "Are these Christmas backgrounds free to use?",
+      answer: "Yes! All our Christmas virtual backgrounds are completely free to download and use for personal and professional video calls."
+    },
+    {
+      question: "Will these Christmas backgrounds work with Zoom, Teams, and Google Meet?",
+      answer: "Absolutely! Our Christmas backgrounds work with all major video conferencing platforms including Zoom, Microsoft Teams, Google Meet, Skype, and any platform that supports custom virtual backgrounds."
+    },
+    {
+      question: "When should I start using Christmas backgrounds?",
+      answer: "You can start using Christmas backgrounds anytime in December, or even late November if you want to get in the holiday spirit early. For professional business meetings, you might want to wait until closer to the holidays."
+    },
+    {
+      question: "Are the Christmas backgrounds appropriate for business meetings?",
+      answer: "Yes! Our collection includes subtle, professional Christmas backgrounds perfect for business meetings, as well as more festive options for casual calls and holiday parties."
+    }
+  ],
+
   "remote-work-productivity": [
     {
       question: "How can I stay productive while working from home?",

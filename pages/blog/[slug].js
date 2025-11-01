@@ -17,6 +17,7 @@ import { lightingTipsContent } from '../../data/blog-content/lighting-tips';
 import { videoCallEtiquetteContent } from '../../data/blog-content/video-call-etiquette';
 import { backgroundsByIndustryContent } from '../../data/blog-content/backgrounds-by-industry';
 import { bestVirtualBackgroundSites2025Content } from '../../data/blog-content/best-virtual-background-sites-2025';
+import { christmasBackgroundsContent } from '../../data/blog-content/christmas-backgrounds';
 import { halloweenBackgroundsContent } from '../../data/blog-content/halloween-backgrounds';
 
 // Map slugs to their respective content and metadata
@@ -129,6 +130,18 @@ const blogPosts = {
     datePublished: "2025-02-10",
     dateModified: "2025-10-09",
     faqKey: 'best-virtual-background-sites-2025'
+  },
+  'christmas-backgrounds': {
+    content: christmasBackgroundsContent,
+    title: "Free Christmas Virtual Backgrounds for Video Calls 2025 - StreamBackdrops",
+    description: "Download free Christmas virtual backgrounds for Zoom, Teams, and Google Meet. Festive holiday backgrounds with Christmas trees and decorations for December video calls.",
+    keywords: "christmas backgrounds, holiday backgrounds, christmas zoom backgrounds, festive backgrounds, seasonal backgrounds",
+    canonical: "https://streambackdrops.com/blog/christmas-backgrounds",
+    headline: "Free Christmas Virtual Backgrounds for Video Calls 2025",
+    image: "/images/christmas-backgrounds/christmas-background-01.webp",
+    datePublished: "2025-11-01",
+    dateModified: "2025-11-01",
+    faqKey: 'christmas-backgrounds'
   },
   'halloween-backgrounds': {
     content: halloweenBackgroundsContent,

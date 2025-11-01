@@ -85,6 +85,7 @@ export default function Header({ currentPage }) {
     { name: 'Historic Spaces', path: '/category/historic-spaces' },
     { name: 'Nature & Landscapes', path: '/category/nature-landscapes' },
     { name: 'Libraries', path: '/category/libraries' },
+    { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
     { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' }
   ];
 
@@ -101,7 +102,8 @@ export default function Header({ currentPage }) {
     { name: 'Historic Spaces', path: '/category/historic-spaces', key: 'historic-spaces' },
     { name: 'Nature & Landscapes', path: '/category/nature-landscapes', key: 'nature-landscapes' },
     { name: 'Libraries', path: '/category/libraries', key: 'libraries' },
-    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' }
+  { name: 'Christmas 🎄', path: '/category/christmas-backgrounds', key: 'christmas-backgrounds' },
+  { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' }
   ];
 
   return (
