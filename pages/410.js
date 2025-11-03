@@ -22,3 +22,10 @@ export default function Custom410() {
     </div>
   )
 }
+
+export async function getServerSideProps({ res }) {
+  res.statusCode = 410
+  return {
+    props: {}
+  }
+}
