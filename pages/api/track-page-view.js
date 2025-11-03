@@ -5,11 +5,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  // Block tracking from bots, crawlers, and build processes
+   // Block tracking from bots, crawlers, and build processes
   const userAgent = req.headers['user-agent'] || '';
-  const blockedAgents = ['bot', 'crawler', 'spider', 'vercel', 'headless'];
   
-  if (blockedAgents.some(agent => userAgent.toLowerCase().includes(agent))) {
+  // Only block actual bots, not real browsers
+  if (!userAgent || 
+      userAgent.includes('bot') || 
+      userAgent.includes('Bot') ||
+      userAgent.includes('crawler') || 
+      userAgent.includes('spider') ||
+      userAgent.includes('Prerender')) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
   
