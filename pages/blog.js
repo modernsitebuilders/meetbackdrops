@@ -116,14 +116,23 @@ export default function Blog() {
       category: "Remote Work"
     },
     {
-  title: 'Best Halloween Virtual Backgrounds for 2025',
-  slug: 'halloween-backgrounds',
-  excerpt: 'Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Perfect for October video calls with festive fall decor.',
-  date: 'October 8, 2025',
-  readTime: '4 min read',
-  category: 'Seasonal',
-  emoji: '🎃'
-}
+      title: 'Free Christmas Virtual Backgrounds for Video Calls 2025',
+      slug: 'christmas-backgrounds',
+      excerpt: 'Download 46 free Christmas virtual backgrounds for Zoom, Teams, and Google Meet. Festive holiday backgrounds with Christmas trees and decorations for December video calls.',
+      date: 'November 1, 2025',
+      readTime: '8 min read',
+      category: 'Seasonal',
+      emoji: '🎄'
+    },
+    {
+      title: 'Best Halloween Virtual Backgrounds for 2025',
+      slug: 'halloween-backgrounds',
+      excerpt: 'Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Perfect for October video calls with festive fall decor.',
+      date: 'October 8, 2025',
+      readTime: '4 min read',
+      category: 'Seasonal',
+      emoji: '🎃'
+    }
   ];
 
   return (
