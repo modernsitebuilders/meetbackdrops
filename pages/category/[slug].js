@@ -184,6 +184,7 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
   
   const featuredImages = {
     'halloween-backgrounds': 'halloween-background-20.webp',
+    'christmas-backgrounds': 'christmas-background-1.webp',
     'bookshelves-bright': 'bookshelf-bright-1.webp',
     'bookshelves-dark': 'bookshelf-dark-1.webp',
     'office-spaces': 'office-1.webp',
