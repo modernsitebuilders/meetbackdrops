@@ -191,7 +191,7 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
     'living-rooms': 'living-room-1.webp',
     'kitchens': 'kitchen-1.webp',
     'coffee-shops': 'coffee-shop-01.webp',
-    'art-galleries': 'art-gallery-1.webp',
+    'art-galleries': 'art-gallery-23.webp',
     'urban-lofts': 'urban-loft-1.webp',
     'gardens-patios': 'garden-patio-1.webp',
     'historic-spaces': 'historic-1.webp',
