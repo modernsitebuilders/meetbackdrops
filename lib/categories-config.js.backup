@@ -74,11 +74,6 @@ export const CATEGORIES = {
     "name": "Halloween Backgrounds",
     "description": "Festive Halloween backgrounds with pumpkins and fall decor for seasonal video calls",
     "count": 25
-  },
-  "bokeh-backgrounds": {
-    "name": "Bokeh Backgrounds",
-    "description": "Beautiful bokeh light backgrounds with soft, artistic blur effects perfect for elegant video calls",
-    "count": 66
   }
 };
 
@@ -96,13 +91,12 @@ export const CATEGORY_ORDER = [
   "nature-landscapes",
   "libraries",
   "christmas-backgrounds",
-  "halloween-backgrounds",
-  "bokeh-backgrounds"
+  "halloween-backgrounds"
 ];
 
 export const DEFAULT_CATEGORY = 'bookshelves-bright';
 
-export const TOTAL_IMAGES = 503;
+export const TOTAL_IMAGES = 437;
 
 export function formatPublicCount(count) {
   if (count === 0) return '0';
@@ -139,8 +133,7 @@ export const SEO_DESCRIPTIONS = {
   "nature-landscapes": "Stunning nature and landscape virtual backgrounds. Mountains, deserts, and scenic outdoor environments for inspiring video calls.",
   "libraries": "Classic library virtual backgrounds with floor-to-ceiling books. Perfect for academic presentations and professional settings.",
   "christmas-backgrounds": "Free Christmas virtual backgrounds for video calls. Festive holiday backgrounds with Christmas trees, decorations, and cozy winter atmosphere.",
-  "halloween-backgrounds": "Free Halloween virtual backgrounds for video calls. Festive seasonal scenes with pumpkins, fall decorations, and autumn atmosphere.",
-  "bokeh-backgrounds": "Free bokeh virtual backgrounds for video calls. Beautiful soft-focus light effects and artistic blur backgrounds for elegant presentations."
+  "halloween-backgrounds": "Free Halloween virtual backgrounds for video calls. Festive seasonal scenes with pumpkins, fall decorations, and autumn atmosphere."
 };
 
 // Keywords for each category (for SEO)
@@ -158,6 +151,5 @@ export const CATEGORY_KEYWORDS = {
   "nature-landscapes": ["nature backgrounds", "landscape backgrounds", "mountain backgrounds", "outdoor scenery", "natural environments"],
   "libraries": ["library backgrounds", "book backgrounds", "academic settings", "study spaces", "professional environments"],
   "christmas-backgrounds": ["christmas backgrounds", "holiday backgrounds", "christmas video calls", "festive backgrounds", "winter backgrounds", "seasonal backgrounds", "christmas decorations", "holiday video calls"],
-  "halloween-backgrounds": ["halloween backgrounds", "halloween kitchen backgrounds", "seasonal backgrounds", "fall decor", "pumpkin backgrounds", "autumn atmosphere", "halloween video calls"],
-  "bokeh-backgrounds": ["bokeh backgrounds", "bokeh lights", "soft focus backgrounds", "artistic blur", "light effects", "elegant backgrounds", "professional bokeh"]
+  "halloween-backgrounds": ["halloween backgrounds", "halloween kitchen backgrounds", "seasonal backgrounds", "fall decor", "pumpkin backgrounds", "autumn atmosphere", "halloween video calls"]
 };

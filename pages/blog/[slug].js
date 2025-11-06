@@ -53,7 +53,7 @@ const blogPosts = {
     keywords: "video calls, professional meetings, remote work, video conferencing, zoom tips, teams meetings",
     canonical: "https://streambackdrops.com/blog/professional-video-calls",
     headline: "How to Look Professional on Video Calls: Complete Guide",
-    image: "/images/office-spaces/office-spaces-05.webp",
+    image: "/images/office-spaces/office-spaces-36.webp",
     datePublished: "2025-03-01",
     dateModified: "2025-10-09",
     faqKey: 'professional-video-calls'

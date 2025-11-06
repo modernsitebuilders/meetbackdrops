@@ -45,6 +45,49 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className={styles.hero}>
+        {/* Hero Image Collage */}
+        <div style={{
+          maxWidth: '1000px',
+          margin: '0 auto 2rem auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '0.5rem',
+          borderRadius: '1rem',
+          overflow: 'hidden',
+          boxShadow: '0 20px 60px rgba(37, 99, 235, 0.15)'
+        }}>
+          <img 
+            src="/images/office-spaces/office-spaces-02.webp" 
+            alt="Professional office background"
+            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+          />
+          <img 
+            src="/images/office-spaces/office-spaces-24.webp" 
+            alt="Modern office space"
+            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+          />
+          <img 
+            src="/images/bookshelves-bright/well-lit-10.webp" 
+            alt="Bright bookshelf background"
+            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+          />
+          <img 
+            src="/images/coffee-shops/coffee-shop-07.webp" 
+            alt="Coffee shop background"
+            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+          />
+          <img 
+            src="/images/urban-lofts/urban-loft-16.webp" 
+            alt="Urban loft background"
+            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+          />
+          <img 
+            src="/images/libraries/library-17.webp" 
+            alt="Library background"
+            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+          />
+        </div>
+        
         <h1 className={styles.heroTitle}>
           Professional Virtual Backgrounds Optimized for Video Calls
         </h1>
@@ -121,6 +164,7 @@ export default function Home() {
         <Card href="/category/libraries" title="Libraries" description="Classic library rooms with floor-to-ceiling books" imageSrc="/images/libraries/library-1.webp" imageAlt="Library virtual background" navigate={navigate} count={CATEGORIES['libraries'].count} />
         <Card href="/category/christmas-backgrounds" title="Christmas Backgrounds 🎄" description="Festive Christmas backgrounds with holiday decorations" imageSrc="/images/christmas-backgrounds/christmas-background-01.webp" imageAlt="Christmas virtual background" navigate={navigate} count={CATEGORIES['christmas-backgrounds'].count} />
         <Card href="/category/halloween-backgrounds" title="Halloween Backgrounds 🎃" description="Festive Halloween backgrounds with pumpkins" imageSrc="/images/halloween-backgrounds/halloween-background-11.webp" imageAlt="Halloween virtual background" navigate={navigate} count={CATEGORIES['halloween-backgrounds'].count} />
+        <Card href="/category/bokeh-backgrounds" title="Bokeh Backgrounds" description="Beautiful bokeh light effects with artistic blur for elegant calls" imageSrc="/images/bokeh-backgrounds/bokeh-1.webp" imageAlt="Bokeh virtual background" navigate={navigate} count={CATEGORIES['bokeh-backgrounds'].count} />
       </div>
       {/* Social Proof */}
       <SocialProof />

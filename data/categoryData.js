@@ -140,6 +140,16 @@ export const categoryInfo = {
       filename: `halloween-background-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Halloween Background ${i + 1}`
     }))
+  },
+  
+  'bokeh-backgrounds': {
+    name: 'Bokeh Backgrounds',
+    description: 'Beautiful bokeh light backgrounds with soft, artistic blur effects for elegant video calls',
+    seoDescription: 'Download free bokeh virtual backgrounds for video calls. Soft-focus light effects and artistic blur backgrounds.',
+    images: Array.from({length: CATEGORIES['bokeh-backgrounds'].count}, (_, i) => ({
+      filename: `bokeh-${i + 1}.webp`,
+      title: `Bokeh Background ${i + 1}`
+    }))
   }
 };
 
@@ -157,5 +167,6 @@ export const folderMap = {
   'nature-landscapes': 'nature-landscapes',
   'libraries': 'libraries',
   'christmas-backgrounds': 'christmas-backgrounds',
-  'halloween-backgrounds': 'halloween-backgrounds'
+  'halloween-backgrounds': 'halloween-backgrounds',
+  'bokeh-backgrounds': 'bokeh-backgrounds'
 };

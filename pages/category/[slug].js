@@ -196,7 +196,8 @@ const pageTitle = categoryName + ' - Free HD | StreamBackdrops';
     'gardens-patios': 'garden-patio-1.webp',
     'historic-spaces': 'historic-1.webp',
     'nature-landscapes': 'nature-1.webp',
-    'libraries': 'library-1.webp'
+    'libraries': 'library-1.webp',
+    'bokeh-backgrounds': 'bokeh-1.webp'
   };
   
   const featuredImage = featuredImages[currentSlug] || 'og-image.png';
@@ -246,7 +247,8 @@ export async function getStaticPaths() {
     'nature-landscapes',
     'libraries',
     'christmas-backgrounds',
-    'halloween-backgrounds'
+    'halloween-backgrounds',
+    'bokeh-backgrounds'
   ].map((slug) => ({
     params: { slug }
   }));

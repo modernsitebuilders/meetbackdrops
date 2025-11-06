@@ -86,7 +86,8 @@ export default function Header({ currentPage }) {
     { name: 'Nature & Landscapes', path: '/category/nature-landscapes' },
     { name: 'Libraries', path: '/category/libraries' },
     { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
-    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' }
+    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' },
+    { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds' }
   ];
 
   const allCategories = [
@@ -103,7 +104,8 @@ export default function Header({ currentPage }) {
     { name: 'Nature & Landscapes', path: '/category/nature-landscapes', key: 'nature-landscapes' },
     { name: 'Libraries', path: '/category/libraries', key: 'libraries' },
   { name: 'Christmas 🎄', path: '/category/christmas-backgrounds', key: 'christmas-backgrounds' },
-  { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' }
+  { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' },
+  { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds', key: 'bokeh-backgrounds' }
   ];
 
   return (
