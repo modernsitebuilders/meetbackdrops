@@ -63,6 +63,12 @@ export default function Footer() {
   <Link href="/category/libraries" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
     Libraries
   </Link>
+  <Link href="/category/bokeh-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Bokeh Backgrounds
+  </Link>
+  <Link href="/category/christmas-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Christmas 🎄
+  </Link>
   <Link href="/category/halloween-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
     Halloween 🎃
   </Link>
