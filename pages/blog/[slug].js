@@ -19,6 +19,7 @@ import { backgroundsByIndustryContent } from '../../data/blog-content/background
 import { bestVirtualBackgroundSites2025Content } from '../../data/blog-content/best-virtual-background-sites-2025';
 import { christmasBackgroundsContent } from '../../data/blog-content/christmas-backgrounds';
 import { halloweenBackgroundsContent } from '../../data/blog-content/halloween-backgrounds';
+import { bokehBackgroundsContent } from '../../data/blog-content/bokeh-backgrounds';
 
 // Map slugs to their respective content and metadata
 const blogPosts = {
@@ -154,6 +155,18 @@ const blogPosts = {
     datePublished: "2025-10-01",
     dateModified: "2025-10-09",
     faqKey: 'halloween-backgrounds'
+  },
+  'bokeh-backgrounds': {
+    content: bokehBackgroundsContent,
+    title: "Free Bokeh Virtual Backgrounds for Video Calls 2025 - StreamBackdrops",
+    description: "Download 66 free bokeh virtual backgrounds for Zoom, Teams, and Google Meet. Elegant soft-focus light effects and artistic blur backgrounds for professional video calls.",
+    keywords: "bokeh backgrounds, bokeh lights, soft focus backgrounds, artistic blur, light effects, elegant backgrounds, professional bokeh",
+    canonical: "https://streambackdrops.com/blog/bokeh-backgrounds",
+    headline: "Free Bokeh Virtual Backgrounds for Video Calls 2025",
+    image: "/images/bokeh-backgrounds/bokeh-1.webp",
+    datePublished: "2025-11-06",
+    dateModified: "2025-11-06",
+    faqKey: 'bokeh-backgrounds'
   },
   // Add this to your blogPosts object
 'video-call-etiquette': {
