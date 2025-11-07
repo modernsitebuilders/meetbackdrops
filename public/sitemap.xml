@@ -45,6 +45,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://streambackdrops.com/blog/bokeh-backgrounds</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://streambackdrops.com/blog/backgrounds-by-industry</loc>
     <lastmod>2025-10-09T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
@@ -88,6 +93,11 @@
   </url>
 
   <!-- Category Pages -->
+  <url>
+    <loc>https://streambackdrops.com/category/bokeh-backgrounds</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://streambackdrops.com/category/christmas-backgrounds</loc>
     <lastmod>2025-11-01T00:00:00.000Z</lastmod>
