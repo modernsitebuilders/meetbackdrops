@@ -162,9 +162,10 @@ export default function Home() {
         <Card href="/category/historic-spaces" title="Historic Spaces" description="Elegant historic interiors including ballrooms" imageSrc="/images/historic-spaces/historic-space-6.webp" imageAlt="Historic space virtual background" navigate={navigate} count={CATEGORIES['historic-spaces'].count} />
         <Card href="/category/nature-landscapes" title="Nature & Landscapes" description="Stunning natural landscapes and scenic outdoor views for nature-inspired calls" imageSrc="/images/nature-landscapes/nature-landscape-1.webp" imageAlt="Nature landscape virtual background" navigate={navigate} count={CATEGORIES['nature-landscapes'].count} />        
         <Card href="/category/libraries" title="Libraries" description="Classic library rooms with floor-to-ceiling books" imageSrc="/images/libraries/library-1.webp" imageAlt="Library virtual background" navigate={navigate} count={CATEGORIES['libraries'].count} />
+        <Card href="/category/bokeh-backgrounds" title="Bokeh Backgrounds" description="Beautiful bokeh light effects with artistic blur for elegant calls" imageSrc="/images/bokeh-backgrounds/bokeh-56.webp" imageAlt="Bokeh virtual background" navigate={navigate} count={CATEGORIES['bokeh-backgrounds'].count} />
         <Card href="/category/christmas-backgrounds" title="Christmas Backgrounds 🎄" description="Festive Christmas backgrounds with holiday decorations" imageSrc="/images/christmas-backgrounds/christmas-background-01.webp" imageAlt="Christmas virtual background" navigate={navigate} count={CATEGORIES['christmas-backgrounds'].count} />
         <Card href="/category/halloween-backgrounds" title="Halloween Backgrounds 🎃" description="Festive Halloween backgrounds with pumpkins" imageSrc="/images/halloween-backgrounds/halloween-background-11.webp" imageAlt="Halloween virtual background" navigate={navigate} count={CATEGORIES['halloween-backgrounds'].count} />
-        <Card href="/category/bokeh-backgrounds" title="Bokeh Backgrounds" description="Beautiful bokeh light effects with artistic blur for elegant calls" imageSrc="/images/bokeh-backgrounds/bokeh-1.webp" imageAlt="Bokeh virtual background" navigate={navigate} count={CATEGORIES['bokeh-backgrounds'].count} />
+        
       </div>
       {/* Social Proof */}
       <SocialProof />
