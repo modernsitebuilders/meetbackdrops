@@ -144,11 +144,11 @@ function CategoryContent({ slug }) {
         </>
       )}
       
-      <ReviewModal 
-        isOpen={showReviewModal}
-        onClose={() => setShowReviewModal(false)}
-        imageName={downloadedImage}
-      />
+      {showReviewModal && (
+  <ReviewModal 
+    onClose={() => setShowReviewModal(false)}
+  />
+)}
       
       <BackToTop hide={!!previewImage} />
     </>
