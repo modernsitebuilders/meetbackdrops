@@ -244,6 +244,16 @@ export default function Header({ currentPage }) {
             >
               Blog
             </button>
+
+            {/* Browse Link */}
+            <button 
+              onClick={() => navigate('/browse')}
+              style={navButtonStyle(currentPage === 'browse', hoveredNav === 'browse')}
+              onMouseEnter={() => setHoveredNav('browse')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
+              Browse
+            </button>
          </nav>
         </div>
        </header>
@@ -339,6 +349,44 @@ export default function Header({ currentPage }) {
                   }}
                 >
                   📝 Blog
+                </button>
+
+                {/* Browse Link in Mobile Menu */}
+                <button
+                  onClick={() => {
+                    navigate('/browse');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '1rem',
+                    textAlign: 'left',
+                    background: currentPage === 'browse' ? '#eff6ff' : 'transparent',
+                    border: 'none',
+                    borderRadius: '0.5rem',
+                    color: currentPage === 'browse' ? '#2563eb' : '#374151',
+                    fontWeight: currentPage === 'browse' ? '600' : '500',
+                    fontSize: '0.95rem',
+                    cursor: 'pointer',
+                    fontFamily: 'inherit',
+                    transition: 'background 0.2s ease',
+                    marginBottom: '0.5rem',
+                    borderBottom: '1px solid #e5e7eb',
+                    paddingBottom: '1rem'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (currentPage !== 'browse') {
+                      e.target.style.background = '#f3f4f6';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (currentPage !== 'browse') {
+                      e.target.style.background = 'transparent';
+                    }
+                  }}
+                >
+                  Browse
                 </button>
                 
                 {allCategories.map((category) => (
