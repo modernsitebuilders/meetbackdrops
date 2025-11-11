@@ -1,0 +1,202 @@
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import Layout from '../../components/Layout';
+import { useImageDownload } from '../../lib/useImageDownload';
+import ReviewModal from '../../components/ReviewModal';
+import RateLimitModal from '../../components/RateLimitModal';
+import styles from '../../styles/CategoryPage.module.css';
+
+export default function MostPopular() {
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [cloudinaryUrls, setCloudinaryUrls] = useState({});
+
+  const {
+    handleDownload,
+    showReviewModal,
+    setShowReviewModal,
+    downloadedImage,
+    showRateLimitModal,
+    setShowRateLimitModal,
+    rateLimitError
+  } = useImageDownload(cloudinaryUrls);
+
+  useEffect(() => {
+    // Fetch top 25 downloads from analytics
+    Promise.all([
+      fetch('/api/popular-downloads').then(res => res.json()),
+      fetch('/cloudinary-urls.json').then(res => res.json())
+    ])
+      .then(([analyticsData, urlsData]) => {
+        // Take top 25 and format for display
+        const topImages = analyticsData.topDownloads.slice(0, 25).map(item => ({
+          filename: item.filename,
+          category: item.category,
+          downloadCount: item.count,
+          webPath: `/images/${item.category}/${item.filename}`
+        }));
+        setImages(topImages);
+        setCloudinaryUrls(urlsData);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load popular images:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleImageDownload = async (image) => {
+    try {
+      await handleDownload(image, image.category);
+    } catch (error) {
+      console.error('Download failed:', error);
+    }
+  };
+
+  const ImageModal = ({ image, onClose }) => {
+    if (!image) return null;
+
+    return (
+      <div className={styles.modalOverlay} onClick={onClose}>
+        <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+          <button className={styles.modalClose} onClick={onClose}>×</button>
+          
+          <div className={styles.modalImageContainer}>
+            <Image
+              src={image.webPath}
+              alt={`Most popular virtual background - ${image.filename}`}
+              fill
+              style={{ objectFit: 'contain' }}
+              sizes="90vw"
+            />
+            <div className={styles.popularBadge}>
+              Popular Choice
+            </div>
+          </div>
+
+          <div className={styles.modalActions}>
+            <button
+              onClick={() => handleImageDownload(image)}
+              className={styles.downloadButton}
+            >
+              Download HD Image
+            </button>
+            <Link 
+              href={`/category/${image.category}`}
+              className={styles.categoryLink}
+            >
+              View {image.category.replace(/-/g, ' ')} category →
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <Layout>
+      <Head>
+        <title>Most Popular Virtual Backgrounds | StreamBackdrops</title>
+        <meta 
+          name="description" 
+          content="Download the most popular free HD virtual backgrounds for Zoom, Teams, and Google Meet. Proven favorites from thousands of downloads." 
+        />
+        <link rel="canonical" href="https://streambackdrops.com/category/most-popular" />
+      </Head>
+
+      <div className={styles.categoryPage}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>
+            🔥 Most Popular Backgrounds
+          </h1>
+          <p className={styles.description}>
+            Our most downloaded virtual backgrounds - proven favorites from thousands of users
+          </p>
+        </div>
+
+        {loading ? (
+          <div className={styles.loading}>
+            <div className={styles.spinner}></div>
+            <p>Loading popular backgrounds...</p>
+          </div>
+        ) : (
+          <>
+            <div className={styles.stats}>
+              <span>Top {images.length} most downloaded backgrounds</span>
+            </div>
+
+            <div className={styles.gallery}>
+              {images.map((image, index) => (
+                <div 
+                  key={image.filename}
+                  className={styles.imageCard}
+                  onClick={() => setSelectedImage(image)}
+                >
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={image.webPath}
+                      alt={`Popular virtual background #${index + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                    <div className={styles.rankBadge}>#{index + 1}</div>
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleImageDownload(image);
+                    }}
+                    className={styles.quickDownload}
+                  >
+                    Download
+                  </button>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        <ImageModal 
+          image={selectedImage} 
+          onClose={() => setSelectedImage(null)} 
+        />
+
+        {/* Review Modal */}
+        <ReviewModal 
+          show={showReviewModal}
+          onClose={() => setShowReviewModal(false)}
+          imageName={downloadedImage}
+        />
+
+        {/* Rate Limit Modal */}
+        <RateLimitModal
+          show={showRateLimitModal}
+          onClose={() => setShowRateLimitModal(false)}
+          errorMessage={rateLimitError}
+        />
+
+        <section className={styles.whyPopular}>
+          <h2>Why These Backgrounds Are Popular</h2>
+          <div className={styles.reasonsGrid}>
+            <div className={styles.reason}>
+              <h3>✨ Proven Quality</h3>
+              <p>Downloaded by thousands of professionals who trust these backgrounds</p>
+            </div>
+            <div className={styles.reason}>
+              <h3>🎯 Versatile</h3>
+              <p>Work great across different meeting types and lighting conditions</p>
+            </div>
+            <div className={styles.reason}>
+              <h3>📸 Professional</h3>
+              <p>Selected by users for their clean, polished appearance</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </Layout>
+  );
+}
