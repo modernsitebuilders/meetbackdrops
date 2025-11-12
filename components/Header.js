@@ -76,7 +76,6 @@ export default function Header({ currentPage }) {
   });
 
   const dropdownCategories = [
-    { name: '🔥 Most Popular', path: '/category/most-popular' },
     { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark' },
     { name: 'Kitchens', path: '/category/kitchens' },
     { name: 'Art Galleries', path: '/category/art-galleries' },
@@ -87,11 +86,11 @@ export default function Header({ currentPage }) {
     { name: 'Libraries', path: '/category/libraries' },
     { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
     { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' },
-    { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds' }
+    { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds' },
+    { name: 'Most Popular', path: '/category/most-popular' }
   ];
 
   const allCategories = [
-    { name: '🔥 Most Popular', path: '/category/most-popular', key: 'most-popular' },
     { name: 'Bookshelves - Bright', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
     { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark', key: 'bookshelves-dark' },
     { name: 'Office Spaces', path: '/category/office-spaces', key: 'office-spaces' },
@@ -106,7 +105,8 @@ export default function Header({ currentPage }) {
     { name: 'Libraries', path: '/category/libraries', key: 'libraries' },
     { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds', key: 'bokeh-backgrounds' },
   { name: 'Christmas 🎄', path: '/category/christmas-backgrounds', key: 'christmas-backgrounds' },
-  { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' }
+  { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' },
+  { name: 'Most Popular', path: '/category/most-popular', key: 'most-popular' }
   ];
 
   return (
