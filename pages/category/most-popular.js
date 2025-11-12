@@ -201,17 +201,18 @@ export default function MostPopular() {
                       style={{ objectFit: 'cover' }}
                       unoptimized
                     />
-                    <div className={styles.rankBadge}>#{index + 1}</div>
+                    <div className={styles.hoverOverlay}>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleImageDownload(image);
+                        }}
+                        className={styles.hoverDownloadButton}
+                      >
+                        Download
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleImageDownload(image);
-                    }}
-                    className={styles.quickDownload}
-                  >
-                    Download
-                  </button>
                 </div>
               ))}
             </div>

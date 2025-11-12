@@ -297,3 +297,41 @@
     width: 100%;
   }
 }
+/* Hover Overlay Styles */
+.hoverOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.imageCard:hover .hoverOverlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hoverDownloadButton {
+  padding: 0.875rem 2rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.hoverDownloadButton:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
