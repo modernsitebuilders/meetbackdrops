@@ -25,12 +25,28 @@ export default function MostPopular() {
   } = useImageDownload(cloudinaryUrls);
 
   useEffect(() => {
-    // Fetch top 25 downloads from analytics
-    Promise.all([
-      fetch('/api/popular-downloads').then(res => res.json()),
-      fetch('/cloudinary-urls.json').then(res => res.json())
-    ])
-      .then(([analyticsData, urlsData]) => {
+    const fetchData = async () => {
+      try {
+        // Fetch analytics data
+        const analyticsResponse = await fetch('/api/popular-downloads');
+        
+        if (!analyticsResponse.ok) {
+          throw new Error('Failed to fetch analytics');
+        }
+        
+        const analyticsData = await analyticsResponse.json();
+        
+        // Fetch Cloudinary URLs (gracefully handle if missing)
+        let urlsData = {};
+        try {
+          const urlsResponse = await fetch('/cloudinary-urls.json');
+          if (urlsResponse.ok) {
+            urlsData = await urlsResponse.json();
+          }
+        } catch (err) {
+          console.log('Cloudinary URLs not found, will use fallback');
+        }
+        
         // Take top 25 and format for display
         const topImages = analyticsData.topDownloads.slice(0, 25).map(item => ({
           filename: item.filename,
@@ -38,14 +54,18 @@ export default function MostPopular() {
           downloadCount: item.count,
           webPath: `/images/${item.category}/${item.filename}`
         }));
+        
         setImages(topImages);
         setCloudinaryUrls(urlsData);
         setLoading(false);
-      })
-      .catch(err => {
+        
+      } catch (err) {
         console.error('Failed to load popular images:', err);
         setLoading(false);
-      });
+      }
+    };
+    
+    fetchData();
   }, []);
 
   const handleImageDownload = async (image) => {
