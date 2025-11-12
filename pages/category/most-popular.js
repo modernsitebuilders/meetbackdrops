@@ -93,9 +93,10 @@ export default function MostPopular() {
         })
       });
 
-      // Get Cloudinary URL
-      const baseFilename = image.filename.replace('.webp', '');
+      // Get Cloudinary URL - strip both .webp AND .png extensions
+      const baseFilename = image.filename.replace('.webp', '').replace('.png', '');
       const imageUrl = cloudinaryUrls[baseFilename];
+      console.log('Looking for:', baseFilename, 'Found:', imageUrl ? 'YES' : 'NO');
       
       if (imageUrl) {
         const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
