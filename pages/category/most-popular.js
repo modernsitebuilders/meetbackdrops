@@ -108,10 +108,10 @@ export default function MostPopular() {
         link.click();
         document.body.removeChild(link);
       } else {
-        // Fallback: direct download from local images
-        console.warn('No Cloudinary URL found, using direct download');
+        // Fallback: direct download from local webp images
+        console.warn('No Cloudinary URL found, using direct webp download');
         const link = document.createElement('a');
-        link.href = `/images/${image.category}/${baseFilename}.png`;
+        link.href = image.webPath; // This already has the .webp extension
         link.download = `StreamBackdrops-${baseFilename}.png`;
         document.body.appendChild(link);
         link.click();
