@@ -1,6 +1,6 @@
 // components/SocialProof.js
 import styles from '../styles/SocialProof.module.css';
-import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+import { TOTAL_IMAGES_FORMATTED, getTotalCategories } from '../lib/categories-config';
 
 
 export default function SocialProof() {
@@ -15,7 +15,7 @@ export default function SocialProof() {
         </div>
         
         <div className={styles.stat}>
-          <strong className={styles.statNumber}>13</strong>
+          <strong className={styles.statNumber}>{getTotalCategories()}</strong>
           <span className={styles.statLabel}>Categories</span>
         </div>
         

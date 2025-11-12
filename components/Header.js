@@ -76,9 +76,9 @@ export default function Header({ currentPage }) {
   });
 
   const dropdownCategories = [
+    { name: '🔥 Most Popular', path: '/category/most-popular' },
     { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark' },
     { name: 'Kitchens', path: '/category/kitchens' },
-    { name: 'Coffee Shops', path: '/category/coffee-shops' },
     { name: 'Art Galleries', path: '/category/art-galleries' },
     { name: 'Urban Lofts', path: '/category/urban-lofts' },
     { name: 'Gardens & Patios', path: '/category/gardens-patios' },
@@ -91,6 +91,7 @@ export default function Header({ currentPage }) {
   ];
 
   const allCategories = [
+    { name: '🔥 Most Popular', path: '/category/most-popular', key: 'most-popular' },
     { name: 'Bookshelves - Bright', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
     { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark', key: 'bookshelves-dark' },
     { name: 'Office Spaces', path: '/category/office-spaces', key: 'office-spaces' },

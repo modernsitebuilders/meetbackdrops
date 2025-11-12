@@ -27,6 +27,10 @@ export default function Footer() {
               Background Categories
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+  <Link href="/category/most-popular" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
+    Most Popular
+  </Link>
+  <div style={{ borderBottom: '1px solid #374151', margin: '0.5rem 0' }}></div>
   <Link href="/category/bookshelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
     Bookshelves - Bright
   </Link>
