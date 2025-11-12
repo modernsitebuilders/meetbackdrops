@@ -107,6 +107,15 @@ export default function MostPopular() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+      } else {
+        // Fallback: direct download from local images
+        console.warn('No Cloudinary URL found, using direct download');
+        const link = document.createElement('a');
+        link.href = `/images/${image.category}/${baseFilename}.png`;
+        link.download = `StreamBackdrops-${baseFilename}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
       
       // Show review modal
