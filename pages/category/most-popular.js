@@ -214,7 +214,8 @@ export default function MostPopular() {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       style={{ objectFit: 'cover' }}
-                      unoptimized
+                      loading={index < 6 ? 'eager' : 'lazy'}
+                      priority={index < 3}
                     />
                     <div className={styles.hoverOverlay}>
                       <button
