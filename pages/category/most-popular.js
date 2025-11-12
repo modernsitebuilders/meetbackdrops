@@ -64,7 +64,12 @@ export default function MostPopular() {
     fetchData();
   }, []);
 
-  const handleImageDownload = async (image) => {
+  const handleImageDownload = async (image, e) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    
     try {
       // Admin bypass
       if (typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true') {
