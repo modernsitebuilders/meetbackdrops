@@ -46,9 +46,10 @@ export default function MostPopular() {
           webPath: `/images/${item.category}/${item.filename}`
         }));
         
-        setImages(topImages);
+       setImages(topImages);
         setCloudinaryUrls(urlsData);
         setLoading(false);
+        console.log('Loaded images:', topImages.length, topImages);
         
       } catch (err) {
         console.error('Failed to load popular images:', err);
