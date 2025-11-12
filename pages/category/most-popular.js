@@ -39,12 +39,16 @@ export default function MostPopular() {
         }
         
         // Take top 25 and format for display
-        const topImages = analyticsData.topDownloads.slice(0, 25).map(item => ({
-          filename: item.filename,
-          category: item.category,
-          downloadCount: item.count,
-          webPath: `/images/${item.category}/${item.filename}`
-        }));
+        const topImages = analyticsData.topDownloads.slice(0, 25).map(item => {
+          // Convert .png filename to .webp for display
+          const webFilename = item.filename.replace('.png', '.webp');
+          return {
+            filename: item.filename, // Keep original for download tracking
+            category: item.category,
+            downloadCount: item.count,
+            webPath: `/images/${item.category}/${webFilename}` // Use .webp for display
+          };
+        });
         
        setImages(topImages);
         setCloudinaryUrls(urlsData);
