@@ -219,11 +219,11 @@ export default function MostPopular() {
         />
 
         {/* Review Modal */}
-        <ReviewModal 
-          show={showReviewModal}
-          onClose={() => setShowReviewModal(false)}
-          imageName={downloadedImage}
-        />
+        {showReviewModal && (
+          <ReviewModal 
+            onClose={() => setShowReviewModal(false)}
+          />
+        )}
 
 
         <section className={styles.whyPopular}>
