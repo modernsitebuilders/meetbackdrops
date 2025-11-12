@@ -3,9 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-import { useImageDownload } from '../../lib/useImageDownload';
 import ReviewModal from '../../components/ReviewModal';
-import RateLimitModal from '../../components/RateLimitModal';
 import styles from '../../styles/CategoryPage.module.css';
 
 export default function MostPopular() {
@@ -14,15 +12,8 @@ export default function MostPopular() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cloudinaryUrls, setCloudinaryUrls] = useState({});
 
-  const {
-    handleDownload,
-    showReviewModal,
-    setShowReviewModal,
-    downloadedImage,
-    showRateLimitModal,
-    setShowRateLimitModal,
-    rateLimitError
-  } = useImageDownload(cloudinaryUrls);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [downloadedImage, setDownloadedImage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +61,48 @@ export default function MostPopular() {
 
   const handleImageDownload = async (image) => {
     try {
-      await handleDownload(image, image.category);
+      // Admin bypass
+      if (typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true') {
+        const baseFilename = image.filename.replace('.webp', '');
+        const link = document.createElement('a');
+        link.href = `/images/${image.category}/${image.filename}`;
+        link.download = `StreamBackdrops-${baseFilename}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        return;
+      }
+
+      // Track download
+      await fetch('/api/track-download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          filename: image.filename.replace('.webp', '.png'),
+          category: image.category
+        })
+      });
+
+      // Get Cloudinary URL
+      const baseFilename = image.filename.replace('.webp', '');
+      const imageUrl = cloudinaryUrls[baseFilename];
+      
+      if (imageUrl) {
+        const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
+        const filename = `StreamBackdrops-${baseFilename}.png`;
+        const downloadUrl = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
+        
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      
+      // Show review modal
+      setDownloadedImage(image.filename);
+      setTimeout(() => setShowReviewModal(true), 2000);
+      
     } catch (error) {
       console.error('Download failed:', error);
     }
@@ -192,12 +224,6 @@ export default function MostPopular() {
           imageName={downloadedImage}
         />
 
-        {/* Rate Limit Modal */}
-        <RateLimitModal
-          show={showRateLimitModal}
-          onClose={() => setShowRateLimitModal(false)}
-          errorMessage={rateLimitError}
-        />
 
         <section className={styles.whyPopular}>
           <h2>Why These Backgrounds Are Popular</h2>
