@@ -236,6 +236,8 @@ export async function getStaticPaths() {
   const paths = [
     'bookshelves-bright',
     'bookshelves-dark',
+    'wall-shelves-bright',
+    'wall-shelves-dark',
     'office-spaces',
     'living-rooms',
     'kitchens',

@@ -15,7 +15,7 @@ import { getFAQs } from '../data/faqData';
 import { TOTAL_IMAGES_FORMATTED, CATEGORIES } from '../lib/categories-config';
 
 
-export default function Home({ popularImage }) {
+export default function Home() {
   const router = useRouter();
   
   useEffect(() => {
@@ -67,10 +67,10 @@ export default function Home({ popularImage }) {
             style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
           />
           <img 
-            src="/images/bookshelves-bright/well-lit-10.webp" 
-            alt="Bright bookshelf background"
-            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-          />
+  src="/images/wall-shelves-bright/wall-shelves-bright-10.webp" 
+  alt="Bright wall shelf background"
+  style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+/>
           <img 
             src="/images/coffee-shops/coffee-shop-07.webp" 
             alt="Coffee shop background"
@@ -150,7 +150,6 @@ export default function Home({ popularImage }) {
 
       {/* Category Cards Grid */}
       <div className={`${styles.categoryGrid} category-grid`}>
-        <Card href="/category/most-popular" title="Most Popular" description="Our most downloaded backgrounds consolidated for your convenience" imageSrc={popularImage || "/images/bookshelves-bright/well-lit-12.webp"} imageAlt="Most popular virtual backgrounds" navigate={navigate} priority={true} count="25" />
         <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/well-lit-12.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} count={CATEGORIES['bookshelves-bright'].count} />
         <Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/ambient-01.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} count={CATEGORIES['bookshelves-dark'].count} />
         <Card href="/category/office-spaces" title="Office Spaces" description="Modern office settings that convey professionalism and focus" imageSrc="/images/office-spaces/office-spaces-01.webp" imageAlt="Professional office space background for business calls" navigate={navigate} count={CATEGORIES['office-spaces'].count} />
@@ -172,48 +171,4 @@ export default function Home({ popularImage }) {
       <SocialProof />
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  try {
-    // Fetch popular downloads from your analytics
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://streambackdrops.com';
-    const response = await fetch(`${baseUrl}/api/popular-downloads`);
-    const data = await response.json();
-    
-    // Get top 25 downloads
-    const topDownloads = data.topDownloads?.slice(0, 25) || [];
-    
-    // Pick a random one from the top 25
-    if (topDownloads.length > 0) {
-      const randomIndex = Math.floor(Math.random() * topDownloads.length);
-      const randomDownload = topDownloads[randomIndex];
-      const popularImage = `/images/${randomDownload.category}/${randomDownload.filename}`;
-      
-      return {
-        props: {
-          popularImage
-        },
-        revalidate: 3600 // Refresh every hour
-      };
-    }
-    
-    // Fallback if no data
-    return {
-      props: {
-        popularImage: "/images/bookshelves-bright/well-lit-12.webp"
-      },
-      revalidate: 3600
-    };
-    
-  } catch (error) {
-    console.error('Failed to fetch popular image:', error);
-    // Fallback on error
-    return {
-      props: {
-        popularImage: "/images/bookshelves-bright/well-lit-12.webp"
-      },
-      revalidate: 3600
-    };
-  }
 }

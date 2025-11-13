@@ -7,8 +7,18 @@ export const categoryInfo = {
     description: 'Bright bookshelf backgrounds for professional video calls',
     seoDescription: 'Download free well-lit bookshelf virtual backgrounds for video calls. Bright, professional backgrounds.',
     images: Array.from({length: CATEGORIES['bookshelves-bright'].count}, (_, i) => ({
-      filename: `well-lit-${String(i + 1).padStart(2, '0')}.webp`,
+      filename: `bookshelves-bright-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Bright Bookshelf Background ${i + 1}`
+    }))
+  },
+  
+  'wall-shelves-bright': {
+    name: 'Wall Shelves - Bright',
+    description: 'Clean, minimalist wall shelf backgrounds with bright lighting',
+    seoDescription: 'Download free bright wall shelf virtual backgrounds for video calls. Minimalist floating shelf backgrounds.',
+    images: Array.from({length: CATEGORIES['wall-shelves-bright'].count}, (_, i) => ({
+      filename: `wall-shelves-bright-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Bright Wall Shelf Background ${i + 1}`
     }))
   },
   
@@ -17,8 +27,18 @@ export const categoryInfo = {
     description: 'Warm bookshelf backgrounds with ambient lighting for professional video calls',
     seoDescription: 'Download free ambient bookshelf virtual backgrounds for video calls. Atmospheric, sophisticated backgrounds.',
     images: Array.from({length: CATEGORIES['bookshelves-dark'].count}, (_, i) => ({
-      filename: `ambient-${String(i + 1).padStart(2, '0')}.webp`,
+      filename: `bookshelves-dark-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Dark Bookshelf Background ${i + 1}`
+    }))
+  },
+  
+  'wall-shelves-dark': {
+    name: 'Wall Shelves - Dark',
+    description: 'Sleek wall shelf backgrounds with warm ambient lighting',
+    seoDescription: 'Download free dark wall shelf virtual backgrounds for video calls. Warm ambient floating shelf backgrounds.',
+    images: Array.from({length: CATEGORIES['wall-shelves-dark'].count}, (_, i) => ({
+      filename: `wall-shelves-dark-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Dark Wall Shelf Background ${i + 1}`
     }))
   },
   

@@ -3,27 +3,30 @@ import { useState, useEffect } from 'react';
 
 export default function Header({ currentPage }) {
   const router = useRouter();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openNestedDropdown, setOpenNestedDropdown] = useState(null);
   const [hoveredNav, setHoveredNav] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Close dropdown when route changes
+  // Close dropdowns when route changes
   useEffect(() => {
-    setIsDropdownOpen(false);
+    setOpenDropdown(null);
+    setOpenNestedDropdown(null);
     setIsMobileMenuOpen(false);
   }, [router.asPath]);
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = () => {
-      setIsDropdownOpen(false);
+      setOpenDropdown(null);
+      setOpenNestedDropdown(null);
     };
 
-    if (isDropdownOpen) {
+    if (openDropdown) {
       document.addEventListener('click', handleClickOutside);
       return () => document.removeEventListener('click', handleClickOutside);
     }
-  }, [isDropdownOpen]);
+  }, [openDropdown]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -75,39 +78,124 @@ export default function Header({ currentPage }) {
     transition: 'background 0.2s ease'
   });
 
-  const dropdownCategories = [
-    { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark' },
+  // Navigation data structures
+  const bookshelvesItems = [
+    { name: 'Bright', path: '/category/bookshelves-bright' },
+    { name: 'Dark', path: '/category/bookshelves-dark' }
+  ];
+
+  const wallShelvesItems = [
+    { name: 'Bright', path: '/category/wall-shelves-bright' },
+    { name: 'Dark', path: '/category/wall-shelves-dark' }
+  ];
+
+  const collectionsItems = [
+    { name: 'Most Popular', path: '/category/most-popular' },
+    { name: 'Browse by Keywords', path: '/browse' },
+    { name: 'Recently Added', path: '/category/recently-added' }
+  ];
+
+  const seasonalItems = [
+    { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
+    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' }
+  ];
+
+  const moreCategories = [
     { name: 'Kitchens', path: '/category/kitchens' },
+    { name: 'Coffee Shops', path: '/category/coffee-shops' },
+    { 
+      name: 'Seasonal', 
+      path: null, 
+      isNested: true,
+      items: seasonalItems
+    },
     { name: 'Art Galleries', path: '/category/art-galleries' },
     { name: 'Urban Lofts', path: '/category/urban-lofts' },
     { name: 'Gardens & Patios', path: '/category/gardens-patios' },
     { name: 'Historic Spaces', path: '/category/historic-spaces' },
     { name: 'Nature & Landscapes', path: '/category/nature-landscapes' },
     { name: 'Libraries', path: '/category/libraries' },
-    { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
-    { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' },
-    { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds' },
-    { name: 'Most Popular', path: '/category/most-popular' }
+    { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds' }
   ];
 
-  const allCategories = [
-    { name: 'Bookshelves - Bright', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
-    { name: 'Bookshelves - Dark', path: '/category/bookshelves-dark', key: 'bookshelves-dark' },
-    { name: 'Office Spaces', path: '/category/office-spaces', key: 'office-spaces' },
-    { name: 'Living Rooms', path: '/category/living-rooms', key: 'living-rooms' },
-    { name: 'Kitchens', path: '/category/kitchens', key: 'kitchens' },
-    { name: 'Coffee Shops', path: '/category/coffee-shops', key: 'coffee-shops' },
-    { name: 'Art Galleries', path: '/category/art-galleries', key: 'art-galleries' },
-    { name: 'Urban Lofts', path: '/category/urban-lofts', key: 'urban-lofts' },
-    { name: 'Gardens & Patios', path: '/category/gardens-patios', key: 'gardens-patios' },
-    { name: 'Historic Spaces', path: '/category/historic-spaces', key: 'historic-spaces' },
-    { name: 'Nature & Landscapes', path: '/category/nature-landscapes', key: 'nature-landscapes' },
-    { name: 'Libraries', path: '/category/libraries', key: 'libraries' },
-    { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds', key: 'bokeh-backgrounds' },
-  { name: 'Christmas 🎄', path: '/category/christmas-backgrounds', key: 'christmas-backgrounds' },
-  { name: 'Halloween 🎃', path: '/category/halloween-backgrounds', key: 'halloween-backgrounds' },
-  { name: 'Most Popular', path: '/category/most-popular', key: 'most-popular' }
-  ];
+  const renderDropdown = (items, dropdownKey) => (
+    <div style={{
+      position: 'absolute',
+      top: '100%',
+      left: 0,
+      marginTop: '0.5rem',
+      background: 'white',
+      border: '1px solid #e5e7eb',
+      borderRadius: '0.5rem',
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+      padding: '0.5rem',
+      minWidth: '200px',
+      zIndex: 1000
+    }}>
+      {items.map((item, index) => (
+        <div key={index} style={{ position: 'relative' }}>
+          {item.isNested ? (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenNestedDropdown(openNestedDropdown === item.name ? null : item.name);
+                }}
+                style={{
+                  ...dropdownItemStyle(false),
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}
+                onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                onMouseLeave={(e) => e.target.style.background = 'transparent'}
+              >
+                {item.name}
+                <span style={{ marginLeft: '0.5rem' }}>›</span>
+              </button>
+              
+              {openNestedDropdown === item.name && (
+                <div style={{
+                  position: 'absolute',
+                  right: '100%',  // ← CHANGED FROM left to right
+                  top: 0,
+                  marginRight: '0.25rem',  // ← CHANGED FROM marginLeft
+                  background: 'white',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '0.5rem',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  padding: '0.5rem',
+                  minWidth: '180px',
+                  zIndex: 1001
+                }}>
+                  {item.items.map((subItem, subIndex) => (
+                    <button
+                      key={subIndex}
+                      onClick={() => navigate(subItem.path)}
+                      style={dropdownItemStyle(false)}
+                      onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                      onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                    >
+                      {subItem.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            <button
+              onClick={() => navigate(item.path)}
+              style={dropdownItemStyle(false)}
+              onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+              onMouseLeave={(e) => e.target.style.background = 'transparent'}
+            >
+              {item.name}
+            </button>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <>
@@ -169,29 +257,86 @@ export default function Header({ currentPage }) {
             alignItems: 'center'
           }}
           className="desktop-nav">
-            {/* Featured Categories */}
-            {[
-              { name: 'Bookshelves-Bright', path: '/category/bookshelves-bright', key: 'bookshelves-bright' },
-              { name: 'Office Spaces', path: '/category/office-spaces', key: 'office-spaces' },
-              { name: 'Living Rooms', path: '/category/living-rooms', key: 'living-rooms' }
-            ].map((item) => (
-              <button 
-                key={item.key}
-                onClick={() => navigate(item.path)}
-                style={navButtonStyle(currentPage === item.key, hoveredNav === item.key)}
-                onMouseEnter={() => setHoveredNav(item.key)}
+            
+            {/* Bookshelves Dropdown */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(openDropdown === 'bookshelves' ? null : 'bookshelves');
+                  setOpenNestedDropdown(null);
+                }}
+                style={{
+                  ...navButtonStyle(
+                    currentPage === 'bookshelves-bright' || currentPage === 'bookshelves-dark',
+                    hoveredNav === 'bookshelves'
+                  ),
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}
+                onMouseEnter={() => setHoveredNav('bookshelves')}
                 onMouseLeave={() => setHoveredNav(null)}
               >
-                {item.name}
+                Bookshelves
+                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
               </button>
-            ))}
-            
+              {openDropdown === 'bookshelves' && renderDropdown(bookshelvesItems, 'bookshelves')}
+            </div>
+
+{/* Wall Shelves Dropdown */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(openDropdown === 'wall-shelves' ? null : 'wall-shelves');
+                  setOpenNestedDropdown(null);
+                }}
+                style={{
+                  ...navButtonStyle(
+                    currentPage === 'wall-shelves-bright' || currentPage === 'wall-shelves-dark',
+                    hoveredNav === 'wall-shelves'
+                  ),
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}
+                onMouseEnter={() => setHoveredNav('wall-shelves')}
+                onMouseLeave={() => setHoveredNav(null)}
+              >
+                Wall Shelves
+                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+              </button>
+              {openDropdown === 'wall-shelves' && renderDropdown(wallShelvesItems, 'wall-shelves')}
+            </div>
+
+            {/* Office Spaces */}
+            <button 
+              onClick={() => navigate('/category/office-spaces')}
+              style={navButtonStyle(currentPage === 'office-spaces', hoveredNav === 'office-spaces')}
+              onMouseEnter={() => setHoveredNav('office-spaces')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
+              Office Spaces
+            </button>
+
+            {/* Living Rooms */}
+            <button 
+              onClick={() => navigate('/category/living-rooms')}
+              style={navButtonStyle(currentPage === 'living-rooms', hoveredNav === 'living-rooms')}
+              onMouseEnter={() => setHoveredNav('living-rooms')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
+              Living Rooms
+            </button>
+
             {/* More Categories Dropdown */}
             <div style={{ position: 'relative' }}>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  setIsDropdownOpen(!isDropdownOpen);
+                  setOpenDropdown(openDropdown === 'more' ? null : 'more');
+                  setOpenNestedDropdown(null);
                 }}
                 style={{
                   ...navButtonStyle(false, hoveredNav === 'more'),
@@ -202,41 +347,36 @@ export default function Header({ currentPage }) {
                 onMouseEnter={() => setHoveredNav('more')}
                 onMouseLeave={() => setHoveredNav(null)}
               >
-                More Categories <span style={{ fontSize: '0.7rem' }}>▼</span>
+                More Categories
+                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
               </button>
-              
-              {isDropdownOpen && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '100%',
-                    right: 0,
-                    marginTop: '0.5rem',
-                    background: 'white',
-                    borderRadius: '0.5rem',
-                    boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
-                    padding: '0.5rem',
-                    minWidth: '200px',
-                    zIndex: 10002,
-                    border: '1px solid #e5e7eb'
-                  }}
-                >
-                  {dropdownCategories.map((category, index) => (
-                    <button 
-                      key={category.path}
-                      onClick={() => navigate(category.path)}
-                      style={dropdownItemStyle(hoveredNav === `dropdown-${index}`)}
-                      onMouseEnter={() => setHoveredNav(`dropdown-${index}`)}
-                      onMouseLeave={() => setHoveredNav(null)}
-                    >
-                      {category.name}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {openDropdown === 'more' && renderDropdown(moreCategories, 'more')}
             </div>
-            
-            {/* Blog Link */}
+
+            {/* Collections Dropdown */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(openDropdown === 'collections' ? null : 'collections');
+                  setOpenNestedDropdown(null);
+                }}
+                style={{
+                  ...navButtonStyle(false, hoveredNav === 'collections'),
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}
+                onMouseEnter={() => setHoveredNav('collections')}
+                onMouseLeave={() => setHoveredNav(null)}
+              >
+                Collections
+                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+              </button>
+              {openDropdown === 'collections' && renderDropdown(collectionsItems, 'collections')}
+            </div>
+
+            {/* Blog */}
             <button 
               onClick={() => navigate('/blog')}
               style={navButtonStyle(currentPage === 'blog', hoveredNav === 'blog')}
@@ -245,193 +385,325 @@ export default function Header({ currentPage }) {
             >
               Blog
             </button>
-
-            {/* Browse Link */}
-            <button 
-              onClick={() => navigate('/browse')}
-              style={navButtonStyle(currentPage === 'browse', hoveredNav === 'browse')}
-              onMouseEnter={() => setHoveredNav('browse')}
-              onMouseLeave={() => setHoveredNav(null)}
-            >
-              Browse
-            </button>
-         </nav>
+          </nav>
         </div>
-       </header>
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <>
-            {/* Dark Overlay */}
-            <div
-              onClick={() => setIsMobileMenuOpen(false)}
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'rgba(0, 0, 0, 0.5)',
-                zIndex: 99998
-              }}
-            />
-            
-            {/* Slide-in Menu */}
-            <div style={{
+      </header>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
               position: 'fixed',
               top: 0,
+              left: 0,
               right: 0,
               bottom: 0,
-              width: '80%',
-              maxWidth: '300px',
-              background: 'white',
-              zIndex: 99999,
-              overflowY: 'auto',
-              boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.1)',
-              animation: 'slideIn 0.3s ease-out'
+              background: 'rgba(0, 0, 0, 0.5)',
+              zIndex: 99998
+            }}
+          />
+          
+          {/* Slide-in Menu */}
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: '80%',
+            maxWidth: '300px',
+            background: 'white',
+            zIndex: 99999,
+            overflowY: 'auto',
+            boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.1)',
+            animation: 'slideIn 0.3s ease-out'
+          }}>
+            {/* Close Button */}
+            <div style={{
+              padding: '1rem',
+              borderBottom: '1px solid #e5e7eb',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
             }}>
-              {/* Close Button */}
-              <div style={{
-                padding: '1rem',
-                borderBottom: '1px solid #e5e7eb',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-              }}>
-                <span style={{ fontWeight: 'bold', color: '#2563eb' }}>Menu</span>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '1.5rem',
-                    cursor: 'pointer',
-                    color: '#6b7280'
-                  }}
-                >
-                  ✕
-                </button>
-              </div>
+              <span style={{ fontWeight: 'bold', color: '#2563eb' }}>Menu</span>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                  color: '#6b7280'
+                }}
+              >
+                ✕
+              </button>
+            </div>
 
-              {/* Menu Items */}
-              <div style={{ padding: '0.5rem' }}>
-                {/* Blog Link in Mobile Menu */}
-                <button
-                  onClick={() => {
-                    navigate('/blog');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    padding: '1rem',
-                    textAlign: 'left',
-                    background: currentPage === 'blog' ? '#eff6ff' : 'transparent',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: currentPage === 'blog' ? '#2563eb' : '#374151',
-                    fontWeight: currentPage === 'blog' ? '600' : '500',
-                    fontSize: '0.95rem',
-                    cursor: 'pointer',
-                    fontFamily: 'inherit',
-                    transition: 'background 0.2s ease',
-                    marginBottom: '0.5rem',
-                    borderBottom: '1px solid #e5e7eb',
-                    paddingBottom: '1rem'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (currentPage !== 'blog') {
-                      e.target.style.background = '#f3f4f6';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (currentPage !== 'blog') {
-                      e.target.style.background = 'transparent';
-                    }
-                  }}
-                >
-                  📝 Blog
-                </button>
-
-                {/* Browse Link in Mobile Menu */}
-                <button
-                  onClick={() => {
-                    navigate('/browse');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    padding: '1rem',
-                    textAlign: 'left',
-                    background: currentPage === 'browse' ? '#eff6ff' : 'transparent',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: currentPage === 'browse' ? '#2563eb' : '#374151',
-                    fontWeight: currentPage === 'browse' ? '600' : '500',
-                    fontSize: '0.95rem',
-                    cursor: 'pointer',
-                    fontFamily: 'inherit',
-                    transition: 'background 0.2s ease',
-                    marginBottom: '0.5rem',
-                    borderBottom: '1px solid #e5e7eb',
-                    paddingBottom: '1rem'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (currentPage !== 'browse') {
-                      e.target.style.background = '#f3f4f6';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (currentPage !== 'browse') {
-                      e.target.style.background = 'transparent';
-                    }
-                  }}
-                >
-                  Browse
-                </button>
-                
-                {allCategories.map((category) => (
+            {/* Menu Items */}
+            <div style={{ padding: '0.5rem' }}>
+              {/* Bookshelves Section */}
+              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>BOOKSHELVES</div>
+                {bookshelvesItems.map((item, index) => (
                   <button
-                    key={category.key}
+                    key={index}
                     onClick={() => {
-                      navigate(category.path);
+                      navigate(item.path);
                       setIsMobileMenuOpen(false);
                     }}
                     style={{
                       display: 'block',
                       width: '100%',
-                      padding: '1rem',
+                      padding: '0.75rem 1rem',
                       textAlign: 'left',
-                      background: currentPage === category.key ? '#eff6ff' : 'transparent',
+                      background: 'transparent',
                       border: 'none',
                       borderRadius: '0.5rem',
-                      color: currentPage === category.key ? '#2563eb' : '#374151',
-                      fontWeight: currentPage === category.key ? '600' : '500',
+                      color: '#374151',
+                      fontWeight: '500',
                       fontSize: '0.95rem',
                       cursor: 'pointer',
                       fontFamily: 'inherit',
-                      transition: 'background 0.2s ease',
-                      marginBottom: '0.25rem'
+                      transition: 'background 0.2s ease'
                     }}
-                    onMouseEnter={(e) => {
-                      if (currentPage !== category.key) {
-                        e.target.style.background = '#f3f4f6';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (currentPage !== category.key) {
-                        e.target.style.background = 'transparent';
-                      }
-                    }}
+                    onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                    onMouseLeave={(e) => e.target.style.background = 'transparent'}
                   >
-                    {category.name}
+                    {item.name}
                   </button>
                 ))}
               </div>
+
+              {/* Wall Shelves Section */}
+              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>WALL SHELVES</div>
+                {wallShelvesItems.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      navigate(item.path);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      textAlign: 'left',
+                      background: 'transparent',
+                      border: 'none',
+                      borderRadius: '0.5rem',
+                      color: '#374151',
+                      fontWeight: '500',
+                      fontSize: '0.95rem',
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      transition: 'background 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                    onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Featured Categories */}
+              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                <button
+                  onClick={() => {
+                    navigate('/category/office-spaces');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    textAlign: 'left',
+                    background: 'transparent',
+                    border: 'none',
+                    borderRadius: '0.5rem',
+                    color: '#374151',
+                    fontWeight: '500',
+                    fontSize: '0.95rem',
+                    cursor: 'pointer',
+                    fontFamily: 'inherit',
+                    transition: 'background 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                  onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                >
+                  Office Spaces
+                </button>
+                <button
+                  onClick={() => {
+                    navigate('/category/living-rooms');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    textAlign: 'left',
+                    background: 'transparent',
+                    border: 'none',
+                    borderRadius: '0.5rem',
+                    color: '#374151',
+                    fontWeight: '500',
+                    fontSize: '0.95rem',
+                    cursor: 'pointer',
+                    fontFamily: 'inherit',
+                    transition: 'background 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                  onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                >
+                  Living Rooms
+                </button>
+              </div>
+
+              {/* Collections */}
+              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>COLLECTIONS</div>
+                {collectionsItems.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      navigate(item.path);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      textAlign: 'left',
+                      background: 'transparent',
+                      border: 'none',
+                      borderRadius: '0.5rem',
+                      color: '#374151',
+                      fontWeight: '500',
+                      fontSize: '0.95rem',
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      transition: 'background 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                    onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Other Categories */}
+              <div style={{ marginBottom: '1rem' }}>
+                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>MORE CATEGORIES</div>
+                {moreCategories.map((item, index) => (
+                  item.isNested ? (
+                    <div key={index}>
+                      <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem', marginTop: '0.5rem' }}>{item.name.toUpperCase()}</div>
+                      {item.items.map((subItem, subIndex) => (
+                        <button
+                          key={subIndex}
+                          onClick={() => {
+                            navigate(subItem.path);
+                            setIsMobileMenuOpen(false);
+                          }}
+                          style={{
+                            display: 'block',
+                            width: '100%',
+                            padding: '0.75rem 1rem 0.75rem 2rem',
+                            textAlign: 'left',
+                            background: 'transparent',
+                            border: 'none',
+                            borderRadius: '0.5rem',
+                            color: '#374151',
+                            fontWeight: '500',
+                            fontSize: '0.95rem',
+                            cursor: 'pointer',
+                            fontFamily: 'inherit',
+                            transition: 'background 0.2s ease'
+                          }}
+                          onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                          onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                        >
+                          {subItem.name}
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        navigate(item.path);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      style={{
+                        display: 'block',
+                        width: '100%',
+                        padding: '0.75rem 1rem',
+                        textAlign: 'left',
+                        background: 'transparent',
+                        border: 'none',
+                        borderRadius: '0.5rem',
+                        color: '#374151',
+                        fontWeight: '500',
+                        fontSize: '0.95rem',
+                        cursor: 'pointer',
+                        fontFamily: 'inherit',
+                        transition: 'background 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                      onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                    >
+                      {item.name}
+                    </button>
+                  )
+                ))}
+              </div>
+
+              {/* Blog */}
+              <button
+                onClick={() => {
+                  navigate('/blog');
+                  setIsMobileMenuOpen(false);
+                }}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  padding: '1rem',
+                  textAlign: 'left',
+                  background: currentPage === 'blog' ? '#eff6ff' : 'transparent',
+                  border: 'none',
+                  borderRadius: '0.5rem',
+                  color: currentPage === 'blog' ? '#2563eb' : '#374151',
+                  fontWeight: currentPage === 'blog' ? '600' : '500',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  transition: 'background 0.2s ease',
+                  marginTop: '0.5rem'
+                }}
+                onMouseEnter={(e) => {
+                  if (currentPage !== 'blog') {
+                    e.target.style.background = '#f3f4f6';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (currentPage !== 'blog') {
+                    e.target.style.background = 'transparent';
+                  }
+                }}
+              >
+                📝 Blog
+              </button>
             </div>
-          </>
-        )}
-      
+          </div>
+        </>
+      )}
 
       {/* Mobile Styles */}
       <style jsx global>{`
