@@ -7,6 +7,7 @@ export default function ImageLookup() {
   const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState('');
 
   const handleLookup = async () => {
     if (!filename.trim()) {
@@ -17,27 +18,58 @@ export default function ImageLookup() {
     setLoading(true);
     setError('');
     setImageUrl('');
+    setCategory('');
 
     try {
       // Remove .png or .webp extension if user added it
-      const cleanFilename = filename.replace(/\.(png|webp)$/i, '');
+      const cleanFilename = filename.trim().replace(/\.(png|webp)$/i, '');
       
-      // Try to fetch from Cloudinary
-      const cloudinaryUrl = `https://res.cloudinary.com/dnhju6mhg/image/upload/v1/${cleanFilename}.png`;
+      // Determine category from filename
+      let cat = '';
+      if (cleanFilename.startsWith('bookshelves-bright-')) cat = 'bookshelves-bright';
+      else if (cleanFilename.startsWith('bookshelves-dark-')) cat = 'bookshelves-dark';
+      else if (cleanFilename.startsWith('wall-shelves-bright-')) cat = 'wall-shelves-bright';
+      else if (cleanFilename.startsWith('wall-shelves-dark-')) cat = 'wall-shelves-dark';
+      else if (cleanFilename.startsWith('office-spaces-')) cat = 'office-spaces';
+      else if (cleanFilename.startsWith('living-room-')) cat = 'living-rooms';
+      else if (cleanFilename.startsWith('kitchen-')) cat = 'kitchens';
+      else if (cleanFilename.startsWith('coffee-shop-')) cat = 'coffee-shops';
+      else if (cleanFilename.startsWith('art-gallery-')) cat = 'art-galleries';
+      else if (cleanFilename.startsWith('urban-loft-')) cat = 'urban-lofts';
+      else if (cleanFilename.startsWith('garden-patio-')) cat = 'gardens-patios';
+      else if (cleanFilename.startsWith('historic-')) cat = 'historic-spaces';
+      else if (cleanFilename.startsWith('nature-')) cat = 'nature-landscapes';
+      else if (cleanFilename.startsWith('library-')) cat = 'libraries';
+      else if (cleanFilename.startsWith('bokeh-')) cat = 'bokeh-backgrounds';
+      else if (cleanFilename.startsWith('christmas-')) cat = 'christmas-backgrounds';
+      else if (cleanFilename.startsWith('halloween-')) cat = 'halloween-backgrounds';
       
-      // Check if image exists
-      const response = await fetch(cloudinaryUrl, { method: 'HEAD' });
-      
-      if (response.ok) {
-        setImageUrl(cloudinaryUrl);
-      } else {
-        setError('Image not found. Make sure the filename is correct (without .png or .webp extension)');
+      if (!cat) {
+        setError('Could not determine category from filename. Make sure it starts with the category prefix.');
+        setLoading(false);
+        return;
       }
+      
+      setCategory(cat);
+      // Use the local WebP file
+      const webpUrl = `/images/${cat}/${cleanFilename}.webp`;
+      setImageUrl(webpUrl);
+      
     } catch (err) {
       setError('Error looking up image. Please try again.');
-    } finally {
       setLoading(false);
     }
+  };
+
+  const handleImageLoad = () => {
+    setLoading(false);
+    setError('');
+  };
+
+  const handleImageError = () => {
+    setLoading(false);
+    setImageUrl('');
+    setError('Image not found. Make sure the filename is correct.');
   };
 
   const handleKeyPress = (e) => {
@@ -88,7 +120,7 @@ export default function ImageLookup() {
             value={filename}
             onChange={(e) => setFilename(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="e.g., office-spaces-01"
+            placeholder="e.g., wall-shelves-dark-04"
             style={{
               flex: 1,
               padding: '12px 16px',
@@ -145,30 +177,54 @@ export default function ImageLookup() {
             padding: '20px',
             backgroundColor: '#f9fafb'
           }}>
+            {category && (
+              <div style={{
+                fontSize: '14px',
+                color: '#6b7280',
+                marginBottom: '12px',
+                fontWeight: '600'
+              }}>
+                Category: {category}
+              </div>
+            )}
+            
             <div style={{
               backgroundColor: 'white',
               borderRadius: '8px',
               overflow: 'hidden',
-              marginBottom: '16px'
+              marginBottom: '16px',
+              display: loading ? 'flex' : 'block',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: loading ? '200px' : 'auto'
             }}>
+              {loading && (
+                <div style={{ textAlign: 'center', color: '#6b7280' }}>
+                  Loading image...
+                </div>
+              )}
               <img
                 src={imageUrl}
                 alt={filename}
+                onLoad={handleImageLoad}
+                onError={handleImageError}
                 style={{
                   width: '100%',
                   height: 'auto',
-                  display: 'block'
+                  display: loading ? 'none' : 'block'
                 }}
               />
             </div>
             
-            <div style={{
-              fontSize: '14px',
-              color: '#6b7280',
-              wordBreak: 'break-all'
-            }}>
-              <strong>URL:</strong> {imageUrl}
-            </div>
+            {!loading && (
+              <div style={{
+                fontSize: '14px',
+                color: '#6b7280',
+                wordBreak: 'break-all'
+              }}>
+                <strong>Path:</strong> {imageUrl}
+              </div>
+            )}
           </div>
         )}
       </div>
