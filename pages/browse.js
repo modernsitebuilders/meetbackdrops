@@ -24,7 +24,7 @@ export default function BrowsePage() {
   const searchCategories = {
     'Style': ['Modern', 'Traditional', 'Minimalist', 'Luxury', 'Cozy', 'Professional', 'Industrial'],
     'Lighting': ['Bright', 'Dark', 'Natural Light', 'Warm'],
-    'Features': ['Plants', 'Wood', 'City View', 'Office', 'Fireplace', 'Windows']
+    'Features': ['Brick', 'Plants', 'Wood', 'City View', 'Office', 'Fireplace', 'Windows']
   };
 
   // Trigger search when keywords change
