@@ -22,71 +22,77 @@ export default function Footer() {
           marginBottom: '2rem',
           textAlign: 'left'
         }}>
-          <div>
+          <div style={{ gridColumn: 'span 2' }}>
             <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
               Background Categories
             </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-  <Link href="/category/most-popular" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
-    Most Popular
-  </Link>
-  <span style={{ color: '#9ca3af', margin: '0 0.25rem' }}>•</span>
-  <Link href="/category/recently-added" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
-    Recently Added
-  </Link>
-  <div style={{ borderBottom: '1px solid #374151', margin: '0.5rem 0' }}></div>
-  <Link href="/category/bookshelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Bookshelves - Bright
-  </Link>
-  <Link href="/category/bookshelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Bookshelves - Dark
-  </Link>
-  <Link href="/category/wall-shelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Wall Shelves - Bright
-  </Link>
-  <Link href="/category/wall-shelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Wall Shelves - Dark
-  </Link>
-  <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Office Spaces
-  </Link>
-  <Link href="/category/living-rooms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Living Rooms
-  </Link>
-  <Link href="/category/kitchens" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Kitchens
-  </Link>
-  <Link href="/category/coffee-shops" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Coffee Shops
-  </Link>
-  <Link href="/category/art-galleries" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Art Galleries
-  </Link>
-  <Link href="/category/urban-lofts" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Urban Lofts
-  </Link>
-  <Link href="/category/gardens-patios" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Gardens & Patios
-  </Link>
-  <Link href="/category/historic-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Historic Spaces
-  </Link>
-  <Link href="/category/nature-landscapes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Nature & Landscapes
-  </Link>
-  <Link href="/category/libraries" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Libraries
-  </Link>
-  <Link href="/category/bokeh-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Bokeh Backgrounds
-  </Link>
-  <Link href="/category/christmas-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Christmas 🎄
-  </Link>
-  <Link href="/category/halloween-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-    Halloween 🎃
-  </Link>
-</div>
+            <div style={{ marginBottom: '1rem' }}>
+              <Link href="/category/most-popular" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
+                Most Popular
+              </Link>
+              <span style={{ color: '#9ca3af', margin: '0 0.5rem' }}>•</span>
+              <Link href="/category/recently-added" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
+                Recently Added
+              </Link>
+            </div>
+            <div style={{ borderBottom: '1px solid #374151', marginBottom: '1rem' }}></div>
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: '1fr 1fr', 
+              gap: '0.5rem 2rem' 
+            }}>
+              <Link href="/category/bookshelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Bookshelves - Bright
+              </Link>
+              <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Office Spaces
+              </Link>
+              <Link href="/category/bookshelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Bookshelves - Dark
+              </Link>
+              <Link href="/category/living-rooms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Living Rooms
+              </Link>
+              <Link href="/category/wall-shelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Wall Shelves - Bright
+              </Link>
+              <Link href="/category/kitchens" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Kitchens
+              </Link>
+              <Link href="/category/wall-shelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Wall Shelves - Dark
+              </Link>
+              <Link href="/category/coffee-shops" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Coffee Shops
+              </Link>
+              <Link href="/category/art-galleries" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Art Galleries
+              </Link>
+              <Link href="/category/urban-lofts" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Urban Lofts
+              </Link>
+              <Link href="/category/gardens-patios" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Gardens & Patios
+              </Link>
+              <Link href="/category/historic-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Historic Spaces
+              </Link>
+              <Link href="/category/nature-landscapes" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Nature & Landscapes
+              </Link>
+              <Link href="/category/libraries" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Libraries
+              </Link>
+              <Link href="/category/bokeh-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Bokeh Backgrounds
+              </Link>
+              <Link href="/category/christmas-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Christmas 🎄
+              </Link>
+              <Link href="/category/halloween-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Halloween 🎃
+              </Link>
+            </div>
           </div>
           
           <div>
