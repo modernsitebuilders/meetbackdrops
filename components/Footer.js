@@ -30,12 +30,22 @@ export default function Footer() {
   <Link href="/category/most-popular" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
     Most Popular
   </Link>
+  <span style={{ color: '#9ca3af', margin: '0 0.25rem' }}>•</span>
+  <Link href="/category/recently-added" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
+    Recently Added
+  </Link>
   <div style={{ borderBottom: '1px solid #374151', margin: '0.5rem 0' }}></div>
   <Link href="/category/bookshelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
     Bookshelves - Bright
   </Link>
   <Link href="/category/bookshelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
     Bookshelves - Dark
+  </Link>
+  <Link href="/category/wall-shelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Wall Shelves - Bright
+  </Link>
+  <Link href="/category/wall-shelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+    Wall Shelves - Dark
   </Link>
   <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
     Office Spaces
