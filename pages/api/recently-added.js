@@ -23,9 +23,12 @@ export default async function handler(req, res) {
 
     // Parse images and extract category from filename pattern
     const allRecentImages = result.resources
-      .filter(img => img.public_id && !img.public_id.includes('/'))
+      .filter(img => img.public_id) // FIXED: Allow images in folders
       .map(img => {
-        const filename = img.public_id;
+        // FIXED: Get filename from folder path if needed
+        const filename = img.public_id.includes('/') 
+          ? img.public_id.split('/').pop() 
+          : img.public_id;
         
         // Determine category from filename pattern
         let category = 'unknown';
