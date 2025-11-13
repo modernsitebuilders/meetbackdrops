@@ -11,7 +11,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
         color: '#111827',
         marginBottom: '1rem'
       }}>
-        Browse {images.length} Free HD Backgrounds
+        Browse {images.length} Free Backgrounds
       </h2>
       
       <p style={{
@@ -53,7 +53,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
                   "@type": "ImageObject",
                   "contentUrl": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
                   "name": image.title,
-                  "description": `Free ${image.title} - HD virtual background for Zoom, Teams, and Google Meet`,
+                  "description": `Free ${image.title} - virtual background for Zoom, Teams, and Google Meet`,
                   "thumbnail": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
                   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
                   "acquireLicensePage": "https://streambackdrops.com/about",
@@ -77,7 +77,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
             }}>
               <Image
                 src={`/images/${folderMap[slug]}/${image.filename}`}
-                alt={`${image.title} - Free HD virtual background for Zoom, Teams & Google Meet`}
+                alt={`${image.title} - Free virtual background for Zoom, Teams & Google Meet`}
                 title={`Download ${image.title} - Professional video call background`}
                 width={1456}
                 height={816}

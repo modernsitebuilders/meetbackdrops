@@ -269,7 +269,7 @@ export const halloweenBackgroundsContent = () => (
               borderLeft: '4px solid #f59e0b',
               borderRadius: '0.5rem'
             }}>
-              <strong>All backgrounds are HD quality</strong> and work perfectly with Zoom, Microsoft Teams, Google Meet, and any video platform that supports custom backgrounds.
+              <strong>All backgrounds are top quality</strong> and work perfectly with Zoom, Microsoft Teams, Google Meet, and any video platform that supports custom backgrounds.
             </p>
           </section>
 

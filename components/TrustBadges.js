@@ -6,7 +6,7 @@ export default function TrustBadges() {
     <div className={styles.container}>
       <div className={styles.badge}>
         <span className={styles.icon}>✓</span>
-        <span>Free HD Downloads</span>
+        <span>Free Downloads</span>
       </div>
       <div className={styles.badge}>
         <span className={styles.icon}>📹</span>

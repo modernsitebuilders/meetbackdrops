@@ -24,7 +24,7 @@ export default function CategorySEOContent({ category }) {
         fontSize: '1.05rem',
         marginBottom: '1.5rem'
       }}>
-        Download free {category.name.toLowerCase()} virtual backgrounds optimized for Zoom, Microsoft Teams, Google Meet, and other video conferencing platforms. These professional HD backgrounds are designed specifically for video calls, providing excellent edge detection and clear image quality even with standard webcam setups.
+        Download free {category.name.toLowerCase()} virtual backgrounds optimized for Zoom, Microsoft Teams, Google Meet, and other video conferencing platforms. These professional backgrounds are designed specifically for video calls, providing excellent edge detection and clear image quality even with standard webcam setups.
       </p>
       <h3 style={{
         fontSize: '1.35rem',

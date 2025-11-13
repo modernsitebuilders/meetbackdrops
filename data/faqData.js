@@ -54,7 +54,7 @@ export const faqData = {
     },
     {
       question: "Are these dark bookshelf images high quality?",
-      answer: "All our backgrounds are HD quality (1456×816 or higher) and optimized specifically for video conferencing platforms like Zoom and Teams."
+      answer: "All our backgrounds are high quality (1456×816 or higher) and optimized specifically for video conferencing platforms like Zoom and Teams."
     }
   ],
 
@@ -129,7 +129,7 @@ export const faqData = {
     },
     {
       question: "What's included in your art gallery collection?",
-      answer: "Our collection includes modern galleries, classic museum spaces, and minimalist exhibition halls - all free to download in HD quality."
+      answer: "Our collection includes modern galleries, classic museum spaces, and minimalist exhibition halls - all free to download in high quality."
     }
   ],
 
@@ -185,7 +185,7 @@ export const faqData = {
     },
     {
       question: "What types of landscapes do you offer?",
-      answer: "Our collection includes mountains, forests, deserts, coastlines, scenic vistas, and peaceful natural environments - all in HD quality."
+      answer: "Our collection includes mountains, forests, deserts, coastlines, scenic vistas, and peaceful natural environments - all in high quality."
     },
     {
       question: "Can nature backgrounds be distracting?",
@@ -280,7 +280,7 @@ export const faqData = {
   "best-virtual-background-sites-2025": [
     {
       question: "What's the best site for free virtual backgrounds?",
-      answer: "StreamBackdrops offers 337+ free HD virtual backgrounds specifically optimized for video calls, with no signup required and no watermarks. Unlike stock photo sites, all our backgrounds are curated for professional video conferencing."
+      answer: "StreamBackdrops offers 337+ free high quality virtual backgrounds specifically optimized for video calls, with no signup required and no watermarks. Unlike stock photo sites, all our backgrounds are curated for professional video conferencing."
     },
     {
       question: "Are stock photo sites good for virtual backgrounds?",
@@ -356,7 +356,7 @@ export const faqData = {
   "background-mistakes": [
     {
       question: "Why does my virtual background look blurry?",
-      answer: "Blurry backgrounds are usually caused by low-resolution images or poor lighting. Use HD images (1456×816 or higher) and ensure you have good front-facing lighting to improve background quality."
+      answer: "Blurry backgrounds are usually caused by low-resolution images or poor lighting. Use high quality images (1456×816 or higher) and ensure you have good front-facing lighting to improve background quality."
     },
     {
       question: "Why does my virtual background cut off parts of me?",
@@ -406,7 +406,7 @@ export const faqData = {
     },
     {
       question: "What resolution should virtual backgrounds be?",
-      answer: "Virtual backgrounds should be at least 1456×816 pixels (Full HD) for best quality. Higher resolutions work fine, but anything lower than 1280x720 may appear pixelated."
+      answer: "Virtual backgrounds should be at least 1456×816 pixels for high quality. Higher resolutions work fine, but anything lower than 1280x720 may appear pixelated."
     }
   ],
 

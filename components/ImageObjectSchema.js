@@ -8,7 +8,7 @@ export default function ImageObjectSchema({ images, category, baseUrl }) {
       "position": index + 1,
       "contentUrl": `${baseUrl}${image.url}`,
       "name": `${category} virtual background ${index + 1}`,
-      "description": `Free HD ${category.toLowerCase()} virtual background for Zoom, Teams, and Google Meet`,
+      "description": `Free ${category.toLowerCase()} virtual background for Zoom, Teams, and Google Meet`,
       "thumbnail": `${baseUrl}${image.url}`,
       "encodingFormat": "image/webp"
     }))

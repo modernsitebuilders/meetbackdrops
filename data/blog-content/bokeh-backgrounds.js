@@ -158,7 +158,7 @@ export const bokehBackgroundsContent = () => (
             </p>
             <ol style={{listStyle: 'decimal', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
               <li><strong>Browse</strong> - Visit our <Link href="/category/bokeh-backgrounds" style={{ color: '#2563eb', textDecoration: 'underline' }}>bokeh backgrounds collection</Link></li>
-              <li><strong>Download</strong> - Click any background to download in HD PNG format</li>
+              <li><strong>Download</strong> - Click any background to download in PNG format</li>
               <li><strong>Upload</strong> - Add to Zoom, Teams, or Google Meet virtual background settings</li>
               <li><strong>Adjust</strong> - Fine-tune positioning and test your lighting</li>
             </ol>

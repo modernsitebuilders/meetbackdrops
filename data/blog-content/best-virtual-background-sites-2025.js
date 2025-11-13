@@ -120,7 +120,7 @@ export const bestVirtualBackgroundSites2025Content = () => (
                   </h4>
                   <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '0'}}>
                     <li><strong>Best For:</strong> Video calls, virtual meetings, professional use</li>
-                    <li><strong>Image Quality:</strong> HD optimized for video compression</li>
+                    <li><strong>Image Quality:</strong>optimized for video compression</li>
                     <li><strong>Licensing:</strong> Free for personal and commercial use</li>
                     <li><strong>Signup Required:</strong> No</li>
                     <li><strong>Watermarks:</strong> None</li>

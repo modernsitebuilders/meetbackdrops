@@ -233,7 +233,7 @@ export const christmasBackgroundsContent = () => (
               borderLeft: '4px solid #c41e3a',
               borderRadius: '0.5rem'
             }}>
-              <strong>All backgrounds are HD quality</strong> and work perfectly with Zoom, Microsoft Teams, Google Meet, and any video platform that supports custom backgrounds.
+              <strong>All backgrounds are top quality</strong> and work perfectly with Zoom, Microsoft Teams, Google Meet, and any video platform that supports custom backgrounds.
             </p>
           </section>
 
@@ -672,7 +672,7 @@ export const christmasBackgroundsContent = () => (
                 lineHeight: '1.6',
                 marginBottom: '0.5rem'
               }}>
-                <strong>Solution:</strong> Adjust your camera settings. Check if your platform has brightness/contrast controls. Ensure you're using the original HD download, not a compressed version.
+                <strong>Solution:</strong> Adjust your camera settings. Check if your platform has brightness/contrast controls. Ensure you're using the original download, not a compressed version.
               </p>
             </div>
           </section>

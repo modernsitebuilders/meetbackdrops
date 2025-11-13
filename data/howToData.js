@@ -9,7 +9,7 @@ export const howToData = {
     steps: [
       {
         name: "Download Your Virtual Background",
-        text: "Visit StreamBackdrops and browse the collection of free HD virtual backgrounds. Click on any background you like and download it to your computer."
+        text: "Visit StreamBackdrops and browse the collection of free high quality virtual backgrounds. Click on any background you like and download it to your computer."
       },
       {
         name: "Open Your Video Conferencing App",
@@ -113,7 +113,7 @@ export const howToData = {
     steps: [
       {
         name: "Download Your Virtual Background",
-        text: "Choose and download a professional virtual background from StreamBackdrops in HD quality."
+        text: "Choose and download a professional virtual background from StreamBackdrops in high quality."
       },
       {
         name: "Set Up Virtual Background in Zoom",

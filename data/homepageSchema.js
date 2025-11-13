@@ -32,7 +32,7 @@ export const homepageStructuredData = {
         "name": "StreamBackdrops",
         "url": "https://streambackdrops.com",
         "logo": "https://streambackdrops.com/logo.png",
-        "description": "Provider of free HD virtual backgrounds for professional video calls",
+        "description": "Provider of free high quality virtual backgrounds for professional video calls",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Norristown",
@@ -43,7 +43,7 @@ export const homepageStructuredData = {
       {
         "@type": "CollectionPage",
         "name": "Virtual Background Collections",
-        "description": `Browse our collection of ${TOTAL_IMAGES_FORMATTED} free HD virtual backgrounds`,
+        "description": `Browse our collection of ${TOTAL_IMAGES_FORMATTED} free high quality virtual backgrounds`,
         "url": "https://streambackdrops.com",
         "hasPart": generateCollections()
       },

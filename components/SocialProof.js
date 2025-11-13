@@ -11,7 +11,7 @@ export default function SocialProof() {
       <div className={styles.stats}>
         <div className={styles.stat}>
           <strong className={styles.statNumber}>{ TOTAL_IMAGES_FORMATTED }</strong>
-          <span className={styles.statLabel}>HD Backgrounds</span>
+          <span className={styles.statLabel}>Backgrounds</span>
         </div>
         
         <div className={styles.stat}>

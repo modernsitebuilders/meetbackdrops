@@ -94,7 +94,7 @@ export default function SearchResults({
             }}>
               <Image
                 src={`/images/${image.category}/${image.filename}`}
-                alt={`${image.title} - Free HD virtual background`}
+                alt={`${image.title} - Free virtual background`}
                 title={`Download ${image.title} - Professional video call background`}
                 width={1456}
                 height={816}
