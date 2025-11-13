@@ -52,7 +52,7 @@ export default function Card({
           boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
           zIndex: 10
         }}>
-          {count}+ images
+          {count} images
         </div>
       )}
 
