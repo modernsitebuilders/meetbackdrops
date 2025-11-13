@@ -46,7 +46,7 @@ useEffect(() => {
   return (
     <Layout 
       title="Browse Virtual Backgrounds - StreamBackdrops.com"
-      description={`Browse through ${TOTAL_IMAGES_FORMATTED} free HD virtual backgrounds by keyword - filter by style, lighting, and features`}
+      description={`Browse through ${TOTAL_IMAGES_FORMATTED} free virtual backgrounds by keyword - filter by style, lighting, and features`}
       currentPage="browse"
     >
       <div style={{ 

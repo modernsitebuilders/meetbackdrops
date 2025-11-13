@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <Layout
       title="Free Professional Virtual Backgrounds - StreamBackdrops"
-      description={`Download ${TOTAL_IMAGES_FORMATTED} free professional HD virtual backgrounds for Zoom, Teams, and Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks.`}
+      description={`Download ${TOTAL_IMAGES_FORMATTED} free professional virtual backgrounds for Zoom, Teams, and Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks.`}
       currentPage="home"
       canonical="https://streambackdrops.com"
       structuredData={homepageStructuredData} 
@@ -92,7 +92,7 @@ export default function Home() {
           Professional Virtual Backgrounds Optimized for Video Calls
         </h1>
         <p className={styles.heroSubtitle}>
-          {TOTAL_IMAGES_FORMATTED} HD backgrounds designed specifically for Zoom, Teams & Google Meet
+          {TOTAL_IMAGES_FORMATTED} backgrounds designed specifically for Zoom, Teams & Google Meet
           <br />
           <strong className={styles.heroHighlight}>
             Perfect lighting • Proper composition • No signup • No watermarks
@@ -150,8 +150,8 @@ export default function Home() {
 
       {/* Category Cards Grid */}
       <div className={`${styles.categoryGrid} category-grid`}>
-        <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/well-lit-12.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} count={CATEGORIES['bookshelves-bright'].count} />
-        <Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/ambient-01.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} count={CATEGORIES['bookshelves-dark'].count} />
+        <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/bookshelves-bright-01.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} count={CATEGORIES['bookshelves-bright'].count} />
+<Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/bookshelves-dark-01.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} count={CATEGORIES['bookshelves-dark'].count} />
         <Card href="/category/office-spaces" title="Office Spaces" description="Modern office settings that convey professionalism and focus" imageSrc="/images/office-spaces/office-spaces-01.webp" imageAlt="Professional office space background for business calls" navigate={navigate} count={CATEGORIES['office-spaces'].count} />
         <Card href="/category/living-rooms" title="Living Rooms" description="Comfortable home settings that feel welcoming and professional" imageSrc="/images/living-rooms/living-room-29.webp" imageAlt="Comfortable living room backgrounds" navigate={navigate} count={CATEGORIES['living-rooms'].count} />
         <Card href="/category/kitchens" title="Kitchen Backgrounds" description="Warm kitchen spaces that create a friendly, approachable atmosphere" imageSrc="/images/kitchens/kitchen-09.webp" imageAlt="Kitchen virtual background" navigate={navigate} count={CATEGORIES['kitchens'].count} />

@@ -154,7 +154,7 @@ export default function MostPopular() {
               onClick={() => handleImageDownload(image)}
               className={styles.downloadButton}
             >
-              Download HD Image
+              Download Image
             </button>
             <Link 
               href={`/category/${image.category}`}
@@ -174,7 +174,7 @@ export default function MostPopular() {
         <title>Most Popular Virtual Backgrounds | StreamBackdrops</title>
         <meta 
           name="description" 
-          content="Download the most popular free HD virtual backgrounds for Zoom, Teams, and Google Meet. Proven favorites from thousands of downloads." 
+          content="Download the most popular free virtual backgrounds for Zoom, Teams, and Google Meet. Proven favorites from thousands of downloads." 
         />
         <link rel="canonical" href="https://streambackdrops.com/category/most-popular" />
       </Head>
@@ -182,7 +182,7 @@ export default function MostPopular() {
       <div className={styles.categoryPage}>
         <div className={styles.header}>
           <h1 className={styles.title}>
-            🔥 Most Popular Backgrounds
+            Most Popular Backgrounds
           </h1>
           <p className={styles.description}>
             Our most downloaded virtual backgrounds - proven favorites from thousands of users

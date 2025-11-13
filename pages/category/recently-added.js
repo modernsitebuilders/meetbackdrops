@@ -118,7 +118,7 @@ export default function RecentlyAdded() {
   return (
     <Layout
       title="Recently Added Virtual Backgrounds | StreamBackdrops"
-      description="Browse our newest HD virtual backgrounds added in the last 30 days. Fresh professional backgrounds for Zoom, Teams & Google Meet."
+      description="Browse our newest virtual backgrounds added in the last 30 days. Fresh professional backgrounds for Zoom, Teams & Google Meet."
       canonical="https://streambackdrops.com/category/recently-added"
       currentPage="recently-added"
     >
