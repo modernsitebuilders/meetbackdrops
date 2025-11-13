@@ -176,6 +176,8 @@ export const categoryInfo = {
 export const folderMap = {
   'bookshelves-bright': 'bookshelves-bright',
   'bookshelves-dark': 'bookshelves-dark',
+  'wall-shelves-bright': 'wall-shelves-bright',
+  'wall-shelves-dark': 'wall-shelves-dark',
   'office-spaces': 'office-spaces',
   'living-rooms': 'living-rooms',
   'kitchens': 'kitchens',
