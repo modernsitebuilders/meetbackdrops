@@ -183,22 +183,24 @@ const pageTitle = categoryName + ' - Free | StreamBackdrops';
   const pageDescription = String(category.seoDescription || `Download free ${categoryName.toLowerCase()} backgrounds. Perfect for Zoom, Teams & Google Meet.`);
   
   const featuredImages = {
-    'halloween-backgrounds': 'halloween-background-20.webp',
-    'christmas-backgrounds': 'christmas-background-1.webp',
-    'bookshelves-bright': 'bookshelf-bright-1.webp',
-    'bookshelves-dark': 'bookshelf-dark-1.webp',
-    'office-spaces': 'office-1.webp',
-    'living-rooms': 'living-room-1.webp',
-    'kitchens': 'kitchen-1.webp',
-    'coffee-shops': 'coffee-shop-01.webp',
-    'art-galleries': 'art-gallery-23.webp',
-    'urban-lofts': 'urban-loft-1.webp',
-    'gardens-patios': 'garden-patio-1.webp',
-    'historic-spaces': 'historic-1.webp',
-    'nature-landscapes': 'nature-1.webp',
-    'libraries': 'library-1.webp',
-    'bokeh-backgrounds': 'bokeh-1.webp'
-  };
+  'halloween-backgrounds': 'halloween-background-20.webp',
+  'christmas-backgrounds': 'christmas-background-1.webp',
+  'bookshelves-bright': 'bookshelves-bright-01.webp',
+  'bookshelves-dark': 'bookshelves-dark-01.webp',
+  'wall-shelves-bright': 'wall-shelves-bright-01.webp',
+  'wall-shelves-dark': 'wall-shelves-dark-01.webp',
+  'office-spaces': 'office-1.webp',
+  'living-rooms': 'living-room-1.webp',
+  'kitchens': 'kitchen-1.webp',
+  'coffee-shops': 'coffee-shop-01.webp',
+  'art-galleries': 'art-gallery-23.webp',
+  'urban-lofts': 'urban-loft-1.webp',
+  'gardens-patios': 'garden-patio-1.webp',
+  'historic-spaces': 'historic-1.webp',
+  'nature-landscapes': 'nature-1.webp',
+  'libraries': 'library-1.webp',
+  'bokeh-backgrounds': 'bokeh-1.webp'
+};
   
   const featuredImage = featuredImages[currentSlug] || 'og-image.png';
   const imageUrl = `https://streambackdrops.com/images/${currentSlug}/${featuredImage}`;
