@@ -1,0 +1,235 @@
+import { google } from 'googleapis';
+import fs from 'fs';
+import path from 'path';
+
+export default async function handler(req, res) {
+  try {
+    // Fix private key format
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+    privateKey = privateKey.replace(/\\n/g, '\n');
+
+    const auth = new google.auth.JWT({
+      email: process.env.GOOGLE_SERVICE_EMAIL,
+      key: privateKey,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    });
+
+    const sheets = google.sheets({ version: 'v4', auth });
+    
+    // Load ALL images from metadata
+    const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
+    const allImagesData = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+    
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Analytics!A:I',
+    });
+
+    const rows = response.data.values || [];
+    const now = new Date();
+    
+    // Map old category names to new slugs
+    const categoryMapping = {
+      'ambient-lighting': 'wall-shelves-dark',
+      'Ambient Lighting': 'wall-shelves-dark',
+      'well-lit': 'wall-shelves-bright',
+      'Well Lit': 'wall-shelves-bright'
+    };
+    
+    // Category display names
+    const categoryNames = {
+      'bookshelves-bright': 'Bookshelves - Bright',
+      'bookshelves-dark': 'Bookshelves - Dark',
+      'wall-shelves-bright': 'Wall Shelves - Bright',
+      'wall-shelves-dark': 'Wall Shelves - Dark',
+      'office-spaces': 'Office Spaces',
+      'living-rooms': 'Living Rooms',
+      'kitchens': 'Kitchens',
+      'coffee-shops': 'Coffee Shops',
+      'art-galleries': 'Art Galleries',
+      'urban-lofts': 'Urban Lofts',
+      'gardens-patios': 'Gardens & Patios',
+      'historic-spaces': 'Historic Spaces',
+      'nature-landscapes': 'Nature & Landscapes',
+      'libraries': 'Libraries',
+      'christmas-backgrounds': 'Christmas Backgrounds',
+      'halloween-backgrounds': 'Halloween Backgrounds',
+      'bokeh-backgrounds': 'Bokeh Backgrounds'
+    };
+    
+    // Initialize stats for ALL images from metadata
+    const imageStats = {};
+    
+    Object.entries(allImagesData).forEach(([imageId, image]) => {
+      const category = image.category;
+      const categoryDisplayName = categoryNames[category] || category;
+      
+      imageStats[image.filename] = {
+        category: categoryDisplayName,
+        categorySlug: category,
+        downloads: 0,
+        pageviews: 0,
+        firstSeen: now,
+        lastDownload: null,
+        recentDownloads: 0,
+        score: 0,
+        tracked: false
+      };
+    });
+    
+    // Now update with actual tracking data from sheets
+    rows.slice(1).forEach(row => { // Skip header
+      const timestamp = row[0];
+      const eventType = row[1];
+      const filename = row[2];
+      let category = row[3];
+      
+      if (!filename) return;
+      
+      // STRICT FILTER: Only track actual image files
+      if (filename.startsWith('/') || 
+          filename.includes('/category/') || 
+          filename.includes('/blog') ||
+          filename.includes('/contact') ||
+          filename.includes('/about') ||
+          !filename.match(/\.(webp|jpg|jpeg|png)$/i)) {
+        return;
+      }
+      
+      // Map old category names to new slugs
+      if (categoryMapping[category]) {
+        category = categoryMapping[category];
+      }
+      
+      // If this image isn't in our metadata, skip it
+      if (!imageStats[filename]) {
+        return;
+      }
+      
+      // Mark as tracked and update first seen
+      if (!imageStats[filename].tracked) {
+        imageStats[filename].tracked = true;
+        imageStats[filename].firstSeen = new Date(timestamp);
+      }
+      
+      const eventDate = new Date(timestamp);
+      
+      if (eventType === 'download') {
+        imageStats[filename].downloads += 1;
+        
+        if (!imageStats[filename].lastDownload || eventDate > imageStats[filename].lastDownload) {
+          imageStats[filename].lastDownload = eventDate;
+        }
+        
+        const daysSinceEvent = (now - eventDate) / (1000 * 60 * 60 * 24);
+        if (daysSinceEvent <= 30) {
+          imageStats[filename].recentDownloads += 1;
+        }
+      } else if (eventType === 'page_view') {
+        imageStats[filename].pageviews += 1;
+      }
+      
+      if (eventDate < imageStats[filename].firstSeen) {
+        imageStats[filename].firstSeen = eventDate;
+      }
+    });
+
+    // Calculate final scores - SIMPLE SYSTEM
+    Object.keys(imageStats).forEach(filename => {
+      const stats = imageStats[filename];
+      
+      // If never tracked, score stays at 0 (worst)
+      if (!stats.tracked) {
+        stats.score = 0;
+        stats.daysOld = 0;
+        stats.daysSinceLastDownload = null;
+        return;
+      }
+      
+      // Start at 0, add points for activity
+      let score = 0;
+      
+      score += (stats.downloads * 10);  // +10 per download
+      score += (stats.pageviews * 1);   // +1 per pageview (10:1 ratio)
+      
+      // BONUS: Recent activity (last 30 days)
+      if (stats.recentDownloads > 0) {
+        score += stats.recentDownloads * 2; // +2 per recent download
+      }
+      
+      // PENALTY 1: Age without downloads
+      if (stats.downloads === 0) {
+        const daysOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24);
+        const agePenalty = Math.floor(daysOld / 7) * 5; // -5 per week
+        score -= agePenalty;
+      }
+      
+      // PENALTY 2: Dormant (no recent downloads)
+      if (stats.downloads > 0 && stats.lastDownload) {
+        const daysSinceLastDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24);
+        if (daysSinceLastDownload > 30) {
+          const dormantPenalty = Math.floor(daysSinceLastDownload / 30) * 2; // -10 per 30 days
+          score -= dormantPenalty;
+        }
+      }
+
+      // PENALTY 3: No recent activity (only for images with multiple downloads)
+      if (stats.recentDownloads === 0 && stats.downloads > 5) {
+        score -= 5;
+      }
+      
+      stats.score = score;
+      stats.daysOld = Math.floor((now - stats.firstSeen) / (1000 * 60 * 60 * 24));
+      stats.daysSinceLastDownload = stats.lastDownload 
+        ? Math.floor((now - stats.lastDownload) / (1000 * 60 * 60 * 24))
+        : null;
+    });
+
+    // Save scores to JSON file
+    const scoresPath = path.join(process.cwd(), 'public', 'image-scores.json');
+    fs.writeFileSync(scoresPath, JSON.stringify(imageStats, null, 2));
+
+    // Generate summary
+    const summary = {
+      totalImages: Object.keys(imageStats).length,
+      trackedImages: Object.values(imageStats).filter(s => s.tracked).length,
+      untrackedImages: Object.values(imageStats).filter(s => !s.tracked).length,
+      zeroDownloads: Object.values(imageStats).filter(s => s.downloads === 0).length,
+      dormant: Object.values(imageStats).filter(s => s.daysSinceLastDownload > 30).length,
+      topPerformers: Object.entries(imageStats)
+        .sort((a, b) => b[1].score - a[1].score)
+        .slice(0, 10)
+        .map(([filename, stats]) => ({ 
+          filename,
+          category: stats.category,
+          score: stats.score, 
+          downloads: stats.downloads,
+          pageviews: stats.pageviews,
+          tracked: stats.tracked
+        })),
+      bottomPerformers: Object.entries(imageStats)
+        .sort((a, b) => a[1].score - b[1].score)
+        .slice(0, 10)
+        .map(([filename, stats]) => ({ 
+          filename,
+          category: stats.category,
+          score: stats.score, 
+          downloads: stats.downloads,
+          pageviews: stats.pageviews,
+          tracked: stats.tracked
+        }))
+    };
+
+    res.status(200).json({ 
+      message: 'Scores calculated successfully',
+      summary
+    });
+
+  } catch (error) {
+    console.error('Error calculating scores:', error);
+    res.status(500).json({ error: 'Failed to calculate scores', details: error.message });
+  }
+}

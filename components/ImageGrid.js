@@ -1,8 +1,31 @@
 import Image from 'next/image';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
+import { useState, useEffect } from 'react';
 
 export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
+  const [sortedImages, setSortedImages] = useState(images);
+
+  useEffect(() => {
+    // Load scores and sort images
+    fetch('/image-scores.json')
+      .then(res => res.json())
+      .then(scores => {
+        const imagesWithScores = images.map(image => ({
+          ...image,
+          score: scores[image.filename]?.score || -24
+        }));
+        
+        // Sort by score, highest first
+        const sorted = imagesWithScores.sort((a, b) => b.score - a.score);
+        setSortedImages(sorted);
+      })
+      .catch(err => {
+        console.error('Could not load scores:', err);
+        setSortedImages(images); // Fall back to original order
+      });
+  }, [images]);
+
   return (
     <>
       <h2 style={{
@@ -26,7 +49,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
         gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
         gap: '1.5rem'
       }}>
-        {images.map((image, index) => (
+        {sortedImages.map((image, index) => (
           <div
             key={image.filename}
             style={{
