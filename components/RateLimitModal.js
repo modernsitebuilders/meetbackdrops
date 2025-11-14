@@ -74,7 +74,7 @@ export default function RateLimitModal({ onClose, errorMessage }) {
           {isBanned ? (
             <>You have downloaded more than 30 backgrounds this week. To keep our service free for everyone, we have temporarily limited your downloads.</>
           ) : (
-            <>You have reached your daily limit of 5 free downloads. Come back tomorrow for more amazing backgrounds!</>
+            <>Thank you for loving our backgrounds! We're thrilled you found so many you want to use. 🎉 To keep this free for everyone, we have a daily limit of 5 downloads. Come back tomorrow for more!</>
           )}
         </p>
 
