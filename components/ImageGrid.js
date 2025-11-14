@@ -8,13 +8,14 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
 
   useEffect(() => {
     // Load scores and sort images
-    fetch('/image-scores.json')
-      .then(res => res.json())
-      .then(scores => {
-        const imagesWithScores = images.map(image => ({
-          ...image,
-          score: scores[image.filename]?.score || -24
-        }));
+   fetch('/api/calculate-scores')
+  .then(res => res.json())
+  .then(data => {
+    const scores = data.scores;
+    const imagesWithScores = images.map(image => ({
+      ...image,
+      score: scores[image.filename]?.score || 0
+    }));
         
         // Sort by score, highest first
         const sorted = imagesWithScores.sort((a, b) => b.score - a.score);

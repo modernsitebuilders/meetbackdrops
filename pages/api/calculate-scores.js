@@ -2,8 +2,22 @@ import { google } from 'googleapis';
 import fs from 'fs';
 import path from 'path';
 
+// Cache scores in memory (persists during function lifetime)
+let cachedScores = null;
+let lastCalculated = null;
+
 export default async function handler(req, res) {
   try {
+    // If we have cached scores less than 1 hour old, return them
+    if (cachedScores && lastCalculated && (Date.now() - lastCalculated < 3600000)) {
+      return res.status(200).json({ 
+        message: 'Returning cached scores',
+        cached: true,
+        calculatedAt: new Date(lastCalculated).toISOString(),
+        scores: cachedScores
+      });
+    }
+
     // Fix private key format
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
@@ -81,7 +95,7 @@ export default async function handler(req, res) {
     });
     
     // Now update with actual tracking data from sheets
-    rows.slice(1).forEach(row => { // Skip header
+    rows.slice(1).forEach(row => {
       const timestamp = row[0];
       const eventType = row[1];
       const filename = row[2];
@@ -89,7 +103,6 @@ export default async function handler(req, res) {
       
       if (!filename) return;
       
-      // STRICT FILTER: Only track actual image files
       if (filename.startsWith('/') || 
           filename.includes('/category/') || 
           filename.includes('/blog') ||
@@ -99,17 +112,14 @@ export default async function handler(req, res) {
         return;
       }
       
-      // Map old category names to new slugs
       if (categoryMapping[category]) {
         category = categoryMapping[category];
       }
       
-      // If this image isn't in our metadata, skip it
       if (!imageStats[filename]) {
         return;
       }
       
-      // Mark as tracked and update first seen
       if (!imageStats[filename].tracked) {
         imageStats[filename].tracked = true;
         imageStats[filename].firstSeen = new Date(timestamp);
@@ -137,11 +147,10 @@ export default async function handler(req, res) {
       }
     });
 
-    // Calculate final scores - SIMPLE SYSTEM
+    // Calculate final scores
     Object.keys(imageStats).forEach(filename => {
       const stats = imageStats[filename];
       
-      // If never tracked, score stays at 0 (worst)
       if (!stats.tracked) {
         stats.score = 0;
         stats.daysOld = 0;
@@ -149,36 +158,35 @@ export default async function handler(req, res) {
         return;
       }
       
-      // Start at 0, add points for activity
       let score = 0;
       
-      score += (stats.downloads * 10);  // +10 per download
-      score += (stats.pageviews * 1);   // +1 per pageview (10:1 ratio)
+      score += (stats.downloads * 10);
+      score += (stats.pageviews * 1);
       
-      // BONUS: Recent activity (last 30 days)
       if (stats.recentDownloads > 0) {
-        score += stats.recentDownloads * 2; // +2 per recent download
+        score += stats.recentDownloads * 2;
       }
       
-      // PENALTY 1: Age without downloads
       if (stats.downloads === 0) {
         const daysOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24);
-        const agePenalty = Math.floor(daysOld / 7) * 5; // -5 per week
+        const agePenalty = Math.floor(daysOld / 7) * 5;
         score -= agePenalty;
       }
       
-      // PENALTY 2: Dormant (no recent downloads)
       if (stats.downloads > 0 && stats.lastDownload) {
         const daysSinceLastDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24);
         if (daysSinceLastDownload > 30) {
-          const dormantPenalty = Math.floor(daysSinceLastDownload / 30) * 2; // -10 per 30 days
+          const dormantPenalty = Math.floor(daysSinceLastDownload / 30) * 2;
           score -= dormantPenalty;
         }
       }
-
-      // PENALTY 3: No recent activity (only for images with multiple downloads)
+      
       if (stats.recentDownloads === 0 && stats.downloads > 5) {
         score -= 5;
+      }
+      
+      if (stats.tracked) {
+        score = Math.max(1, score);
       }
       
       stats.score = score;
@@ -188,11 +196,18 @@ export default async function handler(req, res) {
         : null;
     });
 
-    // Save scores to JSON file
-    const scoresPath = path.join(process.cwd(), 'public', 'image-scores.json');
-    fs.writeFileSync(scoresPath, JSON.stringify(imageStats, null, 2));
+    // Cache the scores in memory
+    cachedScores = imageStats;
+    lastCalculated = Date.now();
 
-    // Generate summary
+    // Try to save to /tmp for backup (doesn't matter if it fails)
+    try {
+      const tmpPath = path.join('/tmp', 'image-scores.json');
+      fs.writeFileSync(tmpPath, JSON.stringify(imageStats, null, 2));
+    } catch (e) {
+      // Ignore write errors
+    }
+
     const summary = {
       totalImages: Object.keys(imageStats).length,
       trackedImages: Object.values(imageStats).filter(s => s.tracked).length,
@@ -225,7 +240,10 @@ export default async function handler(req, res) {
 
     res.status(200).json({ 
       message: 'Scores calculated successfully',
-      summary
+      cached: false,
+      calculatedAt: new Date(lastCalculated).toISOString(),
+      summary,
+      scores: imageStats
     });
 
   } catch (error) {
