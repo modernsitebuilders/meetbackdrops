@@ -11,11 +11,36 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
    fetch('/api/calculate-scores')
   .then(res => res.json())
   .then(data => {
-    const scores = data.scores;
-    const imagesWithScores = images.map(image => ({
-      ...image,
-      score: scores[image.filename]?.score || 0
-    }));
+        const scores = data.scores;
+        const imagesWithScores = images.map(image => {
+          // Strip extension to match .webp with .png tracking
+          const baseName = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+          
+          // Try exact match first, then try with different extensions
+          let score = 0;
+          if (scores[image.filename]) {
+            score = scores[image.filename].score;
+          } else {
+            // Try .png, .webp, .jpg variants
+            const variants = [
+              `${baseName}.png`,
+              `${baseName}.webp`,
+              `${baseName}.jpg`,
+              `${baseName}.jpeg`
+            ];
+            for (const variant of variants) {
+              if (scores[variant]) {
+                score = scores[variant].score;
+                break;
+              }
+            }
+          }
+          
+          return {
+            ...image,
+            score: score
+          };
+        });
         
         // Sort by score, highest first
         const sorted = imagesWithScores.sort((a, b) => b.score - a.score);
