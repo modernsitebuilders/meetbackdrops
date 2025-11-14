@@ -1,6 +1,9 @@
 export default function RateLimitModal({ onClose, errorMessage }) {
   const isDaily = errorMessage?.includes('Daily download limit');
-  const isBanned = errorMessage?.includes('banned');
+  const isMonthly = errorMessage?.includes('Monthly download limit');
+  
+  const daysMatch = errorMessage?.match(/(\d+) day/);
+  const daysRemaining = daysMatch ? daysMatch[1] : '?';
 
   return (
     <div 
@@ -51,7 +54,7 @@ export default function RateLimitModal({ onClose, errorMessage }) {
           textAlign: 'center',
           marginBottom: '1rem'
         }}>
-          {isBanned ? '🚫' : '⏱️'}
+          ⏱️
         </div>
 
         <h2 style={{
@@ -61,7 +64,7 @@ export default function RateLimitModal({ onClose, errorMessage }) {
           textAlign: 'center',
           marginBottom: '1rem'
         }}>
-          {isBanned ? 'Download Limit Exceeded' : 'Daily Download Limit Reached'}
+          {isDaily ? 'Daily Download Limit Reached' : 'Monthly Download Limit Reached'}
         </h2>
 
         <p style={{
@@ -71,10 +74,10 @@ export default function RateLimitModal({ onClose, errorMessage }) {
           textAlign: 'center',
           marginBottom: '1.5rem'
         }}>
-          {isBanned ? (
-            <>You have downloaded more than 30 backgrounds this week. To keep our service free for everyone, we have temporarily limited your downloads.</>
+          {isDaily ? (
+            <>Thank you for loving our backgrounds! 🎉 To keep this free for everyone, we have a daily limit of 5 downloads. Come back tomorrow for more!</>
           ) : (
-            <>Thank you for loving our backgrounds! We're thrilled you found so many you want to use. 🎉 To keep this free for everyone, we have a daily limit of 5 downloads. Come back tomorrow for more!</>
+            <>You have reached your monthly limit of 10 downloads. Your oldest download will expire in <strong>{daysRemaining} day{daysRemaining !== '1' ? 's' : ''}</strong>, then you can download more!</>
           )}
         </p>
 
@@ -101,8 +104,8 @@ export default function RateLimitModal({ onClose, errorMessage }) {
             lineHeight: '1.8'
           }}>
             <li><strong>Daily:</strong> 5 downloads per day</li>
-            <li><strong>Weekly:</strong> 30 downloads maximum</li>
-            {isBanned && <li><strong>Ban Duration:</strong> 90 days</li>}
+            <li><strong>Monthly:</strong> 10 downloads per 30-day period</li>
+            <li><strong>Note:</strong> Downloads expire after 30 days</li>
           </ul>
         </div>
 

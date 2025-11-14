@@ -4,18 +4,9 @@ export default async function handler(req, res) {
   if (!url || !filename) {
     return res.status(400).json({ error: 'Missing parameters' });
   }
-  // Check if user is banned
-  const isBanned = req.cookies.user_banned === 'true';
-  
-  if (isBanned) {
-    return res.status(403).json({ 
-      error: 'You have been banned from downloading due to excessive use.' 
-    });
-  }
-  
-  // Get daily and weekly download counts
+
+  // Get daily download count
   const dailyDownloads = parseInt(req.cookies.dl_count_daily || '0');
-  const weeklyDownloads = parseInt(req.cookies.dl_count_weekly || '0');
   
   // Check daily limit (5 per day)
   if (dailyDownloads >= 5) {
@@ -24,11 +15,21 @@ export default async function handler(req, res) {
     });
   }
   
-  // Check weekly limit (30 triggers ban)
-  if (weeklyDownloads + 1 >= 30) {
-    res.setHeader('Set-Cookie', `user_banned=true; Max-Age=${90 * 24 * 60 * 60}; Path=/`);
-    return res.status(403).json({ 
-      error: 'You have exceeded 30 downloads in a week and have been banned for 90 days.' 
+  // Get 30-day download timestamps from cookie (stored as comma-separated timestamps)
+  const downloadTimestamps = req.cookies.dl_timestamps ? 
+    req.cookies.dl_timestamps.split(',').map(ts => parseInt(ts)) : [];
+  
+  // Filter to only downloads within last 30 days
+  const thirtyDaysAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
+  const recentDownloads = downloadTimestamps.filter(ts => ts > thirtyDaysAgo);
+  
+  // Check 30-day limit (10 downloads)
+  if (recentDownloads.length >= 10) {
+    const oldestDownload = Math.min(...recentDownloads);
+    const daysUntilAvailable = Math.ceil((oldestDownload + (30 * 24 * 60 * 60 * 1000) - Date.now()) / (24 * 60 * 60 * 1000));
+    
+    return res.status(429).json({ 
+      error: `Monthly download limit of 10 reached. Your oldest download will expire in ${daysUntilAvailable} day${daysUntilAvailable !== 1 ? 's' : ''}.` 
     });
   }
 
@@ -41,10 +42,14 @@ export default async function handler(req, res) {
     }
     
     const buffer = await response.arrayBuffer();
+    
+    // Add current timestamp to download history
+    const newTimestamps = [...recentDownloads, Date.now()].join(',');
+    
     // Increment download counters
     res.setHeader('Set-Cookie', [
       `dl_count_daily=${dailyDownloads + 1}; Max-Age=${24 * 60 * 60}; Path=/`,
-      `dl_count_weekly=${weeklyDownloads + 1}; Max-Age=${7 * 24 * 60 * 60}; Path=/`
+      `dl_timestamps=${newTimestamps}; Max-Age=${30 * 24 * 60 * 60}; Path=/`
     ]);
     
     // Set headers to force download with custom filename

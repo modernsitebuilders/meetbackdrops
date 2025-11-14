@@ -375,8 +375,8 @@ export default function License() {
                     margin: 0
                   }}>
                     <li style={{ marginBottom: '0.75rem' }}>📅 <strong>Daily Limit:</strong> 5 downloads per day</li>
-                    <li style={{ marginBottom: '0.75rem' }}>📊 <strong>Weekly Limit:</strong> 30 downloads per week maximum</li>
-                    <li style={{ marginBottom: '0.75rem' }}>⚠️ <strong>Excessive Use:</strong> Exceeding 30 downloads per week results in a 90-day ban</li>
+<li style={{ marginBottom: '0.75rem' }}>📊 <strong>Monthly Limit:</strong> 10 downloads per 30-day rolling period</li>
+<li style={{ marginBottom: '0.75rem' }}>⏳ <strong>Download Expiration:</strong> Downloads expire after 30 days, then you can download more</li>
                   </ul>
                 </div>
                 <p style={{
@@ -384,7 +384,7 @@ export default function License() {
                   fontSize: '0.95rem',
                   fontStyle: 'italic'
                 }}>
-                  These limits help us keep the service free and available to everyone. If you need more downloads for legitimate use, please contact us about commercial licensing options.
+                  These limits help us keep the service free and available to everyone. Downloads work on a rolling 30-day window - after 30 days, your oldest downloads expire and you can download more. If you need unlimited downloads for business use, please contact us about commercial licensing options.
                 </p>
               </div>
             </section>
