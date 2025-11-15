@@ -53,7 +53,7 @@ export default function Testimonials() {
             color: '#6b7280',
             fontWeight: '600'
           }}>
-            — Evans Otumala
+            — Evans O.
           </p>
         </div>
       </div>
