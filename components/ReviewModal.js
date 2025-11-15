@@ -311,11 +311,11 @@ export default function ReviewModal({ onClose }) {
         boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
         textAlign: 'center'
       }}>
-        <h2 style={{ fontSize: '1.3rem', fontWeight: 'bold', color: '#111827', marginBottom: '0.5rem' }}>
+       <h2 style={{ fontSize: '1.3rem', fontWeight: 'bold', color: '#111827', marginBottom: '0.5rem' }}>
           How'd We Do?
         </h2>
         <p style={{ color: '#6b7280', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-          Just click a star!
+          Just click a star! Reviews may be featured on our site.
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', marginBottom: '1rem' }}>

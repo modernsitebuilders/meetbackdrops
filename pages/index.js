@@ -9,6 +9,7 @@ import TrustBadges from '../components/TrustBadges';
 import WhyDifferent from '../components/WhyDifferent';
 import SocialProof from '../components/SocialProof';
 import HeroCTA from '../components/HeroCTA';
+import Testimonials from '../components/Testimonials';
 import styles from '../styles/HomePage.module.css';
 import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
@@ -147,6 +148,7 @@ export default function Home() {
 
       {/* Why We're Different */}
       <WhyDifferent />
+      <Testimonials />
 
       {/* Category Cards Grid */}
       <div className={`${styles.categoryGrid} category-grid`}>
