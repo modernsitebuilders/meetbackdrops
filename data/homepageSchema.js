@@ -1,3 +1,4 @@
+// data/homepageSchema.js
 import { TOTAL_IMAGES_FORMATTED, CATEGORIES } from '../lib/categories-config';
 
 // Generate collection items dynamically from CATEGORIES
@@ -10,7 +11,9 @@ const generateCollections = () => {
   }));
 };
 
-export const homepageStructuredData = {
+// NEW: Function to generate schema with review data
+export const generateHomepageSchema = (reviewData) => {
+  const baseSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -77,3 +80,54 @@ export const homepageStructuredData = {
       }
     ]
   };
+
+  // Add review data if available
+  if (reviewData && reviewData.totalReviews > 0) {
+    const localBusiness = baseSchema["@graph"].find(item => item["@type"] === "LocalBusiness");
+    
+    // Add aggregate rating
+    localBusiness.aggregateRating = {
+      "@type": "AggregateRating",
+      "ratingValue": reviewData.averageRating.toString(),
+      "reviewCount": reviewData.totalReviews.toString(),
+      "bestRating": "5",
+      "worstRating": "1"
+    };
+
+    // Add individual reviews with comments
+    if (reviewData.reviewsWithComments.length > 0) {
+      localBusiness.review = reviewData.reviewsWithComments.map(review => {
+        // Format name to first name + last initial if full name provided
+        const nameParts = review.name.split(' ');
+        const displayName = nameParts.length > 1 
+          ? `${nameParts[0]} ${nameParts[nameParts.length - 1][0]}.`
+          : review.name;
+
+        // Parse date to ISO format
+        const dateObj = new Date(review.date);
+        const isoDate = dateObj.toISOString().split('T')[0];
+
+        return {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": displayName
+          },
+          "datePublished": isoDate,
+          "reviewBody": review.comment,
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": review.rating.toString(),
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        };
+      });
+    }
+  }
+
+  return baseSchema;
+};
+
+// Keep the old export for backward compatibility (without reviews)
+export const homepageStructuredData = generateHomepageSchema(null);

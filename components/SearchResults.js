@@ -2,7 +2,8 @@ import Image from 'next/image';
 
 export default function SearchResults({ 
   results, 
-  displayCount, 
+  displayCount,
+  downloadingImage,
   filterText,
   isSearching,
   hasSearched,
@@ -128,18 +129,39 @@ export default function SearchResults({
                     e.stopPropagation();
                     onDownload(image, image.category);
                   }}
+                  disabled={downloadingImage === image.filename}
                   style={{
-                    background: '#2563eb',
+                    background: downloadingImage === image.filename ? '#9ca3af' : '#2563eb',
                     color: 'white',
                     padding: '0.75rem 1.5rem',
                     border: 'none',
                     borderRadius: '0.5rem',
                     fontSize: '1rem',
                     fontWeight: '600',
-                    cursor: 'pointer'
+                    cursor: downloadingImage === image.filename ? 'wait' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    opacity: downloadingImage === image.filename ? 0.7 : 1
                   }}
                 >
-                  Download
+                  {downloadingImage === image.filename ? (
+                    <>
+                      <span style={{
+                        display: 'inline-block',
+                        width: '14px',
+                        height: '14px',
+                        border: '2px solid white',
+                        borderTopColor: 'transparent',
+                        borderRadius: '50%',
+                        animation: 'spin 0.8s linear infinite'
+                      }}></span>
+                      Downloading...
+                    </>
+                  ) : (
+                    'Download'
+                  )}
                 </button>
               </div>
             </div>
@@ -184,6 +206,12 @@ export default function SearchResults({
         
         div:hover .image-overlay {
           opacity: 1;
+        }
+        
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
         }
       `}</style>
     </>

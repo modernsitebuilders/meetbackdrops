@@ -10,11 +10,20 @@ import imageMetadata from '../public/data/image-metadata-complete.json';
 import { formatPublicCount, TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import ReviewModal from '../components/ReviewModal';
+import RateLimitModal from '../components/RateLimitModal';
 
 
 export default function BrowsePage() {
   const { results, isSearching, hasSearched, performSearch } = useImageSearch(imageMetadata);
-  const { handleDownload, showReviewModal, setShowReviewModal } = useImageDownload(cloudinaryUrls);
+  const { 
+  handleDownload, 
+  showReviewModal, 
+  setShowReviewModal, 
+  downloadingImage,
+  showRateLimitModal,
+  setShowRateLimitModal,
+  rateLimitError
+} = useImageDownload(cloudinaryUrls);
   const [displayCount, setDisplayCount] = useState(24);
   const [selectedKeywords, setSelectedKeywords] = useState({});
   const [previewImage, setPreviewImage] = useState(null);
@@ -28,10 +37,11 @@ export default function BrowsePage() {
   };
 
   // Trigger search when keywords change
-useEffect(() => {
-  performSearch(selectedKeywords);
-  setDisplayCount(24); // Reset display count on new search
-}, [selectedKeywords]);
+  useEffect(() => {
+    performSearch(selectedKeywords);
+    setDisplayCount(24); // Reset display count on new search
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedKeywords]);
 
   // Handle filter changes from KeywordFilter component
   const handleFilterChange = (newKeywords) => {
@@ -88,14 +98,15 @@ useEffect(() => {
           maxWidth: '1200px', 
           margin: '0 auto'
         }}>
-          <SearchResults
+          <SearchResults 
             results={results}
             displayCount={displayCount}
+            onLoadMore={() => setDisplayCount(prev => prev + 24)}
+            onDownload={handleDownload}
+            downloadingImage={downloadingImage}
             filterText={filterText}
             isSearching={isSearching}
             hasSearched={hasSearched}
-            onDownload={handleDownload}
-            onLoadMore={() => setDisplayCount(displayCount + 24)}
             onImageClick={setPreviewImage}
           />
         </div>
@@ -113,6 +124,13 @@ useEffect(() => {
       {showReviewModal && (
         <ReviewModal 
           onClose={() => setShowReviewModal(false)}
+        />
+      )}
+    {/* Rate Limit Modal */}
+      {showRateLimitModal && (
+        <RateLimitModal 
+          onClose={() => setShowRateLimitModal(false)}
+          errorMessage={rateLimitError}
         />
       )}
     </Layout>

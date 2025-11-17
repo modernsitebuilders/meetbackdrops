@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import { useEffect } from 'react';
-import { homepageStructuredData } from '../data/homepageSchema';
+import { generateHomepageSchema } from '../data/homepageSchema';
+import { getReviewsData } from '../lib/reviews';
 import Card from '../components/Card';
 import TrustBadges from '../components/TrustBadges';
 import WhyDifferent from '../components/WhyDifferent';
@@ -16,7 +17,7 @@ import { getFAQs } from '../data/faqData';
 import { TOTAL_IMAGES_FORMATTED, CATEGORIES } from '../lib/categories-config';
 
 
-export default function Home() {
+export default function Home({ structuredData }) {
   const router = useRouter();
   
   useEffect(() => {
@@ -38,7 +39,7 @@ export default function Home() {
       description={`Download ${TOTAL_IMAGES_FORMATTED} free professional virtual backgrounds for Zoom, Teams, and Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks.`}
       currentPage="home"
       canonical="https://streambackdrops.com"
-      structuredData={homepageStructuredData} 
+      structuredData={structuredData}
     >
       <Head>
         <FAQSchema questions={getFAQs('homepage')} />
@@ -68,10 +69,10 @@ export default function Home() {
             style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
           />
           <img 
-  src="/images/wall-shelves-bright/wall-shelves-bright-10.webp" 
-  alt="Bright wall shelf background"
-  style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-/>
+            src="/images/wall-shelves-bright/wall-shelves-bright-10.webp" 
+            alt="Bright wall shelf background"
+            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+          />
           <img 
             src="/images/coffee-shops/coffee-shop-07.webp" 
             alt="Coffee shop background"
@@ -152,7 +153,7 @@ export default function Home() {
 
       {/* Category Cards Grid */}
       <div className={`${styles.categoryGrid} category-grid`}>
-       <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/bookshelves-bright-01.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} count={CATEGORIES['bookshelves-bright'].count} />
+        <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/bookshelves-bright-01.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} count={CATEGORIES['bookshelves-bright'].count} />
         <Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/bookshelves-dark-01.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} count={CATEGORIES['bookshelves-dark'].count} />
         <Card href="/category/wall-shelves-bright" title="Wall Shelves - Bright" description="Clean, minimalist wall shelf backgrounds with bright lighting" imageSrc="/images/wall-shelves-bright/wall-shelves-bright-01.webp" imageAlt="Bright wall shelf background for video calls" navigate={navigate} count={CATEGORIES['wall-shelves-bright'].count} />
         <Card href="/category/wall-shelves-dark" title="Wall Shelves - Dark" description="Sleek wall shelf backgrounds with warm ambient lighting" imageSrc="/images/wall-shelves-dark/wall-shelves-dark-01.webp" imageAlt="Dark wall shelf background for video meetings" navigate={navigate} count={CATEGORIES['wall-shelves-dark'].count} />
@@ -169,10 +170,22 @@ export default function Home() {
         <Card href="/category/bokeh-backgrounds" title="Bokeh Backgrounds" description="Beautiful bokeh light effects with artistic blur for elegant calls" imageSrc="/images/bokeh-backgrounds/bokeh-56.webp" imageAlt="Bokeh virtual background" navigate={navigate} count={CATEGORIES['bokeh-backgrounds'].count} />
         <Card href="/category/christmas-backgrounds" title="Christmas Backgrounds 🎄" description="Festive Christmas backgrounds with holiday decorations" imageSrc="/images/christmas-backgrounds/christmas-background-01.webp" imageAlt="Christmas virtual background" navigate={navigate} count={CATEGORIES['christmas-backgrounds'].count} />
         <Card href="/category/halloween-backgrounds" title="Halloween Backgrounds 🎃" description="Festive Halloween backgrounds with pumpkins" imageSrc="/images/halloween-backgrounds/halloween-background-11.webp" imageAlt="Halloween virtual background" navigate={navigate} count={CATEGORIES['halloween-backgrounds'].count} />
-        
       </div>
+
       {/* Social Proof */}
       <SocialProof />
     </Layout>
   );
+}
+
+// Fetch review data every time the page loads
+export async function getServerSideProps() {
+  const reviewData = await getReviewsData();
+  const structuredData = generateHomepageSchema(reviewData);
+
+  return {
+    props: {
+      structuredData
+    }
+  };
 }
