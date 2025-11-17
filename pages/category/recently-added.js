@@ -4,7 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import ReviewModal from '../../components/ReviewModal';
+import RateLimitModal from '../../components/RateLimitModal';
 import ImagePreviewModal from '../../components/ImagePreviewModal';
+import { useImageDownload } from '../../lib/useImageDownload';
 import cloudinaryUrls from '../../cloudinary-urls.json';
 import styles from '../../styles/CategoryPage.module.css';
 
@@ -13,10 +15,18 @@ export default function RecentlyAdded() {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [showReviewModal, setShowReviewModal] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  
+  const { 
+    handleDownload, 
+    showReviewModal, 
+    setShowReviewModal,
+    showRateLimitModal,
+    setShowRateLimitModal,
+    rateLimitError
+  } = useImageDownload(cloudinaryUrls);
 
   const fetchRecentImages = async (currentOffset = 0, append = false) => {
     try {
@@ -59,60 +69,6 @@ export default function RecentlyAdded() {
 
   const handleLoadMore = () => {
     fetchRecentImages(offset, true);
-  };
-
-  const handleDownload = async (image, e) => {
-    if (e) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
-    
-    try {
-      // Admin bypass
-      if (typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true') {
-        const link = document.createElement('a');
-        link.href = `/images/${image.category}/${image.filename}`;
-        link.download = `StreamBackdrops-${image.filename.replace('.webp', '.png')}`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        return;
-      }
-
-      // Track download
-      await fetch('/api/track-download', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          filename: image.downloadName,
-          category: image.category
-        })
-      }).catch(() => {});
-
-      // Get Cloudinary URL
-      const baseFilename = image.filename.replace('.webp', '');
-      const imageUrl = cloudinaryUrls[baseFilename];
-      
-      if (imageUrl) {
-        const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
-        const filename = `StreamBackdrops-${baseFilename}.png`;
-        const downloadUrl = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
-        
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        console.error('No Cloudinary URL found for', baseFilename);
-      }
-      
-      // Show review modal
-      setTimeout(() => setShowReviewModal(true), 2000);
-      
-    } catch (error) {
-      console.error('Download failed:', error);
-    }
   };
 
   return (
@@ -175,7 +131,8 @@ export default function RecentlyAdded() {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleDownload(image);
+                          e.preventDefault();
+                          handleDownload(image, image.category);
                         }}
                         className={styles.hoverDownloadButton}
                       >
@@ -237,13 +194,20 @@ export default function RecentlyAdded() {
             image={selectedImage}
             slug={selectedImage.category}
             onClose={() => setSelectedImage(null)}
-            onDownload={handleDownload}
+            onDownload={(image) => handleDownload(image, image.category)}
           />
         )}
 
         {showReviewModal && (
           <ReviewModal 
             onClose={() => setShowReviewModal(false)}
+          />
+        )}
+
+        {showRateLimitModal && (
+          <RateLimitModal 
+            onClose={() => setShowRateLimitModal(false)}
+            errorMessage={rateLimitError}
           />
         )}
       </div>
