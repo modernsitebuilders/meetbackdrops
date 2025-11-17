@@ -33,6 +33,11 @@ export default async function handler(req, res) {
     });
   }
 
+  // For HEAD requests, just return 200 if we passed the checks
+  if (req.method === 'HEAD') {
+    return res.status(200).end();
+  }
+
   try {
     // Fetch from Cloudinary
     const response = await fetch(url);
