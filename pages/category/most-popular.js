@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import ReviewModal from '../../components/ReviewModal';
 import styles from '../../styles/CategoryPage.module.css';
+import { getSessionData, updateSessionActivity } from '../../lib/sessionTracking';
 
 export default function MostPopular() {
   const [images, setImages] = useState([]);
@@ -83,15 +84,30 @@ export default function MostPopular() {
         return;
       }
 
-      // Track download
-      await fetch('/api/track-download', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          filename: image.filename.replace('.webp', '.png'),
-          category: image.category
-        })
-      });
+     // Get session data for attribution
+const session = getSessionData();
+
+// Update session download counter
+updateSessionActivity('download');
+
+// Track download with session attribution
+await fetch('/api/track-download', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    filename: image.filename.replace('.webp', '.png'),
+    category: image.category,
+    // Include session attribution
+    sessionId: session?.id || null,
+    originalReferrer: session?.originalReferrer || 'direct',
+    originalUtmSource: session?.originalUtmSource || null,
+    originalUtmMedium: session?.originalUtmMedium || null,
+    originalUtmCampaign: session?.originalUtmCampaign || null,
+    landingPage: session?.landingPage || null,
+    pageViewsInSession: session?.pageViews || 0,
+    downloadsInSession: (session?.downloads || 0) + 1
+  })
+});
 
       // Get Cloudinary URL - strip both .webp AND .png extensions
       const baseFilename = image.filename.replace('.webp', '').replace('.png', '');
