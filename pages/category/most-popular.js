@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import ReviewModal from '../../components/ReviewModal';
 import styles from '../../styles/CategoryPage.module.css';
+import RateLimitModal from '../../components/RateLimitModal';
 import { getSessionData, updateSessionActivity } from '../../lib/sessionTracking';
 
 export default function MostPopular() {
@@ -15,6 +16,8 @@ export default function MostPopular() {
 
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [downloadedImage, setDownloadedImage] = useState(null);
+  const [showRateLimitModal, setShowRateLimitModal] = useState(false);
+const [rateLimitError, setRateLimitError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,16 +118,26 @@ await fetch('/api/track-download', {
       console.log('Looking for:', baseFilename, 'Found:', imageUrl ? 'YES' : 'NO');
       
       if (imageUrl) {
-        const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
-        const filename = `StreamBackdrops-${baseFilename}.png`;
-        const downloadUrl = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
-        
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
+  const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
+  const filename = `StreamBackdrops-${baseFilename}.png`;
+  const downloadUrl = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
+  
+  // Check rate limit before downloading
+  const response = await fetch(downloadUrl, { method: 'HEAD' });
+  
+  if (!response.ok) {
+    // Rate limit hit, get error message
+    const errorResponse = await fetch(downloadUrl);
+    const errorData = await errorResponse.json();
+    throw new Error(errorData.error || 'Download limit reached');
+  }
+  
+  const link = document.createElement('a');
+  link.href = downloadUrl;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+} else {
         // Fallback: direct download from local webp images
         console.warn('No Cloudinary URL found, using direct webp download');
         const link = document.createElement('a');
@@ -140,10 +153,14 @@ await fetch('/api/track-download', {
       setTimeout(() => setShowReviewModal(true), 2000);
       
     } catch (error) {
-      console.error('Download failed:', error);
-    }
-  };
-
+  if (error.message && (error.message.includes('limit') || error.message.includes('banned'))) {
+    setRateLimitError(error.message);
+    setShowRateLimitModal(true);
+  } else {
+    console.error('Download failed:', error);
+  }
+}
+};
   const ImageModal = ({ image, onClose }) => {
     if (!image) return null;
 
@@ -263,6 +280,13 @@ await fetch('/api/track-download', {
           />
         )}
 
+{/* Rate Limit Modal */}
+{showRateLimitModal && (
+  <RateLimitModal 
+    onClose={() => setShowRateLimitModal(false)}
+    errorMessage={rateLimitError}
+  />
+)}
 
         <section className={styles.whyPopular}>
           <h2>Why These Backgrounds Are Popular</h2>
