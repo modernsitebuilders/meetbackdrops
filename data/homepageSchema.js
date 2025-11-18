@@ -38,8 +38,10 @@ export const generateHomepageSchema = (reviewData) => {
         "description": "Provider of free high quality virtual backgrounds for professional video calls",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Norristown",
+          "streetAddress": "614 Jefferson St",
+          "addressLocality": "Bridgeport",
           "addressRegion": "PA",
+          "postalCode": "19405",
           "addressCountry": "US"
         }
       },
@@ -67,14 +69,14 @@ export const generateHomepageSchema = (reviewData) => {
         "name": "StreamBackdrops",
         "image": "https://streambackdrops.com/logo.png",
         "url": "https://streambackdrops.com",
-        "telephone": "",
+        "telephone": "+1-555-123-4567",
         "priceRange": "Free",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "",
-          "addressLocality": "Norristown",
+          "streetAddress": "614 Jefferson St",
+          "addressLocality": "Bridgeport",
           "addressRegion": "PA",
-          "postalCode": "",
+          "postalCode": "19405",
           "addressCountry": "US"
         }
       }
@@ -84,6 +86,7 @@ export const generateHomepageSchema = (reviewData) => {
   // Add review data if available
   if (reviewData && reviewData.totalReviews > 0) {
     const localBusiness = baseSchema["@graph"].find(item => item["@type"] === "LocalBusiness");
+    const softwareApp = baseSchema["@graph"].find(item => item["@type"] === "SoftwareApplication");
     
     // Add aggregate rating
     localBusiness.aggregateRating = {
@@ -94,6 +97,15 @@ export const generateHomepageSchema = (reviewData) => {
       "worstRating": "1"
     };
 
+    // Add aggregate rating to SoftwareApplication too
+    softwareApp.aggregateRating = {
+      "@type": "AggregateRating",
+      "ratingValue": reviewData.averageRating.toString(),
+      "reviewCount": reviewData.totalReviews.toString(),
+      "bestRating": "5",
+      "worstRating": "1"
+    };
+    
     // Add individual reviews with comments
     if (reviewData.reviewsWithComments.length > 0) {
       localBusiness.review = reviewData.reviewsWithComments.map(review => {
