@@ -7,8 +7,9 @@ export default async function handler(req, res) {
 
   const { rating, comment, name, email, date } = req.body;
 
+  // Prevent duplicate submissions
   try {
-    // Same Google auth you're already using
+    // Set up Google auth
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
       privateKey = privateKey.slice(1, -1);
@@ -24,7 +25,38 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
-    // Save full review to Reviews sheet
+    // Check for duplicate reviews in last 7 days
+    const recentReviews = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: 'Reviews!A2:F'
+    });
+
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    // Check if this person already reviewed recently
+    const existingReview = (recentReviews.data.values || []).find(row => {
+      const reviewDate = new Date(row[0]);
+      const reviewEmail = row[4];
+      const reviewName = row[2];
+      
+      // Check if review is within last 7 days
+      if (reviewDate < sevenDaysAgo) return false;
+      
+      // Match by email (if provided) or by name
+      if (email && email !== 'Not provided' && reviewEmail === email) return true;
+      if (name && name !== 'Anonymous' && reviewName === name) return true;
+      
+      return false;
+    });
+
+    if (existingReview) {
+      return res.status(429).json({ 
+        error: 'You have already submitted a review recently. Thank you for your feedback!' 
+      });
+    }
+
+    // Save review to Reviews sheet
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: 'Reviews!A:F',
@@ -43,7 +75,7 @@ export default async function handler(req, res) {
           name,
           comment,
           email,
-          'pending'
+          'pending' // All new reviews start as pending
         ]]
       }
     });
