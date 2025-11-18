@@ -18,14 +18,23 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
   
-  // Get the tracking data including UTM parameters
+  // Get the tracking data including session information
   const { 
     page, 
     category, 
     referrer,
-    utm_source,     // This is NEW - captures where they came from
-    utm_medium,     // This is NEW - captures the type of link
-    utm_campaign    // This is NEW - captures which campaign
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    // New session-based attribution
+    sessionId,
+    originalReferrer,
+    originalUtmSource,
+    originalUtmMedium,
+    originalUtmCampaign,
+    landingPage,
+    pageViewsInSession,
+    downloadsInSession
   } = req.body;
   
   try {
@@ -55,48 +64,66 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
-    // Build the source string from UTM parameters
-    let trafficSource = 'direct';
+    // Build the current page source string from UTM parameters
+    let currentSource = 'direct';
     if (utm_source) {
-      trafficSource = `${utm_source}`;
+      currentSource = `${utm_source}`;
       if (utm_medium) {
-        trafficSource += `/${utm_medium}`;
+        currentSource += `/${utm_medium}`;
       }
       if (utm_campaign) {
-        trafficSource += `/${utm_campaign}`;
+        currentSource += `/${utm_campaign}`;
       }
     } else if (referrer && referrer !== 'direct') {
-      trafficSource = referrer;
+      currentSource = referrer;
     }
 
-const pageViewData = [
-  new Date().toLocaleString('en-US', {
-    timeZone: 'America/New_York',
-    year: 'numeric',
-    month: '2-digit', 
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  }),
-  'page_view',
-  page,
-  category || 'n/a',
-  trafficSource,
-  'not-collected',
-  req.headers['user-agent'] || 'unknown',
-  new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
-  new Date().toLocaleTimeString('en-US', {
-    timeZone: 'America/New_York',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  })
-];
+    // Build the original source string (most important for attribution)
+    let originalSource = originalReferrer || 'direct';
+    if (originalUtmSource) {
+      originalSource = originalUtmSource;
+      if (originalUtmMedium) {
+        originalSource += `/${originalUtmMedium}`;
+      }
+      if (originalUtmCampaign) {
+        originalSource += `/${originalUtmCampaign}`;
+      }
+    }
+
+    const pageViewData = [
+      new Date().toLocaleString('en-US', {
+        timeZone: 'America/New_York',
+        year: 'numeric',
+        month: '2-digit', 
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }),
+      'page_view',
+      page,
+      category || 'n/a',
+      currentSource,                    // Current referrer (for backward compatibility)
+      'not-collected',                  // IP (keeping your privacy approach)
+      req.headers['user-agent'] || 'unknown',
+      new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
+      new Date().toLocaleTimeString('en-US', {
+        timeZone: 'America/New_York',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }),
+      // New columns for session tracking
+      sessionId || '',                  // Column J: Session ID
+      originalSource,                   // Column K: Original Source (where they FIRST came from)
+      landingPage || '',                // Column L: Landing Page
+      pageViewsInSession || 1,          // Column M: Page Views in Session
+      downloadsInSession || 0           // Column N: Downloads in Session
+    ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I', 
+      range: 'Analytics!A:N',           // Extended to column N
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {

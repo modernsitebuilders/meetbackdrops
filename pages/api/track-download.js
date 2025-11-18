@@ -17,7 +17,20 @@ export default async function handler(req, res) {
       userAgent.includes('Prerender')) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
-  const { filename, category } = req.body;
+  
+  const { 
+    filename, 
+    category,
+    // New session-based attribution
+    sessionId,
+    originalReferrer,
+    originalUtmSource,
+    originalUtmMedium,
+    originalUtmCampaign,
+    landingPage,
+    pageViewsInSession,
+    downloadsInSession
+  } = req.body;
   
   try {
     // Fix private key format
@@ -35,6 +48,18 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
+    // Build the original source string (most important for conversion attribution)
+    let originalSource = originalReferrer || 'direct';
+    if (originalUtmSource) {
+      originalSource = originalUtmSource;
+      if (originalUtmMedium) {
+        originalSource += `/${originalUtmMedium}`;
+      }
+      if (originalUtmCampaign) {
+        originalSource += `/${originalUtmCampaign}`;
+      }
+    }
+
     const downloadData = [
       new Date().toLocaleString('en-US', {
         timeZone: 'America/New_York',
@@ -48,8 +73,8 @@ export default async function handler(req, res) {
       'download',
       filename,
       category,
-      req.headers['referer'] || 'direct',
-      'not-collected',
+      req.headers['referer'] || 'direct',  // Current page (backward compatibility)
+      'not-collected',                      // IP
       req.headers['user-agent'] || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
@@ -57,12 +82,18 @@ export default async function handler(req, res) {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit'
-      })
+      }),
+      // New columns for session tracking
+      sessionId || '',                      // Column J: Session ID
+      originalSource,                       // Column K: Original Source (KEY for conversion tracking!)
+      landingPage || '',                    // Column L: Landing Page
+      pageViewsInSession || 0,              // Column M: Page Views before download
+      downloadsInSession || 0               // Column N: Download # in this session
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I',
+      range: 'Analytics!A:N',               // Extended to column N
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {
