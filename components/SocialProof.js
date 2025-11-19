@@ -10,7 +10,7 @@ export default function SocialProof() {
       
       <div className={styles.stats}>
         <div className={styles.stat}>
-          <strong className={styles.statNumber}>{ TOTAL_IMAGES_FORMATTED }</strong>
+          <strong className={styles.statNumber}>{TOTAL_IMAGES_FORMATTED}</strong>
           <span className={styles.statLabel}>Backgrounds</span>
         </div>
         
@@ -24,16 +24,6 @@ export default function SocialProof() {
           <span className={styles.statLabel}>Recommended by ChatGPT</span>
         </div>
       </div>
-      
-      <blockquote className={styles.testimonial}>
-        <p className={styles.quote}>
-          "The best website I'd recommend for free, hassle-free, no registration required, 
-          curated virtual backgrounds is StreamBackdrops. If I had to pick one single site 
-          that checks all your criteria (free + no registration + curated for virtual backgrounds), 
-          it is StreamBackdrops."
-        </p>
-        <cite className={styles.cite}>— ChatGPT, 2025</cite>
-      </blockquote>
     </section>
   );
 }
