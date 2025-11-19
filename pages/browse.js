@@ -2,6 +2,7 @@ import { useImageSearch } from '../lib/useImageSearch';
 import { useImageDownload } from '../lib/useImageDownload';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import KeywordFilter from '../components/KeywordFilter';
 import SearchResults from '../components/SearchResults';
@@ -11,6 +12,7 @@ import { formatPublicCount, TOTAL_IMAGES_FORMATTED } from '../lib/categories-con
 import cloudinaryUrls from '../cloudinary-urls.json';
 import ReviewModal from '../components/ReviewModal';
 import RateLimitModal from '../components/RateLimitModal';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 
 export default function BrowsePage() {
@@ -59,6 +61,13 @@ export default function BrowsePage() {
       description={`Browse through ${TOTAL_IMAGES_FORMATTED} free virtual backgrounds by keyword - filter by style, lighting, and features`}
       currentPage="browse"
     >
+
+      <Head>
+        <BreadcrumbSchema items={[
+          { name: "Home", url: "https://streambackdrops.com" },
+          { name: "Browse", url: "https://streambackdrops.com/browse" }
+        ]} />
+      </Head>
       <div style={{ 
         minHeight: '100vh', 
         backgroundColor: '#f9fafb',

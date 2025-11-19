@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import { useEffect } from 'react';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 export default function Blog() {
   useEffect(() => {
@@ -227,6 +228,11 @@ export default function Blog() {
             ]
           })}
         </script>
+
+        <BreadcrumbSchema items={[
+    { name: "Home", url: "https://streambackdrops.com" },
+    { name: "Blog", url: "https://streambackdrops.com/blog" }
+  ]} />
       </Head>
 
      <div style={{minHeight: '100vh', background: '#f9fafb'}}>

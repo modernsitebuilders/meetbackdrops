@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import Head from 'next/head';
 import BlogLayout from '../../components/BlogLayout';
 import { getFAQs } from '../../data/faqData';
 import { categoryInfo } from '../../data/categoryData';
 import HowToSchema from '../../components/HowToSchema';
 import { howToData } from '../../data/howToData';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 
 // Import from the correct file names (without -content suffix)
 import { backgroundMistakesContent } from '../../data/blog-content/background-mistakes';
@@ -211,6 +213,13 @@ export default function BlogPost() {
   dateModified={blogPost.dateModified}
   faqQuestions={faqQuestions}
 >
+  <Head>
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "https://streambackdrops.com" },
+        { name: "Blog", url: "https://streambackdrops.com/blog" },
+        { name: blogPost.headline, url: `https://streambackdrops.com/blog/${slug}` }
+      ]} />
+    </Head>
   {/* Add HowTo schema for tutorial posts */}
   {howToData[slug] && (
     <HowToSchema 

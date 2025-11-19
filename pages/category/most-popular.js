@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 import ReviewModal from '../../components/ReviewModal';
 import styles from '../../styles/CategoryPage.module.css';
 import RateLimitModal from '../../components/RateLimitModal';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import { getSessionData, updateSessionActivity } from '../../lib/sessionTracking';
 
 export default function MostPopular() {
@@ -210,6 +211,11 @@ await fetch('/api/track-download', {
           content="Download the most popular free virtual backgrounds for Zoom, Teams, and Google Meet. Proven favorites from thousands of downloads." 
         />
         <link rel="canonical" href="https://streambackdrops.com/category/most-popular" />
+
+        <BreadcrumbSchema items={[
+          { name: "Home", url: "https://streambackdrops.com" },
+          { name: "Most Popular", url: "https://streambackdrops.com/category/most-popular" }
+        ]} />
       </Head>
 
       <div className={styles.categoryPage}>

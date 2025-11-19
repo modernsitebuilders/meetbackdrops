@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import ReviewModal from '../../components/ReviewModal';
 import RateLimitModal from '../../components/RateLimitModal';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import ImagePreviewModal from '../../components/ImagePreviewModal';
 import { useImageDownload } from '../../lib/useImageDownload';
 import cloudinaryUrls from '../../cloudinary-urls.json';
@@ -80,6 +81,11 @@ export default function RecentlyAdded() {
     >
       <Head>
         <link rel="canonical" href="https://streambackdrops.com/category/recently-added" />
+
+        <BreadcrumbSchema items={[
+          { name: "Home", url: "https://streambackdrops.com" },
+          { name: "Recently Added", url: "https://streambackdrops.com/category/recently-added" }
+        ]} />
       </Head>
 
       <div className={styles.categoryPage}>
