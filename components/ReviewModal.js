@@ -109,7 +109,7 @@ export default function ReviewModal({ onClose }) {
     return (
       <div style={{
         position: 'fixed',
-        bottom: '8rem',
+        bottom: '12rem',
         right: '2rem',
         zIndex: 20000,
         animation: 'slideInFromRight 0.4s ease-out'
@@ -316,7 +316,7 @@ export default function ReviewModal({ onClose }) {
   return (
     <div style={{
       position: 'fixed',
-      bottom: '8rem',
+      bottom: '12rem',
       right: '2rem',
       zIndex: 20000,
       animation: 'slideInFromRight 0.4s ease-out'
