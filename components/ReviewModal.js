@@ -111,7 +111,7 @@ export default function ReviewModal({ onClose }) {
         position: 'fixed',
         bottom: '2rem',
         right: '2rem',
-        zIndex: 9999,
+        zIndex: 20000,
         animation: 'slideInFromRight 0.4s ease-out'
       }}>
         <div style={{
@@ -318,7 +318,7 @@ export default function ReviewModal({ onClose }) {
       position: 'fixed',
       bottom: '2rem',
       right: '2rem',
-      zIndex: 9999,
+      zIndex: 20000,
       animation: 'slideInFromRight 0.4s ease-out'
     }}>
       <div style={{
