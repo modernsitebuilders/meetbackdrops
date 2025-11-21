@@ -1,101 +1,107 @@
-import { google } from 'googleapis';
+// components/Analytics.js
+import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
-export default async function handler(req, res) {
-  const { url, filename } = req.query;
-  
-  if (!url || !filename) {
-    return res.status(400).json({ error: 'Missing parameters' });
-  }
+export default function Analytics() {
+  const router = useRouter();
+  const lastTrackedPath = useRef(null);
 
-  // Get session ID from cookie
-  const sessionId = req.cookies.session_id;
-  
-  if (!sessionId) {
-    return res.status(400).json({ error: 'No session found. Please refresh the page.' });
-  }
-
-  try {
-    // Connect to Google Sheets to check download count
-    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
-    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
-      privateKey = privateKey.slice(1, -1);
-    }
-    privateKey = privateKey.replace(/\\n/g, '\n');
-
-    const auth = new google.auth.JWT({
-      email: process.env.GOOGLE_SERVICE_EMAIL,
-      key: privateKey,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets']
-    });
-
-    const sheets = google.sheets({ version: 'v4', auth });
-
-    // Get all analytics data
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:N',
-    });
-
-    const rows = response.data.values || [];
-    
-    // Count downloads for this session
-    const now = Date.now();
-    const oneDayAgo = now - (24 * 60 * 60 * 1000);
-    const sevenDaysAgo = now - (7 * 24 * 60 * 60 * 1000);
-    
-    let dailyCount = 0;
-    let weeklyCount = 0;
-    
-    // Skip header row, check all rows for this session's downloads
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      const eventType = row[1]; // Column B
-      const rowSessionId = row[9]; // Column J
-      const timestamp = row[0]; // Column A
-      
-      if (eventType === 'download' && rowSessionId === sessionId) {
-        const rowDate = new Date(timestamp);
-        const rowTime = rowDate.getTime();
-        
-        if (rowTime > oneDayAgo) {
-          dailyCount++;
-        }
-        if (rowTime > sevenDaysAgo) {
-          weeklyCount++;
-        }
+  useEffect(() => {
+    const trackPageView = async () => {
+      // Skip tracking during build or in development
+      if (typeof window === 'undefined' || 
+          window.location.hostname === 'localhost') {
+        return;
       }
-    }
-    
-    // Check daily limit (5 per day)
-    if (dailyCount >= 5) {
-      return res.status(429).json({ 
-        error: 'Daily download limit of 5 reached. Please try again tomorrow.' 
-      });
-    }
-    
-    // Check weekly limit (30 per week)
-    if (weeklyCount >= 30) {
-      return res.status(429).json({ 
-        error: 'Weekly download limit of 30 reached. Please try again in a few days.' 
-      });
-    }
+      if (localStorage.getItem('streambackdrops_admin') === 'true') {
+        console.log('🔍 Analytics: Skipping - Admin mode enabled');
+        return;
+      }
 
-    // Fetch image from Cloudinary
-    const imageResponse = await fetch(url);
-    
-    if (!imageResponse.ok) {
-      throw new Error('Failed to fetch image');
+      const currentPath = window.location.pathname;
+      
+      // Prevent duplicate tracking for the same path within 1 second
+      if (lastTrackedPath.current === currentPath && 
+          Date.now() - (lastTrackedPath.currentTime || 0) < 1000) {
+        console.log('🔍 Analytics: Skipping duplicate track for:', currentPath);
+        return;
+      }
+
+      console.log('🔍 Analytics: Tracking page view for:', currentPath);
+
+      // Update tracking reference
+      lastTrackedPath.current = currentPath;
+      lastTrackedPath.currentTime = Date.now();
+
+      // Get UTM parameters from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const utm_source = urlParams.get('utm_source');
+      const utm_medium = urlParams.get('utm_medium');
+      const utm_campaign = urlParams.get('utm_campaign');
+      
+      // Store UTM parameters in session storage to track throughout visit
+      if (utm_source) {
+        sessionStorage.setItem('utm_source', utm_source);
+      }
+      if (utm_medium) {
+        sessionStorage.setItem('utm_medium', utm_medium);
+      }
+      if (utm_campaign) {
+        sessionStorage.setItem('utm_campaign', utm_campaign);
+      }
+      
+      // Get stored UTM parameters (persists throughout the session)
+      const stored_utm_source = sessionStorage.getItem('utm_source');
+      const stored_utm_medium = sessionStorage.getItem('utm_medium');
+      const stored_utm_campaign = sessionStorage.getItem('utm_campaign');
+
+      try {
+        await fetch('/api/track-page-view', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            page: currentPath,
+            category: currentPath === '/' ? 'homepage' : 
+                     currentPath.startsWith('/blog/') ? 'blog' :
+                     currentPath.startsWith('/category/') ? 'category-page' :
+                     currentPath.includes('/gallery') ? 'gallery' :
+                     currentPath.includes('/about') ? 'about' :
+                     currentPath.includes('/contact') ? 'contact' :
+                     currentPath.includes('/privacy') ? 'legal' :
+                     currentPath.includes('/terms') ? 'legal' :
+                     'other',
+            referrer: document.referrer || 'direct',
+            utm_source: stored_utm_source || utm_source || null,
+            utm_medium: stored_utm_medium || utm_medium || null,
+            utm_campaign: stored_utm_campaign || utm_campaign || null
+          })
+        });
+      } catch (error) {
+        console.error('Failed to track page view:', error);
+      }
+    };
+
+    // Track initial page view only
+    trackPageView();
+
+    // Track route changes - but only if router.events exists (not during SSG)
+    if (router.events) {
+      const handleRouteChange = (url) => {
+        // Small delay to ensure the route has fully changed
+        setTimeout(() => {
+          trackPageView();
+        }, 100);
+      };
+
+      router.events.on('routeChangeComplete', handleRouteChange);
+      
+      return () => {
+        router.events.off('routeChangeComplete', handleRouteChange);
+      };
     }
-    
-    const buffer = await imageResponse.arrayBuffer();
-    
-    // Set headers to force download with custom filename
-    res.setHeader('Content-Type', 'image/png');
-    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-    res.send(Buffer.from(buffer));
-    
-  } catch (error) {
-    console.error('Download failed:', error);
-    res.status(500).json({ error: 'Download failed' });
-  }
+  }, [router]);
+
+  return null;
 }
