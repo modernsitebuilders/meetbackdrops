@@ -109,35 +109,50 @@ export default function ReviewModal({ onClose }) {
     return (
       <div style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        bottom: '2rem',
+        right: '2rem',
         zIndex: 9999,
-        padding: '1rem'
+        animation: 'slideInFromRight 0.4s ease-out'
       }}>
         <div style={{
           backgroundColor: 'white',
           borderRadius: '1rem',
           padding: '1.5rem',
-          maxWidth: '450px',
-          width: '100%',
-          animation: 'slideIn 0.3s ease-out'
+          maxWidth: '380px',
+          width: '380px',
+          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+          border: '1px solid #e5e7eb',
+          position: 'relative'
         }}>
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            style={{
+              position: 'absolute',
+              top: '0.75rem',
+              right: '0.75rem',
+              background: 'transparent',
+              border: 'none',
+              fontSize: '1.25rem',
+              cursor: 'pointer',
+              color: '#9ca3af',
+              padding: '0.25rem',
+              lineHeight: 1
+            }}
+          >
+            ✕
+          </button>
+
           <div style={{ textAlign: 'center', marginBottom: showOptionalFields ? '1rem' : '0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>{response.emoji}</div>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{response.emoji}</div>
             <h2 style={{ 
               color: rating >= 4 ? '#10b981' : rating === 3 ? '#6b7280' : '#f59e0b', 
               marginBottom: '0.5rem', 
-              fontSize: '1.3rem' 
+              fontSize: '1.2rem' 
             }}>
               {response.title}
             </h2>
-            <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>{response.message}</p>
+            <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>{response.message}</p>
           </div>
 
           {showOptionalFields && (
@@ -145,7 +160,7 @@ export default function ReviewModal({ onClose }) {
               <div style={{ borderTop: '1px solid #e5e7eb', margin: '1rem 0', paddingTop: '1rem' }}>
                 <p style={{ 
                   color: rating <= 2 ? '#dc2626' : '#6b7280', 
-                  fontSize: '0.9rem', 
+                  fontSize: '0.875rem', 
                   marginBottom: '0.75rem', 
                   textAlign: 'center',
                   fontWeight: rating <= 2 ? '600' : 'normal'
@@ -164,7 +179,7 @@ export default function ReviewModal({ onClose }) {
                       padding: '0.6rem',
                       border: rating <= 2 ? '2px solid #fca5a5' : '1px solid #d1d5db',
                       borderRadius: '0.5rem',
-                      fontSize: '0.95rem',
+                      fontSize: '0.875rem',
                       fontFamily: 'inherit',
                       resize: 'vertical',
                       boxSizing: 'border-box'
@@ -183,7 +198,7 @@ export default function ReviewModal({ onClose }) {
                       padding: '0.6rem',
                       border: '1px solid #d1d5db',
                       borderRadius: '0.5rem',
-                      fontSize: '0.95rem',
+                      fontSize: '0.875rem',
                       boxSizing: 'border-box'
                     }}
                   />
@@ -197,7 +212,7 @@ export default function ReviewModal({ onClose }) {
                     marginBottom: '1rem',
                     border: '1px solid #bfdbfe'
                   }}>
-                    <p style={{ fontSize: '0.8rem', color: '#3b82f6', marginBottom: '0.5rem' }}>
+                    <p style={{ fontSize: '0.75rem', color: '#3b82f6', marginBottom: '0.5rem' }}>
                       📬 Get notified about new backgrounds (optional)
                     </p>
                     <input
@@ -210,7 +225,7 @@ export default function ReviewModal({ onClose }) {
                         padding: '0.6rem',
                         border: '1px solid #93c5fd',
                         borderRadius: '0.5rem',
-                        fontSize: '0.95rem',
+                        fontSize: '0.875rem',
                         boxSizing: 'border-box',
                         backgroundColor: 'white'
                       }}
@@ -228,7 +243,7 @@ export default function ReviewModal({ onClose }) {
                       color: '#374151',
                       border: 'none',
                       borderRadius: '0.5rem',
-                      fontSize: '0.95rem',
+                      fontSize: '0.875rem',
                       fontWeight: '600',
                       cursor: 'pointer'
                     }}
@@ -244,7 +259,7 @@ export default function ReviewModal({ onClose }) {
                       color: 'white',
                       border: 'none',
                       borderRadius: '0.5rem',
-                      fontSize: '0.95rem',
+                      fontSize: '0.875rem',
                       fontWeight: '600',
                       cursor: 'pointer'
                     }}
@@ -261,12 +276,12 @@ export default function ReviewModal({ onClose }) {
               <button
                 onClick={onClose}
                 style={{
-                  padding: '0.65rem 1.5rem',
+                  padding: '0.5rem 1rem',
                   backgroundColor: '#f3f4f6',
                   color: '#374151',
                   border: 'none',
                   borderRadius: '0.5rem',
-                  fontSize: '0.95rem',
+                  fontSize: '0.875rem',
                   fontWeight: '600',
                   cursor: 'pointer'
                 }}
@@ -282,6 +297,17 @@ export default function ReviewModal({ onClose }) {
             from { opacity: 0; }
             to { opacity: 1; }
           }
+          
+          @keyframes slideInFromRight {
+            from {
+              opacity: 0;
+              transform: translateX(100px);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
         `}</style>
       </div>
     );
@@ -290,35 +316,49 @@ export default function ReviewModal({ onClose }) {
   return (
     <div style={{
       position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.75)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
+      bottom: '2rem',
+      right: '2rem',
       zIndex: 9999,
-      padding: '1rem'
+      animation: 'slideInFromRight 0.4s ease-out'
     }}>
       <div style={{
         backgroundColor: 'white',
         borderRadius: '1rem',
-        padding: '2rem',
-        maxWidth: '400px',
-        width: '100%',
-        animation: 'slideIn 0.3s ease-out',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-        textAlign: 'center'
+        padding: '1.5rem',
+        width: '340px',
+        boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+        border: '1px solid #e5e7eb',
+        textAlign: 'center',
+        position: 'relative'
       }}>
-       <h2 style={{ fontSize: '1.3rem', fontWeight: 'bold', color: '#111827', marginBottom: '0.5rem' }}>
-          How'd We Do?
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: '0.75rem',
+            right: '0.75rem',
+            background: 'transparent',
+            border: 'none',
+            fontSize: '1.25rem',
+            cursor: 'pointer',
+            color: '#9ca3af',
+            padding: '0.25rem',
+            lineHeight: 1
+          }}
+        >
+          ✕
+        </button>
+
+        <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎉</div>
+        <h2 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#111827', marginBottom: '0.5rem' }}>
+          Download Complete!
         </h2>
-        <p style={{ color: '#6b7280', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-          Just click a star! Reviews may be featured on our site.
+        <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '1rem' }}>
+          How'd we do?
         </p>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
           {[1, 2, 3, 4, 5].map((star) => (
             <button
               key={star}
@@ -326,7 +366,7 @@ export default function ReviewModal({ onClose }) {
               style={{
                 background: 'transparent',
                 border: 'none',
-                fontSize: '3rem',
+                fontSize: '2rem',
                 cursor: 'pointer',
                 padding: 0,
                 transition: 'transform 0.2s',
@@ -347,7 +387,7 @@ export default function ReviewModal({ onClose }) {
             backgroundColor: 'transparent',
             color: '#6b7280',
             border: 'none',
-            fontSize: '0.85rem',
+            fontSize: '0.8rem',
             cursor: 'pointer',
             textDecoration: 'underline'
           }}
@@ -357,14 +397,14 @@ export default function ReviewModal({ onClose }) {
       </div>
 
       <style jsx>{`
-        @keyframes slideIn {
+        @keyframes slideInFromRight {
           from {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateX(100px);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
           }
         }
       `}</style>
