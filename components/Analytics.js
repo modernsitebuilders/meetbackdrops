@@ -1,108 +1,101 @@
-// components/Analytics.js
-import { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
-import { getOrCreateSession, updateSessionActivity } from '../lib/sessionTracking';
+import { google } from 'googleapis';
 
-export default function Analytics() {
-  const router = useRouter();
-  const lastTrackedPath = useRef(null);
+export default async function handler(req, res) {
+  const { url, filename } = req.query;
+  
+  if (!url || !filename) {
+    return res.status(400).json({ error: 'Missing parameters' });
+  }
 
-  useEffect(() => {
-    const trackPageView = async () => {
-      // Skip tracking during build or in development
-      if (typeof window === 'undefined' || 
-          window.location.hostname === 'localhost') {
-        return;
-      }
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
-        console.log('📊 Analytics: Skipping - Admin mode enabled');
-        return;
-      }
+  // Get session ID from cookie
+  const sessionId = req.cookies.session_id;
+  
+  if (!sessionId) {
+    return res.status(400).json({ error: 'No session found. Please refresh the page.' });
+  }
 
-      const currentPath = window.location.pathname;
-      
-      // Prevent duplicate tracking for the same path within 1 second
-      if (lastTrackedPath.current === currentPath && 
-          Date.now() - (lastTrackedPath.currentTime || 0) < 1000) {
-        console.log('📊 Analytics: Skipping duplicate track for:', currentPath);
-        return;
-      }
+  try {
+    // Connect to Google Sheets to check download count
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+    privateKey = privateKey.replace(/\\n/g, '\n');
 
-      console.log('📊 Analytics: Tracking page view for:', currentPath);
+    const auth = new google.auth.JWT({
+      email: process.env.GOOGLE_SERVICE_EMAIL,
+      key: privateKey,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    });
 
-      // Update tracking reference
-      lastTrackedPath.current = currentPath;
-      lastTrackedPath.currentTime = Date.now();
+    const sheets = google.sheets({ version: 'v4', auth });
 
-      // Get or create session
-      const session = getOrCreateSession();
-      
-      // Update session activity counter
-      updateSessionActivity('page_view');
+    // Get all analytics data
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Analytics!A:N',
+    });
 
-      // Get current page UTM parameters (for new campaigns)
-      const urlParams = new URLSearchParams(window.location.search);
-      const currentUtmSource = urlParams.get('utm_source');
-      const currentUtmMedium = urlParams.get('utm_medium');
-      const currentUtmCampaign = urlParams.get('utm_campaign');
-
-      try {
-        await fetch('/api/track-page-view', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            page: currentPath,
-            category: currentPath === '/' ? 'homepage' : 
-                     currentPath.startsWith('/blog/') ? 'blog' :
-                     currentPath.startsWith('/category/') ? 'category-page' :
-                     currentPath.includes('/gallery') ? 'gallery' :
-                     currentPath.includes('/about') ? 'about' :
-                     currentPath.includes('/contact') ? 'contact-page' :
-                     currentPath.includes('/privacy') ? 'legal' :
-                     currentPath.includes('/terms') ? 'legal' :
-                     'other',
-            
-            // Current page context
-            referrer: document.referrer || 'direct',
-            utm_source: currentUtmSource || null,
-            utm_medium: currentUtmMedium || null,
-            utm_campaign: currentUtmCampaign || null,
-            
-            // Original session attribution
-            sessionId: session?.id || null,
-            originalReferrer: session?.originalReferrer || 'direct',
-            originalUtmSource: session?.originalUtmSource || null,
-            originalUtmMedium: session?.originalUtmMedium || null,
-            originalUtmCampaign: session?.originalUtmCampaign || null,
-            landingPage: session?.landingPage || currentPath,
-            pageViewsInSession: session?.pageViews || 1,
-            downloadsInSession: session?.downloads || 0
-          })
-        });
-      } catch (error) {
-        console.error('Failed to track page view:', error);
-      }
-    };
-
-    // Track initial page view only
-    trackPageView();
-
-    // Track route changes
-    const handleRouteChange = (url) => {
-      // Small delay to ensure the route has fully changed
-      setTimeout(() => {
-        trackPageView();
-      }, 100);
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
+    const rows = response.data.values || [];
     
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router]);
+    // Count downloads for this session
+    const now = Date.now();
+    const oneDayAgo = now - (24 * 60 * 60 * 1000);
+    const sevenDaysAgo = now - (7 * 24 * 60 * 60 * 1000);
+    
+    let dailyCount = 0;
+    let weeklyCount = 0;
+    
+    // Skip header row, check all rows for this session's downloads
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      const eventType = row[1]; // Column B
+      const rowSessionId = row[9]; // Column J
+      const timestamp = row[0]; // Column A
+      
+      if (eventType === 'download' && rowSessionId === sessionId) {
+        const rowDate = new Date(timestamp);
+        const rowTime = rowDate.getTime();
+        
+        if (rowTime > oneDayAgo) {
+          dailyCount++;
+        }
+        if (rowTime > sevenDaysAgo) {
+          weeklyCount++;
+        }
+      }
+    }
+    
+    // Check daily limit (5 per day)
+    if (dailyCount >= 5) {
+      return res.status(429).json({ 
+        error: 'Daily download limit of 5 reached. Please try again tomorrow.' 
+      });
+    }
+    
+    // Check weekly limit (30 per week)
+    if (weeklyCount >= 30) {
+      return res.status(429).json({ 
+        error: 'Weekly download limit of 30 reached. Please try again in a few days.' 
+      });
+    }
 
-  return null;
+    // Fetch image from Cloudinary
+    const imageResponse = await fetch(url);
+    
+    if (!imageResponse.ok) {
+      throw new Error('Failed to fetch image');
+    }
+    
+    const buffer = await imageResponse.arrayBuffer();
+    
+    // Set headers to force download with custom filename
+    res.setHeader('Content-Type', 'image/png');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.send(Buffer.from(buffer));
+    
+  } catch (error) {
+    console.error('Download failed:', error);
+    res.status(500).json({ error: 'Download failed' });
+  }
 }
