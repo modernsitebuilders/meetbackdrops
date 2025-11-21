@@ -116,34 +116,55 @@ export default async function handler(req, res) {
         category = categoryMapping[category];
       }
       
+      // Try to find matching image by stripping extension
+      let matchedFilename = filename;
       if (!imageStats[filename]) {
-        return;
+        const baseName = filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+        const variants = [
+          `${baseName}.webp`,
+          `${baseName}.png`,
+          `${baseName}.jpg`,
+          `${baseName}.jpeg`
+        ];
+        
+        let found = false;
+        for (const variant of variants) {
+          if (imageStats[variant]) {
+            matchedFilename = variant;
+            found = true;
+            break;
+          }
+        }
+        
+        if (!found) {
+          return;
+        }
       }
       
-      if (!imageStats[filename].tracked) {
-        imageStats[filename].tracked = true;
-        imageStats[filename].firstSeen = new Date(timestamp);
+      if (!imageStats[matchedFilename].tracked) {
+        imageStats[matchedFilename].tracked = true;
+        imageStats[matchedFilename].firstSeen = new Date(timestamp);
       }
       
       const eventDate = new Date(timestamp);
       
       if (eventType === 'download') {
-        imageStats[filename].downloads += 1;
+        imageStats[matchedFilename].downloads += 1;
         
-        if (!imageStats[filename].lastDownload || eventDate > imageStats[filename].lastDownload) {
-          imageStats[filename].lastDownload = eventDate;
+        if (!imageStats[matchedFilename].lastDownload || eventDate > imageStats[matchedFilename].lastDownload) {
+          imageStats[matchedFilename].lastDownload = eventDate;
         }
         
         const daysSinceEvent = (now - eventDate) / (1000 * 60 * 60 * 24);
         if (daysSinceEvent <= 30) {
-          imageStats[filename].recentDownloads += 1;
+          imageStats[matchedFilename].recentDownloads += 1;
         }
       } else if (eventType === 'page_view') {
-        imageStats[filename].pageviews += 1;
+        imageStats[matchedFilename].pageviews += 1;
       }
       
-      if (eventDate < imageStats[filename].firstSeen) {
-        imageStats[filename].firstSeen = eventDate;
+      if (eventDate < imageStats[matchedFilename].firstSeen) {
+        imageStats[matchedFilename].firstSeen = eventDate;
       }
     });
 
