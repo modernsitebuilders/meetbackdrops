@@ -1,6 +1,7 @@
 // components/Analytics.js
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { getOrCreateSession, updateSessionActivity } from '../lib/sessionTracking';
 
 export default function Analytics() {
   const router = useRouter();
@@ -32,6 +33,10 @@ export default function Analytics() {
       // Update tracking reference
       lastTrackedPath.current = currentPath;
       lastTrackedPath.currentTime = Date.now();
+
+      // Get or create session
+      const session = getOrCreateSession();
+      updateSessionActivity('page_view');
 
       // Get UTM parameters from the URL
       const urlParams = new URLSearchParams(window.location.search);
@@ -75,7 +80,16 @@ export default function Analytics() {
             referrer: document.referrer || 'direct',
             utm_source: stored_utm_source || utm_source || null,
             utm_medium: stored_utm_medium || utm_medium || null,
-            utm_campaign: stored_utm_campaign || utm_campaign || null
+            utm_campaign: stored_utm_campaign || utm_campaign || null,
+            // Session tracking data
+            sessionId: session?.id || null,
+            originalReferrer: session?.originalReferrer || 'direct',
+            originalUtmSource: session?.originalUtmSource || null,
+            originalUtmMedium: session?.originalUtmMedium || null,
+            originalUtmCampaign: session?.originalUtmCampaign || null,
+            landingPage: session?.landingPage || null,
+            pageViewsInSession: session?.pageViews || 0,
+            downloadsInSession: session?.downloads || 0
           })
         });
       } catch (error) {
