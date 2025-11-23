@@ -69,8 +69,8 @@ export default function Analytics() {
           body: JSON.stringify({
             page: currentPath,
             category: currentPath === '/' ? 'homepage' : 
-                     currentPath.startsWith('/blog/') ? 'blog' :
-                     currentPath.startsWith('/category/') ? 'category-page' :
+                     currentPath.startsWith('/blog/') ? currentPath.replace('/blog/', '') :
+                     currentPath.startsWith('/category/') ? currentPath.replace('/category/', '') :
                      currentPath.includes('/gallery') ? 'gallery' :
                      currentPath.includes('/about') ? 'about' :
                      currentPath.includes('/contact') ? 'contact' :
