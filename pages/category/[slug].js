@@ -39,7 +39,19 @@ function CategoryContent({ slug }) {
       </div>
     );
   }
+const [topImages, setTopImages] = useState([]);
 
+useEffect(() => {
+  fetch('/api/popular-downloads')
+    .then(res => res.json())
+    .then(data => {
+      const top25 = data.topDownloads.slice(0, 25).map(item => 
+        item.filename.replace('.png', '.webp')
+      );
+      setTopImages(top25);
+    })
+    .catch(() => setTopImages([]));
+}, []);
   return (
     <>
       <div style={{
@@ -75,11 +87,12 @@ function CategoryContent({ slug }) {
           <CategoryHeader category={category} />
           
           <ImageGrid 
-            images={category.images}
-            slug={slug}
-            onImageClick={setPreviewImage}
-            onDownload={(image) => handleDownload(image, slug)}
-          />
+  images={category.images}
+  slug={slug}
+  onImageClick={setPreviewImage}
+  onDownload={(image) => handleDownload(image, slug)}
+  topImages={topImages}
+/>
 
           <RelatedCategories currentSlug={slug} />
           <CategorySEOContent category={category} />

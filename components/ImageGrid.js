@@ -2,9 +2,10 @@ import Image from 'next/image';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
+import PopularBadge from './PopularBadge';
 
-export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
-  const [sortedImages, setSortedImages] = useState(images);
+export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [] }) {
+    const [sortedImages, setSortedImages] = useState(images);
 
   useEffect(() => {
     // Load scores and sort images
@@ -124,6 +125,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload }) {
               aspectRatio: '16/9',
               overflow: 'hidden'
             }}>
+            {topImages.includes(image.filename) && <PopularBadge />}
               <Image
                 src={`/images/${folderMap[slug]}/${image.filename}`}
                 alt={`${image.title} - Free virtual background for Zoom, Teams & Google Meet`}
