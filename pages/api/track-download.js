@@ -30,7 +30,8 @@ export default async function handler(req, res) {
     landingPage,
     pageViewsInSession,
     downloadsInSession,
-    visitorId
+    visitorId,
+    visitorType
   } = req.body;
   
   try {
@@ -89,12 +90,13 @@ export default async function handler(req, res) {
       originalSource,                       // Column K: Original Source (KEY for conversion tracking!)
       landingPage || '',                    // Column L: Landing Page
       pageViewsInSession || 0,              // Column M: Page Views before download
-      downloadsInSession || 0               // Column N: Download # in this session
+      downloadsInSession || 0,              // Column N: Download # in this session
+      visitorType || 'new'                  // Column O: Visitor Type (new/returning)
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:N',               // Extended to column N
+      range: 'Analytics!A:O',               // Extended to column O
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {
