@@ -29,7 +29,8 @@ export default async function handler(req, res) {
     originalUtmCampaign,
     landingPage,
     pageViewsInSession,
-    downloadsInSession
+    downloadsInSession,
+    visitorId
   } = req.body;
   
   try {
@@ -74,7 +75,7 @@ export default async function handler(req, res) {
       filename,
       category,
       req.headers['referer'] || 'direct',  // Current page (backward compatibility)
-      'not-collected',                      // IP
+      visitorId || 'unknown',               // Column F: Visitor ID
       req.headers['user-agent'] || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {

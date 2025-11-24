@@ -1,7 +1,7 @@
 // components/Analytics.js
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { getOrCreateSession, updateSessionActivity } from '../lib/sessionTracking';
+import { getOrCreateSession, updateSessionActivity, getOrCreateVisitorId } from '../lib/sessionTracking';
 
 export default function Analytics() {
   const router = useRouter();
@@ -89,7 +89,8 @@ export default function Analytics() {
             originalUtmCampaign: session?.originalUtmCampaign || null,
             landingPage: session?.landingPage || null,
             pageViewsInSession: session?.pageViews || 0,
-            downloadsInSession: session?.downloads || 0
+            downloadsInSession: session?.downloads || 0,
+            visitorId: getOrCreateVisitorId()
           })
         });
       } catch (error) {

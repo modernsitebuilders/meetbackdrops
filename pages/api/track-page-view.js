@@ -34,7 +34,8 @@ export default async function handler(req, res) {
     originalUtmCampaign,
     landingPage,
     pageViewsInSession,
-    downloadsInSession
+    downloadsInSession,
+    visitorId
   } = req.body;
   
   try {
@@ -104,7 +105,7 @@ export default async function handler(req, res) {
       page,
       category || 'n/a',
       currentSource,                    // Current referrer (for backward compatibility)
-      'not-collected',                  // IP (keeping your privacy approach)
+      visitorId || 'unknown',           // Column F: Visitor ID
       req.headers['user-agent'] || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
