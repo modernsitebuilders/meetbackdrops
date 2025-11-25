@@ -97,7 +97,7 @@ export default function Privacy() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: October 27, 2025
+                Last updated: November 21, 2025
               </p>
             </div>
 
@@ -222,11 +222,15 @@ export default function Privacy() {
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
                   <li><strong>Essential Cookies:</strong> Required for basic website functionality</li>
                   <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our site</li>
-                  <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
-                </ul>
-                <p style={{color: '#6b7280'}}>
-                  You can control cookies through your browser settings, though this may affect site functionality.
-                </p>
+                 <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+<li><strong>Visitor ID:</strong> We store an anonymous, randomly-generated identifier in your browser's local storage to understand how often visitors return. This ID cannot be used to identify you personally.</li>
+</ul>
+<p style={{color: '#6b7280', marginBottom: '1rem'}}>
+  You can control cookies through your browser settings, though this may affect site functionality.
+</p>
+<p style={{color: '#6b7280', fontWeight: '600'}}>
+  We do not collect or store IP addresses.
+</p>
               </section>
 
               <section style={{marginBottom: '2rem'}}>
