@@ -24,11 +24,22 @@ const [rateLimitError, setRateLimitError] = useState('');
     // Add after line 48 in most-popular.js
 const folderMap = {
   'christmas-background': 'christmas-backgrounds',
+  'christmas-modern': 'christmas-modern',
+  'christmas-rustic': 'christmas-rustic',
+  'christmas-traditional': 'christmas-traditional',
   'halloween-background': 'halloween-backgrounds',
   'nature-landscape': 'nature-landscapes',
   'living-room': 'living-rooms',
   'office-space': 'office-spaces',
-  'bookshelf': 'bookshelves-dark', // adjust as needed
+  'bookshelf': 'bookshelves-dark',
+  'library': 'libraries',
+  'kitchen': 'kitchens',
+  'garden': 'gardens-patios',
+  'coffee-shop': 'coffee-shops',
+  'historic-space': 'historic-spaces',
+  'urban-loft': 'urban-lofts',
+  'wall-shelves-bright': 'wall-shelves-bright',
+  'wall-shelves-dark': 'wall-shelves-dark',
 };
     const fetchData = async () => {
       try {
