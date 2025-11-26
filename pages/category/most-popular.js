@@ -151,12 +151,15 @@ export default function MostPopular() {
           
           <div className={styles.modalImageContainer}>
             <Image
-              src={image.webPath}
-              alt={`Most popular virtual background - ${image.filename}`}
-              fill
-              style={{ objectFit: 'contain' }}
-              sizes="90vw"
-            />
+  src={image.webPath}
+  alt={`Popular virtual background #${index + 1}`}
+  width={800}
+  height={450}
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  style={{ objectFit: 'cover' }}
+  loading={index < 6 ? 'eager' : 'lazy'}
+  priority={index < 3}
+/>
             <div className={styles.popularBadge}>
               Popular Choice
             </div>
