@@ -34,6 +34,11 @@ export default async function handler(req, res) {
     visitorType
   } = req.body;
   
+  // Clean category - extract folder name from filename if needed
+  const cleanCategory = category.includes('.') 
+    ? category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '')
+    : category;
+  
   try {
     // Fix private key format
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -74,9 +79,9 @@ export default async function handler(req, res) {
       }),
       'download',
       filename,
-      category,
-      req.headers['referer'] || 'direct',  // Current page (backward compatibility)
-      visitorId || 'unknown',               // Column F: Visitor ID
+      cleanCategory,
+      req.headers['referer'] || 'direct',
+      visitorId || 'unknown',
       req.headers['user-agent'] || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
@@ -85,18 +90,17 @@ export default async function handler(req, res) {
         minute: '2-digit',
         second: '2-digit'
       }),
-      // New columns for session tracking
-      sessionId || '',                      // Column J: Session ID
-      originalSource,                       // Column K: Original Source (KEY for conversion tracking!)
-      landingPage || '',                    // Column L: Landing Page
-      pageViewsInSession || 0,              // Column M: Page Views before download
-      downloadsInSession || 0,              // Column N: Download # in this session
-      visitorType || 'new'                  // Column O: Visitor Type (new/returning)
+      sessionId || '',
+      originalSource,
+      landingPage || '',
+      pageViewsInSession || 0,
+      downloadsInSession || 0,
+      visitorType || 'new'
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:O',               // Extended to column O
+      range: 'Analytics!A:O',
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {

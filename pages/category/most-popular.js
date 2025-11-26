@@ -21,6 +21,15 @@ export default function MostPopular() {
 const [rateLimitError, setRateLimitError] = useState('');
 
   useEffect(() => {
+    // Add after line 48 in most-popular.js
+const folderMap = {
+  'christmas-background': 'christmas-backgrounds',
+  'halloween-background': 'halloween-backgrounds',
+  'nature-landscape': 'nature-landscapes',
+  'living-room': 'living-rooms',
+  'office-space': 'office-spaces',
+  'bookshelf': 'bookshelves-dark', // adjust as needed
+};
     const fetchData = async () => {
       try {
         // Fetch analytics data
@@ -44,16 +53,21 @@ const [rateLimitError, setRateLimitError] = useState('');
         }
         
         // Take top 25 and format for display
-        const topImages = analyticsData.topDownloads.slice(0, 25).map(item => {
-          // Convert .png filename to .webp for display
-          const webFilename = item.filename.replace('.png', '.webp');
-          return {
-            filename: item.filename, // Keep original for download tracking
-            category: item.category,
-            downloadCount: item.count,
-            webPath: `/images/${item.category}/${webFilename}` // Use .webp for display
-          };
-        });
+       const topImages = analyticsData.topDownloads.slice(0, 25).map(item => {
+  // Convert .png filename to .webp for display
+  const webFilename = item.filename.replace('.png', '.webp');
+  
+  // Extract category from filename (remove number and extension)
+ const extracted = item.category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');
+const category = folderMap[extracted] || extracted;
+  
+  return {
+    filename: item.filename,
+    category: category,
+    downloadCount: item.count,
+    webPath: `/images/${category}/${webFilename}`
+  };
+});
         
        setImages(topImages);
         setCloudinaryUrls(urlsData);
