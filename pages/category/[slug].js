@@ -19,7 +19,7 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
 
-function CategoryContent({ slug }) {
+function CategoryContent({ slug, scores = {}, topImages = [] }) {
   const [previewImage, setPreviewImage] = useState(null);
   const { 
     handleDownload,
@@ -39,19 +39,7 @@ function CategoryContent({ slug }) {
       </div>
     );
   }
-const [topImages, setTopImages] = useState([]);
 
-useEffect(() => {
-  fetch('/api/popular-downloads')
-    .then(res => res.json())
-    .then(data => {
-      const top25 = data.topDownloads.slice(0, 25).map(item => 
-        item.filename.replace('.png', '.webp')
-      );
-      setTopImages(top25);
-    })
-    .catch(() => setTopImages([]));
-}, []);
   return (
     <>
       <div style={{
@@ -86,8 +74,9 @@ useEffect(() => {
 
           <CategoryHeader category={category} />
           
-          <ImageGrid 
+<ImageGrid 
   images={category.images}
+  scores={scores}
   slug={slug}
   onImageClick={setPreviewImage}
   onDownload={(image) => handleDownload(image, slug)}
@@ -126,8 +115,7 @@ useEffect(() => {
   );
 }
 
-export default function CategoryPage({ slug }) {
-  const router = useRouter();
+export default function CategoryPage({ slug, scores, topImages }) {  const router = useRouter();
   const currentSlug = slug || router.query.slug;
   const category = categoryInfo[currentSlug];
 
@@ -197,7 +185,7 @@ export default function CategoryPage({ slug }) {
           />
         </Head>
         
-        <CategoryContent slug={currentSlug} />
+<CategoryContent slug={currentSlug} scores={scores} topImages={topImages} />
       </Layout>
     </>
   );
@@ -233,9 +221,76 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const { google } = require('googleapis');
+  const fs = require('fs');
+  const path = require('path');
+
+  let scores = {};
+  let topImages = [];
+
+  try {
+    // Get scores
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+    privateKey = privateKey.replace(/\\n/g, '\n');
+
+    const auth = new google.auth.JWT({
+      email: process.env.GOOGLE_SERVICE_EMAIL,
+      key: privateKey,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    });
+
+    const sheets = google.sheets({ version: 'v4', auth });
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Analytics!A:I',
+    });
+
+    const rows = response.data.values || [];
+    const downloadCounts = {};
+    const imageScores = {};
+
+    // Count downloads for popular badge
+    rows.slice(1).forEach(row => {
+      const actionType = row[1];
+      const filename = row[2];
+      
+      if (actionType === 'download' && filename && filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
+        downloadCounts[filename] = (downloadCounts[filename] || 0) + 1;
+      }
+    });
+
+    // Get top 25
+    topImages = Object.entries(downloadCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 25)
+      .map(([filename]) => filename.replace('.png', '.webp'));
+
+    // Calculate scores for this category
+    const category = categoryInfo[params.slug];
+    if (category) {
+      category.images.forEach(image => {
+        const baseName = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+        const downloads = downloadCounts[image.filename] || 
+                         downloadCounts[`${baseName}.png`] || 
+                         downloadCounts[`${baseName}.webp`] || 0;
+        imageScores[image.filename] = downloads * 10;
+      });
+    }
+
+    scores = imageScores;
+  } catch (error) {
+    console.error('Build-time data fetch failed:', error);
+  }
+
   return {
     props: {
-      slug: params.slug
-    }
+      slug: params.slug,
+      scores,
+      topImages
+    },
+    revalidate: 3600 // Rebuild every hour
   };
 }

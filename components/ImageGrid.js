@@ -4,54 +4,18 @@ import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
 import PopularBadge from './PopularBadge';
 
-export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [] }) {
-    const [sortedImages, setSortedImages] = useState(images);
+export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [], scores = {} }) {
+      const [sortedImages, setSortedImages] = useState(images);
 
   useEffect(() => {
-    // Load scores and sort images
-   fetch('/api/calculate-scores')
-  .then(res => res.json())
-  .then(data => {
-        const scores = data.scores;
-        const imagesWithScores = images.map(image => {
-          // Strip extension to match .webp with .png tracking
-          const baseName = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
-          
-          // Try exact match first, then try with different extensions
-          let score = 0;
-          if (scores[image.filename]) {
-            score = scores[image.filename].score;
-          } else {
-            // Try .png, .webp, .jpg variants
-            const variants = [
-              `${baseName}.png`,
-              `${baseName}.webp`,
-              `${baseName}.jpg`,
-              `${baseName}.jpeg`
-            ];
-            for (const variant of variants) {
-              if (scores[variant]) {
-                score = scores[variant].score;
-                break;
-              }
-            }
-          }
-          
-          return {
-            ...image,
-            score: score
-          };
-        });
-        
-        // Sort by score, highest first
-        const sorted = imagesWithScores.sort((a, b) => b.score - a.score);
-        setSortedImages(sorted);
-      })
-      .catch(err => {
-        console.error('Could not load scores:', err);
-        setSortedImages(images); // Fall back to original order
-      });
-  }, [images]);
+    const imagesWithScores = images.map(image => {
+      const baseName = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+      const score = scores[image.filename] || scores[`${baseName}.png`] || scores[`${baseName}.webp`] || 0;
+      return { ...image, score };
+    });
+    
+    setSortedImages(imagesWithScores.sort((a, b) => b.score - a.score));
+  }, [images, scores]);
 
   return (
     <>
@@ -93,33 +57,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
               e.currentTarget.style.transform = 'translateY(0)';
             }}
             onClick={() => onImageClick(image)}
-          >
-            {/* ImageObject Schema */}
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "ImageObject",
-                  "contentUrl": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
-                  "name": image.title,
-                  "description": `Free ${image.title} - virtual background for Zoom, Teams, and Google Meet`,
-                  "thumbnail": `https://streambackdrops.com/images/${folderMap[slug]}/${image.filename}`,
-                  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
-                  "acquireLicensePage": "https://streambackdrops.com/about",
-                  "creator": {
-                    "@type": "Organization",
-                    "name": "StreamBackdrops"
-                  },
-                  "creditText": "StreamBackdrops",
-                  "copyrightNotice": "© 2025 StreamBackdrops - CC0 Public Domain",
-                  "width": "1456",
-                  "height": "816"
-                })
-              }}
-            />
-
-            <div style={{
+        >
+          <div style={{
               position: 'relative',
               width: '100%',
               aspectRatio: '16/9',
