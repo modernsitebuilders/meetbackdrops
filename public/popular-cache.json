@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-26T18:58:35.119Z",
+  "lastUpdated": "2025-11-26T20:24:15.748Z",
   "images": [
     {
       "filename": "wall-shelves-bright-02.png",
@@ -20,16 +20,16 @@
       "webPath": "/images/office-spaces/office-spaces-24.webp"
     },
     {
+      "filename": "christmas-background-35.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 10,
+      "webPath": "/images/christmas-backgrounds/christmas-background-35.webp"
+    },
+    {
       "filename": "christmas-background-04.png",
       "category": "christmas-backgrounds",
       "downloadCount": 9,
       "webPath": "/images/christmas-backgrounds/christmas-background-04.webp"
-    },
-    {
-      "filename": "christmas-background-35.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 9,
-      "webPath": "/images/christmas-backgrounds/christmas-background-35.webp"
     },
     {
       "filename": "office-spaces-02.png",
@@ -40,14 +40,8 @@
     {
       "filename": "wall-shelves-bright-16.png",
       "category": "wall-shelves-bright",
-      "downloadCount": 8,
+      "downloadCount": 7,
       "webPath": "/images/wall-shelves-bright/wall-shelves-bright-16.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-27.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 6,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-27.webp"
     },
     {
       "filename": "wall-shelves-dark-04.png",
@@ -72,6 +66,12 @@
       "category": "libraries",
       "downloadCount": 5,
       "webPath": "/images/libraries/library-17.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-27.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 5,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-27.webp"
     },
     {
       "filename": "wall-shelves-bright-21.png",
