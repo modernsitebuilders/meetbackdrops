@@ -18,41 +18,21 @@ export default function MostPopular() {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [downloadedImage, setDownloadedImage] = useState(null);
   const [showRateLimitModal, setShowRateLimitModal] = useState(false);
-const [rateLimitError, setRateLimitError] = useState('');
+  const [rateLimitError, setRateLimitError] = useState('');
 
   useEffect(() => {
-    // Add after line 48 in most-popular.js
-const folderMap = {
-  'christmas-background': 'christmas-backgrounds',
-  'christmas-modern': 'christmas-modern',
-  'christmas-rustic': 'christmas-rustic',
-  'christmas-traditional': 'christmas-traditional',
-  'halloween-background': 'halloween-backgrounds',
-  'nature-landscape': 'nature-landscapes',
-  'living-room': 'living-rooms',
-  'office-space': 'office-spaces',
-  'bookshelf': 'bookshelves-dark',
-  'library': 'libraries',
-  'kitchen': 'kitchens',
-  'garden': 'gardens-patios',
-  'coffee-shop': 'coffee-shops',
-  'historic-space': 'historic-spaces',
-  'urban-loft': 'urban-lofts',
-  'wall-shelves-bright': 'wall-shelves-bright',
-  'wall-shelves-dark': 'wall-shelves-dark',
-};
     const fetchData = async () => {
       try {
-        // Fetch analytics data
-        const analyticsResponse = await fetch('/api/popular-downloads');
+        // Fetch from static cache instead of API
+        const response = await fetch('/popular-cache.json');
         
-        if (!analyticsResponse.ok) {
-          throw new Error('Failed to fetch analytics');
+        if (!response.ok) {
+          throw new Error('Cache not found');
         }
         
-        const analyticsData = await analyticsResponse.json();
+        const cacheData = await response.json();
         
-        // Fetch Cloudinary URLs (gracefully handle if missing)
+        // Fetch Cloudinary URLs
         let urlsData = {};
         try {
           const urlsResponse = await fetch('/cloudinary-urls.json');
@@ -63,27 +43,10 @@ const folderMap = {
           console.log('Cloudinary URLs not found, will use fallback');
         }
         
-        // Take top 25 and format for display
-       const topImages = analyticsData.topDownloads.slice(0, 25).map(item => {
-  // Convert .png filename to .webp for display
-  const webFilename = item.filename.replace('.png', '.webp');
-  
-  // Extract category from filename (remove number and extension)
- const extracted = item.category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');
-const category = folderMap[extracted] || extracted;
-  
-  return {
-    filename: item.filename,
-    category: category,
-    downloadCount: item.count,
-    webPath: `/images/${category}/${webFilename}`
-  };
-});
-        
-       setImages(topImages);
+        setImages(cacheData.images);
         setCloudinaryUrls(urlsData);
         setLoading(false);
-        console.log('Loaded images:', topImages.length, topImages);
+        console.log('Loaded images:', cacheData.images.length);
         
       } catch (err) {
         console.error('Failed to load popular images:', err);
@@ -113,80 +76,71 @@ const category = folderMap[extracted] || extracted;
         return;
       }
 
-     // Get session data for attribution
-const session = getSessionData();
+      const session = getSessionData();
+      updateSessionActivity('download');
 
-// Update session download counter
-updateSessionActivity('download');
+      await fetch('/api/track-download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          filename: image.filename.replace('.webp', '.png'),
+          category: image.category,
+          sessionId: session?.id || null,
+          originalReferrer: session?.originalReferrer || 'direct',
+          originalUtmSource: session?.originalUtmSource || null,
+          originalUtmMedium: session?.originalUtmMedium || null,
+          originalUtmCampaign: session?.originalUtmCampaign || null,
+          landingPage: session?.landingPage || null,
+          pageViewsInSession: session?.pageViews || 0,
+          downloadsInSession: (session?.downloads || 0) + 1
+        })
+      });
 
-// Track download with session attribution
-await fetch('/api/track-download', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    filename: image.filename.replace('.webp', '.png'),
-    category: image.category,
-    // Include session attribution
-    sessionId: session?.id || null,
-    originalReferrer: session?.originalReferrer || 'direct',
-    originalUtmSource: session?.originalUtmSource || null,
-    originalUtmMedium: session?.originalUtmMedium || null,
-    originalUtmCampaign: session?.originalUtmCampaign || null,
-    landingPage: session?.landingPage || null,
-    pageViewsInSession: session?.pageViews || 0,
-    downloadsInSession: (session?.downloads || 0) + 1
-  })
-});
-
-      // Get Cloudinary URL - strip both .webp AND .png extensions
       const baseFilename = image.filename.replace('.webp', '').replace('.png', '');
       const imageUrl = cloudinaryUrls[baseFilename];
       console.log('Looking for:', baseFilename, 'Found:', imageUrl ? 'YES' : 'NO');
       
       if (imageUrl) {
-  const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
-  const filename = `StreamBackdrops-${baseFilename}.png`;
-  const downloadUrl = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
-  
-  // Check rate limit before downloading
-  const response = await fetch(downloadUrl, { method: 'HEAD' });
-  
-  if (!response.ok) {
-    // Rate limit hit, get error message
-    const errorResponse = await fetch(downloadUrl);
-    const errorData = await errorResponse.json();
-    throw new Error(errorData.error || 'Download limit reached');
-  }
-  
-  const link = document.createElement('a');
-  link.href = downloadUrl;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-} else {
-        // Fallback: direct download from local webp images
+        const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
+        const filename = `StreamBackdrops-${baseFilename}.png`;
+        const downloadUrl = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
+        
+        const response = await fetch(downloadUrl, { method: 'HEAD' });
+        
+        if (!response.ok) {
+          const errorResponse = await fetch(downloadUrl);
+          const errorData = await errorResponse.json();
+          throw new Error(errorData.error || 'Download limit reached');
+        }
+        
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
         console.warn('No Cloudinary URL found, using direct webp download');
         const link = document.createElement('a');
-        link.href = image.webPath; // This already has the .webp extension
+        link.href = image.webPath;
         link.download = `StreamBackdrops-${baseFilename}.png`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
       }
       
-      // Show review modal
       setDownloadedImage(image.filename);
       setTimeout(() => setShowReviewModal(true), 2000);
       
     } catch (error) {
-  if (error.message && (error.message.includes('limit') || error.message.includes('banned'))) {
-    setRateLimitError(error.message);
-    setShowRateLimitModal(true);
-  } else {
-    console.error('Download failed:', error);
-  }
-}
-};
+      if (error.message && (error.message.includes('limit') || error.message.includes('banned'))) {
+        setRateLimitError(error.message);
+        setShowRateLimitModal(true);
+      } else {
+        console.error('Download failed:', error);
+      }
+    }
+  };
+
   const ImageModal = ({ image, onClose }) => {
     if (!image) return null;
 
@@ -304,20 +258,18 @@ await fetch('/api/track-download', {
           onClose={() => setSelectedImage(null)} 
         />
 
-        {/* Review Modal */}
         {showReviewModal && (
           <ReviewModal 
             onClose={() => setShowReviewModal(false)}
           />
         )}
 
-{/* Rate Limit Modal */}
-{showRateLimitModal && (
-  <RateLimitModal 
-    onClose={() => setShowRateLimitModal(false)}
-    errorMessage={rateLimitError}
-  />
-)}
+        {showRateLimitModal && (
+          <RateLimitModal 
+            onClose={() => setShowRateLimitModal(false)}
+            errorMessage={rateLimitError}
+          />
+        )}
 
         <section className={styles.whyPopular}>
           <h2>Why These Backgrounds Are Popular</h2>

@@ -36,8 +36,14 @@
       ]
     }
   ],
-  "crons": [{
-    "path": "/api/calculate-scores",
-    "schedule": "0 2 * * *"
-  }]
+  "crons": [
+    {
+      "path": "/api/calculate-scores",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cache-popular",
+      "schedule": "0 3 * * *"
+    }
+  ]
 }
