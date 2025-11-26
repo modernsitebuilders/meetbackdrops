@@ -3,4 +3,5 @@ node_modules/
 .env.local 
 .vercel
 pinterest_pins/
-pinterest_generator.py
+pinterest_generator.pyupdate-popular.sh
+WEEKLY-UPDATE.txt
