@@ -1,0 +1,33 @@
+name: Update Popular Cache
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Every Monday at 2am UTC
+  workflow_dispatch:  # Manual trigger option
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - run: npm install
+      
+      - name: Generate cache
+        env:
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          GOOGLE_SERVICE_EMAIL: ${{ secrets.GOOGLE_SERVICE_EMAIL }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: node -e "require('./pages/api/cache-popular.js').default({}, {status: () => ({json: console.log})})"
+      
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add public/popular-cache.json
+          git commit -m "Auto-update popular cache [skip ci]" || exit 0
+          git push
