@@ -2,8 +2,8 @@ name: Update Popular Cache
 
 on:
   schedule:
-    - cron: '0 2 * * 1'  # Every Monday at 2am UTC
-  workflow_dispatch:  # Manual trigger option
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
 
 jobs:
   update:
@@ -22,7 +22,7 @@ jobs:
           GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
           GOOGLE_SERVICE_EMAIL: ${{ secrets.GOOGLE_SERVICE_EMAIL }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-        run: node -e "require('./pages/api/cache-popular.js').default({}, {status: () => ({json: console.log})})"
+        run: node scripts/update-cache.js
       
       - name: Commit and push
         run: |
