@@ -22,8 +22,7 @@ jobs:
           GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
           GOOGLE_SERVICE_EMAIL: ${{ secrets.GOOGLE_SERVICE_EMAIL }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-        run: node scripts/update-cache.js
-      
+run: node scripts/update-cache.js      
       - name: Commit and push
         run: |
           git config user.name "GitHub Actions"
