@@ -76,7 +76,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
                   width: '100%',
                   height: '100%'
                 }}
-                loading={index < 8 ? 'eager' : 'lazy'}
+                priority={index < 4}
+                loading={index < 4 ? undefined : 'lazy'}
                 quality={75}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
               />
