@@ -78,11 +78,15 @@ export default async function handler(req, res) {
         second: '2-digit'
       }),
       'download',
+      originalSource,
       filename,
       cleanCategory,
-      req.headers['referer'] || 'direct',
+      pageViewsInSession || 0,
+      downloadsInSession || 0,
+      visitorType || 'new',
+      landingPage || '',
+      sessionId || '',
       visitorId || 'unknown',
-      req.headers['user-agent'] || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
         timeZone: 'America/New_York',
@@ -90,12 +94,8 @@ export default async function handler(req, res) {
         minute: '2-digit',
         second: '2-digit'
       }),
-      sessionId || '',
-      originalSource,
-      landingPage || '',
-      pageViewsInSession || 0,
-      downloadsInSession || 0,
-      visitorType || 'new'
+      req.headers['user-agent'] || 'unknown',
+      req.headers['referer'] || 'direct'
     ];
 
     await sheets.spreadsheets.values.append({

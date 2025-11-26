@@ -103,11 +103,15 @@ export default async function handler(req, res) {
         second: '2-digit'
       }),
       'page_view',
+      originalSource,                   // Column C: Original Source (moved up)
       page,
       category || 'n/a',
-      currentSource,                    // Current referrer (for backward compatibility)
-      visitorId || 'unknown',           // Column F: Visitor ID
-      req.headers['user-agent'] || 'unknown',
+      pageViewsInSession || 1,          // Column F: Page Views in Session
+      downloadsInSession || 0,          // Column G: Downloads in Session
+      visitorType || 'new',             // Column H: Visitor Type
+      landingPage || '',                // Column I: Landing Page
+      sessionId || '',                  // Column J: Session ID
+      visitorId || 'unknown',           // Column K: Visitor ID
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
         timeZone: 'America/New_York',
@@ -115,13 +119,8 @@ export default async function handler(req, res) {
         minute: '2-digit',
         second: '2-digit'
       }),
-      // New columns for session tracking
-      sessionId || '',                  // Column J: Session ID
-      originalSource,                   // Column K: Original Source (where they FIRST came from)
-      landingPage || '',                // Column L: Landing Page
-      pageViewsInSession || 1,          // Column M: Page Views in Session
-      downloadsInSession || 0,          // Column N: Downloads in Session
-      visitorType || 'new'              // Column O: Visitor Type (new/returning)
+      req.headers['user-agent'] || 'unknown',
+      currentSource                     // Column O: Current referrer
     ];
 
     await sheets.spreadsheets.values.append({
