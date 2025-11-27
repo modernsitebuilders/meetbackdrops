@@ -35,9 +35,9 @@ export default async function handler(req, res) {
     // Skip header row, start from index 1
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      const actionType = row[1]; // Column B - action type
-      const filename = row[2]; // Column C - filename
-      const category = row[3]; // Column D - category
+      const actionType = row[1]; 
+      const filename = row[3]; 
+      const category = row[4]; 
       
       // Only count download actions
       if (actionType === 'download' && filename) {
