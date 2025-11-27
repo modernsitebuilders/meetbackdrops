@@ -29,22 +29,34 @@ export default async function handler(req, res) {
       return res.status(200).json({ downloads: [] });
     }
 
+    function extractCategory(filename) {
+      if (!filename) return 'unknown';
+      
+      const name = filename.replace(/\.(png|jpg|jpeg|webp|gif)$/i, '');
+      const base = name.replace(/-\d+$/, '');
+      
+      if (base.endsWith('-background')) return base + 's';
+      if (base.endsWith('-space')) return base + 's';
+      if (base === 'library') return 'libraries';
+      
+      return base;
+    }
+
     // Count downloads by filename
     const downloadCounts = {};
     
-    // Skip header row, start from index 1
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      const actionType = row[1]; 
-      const filename = row[3]; 
-      const category = row[4]; 
+      const actionType = row[1];
+      const filename = row[3];
       
-      // Only count download actions
       if (actionType === 'download' && filename) {
+        const category = extractCategory(filename);
+        
         if (!downloadCounts[filename]) {
           downloadCounts[filename] = {
             filename: filename,
-            category: category || 'unknown',
+            category: category,
             count: 0
           };
         }
@@ -52,14 +64,13 @@ export default async function handler(req, res) {
       }
     }
 
-    // Convert to array and sort by count
     const sortedDownloads = Object.values(downloadCounts)
       .sort((a, b) => b.count - a.count);
 
     res.status(200).json({
       totalDownloads: sortedDownloads.reduce((sum, item) => sum + item.count, 0),
       uniqueFiles: sortedDownloads.length,
-      topDownloads: sortedDownloads.slice(0, 50), // Top 50
+      topDownloads: sortedDownloads.slice(0, 50),
       allDownloads: sortedDownloads
     });
 
