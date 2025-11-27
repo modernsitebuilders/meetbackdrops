@@ -98,8 +98,8 @@ export default async function handler(req, res) {
     rows.slice(1).forEach(row => {
       const timestamp = row[0];
       const eventType = row[1];
-      const filename = row[2];
-      let category = row[3];
+      const filename = row[3];
+      let category = row[4];
       
       if (!filename) return;
       
