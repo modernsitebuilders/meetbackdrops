@@ -265,7 +265,7 @@ export async function getStaticProps({ params }) {
     // Count downloads for popular badge
     rows.slice(1).forEach(row => {
       const actionType = row[1];
-      const filename = row[2];
+      const filename = row[3];
       
       if (actionType === 'download' && filename && filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
         downloadCounts[filename] = (downloadCounts[filename] || 0) + 1;
