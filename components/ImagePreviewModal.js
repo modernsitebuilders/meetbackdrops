@@ -1,9 +1,36 @@
 import Image from 'next/image';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
+import { useEffect } from 'react';
+import { getSessionData, getOrCreateVisitorId, isReturningVisitor } from '../lib/sessionTracking';
 
 export default function ImagePreviewModal({ image, slug, onClose, onDownload }) {
   if (!image) return null;
+
+  useEffect(() => {
+    if (!image) return;
+    
+    const session = getSessionData();
+    fetch('/api/track-preview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        filename: image.filename,
+        category: image.category || slug,
+        page: window.location.pathname,
+        sessionId: session?.id,
+        originalReferrer: session?.originalReferrer || 'direct',
+        originalUtmSource: session?.originalUtmSource,
+        originalUtmMedium: session?.originalUtmMedium,
+        originalUtmCampaign: session?.originalUtmCampaign,
+        landingPage: session?.landingPage,
+        pageViewsInSession: session?.pageViews || 0,
+        downloadsInSession: session?.downloads || 0,
+        visitorId: getOrCreateVisitorId(),
+        visitorType: isReturningVisitor() ? 'returning' : 'new'
+      })
+    }).catch(() => {});
+  }, [image, slug]);
 
   return (
     <div 
