@@ -146,39 +146,39 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div style={{ borderTop: '1px solid #374151', paddingTop: '2rem' }}>
-          {/* Legal Links */}
-          <div style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
-            marginBottom: '1rem', 
-            flexWrap: 'wrap',
-            gap: '0.5rem'
-          }}>
-            <Link href="/license" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem' }}>
-              License & Usage
-            </Link>
-            <span style={{ color: '#6b7280' }}>•</span>
-            <Link href="/privacy" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-              Privacy Policy
-            </Link>
-            <span style={{ color: '#6b7280' }}>•</span>
-            <Link href="/terms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-              Terms of Service
-            </Link>
-          </div>
-          
-          {/* Copyright */}
-          <p style={{ color: '#6b7280', margin: 0, textAlign: 'center', fontSize: '0.9rem' }}>
-            © 2025 StreamBackdrops. All rights reserved.
-          </p>
-          
-          {/* Modern Site Builders Credit */}
-          <p style={{ color: '#6b7280', margin: '0.5rem 0 0 0', textAlign: 'center', fontSize: '0.85rem' }}>
-            A Modern Site Builders Production
-          </p>
-        </div>
+<div style={{ borderTop: '1px solid #374151', paddingTop: '2rem' }}>
+  {/* Legal Links */}
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    marginBottom: '1rem', 
+    flexWrap: 'wrap',
+    gap: '0.5rem'
+  }}>
+    <Link href="/license" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem' }}>
+      License & Usage
+    </Link>
+    <span style={{ color: '#e5e7eb' }}>•</span>
+    <Link href="/privacy" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      Privacy Policy
+    </Link>
+    <span style={{ color: '#e5e7eb' }}>•</span>
+    <Link href="/terms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      Terms of Service
+    </Link>
+  </div>
+  
+  {/* Copyright */}
+  <p style={{ color: '#e5e7eb', margin: 0, textAlign: 'center', fontSize: '0.9rem' }}>
+    © 2025 StreamBackdrops. All rights reserved.
+  </p>
+  
+  {/* Modern Site Builders Credit */}
+  <p style={{ color: '#e5e7eb', margin: '0.5rem 0 0 0', textAlign: 'center', fontSize: '0.85rem' }}>
+    A Modern Site Builders Production
+  </p>
+</div>
       </div>
     </footer>
   );
