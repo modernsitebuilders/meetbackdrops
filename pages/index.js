@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { HERO_IMAGES } from '../data/heroImages';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
@@ -57,36 +59,17 @@ export default function Home({ structuredData }) {
           overflow: 'hidden',
           boxShadow: '0 20px 60px rgba(37, 99, 235, 0.15)'
         }}>
-          <img 
-            src="/images/office-spaces/office-spaces-02.webp" 
-            alt="Professional office background"
-            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-          />
-          <img 
-            src="/images/office-spaces/office-spaces-24.webp" 
-            alt="Modern office space"
-            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-          />
-          <img 
-            src="/images/wall-shelves-bright/wall-shelves-bright-10.webp" 
-            alt="Bright wall shelf background"
-            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-          />
-          <img 
-            src="/images/coffee-shops/coffee-shop-07.webp" 
-            alt="Coffee shop background"
-            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-          />
-          <img 
-            src="/images/urban-lofts/urban-loft-16.webp" 
-            alt="Urban loft background"
-            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-          />
-          <img 
-            src="/images/libraries/library-17.webp" 
-            alt="Library background"
-            style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-          />
+          {HERO_IMAGES.map((img, i) => (
+  <Image 
+    key={i}
+    src={img.src}
+    alt={img.alt}
+    width={333}
+    height={200}
+    style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+    priority={img.priority}
+  />
+))}
         </div>
         
         <h1 className={styles.heroTitle}>
