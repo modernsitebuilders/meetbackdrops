@@ -193,6 +193,13 @@ export default async function handler(req, res) {
         const agePenalty = Math.floor(daysOld / 7) * 5;
         score -= agePenalty;
       }
+      const isNewChristmas = filename.match(/christmas-background-(\d+)\.webp/);
+if (isNewChristmas) {
+  const num = parseInt(isNewChristmas[1]);
+  if (num >= 47 && num <= 130) {
+    stats.score += 15;
+  }
+}
       
       if (stats.downloads > 0 && stats.lastDownload) {
         const daysSinceLastDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24);
