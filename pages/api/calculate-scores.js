@@ -168,61 +168,53 @@ export default async function handler(req, res) {
       }
     });
 
-    // Calculate final scores
-    Object.keys(imageStats).forEach(filename => {
-      const stats = imageStats[filename];
-      
-      if (!stats.tracked) {
-        stats.score = 0;
-        stats.daysOld = 0;
-        stats.daysSinceLastDownload = null;
-        return;
-      }
-      
-      let score = 0;
-      
-      score += (stats.downloads * 10);
-      score += (stats.pageviews * 1);
-      
-      if (stats.recentDownloads > 0) {
-        score += stats.recentDownloads * 2;
-      }
-      
-      if (stats.downloads === 0) {
-        const daysOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24);
-        const agePenalty = Math.floor(daysOld / 7) * 5;
-        score -= agePenalty;
-      }
-      const isNewChristmas = filename.match(/christmas-background-(\d+)\.webp/);
-if (isNewChristmas) {
-  const num = parseInt(isNewChristmas[1]);
-  if (num >= 47 && num <= 130) {
-    stats.score += 15;
+   // Calculate final scores
+Object.keys(imageStats).forEach(filename => {
+  const stats = imageStats[filename];
+  
+  if (!stats.tracked) {
+    stats.score = 15; // NEW IMAGES START AT 15
+    stats.daysOld = 0;
+    stats.daysSinceLastDownload = null;
+    return;
   }
-}
-      
-      if (stats.downloads > 0 && stats.lastDownload) {
-        const daysSinceLastDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24);
-        if (daysSinceLastDownload > 30) {
-          const dormantPenalty = Math.floor(daysSinceLastDownload / 30) * 2;
-          score -= dormantPenalty;
-        }
-      }
-      
-      if (stats.recentDownloads === 0 && stats.downloads > 5) {
-        score -= 5;
-      }
-      
-      if (stats.tracked) {
-        score = Math.max(1, score);
-      }
-      
-      stats.score = score;
-      stats.daysOld = Math.floor((now - stats.firstSeen) / (1000 * 60 * 60 * 24));
-      stats.daysSinceLastDownload = stats.lastDownload 
-        ? Math.floor((now - stats.lastDownload) / (1000 * 60 * 60 * 24))
-        : null;
-    });
+  
+  // START WITH BASE 15 POINTS FOR ALL TRACKED IMAGES
+  let score = 15;
+  
+  score += (stats.downloads * 10);
+  score += (stats.pageviews * 1);
+  
+  if (stats.recentDownloads > 0) {
+    score += stats.recentDownloads * 2;
+  }
+  
+  if (stats.downloads === 0) {
+    const daysOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24);
+    const agePenalty = Math.floor(daysOld / 7) * 5;
+    score -= agePenalty;
+  }
+  
+  if (stats.downloads > 0 && stats.lastDownload) {
+    const daysSinceLastDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24);
+    if (daysSinceLastDownload > 30) {
+      const dormantPenalty = Math.floor(daysSinceLastDownload / 30) * 2;
+      score -= dormantPenalty;
+    }
+  }
+  
+  if (stats.recentDownloads === 0 && stats.downloads > 5) {
+    score -= 5;
+  }
+  
+  score = Math.max(1, score);
+  
+  stats.score = score;
+  stats.daysOld = Math.floor((now - stats.firstSeen) / (1000 * 60 * 60 * 24));
+  stats.daysSinceLastDownload = stats.lastDownload 
+    ? Math.floor((now - stats.lastDownload) / (1000 * 60 * 60 * 24))
+    : null;
+});
 
     // Cache the scores in memory
     cachedScores = imageStats;
