@@ -146,7 +146,7 @@ export const categoryInfo = {
     name: 'Christmas Backgrounds',
     description: 'Festive Christmas backgrounds with holiday decorations for seasonal video calls',
     seoDescription: 'Download free Christmas virtual backgrounds for video calls. Festive holiday backgrounds with Christmas trees and decorations.',
-    images: Array.from({length: 130}, (_, i) => ({
+    images: Array.from({length: 127}, (_, i) => ({
       filename: `christmas-background-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Christmas Background ${i + 1}`
     }))
