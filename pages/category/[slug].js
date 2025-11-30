@@ -18,8 +18,14 @@ import { useImageDownload } from '../../lib/useImageDownload';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema'; 
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
+import ChristmasHub from '../../components/ChristmasHub';
 
 function CategoryContent({ slug, scores = {}, topImages = [] }) {
+  // Show hub for christmas-backgrounds
+  if (slug === 'christmas-backgrounds') {
+    return <ChristmasHub />;
+  }
+
   const [previewImage, setPreviewImage] = useState(null);
   const { 
     handleDownload,
@@ -74,14 +80,14 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
 
           <CategoryHeader category={category} />
           
-<ImageGrid 
-  images={category.images}
-  scores={scores}
-  slug={slug}
-  onImageClick={setPreviewImage}
-  onDownload={(image) => handleDownload(image, slug)}
-  topImages={topImages}
-/>
+          <ImageGrid 
+            images={category.images}
+            scores={scores}
+            slug={slug}
+            onImageClick={setPreviewImage}
+            onDownload={(image) => handleDownload(image, slug)}
+            topImages={topImages}
+          />
 
           <RelatedCategories currentSlug={slug} />
           <CategorySEOContent category={category} />
@@ -115,8 +121,39 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
   );
 }
 
-export default function CategoryPage({ slug, scores, topImages }) {  const router = useRouter();
+export default function CategoryPage({ slug, scores, topImages }) {
+  const router = useRouter();
   const currentSlug = slug || router.query.slug;
+  
+  // Special handling for christmas hub
+  if (currentSlug === 'christmas-backgrounds') {
+    const categoryName = 'Christmas Backgrounds';
+    const pageTitle = 'Christmas Backgrounds - Free | StreamBackdrops';
+    const pageDescription = 'Download free Christmas virtual backgrounds for video calls. 127 festive holiday backgrounds across Modern, Traditional, and Rustic styles.';
+    
+    return (
+      <>
+        <Layout
+          title={pageTitle}
+          description={pageDescription}
+          canonical={'https://streambackdrops.com/category/christmas-backgrounds'}
+          currentPage={currentSlug}
+          keywords="christmas backgrounds, holiday backgrounds, christmas video calls, festive backgrounds"
+          image={'/images/christmas-modern/christmas-modern-01.webp'}
+        >
+          <Head>
+            <BreadcrumbSchema items={[
+              { name: "Home", url: "https://streambackdrops.com" },
+              { name: categoryName, url: 'https://streambackdrops.com/category/christmas-backgrounds' }
+            ]} />
+          </Head>
+          
+          <CategoryContent slug={currentSlug} scores={scores} topImages={topImages} />
+        </Layout>
+      </>
+    );
+  }
+  // Define category after hub check
   const category = categoryInfo[currentSlug];
 
   if (!category) {
@@ -142,7 +179,9 @@ export default function CategoryPage({ slug, scores, topImages }) {  const route
   
   const featuredImages = {
     'halloween-backgrounds': 'halloween-background-20.webp',
-    'christmas-backgrounds': 'christmas-background-1.webp',
+    'christmas-modern': 'christmas-modern-01.webp',
+    'christmas-traditional': 'christmas-traditional-01.webp',
+    'christmas-rustic': 'christmas-rustic-01.webp',
     'bookshelves-bright': 'bookshelves-bright-01.webp',
     'bookshelves-dark': 'bookshelves-dark-01.webp',
     'wall-shelves-bright': 'wall-shelves-bright-01.webp',
@@ -195,7 +234,7 @@ export default function CategoryPage({ slug, scores, topImages }) {  const route
           ))}
         </Head>
         
-<CategoryContent slug={currentSlug} scores={scores} topImages={topImages} />
+        <CategoryContent slug={currentSlug} scores={scores} topImages={topImages} />
       </Layout>
     </>
   );
@@ -218,6 +257,9 @@ export async function getStaticPaths() {
     'nature-landscapes',
     'libraries',
     'christmas-backgrounds',
+    'christmas-modern',
+    'christmas-traditional',
+    'christmas-rustic',
     'halloween-backgrounds',
     'bokeh-backgrounds'
   ].map((slug) => ({

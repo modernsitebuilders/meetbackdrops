@@ -9,40 +9,45 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const batchFolder = path.join(process.env.HOME, 'Desktop/new-batch');
+const categories = ['christmas-modern', 'christmas-traditional', 'christmas-rustic'];
 
-async function uploadChristmasImages() {
-  const pngFiles = fs.readdirSync(batchFolder)
-    .filter(file => file.startsWith('christmas-background-') && file.endsWith('.png'))
-    .sort();
+async function uploadImages() {
+  const urls = {};
   
-  console.log(`\nUploading ${pngFiles.length} Christmas PNG images to Cloudinary...\n`);
-  
-  const results = {};
-  
-  for (const file of pngFiles) {
-    const filePath = path.join(batchFolder, file);
-    const publicId = file.replace('.png', '');
+  for (const category of categories) {
+    const folder = path.join(__dirname, 'public/images', category);
+    const files = fs.readdirSync(folder)
+      .filter(f => f.endsWith('.png'))
+      .sort();
     
-    try {
-      const result = await cloudinary.uploader.upload(filePath, {
-        public_id: publicId,
-        resource_type: 'image'
-      });
+    console.log(`\nUploading ${files.length} images from ${category}...\n`);
+    
+    for (const file of files) {
+      const filePath = path.join(folder, file);
+      const publicId = file.replace('.png', '');
       
-      results[publicId] = result.secure_url;
-      console.log(`✓ ${file}`);
-    } catch (error) {
-      console.error(`✗ Failed to upload ${file}:`, error.message);
+      try {
+        const result = await cloudinary.uploader.upload(filePath, {
+          public_id: publicId,
+          overwrite: false
+        });
+        
+        urls[publicId] = result.secure_url;
+        console.log(`✓ ${file} → ${result.secure_url}`);
+      } catch (error) {
+        console.error(`✗ Failed to upload ${file}:`, error.message);
+      }
     }
   }
   
-  // Save URLs to a JSON file
-  const outputPath = path.join(__dirname, 'christmas-cloudinary-urls.json');
-  fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
+  console.log('\n✅ Upload complete! Writing URLs to file...');
   
-  console.log(`\n✅ Uploaded all ${pngFiles.length} images!`);
-  console.log(`📁 URLs saved to: christmas-cloudinary-urls.json`);
+  const urlsFile = './cloudinary-urls.json';
+  const existingUrls = JSON.parse(fs.readFileSync(urlsFile, 'utf8'));
+  const updatedUrls = { ...existingUrls, ...urls };
+  
+  fs.writeFileSync(urlsFile, JSON.stringify(updatedUrls, null, 2));
+  console.log(`✓ Updated ${urlsFile} with ${Object.keys(urls).length} new URLs`);
 }
 
-uploadChristmasImages();
+uploadImages();

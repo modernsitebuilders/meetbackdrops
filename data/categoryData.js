@@ -142,13 +142,33 @@ export const categoryInfo = {
     }))
   },
 
-  'christmas-backgrounds': {
-    name: 'Christmas Backgrounds',
-    description: 'Festive Christmas backgrounds with holiday decorations for seasonal video calls',
-    seoDescription: 'Download free Christmas virtual backgrounds for video calls. Festive holiday backgrounds with Christmas trees and decorations.',
-    images: Array.from({length: 46}, (_, i) => ({
-      filename: `christmas-background-${String(i + 1).padStart(2, '0')}.webp`,
-      title: `Christmas Background ${i + 1}`
+  'christmas-modern': {
+    name: 'Christmas - Modern',
+    description: 'Modern Christmas backgrounds with clean lines and contemporary holiday decor',
+    seoDescription: 'Download free modern Christmas virtual backgrounds for video calls. Contemporary holiday backgrounds with stylish decor.',
+    images: Array.from({length: CATEGORIES['christmas-modern'].count}, (_, i) => ({
+      filename: `christmas-modern-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Modern Christmas Background ${i + 1}`
+    }))
+  },
+
+  'christmas-traditional': {
+    name: 'Christmas - Traditional',
+    description: 'Traditional Christmas backgrounds with warm colors, classic decor, and cozy fireplaces',
+    seoDescription: 'Download free traditional Christmas virtual backgrounds for video calls. Classic holiday backgrounds with warm, cozy decor.',
+    images: Array.from({length: CATEGORIES['christmas-traditional'].count}, (_, i) => ({
+      filename: `christmas-traditional-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Traditional Christmas Background ${i + 1}`
+    }))
+  },
+
+  'christmas-rustic': {
+    name: 'Christmas - Rustic',
+    description: 'Rustic Christmas backgrounds with farmhouse charm, cabin vibes, and natural holiday decor',
+    seoDescription: 'Download free rustic Christmas virtual backgrounds for video calls. Farmhouse and cabin holiday backgrounds.',
+    images: Array.from({length: CATEGORIES['christmas-rustic'].count}, (_, i) => ({
+      filename: `christmas-rustic-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Rustic Christmas Background ${i + 1}`
     }))
   },
 
@@ -188,7 +208,9 @@ export const folderMap = {
   'historic-spaces': 'historic-spaces',
   'nature-landscapes': 'nature-landscapes',
   'libraries': 'libraries',
-  'christmas-backgrounds': 'christmas-backgrounds',
+  'christmas-modern': 'christmas-modern',
+  'christmas-traditional': 'christmas-traditional',
+  'christmas-rustic': 'christmas-rustic',
   'halloween-backgrounds': 'halloween-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds'
 };
