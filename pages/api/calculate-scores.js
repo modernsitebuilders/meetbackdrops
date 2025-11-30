@@ -173,7 +173,15 @@ Object.keys(imageStats).forEach(filename => {
   const stats = imageStats[filename];
   
   if (!stats.tracked) {
-    stats.score = 15; // NEW IMAGES START AT 15
+    // Check if it's an OLD Christmas image (1-46) that never got downloaded
+    const oldChristmasMatch = filename.match(/^christmas-background-0*([1-9]|[1-3][0-9]|4[0-6])\.webp$/);
+    
+    if (oldChristmasMatch) {
+      stats.score = 8; // OLD REJECTS GET 8
+    } else {
+      stats.score = 15; // NEW IMAGES GET 15
+    }
+    
     stats.daysOld = 0;
     stats.daysSinceLastDownload = null;
     return;
