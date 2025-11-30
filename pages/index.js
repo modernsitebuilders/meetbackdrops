@@ -116,7 +116,7 @@ export default function Home({ structuredData }) {
           <Card
   href="/blog/christmas-backgrounds"
   title="Christmas Backgrounds 2025"
-  description="127 free festive backgrounds for December"
+  description="125+ free festive backgrounds for December"
   emoji="🎄"
   className="blog-card"
   customStyles={{
