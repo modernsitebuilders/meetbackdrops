@@ -230,14 +230,13 @@ export default function MostPopular() {
                 >
                   <div className={styles.imageWrapper}>
                     <Image
-                      src={image.webPath}
-                      alt={`Popular virtual background #${index + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      style={{ objectFit: 'cover' }}
-                      loading={index < 6 ? 'eager' : 'lazy'}
-                      priority={index < 3}
-                    />
+  src={image.webPath}
+  alt="Popular virtual background"
+  width={800}
+  height={450}
+  sizes="(max-width: 768px) 100vw, 800px"
+  style={{ objectFit: 'cover' }}
+/>
                     <div className={styles.hoverOverlay}>
                       <button
                         onClick={(e) => {

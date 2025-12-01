@@ -26,12 +26,12 @@ async function updateCache() {
   const downloadCounts = {};
   
   for (let i = 1; i < rows.length; i++) {
-    const row = rows[i];
-    const actionType = row[1];
-    const filename = row[2];
-    const category = row[3];
+   const row = rows[i];
+const actionType = row[1];
+const filename = row[3];  // ✅ Column D - Filename
+const category = row[4];  // ✅ Column E - Category
     
-    if (actionType === 'download' && filename) {
+    if (actionType === 'download' && filename && filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
       if (!downloadCounts[filename]) {
         downloadCounts[filename] = {
           filename: filename,
@@ -45,9 +45,6 @@ async function updateCache() {
 
   const folderMap = {
     'christmas-background': 'christmas-backgrounds',
-    'christmas-modern': 'christmas-modern',
-    'christmas-rustic': 'christmas-rustic',
-    'christmas-traditional': 'christmas-traditional',
     'halloween-background': 'halloween-backgrounds',
     'nature-landscape': 'nature-landscapes',
     'living-room': 'living-rooms',
