@@ -1,83 +1,155 @@
 {
-  "lastUpdated": "2025-12-01T03:03:26.143Z",
+  "lastUpdated": "2025-12-01T03:06:25.568Z",
   "images": [
     {
-      "filename": "bing",
-      "category": "office-spaces",
-      "downloadCount": 165,
-      "webPath": "/images/office-spaces/bing"
-    },
-    {
-      "filename": "chatgpt.com",
-      "category": "nature-landscapes",
-      "downloadCount": 109,
-      "webPath": "/images/nature-landscapes/chatgpt.com"
-    },
-    {
-      "filename": "direct",
-      "category": "office-spaces",
-      "downloadCount": 106,
-      "webPath": "/images/office-spaces/direct"
-    },
-    {
-      "filename": "google",
-      "category": "halloween-backgrounds",
-      "downloadCount": 104,
-      "webPath": "/images/halloween-backgrounds/google"
-    },
-    {
-      "filename": "duckduckgo",
+      "filename": "wall-shelves-bright-02.png",
       "category": "wall-shelves-bright",
-      "downloadCount": 49,
-      "webPath": "/images/wall-shelves-bright/duckduckgo"
+      "downloadCount": 16,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-02.webp"
     },
     {
-      "filename": "free-for.dev",
-      "category": "halloween-backgrounds",
-      "downloadCount": 21,
-      "webPath": "/images/halloween-backgrounds/free-for.dev"
-    },
-    {
-      "filename": "yahoo",
+      "filename": "office-spaces-19.png",
       "category": "office-spaces",
-      "downloadCount": 9,
-      "webPath": "/images/office-spaces/yahoo"
+      "downloadCount": 14,
+      "webPath": "/images/office-spaces/office-spaces-19.webp"
     },
     {
-      "filename": "streambackdrops.com",
+      "filename": "office-spaces-24.png",
       "category": "office-spaces",
-      "downloadCount": 9,
-      "webPath": "/images/office-spaces/streambackdrops.com"
+      "downloadCount": 12,
+      "webPath": "/images/office-spaces/office-spaces-24.webp"
     },
     {
-      "filename": "producthunt.com",
-      "category": "wall-shelves-bright",
-      "downloadCount": 4,
-      "webPath": "/images/wall-shelves-bright/producthunt.com"
-    },
-    {
-      "filename": "search.brave.com",
-      "category": "living-rooms",
-      "downloadCount": 4,
-      "webPath": "/images/living-rooms/search.brave.com"
-    },
-    {
-      "filename": "localhost:3000",
-      "category": "office-spaces",
-      "downloadCount": 3,
-      "webPath": "/images/office-spaces/localhost:3000"
-    },
-    {
-      "filename": "statics.teams.cdn.office.net",
+      "filename": "christmas-background-04.png",
       "category": "christmas-backgrounds",
-      "downloadCount": 2,
-      "webPath": "/images/christmas-backgrounds/statics.teams.cdn.office.net"
+      "downloadCount": 9,
+      "webPath": "/images/christmas-backgrounds/christmas-background-04.webp"
     },
     {
-      "filename": "qwant",
+      "filename": "christmas-background-35.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 9,
+      "webPath": "/images/christmas-backgrounds/christmas-background-35.webp"
+    },
+    {
+      "filename": "office-spaces-02.png",
+      "category": "office-spaces",
+      "downloadCount": 8,
+      "webPath": "/images/office-spaces/office-spaces-02.webp"
+    },
+    {
+      "filename": "office-spaces-33.png",
+      "category": "office-spaces",
+      "downloadCount": 8,
+      "webPath": "/images/office-spaces/office-spaces-33.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-10.png",
       "category": "wall-shelves-bright",
-      "downloadCount": 1,
-      "webPath": "/images/wall-shelves-bright/qwant"
+      "downloadCount": 7,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-10.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-16.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 7,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-16.webp"
+    },
+    {
+      "filename": "library-17.png",
+      "category": "libraries",
+      "downloadCount": 6,
+      "webPath": "/images/libraries/library-17.webp"
+    },
+    {
+      "filename": "office-spaces-43.png",
+      "category": "office-spaces",
+      "downloadCount": 6,
+      "webPath": "/images/office-spaces/office-spaces-43.webp"
+    },
+    {
+      "filename": "wall-shelves-dark-04.png",
+      "category": "wall-shelves-dark",
+      "downloadCount": 6,
+      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-04.webp"
+    },
+    {
+      "filename": "office-spaces-36.png",
+      "category": "office-spaces",
+      "downloadCount": 6,
+      "webPath": "/images/office-spaces/office-spaces-36.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-13.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 6,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-13.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-28.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 6,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-28.webp"
+    },
+    {
+      "filename": "christmas-background-10.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 6,
+      "webPath": "/images/christmas-backgrounds/christmas-background-10.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-05.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 5,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-05.webp"
+    },
+    {
+      "filename": "halloween-background-03.png",
+      "category": "halloween-backgrounds",
+      "downloadCount": 5,
+      "webPath": "/images/halloween-backgrounds/halloween-background-03.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-27.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 5,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-27.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-21.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 5,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-21.webp"
+    },
+    {
+      "filename": "office-spaces-01.png",
+      "category": "office-spaces",
+      "downloadCount": 5,
+      "webPath": "/images/office-spaces/office-spaces-01.webp"
+    },
+    {
+      "filename": "wall-shelves-dark-01.png",
+      "category": "wall-shelves-dark",
+      "downloadCount": 5,
+      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-01.webp"
+    },
+    {
+      "filename": "wall-shelves-dark-19.png",
+      "category": "wall-shelves-dark",
+      "downloadCount": 5,
+      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-19.webp"
+    },
+    {
+      "filename": "christmas-background-12.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 5,
+      "webPath": "/images/christmas-backgrounds/christmas-background-12.webp"
+    },
+    {
+      "filename": "bookshelves-dark-07.png",
+      "category": "bookshelves-dark",
+      "downloadCount": 5,
+      "webPath": "/images/bookshelves-dark/bookshelves-dark-07.webp"
     }
   ]
 }
