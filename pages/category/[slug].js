@@ -278,17 +278,26 @@ export async function getStaticProps({ params }) {
       .slice(0, 25)
       .map(([filename]) => filename.replace('.png', '.webp'));
 
-    // Calculate scores for this category
-    const category = categoryInfo[params.slug];
-    if (category) {
-      category.images.forEach(image => {
-        const baseName = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
-        const downloads = downloadCounts[image.filename] || 
-                         downloadCounts[`${baseName}.png`] || 
-                         downloadCounts[`${baseName}.webp`] || 0;
-        imageScores[image.filename] = downloads * 10;
-      });
+   // Calculate scores for this category
+const category = categoryInfo[params.slug];
+if (category) {
+  const now = new Date();
+  
+  category.images.forEach(image => {
+    const baseName = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+    const downloads = downloadCounts[image.filename] || 
+                     downloadCounts[`${baseName}.png`] || 
+                     downloadCounts[`${baseName}.webp`] || 0;
+    
+    if (downloads === 0) {
+      // Untracked - check if old Christmas
+      const oldChristmasMatch = image.filename.match(/^christmas-background-0*([1-9]|[1-3][0-9]|4[0-6])\.webp$/);
+      imageScores[image.filename] = oldChristmasMatch ? 8 : 15;
+    } else {
+      imageScores[image.filename] = 15 + (downloads * 10);
     }
+  });
+}
 
     scores = imageScores;
   } catch (error) {
