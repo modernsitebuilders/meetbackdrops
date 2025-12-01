@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { CATEGORIES } from '../../lib/categories-config';
 
-export const christmasBackgroundsContent = () => (
+export const christmasBackgroundsContent = () => {
+  const count = CATEGORIES['christmas-backgrounds'].count;
+  return (
   <article style={{ 
     background: '#f8fafc', 
     minHeight: '100vh'
@@ -751,7 +754,7 @@ export const christmasBackgroundsContent = () => (
               fontSize: '1.1rem',
               transition: 'transform 0.2s'
             }}>
-              Browse All 46 Christmas Backgrounds →
+              Browse All {count} Christmas Backgrounds →
             </Link>
           </div>
         </div>
@@ -760,3 +763,4 @@ export const christmasBackgroundsContent = () => (
   </div>
   </article>
 );
+};
