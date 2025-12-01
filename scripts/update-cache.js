@@ -19,7 +19,7 @@ async function updateCache() {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.GOOGLE_SHEET_ID,
-    range: 'Analytics!A:I',
+    range: 'Analytics!A:O',
   });
 
   const rows = response.data.values;
