@@ -1,15 +1,14 @@
-// components/ImageObjectSchema.js
-export default function ImageObjectSchema({ images, category, baseUrl }) {
+export default function ImageObjectSchema({ images, category, categorySlug, baseUrl }) {
   const imageListData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": images.slice(0, 10).map((image, index) => ({
       "@type": "ImageObject",
       "position": index + 1,
-      "contentUrl": `${baseUrl}${image.url}`,
-      "name": `${category} virtual background ${index + 1}`,
+      "contentUrl": `${baseUrl}/images/${categorySlug}/${image.filename}`,
+      "name": image.title,
       "description": `Free ${category.toLowerCase()} virtual background for Zoom, Teams, and Google Meet`,
-      "thumbnail": `${baseUrl}${image.url}`,
+      "thumbnail": `${baseUrl}/images/${categorySlug}/${image.filename}`,
       "encodingFormat": "image/webp"
     }))
   };

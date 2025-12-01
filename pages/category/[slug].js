@@ -179,10 +179,11 @@ export default function CategoryPage({ slug, scores, topImages }) {  const route
             { name: categoryName, url: 'https://streambackdrops.com/category/' + currentSlug }
           ]} />
           <ImageObjectSchema 
-            images={category.images} 
-            category={categoryName}
-            baseUrl="https://streambackdrops.com"
-          />
+  images={category.images} 
+  category={categoryName}
+  categorySlug={currentSlug}
+  baseUrl="https://streambackdrops.com"
+/>
           {/* Preload first row images - mobile only */}
           {category.images.slice(0, 2).map((image, i) => (
             <link
