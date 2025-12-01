@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I',
+      range: 'Analytics!A:O',
     });
 
     const rows = response.data.values;
@@ -34,10 +34,10 @@ export default async function handler(req, res) {
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
       const actionType = row[1];
-      const filename = row[2];
-      const category = row[3];
+      const filename = row[3];
+      const category = row[4];
       
-      if (actionType === 'download' && filename) {
+      if (actionType === 'download' && filename && filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
         if (!downloadCounts[filename]) {
           downloadCounts[filename] = {
             filename: filename,
