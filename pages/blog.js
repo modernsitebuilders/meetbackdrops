@@ -263,6 +263,31 @@ export default function Blog() {
           </div>
         </div>
 
+        {/* Christmas Category Banner */}
+        <div style={{maxWidth: '1200px', margin: '2rem auto 0', padding: '0 2rem'}}>
+          <Link 
+            href="/category/christmas-backgrounds"
+            style={{
+              display: 'block',
+              background: 'linear-gradient(135deg, #ef4444 0%, #22c55e 100%)',
+              color: 'white',
+              padding: '1.5rem 2rem',
+              borderRadius: '0.75rem',
+              textDecoration: 'none',
+              textAlign: 'center',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              transition: 'transform 0.2s'
+            }}
+          >
+            <div style={{fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem'}}>
+              🎄 Free Christmas Virtual Backgrounds
+            </div>
+            <div style={{fontSize: '1rem', opacity: '0.95'}}>
+              Browse 46 festive backgrounds for your holiday video calls →
+            </div>
+          </Link>
+        </div>
+
         {/* Blog Posts Grid */}
         <main style={{maxWidth: '1200px', margin: '0 auto', padding: '3rem 2rem'}}>
           <div style={{display: 'grid', gap: '2rem'}}>
