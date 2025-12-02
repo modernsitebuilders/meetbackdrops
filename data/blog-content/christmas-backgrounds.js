@@ -68,6 +68,38 @@ export const christmasBackgroundsContent = () => {
             </p>
          </header>
 
+         {/* CTA LINK TO CATEGORY */}
+<div style={{
+  padding: '2rem',
+  textAlign: 'center',
+  background: 'linear-gradient(180deg, #fef2f2 0%, white 100%)',
+  borderBottom: '1px solid #fee2e2'
+}}>
+  <Link href="/category/christmas-backgrounds" style={{
+    display: 'inline-block',
+    background: 'linear-gradient(135deg, #dc2626 0%, #16a34a 100%)',
+    color: 'white',
+    padding: '1rem 2.5rem',
+    borderRadius: '0.5rem',
+    fontSize: '1.1rem',
+    fontWeight: '600',
+    textDecoration: 'none',
+    boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)',
+    transition: 'transform 0.2s, box-shadow 0.2s',
+    cursor: 'pointer'
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = 'translateY(-2px)';
+    e.currentTarget.style.boxShadow = '0 6px 20px rgba(220, 38, 38, 0.4)';
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = 'translateY(0)';
+    e.currentTarget.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.3)';
+  }}>
+    🎄 Browse All {count} Christmas Backgrounds →
+  </Link>
+</div>
+
           {/* ARTICLE CONTENT SECTION */}
           <div style={{
             padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
