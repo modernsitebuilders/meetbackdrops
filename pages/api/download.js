@@ -53,8 +53,8 @@ export default async function handler(req, res) {
     
     // Increment download counters
     res.setHeader('Set-Cookie', [
-      `dl_count_daily=${dailyDownloads + 1}; Max-Age=${24 * 60 * 60}; Path=/`,
-      `dl_timestamps=${newTimestamps}; Max-Age=${30 * 24 * 60 * 60}; Path=/`
+      `dl_count_daily=${dailyDownloads + 1}; Max-Age=${24 * 60 * 60}; Path=/; SameSite=Lax; Secure`,
+      `dl_timestamps=${newTimestamps}; Max-Age=${30 * 24 * 60 * 60}; Path=/; SameSite=Lax; Secure`
     ]);
     
     // Set headers to force download with custom filename
