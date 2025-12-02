@@ -283,7 +283,7 @@ export default function Blog() {
               🎄 Free Christmas Virtual Backgrounds
             </div>
             <div style={{fontSize: '1rem', opacity: '0.95'}}>
-              Browse 46 festive backgrounds for your holiday video calls →
+              Browse 125 + festive backgrounds for your holiday video calls →
             </div>
           </Link>
         </div>
