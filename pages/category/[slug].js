@@ -183,6 +183,7 @@ export default function CategoryPage({ slug, scores, topImages }) {  const route
   category={categoryName}
   categorySlug={currentSlug}
   baseUrl="https://streambackdrops.com"
+  scores={scores}
 />
           {/* Preload first row images - mobile only */}
           {category.images.slice(0, 2).map((image, i) => (
