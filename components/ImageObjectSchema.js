@@ -5,11 +5,10 @@ export default function ImageObjectSchema({ images, category, categorySlug, base
     "itemListElement": images.slice(0, 10).map((image, index) => ({
       "@type": "ImageObject",
       "position": index + 1,
-      "contentUrl": `${baseUrl}/images/${categorySlug}/${image.filename}`,
+"contentUrl": `${baseUrl}/images/${categorySlug}/${image}`,
       "name": image.title,
       "description": `Free ${category.toLowerCase()} virtual background for Zoom, Teams, and Google Meet`,
-      "thumbnail": `${baseUrl}/images/${categorySlug}/${image.filename}`,
-      "encodingFormat": "image/webp"
+"thumbnail": `${baseUrl}/images/${categorySlug}/${image}`,      "encodingFormat": "image/webp"
     }))
   };
 

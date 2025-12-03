@@ -65,6 +65,10 @@ export default async function handler(req, res) {
     }
 
     const sortedDownloads = Object.values(downloadCounts)
+      .filter(item => {
+        // Exclude seasonal backgrounds
+        return !item.filename.match(/^(halloween|christmas)-background/i);
+      })
       .sort((a, b) => b.count - a.count);
 
     res.status(200).json({
