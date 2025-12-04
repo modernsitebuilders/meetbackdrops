@@ -137,7 +137,9 @@ export default function CategoryPage({ slug, scores, topImages }) {  const route
   }
 
   const categoryName = String(category.name || 'Virtual');
-  const pageTitle = categoryName + ' - Free | StreamBackdrops';
+  const pageTitle = currentSlug === 'christmas-backgrounds' 
+  ? '125+ Free Christmas Backgrounds 2025 - Zoom, Teams, Google Meet'
+  : categoryName + ' - Free | StreamBackdrops';
   const pageDescription = String(category.seoDescription || `Download free ${categoryName.toLowerCase()} backgrounds. Perfect for Zoom, Teams & Google Meet.`);
   
   const featuredImages = {
