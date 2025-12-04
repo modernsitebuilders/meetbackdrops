@@ -151,7 +151,8 @@ export default function Header({ currentPage }) {
                 onMouseLeave={(e) => e.target.style.background = 'transparent'}
               >
                 {item.name}
-                <span style={{ marginLeft: '0.5rem' }}>›</span>
+                {item.name}
+                <span style={{ marginLeft: '0.5rem' }}>‹</span>
               </button>
               
               {openNestedDropdown === item.name && (
