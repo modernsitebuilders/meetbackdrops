@@ -5,8 +5,8 @@ export const HERO_IMAGES = [
     priority: true
   },
   {
-    src: '/images/office-spaces/office-spaces-24.webp',
-    alt: 'Modern office space',
+    src: '/images/bookshelves-bright/bookshelves-bright-01.webp',
+    alt: 'Bright bookshelves background',
     priority: true
   },
   {
