@@ -1,8 +1,7 @@
 // components/Analytics.js
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { getOrCreateSession, updateSessionActivity, getOrCreateVisitorId, isReturningVisitor } from '../lib/sessionTracking';
-
+import { getOrCreateSession, updateSessionActivity, getOrCreateVisitorId, getVisitorType } from '../lib/sessionTracking';
 export default function Analytics() {
   const router = useRouter();
   const lastTrackedPath = useRef(null);
@@ -91,7 +90,7 @@ export default function Analytics() {
             pageViewsInSession: session?.pageViews || 0,
             downloadsInSession: session?.downloads || 0,
             visitorId: getOrCreateVisitorId(),
-            visitorType: isReturningVisitor() ? 'returning' : 'new'
+            visitorType: getVisitorType()
           })
         });
       } catch (error) {
