@@ -85,12 +85,10 @@ export default async function handler(req, res) {
         category: categoryDisplayName,
         categorySlug: category,
         downloads: 0,
-        pageviews: 0,
         firstSeen: now,
         lastDownload: null,
         recentDownloads: 0,
-        score: 0,
-        tracked: false
+        score: 0
       };
     });
     
@@ -141,12 +139,12 @@ export default async function handler(req, res) {
         }
       }
       
-      if (!imageStats[matchedFilename].tracked) {
-        imageStats[matchedFilename].tracked = true;
-        imageStats[matchedFilename].firstSeen = new Date(timestamp);
-      }
-      
       const eventDate = new Date(timestamp);
+      
+      // Track first appearance
+      if (eventDate < imageStats[matchedFilename].firstSeen) {
+        imageStats[matchedFilename].firstSeen = eventDate;
+      }
       
       if (eventType === 'download') {
         imageStats[matchedFilename].downloads += 1;
@@ -159,76 +157,58 @@ export default async function handler(req, res) {
         if (daysSinceEvent <= 30) {
           imageStats[matchedFilename].recentDownloads += 1;
         }
-      } else if (eventType === 'page_view') {
-        imageStats[matchedFilename].pageviews += 1;
-      }
-      
-      if (eventDate < imageStats[matchedFilename].firstSeen) {
-        imageStats[matchedFilename].firstSeen = eventDate;
       }
     });
 
-   // Calculate final scores
-Object.keys(imageStats).forEach(filename => {
-  const stats = imageStats[filename];
-  
-  if (!stats.tracked) {
-    // Check if it's an OLD Christmas image (1-46) that never got downloaded
-    const oldChristmasMatch = filename.match(/^christmas-background-0*([1-9]|[1-3][0-9]|4[0-6])\.webp$/);
-    
-    if (oldChristmasMatch) {
-      stats.score = 8; // OLD REJECTS GET 8
-    } else {
-      stats.score = 20; // NEW IMAGES GET 20
-    }
-    
-    stats.daysOld = 0;
-    stats.daysSinceLastDownload = null;
-    return;
-  }
-  
-  // START WITH BASE 15 POINTS FOR ALL TRACKED IMAGES
-  let score = 15;
-  
-  score += (stats.downloads * 10);
-  score += (stats.pageviews * 1);
-  
-  if (stats.recentDownloads > 0) {
-    score += stats.recentDownloads * 2;
-  }
-  
-  if (stats.downloads === 0) {
-    const daysOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24);
-    const agePenalty = Math.floor(daysOld / 7) * 5;
-    score -= agePenalty;
-  }
-  
-  if (stats.downloads > 0 && stats.lastDownload) {
-    const daysSinceLastDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24);
-    if (daysSinceLastDownload > 30) {
-      const dormantPenalty = Math.floor(daysSinceLastDownload / 30) * 2;
-      score -= dormantPenalty;
-    }
-  }
-  
-  if (stats.recentDownloads === 0 && stats.downloads > 5) {
-    score -= 5;
-  }
-  
-  score = Math.max(1, score);
-  
-  stats.score = score;
-  stats.daysOld = Math.floor((now - stats.firstSeen) / (1000 * 60 * 60 * 24));
-  stats.daysSinceLastDownload = stats.lastDownload 
-    ? Math.floor((now - stats.lastDownload) / (1000 * 60 * 60 * 24))
-    : null;
-});
+    // Calculate final scores with NEW SIMPLE SYSTEM
+    Object.keys(imageStats).forEach(filename => {
+      const stats = imageStats[filename];
+      
+      // START AT 100 POINTS
+      let score = 100;
+
+      const newOfficeMatch = filename.match(/^office-spaces-(4[5-9]|5\d|6[0-7])\.webp$/);
+if (newOfficeMatch) {
+  score += 25; // New batch starts at 125
+}
+      
+      // ADD POINTS FOR DOWNLOADS
+      score += (stats.downloads * 10);
+      
+      // BONUS FOR RECENT DOWNLOADS
+      if (stats.recentDownloads > 0) {
+        score += stats.recentDownloads * 2;
+      }
+      
+      // DECAY FOR ZERO-DOWNLOAD IMAGES
+      if (stats.downloads === 0) {
+        const daysOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24);
+        
+        // 30-day grace period, then -1 point per day
+        if (daysOld > 30) {
+          const decayDays = Math.floor(daysOld - 30);
+          score -= decayDays;
+        }
+      }
+      
+      // Floor at 0
+      score = Math.max(0, score);
+      
+      stats.score = score;
+      stats.daysOld = Math.floor((now - stats.firstSeen) / (1000 * 60 * 60 * 24));
+      stats.daysSinceLastDownload = stats.lastDownload 
+        ? Math.floor((now - stats.lastDownload) / (1000 * 60 * 60 * 24))
+        : null;
+      
+      // Flag for removal
+      stats.flaggedForRemoval = score === 0;
+    });
 
     // Cache the scores in memory
     cachedScores = imageStats;
     lastCalculated = Date.now();
 
-    // Try to save to /tmp for backup (doesn't matter if it fails)
+    // Try to save to /tmp for backup
     try {
       const tmpPath = path.join('/tmp', 'image-scores.json');
       fs.writeFileSync(tmpPath, JSON.stringify(imageStats, null, 2));
@@ -238,10 +218,8 @@ Object.keys(imageStats).forEach(filename => {
 
     const summary = {
       totalImages: Object.keys(imageStats).length,
-      trackedImages: Object.values(imageStats).filter(s => s.tracked).length,
-      untrackedImages: Object.values(imageStats).filter(s => !s.tracked).length,
       zeroDownloads: Object.values(imageStats).filter(s => s.downloads === 0).length,
-      dormant: Object.values(imageStats).filter(s => s.daysSinceLastDownload > 30).length,
+      flaggedForRemoval: Object.values(imageStats).filter(s => s.flaggedForRemoval).length,
       topPerformers: Object.entries(imageStats)
         .sort((a, b) => b[1].score - a[1].score)
         .slice(0, 10)
@@ -249,9 +227,7 @@ Object.keys(imageStats).forEach(filename => {
           filename,
           category: stats.category,
           score: stats.score, 
-          downloads: stats.downloads,
-          pageviews: stats.pageviews,
-          tracked: stats.tracked
+          downloads: stats.downloads
         })),
       bottomPerformers: Object.entries(imageStats)
         .sort((a, b) => a[1].score - b[1].score)
@@ -261,8 +237,7 @@ Object.keys(imageStats).forEach(filename => {
           category: stats.category,
           score: stats.score, 
           downloads: stats.downloads,
-          pageviews: stats.pageviews,
-          tracked: stats.tracked
+          daysOld: stats.daysOld
         }))
     };
 
