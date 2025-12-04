@@ -179,7 +179,7 @@ Object.keys(imageStats).forEach(filename => {
     if (oldChristmasMatch) {
       stats.score = 8; // OLD REJECTS GET 8
     } else {
-      stats.score = 15; // NEW IMAGES GET 15
+      stats.score = 20; // NEW IMAGES GET 20
     }
     
     stats.daysOld = 0;
