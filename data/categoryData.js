@@ -164,7 +164,7 @@ export const categoryInfo = {
   name: 'Eid Backgrounds',
   description: 'Elegant Eid backgrounds with Islamic geometric patterns and traditional lanterns for Eid al-Fitr and Eid al-Adha',
   seoDescription: 'Download free Eid virtual backgrounds for Zoom, Teams & Google Meet. Elegant Islamic patterns and traditional lanterns for Eid celebrations.',
-  images: Array.from({length: 23}, (_, i) => ({
+  images: Array.from({length: 22}, (_, i) => ({
     filename: `eid-background-${String(i + 1).padStart(2, '0')}.webp`,
     title: `Eid Background ${i + 1}`
   }))
