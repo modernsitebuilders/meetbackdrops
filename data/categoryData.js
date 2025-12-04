@@ -160,6 +160,15 @@ export const categoryInfo = {
       title: `Halloween Background ${i + 1}`
     }))
   },
+  'eid-backgrounds': {
+  name: 'Eid Backgrounds',
+  description: 'Elegant Eid backgrounds with Islamic geometric patterns and traditional lanterns for Eid al-Fitr and Eid al-Adha',
+  seoDescription: 'Download free Eid virtual backgrounds for Zoom, Teams & Google Meet. Elegant Islamic patterns and traditional lanterns for Eid celebrations.',
+  images: Array.from({length: 23}, (_, i) => ({
+    filename: `eid-background-${String(i + 1).padStart(2, '0')}.webp`,
+    title: `Eid Background ${i + 1}`
+  }))
+},
   
   'bokeh-backgrounds': {
     name: 'Bokeh Backgrounds',
@@ -189,5 +198,6 @@ export const folderMap = {
   'libraries': 'libraries',
   'christmas-backgrounds': 'christmas-backgrounds',
   'halloween-backgrounds': 'halloween-backgrounds',
+  'eid-backgrounds': 'eid-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds'
 };

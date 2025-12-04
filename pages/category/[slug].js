@@ -159,7 +159,8 @@ export default function CategoryPage({ slug, scores, topImages }) {  const route
     'historic-spaces': 'historic-1.webp',
     'nature-landscapes': 'nature-1.webp',
     'libraries': 'library-1.webp',
-    'bokeh-backgrounds': 'bokeh-1.webp'
+    'bokeh-backgrounds': 'bokeh-1.webp',
+    'eid-backgrounds': 'eid-background-14.webp'
   };
   
   const featuredImage = featuredImages[currentSlug] || 'og-image.png';
@@ -223,6 +224,7 @@ export async function getStaticPaths() {
     'libraries',
     'christmas-backgrounds',
     'halloween-backgrounds',
+    'eid-backgrounds',
     'bokeh-backgrounds'
   ].map((slug) => ({
     params: { slug }
