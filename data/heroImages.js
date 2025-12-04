@@ -1,6 +1,6 @@
 export const HERO_IMAGES = [
   {
-    src: '/images/office-spaces/office-spaces-02.webp',
+    src: '/images/office-spaces/office-spaces-19.webp',
     alt: 'Professional office background',
     priority: true
   },
@@ -10,23 +10,23 @@ export const HERO_IMAGES = [
     priority: true
   },
   {
-    src: '/images/wall-shelves-bright/wall-shelves-bright-10.webp',
+    src: '/images/wall-shelves-bright/wall-shelves-bright-02.webp',
     alt: 'Bright wall shelf background',
     priority: true
   },
   {
-    src: '/images/coffee-shops/coffee-shop-07.webp',
-    alt: 'Coffee shop background',
+    src: '/images/office-spaces/office-spaces-36.webp',
+    alt: 'Office space background',
     priority: false
   },
   {
-    src: '/images/urban-lofts/urban-loft-16.webp',
-    alt: 'Urban loft background',
+    src: '/images/bookshelves-dark/bookshelves-dark-07.webp',
+    alt: 'Bookshelves dark background',
     priority: false
   },
   {
-    src: '/images/libraries/library-17.webp',
-    alt: 'Library background',
+    src: '/images/christmas-backgrounds/christmas-background-35.webp',
+    alt: 'Christmas background',
     priority: false
   }
 ];
