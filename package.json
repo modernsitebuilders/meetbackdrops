@@ -1,15 +1,14 @@
-
 {
   "name": "streambackdrops",
   "version": "1.0.0",
   "description": "Professional virtual backgrounds for video calls",
   "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint",
-  "update-counts": "node generate-category-counts.js"
-},
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "update-counts": "node generate-category-counts.js"
+  },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "aws-sdk": "^2.1692.0",
@@ -17,7 +16,7 @@
     "dotenv": "^17.2.3",
     "googleapis": "^159.0.0",
     "jimp": "^1.6.0",
-    "next": "^15.5.4",
+    "next": "^16.0.7",
     "react": "latest",
     "react-dom": "latest",
     "sharp": "^0.34.4"
