@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function ScoresAdmin() {
   const [scores, setScores] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState('score'); // score, downloads, daysOld
-  const [sortOrder, setSortOrder] = useState('desc');
+  const [sortBy, setSortBy] = useState('score');
+  const [sortOrder, setSortOrder] = useState('asc');
   const [filterCategory, setFilterCategory] = useState('all');
   const [summary, setSummary] = useState(null);
 
   useEffect(() => {
+    if (localStorage.getItem('streambackdrops_admin') !== 'true') {
+      window.location.href = '/';
+      return;
+    }
     fetchScores();
   }, []);
 
@@ -28,23 +33,21 @@ export default function ScoresAdmin() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading image scores...</p>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⏳</div>
+          <p>Loading image scores...</p>
         </div>
       </div>
     );
   }
 
   if (!scores) {
-    return <div className="p-8">Error loading scores</div>;
+    return <div style={{ padding: '2rem' }}>Error loading scores</div>;
   }
 
-  // Get unique categories
   const categories = ['all', ...new Set(Object.values(scores).map(s => s.categorySlug))];
 
-  // Filter and sort
   let filteredScores = Object.entries(scores)
     .filter(([filename, data]) => {
       if (filterCategory === 'all') return true;
@@ -58,15 +61,21 @@ export default function ScoresAdmin() {
   });
 
   const getStatusColor = (score) => {
-    if (score === 0) return 'bg-red-100 text-red-800';
-    if (score < 20) return 'bg-yellow-100 text-yellow-800';
-    return 'bg-green-100 text-green-800';
+    if (score === 0) return '#fee2e2';
+    if (score < 20) return '#fef3c7';
+    return '#d1fae5';
+  };
+
+  const getStatusTextColor = (score) => {
+    if (score === 0) return '#991b1b';
+    if (score < 20) return '#92400e';
+    return '#065f46';
   };
 
   const getStatusText = (score) => {
-    if (score === 0) return 'REMOVE';
-    if (score < 20) return 'WARNING';
-    return 'HEALTHY';
+    if (score === 0) return '⚠️ REMOVE';
+    if (score < 20) return '⚡ WARNING';
+    return '✅ HEALTHY';
   };
 
   const handleSort = (column) => {
@@ -80,144 +89,139 @@ export default function ScoresAdmin() {
 
   return (
     <>
-      <Head>
-        <title>Image Scores Admin - StreamBackdrops</title>
-      </Head>
+      <Head><title>Image Scores - Admin</title></Head>
 
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Image Scoring Dashboard</h1>
-            <p className="text-gray-600">Monitor image performance and identify candidates for removal</p>
+      <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
+        <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <h1 style={{ margin: '0 0 0.5rem 0' }}>📊 Image Scoring Dashboard</h1>
+            <p style={{ margin: 0, color: '#6b7280' }}>Monitor performance and identify removal candidates</p>
           </div>
+          <Link href="/admin" style={{ padding: '0.75rem 1.5rem', background: '#2563eb', color: 'white', borderRadius: '6px', textDecoration: 'none' }}>
+            ← Back to Hub
+          </Link>
+        </div>
 
-          {/* Summary Stats */}
-          {summary && (
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-white rounded-lg shadow p-6">
-                <div className="text-sm text-gray-600">Total Images</div>
-                <div className="text-3xl font-bold text-gray-900">{summary.totalImages}</div>
-              </div>
-              <div className="bg-white rounded-lg shadow p-6">
-                <div className="text-sm text-gray-600">Zero Downloads</div>
-                <div className="text-3xl font-bold text-yellow-600">{summary.zeroDownloads}</div>
-              </div>
-              <div className="bg-white rounded-lg shadow p-6">
-                <div className="text-sm text-gray-600">Flagged for Removal</div>
-                <div className="text-3xl font-bold text-red-600">{summary.flaggedForRemoval}</div>
-              </div>
-              <div className="bg-white rounded-lg shadow p-6">
-                <button 
-                  onClick={fetchScores}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
-                >
-                  Refresh Scores
-                </button>
-              </div>
+        {summary && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+            <div style={{ background: '#f3f4f6', padding: '1.5rem', borderRadius: '8px' }}>
+              <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>Total Images</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '0.5rem' }}>{summary.totalImages}</div>
             </div>
-          )}
-
-          {/* Filters */}
-          <div className="bg-white rounded-lg shadow p-4 mb-6">
-            <div className="flex gap-4 items-center flex-wrap">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                <select 
-                  value={filterCategory}
-                  onChange={(e) => setFilterCategory(e.target.value)}
-                  className="border border-gray-300 rounded px-3 py-2"
-                >
-                  {categories.map(cat => (
-                    <option key={cat} value={cat}>
-                      {cat === 'all' ? 'All Categories' : cat}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="text-sm text-gray-600 ml-auto">
-                Showing {filteredScores.length} images
-              </div>
+            <div style={{ background: '#fef3c7', padding: '1.5rem', borderRadius: '8px' }}>
+              <div style={{ fontSize: '0.875rem', color: '#92400e' }}>Zero Downloads</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '0.5rem', color: '#92400e' }}>{summary.zeroDownloads}</div>
+            </div>
+            <div style={{ background: '#fee2e2', padding: '1.5rem', borderRadius: '8px' }}>
+              <div style={{ fontSize: '0.875rem', color: '#991b1b' }}>Flagged for Removal</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '0.5rem', color: '#991b1b' }}>{summary.flaggedForRemoval}</div>
+            </div>
+            <div style={{ background: '#e0e7ff', padding: '1.5rem', borderRadius: '8px' }}>
+              <button 
+                onClick={fetchScores}
+                style={{ width: '100%', padding: '0.75rem', background: '#2563eb', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+              >
+                🔄 Refresh Scores
+              </button>
             </div>
           </div>
+        )}
 
-          {/* Table */}
-          <div className="bg-white rounded-lg shadow overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Image
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Filename
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Category
-                    </th>
-                    <th 
-                      onClick={() => handleSort('score')}
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                    >
-                      Score {sortBy === 'score' && (sortOrder === 'desc' ? '↓' : '↑')}
-                    </th>
-                    <th 
-                      onClick={() => handleSort('downloads')}
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                    >
-                      Downloads {sortBy === 'downloads' && (sortOrder === 'desc' ? '↓' : '↑')}
-                    </th>
-                    <th 
-                      onClick={() => handleSort('daysOld')}
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                    >
-                      Days Old {sortBy === 'daysOld' && (sortOrder === 'desc' ? '↓' : '↑')}
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredScores.map(([filename, data]) => (
-                    <tr key={filename} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <img 
-                          src={`/images/${data.categorySlug}/${filename}`}
-                          alt={filename}
-                          className="h-12 w-20 object-cover rounded"
-                        />
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {filename}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        {data.category}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-bold">
-                        {data.score}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {data.downloads}
-                        {data.recentDownloads > 0 && (
-                          <span className="ml-1 text-xs text-green-600">
-                            (+{data.recentDownloads} recent)
-                          </span>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        {data.daysOld} days
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 py-1 text-xs font-semibold rounded ${getStatusColor(data.score)}`}>
-                          {getStatusText(data.score)}
+        <div style={{ background: '#f9fafb', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div>
+            <label style={{ fontSize: '0.875rem', fontWeight: '500', marginBottom: '0.5rem', display: 'block' }}>Category</label>
+            <select 
+              value={filterCategory}
+              onChange={(e) => setFilterCategory(e.target.value)}
+              style={{ padding: '0.5rem 1rem', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '1rem' }}
+            >
+              {categories.map(cat => (
+                <option key={cat} value={cat}>
+                  {cat === 'all' ? 'All Categories' : cat}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div style={{ marginLeft: 'auto', fontSize: '0.875rem', color: '#6b7280' }}>
+            Showing {filteredScores.length} images
+          </div>
+        </div>
+
+        <div style={{ background: 'white', borderRadius: '8px', border: '1px solid #e5e7eb', overflow: 'hidden' }}>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead style={{ background: '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
+                <tr>
+                  <th style={{ padding: '1rem', textAlign: 'left', fontSize: '0.75rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase' }}>Image</th>
+                  <th style={{ padding: '1rem', textAlign: 'left', fontSize: '0.75rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase' }}>Filename</th>
+                  <th style={{ padding: '1rem', textAlign: 'left', fontSize: '0.75rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase' }}>Category</th>
+                  <th 
+                    onClick={() => handleSort('score')}
+                    style={{ padding: '1rem', textAlign: 'left', fontSize: '0.75rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase', cursor: 'pointer', userSelect: 'none' }}
+                  >
+                    Score {sortBy === 'score' && (sortOrder === 'desc' ? '↓' : '↑')}
+                  </th>
+                  <th 
+                    onClick={() => handleSort('downloads')}
+                    style={{ padding: '1rem', textAlign: 'left', fontSize: '0.75rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase', cursor: 'pointer', userSelect: 'none' }}
+                  >
+                    Downloads {sortBy === 'downloads' && (sortOrder === 'desc' ? '↓' : '↑')}
+                  </th>
+                  <th 
+                    onClick={() => handleSort('daysOld')}
+                    style={{ padding: '1rem', textAlign: 'left', fontSize: '0.75rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase', cursor: 'pointer', userSelect: 'none' }}
+                  >
+                    Days Old {sortBy === 'daysOld' && (sortOrder === 'desc' ? '↓' : '↑')}
+                  </th>
+                  <th style={{ padding: '1rem', textAlign: 'left', fontSize: '0.75rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase' }}>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredScores.map(([filename, data]) => (
+                  <tr key={filename} style={{ borderBottom: '1px solid #e5e7eb' }}>
+                    <td style={{ padding: '1rem' }}>
+                      <img 
+                        src={`/images/${data.categorySlug}/${filename}`}
+                        alt={filename}
+                        style={{ height: '48px', width: '64px', objectFit: 'cover', borderRadius: '4px' }}
+                      />
+                    </td>
+                    <td style={{ padding: '1rem', fontSize: '0.875rem', color: '#111827', maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {filename}
+                    </td>
+                    <td style={{ padding: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+                      {data.category}
+                    </td>
+                    <td style={{ padding: '1rem', fontSize: '0.875rem', fontWeight: 'bold' }}>
+                      {data.score}
+                    </td>
+                    <td style={{ padding: '1rem', fontSize: '0.875rem' }}>
+                      {data.downloads}
+                      {data.recentDownloads > 0 && (
+                        <span style={{ marginLeft: '0.25rem', fontSize: '0.75rem', color: '#059669' }}>
+                          (+{data.recentDownloads})
                         </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                      )}
+                    </td>
+                    <td style={{ padding: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+                      {data.daysOld} days
+                    </td>
+                    <td style={{ padding: '1rem' }}>
+                      <span style={{
+                        padding: '0.25rem 0.75rem',
+                        fontSize: '0.75rem',
+                        fontWeight: '600',
+                        borderRadius: '12px',
+                        background: getStatusColor(data.score),
+                        color: getStatusTextColor(data.score)
+                      }}>
+                        {getStatusText(data.score)}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
