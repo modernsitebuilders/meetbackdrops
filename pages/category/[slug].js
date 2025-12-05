@@ -277,14 +277,14 @@ export async function getStaticProps({ params }) {
       }
     });
 
-    // Get top 25 (exclude seasonal)
+    // Get top 10 (exclude seasonal)
     topImages = Object.entries(downloadCounts)
       .filter(([filename]) => {
         // Exclude seasonal backgrounds
         return !filename.match(/^(halloween|christmas)-background/i);
       })
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 25)
+      .slice(0, 10)
       .map(([filename]) => filename.replace('.png', '.webp'));
 
    // Calculate scores for this category

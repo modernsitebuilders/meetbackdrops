@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
     const topImages = Object.values(downloadCounts)
       .sort((a, b) => b.count - a.count)
-      .slice(0, 25)
+      .slice(0, 10)
       .map(item => {
         const webFilename = item.filename.replace('.png', '.webp');
         const extracted = item.category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');

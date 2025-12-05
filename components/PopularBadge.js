@@ -16,7 +16,7 @@ export default function PopularBadge() {
       boxShadow: '0 2px 8px rgba(251, 191, 36, 0.4)',
       zIndex: 10
     }}>
-      ⭐ Top 25
+      ⭐ Top 10
     </div>
   );
 }
