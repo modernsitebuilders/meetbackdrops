@@ -98,7 +98,6 @@ export default function Header({ currentPage }) {
   const seasonalItems = [
     { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
     { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' },
-    { name: 'Eid 🕌', path: '/category/eid-backgrounds' }
   ];
 
   const moreCategories = [
