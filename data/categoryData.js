@@ -190,6 +190,5 @@ export const folderMap = {
   'libraries': 'libraries',
   'christmas-backgrounds': 'christmas-backgrounds',
   'halloween-backgrounds': 'halloween-backgrounds',
-  'eid-backgrounds': 'eid-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds'
 };
