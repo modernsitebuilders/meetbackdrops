@@ -145,7 +145,7 @@ export const categoryInfo = {
  'christmas-backgrounds': {
     name: 'Christmas Backgrounds',
     description: 'Festive Christmas backgrounds with holiday decorations for seasonal video calls',
-    seoDescription: '125+ free Christmas virtual backgrounds for Zoom, Teams & Google Meet. Festive 2025 holiday backgrounds - no signup, no watermarks.',    images: Array.from({length: 127}, (_, i) => ({
+    seoDescription: '150+ free Christmas virtual backgrounds for Zoom, Teams & Google Meet. Festive 2025 holiday backgrounds - no signup, no watermarks.',    images: Array.from({length: 152}, (_, i) => ({
       filename: `christmas-background-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Christmas Background ${i + 1}`
     }))
@@ -160,15 +160,7 @@ export const categoryInfo = {
       title: `Halloween Background ${i + 1}`
     }))
   },
-  'eid-backgrounds': {
-  name: 'Eid Backgrounds',
-  description: 'Elegant Eid backgrounds with Islamic geometric patterns and traditional lanterns for Eid al-Fitr and Eid al-Adha',
-  seoDescription: 'Download free Eid virtual backgrounds for Zoom, Teams & Google Meet. Elegant Islamic patterns and traditional lanterns for Eid celebrations.',
-  images: Array.from({length: 22}, (_, i) => ({
-    filename: `eid-background-${String(i + 1).padStart(2, '0')}.webp`,
-    title: `Eid Background ${i + 1}`
-  }))
-},
+
   
   'bokeh-backgrounds': {
     name: 'Bokeh Backgrounds',
