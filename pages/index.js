@@ -98,7 +98,7 @@ export default function Home({ structuredData }) {
         border: '3px solid #22c55e'
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🎄</div>
-        <h2 style={{ color: 'white', fontSize: '1.75rem', marginBottom: '0.5rem' }}>Over 125 Free Christmas Backgrounds</h2>
+        <h2 style={{ color: 'white', fontSize: '1.75rem', marginBottom: '0.5rem' }}>Over 150 Free Christmas Backgrounds</h2>
         <p style={{ color: 'rgba(255,255,255,0.9)', marginBottom: '1.5rem' }}>Festive backgrounds for your December video calls</p>
         <Link href="/category/christmas-backgrounds" style={{
           display: 'inline-block',
@@ -143,7 +143,7 @@ export default function Home({ structuredData }) {
           <Card
   href="/blog/christmas-backgrounds"
   title="Christmas Backgrounds 2025"
-  description="125+ free festive backgrounds for December"
+  description="150+ free festive backgrounds for December"
   emoji="🎄"
   className="blog-card"
   customStyles={{
