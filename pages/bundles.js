@@ -1,8 +1,49 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 
 export default function Bundles() {
+  useEffect(() => {
+    let scrollTracked = false;
+
+    const handleScroll = () => {
+      if (scrollTracked) return;
+      
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      
+      // Track when user scrolls to see preview images (50% down page)
+      if (scrollPercent > 50) {
+        scrollTracked = true;
+        fetch('/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'bundle_scroll_to_preview',
+            page: '/bundles',
+            bundle: 'christmas'
+          })
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const trackBuyClick = () => {
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event: 'bundle_buy_click',
+        page: '/bundles',
+        bundle: 'christmas',
+        price: 12
+      })
+    });
+  };
+
   return (
     <Layout
       title="Premium Background Bundles - StreamBackdrops"
@@ -135,6 +176,7 @@ export default function Bundles() {
                     href="https://modernbuilderdave.gumroad.com/l/christmas-bundle"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={trackBuyClick}
                     style={{
                       background: '#2563eb',
                       color: 'white',
