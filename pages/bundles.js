@@ -15,15 +15,18 @@ export default function Bundles() {
       // Track when user scrolls to see preview images (50% down page)
       if (scrollPercent > 50) {
         scrollTracked = true;
-        fetch('/api/track', {
+        
+        fetch('/api/track-bundle', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            event: 'bundle_scroll_to_preview',
-            page: '/bundles',
-            bundle: 'christmas'
+            event: 'bundle_scroll',
+            bundle: 'christmas',
+            price: 12,
+            sessionId: localStorage.getItem('sessionId') || 'unknown',
+            visitorId: localStorage.getItem('visitorId') || 'unknown'
           })
-        });
+        }).catch(err => console.error('Tracking failed:', err));
       }
     };
 
@@ -32,16 +35,17 @@ export default function Bundles() {
   }, []);
 
   const trackBuyClick = () => {
-    fetch('/api/track', {
+    fetch('/api/track-bundle', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        event: 'bundle_buy_click',
-        page: '/bundles',
+        event: 'bundle_click',
         bundle: 'christmas',
-        price: 12
+        price: 12,
+        sessionId: localStorage.getItem('sessionId') || 'unknown',
+        visitorId: localStorage.getItem('visitorId') || 'unknown'
       })
-    });
+    }).catch(err => console.error('Tracking failed:', err));
   };
 
   return (
@@ -252,7 +256,7 @@ export default function Bundles() {
               color: '#6b7280',
               marginBottom: '1rem'
             }}>
-              Not ready to buy? All backgrounds are still available for free (5 downloads per day, 10 downloads per month).
+              Not ready to buy? All backgrounds are still available for free (5 downloads per day).
             </p>
             <Link href="/category/christmas-backgrounds" style={{
               color: '#2563eb',
