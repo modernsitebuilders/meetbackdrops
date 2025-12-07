@@ -210,7 +210,7 @@ export default function Bundles() {
               color: '#6b7280',
               marginBottom: '1rem'
             }}>
-              Not ready to buy? All backgrounds are still available for free (5 downloads per day).
+              Not ready to buy? All backgrounds are still available for free (5 downloads per day, 10 downloads per month).
             </p>
             <Link href="/category/christmas-backgrounds" style={{
               color: '#2563eb',
