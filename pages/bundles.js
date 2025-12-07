@@ -21,6 +21,7 @@ export default function Bundles() {
           padding: '2rem 0'
         }}>
           
+          {/* Header */}
           <div style={{
             background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
             color: 'white',
@@ -46,6 +47,7 @@ export default function Bundles() {
             </p>
           </div>
 
+          {/* Christmas Bundle - Single Unified Section */}
           <div style={{
             background: 'white',
             borderRadius: '1rem',
@@ -54,11 +56,16 @@ export default function Bundles() {
             border: '1px solid #e5e7eb',
             marginBottom: '2rem'
           }}>
+            
+            {/* Bundle Header */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: '400px 1fr',
               gap: '2rem',
-              alignItems: 'center'
+              alignItems: 'center',
+              paddingBottom: '2rem',
+              borderBottom: '1px solid #e5e7eb',
+              marginBottom: '2rem'
             }}>
               
               <div style={{
@@ -143,59 +150,53 @@ export default function Bundles() {
                 </div>
               </div>
             </div>
-          </div>
-          {/* Image Preview Gallery */}
-          <div style={{
-            background: 'white',
-            borderRadius: '1rem',
-            padding: '2rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            border: '1px solid #e5e7eb',
-            marginTop: '2rem'
-          }}>
-            <h3 style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#111827',
-              marginBottom: '1.5rem',
-              textAlign: 'center'
-            }}>
-              Preview: All 25 Backgrounds Included
-            </h3>
-            
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-              gap: '1rem'
-            }}>
-              {[
-                '01', '02', '04', '06', '09', '10', '11', '12', '14', '26',
-                '34', '35', '41', '42', '44', '46', '72', '81', '103', '112',
-                '113', '116', '126', '142', '146'
-              ].map((num) => (
-                <div
-                  key={num}
-                  style={{
-                    borderRadius: '0.5rem',
-                    overflow: 'hidden',
-                    border: '2px solid #e5e7eb',
-                    aspectRatio: '16/9'
-                  }}
-                >
-                  <img
-                    src={`/images/christmas-backgrounds/christmas-background-${num}.webp`}
-                    alt={`Christmas Background ${num}`}
+
+            {/* Image Preview Gallery */}
+            <div>
+              <h3 style={{
+                fontSize: '1.25rem',
+                fontWeight: 'bold',
+                color: '#111827',
+                marginBottom: '1.5rem'
+              }}>
+                All 25 Backgrounds Included:
+              </h3>
+              
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+                gap: '1rem'
+              }}>
+                {[
+                  '01', '02', '04', '06', '09', '10', '11', '12', '14', '26',
+                  '34', '35', '41', '42', '44', '46', '72', '81', '103', '112',
+                  '113', '116', '126', '142', '146'
+                ].map((num) => (
+                  <div
+                    key={num}
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
+                      borderRadius: '0.5rem',
+                      overflow: 'hidden',
+                      border: '2px solid #e5e7eb',
+                      aspectRatio: '16/9'
                     }}
-                  />
-                </div>
-              ))}
+                  >
+                    <img
+                      src={`/images/christmas-backgrounds/christmas-background-${num}.webp`}
+                      alt={`Christmas Background ${num}`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
+          {/* Free Option Reminder */}
           <div style={{
             background: 'white',
             borderRadius: '1rem',
