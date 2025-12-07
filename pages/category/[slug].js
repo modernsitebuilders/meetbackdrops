@@ -72,6 +72,69 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
             </span>
           </nav>
 
+          {/* Bundle Banner - Christmas Only */}
+          {slug === 'christmas-backgrounds' && (
+            <Link href="/bundles" style={{ textDecoration: 'none' }}>
+              <div style={{
+                background: 'linear-gradient(135deg, #fef3c7, #fde68a)',
+                border: '2px solid #f59e0b',
+                borderRadius: '1rem',
+                padding: '1.5rem',
+                marginBottom: '2rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                cursor: 'pointer',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+              }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <span style={{ fontSize: '2rem' }}>🎁</span>
+                  <div>
+                    <div style={{ 
+                      fontSize: '1.25rem', 
+                      fontWeight: 'bold', 
+                      color: '#92400e',
+                      marginBottom: '0.25rem'
+                    }}>
+                      Save Time: Get All 25 Instantly
+                    </div>
+                    <div style={{ 
+                      fontSize: '0.95rem', 
+                      color: '#78350f'
+                    }}>
+                      <div style={{ 
+                      fontSize: '0.95rem', 
+                      color: '#78350f'
+                    }}>
+                      Skip the 5/day + 10/month limit • Just $12 • Instant download
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div style={{
+                  background: '#2563eb',
+                  color: 'white',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: '600',
+                  fontSize: '1rem'
+                }}>
+                  View Bundle →
+                </div>
+              </div>
+            </Link>
+          )}
+
           <CategoryHeader category={category} />
           
 <ImageGrid 
