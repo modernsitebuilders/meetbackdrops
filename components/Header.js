@@ -386,6 +386,21 @@ export default function Header({ currentPage }) {
             >
               Blog
             </button>
+
+            {/* Bundles */}
+            <button 
+              onClick={() => navigate('/bundles')}
+              style={{
+                ...navButtonStyle(currentPage === 'bundles', hoveredNav === 'bundles'),
+                background: hoveredNav === 'bundles' ? '#fef3c7' : (currentPage === 'bundles' ? '#fef3c7' : 'transparent'),
+                color: '#92400e',
+                fontWeight: '600'
+              }}
+              onMouseEnter={() => setHoveredNav('bundles')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
+              🎁 Bundles
+            </button>
           </nav>
         </div>
       </header>
@@ -700,6 +715,42 @@ export default function Header({ currentPage }) {
                 }}
               >
                 📝 Blog
+              </button>
+
+              {/* Bundles */}
+              <button
+                onClick={() => {
+                  navigate('/bundles');
+                  setIsMobileMenuOpen(false);
+                }}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  padding: '1rem',
+                  textAlign: 'left',
+                  background: currentPage === 'bundles' ? '#fef3c7' : 'transparent',
+                  border: 'none',
+                  borderRadius: '0.5rem',
+                  color: '#92400e',
+                  fontWeight: '600',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  transition: 'background 0.2s ease',
+                  marginTop: '0.5rem'
+                }}
+                onMouseEnter={(e) => {
+                  if (currentPage !== 'bundles') {
+                    e.target.style.background = '#fef3c7';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (currentPage !== 'bundles') {
+                    e.target.style.background = 'transparent';
+                  }
+                }}
+              >
+                🎁 Bundles
               </button>
             </div>
           </div>
