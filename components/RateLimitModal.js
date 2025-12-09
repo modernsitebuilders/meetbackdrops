@@ -164,7 +164,7 @@ export default function RateLimitModal({ onClose, errorMessage }) {
           </button>
           
           <a
-            href="/contact"
+            href={isDaily ? "/bundles" : "/contact"}
             style={{
               flex: 1,
               padding: '0.75rem 1.5rem',
@@ -186,8 +186,8 @@ export default function RateLimitModal({ onClose, errorMessage }) {
             onMouseLeave={(e) => {
               e.target.style.background = 'white';
             }}
-          >
-            Contact Us
+         >
+            {isDaily ? "View Bundles" : "Contact Us"}
           </a>
         </div>
       </div>
