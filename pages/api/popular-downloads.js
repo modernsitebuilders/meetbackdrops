@@ -64,18 +64,23 @@ export default async function handler(req, res) {
       }
     }
 
-    const sortedDownloads = Object.values(downloadCounts)
-      .filter(item => {
-        // Exclude seasonal backgrounds
-        return !item.filename.match(/^(halloween|christmas)-background/i);
-      })
+    const allDownloads = Object.values(downloadCounts)
       .sort((a, b) => b.count - a.count);
 
+    const nonSeasonalDownloads = allDownloads.filter(item => {
+      return !item.filename.match(/^(halloween|christmas)-background/i);
+    });
+
+    const seasonalDownloads = allDownloads.filter(item => {
+      return item.filename.match(/^(halloween|christmas)-background/i);
+    });
+
     res.status(200).json({
-      totalDownloads: sortedDownloads.reduce((sum, item) => sum + item.count, 0),
-      uniqueFiles: sortedDownloads.length,
-      topDownloads: sortedDownloads.slice(0, 50),
-      allDownloads: sortedDownloads
+      totalDownloads: nonSeasonalDownloads.reduce((sum, item) => sum + item.count, 0),
+      seasonalDownloads: seasonalDownloads.reduce((sum, item) => sum + item.count, 0),
+      uniqueFiles: nonSeasonalDownloads.length,
+      topDownloads: nonSeasonalDownloads.slice(0, 50),
+      allDownloads: nonSeasonalDownloads
     });
 
   } catch (error) {

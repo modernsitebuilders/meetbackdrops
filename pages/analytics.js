@@ -80,6 +80,17 @@ export default function Analytics() {
             </div>
             <div style={{ color: '#666', marginTop: '5px' }}>Unique Files</div>
           </div>
+
+          <div style={{
+            padding: '20px',
+            background: '#f5f5f5',
+            borderRadius: '8px'
+          }}>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#dc2626' }}>
+              {data.seasonalDownloads.toLocaleString()}
+            </div>
+            <div style={{ color: '#666', marginTop: '5px' }}>Seasonal Downloads</div>
+          </div>
         </div>
 
         <h2 style={{ marginBottom: '20px' }}>Top 50 Downloaded Backgrounds</h2>
