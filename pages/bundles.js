@@ -12,7 +12,6 @@ export default function Bundles() {
       
       const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
       
-      // Track when user scrolls to see preview images (50% down page)
       if (scrollPercent > 50) {
         scrollTracked = true;
         
@@ -21,8 +20,6 @@ export default function Bundles() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             event: 'bundle_scroll',
-            bundle: 'christmas',
-            price: 12,
             sessionId: localStorage.getItem('sessionId') || 'unknown',
             visitorId: localStorage.getItem('visitorId') || 'unknown'
           })
@@ -34,14 +31,14 @@ export default function Bundles() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const trackBuyClick = () => {
+  const trackBuyClick = (bundleName, price) => {
     fetch('/api/track-bundle', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         event: 'bundle_click',
-        bundle: 'christmas',
-        price: 12,
+        bundle: bundleName,
+        price: price,
         sessionId: localStorage.getItem('sessionId') || 'unknown',
         visitorId: localStorage.getItem('visitorId') || 'unknown'
       })
@@ -92,7 +89,7 @@ export default function Bundles() {
             </p>
           </div>
 
-          {/* Christmas Bundle - Single Unified Section */}
+          {/* Office Spaces Bundle */}
           <div style={{
             background: 'white',
             borderRadius: '1rem',
@@ -102,7 +99,155 @@ export default function Bundles() {
             marginBottom: '2rem'
           }}>
             
-            {/* Bundle Header */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '400px 1fr',
+              gap: '2rem',
+              alignItems: 'center',
+              paddingBottom: '2rem',
+              borderBottom: '1px solid #e5e7eb',
+              marginBottom: '2rem'
+            }}>
+              
+              <div style={{
+                background: '#f3f4f6',
+                borderRadius: '0.5rem',
+                overflow: 'hidden',
+                height: '300px'
+              }}>
+                <img 
+                  src="/images/office-spaces/office-spaces-19.webp"
+                  alt="Office Spaces Backgrounds Bundle"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+              </div>
+
+              <div>
+                <h2 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#111827',
+                  marginBottom: '1rem'
+                }}>
+                  Office Spaces Backgrounds Bundle
+                </h2>
+                
+                <p style={{
+                  fontSize: '1.1rem',
+                  color: '#6b7280',
+                  marginBottom: '1.5rem',
+                  lineHeight: '1.6'
+                }}>
+                  15 professional office backgrounds perfect for Zoom, Teams, and video calls. Hand-picked top performers based on real user downloads.
+                </p>
+
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+                    <span style={{ color: '#059669', marginRight: '0.5rem' }}>✓</span>
+                    <span style={{ color: '#374151' }}>15 professional office backgrounds</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+                    <span style={{ color: '#059669', marginRight: '0.5rem' }}>✓</span>
+                    <span style={{ color: '#374151' }}>High-resolution PNG files</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+                    <span style={{ color: '#059669', marginRight: '0.5rem' }}>✓</span>
+                    <span style={{ color: '#374151' }}>Perfect for remote work & meetings</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <span style={{ color: '#059669', marginRight: '0.5rem' }}>✓</span>
+                    <span style={{ color: '#374151' }}>Instant download - use immediately</span>
+                  </div>
+                </div>
+
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1.5rem'
+                }}>
+                  <div style={{
+                    fontSize: '3rem',
+                    fontWeight: 'bold',
+                    color: '#111827'
+                  }}>
+                    $10
+                  </div>
+                  <a 
+                    href="https://modernbuilderdave.gumroad.com/l/office-spaces-bundle"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackBuyClick('office-spaces', 10)}
+                    style={{
+                      background: '#2563eb',
+                      color: 'white',
+                      padding: '1rem 2rem',
+                      borderRadius: '0.5rem',
+                      textDecoration: 'none',
+                      fontWeight: '600',
+                      fontSize: '1.1rem'
+                    }}
+                  >
+                    Buy Now →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Image Preview Gallery */}
+            <div>
+              <h3 style={{
+                fontSize: '1.25rem',
+                fontWeight: 'bold',
+                color: '#111827',
+                marginBottom: '1.5rem'
+              }}>
+                All 15 Backgrounds Included:
+              </h3>
+              
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+                gap: '1rem'
+              }}>
+                {['01', '02', '03', '08', '10', '12', '16', '19', '24', '28', '33', '34', '35', '36', '43'].map((num) => (
+                  <div
+                    key={num}
+                    style={{
+                      borderRadius: '0.5rem',
+                      overflow: 'hidden',
+                      border: '2px solid #e5e7eb',
+                      aspectRatio: '16/9'
+                    }}
+                  >
+                    <img
+                      src={`/images/office-spaces/office-spaces-${num}.webp`}
+                      alt={`Office Space ${num}`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Christmas Bundle */}
+          <div style={{
+            background: 'white',
+            borderRadius: '1rem',
+            padding: '2rem',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+            border: '1px solid #e5e7eb',
+            marginBottom: '2rem'
+          }}>
+            
             <div style={{
               display: 'grid',
               gridTemplateColumns: '400px 1fr',
@@ -180,7 +325,7 @@ export default function Bundles() {
                     href="https://modernbuilderdave.gumroad.com/l/christmas-bundle"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={trackBuyClick}
+                    onClick={() => trackBuyClick('christmas', 12)}
                     style={{
                       background: '#2563eb',
                       color: 'white',
@@ -258,12 +403,12 @@ export default function Bundles() {
             }}>
               Not ready to buy? All backgrounds are still available for free (5 downloads per day).
             </p>
-            <Link href="/category/christmas-backgrounds" style={{
+            <Link href="/" style={{
               color: '#2563eb',
               textDecoration: 'none',
               fontWeight: '600'
             }}>
-              Browse Free Christmas Backgrounds →
+              Browse Free Backgrounds →
             </Link>
           </div>
 

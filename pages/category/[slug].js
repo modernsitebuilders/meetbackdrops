@@ -72,7 +72,7 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
             </span>
           </nav>
 
-          {/* Bundle Banner - Christmas Only */}
+          {/* Bundle Banner - Christmas */}
           {slug === 'christmas-backgrounds' && (
             <Link href="/bundles" style={{ textDecoration: 'none' }}>
               <div style={{
@@ -118,6 +118,64 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
                     }}>
                       Skip the 5/day + 10/month limit • Just $12 • Instant download
                     </div>
+                    </div>
+                  </div>
+                </div>
+                <div style={{
+                  background: '#2563eb',
+                  color: 'white',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: '600',
+                  fontSize: '1rem'
+                }}>
+                  View Bundle →
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {/* Bundle Banner - Office Spaces */}
+          {slug === 'office-spaces' && (
+            <Link href="/bundles" style={{ textDecoration: 'none' }}>
+              <div style={{
+                background: 'linear-gradient(135deg, #dbeafe, #bfdbfe)',
+                border: '2px solid #2563eb',
+                borderRadius: '1rem',
+                padding: '1.5rem',
+                marginBottom: '2rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                cursor: 'pointer',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+              }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <span style={{ fontSize: '2rem' }}>💼</span>
+                  <div>
+                    <div style={{ 
+                      fontSize: '1.25rem', 
+                      fontWeight: 'bold', 
+                      color: '#1e40af',
+                      marginBottom: '0.25rem'
+                    }}>
+                      Get Top 15 Office Backgrounds
+                    </div>
+                    <div style={{ 
+                      fontSize: '0.95rem', 
+                      color: '#1e3a8a'
+                    }}>
+                      Most downloaded offices • Just $10 • Instant access
                     </div>
                   </div>
                 </div>
