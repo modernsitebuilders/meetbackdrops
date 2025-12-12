@@ -1,10 +1,14 @@
-export default function ImageObjectSchema({ images, category, categorySlug, baseUrl, scores = {} }) {
-  // Sort images by score, take top 15
+export default function ImageObjectSchema({ images, category, categorySlug, baseUrl, scores = {}, metadata = {} }) {
   const imagesWithScores = images.map(image => {
     const filename = image.filename || image;
     const baseName = filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
     const score = scores[filename] || scores[`${baseName}.png`] || scores[`${baseName}.webp`] || 0;
-    return { filename, score };
+    
+    // Get metadata key (e.g., "office-spaces-01")
+    const metaKey = baseName;
+    const imageMeta = metadata[metaKey] || {};
+    
+    return { filename, score, meta: imageMeta };
   });
   
   const topImages = imagesWithScores
@@ -18,8 +22,8 @@ export default function ImageObjectSchema({ images, category, categorySlug, base
       "@type": "ImageObject",
       "position": index + 1,
       "contentUrl": `${baseUrl}/images/${categorySlug}/${image.filename}`,
-      "name": `${category} virtual background ${index + 1}`,
-      "description": `Free ${category.toLowerCase()} virtual background for Zoom, Teams, and Google Meet`,
+      "name": image.meta.title || `${category} virtual background ${index + 1}`,
+      "description": image.meta.alt || image.meta.description || `Free ${category.toLowerCase()} virtual background`,
       "thumbnail": `${baseUrl}/images/${categorySlug}/${image.filename}`,
       "encodingFormat": "image/webp"
     }))

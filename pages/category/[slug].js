@@ -236,7 +236,7 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
   );
 }
 
-export default function CategoryPage({ slug, scores, topImages }) {  const router = useRouter();
+export default function CategoryPage({ slug, scores, topImages, metadata = {} }) {  const router = useRouter();
   const currentSlug = slug || router.query.slug;
   const category = categoryInfo[currentSlug];
 
@@ -307,6 +307,7 @@ export default function CategoryPage({ slug, scores, topImages }) {  const route
   categorySlug={currentSlug}
   baseUrl="https://streambackdrops.com"
   scores={scores}
+  metadata={metadata}
 />
           {/* Preload first row images - mobile only */}
           {category.images.slice(0, 2).map((image, i) => (
@@ -384,6 +385,10 @@ export async function getStaticProps({ params }) {
       range: 'Analytics!A:I',
     });
 
+    // ADD THIS:
+    const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
+    const imageMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+
     const rows = response.data.values || [];
     const downloadCounts = {};
     const imageScores = {};
@@ -435,11 +440,12 @@ if (category) {
   }
 
   return {
-    props: {
-      slug: params.slug,
-      scores,
-      topImages
-    },
-    revalidate: 3600 // Rebuild every hour
-  };
+  props: {
+    slug: params.slug,
+    scores,
+    topImages,
+    metadata: imageMetadata  // ADD THIS
+  },
+  revalidate: 3600
+};
 }
