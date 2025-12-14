@@ -364,6 +364,7 @@ export async function getStaticProps({ params }) {
 
   let scores = {};
   let topImages = [];
+  let imageMetadata = {}; 
 
   try {
     // Get scores
