@@ -4,7 +4,6 @@ export default function ImageObjectSchema({ images, category, categorySlug, base
     const baseName = filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
     const score = scores[filename] || scores[`${baseName}.png`] || scores[`${baseName}.webp`] || 0;
     
-    // Get metadata key (e.g., "office-spaces-01")
     const metaKey = baseName;
     const imageMeta = metadata[metaKey] || {};
     
@@ -25,7 +24,9 @@ export default function ImageObjectSchema({ images, category, categorySlug, base
       "name": image.meta.title || `${category} virtual background ${index + 1}`,
       "description": image.meta.alt || image.meta.description || `Free ${category.toLowerCase()} virtual background`,
       "thumbnail": `${baseUrl}/images/${categorySlug}/${image.filename}`,
-      "encodingFormat": "image/webp"
+      "encodingFormat": "image/webp",
+      "width": image.meta.width || 1920,
+      "height": image.meta.height || 1080
     }))
   };
 
