@@ -388,7 +388,7 @@ export async function getStaticProps({ params }) {
 
     // ADD THIS:
     const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
-    const imageMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+    imageMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
 
     const rows = response.data.values || [];
     const downloadCounts = {};
