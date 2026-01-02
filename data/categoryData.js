@@ -127,7 +127,7 @@ export const categoryInfo = {
     description: 'Stunning natural landscapes and scenic outdoor views',
     seoDescription: 'Download free nature and landscape virtual backgrounds for video calls. Mountains, deserts, and scenic environments.',
     images: Array.from({length: CATEGORIES['nature-landscapes'].count}, (_, i) => ({
-      filename: `nature-landscape-${i + 1}.webp`,
+      filename: `nature-landscapes-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Nature Landscape Background ${i + 1}`
     }))
   },

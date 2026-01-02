@@ -164,11 +164,20 @@ export default async function handler(req, res) {
     Object.keys(imageStats).forEach(filename => {
       const stats = imageStats[filename];
       
-      // START AT 100 POINTS
-      let score = 100;
+     // START AT 100 POINTS
+let score = 100;
 
-      const newOfficeMatch = filename.match(/^office-spaces-(4[5-9]|5\d|6[0-7])\.webp$/);
-if (newOfficeMatch) {
+// Boost for NEW batch images (only affects zero-download sorting)
+const newImagePatterns = [
+  /^office-spaces-(6[8-9]|7[0-9])\.webp$/,
+  /^libraries-(1[9-9]|2[0-9]|3[0-2])\.webp$/,
+  /^wall-shelves-bright-(4[8-9]|5[0-5])\.webp$/,
+  /^bookshelves-bright-(1[9-9]|2[0-9]|3[0-9]|4[0-2])\.webp$/,
+  /^nature-landscapes-(5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9])\.webp$/
+];
+
+const isNewImage = newImagePatterns.some(pattern => pattern.test(filename));
+if (isNewImage) {
   score += 25; // New batch starts at 125
 }
       
