@@ -86,33 +86,6 @@ export default function Home({ structuredData }) {
         <TrustBadges />
         <HeroCTA />
       </section>
-
-      {/* Christmas Featured Section */}
-      <section style={{
-        maxWidth: '800px',
-        margin: '3rem auto',
-        padding: '2rem',
-        background: 'linear-gradient(135deg, #ef4444 0%, #22c55e 100%)',
-        borderRadius: '1rem',
-        textAlign: 'center',
-        border: '3px solid #22c55e'
-      }}>
-        <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🎄</div>
-        <h2 style={{ color: 'white', fontSize: '1.75rem', marginBottom: '0.5rem' }}>Over 150 Free Christmas Backgrounds</h2>
-        <p style={{ color: 'rgba(255,255,255,0.9)', marginBottom: '1.5rem' }}>Festive backgrounds for your December video calls</p>
-        <Link href="/category/christmas-backgrounds" style={{
-          display: 'inline-block',
-          background: 'white',
-          color: '#22c55e',
-          padding: '1rem 2rem',
-          borderRadius: '0.5rem',
-          fontWeight: '600',
-          textDecoration: 'none',
-          fontSize: '1.1rem'
-        }}>
-          Browse Christmas Backgrounds →
-        </Link>
-      </section>
   
       {/* Blog Cards Section */}
       <section className={styles.blogSection}>
@@ -140,19 +113,6 @@ export default function Home({ structuredData }) {
             description="Quick steps for perfect video calls"
             className="blog-card"
           />
-          <Card
-  href="/blog/christmas-backgrounds"
-  title="Christmas Backgrounds 2025"
-  description="150+ free festive backgrounds for December"
-  emoji="🎄"
-  className="blog-card"
-  customStyles={{
-    background: 'linear-gradient(135deg, #ef4444 0%, #22c55e 100%)',
-    border: '2px solid #22c55e',
-    titleColor: 'white',
-    descColor: 'rgba(255,255,255,0.9)'
-  }}
-/>
         </div>
       </section>
 
@@ -161,7 +121,6 @@ export default function Home({ structuredData }) {
 
       {/* Category Cards Grid */}
       <div className={`${styles.categoryGrid} category-grid`}>
-        <Card href="/category/christmas-backgrounds" title="Christmas Backgrounds 🎄" description="Festive Christmas backgrounds with holiday decorations" imageSrc="/images/christmas-backgrounds/christmas-background-12.webp" imageAlt="Christmas virtual background" navigate={navigate} count={127} />
         <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/bookshelves-bright-01.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} count={CATEGORIES['bookshelves-bright'].count} />
         <Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/bookshelves-dark-07.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} count={CATEGORIES['bookshelves-dark'].count} />
         <Card href="/category/wall-shelves-bright" title="Wall Shelves - Bright" description="Clean, minimalist wall shelf backgrounds with bright lighting" imageSrc="/images/wall-shelves-bright/wall-shelves-bright-01.webp" imageAlt="Bright wall shelf background for video calls" navigate={navigate} count={CATEGORIES['wall-shelves-bright'].count} />
