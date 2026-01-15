@@ -9,42 +9,54 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const uploadFolder = path.join(process.env.HOME, 'Downloads');
-
 async function uploadImages() {
   const urls = {};
+  const baseDir = path.join(__dirname, 'public/images');
   
-  console.log('Upload folder:', uploadFolder);
+  // Categories with HD images
+  const categories = [
+    'bookshelves-bright',
+    'bookshelves-dark',
+    'wall-shelves-bright',
+    'wall-shelves-dark',
+    'office-spaces',
+    'nature-landscapes'
+  ];
   
-  const files = fs.readdirSync(uploadFolder)
-    .filter(f => f.endsWith('-hd.png'))
-    .sort();
+  let totalUploaded = 0;
   
-  console.log(`Found ${files.length} HD PNG files`);
-  
-  for (const file of files) {
-    const filePath = path.join(uploadFolder, file);
-    const publicId = file.replace('.png', '');
+  for (const category of categories) {
+    const categoryPath = path.join(baseDir, category);
+    const files = fs.readdirSync(categoryPath)
+      .filter(f => f.endsWith('-hd.png'));
     
-    try {
-      const result = await cloudinary.uploader.upload(filePath, {
-        public_id: publicId,
-        folder: 'premium',
-        overwrite: false
-      });
+    console.log(`\n📁 ${category}: ${files.length} files`);
+    
+    for (const file of files) {
+      const filePath = path.join(categoryPath, file);
+      const publicId = file.replace('.png', '');
       
-      urls[publicId] = result.secure_url;
-      console.log(`✓ ${file}`);
-    } catch (error) {
-      console.error(`✗ Failed ${file}:`, error.message);
+      try {
+        const result = await cloudinary.uploader.upload(filePath, {
+          public_id: publicId,
+          folder: `streambackdrops/${category}`,
+          overwrite: false,
+          resource_type: 'image'
+        });
+        
+        urls[`${category}/${publicId}`] = result.secure_url;
+        console.log(`  ✓ ${file}`);
+        totalUploaded++;
+      } catch (error) {
+        console.error(`  ✗ Failed ${file}:`, error.message);
+      }
     }
   }
   
-  console.log(`\n✅ ${files.length} images uploaded`);
+  console.log(`\n✅ ${totalUploaded} HD images uploaded to Cloudinary`);
   
   const urlsFile = './cloudinary-premium-urls.json';
   fs.writeFileSync(urlsFile, JSON.stringify(urls, null, 2));
-  
   console.log(`✓ Created ${urlsFile}`);
 }
 

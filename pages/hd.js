@@ -9,66 +9,68 @@ import ComparisonWidget from '../components/ComparisonWidget';
 
 export default function Premium() {
   const products = [
-  // Bookshelves Bright
-  { id: 'bookshelves-bright-01', name: 'Bright Bookshelf #1', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/mbgeii' },
-  { id: 'bookshelves-bright-04', name: 'Bright Bookshelf #4', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wxdblc' },
-  { id: 'bookshelves-bright-07', name: 'Bright Bookshelf #7', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/tbxrpv' },
-  { id: 'bookshelves-bright-10', name: 'Bright Bookshelf #10', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/jcvena' },
-  
-  // Bookshelves Dark
-  { id: 'bookshelves-dark-02', name: 'Dark Bookshelf #2', category: 'bookshelves-dark', gumroadUrl: 'https://streambackdrops.gumroad.com/l/nbihuj' },
-  { id: 'bookshelves-dark-07', name: 'Dark Bookshelf #7', category: 'bookshelves-dark', gumroadUrl: 'https://streambackdrops.gumroad.com/l/aawpjt' },
-  { id: 'bookshelves-dark-09', name: 'Dark Bookshelf #9', category: 'bookshelves-dark', gumroadUrl: 'https://streambackdrops.gumroad.com/l/fctjna' },
-  
-  // Wall Shelves Bright
-  { id: 'wall-shelves-bright-28', name: 'Bright Wall Shelf #28', category: 'wall-shelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wgvkzz' },
-  
-  // Office Spaces
-  { id: 'office-spaces-02', name: 'Office Space #2', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wdbxsp' },
-  { id: 'office-spaces-17', name: 'Office Space #17', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gehtyw' },
-  { id: 'office-spaces-19', name: 'Office Space #19', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gifhpc' },
-  { id: 'office-spaces-24', name: 'Office Space #24', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/umtpss' },
-  { id: 'office-spaces-33', name: 'Office Space #33', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/qjfisu' },
-  { id: 'office-spaces-36', name: 'Office Space #36', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/jbxnc' },
-  { id: 'office-spaces-43', name: 'Office Space #43', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/tnfexs' },
-  { id: 'office-spaces-77', name: 'Office Space #77', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/ttxxm' },
-  
-  // Nature Landscapes
-  { id: 'nature-landscapes-11', name: 'Nature Landscape #11', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/mcesv' },
-  { id: 'nature-landscapes-20', name: 'Nature Landscape #20', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/xtqdg' },
-  { id: 'nature-landscapes-21', name: 'Nature Landscape #21', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/jwrqe' },
-  { id: 'nature-landscapes-30', name: 'Nature Landscape #30', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/sbyvpc' },
-  { id: 'nature-landscapes-46', name: 'Nature Landscape #46', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gmcdi' },
-];
+    // Bookshelves Bright
+    { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/mbgeii' },
+    { id: 'bookshelves-bright-04-hd', name: 'Bright Bookshelf #4', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wxdblc' },
+    { id: 'bookshelves-bright-07-hd', name: 'Bright Bookshelf #7', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/tbxrpv' },
+    { id: 'bookshelves-bright-10-hd', name: 'Bright Bookshelf #10', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/jcvena' },
+    
+    // Bookshelves Dark
+    { id: 'bookshelves-dark-02-hd', name: 'Dark Bookshelf #2', category: 'bookshelves-dark', gumroadUrl: 'https://streambackdrops.gumroad.com/l/nbihuj' },
+    { id: 'bookshelves-dark-07-hd', name: 'Dark Bookshelf #7', category: 'bookshelves-dark', gumroadUrl: 'https://streambackdrops.gumroad.com/l/aawpjt' },
+    { id: 'bookshelves-dark-09-hd', name: 'Dark Bookshelf #9', category: 'bookshelves-dark', gumroadUrl: 'https://streambackdrops.gumroad.com/l/fctjna' },
+    
+    // Wall Shelves Bright
+    { id: 'wall-shelves-bright-28-hd', name: 'Bright Wall Shelf #28', category: 'wall-shelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wgvkzz' },
+    
+    // Office Spaces
+    { id: 'office-spaces-02-hd', name: 'Office Space #2', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wdbxsp' },
+    { id: 'office-spaces-17-hd', name: 'Office Space #17', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gehtyw' },
+    { id: 'office-spaces-19-hd', name: 'Office Space #19', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gifhpc' },
+    { id: 'office-spaces-24-hd', name: 'Office Space #24', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/umtpss' },
+    { id: 'office-spaces-33-hd', name: 'Office Space #33', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/qjfisu' },
+    { id: 'office-spaces-36-hd', name: 'Office Space #36', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/jbxnc' },
+    { id: 'office-spaces-43-hd', name: 'Office Space #43', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/tnfexs' },
+    { id: 'office-spaces-77-hd', name: 'Office Space #77', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/ttxxm' },
+    
+    // Nature Landscapes
+    { id: 'nature-landscapes-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/mcesv' },
+    { id: 'nature-landscapes-20-hd', name: 'Nature Landscape #20', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/xtqdg' },
+    { id: 'nature-landscapes-21-hd', name: 'Nature Landscape #21', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/jwrqe' },
+    { id: 'nature-landscapes-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/sbyvpc' },
+    { id: 'nature-landscapes-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gmcdi' },
+  ];
 
   return (
     <Layout 
-  title="Premium HD Virtual Backgrounds | 2912×1632 Resolution | StreamBackdrops"
-  description="Professional HD virtual backgrounds in stunning 2912×1632 resolution. Perfect for Zoom, Teams, and Google Meet. 2x sharper than standard backgrounds."
-  canonical="https://streambackdrops.com/hd"
-  keywords="HD virtual backgrounds, high resolution backgrounds, 4K backgrounds, premium zoom backgrounds, professional video call backgrounds"
-  image="https://streambackdrops.com/images/bookshelves-dark/bookshelves-dark-09-hd.png"
->
-  <Head>
-    <BreadcrumbSchema items={[
-      { name: "Home", url: "https://streambackdrops.com" },
-      { name: "Premium HD Backgrounds", url: "https://streambackdrops.com/hd" }
-    ]} />
-    <ProductSchema products={products} />
-    <ComparisonWidgetSchema />
-  {/* Open Graph */}
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Premium HD Virtual Backgrounds | StreamBackdrops" />
-  <meta property="og:description" content="Professional HD virtual backgrounds in 2912×1632 resolution. 2x sharper than standard backgrounds." />
-  <meta property="og:image" content="https://streambackdrops.com/images/bookshelves-dark/bookshelves-dark-09-hd.png" />
-  <meta property="og:url" content="https://streambackdrops.com/hd" />
-  
-  {/* Twitter Card */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Premium HD Virtual Backgrounds" />
-  <meta name="twitter:description" content="Professional HD backgrounds in 2912×1632 resolution" />
-  <meta name="twitter:image" content="https://streambackdrops.com/images/bookshelves-dark/bookshelves-dark-09-hd.png" />
-</Head>
+      title="Premium HD Virtual Backgrounds | 2912×1632 Resolution | StreamBackdrops"
+      description="Professional HD virtual backgrounds in stunning 2912×1632 resolution. Perfect for Zoom, Teams, and Google Meet. 2x sharper than standard backgrounds."
+      canonical="https://streambackdrops.com/hd"
+      keywords="HD virtual backgrounds, high resolution backgrounds, 4K backgrounds, premium zoom backgrounds, professional video call backgrounds"
+      image="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png"
+    >
+      <Head>
+        <BreadcrumbSchema items={[
+          { name: "Home", url: "https://streambackdrops.com" },
+          { name: "Premium HD Backgrounds", url: "https://streambackdrops.com/hd" }
+        ]} />
+        <ProductSchema products={products} />
+        <ComparisonWidgetSchema />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Premium HD Virtual Backgrounds | StreamBackdrops" />
+        <meta property="og:description" content="Professional HD virtual backgrounds in 2912×1632 resolution. 2x sharper than standard backgrounds." />
+        <meta property="og:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
+        <meta property="og:url" content="https://streambackdrops.com/hd" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Premium HD Virtual Backgrounds" />
+        <meta name="twitter:description" content="Professional HD backgrounds in 2912×1632 resolution" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
+      </Head>
+
       {/* Compact Hero Section */}
       <section style={{ 
         padding: '2rem 2rem 3rem 2rem',
@@ -100,8 +102,8 @@ export default function Premium() {
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
             }}>
               <img 
-                src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
-                alt={product.name}
+                src={`https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`}
+                alt={`${product.name} - Premium HD Virtual Background`}
                 style={{ width: '100%', height: '200px', objectFit: 'cover' }}
               />
               <div style={{ padding: '1.5rem' }}>

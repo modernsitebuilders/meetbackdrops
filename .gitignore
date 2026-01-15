@@ -5,3 +5,4 @@ node_modules/
 pinterest_pins/
 pinterest_generator.pyupdate-popular.sh
 WEEKLY-UPDATE.txt
+public/images/**/*-hd.png
