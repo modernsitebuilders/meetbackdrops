@@ -5,7 +5,8 @@ node_modules/
 pinterest_pins/
 pinterest_generator.pyupdate-popular.sh
 WEEKLY-UPDATE.txt
-public/images/**/*-hd.png
+
+# Exclude all HD images except the comparison widget image
 
 # Exclude all HD images except the comparison widget image
 public/images/**/*-hd.png
