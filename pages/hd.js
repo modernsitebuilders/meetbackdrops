@@ -102,10 +102,10 @@ export default function Premium() {
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
             }}>
               <img 
-                src={`https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`}
-                alt={`${product.name} - Premium HD Virtual Background`}
-                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-              />
+  src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
+  alt={`${product.name} - Premium HD Virtual Background`}
+  style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+/>
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{ marginBottom: '0.5rem' }}>{product.name}</h3>
                 <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1rem' }}>
