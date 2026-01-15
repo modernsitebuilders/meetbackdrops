@@ -1,0 +1,233 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
+export default function ComparisonWidget() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sliderPosition, setSliderPosition] = useState(95); // Start at 95% (far right)
+  const [showInstruction, setShowInstruction] = useState(true);
+
+  // Hide instruction after first drag
+  useEffect(() => {
+    if (sliderPosition !== 95 && showInstruction) {
+      setShowInstruction(false);
+    }
+  }, [sliderPosition]);
+
+  return (
+    <>
+      {/* Trigger Button */}
+      <div style={{ textAlign: 'center', padding: '0' }}>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          style={{
+            padding: '1rem 2rem',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            backgroundColor: '#FFD700',
+            color: '#000',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.75rem'
+          }}
+        >
+          <span style={{ fontSize: '24px' }}>⟷</span>
+          <span>See HD Quality (Interactive Demo)</span>
+        </button>
+        <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', opacity: 0.9 }}>
+          Drag the slider to compare resolutions
+        </p>
+      </div>
+
+      {/* Full-Screen Modal */}
+      {isModalOpen && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.95)',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column'
+        }}>
+          {/* Close Button */}
+          <button
+            onClick={() => {
+              setIsModalOpen(false);
+              setSliderPosition(95); // Reset position when closing
+              setShowInstruction(true); // Reset instruction
+            }}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              padding: '10px 20px',
+              fontSize: '16px',
+              backgroundColor: '#fff',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              zIndex: 10000
+            }}
+          >
+            Close ✕
+          </button>
+
+          {/* Comparison Container */}
+          <div style={{
+            position: 'relative',
+            width: '100vw',
+            height: '100vh',
+            overflow: 'hidden'
+          }}>
+            {/* Standard Image (base layer - shows by default) */}
+<img 
+  src="/images/bookshelves-dark/bookshelves-dark-09.webp"
+  alt="Standard Quality"
+  style={{
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    position: 'absolute',
+    top: 0,
+    left: 0
+  }}
+/>
+
+{/* HD Image (clipped layer - reveals on drag left) */}
+<div style={{
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  clipPath: `inset(0 0 0 ${sliderPosition}%)`  // CHANGED: clips from LEFT instead of RIGHT
+}}>
+  <img 
+    src="/images/bookshelves-dark/bookshelves-dark-09-hd.png"
+    alt="HD Quality"
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
+    }}
+  />
+</div>
+
+            {/* Slider Line */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: `${sliderPosition}%`,
+              width: '4px',
+              height: '100%',
+              backgroundColor: '#FFD700',
+              cursor: 'ew-resize',
+              transform: 'translateX(-50%)'
+            }}>
+              {/* Slider Handle */}
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '50px',
+                height: '50px',
+                backgroundColor: '#FFD700',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '20px',
+                color: '#000',
+                fontWeight: 'bold',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+              }}>
+                ⟷
+              </div>
+            </div>
+
+            {/* Instruction Label (pulsing, temporary) */}
+{showInstruction && (
+  <div style={{
+    position: 'absolute',
+    top: '50%',
+    right: '120px',
+    transform: 'translateY(80px)', // Moved down below handle
+    backgroundColor: '#FFD700',
+    color: '#000',
+    padding: '0.75rem 1.25rem',
+    borderRadius: '8px',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+    animation: 'pulse 2s infinite',
+    pointerEvents: 'none',
+    zIndex: 10001,
+    whiteSpace: 'nowrap'
+  }}>
+    ← Drag here to reveal HD quality
+  </div>
+)}
+
+            {/* Slider Input */}
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={sliderPosition}
+              onChange={(e) => setSliderPosition(Number(e.target.value))}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                opacity: 0,
+                cursor: 'ew-resize',
+                zIndex: 10
+              }}
+            />
+
+            {/* Labels */}
+            <div style={{
+              position: 'absolute',
+              bottom: '20px',
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '0 40px',
+              color: '#fff',
+              zIndex: 100
+            }}>
+              <span style={{ fontSize: '18px' }}>← Standard (1456×816)</span>
+              <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#FFD700' }}>HD (2912×1632) →</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translateY(-50%) scale(1.05);
+          }
+        }
+      `}</style>
+    </>
+  );
+}

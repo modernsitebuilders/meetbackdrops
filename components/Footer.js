@@ -129,6 +129,9 @@ export default function Footer() {
               <Link href="/" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Home
               </Link>
+              <Link href="/hd" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
+      ⭐ HD Backgrounds
+    </Link>
               <Link href="/search" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Search
               </Link>

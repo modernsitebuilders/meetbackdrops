@@ -107,11 +107,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/premium',
-        destination: '/410',
-        permanent: true,
-      },
-      {
         source: '/category/executive-offices',
         destination: '/410',
         permanent: true,
@@ -163,6 +158,11 @@ const nextConfig = {
         destination: '/410',
         permanent: true,
       },
+      {
+      source: '/bundles',
+      destination: '/hd',
+      permanent: true, // 301 redirect
+    }
     ];
   },
 };

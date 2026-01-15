@@ -16,6 +16,7 @@ import styles from '../styles/HomePage.module.css';
 import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
 import { TOTAL_IMAGES_FORMATTED, CATEGORIES } from '../lib/categories-config';
+import HDBadge from '../components/HDBadge';
 
 
 export default function Home({ structuredData }) {
@@ -84,7 +85,8 @@ export default function Home({ structuredData }) {
         </p>
         
         <TrustBadges />
-        <HeroCTA />
+       <HeroCTA />
+<HDBadge />
       </section>
   
       {/* Blog Cards Section */}
