@@ -4,22 +4,35 @@ import { useState, useEffect } from 'react';
 
 export default function ComparisonWidget() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [sliderPosition, setSliderPosition] = useState(95); // Start at 95% (far right)
+  const [sliderPosition, setSliderPosition] = useState(95);
   const [showInstruction, setShowInstruction] = useState(true);
 
-  // Hide instruction after first drag
+  const trackEvent = (action, label) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        event_category: 'HD Comparison Widget',
+        event_label: label,
+      });
+    }
+  };
+
+  // Track first slider drag
   useEffect(() => {
     if (sliderPosition !== 95 && showInstruction) {
       setShowInstruction(false);
+      trackEvent('slider_used', 'User Dragged Slider');
     }
-  }, [sliderPosition]);
+  }, [sliderPosition, showInstruction]);
 
   return (
     <>
       {/* Trigger Button */}
       <div style={{ textAlign: 'center', padding: '0' }}>
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setIsModalOpen(true);
+            trackEvent('widget_opened', 'Comparison Modal Opened');
+          }}
           style={{
             padding: '1rem 2rem',
             fontSize: '18px',
@@ -62,8 +75,9 @@ export default function ComparisonWidget() {
           <button
             onClick={() => {
               setIsModalOpen(false);
-              setSliderPosition(95); // Reset position when closing
-              setShowInstruction(true); // Reset instruction
+              setSliderPosition(95);
+              setShowInstruction(true);
+              trackEvent('widget_closed', 'Comparison Modal Closed');
             }}
             style={{
               position: 'absolute',
@@ -88,39 +102,39 @@ export default function ComparisonWidget() {
             height: '100vh',
             overflow: 'hidden'
           }}>
-            {/* Standard Image (base layer - shows by default) */}
-<img 
-  src="/images/bookshelves-dark/bookshelves-dark-09.webp"
-  alt="Standard Quality"
-  style={{
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    position: 'absolute',
-    top: 0,
-    left: 0
-  }}
-/>
+            {/* Standard Image */}
+            <img 
+              src="/images/bookshelves-dark/bookshelves-dark-09.webp"
+              alt="Standard Quality"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                position: 'absolute',
+                top: 0,
+                left: 0
+              }}
+            />
 
-{/* HD Image (clipped layer - reveals on drag left) */}
-<div style={{
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  clipPath: `inset(0 0 0 ${sliderPosition}%)`  // CHANGED: clips from LEFT instead of RIGHT
-}}>
-  <img 
-    src="/images/bookshelves-dark/bookshelves-dark-09-hd.png"
-    alt="HD Quality"
-    style={{
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover'
-    }}
-  />
-</div>
+            {/* HD Image */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              clipPath: `inset(0 0 0 ${sliderPosition}%)`
+            }}>
+              <img 
+                src="/images/bookshelves-dark/bookshelves-dark-09-hd.png"
+                alt="HD Quality"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
 
             {/* Slider Line */}
             <div style={{
@@ -155,28 +169,28 @@ export default function ComparisonWidget() {
               </div>
             </div>
 
-            {/* Instruction Label (pulsing, temporary) */}
-{showInstruction && (
-  <div style={{
-    position: 'absolute',
-    top: '50%',
-    right: '120px',
-    transform: 'translateY(80px)', // Moved down below handle
-    backgroundColor: '#FFD700',
-    color: '#000',
-    padding: '0.75rem 1.25rem',
-    borderRadius: '8px',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-    animation: 'pulse 2s infinite',
-    pointerEvents: 'none',
-    zIndex: 10001,
-    whiteSpace: 'nowrap'
-  }}>
-    ← Drag here to reveal HD quality
-  </div>
-)}
+            {/* Instruction Label */}
+            {showInstruction && (
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                right: '120px',
+                transform: 'translateY(80px)',
+                backgroundColor: '#FFD700',
+                color: '#000',
+                padding: '0.75rem 1.25rem',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                animation: 'pulse 2s infinite',
+                pointerEvents: 'none',
+                zIndex: 10001,
+                whiteSpace: 'nowrap'
+              }}>
+                ← Drag here to reveal HD quality
+              </div>
+            )}
 
             {/* Slider Input */}
             <input
@@ -220,11 +234,11 @@ export default function ComparisonWidget() {
         @keyframes pulse {
           0%, 100% {
             opacity: 1;
-            transform: translateY(-50%) scale(1);
+            transform: translateY(80px) scale(1);
           }
           50% {
             opacity: 0.7;
-            transform: translateY(-50%) scale(1.05);
+            transform: translateY(80px) scale(1.05);
           }
         }
       `}</style>

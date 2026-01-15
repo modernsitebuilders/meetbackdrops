@@ -113,6 +113,15 @@ export default function Premium() {
                   href={product.gumroadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.gtag) {
+                      window.gtag('event', 'click', {
+                        event_category: 'HD Product Click',
+                        event_label: product.name,
+                        value: 4.99
+                      });
+                    }
+                  }}
                   style={{
                     display: 'block',
                     background: '#2563eb',

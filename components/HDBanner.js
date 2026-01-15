@@ -2,7 +2,19 @@ import Link from 'next/link';
 
 export default function HDBanner() {
   return (
-    <Link href="/hd" style={{ textDecoration: 'none' }}>
+    <Link 
+  href="/hd" 
+  style={{ textDecoration: 'none' }}
+  onClick={() => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'click', {
+        event_category: 'HD Banner',
+        event_label: 'Category Page Banner Click'
+      });
+    }
+  }}
+>
+        
       <div style={{
         background: 'linear-gradient(135deg, #fef3c7, #fde68a)',
         border: '2px solid #f59e0b',

@@ -19,7 +19,16 @@ export default function HDBadge() {
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem'
-      }}>
+      }}
+      onClick={() => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'click', {
+        event_category: 'HD Badge',
+        event_label: 'Homepage Badge Click'
+      });
+    }
+  }}
+>
         <span style={{ fontSize: '1.2rem' }}>⭐</span>
         New: Premium HD Backgrounds (2x Resolution)
         <span style={{ fontSize: '0.9rem' }}>→</span>
