@@ -112,31 +112,44 @@ export default function Premium() {
                   Premium HD - 2912×1632
                 </p>
                 <a 
-                  href={product.gumroadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    if (typeof window !== 'undefined' && window.gtag) {
-                      window.gtag('event', 'click', {
-                        event_category: 'HD Product Click',
-                        event_label: product.name,
-                        value: 4.99
-                      });
-                    }
-                  }}
-                  style={{
-                    display: 'block',
-                    background: '#2563eb',
-                    color: 'white',
-                    padding: '0.75rem',
-                    borderRadius: '8px',
-                    textAlign: 'center',
-                    textDecoration: 'none',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  Get HD - $4.99
-                </a>
+  href={product.gumroadUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => {
+    // GA4 tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'click', {
+        event_category: 'HD Product Click',
+        event_label: product.name,
+        value: 4.99
+      });
+    }
+    
+    // Google Sheets tracking
+    fetch('/api/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventType: 'gumroad_click',
+        filename: product.id,
+        category: 'hd',
+        originalSource: document.referrer || 'direct'
+      })
+    }).catch(() => {});
+  }}
+  style={{
+    display: 'block',
+    background: '#2563eb',
+    color: 'white',
+    padding: '0.75rem',
+    borderRadius: '8px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    fontWeight: 'bold'
+  }}
+>
+  Get HD - $4.99
+</a>
               </div>
             </div>
           ))}
