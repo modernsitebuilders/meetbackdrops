@@ -8,13 +8,26 @@ export default function ComparisonWidget() {
   const [showInstruction, setShowInstruction] = useState(true);
 
   const trackEvent = (action, label) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', action, {
-        event_category: 'HD Comparison Widget',
-        event_label: label,
-      });
-    }
-  };
+  // GA4 tracking
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', action, {
+      event_category: 'HD Comparison Widget',
+      event_label: label,
+    });
+  }
+  
+  // Google Sheets tracking
+  fetch('/api/analytics', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      eventType: action, // 'widget_opened', 'slider_used', 'widget_closed'
+      filename: 'comparison-widget',
+      category: 'hd',
+      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+    })
+  }).catch(() => {});
+};
 
   // Track first slider drag
   useEffect(() => {
