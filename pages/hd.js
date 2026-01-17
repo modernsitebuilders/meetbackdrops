@@ -12,8 +12,10 @@ export default function Premium() {
     // Bookshelves Bright
     { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/mbgeii' },
     { id: 'bookshelves-bright-04-hd', name: 'Bright Bookshelf #4', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wxdblc' },
+    { id: 'bookshelves-bright-06-hd', name: 'Bright Bookshelf #6', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/utjzej' },
     { id: 'bookshelves-bright-07-hd', name: 'Bright Bookshelf #7', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/tbxrpv' },
     { id: 'bookshelves-bright-10-hd', name: 'Bright Bookshelf #10', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/jcvena' },
+    { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/nclaj' },
     
     // Bookshelves Dark
     { id: 'bookshelves-dark-02-hd', name: 'Dark Bookshelf #2', category: 'bookshelves-dark', gumroadUrl: 'https://streambackdrops.gumroad.com/l/nbihuj' },
@@ -23,8 +25,20 @@ export default function Premium() {
     // Wall Shelves Bright
     { id: 'wall-shelves-bright-28-hd', name: 'Bright Wall Shelf #28', category: 'wall-shelves-bright', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wgvkzz' },
     
+    // Coffee Shops
+    { id: 'coffee-shop-03-hd', name: 'Coffee Shop #3', category: 'coffee-shops', gumroadUrl: 'https://streambackdrops.gumroad.com/l/skkti' },
+    
+    // Libraries
+    { id: 'library-17-hd', name: 'Library #17', category: 'libraries', gumroadUrl: 'https://streambackdrops.gumroad.com/l/hbgxla' },
+    
     // Office Spaces
+    { id: 'office-spaces-01-hd', name: 'Office Space #1', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/pqhzew' },
     { id: 'office-spaces-02-hd', name: 'Office Space #2', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/wdbxsp' },
+    { id: 'office-spaces-03-hd', name: 'Office Space #3', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/qywfkn' },
+    { id: 'office-spaces-05-hd', name: 'Office Space #5', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/itxqid' },
+    { id: 'office-spaces-06-hd', name: 'Office Space #6', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/xjjrys' },
+    { id: 'office-spaces-07-hd', name: 'Office Space #7', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/urlomh' },
+    { id: 'office-spaces-08-hd', name: 'Office Space #8', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/mtwgv' },
     { id: 'office-spaces-17-hd', name: 'Office Space #17', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gehtyw' },
     { id: 'office-spaces-19-hd', name: 'Office Space #19', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gifhpc' },
     { id: 'office-spaces-24-hd', name: 'Office Space #24', category: 'office-spaces', gumroadUrl: 'https://streambackdrops.gumroad.com/l/umtpss' },
