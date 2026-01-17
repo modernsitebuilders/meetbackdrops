@@ -147,6 +147,41 @@ export default function ComparisonWidget() {
                   objectFit: 'cover'
                 }}
               />
+              {/* Diagonal Watermark */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                pointerEvents: 'none'
+              }}>
+                <span style={{
+                  fontSize: '120px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.15)',
+                  transform: 'rotate(-45deg)',
+                  userSelect: 'none'
+                }}>
+                  SAMPLE
+                </span>
+              </div>
+              {/* Logo Corner */}
+              <img 
+                src="/favicon-96x96.png"
+                alt="Logo"
+                style={{
+                  position: 'absolute',
+                  bottom: '80px',
+                  right: '20px',
+                  width: '60px',
+                  opacity: 0.7,
+                  pointerEvents: 'none'
+                }}
+              />
             </div>
 
             {/* Slider Line */}

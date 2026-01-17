@@ -54,7 +54,26 @@ export default function Premium() {
     { id: 'nature-landscapes-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/sbyvpc' },
     { id: 'nature-landscapes-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gmcdi' },
   ];
+const [selected, setSelected] = useState([]);
 
+const toggleSelect = (id) => {
+  setSelected(prev => {
+    if (prev.includes(id)) {
+      return prev.filter(i => i !== id);
+    }
+    if (prev.length >= 3) {
+      return prev; // Don't add more than 3
+    }
+    return [...prev, id];
+  });
+};
+
+const getPrice = () => {
+  if (selected.length === 0) return null;
+  if (selected.length === 1) return 4.99;
+  if (selected.length === 2) return 6.99;
+  return 8.99;
+};
   return (
     <Layout 
       title="Premium HD Virtual Backgrounds | 2912×1632 Resolution | StreamBackdrops"
@@ -93,9 +112,22 @@ export default function Premium() {
         textAlign: 'center'
       }}>
         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: '700' }}>Premium HD Backgrounds</h1>
-        <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', opacity: 0.95 }}>
-          2912×1632 resolution - 2x the detail of standard backgrounds
-        </p>
+        <div style={{ 
+          background: 'rgba(255,255,255,0.2)', 
+          padding: '1rem', 
+          borderRadius: '8px',
+          display: 'inline-block',
+          marginBottom: '1.5rem'
+        }}>
+          <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+            1 image: $4.99 • 2 images: $6.99 • 3 images: $8.99
+          </div>
+          <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
+  {selected.length === 3 
+    ? '✓ Max 3 images selected - Ready to checkout!' 
+    : 'Click images to select, then checkout'}
+</div>
+        </div>
         
         {/* Enhanced Comparison Widget Button */}
         <ComparisonWidget />
@@ -110,64 +142,100 @@ export default function Premium() {
         }}>
           {products.map(product => (
             <div key={product.id} style={{
-              border: '3px solid gold',
+              border: selected.includes(product.id) ? '3px solid #2563eb' : '3px solid gold',
               borderRadius: '12px',
               overflow: 'hidden',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}>
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              position: 'relative',
+              cursor: 'pointer'
+            }} onClick={() => toggleSelect(product.id)}>
+              {selected.includes(product.id) && (
+                <div style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  background: '#2563eb',
+                  color: 'white',
+                  width: '30px',
+                  height: '30px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 'bold',
+                  zIndex: 1
+                }}>✓</div>
+              )}
               <img 
-  src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
-  alt={`${product.name} - Premium HD Virtual Background`}
-  style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-/>
+                src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
+                alt={`${product.name} - Premium HD Virtual Background`}
+                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              />
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{ marginBottom: '0.5rem' }}>{product.name}</h3>
-                <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                <p style={{ color: '#666', fontSize: '0.9rem' }}>
                   Premium HD - 2912×1632
                 </p>
-                <a 
-  href={product.gumroadUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  onClick={() => {
-    // GA4 tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'click', {
-        event_category: 'HD Product Click',
-        event_label: product.name,
-        value: 4.99
-      });
-    }
-    
-    // Google Sheets tracking
-    fetch('/api/analytics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        eventType: 'gumroad_click',
-        filename: product.id,
-        category: 'hd',
-        originalSource: document.referrer || 'direct'
-      })
-    }).catch(() => {});
-  }}
-  style={{
-    display: 'block',
-    background: '#2563eb',
-    color: 'white',
-    padding: '0.75rem',
-    borderRadius: '8px',
-    textAlign: 'center',
-    textDecoration: 'none',
-    fontWeight: 'bold'
-  }}
->
-  Get HD - $4.99
-</a>
               </div>
             </div>
           ))}
         </div>
+
+        {selected.length > 0 && (
+  <div style={{
+    position: 'fixed',
+    bottom: '2rem',
+    right: '2rem',
+    background: '#2563eb',
+    color: 'white',
+    padding: '1.5rem 2rem',
+    borderRadius: '12px',
+    boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+    zIndex: 100
+  }}>
+    <button 
+      onClick={(e) => {
+        e.stopPropagation();
+        setSelected([]);
+      }}
+      style={{
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'transparent',
+        border: 'none',
+        color: 'white',
+        cursor: 'pointer',
+        fontSize: '1.2rem',
+        padding: '0.25rem'
+      }}
+      title="Clear selection"
+    >×</button>
+    
+    <div style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>
+      {selected.length} image{selected.length > 1 ? 's' : ''} selected
+    </div>
+    <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+      ${getPrice()}
+    </div>
+    <button style={{
+      background: 'white',
+      color: '#2563eb',
+      border: 'none',
+      padding: '0.75rem 2rem',
+      borderRadius: '8px',
+      fontWeight: 'bold',
+      cursor: 'pointer',
+      width: '100%',
+      fontSize: '1rem'
+    }} onClick={(e) => {
+      e.stopPropagation();
+      alert('Next: Set up Gumroad bundle products for 2/$6.99 and 3/$8.99');
+    }}>
+      Checkout
+    </button>
+  </div>
+)}
       </section>
     </Layout>
   );
