@@ -54,26 +54,29 @@ export default function Premium() {
     { id: 'nature-landscapes-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/sbyvpc' },
     { id: 'nature-landscapes-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes', gumroadUrl: 'https://streambackdrops.gumroad.com/l/gmcdi' },
   ];
-const [selected, setSelected] = useState([]);
 
-const toggleSelect = (id) => {
-  setSelected(prev => {
-    if (prev.includes(id)) {
-      return prev.filter(i => i !== id);
-    }
-    if (prev.length >= 3) {
-      return prev; // Don't add more than 3
-    }
-    return [...prev, id];
-  });
-};
+  const [selected, setSelected] = useState([]);
+  const [previewImage, setPreviewImage] = useState(null);
 
-const getPrice = () => {
-  if (selected.length === 0) return null;
-  if (selected.length === 1) return 4.99;
-  if (selected.length === 2) return 6.99;
-  return 8.99;
-};
+  const toggleSelect = (id) => {
+    setSelected(prev => {
+      if (prev.includes(id)) {
+        return prev.filter(i => i !== id);
+      }
+      if (prev.length >= 3) {
+        return prev;
+      }
+      return [...prev, id];
+    });
+  };
+
+  const getPrice = () => {
+    if (selected.length === 0) return null;
+    if (selected.length === 1) return 4.99;
+    if (selected.length === 2) return 6.99;
+    return 8.99;
+  };
+
   return (
     <Layout 
       title="Premium HD Virtual Backgrounds | 2912×1632 Resolution | StreamBackdrops"
@@ -90,21 +93,18 @@ const getPrice = () => {
         <ProductSchema products={products} />
         <ComparisonWidgetSchema />
         
-        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Premium HD Virtual Backgrounds | StreamBackdrops" />
         <meta property="og:description" content="Professional HD virtual backgrounds in 2912×1632 resolution. 2x sharper than standard backgrounds." />
         <meta property="og:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
         <meta property="og:url" content="https://streambackdrops.com/hd" />
         
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Premium HD Virtual Backgrounds" />
         <meta name="twitter:description" content="Professional HD backgrounds in 2912×1632 resolution" />
         <meta name="twitter:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
       </Head>
 
-      {/* Compact Hero Section */}
       <section style={{ 
         padding: '2rem 2rem 3rem 2rem',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -123,17 +123,15 @@ const getPrice = () => {
             1 image: $4.99 • 2 images: $6.99 • 3 images: $8.99
           </div>
           <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
-  {selected.length === 3 
-    ? '✓ Max 3 images selected - Ready to checkout!' 
-    : 'Click images to select, then checkout'}
-</div>
+            {selected.length === 3 
+              ? '✓ Max 3 images selected - Ready to checkout!' 
+              : 'Click images to select, then checkout'}
+          </div>
         </div>
         
-        {/* Enhanced Comparison Widget Button */}
         <ComparisonWidget />
       </section>
 
-      {/* Products Grid */}
       <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{
           display: 'grid',
@@ -149,6 +147,7 @@ const getPrice = () => {
               position: 'relative',
               cursor: 'pointer'
             }} onClick={() => toggleSelect(product.id)}>
+              
               {selected.includes(product.id) && (
                 <div style={{
                   position: 'absolute',
@@ -166,6 +165,36 @@ const getPrice = () => {
                   zIndex: 1
                 }}>✓</div>
               )}
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPreviewImage({
+                    standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
+                    hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
+                  });
+                }}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  background: 'rgba(0,0,0,0.8)',
+                  color: 'white',
+                  padding: '0.75rem 1.5rem',
+                  border: 'none',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  opacity: 0,
+                  transition: 'opacity 0.3s',
+                  zIndex: 2,
+                  fontWeight: 'bold'
+                }}
+                className="preview-btn"
+              >
+                👁️ Preview HD
+              </button>
+              
               <img 
                 src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
                 alt={`${product.name} - Premium HD Virtual Background`}
@@ -182,61 +211,77 @@ const getPrice = () => {
         </div>
 
         {selected.length > 0 && (
-  <div style={{
-    position: 'fixed',
-    bottom: '2rem',
-    right: '2rem',
-    background: '#2563eb',
-    color: 'white',
-    padding: '1.5rem 2rem',
-    borderRadius: '12px',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-    zIndex: 100
-  }}>
-    <button 
-      onClick={(e) => {
-        e.stopPropagation();
-        setSelected([]);
-      }}
-      style={{
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'transparent',
-        border: 'none',
-        color: 'white',
-        cursor: 'pointer',
-        fontSize: '1.2rem',
-        padding: '0.25rem'
-      }}
-      title="Clear selection"
-    >×</button>
-    
-    <div style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>
-      {selected.length} image{selected.length > 1 ? 's' : ''} selected
-    </div>
-    <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-      ${getPrice()}
-    </div>
-    <button style={{
-      background: 'white',
-      color: '#2563eb',
-      border: 'none',
-      padding: '0.75rem 2rem',
-      borderRadius: '8px',
-      fontWeight: 'bold',
-      cursor: 'pointer',
-      width: '100%',
-      fontSize: '1rem'
-    }} onClick={(e) => {
-      e.stopPropagation();
-      alert('Next: Set up Gumroad bundle products for 2/$6.99 and 3/$8.99');
-    }}>
-      Checkout
-    </button>
-  </div>
-)}
+          <div style={{
+            position: 'fixed',
+            bottom: '2rem',
+            right: '2rem',
+            background: '#2563eb',
+            color: 'white',
+            padding: '1.5rem 2rem',
+            borderRadius: '12px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+            zIndex: 100
+          }}>
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelected([]);
+              }}
+              style={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                background: 'transparent',
+                border: 'none',
+                color: 'white',
+                cursor: 'pointer',
+                fontSize: '1.2rem',
+                padding: '0.25rem'
+              }}
+              title="Clear selection"
+            >×</button>
+            
+            <div style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>
+              {selected.length} image{selected.length > 1 ? 's' : ''} selected
+            </div>
+            <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+              ${getPrice()}
+            </div>
+            <button style={{
+              background: 'white',
+              color: '#2563eb',
+              border: 'none',
+              padding: '0.75rem 2rem',
+              borderRadius: '8px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              width: '100%',
+              fontSize: '1rem'
+            }} onClick={(e) => {
+              e.stopPropagation();
+              alert('Next: Set up Gumroad bundle products for 2/$6.99 and 3/$8.99');
+            }}>
+              Checkout
+            </button>
+          </div>
+        )}
       </section>
+
+      <ComparisonWidget
+        isOpen={!!previewImage}
+        onClose={() => setPreviewImage(null)}
+        standardImg={previewImage?.standard}
+        hdImg={previewImage?.hd}
+      />
+
+      <style jsx>{`
+        .preview-btn {
+          opacity: 0;
+        }
+        div:hover .preview-btn {
+          opacity: 1 !important;
+        }
+      `}</style>
     </Layout>
   );
 }

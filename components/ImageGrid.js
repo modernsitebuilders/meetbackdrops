@@ -1,11 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
 import PopularBadge from './PopularBadge';
+import ComparisonWidget from './ComparisonWidget';
 
 export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [], scores = {} }) {
-      const [sortedImages, setSortedImages] = useState(images);
+  const [sortedImages, setSortedImages] = useState(images);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
     const imagesWithScores = images.map(image => {
@@ -52,19 +57,21 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
+              setHoveredIndex(index);
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
+              setHoveredIndex(null);
             }}
             onClick={() => onImageClick(image)}
-        >
-          <div style={{
+          >
+            <div style={{
               position: 'relative',
               width: '100%',
               aspectRatio: '16/9',
               overflow: 'hidden'
             }}>
-            {topImages.includes(image.filename) && <PopularBadge />}
+              {topImages.includes(image.filename) && <PopularBadge />}
               <Image
                 src={`/images/${folderMap[slug]}/${image.filename}`}
                 alt={`${image.title} - Free virtual background for Zoom, Teams & Google Meet`}
@@ -83,20 +90,21 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
               />
               
               {/* Hover Overlay */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'rgba(0, 0, 0, 0.7)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: 0,
-                transition: 'opacity 0.3s ease',
-                flexDirection: 'column',
-                gap: '1rem'
-              }}
-              className="image-overlay">
-                
+              <div 
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'rgba(0, 0, 0, 0.7)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  opacity: hoveredIndex === index ? 1 : 0,
+                  transition: 'opacity 0.3s ease',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                  pointerEvents: hoveredIndex === index ? 'auto' : 'none'
+                }}
+              >
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -116,6 +124,28 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
                   Download
                 </button>
 
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImage({
+                      standard: `/images/${folderMap[slug]}/${image.filename}`,
+                      hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${folderMap[slug]}/${image.filename.replace('.webp', '-hd.png')}`
+                    });
+                  }}
+                  style={{
+                    background: '#FFD700',
+                    color: '#000',
+                    padding: '0.75rem 1.5rem',
+                    border: 'none',
+                    borderRadius: '0.5rem',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
+                >
+                  👁️ Preview HD
+                </button>
+
                 <SocialShare 
                   image={{...image, category: slug}}
                   title={`${image.title} - Free Virtual Background`}
@@ -129,15 +159,12 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
         ))}
       </div>
 
-      <style jsx>{`
-        .image-overlay:hover {
-          opacity: 1 !important;
-        }
-        
-        div:hover .image-overlay {
-          opacity: 1;
-        }
-      `}</style>
+      <ComparisonWidget
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        standardImg={selectedImage?.standard}
+        hdImg={selectedImage?.hd}
+      />
     </>
   );
 }

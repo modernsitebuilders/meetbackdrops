@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function ComparisonWidget() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }) {
   const [sliderPosition, setSliderPosition] = useState(95);
   const [showInstruction, setShowInstruction] = useState(true);
 
@@ -39,38 +38,9 @@ export default function ComparisonWidget() {
 
   return (
     <>
-      {/* Trigger Button */}
-      <div style={{ textAlign: 'center', padding: '0' }}>
-        <button
-          onClick={() => {
-            setIsModalOpen(true);
-            trackEvent('widget_opened', 'Comparison Modal Opened');
-          }}
-          style={{
-            padding: '1rem 2rem',
-            fontSize: '18px',
-            fontWeight: 'bold',
-            backgroundColor: '#FFD700',
-            color: '#000',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.75rem'
-          }}
-        >
-          <span style={{ fontSize: '24px' }}>⟷</span>
-          <span>See HD Quality (Interactive Demo)</span>
-        </button>
-        <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', opacity: 0.9 }}>
-          Drag the slider to compare resolutions
-        </p>
-      </div>
 
       {/* Full-Screen Modal */}
-      {isModalOpen && (
+      {isOpen && (
         <div style={{
           position: 'fixed',
           top: 0,
@@ -87,11 +57,11 @@ export default function ComparisonWidget() {
           {/* Close Button */}
           <button
             onClick={() => {
-              setIsModalOpen(false);
-              setSliderPosition(95);
-              setShowInstruction(true);
-              trackEvent('widget_closed', 'Comparison Modal Closed');
-            }}
+  onClose();
+  setSliderPosition(95);
+  setShowInstruction(true);
+  trackEvent('widget_closed', 'Comparison Modal Closed');
+}}
             style={{
               position: 'absolute',
               top: '20px',
@@ -117,7 +87,7 @@ export default function ComparisonWidget() {
           }}>
             {/* Standard Image */}
             <img 
-              src="/images/bookshelves-dark/bookshelves-dark-09.webp"
+              src={standardImg}
               alt="Standard Quality"
               style={{
                 width: '100%',
@@ -139,7 +109,7 @@ export default function ComparisonWidget() {
               clipPath: `inset(0 0 0 ${sliderPosition}%)`
             }}>
               <img 
-                src="/images/bookshelves-dark/bookshelves-dark-09-hd.png"
+                src={hdImg}
                 alt="HD Quality"
                 style={{
                   width: '100%',
