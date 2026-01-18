@@ -128,7 +128,14 @@ export default function Premium() {
               : 'Click images to select, then checkout'}
           </div>
         </div>
-        
+        <p style={{ 
+  textAlign: 'center', 
+  fontSize: '1.1rem', 
+  marginBottom: '2rem',
+  color: 'white' 
+}}>
+  Hover over images to preview HD quality with our comparison slider
+</p>
       </section>
 
       <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
