@@ -5,28 +5,45 @@ import { useState, useEffect } from 'react';
 export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }) {
   const [sliderPosition, setSliderPosition] = useState(95);
   const [showInstruction, setShowInstruction] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    window.enableAdminMode = () => {
+      setIsAdmin(true);
+      console.log('✓ Admin mode enabled - ComparisonWidget analytics disabled');
+    };
+    window.disableAdminMode = () => {
+      setIsAdmin(false);
+      console.log('✓ Admin mode disabled - ComparisonWidget analytics enabled');
+    };
+  }, []);
 
   const trackEvent = (action, label) => {
-  // GA4 tracking
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', action, {
-      event_category: 'HD Comparison Widget',
-      event_label: label,
-    });
-  }
-  
-  // Google Sheets tracking
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      eventType: action, // 'widget_opened', 'slider_used', 'widget_closed'
-      filename: 'comparison-widget',
-      category: 'hd',
-      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
-    })
-  }).catch(() => {});
-};
+    if (isAdmin) {
+      console.log('🚫 Analytics blocked (admin mode):', action, label);
+      return;
+    }
+
+    // GA4 tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        event_category: 'HD Comparison Widget',
+        event_label: label,
+      });
+    }
+    
+    // Google Sheets tracking
+    fetch('/api/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventType: action,
+        filename: 'comparison-widget',
+        category: 'hd',
+        originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+      })
+    }).catch(() => {});
+  };
 
   // Track first slider drag
   useEffect(() => {
@@ -38,7 +55,6 @@ export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }
 
   return (
     <>
-
       {/* Full-Screen Modal */}
       {isOpen && (
         <div style={{
@@ -57,11 +73,11 @@ export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }
           {/* Close Button */}
           <button
             onClick={() => {
-  onClose();
-  setSliderPosition(95);
-  setShowInstruction(true);
-  trackEvent('widget_closed', 'Comparison Modal Closed');
-}}
+              onClose();
+              setSliderPosition(95);
+              setShowInstruction(true);
+              trackEvent('widget_closed', 'Comparison Modal Closed');
+            }}
             style={{
               position: 'absolute',
               top: '20px',
