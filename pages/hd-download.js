@@ -1,0 +1,139 @@
+import { useState, useEffect } from 'react';
+import Layout from '../components/Layout';
+
+export default function HDDownload() {
+  const [status, setStatus] = useState('verifying');
+  const [images, setImages] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+
+    if (!sessionId) {
+      setStatus('error');
+      setError('Missing purchase information. Please contact support.');
+      return;
+    }
+
+    fetch('/api/verify-stripe-purchase', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.verified) {
+          const imageIds = data.selected_images.split(',');
+          const downloadLinks = imageIds.map(id => {
+            const parts = id.replace('-hd', '').split('-');
+            const num = parts.pop();
+            const category = parts.join('-');
+            
+            return {
+              id,
+              name: id.replace('-hd', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+              url: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${category}/${id}.png`
+            };
+          });
+          
+          setImages(downloadLinks);
+          setStatus('success');
+        } else {
+          setStatus('error');
+          setError(data.error || 'Could not verify purchase');
+        }
+      })
+      .catch(err => {
+        setStatus('error');
+        setError('Verification failed. Please contact support.');
+      });
+  }, []);
+
+  return (
+    <Layout
+      title="Download Your HD Backgrounds | StreamBackdrops"
+      description="Download your premium HD virtual backgrounds"
+    >
+      <div style={{ 
+        minHeight: '80vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2rem'
+      }}>
+        {status === 'verifying' && (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⏳</div>
+            <h2>Verifying your purchase...</h2>
+          </div>
+        )}
+
+        {status === 'error' && (
+          <div style={{ textAlign: 'center', maxWidth: '500px' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>❌</div>
+            <h2 style={{ marginBottom: '1rem' }}>Verification Failed</h2>
+            <p style={{ color: '#666', marginBottom: '2rem' }}>{error}</p>
+            <p style={{ fontSize: '0.9rem', color: '#999' }}>
+              Contact support@streambackdrops.com with your order details
+            </p>
+          </div>
+        )}
+
+        {status === 'success' && (
+          <div style={{ maxWidth: '800px', width: '100%' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
+              <h1>Your HD Backgrounds Are Ready!</h1>
+              <p style={{ color: '#666', marginTop: '0.5rem' }}>
+                Click below to download your {images.length} HD background{images.length > 1 ? 's' : ''}
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gap: '1.5rem' }}>
+              {images.map(img => (
+                <div key={img.id} style={{
+                  border: '2px solid #2563eb',
+                  borderRadius: '12px',
+                  padding: '1.5rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div>
+                    <h3 style={{ marginBottom: '0.25rem' }}>{img.name}</h3>
+                    <p style={{ color: '#666', fontSize: '0.9rem' }}>2912×1632 resolution</p>
+                  </div>
+                  
+                    <a href={img.url}
+                    download
+                    style={{
+                      background: '#2563eb',
+                      color: 'white',
+                      padding: '0.75rem 1.5rem',
+                      borderRadius: '8px',
+                      textDecoration: 'none',
+                      fontWeight: 'bold',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    Download
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <p style={{ 
+              textAlign: 'center',
+              marginTop: '2rem',
+              fontSize: '0.9rem',
+              color: '#999'
+            }}>
+              Need help? Email support@streambackdrops.com
+            </p>
+          </div>
+        )}
+      </div>
+    </Layout>
+  );
+}

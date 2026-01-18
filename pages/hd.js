@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import ComparisonWidget from '../components/ComparisonWidget';
+import { loadStripe } from '@stripe/stripe-js';
 
 export default function Premium() {
   const products = [
@@ -276,10 +277,27 @@ export default function Premium() {
               cursor: 'pointer',
               width: '100%',
               fontSize: '1rem'
-            }} onClick={(e) => {
-              e.stopPropagation();
-              alert('Next: Set up Gumroad bundle products for 2/$6.99 and 3/$8.99');
-            }}>
+            }} onClick={async (e) => {
+  e.stopPropagation();
+  
+  const priceIds = {
+    1: 'price_1Sr4U0Q695ongkMjxUtnf9NA',
+    2: 'price_1Sr4VEQ695ongkMjkaclxw67',
+    3: 'price_1Sr4WYQ695ongkMjRUTPsoIr'
+  };
+  
+  const response = await fetch('/api/create-checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      priceId: priceIds[selected.length],
+      selectedImages: selected
+    })
+  });
+  
+  const { url } = await response.json();
+  window.location.href = url;
+}}>
               Checkout
             </button>
           </div>
