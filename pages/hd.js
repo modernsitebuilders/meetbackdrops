@@ -129,7 +129,6 @@ export default function Premium() {
           </div>
         </div>
         
-        <ComparisonWidget />
       </section>
 
       <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
