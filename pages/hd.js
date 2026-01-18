@@ -173,13 +173,26 @@ export default function Premium() {
               )}
               
               <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setPreviewImage({
-                    standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
-                    hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
-                  });
-                }}
+  onClick={(e) => {
+    e.stopPropagation();
+    
+    // Track which image was previewed
+    fetch('/api/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventType: 'hd_preview_opened',
+        filename: product.id,
+        category: product.category,
+        originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+      })
+    }).catch(() => {});
+    
+    setPreviewImage({
+      standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
+      hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
+    });
+  }}
                 style={{
                   position: 'absolute',
                   top: '50%',
