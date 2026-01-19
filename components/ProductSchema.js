@@ -15,7 +15,7 @@ export default function ProductSchema({ products }) {
           "price": "4.99",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "url": product.gumroadUrl
+          "url": `https://streambackdrops.com/hd`
         },
         "brand": {
           "@type": "Brand",
