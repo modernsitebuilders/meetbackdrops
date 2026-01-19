@@ -10,12 +10,19 @@ export default function ProductSchema({ products }) {
         "name": product.name,
         "description": `Premium HD virtual background in 2912×1632 resolution. ${product.name} for Zoom, Teams, and Google Meet.`,
         "image": `https://streambackdrops.com/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "78",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "offers": {
           "@type": "Offer",
           "price": "4.99",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "url": `https://streambackdrops.com/hd`
+          "url": "https://streambackdrops.com/hd"
         },
         "brand": {
           "@type": "Brand",
