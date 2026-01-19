@@ -7,8 +7,9 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import ComparisonWidget from '../components/ComparisonWidget';
 import { loadStripe } from '@stripe/stripe-js';
+import { getReviewsData } from '../lib/reviews';
 
-export default function Premium() {
+export default function Premium({ reviewsData }) {
   const products = [
     // Bookshelves Bright
     { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright' },
@@ -114,7 +115,7 @@ export default function Premium() {
           { name: "Home", url: "https://streambackdrops.com" },
           { name: "Premium HD Backgrounds", url: "https://streambackdrops.com/hd" }
         ]} />
-        <ProductSchema products={products} />
+        <ProductSchema products={products} reviewsData={reviewsData} />
         <ComparisonWidgetSchema />
         
         <meta property="og:type" content="website" />
@@ -344,4 +345,12 @@ export default function Premium() {
       `}</style>
     </Layout>
   );
+}
+export async function getServerSideProps() {
+  const reviewsData = await getReviewsData();
+  return {
+    props: {
+      reviewsData
+    }
+  };
 }

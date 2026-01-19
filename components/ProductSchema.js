@@ -1,4 +1,4 @@
-export default function ProductSchema({ products }) {
+export default function ProductSchema({ products, reviewsData }) {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -10,13 +10,15 @@ export default function ProductSchema({ products }) {
         "name": product.name,
         "description": `Premium HD virtual background in 2912×1632 resolution. ${product.name} for Zoom, Teams, and Google Meet.`,
         "image": `https://streambackdrops.com/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "78",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
+        ...(reviewsData && reviewsData.totalReviews > 0 && {
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": reviewsData.averageRating.toString(),
+            "reviewCount": reviewsData.totalReviews.toString(),
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        }),
         "offers": {
           "@type": "Offer",
           "price": "4.99",
