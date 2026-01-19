@@ -39,6 +39,18 @@ export default function HDDownload() {
           
           setImages(downloadLinks);
           setStatus('success');
+
+          fetch('/api/analytics', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventType: 'hd_purchase',
+              filename: data.selected_images,
+              category: 'hd',
+              originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+            })
+          }).catch(() => {});
+
         } else {
           setStatus('error');
           setError(data.error || 'Could not verify purchase');
@@ -84,9 +96,12 @@ export default function HDDownload() {
           <div style={{ maxWidth: '800px', width: '100%' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
-              <h1>Your HD Backgrounds Are Ready!</h1>
-              <p style={{ color: '#666', marginTop: '0.5rem' }}>
-                Click below to download your {images.length} HD background{images.length > 1 ? 's' : ''}
+              <h1>Thank You for Your Purchase!</h1>
+              <p style={{ color: '#666', marginTop: '0.5rem', fontSize: '1.1rem' }}>
+                Your {images.length} HD background{images.length > 1 ? 's are' : ' is'} ready to download
+              </p>
+              <p style={{ color: '#999', marginTop: '0.5rem', fontSize: '0.95rem' }}>
+                We appreciate your support ❤️
               </p>
             </div>
 
@@ -104,8 +119,7 @@ export default function HDDownload() {
                     <h3 style={{ marginBottom: '0.25rem' }}>{img.name}</h3>
                     <p style={{ color: '#666', fontSize: '0.9rem' }}>2912×1632 resolution</p>
                   </div>
-                  
-                    <a href={img.url}
+                  <a href={img.url}
                     download
                     style={{
                       background: '#2563eb',
