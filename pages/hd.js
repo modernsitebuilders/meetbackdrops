@@ -214,9 +214,10 @@ export default function Premium({ reviewsData }) {
                   }).catch(() => {});
                   
                   setPreviewImage({
-                    standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
-                    hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
-                  });
+  id: product.id,  // Add this
+  standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
+  hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
+});
                 }}
                 style={{
                   position: 'absolute',
@@ -329,11 +330,12 @@ export default function Premium({ reviewsData }) {
       </section>
 
       <ComparisonWidget
-        isOpen={!!previewImage}
-        onClose={() => setPreviewImage(null)}
-        standardImg={previewImage?.standard}
-        hdImg={previewImage?.hd}
-      />
+  isOpen={!!previewImage}
+  onClose={() => setPreviewImage(null)}
+  standardImg={previewImage?.standard}
+  hdImg={previewImage?.hd}
+  imageId={previewImage?.id}
+/>
 
       <style jsx>{`
         .preview-btn {

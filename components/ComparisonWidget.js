@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }) {
+export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose }) {
   const [sliderPosition, setSliderPosition] = useState(95);
   const [showInstruction, setShowInstruction] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -32,13 +32,13 @@ export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }
       });
     }
     
-    // Google Sheets tracking
+    // Google Sheets tracking with actual image ID
     fetch('/api/analytics', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         eventType: action,
-        filename: 'comparison-widget',
+        filename: imageId || 'comparison-widget',
         category: 'hd',
         originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
       })
@@ -49,9 +49,9 @@ export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }
   useEffect(() => {
     if (sliderPosition !== 95 && showInstruction) {
       setShowInstruction(false);
-      trackEvent('slider_used', 'User Dragged Slider');
+      trackEvent('slider_used', `User Dragged Slider - ${imageId}`);
     }
-  }, [sliderPosition, showInstruction]);
+  }, [sliderPosition, showInstruction, imageId]);
 
   return (
     <>
@@ -76,7 +76,7 @@ export default function ComparisonWidget({ standardImg, hdImg, isOpen, onClose }
               onClose();
               setSliderPosition(95);
               setShowInstruction(true);
-              trackEvent('widget_closed', 'Comparison Modal Closed');
+              trackEvent('widget_closed', `Comparison Modal Closed - ${imageId}`);
             }}
             style={{
               position: 'absolute',
