@@ -61,13 +61,27 @@ export default function Premium() {
 
   const toggleSelect = (id) => {
     setSelected(prev => {
-      if (prev.includes(id)) {
-        return prev.filter(i => i !== id);
+      const newSelected = prev.includes(id) 
+        ? prev.filter(i => i !== id) 
+        : prev.length >= 3 
+          ? prev 
+          : [...prev, id];
+      
+      // Track selection
+      if (!prev.includes(id) && newSelected.includes(id)) {
+        fetch('/api/analytics', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventType: 'hd_image_selected',
+            filename: id,
+            category: 'hd',
+            originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+          })
+        }).catch(() => {});
       }
-      if (prev.length >= 3) {
-        return prev;
-      }
-      return [...prev, id];
+      
+      return newSelected;
     });
   };
 
@@ -130,13 +144,13 @@ export default function Premium() {
           </div>
         </div>
         <p style={{ 
-  textAlign: 'center', 
-  fontSize: '1.1rem', 
-  marginBottom: '2rem',
-  color: 'white' 
-}}>
-  Hover over images to preview HD quality with our comparison slider
-</p>
+          textAlign: 'center', 
+          fontSize: '1.1rem', 
+          marginBottom: '2rem',
+          color: 'white' 
+        }}>
+          Hover over images to preview HD quality with our comparison slider
+        </p>
       </section>
 
       <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -174,26 +188,26 @@ export default function Premium() {
               )}
               
               <button
-  onClick={(e) => {
-    e.stopPropagation();
-    
-    // Track which image was previewed
-    fetch('/api/analytics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        eventType: 'hd_preview_opened',
-        filename: product.id,
-        category: product.category,
-        originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
-      })
-    }).catch(() => {});
-    
-    setPreviewImage({
-      standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
-      hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
-    });
-  }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  
+                  // Track which image was previewed
+                  fetch('/api/analytics', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      eventType: 'hd_preview_opened',
+                      filename: product.id,
+                      category: product.category,
+                      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+                    })
+                  }).catch(() => {});
+                  
+                  setPreviewImage({
+                    standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
+                    hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
+                  });
+                }}
                 style={{
                   position: 'absolute',
                   top: '50%',
@@ -278,26 +292,26 @@ export default function Premium() {
               width: '100%',
               fontSize: '1rem'
             }} onClick={async (e) => {
-  e.stopPropagation();
-  
-  const priceIds = {
-    1: 'price_1Sr4U0Q695ongkMjxUtnf9NA',
-    2: 'price_1Sr4VEQ695ongkMjkaclxw67',
-    3: 'price_1Sr4WYQ695ongkMjRUTPsoIr'
-  };
-  
-  const response = await fetch('/api/create-checkout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      priceId: priceIds[selected.length],
-      selectedImages: selected
-    })
-  });
-  
-  const { url } = await response.json();
-  window.location.href = url;
-}}>
+              e.stopPropagation();
+              
+              const priceIds = {
+                1: 'price_1Sr4U0Q695ongkMjxUtnf9NA',
+                2: 'price_1Sr4VEQ695ongkMjkaclxw67',
+                3: 'price_1Sr4WYQ695ongkMjRUTPsoIr'
+              };
+              
+              const response = await fetch('/api/create-checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  priceId: priceIds[selected.length],
+                  selectedImages: selected
+                })
+              });
+              
+              const { url } = await response.json();
+              window.location.href = url;
+            }}>
               Checkout
             </button>
           </div>
