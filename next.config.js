@@ -162,7 +162,12 @@ const nextConfig = {
       source: '/bundles',
       destination: '/hd',
       permanent: true, // 301 redirect
-    }
+    },
+    {
+  source: '/premium',
+  destination: '/hd',
+  permanent: true, // 301 redirect
+}
     ];
   },
 };
