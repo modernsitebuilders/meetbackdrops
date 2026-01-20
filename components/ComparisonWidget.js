@@ -19,6 +19,7 @@ export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, 
   }, []);
 
   const trackEvent = (action, label) => {
+    console.log('🔍 DEBUG imageId:', imageId);
     if (isAdmin) {
       console.log('🚫 Analytics blocked (admin mode):', action, label);
       return;
