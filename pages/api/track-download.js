@@ -10,13 +10,38 @@ export default async function handler(req, res) {
   
   // Only block actual bots, not real browsers
   if (!userAgent || 
-      userAgent.includes('bot') || 
-      userAgent.includes('Bot') ||
-      userAgent.includes('crawler') || 
-      userAgent.includes('spider') ||
-      userAgent.includes('Prerender')) {
-    return res.status(200).json({ success: true, skipped: 'bot' });
-  }
+    userAgent.includes('bot') || 
+    userAgent.includes('Bot') ||
+    userAgent.includes('crawler') || 
+    userAgent.includes('spider') ||
+    userAgent.includes('Prerender') ||
+    userAgent.toLowerCase().startsWith('node') ||
+    userAgent.includes('axios') ||
+    userAgent.includes('python') ||
+    userAgent.includes('curl') ||
+    userAgent.includes('wget')) {
+  return res.status(200).json({ success: true, skipped: 'bot' });
+}
+
+const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+// Simple in-memory rate limit (resets on deploy)
+if (!global.downloadRateLimit) global.downloadRateLimit = new Map();
+
+const now = Date.now();
+const ipData = global.downloadRateLimit.get(ip) || { count: 0, resetTime: now + 60000 };
+
+if (now > ipData.resetTime) {
+  ipData.count = 0;
+  ipData.resetTime = now + 60000;
+}
+
+ipData.count++;
+global.downloadRateLimit.set(ip, ipData);
+
+if (ipData.count > 10) { // Max 10 downloads per minute
+  return res.status(429).json({ error: 'Too many requests' });
+}
   
   const { 
     filename, 
