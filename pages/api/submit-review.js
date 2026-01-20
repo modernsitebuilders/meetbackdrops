@@ -7,7 +7,6 @@ export default async function handler(req, res) {
 
   const { rating, comment, name, email, date } = req.body;
 
-  // Prevent duplicate submissions
   try {
     // Set up Google auth
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -25,6 +24,34 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
+    // NEW: Check if user has any page views
+    const visitorId = req.cookies?.sb_visitor_id;
+    
+    if (visitorId) {
+      const analytics = await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range: 'Analytics!A2:O'
+      });
+
+      const userActivity = (analytics.data.values || []).filter(row => {
+        const rowVisitorId = row[10]; // Column K (Visitor ID)
+        const eventType = row[1]; // Column B (Event Type)
+        return rowVisitorId === visitorId && eventType === 'page_view';
+      });
+
+      // Reject if 0 page views
+      if (userActivity.length === 0) {
+        return res.status(403).json({ 
+          error: 'Reviews must be from actual site visitors. Please browse the site before submitting feedback.' 
+        });
+      }
+    } else {
+      // No visitor ID = suspicious, reject
+      return res.status(403).json({ 
+        error: 'Unable to verify site usage. Please enable cookies and browse the site before submitting a review.' 
+      });
+    }
+
     // Check for duplicate reviews in last 7 days
     const recentReviews = await sheets.spreadsheets.values.get({
       spreadsheetId,
@@ -34,16 +61,13 @@ export default async function handler(req, res) {
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
-    // Check if this person already reviewed recently
     const existingReview = (recentReviews.data.values || []).find(row => {
       const reviewDate = new Date(row[0]);
       const reviewEmail = row[4];
       const reviewName = row[2];
       
-      // Check if review is within last 7 days
       if (reviewDate < sevenDaysAgo) return false;
       
-      // Match by email (if provided) or by name
       if (email && email !== 'Not provided' && reviewEmail === email) return true;
       if (name && name !== 'Anonymous' && reviewName === name) return true;
       
@@ -75,15 +99,14 @@ export default async function handler(req, res) {
           name,
           comment,
           email,
-          'pending' // All new reviews start as pending
+          'pending'
         ]]
       }
     });
 
-    // If email was provided, save to Email List sheet (for easy export)
+    // If email was provided, save to Email List sheet
     if (email && email !== 'Not provided') {
       try {
-        // Check if email already exists
         const existingEmails = await sheets.spreadsheets.values.get({
           spreadsheetId,
           range: 'Email List!A:A'
@@ -92,7 +115,6 @@ export default async function handler(req, res) {
         const emails = existingEmails.data.values || [];
         const emailExists = emails.some(row => row[0] === email);
 
-        // Only add if email doesn't exist
         if (!emailExists) {
           await sheets.spreadsheets.values.append({
             spreadsheetId,
@@ -115,7 +137,6 @@ export default async function handler(req, res) {
           });
         }
       } catch (emailError) {
-        // If Email List sheet doesn't exist, log but don't fail the review
         console.log('Email List sheet not found, skipping email tracking');
       }
     }
