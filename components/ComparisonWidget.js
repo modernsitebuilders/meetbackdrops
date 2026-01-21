@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getOrCreateSession } from '@/lib/sessionTracking';
+import { getOrCreateSession } from '../lib/sessionTracking';
 
 export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose }) {
   const [sliderPosition, setSliderPosition] = useState(95);
