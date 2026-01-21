@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getOrCreateSession } from '@/lib/sessionTracking';
 
 export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose }) {
   const [sliderPosition, setSliderPosition] = useState(95);
@@ -24,6 +25,8 @@ export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, 
       return;
     }
 
+    const session = getOrCreateSession();
+
     // GA4 tracking
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', action, {
@@ -32,7 +35,7 @@ export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, 
       });
     }
     
-    // Google Sheets tracking with actual image ID
+    // Google Sheets tracking with session data
     fetch('/api/analytics', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -40,7 +43,9 @@ export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, 
         eventType: action,
         filename: imageId || 'comparison-widget',
         category: 'hd',
-        originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+        originalSource: session?.originalUtmSource || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
+        sessionId: session?.id || 'unknown',
+        visitorId: session?.visitorId || 'unknown'
       })
     }).catch(() => {});
   };

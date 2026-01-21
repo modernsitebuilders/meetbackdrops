@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
   
-  const { eventType, filename, category, originalSource } = req.body;
+  const { eventType, filename, category, originalSource, sessionId, visitorId } = req.body;
   
   try {
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -49,10 +49,10 @@ export default async function handler(req, res) {
       category,
       0,
       0,
-      'unknown',
+      sessionId || 'unknown',
       '',
       '',
-      'unknown',
+      visitorId || 'unknown',
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
         timeZone: 'America/New_York',
