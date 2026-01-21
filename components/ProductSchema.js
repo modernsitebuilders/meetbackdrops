@@ -19,6 +19,23 @@ export default function ProductSchema({ products, reviewsData }) {
             "worstRating": "1"
           }
         }),
+        ...(reviewsData && reviewsData.reviewsWithComments && reviewsData.reviewsWithComments.length > 0 && {
+          "review": reviewsData.reviewsWithComments.map(review => ({
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": review.rating.toString(),
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "author": {
+              "@type": "Person",
+              "name": review.name
+            },
+            "datePublished": review.date,
+            "reviewBody": review.comment
+          }))
+        }),
         "offers": {
           "@type": "Offer",
           "price": "4.99",
