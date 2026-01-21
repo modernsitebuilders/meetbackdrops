@@ -19,36 +19,41 @@ export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, 
     };
   }, []);
 
-  const trackEvent = (action, label) => {
-    if (isAdmin) {
-      console.log('🚫 Analytics blocked (admin mode):', action, label);
-      return;
-    }
+  // In ComparisonWidget.js - update the trackEvent function
+const trackEvent = (action, label) => {
+  if (isAdmin) {
+    console.log('🚫 Analytics blocked (admin mode):', action, label);
+    return;
+  }
 
-    const session = getOrCreateSession();
+  const session = getOrCreateSession();
 
-    // GA4 tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', action, {
-        event_category: 'HD Comparison Widget',
-        event_label: label,
-      });
-    }
-    
-    // Google Sheets tracking with session data
-    fetch('/api/analytics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        eventType: action,
-        filename: imageId || 'comparison-widget',
-        category: 'hd',
-        originalSource: session?.originalUtmSource || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
-        sessionId: session?.id || 'unknown',
-        visitorId: session?.visitorId || 'unknown'
-      })
-    }).catch(() => {});
-  };
+  // GA4 tracking
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', action, {
+      event_category: 'HD Comparison Widget',
+      event_label: label,
+    });
+  }
+  
+  // Google Sheets tracking with COMPLETE session data
+  fetch('/api/analytics', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      eventType: action,
+      filename: imageId || 'comparison-widget',
+      category: 'hd',
+      originalSource: session?.originalUtmSource || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
+      sessionId: session?.id || 'unknown',
+      visitorId: session?.visitorId || 'unknown',
+      pageViewsInSession: session?.pageViews || 0,
+      downloadsInSession: session?.downloads || 0,
+      visitorType: getVisitorType(),  // Add this
+      landingPage: session?.landingPage || ''  // Add this
+    })
+  }).catch(() => {});
+};
 
   // Track first slider drag
   useEffect(() => {

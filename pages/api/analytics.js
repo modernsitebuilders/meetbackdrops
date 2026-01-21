@@ -1,3 +1,4 @@
+// analytics.js - UPDATED VERSION
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
@@ -16,7 +17,19 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
   
-  const { eventType, filename, category, originalSource, sessionId, visitorId } = req.body;
+  // Get session data from request body
+  const { 
+    eventType, 
+    filename, 
+    category, 
+    originalSource,
+    sessionId,
+    visitorId,
+    pageViewsInSession,
+    downloadsInSession,
+    visitorType,
+    landingPage
+  } = req.body;
   
   try {
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -33,6 +46,7 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
+    // CORRECTED COLUMN STRUCTURE - matches track-download.js and track-page-view.js
     const eventData = [
       new Date().toLocaleString('en-US', {
         timeZone: 'America/New_York',
@@ -43,16 +57,16 @@ export default async function handler(req, res) {
         minute: '2-digit',
         second: '2-digit'
       }),
-      eventType,
+      eventType || 'widget_event',
       originalSource || 'direct',
-      filename,
-      category,
-      0,
-      0,
-      sessionId || 'unknown',
-      '',
-      '',
-      visitorId || 'unknown',
+      filename || 'comparison-widget',
+      category || 'hd',
+      pageViewsInSession || 0,           // Column F: Page Views in Session
+      downloadsInSession || 0,           // Column G: Downloads in Session
+      visitorType || 'new',              // Column H: Visitor Type
+      landingPage || '',                 // Column I: Landing Page
+      sessionId || '',                   // Column J: Session ID
+      visitorId || 'unknown',            // Column K: Visitor ID
       new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
       new Date().toLocaleTimeString('en-US', {
         timeZone: 'America/New_York',
