@@ -7,7 +7,7 @@ export default function ComparisonWidgetSchema() {
     "thumbnailUrl": "https://streambackdrops.com/images/bookshelves-dark/bookshelves-dark-09.webp",
     "contentUrl": "https://streambackdrops.com/hd",
     "embedUrl": "https://streambackdrops.com/hd",
-    "uploadDate": "2026-01-15",
+    "uploadDate": "2026-01-15T00:00:00-05:00",
     "duration": "PT0M30S",
     "interactionStatistic": {
       "@type": "InteractionCounter",

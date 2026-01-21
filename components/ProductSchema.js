@@ -23,8 +23,30 @@ export default function ProductSchema({ products, reviewsData }) {
           "@type": "Offer",
           "price": "4.99",
           "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
-          "url": "https://streambackdrops.com/hd"
+          "url": "https://streambackdrops.com/hd",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "USD"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 0,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          }
         },
         "brand": {
           "@type": "Brand",
