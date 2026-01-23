@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import PopularBadge from './PopularBadge';
 import ComparisonWidget from './ComparisonWidget';
 
-export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [], scores = {} }) {
+export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [], scores = {}, cloudinaryUrls = {} }) {
   const [sortedImages, setSortedImages] = useState(images);
   const [selectedImage, setSelectedImage] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -125,24 +125,40 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
                 </button>
 
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedImage({
-                      standard: `/images/${folderMap[slug]}/${image.filename}`,
-                      hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${folderMap[slug]}/${image.filename.replace('.webp', '-hd.png')}`
-                    });
-                  }}
-                  style={{
-                    background: '#FFD700',
-                    color: '#000',
-                    padding: '0.75rem 1.5rem',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    fontSize: '1rem',
-                    fontWeight: '600',
-                    cursor: 'pointer'
-                  }}
-                >
+  onClick={(e) => {
+    e.stopPropagation();
+    const baseFilename = image.filename.replace('.webp', '');
+    const imageUrl = cloudinaryUrls[baseFilename];
+    
+    console.log('DEBUG:', {
+      filename: image.filename,
+      baseFilename,
+      imageUrl,
+      hasCloudinaryUrls: Object.keys(cloudinaryUrls).length > 0
+    });
+    
+    if (imageUrl) {
+      const standardUrl = imageUrl.replace('/upload/', '/upload/f_png/');
+      console.log('STANDARD URL:', standardUrl);
+      setSelectedImage({
+        standard: standardUrl,
+        hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${folderMap[slug]}/${baseFilename}-hd.png`
+      });
+    } else {
+      console.log('NO CLOUDINARY URL FOUND');
+    }
+  }}
+  style={{
+    background: '#FFD700',
+    color: '#000',
+    padding: '0.75rem 1.5rem',
+    border: 'none',
+    borderRadius: '0.5rem',
+    fontSize: '1rem',
+    fontWeight: '600',
+    cursor: 'pointer'
+  }}
+>
                   👁️ Preview HD
                 </button>
 

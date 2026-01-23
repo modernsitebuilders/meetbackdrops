@@ -8,6 +8,7 @@ import Link from 'next/link';
 import ComparisonWidget from '../components/ComparisonWidget';
 import { loadStripe } from '@stripe/stripe-js';
 import { getReviewsData } from '../lib/reviews';
+import cloudinaryUrls from '../cloudinary-urls.json';
 
 export default function Premium({ reviewsData }) {
   const products = [
@@ -213,11 +214,16 @@ export default function Premium({ reviewsData }) {
                     })
                   }).catch(() => {});
                   
-                  setPreviewImage({
-  id: product.id,  // Add this
-  standard: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
-  hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
-});
+                  const baseFilename = product.id.replace('-hd', '');
+const imageUrl = cloudinaryUrls[baseFilename];
+
+if (imageUrl) {
+  setPreviewImage({
+    id: product.id,  
+    standard: imageUrl.replace('/upload/', '/upload/f_png/'),
+    hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
+  });
+}
                 }}
                 style={{
                   position: 'absolute',

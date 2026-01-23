@@ -10,6 +10,15 @@ function parseCookies(req) {
   return cookies;
 }
 
+function parseSessionData(req) {
+  try {
+    const sessionDataParam = req.query.sessionData;
+    return sessionDataParam ? JSON.parse(decodeURIComponent(sessionDataParam)) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
 export default async function handler(req, res) {
   const cookies = parseCookies(req);
   const { url, filename } = req.query;
@@ -64,23 +73,16 @@ export default async function handler(req, res) {
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
     
     // Track successful download AFTER limit check passes
-    const category = filename.match(/^(.+?)-\d+\.png$/)?.[1] || 'unknown';
+    const category = filename.match(/^StreamBackdrops-(.+?)-\d+\.png$/)?.[1] || 'unknown';
+    const sessionData = parseSessionData(req);
+    
     fetch(`${req.headers.origin || 'https://streambackdrops.com'}/api/track-download`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         filename: filename,
         category: category,
-        sessionId: cookies.sb_session || null,
-        originalReferrer: cookies.sb_ref || 'direct',
-        originalUtmSource: cookies.sb_utm_source || null,
-        originalUtmMedium: cookies.sb_utm_medium || null,
-        originalUtmCampaign: cookies.sb_utm_campaign || null,
-        landingPage: cookies.sb_landing || null,
-        pageViewsInSession: parseInt(cookies.sb_pageviews || '0'),
-        downloadsInSession: parseInt(cookies.sb_downloads || '0') + 1,
-        visitorId: cookies.sb_visitor || 'unknown',
-        visitorType: cookies.sb_visitor_type || 'new'
+        ...sessionData
       })
     }).catch(() => {});
     

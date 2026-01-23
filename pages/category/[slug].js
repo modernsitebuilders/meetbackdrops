@@ -79,7 +79,7 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
 )}
 
           <CategoryHeader category={category} />
-          
+
 <ImageGrid 
   images={category.images}
   scores={scores}
@@ -87,6 +87,7 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
   onImageClick={setPreviewImage}
   onDownload={(image) => handleDownload(image, slug)}
   topImages={topImages}
+  cloudinaryUrls={cloudinaryUrls}
 />
 
           <RelatedCategories currentSlug={slug} />
