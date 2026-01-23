@@ -5,11 +5,9 @@ import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
 import PopularBadge from './PopularBadge';
-import ComparisonWidget from './ComparisonWidget';
 
-export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [], scores = {}, cloudinaryUrls = {} }) {
+export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [], scores = {} }) {
   const [sortedImages, setSortedImages] = useState(images);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
@@ -124,44 +122,6 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
                   Download
                 </button>
 
-                <button
-  onClick={(e) => {
-    e.stopPropagation();
-    const baseFilename = image.filename.replace('.webp', '');
-    const imageUrl = cloudinaryUrls[baseFilename];
-    
-    console.log('DEBUG:', {
-      filename: image.filename,
-      baseFilename,
-      imageUrl,
-      hasCloudinaryUrls: Object.keys(cloudinaryUrls).length > 0
-    });
-    
-    if (imageUrl) {
-      const standardUrl = imageUrl.replace('/upload/', '/upload/f_png/');
-      console.log('STANDARD URL:', standardUrl);
-      setSelectedImage({
-        standard: standardUrl,
-        hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${folderMap[slug]}/${baseFilename}-hd.png`
-      });
-    } else {
-      console.log('NO CLOUDINARY URL FOUND');
-    }
-  }}
-  style={{
-    background: '#FFD700',
-    color: '#000',
-    padding: '0.75rem 1.5rem',
-    border: 'none',
-    borderRadius: '0.5rem',
-    fontSize: '1rem',
-    fontWeight: '600',
-    cursor: 'pointer'
-  }}
->
-                  👁️ Preview HD
-                </button>
-
                 <SocialShare 
                   image={{...image, category: slug}}
                   title={`${image.title} - Free Virtual Background`}
@@ -174,13 +134,6 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload, topI
           </div>
         ))}
       </div>
-
-      <ComparisonWidget
-        isOpen={!!selectedImage}
-        onClose={() => setSelectedImage(null)}
-        standardImg={selectedImage?.standard}
-        hdImg={selectedImage?.hd}
-      />
     </>
   );
 }
