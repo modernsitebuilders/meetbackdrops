@@ -76,15 +76,25 @@ export default async function handler(req, res) {
     const category = filename.match(/^StreamBackdrops-(.+?)-\d+\.png$/)?.[1] || 'unknown';
     const sessionData = parseSessionData(req);
     
-    fetch(`${req.headers.origin || 'https://streambackdrops.com'}/api/track-download`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        filename: filename,
-        category: category,
-        ...sessionData
-      })
-    }).catch(() => {});
+    // Call tracking directly instead of fetch (more reliable)
+    try {
+      const trackDownload = require('./track-download').default;
+      await trackDownload({
+        method: 'POST',
+        body: {
+          filename: filename,
+          category: category,
+          ...sessionData
+        },
+        headers: req.headers,
+        socket: req.socket
+      }, { 
+        status: () => ({ json: () => {} }),
+        json: () => {}
+      });
+    } catch (trackError) {
+      console.error('Tracking failed:', trackError);
+    }
     
     res.send(Buffer.from(buffer));
     
