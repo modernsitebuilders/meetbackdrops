@@ -60,11 +60,11 @@ export default function Premium({ reviewsData }) {
 { id: 'office-spaces-35-hd', name: 'Office Space #35', category: 'office-spaces' },
 { id: 'office-spaces-69-hd', name: 'Office Space #69', category: 'office-spaces' },
     // Nature Landscapes
-    { id: 'nature-landscapes-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes' },
-    { id: 'nature-landscapes-20-hd', name: 'Nature Landscape #20', category: 'nature-landscapes' },
-    { id: 'nature-landscapes-21-hd', name: 'Nature Landscape #21', category: 'nature-landscapes' },
-    { id: 'nature-landscapes-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes' },
-    { id: 'nature-landscapes-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes' }
+    { id: 'nature-landscape-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes' },
+    { id: 'nature-landscape-20-hd', name: 'Nature Landscape #20', category: 'nature-landscapes' },
+    { id: 'nature-landscape-21-hd', name: 'Nature Landscape #21', category: 'nature-landscapes' },
+    { id: 'nature-landscape-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes' },
+    { id: 'nature-landscape-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes' }
   ];
 
   const [selected, setSelected] = useState([]);
@@ -217,12 +217,14 @@ export default function Premium({ reviewsData }) {
                   const baseFilename = product.id.replace('-hd', '');
 const imageUrl = cloudinaryUrls[baseFilename];
 
+console.log('DEBUG:', baseFilename, '→', imageUrl);
+
 if (imageUrl) {
   setPreviewImage({
-    id: product.id,  
-    standard: imageUrl.replace('/upload/', '/upload/f_png/'),
-    hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
-  });
+  id: product.id,  
+  standard: imageUrl,  // Use URL directly, already PNG
+  hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
+});
 }
                 }}
                 style={{

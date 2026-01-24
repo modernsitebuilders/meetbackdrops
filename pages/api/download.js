@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     const response = await fetch(url);
     
     if (!response.ok) {
-      throw new Error('Failed to fetch image');
+      return res.status(429).json({ error: 'Download limit reached' });
     }
     
     const buffer = await response.arrayBuffer();
