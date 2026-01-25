@@ -1,155 +1,180 @@
 {
-  "lastUpdated": "2025-12-01T13:17:08.260Z",
+  "lastUpdated": "2026-01-25T16:14:40.238Z",
   "images": [
+    {
+      "filename": "christmas-background-35.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 110,
+      "score": 1130,
+      "webPath": "/images/christmas-backgrounds/christmas-background-35.webp"
+    },
+    {
+      "filename": "christmas-background-04.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 62,
+      "score": 645,
+      "webPath": "/images/christmas-backgrounds/christmas-background-04.webp"
+    },
+    {
+      "filename": "christmas-background-113.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 49,
+      "score": 515,
+      "webPath": "/images/christmas-backgrounds/christmas-background-113.webp"
+    },
+    {
+      "filename": "christmas-background-46.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 37,
+      "score": 400,
+      "webPath": "/images/christmas-backgrounds/christmas-background-46.webp"
+    },
+    {
+      "filename": "christmas-background-10.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 37,
+      "score": 400,
+      "webPath": "/images/christmas-backgrounds/christmas-background-10.webp"
+    },
+    {
+      "filename": "christmas-background-116.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 37,
+      "score": 400,
+      "webPath": "/images/christmas-backgrounds/christmas-background-116.webp"
+    },
+    {
+      "filename": "christmas-background-112.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 36,
+      "score": 390,
+      "webPath": "/images/christmas-backgrounds/christmas-background-112.webp"
+    },
+    {
+      "filename": "christmas-background-34.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 36,
+      "score": 385,
+      "webPath": "/images/christmas-backgrounds/christmas-background-34.webp"
+    },
     {
       "filename": "wall-shelves-bright-02.png",
       "category": "wall-shelves-bright",
-      "downloadCount": 16,
+      "downloadCount": 28,
+      "score": 310,
       "webPath": "/images/wall-shelves-bright/wall-shelves-bright-02.webp"
+    },
+    {
+      "filename": "wall-shelves-bright-16.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 28,
+      "score": 310,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-16.webp"
+    },
+    {
+      "filename": "christmas-background-66.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 27,
+      "score": 295,
+      "webPath": "/images/christmas-backgrounds/christmas-background-66.webp"
+    },
+    {
+      "filename": "bookshelves-bright-01.png",
+      "category": "bookshelves-bright",
+      "downloadCount": 26,
+      "score": 290,
+      "webPath": "/images/bookshelves-bright/bookshelves-bright-01.webp"
     },
     {
       "filename": "office-spaces-19.png",
       "category": "office-spaces",
-      "downloadCount": 14,
+      "downloadCount": 25,
+      "score": 280,
       "webPath": "/images/office-spaces/office-spaces-19.webp"
     },
     {
       "filename": "office-spaces-24.png",
       "category": "office-spaces",
-      "downloadCount": 12,
+      "downloadCount": 24,
+      "score": 270,
       "webPath": "/images/office-spaces/office-spaces-24.webp"
     },
     {
-      "filename": "christmas-background-04.png",
+      "filename": "christmas-background-105.png",
       "category": "christmas-backgrounds",
-      "downloadCount": 9,
-      "webPath": "/images/christmas-backgrounds/christmas-background-04.webp"
-    },
-    {
-      "filename": "christmas-background-35.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 9,
-      "webPath": "/images/christmas-backgrounds/christmas-background-35.webp"
-    },
-    {
-      "filename": "office-spaces-02.png",
-      "category": "office-spaces",
-      "downloadCount": 8,
-      "webPath": "/images/office-spaces/office-spaces-02.webp"
-    },
-    {
-      "filename": "office-spaces-33.png",
-      "category": "office-spaces",
-      "downloadCount": 8,
-      "webPath": "/images/office-spaces/office-spaces-33.webp"
+      "downloadCount": 22,
+      "score": 250,
+      "webPath": "/images/christmas-backgrounds/christmas-background-105.webp"
     },
     {
       "filename": "wall-shelves-bright-10.png",
       "category": "wall-shelves-bright",
-      "downloadCount": 7,
+      "downloadCount": 20,
+      "score": 230,
       "webPath": "/images/wall-shelves-bright/wall-shelves-bright-10.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-16.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 7,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-16.webp"
-    },
-    {
-      "filename": "library-17.png",
-      "category": "libraries",
-      "downloadCount": 6,
-      "webPath": "/images/libraries/library-17.webp"
-    },
-    {
-      "filename": "office-spaces-43.png",
-      "category": "office-spaces",
-      "downloadCount": 6,
-      "webPath": "/images/office-spaces/office-spaces-43.webp"
-    },
-    {
-      "filename": "wall-shelves-dark-04.png",
-      "category": "wall-shelves-dark",
-      "downloadCount": 6,
-      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-04.webp"
     },
     {
       "filename": "office-spaces-36.png",
       "category": "office-spaces",
-      "downloadCount": 6,
+      "downloadCount": 20,
+      "score": 230,
       "webPath": "/images/office-spaces/office-spaces-36.webp"
     },
     {
-      "filename": "wall-shelves-bright-13.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 6,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-13.webp"
+      "filename": "library-17.png",
+      "category": "libraries",
+      "downloadCount": 19,
+      "score": 220,
+      "webPath": "/images/libraries/library-17.webp"
     },
     {
-      "filename": "wall-shelves-bright-28.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 6,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-28.webp"
-    },
-    {
-      "filename": "christmas-background-10.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 6,
-      "webPath": "/images/christmas-backgrounds/christmas-background-10.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-05.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 5,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-05.webp"
-    },
-    {
-      "filename": "halloween-background-03.png",
-      "category": "halloween-backgrounds",
-      "downloadCount": 5,
-      "webPath": "/images/halloween-backgrounds/halloween-background-03.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-27.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 5,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-27.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-21.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 5,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-21.webp"
-    },
-    {
-      "filename": "office-spaces-01.png",
+      "filename": "office-spaces-33.png",
       "category": "office-spaces",
-      "downloadCount": 5,
-      "webPath": "/images/office-spaces/office-spaces-01.webp"
+      "downloadCount": 19,
+      "score": 220,
+      "webPath": "/images/office-spaces/office-spaces-33.webp"
     },
     {
-      "filename": "wall-shelves-dark-01.png",
-      "category": "wall-shelves-dark",
-      "downloadCount": 5,
-      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-01.webp"
+      "filename": "office-spaces-69.png",
+      "category": "office-spaces",
+      "downloadCount": 19,
+      "score": 220,
+      "webPath": "/images/office-spaces/office-spaces-69.webp"
     },
     {
-      "filename": "wall-shelves-dark-19.png",
-      "category": "wall-shelves-dark",
-      "downloadCount": 5,
-      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-19.webp"
-    },
-    {
-      "filename": "christmas-background-12.png",
+      "filename": "christmas-background-103.png",
       "category": "christmas-backgrounds",
-      "downloadCount": 5,
-      "webPath": "/images/christmas-backgrounds/christmas-background-12.webp"
+      "downloadCount": 19,
+      "score": 215,
+      "webPath": "/images/christmas-backgrounds/christmas-background-103.webp"
     },
     {
-      "filename": "bookshelves-dark-07.png",
-      "category": "bookshelves-dark",
-      "downloadCount": 5,
-      "webPath": "/images/bookshelves-dark/bookshelves-dark-07.webp"
+      "filename": "office-spaces-02.png",
+      "category": "office-spaces",
+      "downloadCount": 18,
+      "score": 210,
+      "webPath": "/images/office-spaces/office-spaces-02.webp"
+    },
+    {
+      "filename": "christmas-background-72.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 17,
+      "score": 195,
+      "webPath": "/images/christmas-backgrounds/christmas-background-72.webp"
+    },
+    {
+      "filename": "christmas-background-78.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 17,
+      "score": 195,
+      "webPath": "/images/christmas-backgrounds/christmas-background-78.webp"
+    },
+    {
+      "filename": "christmas-background-87.png",
+      "category": "christmas-backgrounds",
+      "downloadCount": 16,
+      "score": 190,
+      "webPath": "/images/christmas-backgrounds/christmas-background-87.webp"
     }
   ]
 }
