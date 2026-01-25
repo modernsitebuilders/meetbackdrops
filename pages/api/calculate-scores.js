@@ -160,44 +160,24 @@ export default async function handler(req, res) {
       }
     });
 
-    // Calculate final scores with NEW SIMPLE SYSTEM
+    // Calculate final scores - FRESH START
     Object.keys(imageStats).forEach(filename => {
       const stats = imageStats[filename];
       
-     // START AT 100 POINTS
-let score = 100;
-
-// Boost for NEW batch images (only affects zero-download sorting)
-const newImagePatterns = [
-  /^office-spaces-(6[8-9]|7[0-9])\.webp$/,
-  /^libraries-(1[9-9]|2[0-9]|3[0-2])\.webp$/,
-  /^wall-shelves-bright-(4[8-9]|5[0-5])\.webp$/,
-  /^bookshelves-bright-(1[9-9]|2[0-9]|3[0-9]|4[0-2])\.webp$/,
-  /^nature-landscapes-(5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9])\.webp$/
-];
-
-const isNewImage = newImagePatterns.some(pattern => pattern.test(filename));
-if (isNewImage) {
-  score += 25; // New batch starts at 125
-}
+      // Everyone starts at 30
+      let score = 30;
       
-      // ADD POINTS FOR DOWNLOADS
+      // Downloads = +10 each
       score += (stats.downloads * 10);
       
-      // BONUS FOR RECENT DOWNLOADS
-      if (stats.recentDownloads > 0) {
-        score += stats.recentDownloads * 2;
-      }
-      
-      // DECAY FOR ZERO-DOWNLOAD IMAGES
-      if (stats.downloads === 0) {
-        const daysOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24);
-        
-        // 30-day grace period, then -1 point per day
-        if (daysOld > 30) {
-          const decayDays = Math.floor(daysOld - 30);
-          score -= decayDays;
-        }
+      // Month without download = -5
+      if (stats.lastDownload) {
+        const monthsSinceDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24 * 30);
+        score -= Math.floor(monthsSinceDownload) * 5;
+      } else if (stats.downloads === 0) {
+        // Never downloaded: count months since first seen
+        const monthsOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24 * 30);
+        score -= Math.floor(monthsOld) * 5;
       }
       
       // Floor at 0
