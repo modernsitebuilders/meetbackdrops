@@ -29,6 +29,10 @@ export default async function handler(req, res) {
 
   const dailyDownloads = parseInt(cookies.dl_count_daily || '0');
   
+  if (req.method === 'HEAD') {
+    return res.status(200).end();
+  }
+
   if (dailyDownloads >= 5) {
     return res.status(429).json({ 
       error: 'Daily download limit of 5 reached. Please try again tomorrow.' 
@@ -48,10 +52,6 @@ export default async function handler(req, res) {
     return res.status(429).json({ 
       error: `Monthly download limit of 10 reached. Your oldest download will expire in ${daysUntilAvailable} day${daysUntilAvailable !== 1 ? 's' : ''}.` 
     });
-  }
-
-  if (req.method === 'HEAD') {
-    return res.status(200).end();
   }
 
   try {
