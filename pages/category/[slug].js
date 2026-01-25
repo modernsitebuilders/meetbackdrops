@@ -290,15 +290,8 @@ export async function getStaticProps({ params }) {
       }
     });
 
-    // Get top 10 (exclude seasonal)
-    topImages = Object.entries(downloadCounts)
-      .filter(([filename]) => {
-        // Exclude seasonal backgrounds
-        return !filename.match(/^(halloween|christmas)-background/i);
-      })
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10)
-      .map(([filename]) => filename.replace('.png', '.webp'));
+    // Top 10 badges disabled - fresh start
+    topImages = [];
 
   // Calculate scores for this category
 const category = categoryInfo[params.slug];
