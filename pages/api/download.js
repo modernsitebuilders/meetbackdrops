@@ -76,12 +76,16 @@ export default async function handler(req, res) {
     // Track successful download AFTER limit check passes
     const category = filename.match(/^StreamBackdrops-(.+?)-\d+\.png$/)?.[1] || 'unknown';
     const sessionData = parseSessionData(req);
-    
+
     // Track via API call
     try {
       await fetch(`${req.headers.origin || 'https://streambackdrops.com'}/api/track-download`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'user-agent': req.headers['user-agent'] || 'browser',
+          'x-forwarded-for': req.headers['x-forwarded-for'] || req.socket.remoteAddress
+        },
         body: JSON.stringify({
           filename,
           category,
