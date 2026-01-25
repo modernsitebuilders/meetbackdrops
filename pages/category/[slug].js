@@ -280,12 +280,19 @@ export async function getStaticProps({ params }) {
     const downloadCounts = {};
     const imageScores = {};
 
-    // Count downloads for popular badge
+    // Count downloads for popular badge (from Jan 25 forward only)
+    const RESET_DATE = new Date('2026-01-25');
     rows.slice(1).forEach(row => {
+      const timestamp = row[0];
       const actionType = row[1];
       const filename = row[3];
       
-      if (actionType === 'download' && filename && filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
+      const eventDate = new Date(timestamp);
+      
+      if (actionType === 'download' && 
+          filename && 
+          filename.match(/\.(webp|png|jpg|jpeg)$/i) &&
+          eventDate >= RESET_DATE) {
         downloadCounts[filename] = (downloadCounts[filename] || 0) + 1;
       }
     });
