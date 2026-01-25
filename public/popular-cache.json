@@ -1,180 +1,40 @@
 {
-  "lastUpdated": "2026-01-25T16:14:40.238Z",
+  "lastUpdated": "2026-01-25T18:44:21.827Z",
   "images": [
     {
-      "filename": "christmas-background-35.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 110,
-      "score": 1130,
-      "webPath": "/images/christmas-backgrounds/christmas-background-35.webp"
+      "filename": "StreamBackdrops-bokeh-42.png",
+      "category": "bokeh",
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/bokeh/StreamBackdrops-bokeh-42.webp"
     },
     {
-      "filename": "christmas-background-04.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 62,
-      "score": 645,
-      "webPath": "/images/christmas-backgrounds/christmas-background-04.webp"
-    },
-    {
-      "filename": "christmas-background-113.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 49,
-      "score": 515,
-      "webPath": "/images/christmas-backgrounds/christmas-background-113.webp"
-    },
-    {
-      "filename": "christmas-background-46.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 37,
-      "score": 400,
-      "webPath": "/images/christmas-backgrounds/christmas-background-46.webp"
-    },
-    {
-      "filename": "christmas-background-10.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 37,
-      "score": 400,
-      "webPath": "/images/christmas-backgrounds/christmas-background-10.webp"
-    },
-    {
-      "filename": "christmas-background-116.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 37,
-      "score": 400,
-      "webPath": "/images/christmas-backgrounds/christmas-background-116.webp"
-    },
-    {
-      "filename": "christmas-background-112.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 36,
-      "score": 390,
-      "webPath": "/images/christmas-backgrounds/christmas-background-112.webp"
-    },
-    {
-      "filename": "christmas-background-34.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 36,
-      "score": 385,
-      "webPath": "/images/christmas-backgrounds/christmas-background-34.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-02.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 28,
-      "score": 310,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-02.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-16.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 28,
-      "score": 310,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-16.webp"
-    },
-    {
-      "filename": "christmas-background-66.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 27,
-      "score": 295,
-      "webPath": "/images/christmas-backgrounds/christmas-background-66.webp"
-    },
-    {
-      "filename": "bookshelves-bright-01.png",
+      "filename": "StreamBackdrops-bookshelves-bright-16.png",
       "category": "bookshelves-bright",
-      "downloadCount": 26,
-      "score": 290,
-      "webPath": "/images/bookshelves-bright/bookshelves-bright-01.webp"
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/bookshelves-bright/StreamBackdrops-bookshelves-bright-16.webp"
     },
     {
-      "filename": "office-spaces-19.png",
+      "filename": "StreamBackdrops-office-spaces-36.png",
       "category": "office-spaces",
-      "downloadCount": 25,
-      "score": 280,
-      "webPath": "/images/office-spaces/office-spaces-19.webp"
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/office-spaces/StreamBackdrops-office-spaces-36.webp"
     },
     {
-      "filename": "office-spaces-24.png",
+      "filename": "StreamBackdrops-office-spaces-71.png",
       "category": "office-spaces",
-      "downloadCount": 24,
-      "score": 270,
-      "webPath": "/images/office-spaces/office-spaces-24.webp"
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/office-spaces/StreamBackdrops-office-spaces-71.webp"
     },
     {
-      "filename": "christmas-background-105.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 22,
-      "score": 250,
-      "webPath": "/images/christmas-backgrounds/christmas-background-105.webp"
-    },
-    {
-      "filename": "wall-shelves-bright-10.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 20,
-      "score": 230,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-10.webp"
-    },
-    {
-      "filename": "office-spaces-36.png",
+      "filename": "StreamBackdrops-office-spaces-63.png",
       "category": "office-spaces",
-      "downloadCount": 20,
-      "score": 230,
-      "webPath": "/images/office-spaces/office-spaces-36.webp"
-    },
-    {
-      "filename": "library-17.png",
-      "category": "libraries",
-      "downloadCount": 19,
-      "score": 220,
-      "webPath": "/images/libraries/library-17.webp"
-    },
-    {
-      "filename": "office-spaces-33.png",
-      "category": "office-spaces",
-      "downloadCount": 19,
-      "score": 220,
-      "webPath": "/images/office-spaces/office-spaces-33.webp"
-    },
-    {
-      "filename": "office-spaces-69.png",
-      "category": "office-spaces",
-      "downloadCount": 19,
-      "score": 220,
-      "webPath": "/images/office-spaces/office-spaces-69.webp"
-    },
-    {
-      "filename": "christmas-background-103.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 19,
-      "score": 215,
-      "webPath": "/images/christmas-backgrounds/christmas-background-103.webp"
-    },
-    {
-      "filename": "office-spaces-02.png",
-      "category": "office-spaces",
-      "downloadCount": 18,
-      "score": 210,
-      "webPath": "/images/office-spaces/office-spaces-02.webp"
-    },
-    {
-      "filename": "christmas-background-72.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 17,
-      "score": 195,
-      "webPath": "/images/christmas-backgrounds/christmas-background-72.webp"
-    },
-    {
-      "filename": "christmas-background-78.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 17,
-      "score": 195,
-      "webPath": "/images/christmas-backgrounds/christmas-background-78.webp"
-    },
-    {
-      "filename": "christmas-background-87.png",
-      "category": "christmas-backgrounds",
-      "downloadCount": 16,
-      "score": 190,
-      "webPath": "/images/christmas-backgrounds/christmas-background-87.webp"
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/office-spaces/StreamBackdrops-office-spaces-63.webp"
     }
   ]
 }

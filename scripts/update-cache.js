@@ -30,7 +30,7 @@ async function updateCache() {
   const imageStats = {};
   const now = new Date();
   
-  // Track downloads and last download date
+  // Track downloads from Jan 25 forward only
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
     const timestamp = row[0];
@@ -38,7 +38,12 @@ async function updateCache() {
     const filename = row[3];
     const category = row[4];
     
-    if (actionType === 'download' && filename && filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
+    const eventDate = new Date(timestamp);
+    
+    if (actionType === 'download' && 
+        filename && 
+        filename.match(/\.(webp|png|jpg|jpeg)$/i) &&
+        eventDate >= RESET_DATE) {
       if (!imageStats[filename]) {
         imageStats[filename] = {
           filename: filename,
@@ -49,7 +54,6 @@ async function updateCache() {
       }
       imageStats[filename].downloads++;
       
-      const eventDate = new Date(timestamp);
       if (!imageStats[filename].lastDownload || eventDate > imageStats[filename].lastDownload) {
         imageStats[filename].lastDownload = eventDate;
       }
