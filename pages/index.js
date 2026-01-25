@@ -122,7 +122,7 @@ export default function Home({ structuredData }) {
       <WhyDifferent />
 
       {/* Category Cards Grid */}
-      <div className={`${styles.categoryGrid} category-grid`}>
+      <div id="categories" className={`${styles.categoryGrid} category-grid`}>
         <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/bookshelves-bright-01.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={true} count={CATEGORIES['bookshelves-bright'].count} />
         <Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/bookshelves-dark-07.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} count={CATEGORIES['bookshelves-dark'].count} />
         <Card href="/category/wall-shelves-bright" title="Wall Shelves - Bright" description="Clean, minimalist wall shelf backgrounds with bright lighting" imageSrc="/images/wall-shelves-bright/wall-shelves-bright-01.webp" imageAlt="Bright wall shelf background for video calls" navigate={navigate} count={CATEGORIES['wall-shelves-bright'].count} />
