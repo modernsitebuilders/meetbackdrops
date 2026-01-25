@@ -179,17 +179,29 @@ export default function Premium({ reviewsData }) {
         boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
       }}>
         <p style={{ margin: 0, fontSize: '1.15rem', fontWeight: '500' }}>
-          Not ready for HD? <a 
-            href="/#categories" 
-            style={{ 
-              color: 'white', 
-              fontWeight: 'bold', 
-              textDecoration: 'underline',
-              textUnderlineOffset: '3px'
-            }}
-          >
-            Browse {TOTAL_IMAGES_FORMATTED} free backgrounds instead →
-          </a>
+          Not ready for HD? 
+          <a 
+  href="/#categories" 
+  onClick={() => {
+    fetch('/api/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventType: 'hd_free_link_clicked',
+        category: 'hd',
+        originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+      })
+    }).catch(() => {});
+  }}
+  style={{ 
+    color: 'white', 
+    fontWeight: 'bold', 
+    textDecoration: 'underline',
+    textUnderlineOffset: '3px'
+  }}
+>
+  Browse {TOTAL_IMAGES_FORMATTED} free backgrounds instead →
+</a>
         </p>
       </div>
 
