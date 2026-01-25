@@ -104,7 +104,12 @@ export default async function handler(req, res) {
       
       if (!filename) return;
       
-      if (filename.startsWith('/') || 
+      // Strip StreamBackdrops prefix
+      if (filename.startsWith('StreamBackdrops-')) {
+        filename = filename.replace('StreamBackdrops-', '');
+      }
+      
+      if (filename.startsWith('/') ||
           filename.includes('/category/') || 
           filename.includes('/blog') ||
           filename.includes('/contact') ||
