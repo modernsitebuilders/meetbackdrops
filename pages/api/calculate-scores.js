@@ -2,6 +2,9 @@ import { google } from 'googleapis';
 import fs from 'fs';
 import path from 'path';
 
+// Fresh start date - all existing images reset to this date
+const RESET_DATE = new Date('2026-01-25');
+
 // Cache scores in memory (persists during function lifetime)
 let cachedScores = null;
 let lastCalculated = null;
@@ -175,13 +178,11 @@ export default async function handler(req, res) {
         const monthsSinceDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24 * 30);
         score -= Math.floor(monthsSinceDownload) * 5;
       } else if (stats.downloads === 0) {
-        // Never downloaded: count months since first seen
-        const monthsOld = (now - stats.firstSeen) / (1000 * 60 * 60 * 24 * 30);
+        // Never downloaded: use reset date for old images, firstSeen for new
+        const startDate = stats.firstSeen < RESET_DATE ? RESET_DATE : stats.firstSeen;
+        const monthsOld = (now - startDate) / (1000 * 60 * 60 * 24 * 30);
         score -= Math.floor(monthsOld) * 5;
       }
-      
-      // Floor at 0
-      score = Math.max(0, score);
       
       stats.score = score;
       stats.daysOld = Math.floor((now - stats.firstSeen) / (1000 * 60 * 60 * 24));
