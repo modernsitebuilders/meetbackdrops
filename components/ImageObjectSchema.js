@@ -4,8 +4,17 @@ export default function ImageObjectSchema({ images, category, categorySlug, base
     const baseName = filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
     const score = scores[filename] || scores[`${baseName}.png`] || scores[`${baseName}.webp`] || 0;
     
-    const metaKey = baseName;
-    const imageMeta = metadata[metaKey] || {};
+    // Try multiple key formats
+const metaKey = baseName;
+let imageMeta = metadata[metaKey];
+
+if (!imageMeta) {
+  // Try finding by filename
+  const matchingKey = Object.keys(metadata).find(key => 
+    metadata[key].filename === filename
+  );
+  imageMeta = matchingKey ? metadata[matchingKey] : {};
+}
     
     return { filename, score, meta: imageMeta };
   });
