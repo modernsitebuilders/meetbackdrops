@@ -9,6 +9,7 @@ import ComparisonWidget from '../components/ComparisonWidget';
 import { loadStripe } from '@stripe/stripe-js';
 import { getReviewsData } from '../lib/reviews';
 import cloudinaryUrls from '../cloudinary-urls.json';
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
 export default function Premium({ reviewsData }) {
   const products = [
@@ -163,6 +164,34 @@ export default function Premium({ reviewsData }) {
           Hover over images to preview HD quality with our comparison slider
         </p>
       </section>
+
+      {/* Free Backgrounds Banner */}
+      <div style={{
+        background: 'linear-gradient(135deg, #10b981, #059669)',
+        color: 'white',
+        padding: '1.25rem 2rem',
+        textAlign: 'center',
+        margin: '0 auto',
+        maxWidth: '800px',
+        borderRadius: '0.75rem',
+        marginTop: '-1.5rem',
+        marginBottom: '2rem',
+        boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+      }}>
+        <p style={{ margin: 0, fontSize: '1.15rem', fontWeight: '500' }}>
+          Not ready for HD? <a 
+            href="/#categories" 
+            style={{ 
+              color: 'white', 
+              fontWeight: 'bold', 
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px'
+            }}
+          >
+            Browse {TOTAL_IMAGES_FORMATTED} free backgrounds instead →
+          </a>
+        </p>
+      </div>
 
       <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{
