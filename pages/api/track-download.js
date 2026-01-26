@@ -59,10 +59,27 @@ if (ipData.count > 10) { // Max 10 downloads per minute
     visitorType
   } = req.body;
   
-  // Clean category - extract folder name from filename if needed
-  const cleanCategory = category.includes('.') 
+  // Normalize category to canonical folder names
+  const categoryMap = {
+    'art-gallery': 'art-galleries',
+    'bokeh': 'bokeh-backgrounds',
+    'bookshelf': 'bookshelves-dark',
+    'office-space': 'office-spaces',
+    'historic-space': 'historic-spaces',
+    'nature-landscape': 'nature-landscapes',
+    'living-room': 'living-rooms',
+    'coffee-shop': 'coffee-shops',
+    'urban-loft': 'urban-lofts',
+    'garden': 'gardens-patios',
+    'library': 'libraries',
+    'kitchen': 'kitchens'
+  };
+  
+  let cleanCategory = category.includes('.') 
     ? category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '')
     : category;
+  
+  cleanCategory = categoryMap[cleanCategory] || cleanCategory;
   
   try {
     // Fix private key format

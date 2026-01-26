@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-01-26T12:20:27.348Z",
+  "lastUpdated": "2026-01-26T12:39:59.971Z",
   "images": [
     {
       "filename": "StreamBackdrops-bokeh-42.png",
-      "category": "bokeh",
+      "category": "bokeh-backgrounds",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/bokeh/StreamBackdrops-bokeh-42.webp"
+      "webPath": "/images/bokeh-backgrounds/StreamBackdrops-bokeh-42.webp"
     },
     {
       "filename": "StreamBackdrops-bookshelves-bright-16.png",
@@ -38,10 +38,10 @@
     },
     {
       "filename": "StreamBackdrops-art-gallery-2.png",
-      "category": "art-gallery",
+      "category": "art-galleries",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/art-gallery/StreamBackdrops-art-gallery-2.webp"
+      "webPath": "/images/art-galleries/StreamBackdrops-art-gallery-2.webp"
     },
     {
       "filename": "StreamBackdrops-nature-landscape-99.png",

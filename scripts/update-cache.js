@@ -66,15 +66,23 @@ async function updateCache() {
     'nature-landscape': 'nature-landscapes',
     'living-room': 'living-rooms',
     'office-space': 'office-spaces',
+    'office-spaces': 'office-spaces',
     'bookshelf': 'bookshelves-dark',
+    'bookshelves-bright': 'bookshelves-bright',
+    'bookshelves-dark': 'bookshelves-dark',
     'library': 'libraries',
     'kitchen': 'kitchens',
     'garden': 'gardens-patios',
     'coffee-shop': 'coffee-shops',
     'historic-space': 'historic-spaces',
+    'historic-spaces': 'historic-spaces',
     'urban-loft': 'urban-lofts',
     'wall-shelves-bright': 'wall-shelves-bright',
     'wall-shelves-dark': 'wall-shelves-dark',
+    'bokeh': 'bokeh-backgrounds',
+    'bokeh-backgrounds': 'bokeh-backgrounds',
+    'art-gallery': 'art-galleries',
+    'art-galleries': 'art-galleries'
   };
 
   // Calculate scores using NEW system
