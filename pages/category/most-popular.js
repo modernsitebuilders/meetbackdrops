@@ -105,7 +105,10 @@ export default function MostPopular() {
       console.log('Looking for:', baseFilename, 'Found:', imageUrl ? 'YES' : 'NO');
       
       if (imageUrl) {
-        const cloudinaryPngUrl = imageUrl.replace('/upload/', '/upload/f_png/');
+        const cloudinaryPngUrl = imageUrl
+  .replace('.png', '')
+  .replace('/upload/', '/upload/f_png/')
+  + '.png';
         const filename = `StreamBackdrops-${baseFilename}.png`;
         const downloadUrl = `/api/download?url=${encodeURIComponent(cloudinaryPngUrl)}&filename=${encodeURIComponent(filename)}`;
         
