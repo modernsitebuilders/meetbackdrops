@@ -225,7 +225,11 @@ export default function MostPopular() {
                 <div 
                   key={image.filename}
                   className={styles.imageCard}
-                  onClick={() => setSelectedImage(image)}
+                  onClick={() => setSelectedImage({
+  filename: image.webPath.split('/').pop(),
+  title: image.filename.replace('StreamBackdrops-', '').replace('.png', ''),
+  category: image.category
+})}
                 >
                   <div className={styles.imageWrapper}>
                     <Image
