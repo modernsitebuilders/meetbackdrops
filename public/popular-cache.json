@@ -1,61 +1,61 @@
 {
-  "lastUpdated": "2026-01-26T12:39:59.971Z",
+  "lastUpdated": "2026-01-26T12:43:46.584Z",
   "images": [
     {
       "filename": "StreamBackdrops-bokeh-42.png",
       "category": "bokeh-backgrounds",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/bokeh-backgrounds/StreamBackdrops-bokeh-42.webp"
+      "webPath": "/images/bokeh-backgrounds/bokeh-42.webp"
     },
     {
       "filename": "StreamBackdrops-bookshelves-bright-16.png",
       "category": "bookshelves-bright",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/bookshelves-bright/StreamBackdrops-bookshelves-bright-16.webp"
+      "webPath": "/images/bookshelves-bright/bookshelves-bright-16.webp"
     },
     {
       "filename": "StreamBackdrops-office-spaces-36.png",
       "category": "office-spaces",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/office-spaces/StreamBackdrops-office-spaces-36.webp"
+      "webPath": "/images/office-spaces/office-spaces-36.webp"
     },
     {
       "filename": "StreamBackdrops-office-spaces-71.png",
       "category": "office-spaces",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/office-spaces/StreamBackdrops-office-spaces-71.webp"
+      "webPath": "/images/office-spaces/office-spaces-71.webp"
     },
     {
       "filename": "StreamBackdrops-office-spaces-63.png",
       "category": "office-spaces",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/office-spaces/StreamBackdrops-office-spaces-63.webp"
+      "webPath": "/images/office-spaces/office-spaces-63.webp"
     },
     {
       "filename": "StreamBackdrops-art-gallery-2.png",
       "category": "art-galleries",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/art-galleries/StreamBackdrops-art-gallery-2.webp"
+      "webPath": "/images/art-galleries/art-gallery-2.webp"
     },
     {
       "filename": "StreamBackdrops-nature-landscape-99.png",
       "category": "nature-landscapes",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/nature-landscapes/StreamBackdrops-nature-landscape-99.webp"
+      "webPath": "/images/nature-landscapes/nature-landscape-99.webp"
     },
     {
       "filename": "StreamBackdrops-historic-space-3.png",
       "category": "historic-spaces",
       "downloadCount": 1,
       "score": 40,
-      "webPath": "/images/historic-spaces/StreamBackdrops-historic-space-3.webp"
+      "webPath": "/images/historic-spaces/historic-space-3.webp"
     }
   ]
 }

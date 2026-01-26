@@ -102,7 +102,9 @@ async function updateCache() {
     
     score = Math.max(0, score);
     
-    const webFilename = item.filename.replace('.png', '.webp');
+    const webFilename = item.filename
+        .replace('StreamBackdrops-', '')
+        .replace('.png', '.webp');
     const extracted = item.category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');
     const category = folderMap[extracted] || extracted;
     
