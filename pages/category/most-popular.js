@@ -156,7 +156,10 @@ export default function MostPopular() {
             image={selectedImage}
             slug={selectedImage.category}
             onClose={() => setSelectedImage(null)}
-            onDownload={handleImageDownload}
+            onDownload={(img) => handleImageDownload({
+  filename: img.filename,
+  category: img.category
+})}
           />
         )}
             <div className={styles.popularBadge}>
