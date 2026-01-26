@@ -8,6 +8,7 @@ import styles from '../../styles/CategoryPage.module.css';
 import RateLimitModal from '../../components/RateLimitModal';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import { getSessionData, updateSessionActivity } from '../../lib/sessionTracking';
+import ImagePreviewModal from '../../components/ImagePreviewModal';
 
 export default function MostPopular() {
   const [images, setImages] = useState([]);
@@ -150,14 +151,14 @@ export default function MostPopular() {
           <button className={styles.modalClose} onClick={onClose}>×</button>
           
           <div className={styles.modalImageContainer}>
-            <Image
-  src={image.webPath}
-  alt="Popular virtual background"
-  width={800}
-  height={450}
-  sizes="(max-width: 768px) 100vw, 800px"
-  style={{ objectFit: 'cover' }}
-/>
+            {selectedImage && (
+          <ImagePreviewModal
+            image={selectedImage}
+            slug={selectedImage.category}
+            onClose={() => setSelectedImage(null)}
+            onDownload={handleImageDownload}
+          />
+        )}
             <div className={styles.popularBadge}>
               Popular Choice
             </div>
