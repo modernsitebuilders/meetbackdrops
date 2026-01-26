@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-25T18:44:21.827Z",
+  "lastUpdated": "2026-01-26T12:20:27.348Z",
   "images": [
     {
       "filename": "StreamBackdrops-bokeh-42.png",
@@ -35,6 +35,27 @@
       "downloadCount": 1,
       "score": 40,
       "webPath": "/images/office-spaces/StreamBackdrops-office-spaces-63.webp"
+    },
+    {
+      "filename": "StreamBackdrops-art-gallery-2.png",
+      "category": "art-gallery",
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/art-gallery/StreamBackdrops-art-gallery-2.webp"
+    },
+    {
+      "filename": "StreamBackdrops-nature-landscape-99.png",
+      "category": "nature-landscapes",
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/nature-landscapes/StreamBackdrops-nature-landscape-99.webp"
+    },
+    {
+      "filename": "StreamBackdrops-historic-space-3.png",
+      "category": "historic-spaces",
+      "downloadCount": 1,
+      "score": 40,
+      "webPath": "/images/historic-spaces/StreamBackdrops-historic-space-3.webp"
     }
   ]
 }
