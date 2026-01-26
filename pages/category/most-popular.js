@@ -97,7 +97,10 @@ export default function MostPopular() {
         })
       });
 
-      const baseFilename = image.filename.replace('.webp', '').replace('.png', '');
+      const baseFilename = image.filename
+        .replace('StreamBackdrops-', '')
+        .replace('.webp', '')
+        .replace('.png', '');
       const imageUrl = cloudinaryUrls[baseFilename];
       console.log('Looking for:', baseFilename, 'Found:', imageUrl ? 'YES' : 'NO');
       
