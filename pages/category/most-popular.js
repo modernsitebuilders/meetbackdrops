@@ -9,6 +9,7 @@ import RateLimitModal from '../../components/RateLimitModal';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import { getSessionData, updateSessionActivity } from '../../lib/sessionTracking';
 import ImagePreviewModal from '../../components/ImagePreviewModal';
+import { useImageDownload } from '../../lib/useImageDownload';
 
 export default function MostPopular() {
   const [images, setImages] = useState([]);
@@ -16,10 +17,14 @@ export default function MostPopular() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cloudinaryUrls, setCloudinaryUrls] = useState({});
 
-  const [showReviewModal, setShowReviewModal] = useState(false);
-  const [downloadedImage, setDownloadedImage] = useState(null);
-  const [showRateLimitModal, setShowRateLimitModal] = useState(false);
-  const [rateLimitError, setRateLimitError] = useState('');
+  const { 
+    handleDownload,
+    showReviewModal, 
+    setShowReviewModal,
+    showRateLimitModal,
+    setShowRateLimitModal,
+    rateLimitError
+  } = useImageDownload(cloudinaryUrls);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -162,10 +167,7 @@ export default function MostPopular() {
             image={selectedImage}
             slug={selectedImage.category}
             onClose={() => setSelectedImage(null)}
-            onDownload={(img) => handleImageDownload({
-  filename: img.filename,
-  category: img.category
-})}
+            onDownload={(img) => handleDownload(img, img.category)}
           />
         )}
             <div className={styles.popularBadge}>
