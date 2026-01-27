@@ -25,8 +25,16 @@ export default async function handler(req, res) {
 
 const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
-// Simple in-memory rate limit (resets on deploy)
-if (!global.downloadRateLimit) global.downloadRateLimit = new Map();
+// Track unique downloads per user per image
+if (!global.uniqueDownloads) global.uniqueDownloads = new Set();
+
+const downloadKey = `${visitorId || ip}_${filename}`;
+if (global.uniqueDownloads.has(downloadKey)) {
+  // Already tracked this download for this user
+  return res.status(200).json({ success: true, skipped: 'duplicate' });
+}
+
+global.uniqueDownloads.add(downloadKey);
 
 const now = Date.now();
 const ipData = global.downloadRateLimit.get(ip) || { count: 0, resetTime: now + 60000 };
