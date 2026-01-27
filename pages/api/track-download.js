@@ -23,34 +23,6 @@ export default async function handler(req, res) {
   return res.status(200).json({ success: true, skipped: 'bot' });
 }
 
-const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-
-// Track unique downloads per user per image
-if (!global.uniqueDownloads) global.uniqueDownloads = new Set();
-
-const downloadKey = `${visitorId || ip}_${filename}`;
-if (global.uniqueDownloads.has(downloadKey)) {
-  // Already tracked this download for this user
-  return res.status(200).json({ success: true, skipped: 'duplicate' });
-}
-
-global.uniqueDownloads.add(downloadKey);
-
-const now = Date.now();
-const ipData = global.downloadRateLimit.get(ip) || { count: 0, resetTime: now + 60000 };
-
-if (now > ipData.resetTime) {
-  ipData.count = 0;
-  ipData.resetTime = now + 60000;
-}
-
-ipData.count++;
-global.downloadRateLimit.set(ip, ipData);
-
-if (ipData.count > 10) { // Max 10 downloads per minute
-  return res.status(429).json({ error: 'Too many requests' });
-}
-  
   const { 
     filename, 
     category,
