@@ -164,10 +164,15 @@ const nextConfig = {
       permanent: true, // 301 redirect
     },
     {
-  source: '/premium',
-  destination: '/hd',
-  permanent: true, // 301 redirect
-}
+      source: '/premium',
+      destination: '/hd',
+      permanent: true,
+    },
+    {
+      source: '/collections/free-backgrounds',
+      destination: '/',
+      permanent: true,
+    }
     ];
   },
 };
