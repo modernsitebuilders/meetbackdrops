@@ -34,8 +34,9 @@ export default function Analytics() {
       lastTrackedPath.currentTime = Date.now();
 
       // Get or create session
-      const session = getOrCreateSession();
+      getOrCreateSession();
       updateSessionActivity('page_view');
+      const session = getOrCreateSession(); // Get session AFTER incrementing
 
       // Get UTM parameters from the URL
       const urlParams = new URLSearchParams(window.location.search);
