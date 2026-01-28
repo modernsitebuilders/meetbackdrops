@@ -28,7 +28,8 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
     setShowReviewModal,
     showRateLimitModal,
     setShowRateLimitModal,
-    rateLimitError
+    rateLimitError,
+    downloadCount
   } = useImageDownload(cloudinaryUrls);
   const category = categoryInfo[slug];
   
@@ -110,10 +111,10 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
         />
       )}
 
-      {showRateLimitModal && (
-        <RateLimitModal 
-          onClose={() => setShowRateLimitModal(false)}
-          errorMessage={rateLimitError}
+      {showReviewModal && (
+        <ReviewModal 
+          onClose={() => setShowReviewModal(false)}
+          downloadCount={downloadCount}
         />
       )}
       

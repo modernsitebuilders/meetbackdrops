@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-export default function ReviewModal({ onClose }) {
+export default function ReviewModal({ onClose, downloadCount = 1 }) {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [showArrow, setShowArrow] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [showOptionalFields, setShowOptionalFields] = useState(false);
 
@@ -15,7 +16,7 @@ export default function ReviewModal({ onClose }) {
           emoji: '🎉',
           title: 'Awesome!',
           message: "We're thrilled you love it!",
-          fieldPrompt: 'Want to tell others what you loved?'
+          fieldPrompt: 'What did you love most?'
         };
       case 4:
         return {
@@ -312,7 +313,14 @@ export default function ReviewModal({ onClose }) {
       </div>
     );
   }
+// Show arrow after 1 second if downloadCount >= 2
+  if (!showThankYou && downloadCount >= 2 && !showArrow) {
+    setTimeout(() => setShowArrow(true), 1000);
+  }
 
+  const arrowOpacity = downloadCount === 2 ? 0.05 : 
+                       downloadCount === 3 ? 0.1 : 
+                       downloadCount === 4 ? 0.15 : .2;
   return (
     <div style={{
       position: 'fixed',
@@ -357,6 +365,21 @@ export default function ReviewModal({ onClose }) {
         <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '1rem' }}>
           How'd we do?
         </p>
+
+        {showArrow && downloadCount >= 2 && (
+          <div style={{
+            position: 'absolute',
+            top: '120px',
+            right: '35px',
+            fontSize: '3rem',
+            opacity: arrowOpacity,
+            animation: 'fadeInArrow 0.5s ease-out',
+            pointerEvents: 'none',
+            transform: 'rotate(135deg)'
+          }}>
+            ➜
+          </div>
+        )}
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
           {[1, 2, 3, 4, 5].map((star) => (
@@ -406,6 +429,11 @@ export default function ReviewModal({ onClose }) {
             opacity: 1;
             transform: translateX(0);
           }
+        }
+        
+        @keyframes fadeInArrow {
+          from { opacity: 0; }
+          to { opacity: ${arrowOpacity}; }
         }
       `}</style>
     </div>
