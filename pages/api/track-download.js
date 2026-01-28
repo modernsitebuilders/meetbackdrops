@@ -77,6 +77,28 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
+    // Check for duplicate downloads in last 10 seconds
+    const recentData = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Analytics!A:K',
+    });
+    
+    const rows = recentData.data.values || [];
+    const tenSecondsAgo = Date.now() - 10000;
+    
+    for (let i = rows.length - 1; i >= Math.max(0, rows.length - 20); i--) {
+      const row = rows[i];
+      const rowTime = new Date(row[0]).getTime();
+      
+      if (rowTime < tenSecondsAgo) break;
+      
+      if (row[1] === 'download' && 
+          row[3] === filename && 
+          row[10] === visitorId) {
+        return res.status(200).json({ success: true, skipped: 'recent_duplicate' });
+      }
+    }
+
     // Build the original source string (most important for conversion attribution)
     let originalSource = originalReferrer || 'direct';
     if (originalUtmSource) {
