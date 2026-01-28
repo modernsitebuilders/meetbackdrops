@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-01-27T13:07:17.805Z",
+  "lastUpdated": "2026-01-28T16:03:44.943Z",
   "images": [
+    {
+      "filename": "StreamBackdrops-bookshelves-bright-01.png",
+      "category": "bookshelves-bright",
+      "downloadCount": 3,
+      "score": 60,
+      "webPath": "/images/bookshelves-bright/bookshelves-bright-01.webp"
+    },
+    {
+      "filename": "StreamBackdrops-wall-shelves-bright-54.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 3,
+      "score": 60,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-54.webp"
+    },
     {
       "filename": "StreamBackdrops-office-spaces-36.png",
       "category": "office-spaces",
@@ -14,6 +28,13 @@
       "downloadCount": 2,
       "score": 50,
       "webPath": "/images/office-spaces/office-spaces-71.webp"
+    },
+    {
+      "filename": "StreamBackdrops-wall-shelves-bright-16.png",
+      "category": "wall-shelves-bright",
+      "downloadCount": 2,
+      "score": 50,
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-16.webp"
     },
     {
       "filename": "StreamBackdrops-bookshelves-bright-13.png",
@@ -107,13 +128,6 @@
       "webPath": "/images/office-spaces/office-spaces-05.webp"
     },
     {
-      "filename": "StreamBackdrops-wall-shelves-bright-16.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 1,
-      "score": 40,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-16.webp"
-    },
-    {
       "filename": "StreamBackdrops-library-17.png",
       "category": "libraries",
       "downloadCount": 1,
@@ -161,20 +175,6 @@
       "downloadCount": 1,
       "score": 40,
       "webPath": "/images/living-rooms/living-room-05.webp"
-    },
-    {
-      "filename": "StreamBackdrops-wall-shelves-dark-04.png",
-      "category": "wall-shelves-dark",
-      "downloadCount": 1,
-      "score": 40,
-      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-04.webp"
-    },
-    {
-      "filename": "StreamBackdrops-office-spaces-22.png",
-      "category": "office-spaces",
-      "downloadCount": 1,
-      "score": 40,
-      "webPath": "/images/office-spaces/office-spaces-22.webp"
     }
   ]
 }
