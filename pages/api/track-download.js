@@ -94,7 +94,7 @@ export default async function handler(req, res) {
       
       if (row[1] === 'download' && 
           row[3] === filename && 
-          row[10] === visitorId) {
+          row[9] === sessionId) {
         return res.status(200).json({ success: true, skipped: 'recent_duplicate' });
       }
     }
