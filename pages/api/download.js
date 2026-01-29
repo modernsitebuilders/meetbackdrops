@@ -77,43 +77,6 @@ export default async function handler(req, res) {
   const sessionData = parseSessionData(req);
   const sessionId = sessionData.sessionId;
 
-  // Check rate limits from Google Sheets
-  const { dailyCount, monthlyDownloads } = await checkSessionDownloads(sessionId);
-  
-  if (req.method === 'HEAD') {
-    if (dailyCount >= 5) {
-      return res.status(429).json({ 
-        error: 'Daily download limit of 5 reached. Please try again tomorrow.' 
-      });
-    }
-    
-    if (monthlyDownloads.length >= 10) {
-      const oldestDownload = Math.min(...monthlyDownloads);
-      const daysUntilAvailable = Math.ceil((oldestDownload + (30 * 24 * 60 * 60 * 1000) - Date.now()) / (24 * 60 * 60 * 1000));
-      
-      return res.status(429).json({ 
-        error: `Monthly download limit of 10 reached. Your oldest download will expire in ${daysUntilAvailable} day${daysUntilAvailable !== 1 ? 's' : ''}.` 
-      });
-    }
-    
-    return res.status(200).end();
-  }
-
-  if (dailyCount >= 5) {
-    return res.status(429).json({ 
-      error: 'Daily download limit of 5 reached. Please try again tomorrow.' 
-    });
-  }
-  
-  if (monthlyDownloads.length >= 10) {
-    const oldestDownload = Math.min(...monthlyDownloads);
-    const daysUntilAvailable = Math.ceil((oldestDownload + (30 * 24 * 60 * 60 * 1000) - Date.now()) / (24 * 60 * 60 * 1000));
-    
-    return res.status(429).json({ 
-      error: `Monthly download limit of 10 reached. Your oldest download will expire in ${daysUntilAvailable} day${daysUntilAvailable !== 1 ? 's' : ''}.` 
-    });
-  }
-
   try {
     const response = await fetch(url);
     

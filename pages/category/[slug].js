@@ -29,7 +29,8 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
     showRateLimitModal,
     setShowRateLimitModal,
     rateLimitError,
-    downloadCount
+    downloadCount,
+    downloadingImage
   } = useImageDownload(cloudinaryUrls);
   const category = categoryInfo[slug];
   
@@ -89,6 +90,7 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
   onDownload={(image) => handleDownload(image, slug)}
   topImages={topImages}
   cloudinaryUrls={cloudinaryUrls}
+  downloadingImage={downloadingImage}
 />
 
           <RelatedCategories currentSlug={slug} />
