@@ -172,7 +172,12 @@ const nextConfig = {
       source: '/collections/free-backgrounds',
       destination: '/',
       permanent: true,
-    }
+    },
+     {
+        source: '/office/modern-meeting-room',
+        destination: '/category/office-spaces',
+        permanent: true,
+      }
     ];
   },
 };
