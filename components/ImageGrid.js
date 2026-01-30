@@ -39,15 +39,6 @@ useEffect(() => {
     setCountdown(null);
   }
 }, [downloadingImage]);
-  useEffect(() => {
-    const imagesWithScores = images.map(image => {
-      const baseName = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
-      const score = scores[image.filename] || scores[`${baseName}.png`] || scores[`${baseName}.webp`] || 0;
-      return { ...image, score };
-    });
-    
-    setSortedImages(imagesWithScores.sort((a, b) => b.score - a.score));
-  }, [images, scores]);
 
   return (
     <>
