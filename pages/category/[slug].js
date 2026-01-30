@@ -113,14 +113,6 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
           downloadCount={downloadCount}
         />
       )}
-
-      {showCaptcha && (
-  <CaptchaModal
-    sitekey="0x4AAAAAACVxScIQjmWqWFhb"
-    onSuccess={handleCaptchaSuccess}
-    onClose={() => setShowCaptcha(false)}
-  />
-)}
       
       <BackToTop hide={!!previewImage} />
     </>
