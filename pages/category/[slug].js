@@ -19,7 +19,6 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
 import HDBanner from '../../components/HDBanner';
-import CaptchaModal from '../../components/CaptchaModal';
 
 function CategoryContent({ slug, scores = {}, topImages = [] }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -32,9 +31,6 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
     rateLimitError,
     downloadCount,
     downloadingImage,
-    showCaptcha,
-    setShowCaptcha,
-    handleCaptchaSuccess
   } = useImageDownload(cloudinaryUrls);
   const category = categoryInfo[slug];
   

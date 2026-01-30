@@ -139,7 +139,8 @@ export default async function handler(req, res) {
         second: '2-digit'
       }),
       req.headers['user-agent'] || 'unknown',
-      req.headers['referer'] || 'direct'
+      req.headers['referer'] || 'direct',
+      req.headers['x-hashed-ip'] || 'unknown' 
     ];
 
     await sheets.spreadsheets.values.append({
