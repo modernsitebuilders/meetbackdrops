@@ -1,12 +1,19 @@
 {
-  "lastUpdated": "2026-01-29T12:59:59.055Z",
+  "lastUpdated": "2026-01-30T17:26:04.157Z",
   "images": [
     {
       "filename": "StreamBackdrops-office-spaces-69.png",
       "category": "office-spaces",
+      "downloadCount": 4,
+      "score": 70,
+      "webPath": "/images/office-spaces/office-spaces-69.webp"
+    },
+    {
+      "filename": "StreamBackdrops-office-spaces-19.png",
+      "category": "office-spaces",
       "downloadCount": 3,
       "score": 60,
-      "webPath": "/images/office-spaces/office-spaces-69.webp"
+      "webPath": "/images/office-spaces/office-spaces-19.webp"
     },
     {
       "filename": "StreamBackdrops-bookshelves-bright-01.png",
@@ -16,11 +23,11 @@
       "webPath": "/images/bookshelves-bright/bookshelves-bright-01.webp"
     },
     {
-      "filename": "StreamBackdrops-wall-shelves-bright-54.png",
-      "category": "wall-shelves-bright",
+      "filename": "StreamBackdrops-office-spaces-56.png",
+      "category": "office-spaces",
       "downloadCount": 3,
       "score": 60,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-54.webp"
+      "webPath": "/images/office-spaces/office-spaces-56.webp"
     },
     {
       "filename": "StreamBackdrops-office-spaces-36.png",
@@ -35,13 +42,6 @@
       "downloadCount": 2,
       "score": 50,
       "webPath": "/images/office-spaces/office-spaces-71.webp"
-    },
-    {
-      "filename": "StreamBackdrops-office-spaces-05.png",
-      "category": "office-spaces",
-      "downloadCount": 2,
-      "score": 50,
-      "webPath": "/images/office-spaces/office-spaces-05.webp"
     },
     {
       "filename": "StreamBackdrops-wall-shelves-bright-16.png",
@@ -72,13 +72,6 @@
       "webPath": "/images/bookshelves-bright/bookshelves-bright-13.webp"
     },
     {
-      "filename": "StreamBackdrops-wall-shelves-bright-01.png",
-      "category": "wall-shelves-bright",
-      "downloadCount": 2,
-      "score": 50,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-01.webp"
-    },
-    {
       "filename": "StreamBackdrops-bookshelves-bright-02.png",
       "category": "bookshelves-bright",
       "downloadCount": 2,
@@ -93,11 +86,18 @@
       "webPath": "/images/office-spaces/office-spaces-20.webp"
     },
     {
-      "filename": "StreamBackdrops-wall-shelves-bright-03.png",
+      "filename": "StreamBackdrops-wall-shelves-bright-54.png",
       "category": "wall-shelves-bright",
       "downloadCount": 2,
       "score": 50,
-      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-03.webp"
+      "webPath": "/images/wall-shelves-bright/wall-shelves-bright-54.webp"
+    },
+    {
+      "filename": "StreamBackdrops-nature-landscape-43.png",
+      "category": "nature-landscapes",
+      "downloadCount": 2,
+      "score": 50,
+      "webPath": "/images/nature-landscapes/nature-landscape-43.webp"
     },
     {
       "filename": "StreamBackdrops-bookshelves-bright-04.png",
@@ -105,6 +105,20 @@
       "downloadCount": 2,
       "score": 50,
       "webPath": "/images/bookshelves-bright/bookshelves-bright-04.webp"
+    },
+    {
+      "filename": "StreamBackdrops-office-spaces-70.png",
+      "category": "office-spaces",
+      "downloadCount": 2,
+      "score": 50,
+      "webPath": "/images/office-spaces/office-spaces-70.webp"
+    },
+    {
+      "filename": "StreamBackdrops-bookshelves-dark-27.png",
+      "category": "bookshelves-dark",
+      "downloadCount": 2,
+      "score": 50,
+      "webPath": "/images/bookshelves-dark/bookshelves-dark-27.webp"
     },
     {
       "filename": "StreamBackdrops-bokeh-42.png",
@@ -161,20 +175,6 @@
       "downloadCount": 1,
       "score": 40,
       "webPath": "/images/living-rooms/living-room-12.webp"
-    },
-    {
-      "filename": "StreamBackdrops-living-room-42.png",
-      "category": "living-rooms",
-      "downloadCount": 1,
-      "score": 40,
-      "webPath": "/images/living-rooms/living-room-42.webp"
-    },
-    {
-      "filename": "StreamBackdrops-wall-shelves-dark-19.png",
-      "category": "wall-shelves-dark",
-      "downloadCount": 1,
-      "score": 40,
-      "webPath": "/images/wall-shelves-dark/wall-shelves-dark-19.webp"
     }
   ]
 }
