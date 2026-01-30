@@ -4,27 +4,15 @@ export default function CaptchaModal({ onSuccess, onClose, sitekey }) {
   const captchaRef = useRef(null);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-    script.async = true;
-    document.body.appendChild(script);
-    
-
-    script.onload = () => {
-      if (window.turnstile && captchaRef.current) {
-        window.turnstile.render(captchaRef.current, {
-          sitekey: sitekey,
-          callback: (token) => {
-            onSuccess(token);
-          },
-        });
-      }
-    };
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [onSuccess]);
+  if (window.turnstile && captchaRef.current) {
+    window.turnstile.render(captchaRef.current, {
+      sitekey: '0x4AAAAAACVxScIQjmWqWFhb',
+      callback: (token) => {
+        onSuccess(token);
+      },
+    });
+  }
+}, [onSuccess]);
 
   return (
     <div style={{
