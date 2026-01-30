@@ -119,11 +119,12 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
       )}
 
       {showCaptcha && (
-        <CaptchaModal
-          onSuccess={handleCaptchaSuccess}
-          onClose={() => setShowCaptcha(false)}
-        />
-      )}
+  <CaptchaModal
+    sitekey="0x4AAAAAACVxScIQjmWqWFhb"
+    onSuccess={handleCaptchaSuccess}
+    onClose={() => setShowCaptcha(false)}
+  />
+)}
       
       <BackToTop hide={!!previewImage} />
     </>

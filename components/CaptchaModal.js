@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function CaptchaModal({ onSuccess, onClose }) {
+export default function CaptchaModal({ onSuccess, onClose, sitekey }) {
   const captchaRef = useRef(null);
 
   useEffect(() => {
@@ -8,11 +8,12 @@ export default function CaptchaModal({ onSuccess, onClose }) {
     script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
     script.async = true;
     document.body.appendChild(script);
+    
 
     script.onload = () => {
       if (window.turnstile && captchaRef.current) {
         window.turnstile.render(captchaRef.current, {
-          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+          sitekey: sitekey,
           callback: (token) => {
             onSuccess(token);
           },
