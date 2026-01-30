@@ -75,46 +75,75 @@ export default async function handler(req, res) {
   }
 
   const sessionData = parseSessionData(req);
-  const sessionId = sessionData.sessionId;
+const sessionId = sessionData.sessionId;
 
-  try {
-    const response = await fetch(url);
-    
-    if (!response.ok) {
-      return res.status(429).json({ error: 'Download limit reached' });
-    }
-    
-    const buffer = await response.arrayBuffer();
-    
-    res.setHeader('Content-Type', 'image/png');
-    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-    
-    // Track successful download AFTER limit check passes
-    const category = filename.match(/^StreamBackdrops-(.+?)-\d+\.png$/)?.[1] || 'unknown';
+// Block downloads without valid session
+if (!sessionId || sessionId === 'undefined') {
+  return res.status(403).json({ 
+    error: 'Session required. Please download from streambackdrops.com' 
+  });
+}
 
-    // Track via API call
-    try {
-      await fetch(`${req.headers.origin || 'https://streambackdrops.com'}/api/track-download`, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'user-agent': req.headers['user-agent'] || 'browser',
-          'x-forwarded-for': req.headers['x-forwarded-for'] || req.socket.remoteAddress
-        },
-        body: JSON.stringify({
-          filename,
-          category,
-          ...sessionData
-        })
-      });
-    } catch (trackError) {
-      console.error('Tracking failed:', trackError);
-    }
-    
-    res.send(Buffer.from(buffer));
-    
-  } catch (error) {
-    console.error('Download failed:', error);
-    res.status(500).json({ error: 'Download failed' });
+// Check rate limits from Google Sheets
+const { dailyCount, monthlyDownloads } = await checkSessionDownloads(sessionId);
+
+if (req.method === 'HEAD') {
+  if (dailyCount >= 5) {
+    return res.status(429).json({ 
+      error: 'Daily download limit of 5 reached. Please try again tomorrow.' 
+    });
   }
+  
+  if (monthlyDownloads.length >= 10) {
+    const oldestDownload = Math.min(...monthlyDownloads);
+    const daysUntilAvailable = Math.ceil((oldestDownload + (30 * 24 * 60 * 60 * 1000) - Date.now()) / (24 * 60 * 60 * 1000));
+    
+    return res.status(429).json({ 
+      error: `Monthly download limit of 10 reached. Your oldest download will expire in ${daysUntilAvailable} day${daysUntilAvailable !== 1 ? 's' : ''}.` 
+    });
+  }
+  
+  return res.status(200).end();
+}
+
+try {
+  const response = await fetch(url);
+  
+  if (!response.ok) {
+    return res.status(429).json({ error: 'Download limit reached' });
+  }
+  
+  const buffer = await response.arrayBuffer();
+  
+  res.setHeader('Content-Type', 'image/png');
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  
+  // Track successful download AFTER limit check passes
+  const category = filename.match(/^StreamBackdrops-(.+?)-\d+\.png$/)?.[1] || 'unknown';
+
+  // Track via API call
+  try {
+    await fetch(`${req.headers.origin || 'https://streambackdrops.com'}/api/track-download`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'user-agent': req.headers['user-agent'] || 'browser',
+        'x-forwarded-for': req.headers['x-forwarded-for'] || req.socket.remoteAddress
+      },
+      body: JSON.stringify({
+        filename,
+        category,
+        ...sessionData
+      })
+    });
+  } catch (trackError) {
+    console.error('Tracking failed:', trackError);
+  }
+  
+  res.send(Buffer.from(buffer));
+  
+} catch (error) {
+  console.error('Download failed:', error);
+  res.status(500).json({ error: 'Download failed' });
+}
 }
