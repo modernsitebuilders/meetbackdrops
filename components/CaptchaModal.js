@@ -4,14 +4,21 @@ export default function CaptchaModal({ onSuccess, onClose, sitekey }) {
   const captchaRef = useRef(null);
 
   useEffect(() => {
-  if (window.turnstile && captchaRef.current) {
-    window.turnstile.render(captchaRef.current, {
-      sitekey: '0x4AAAAAACVxScIQjmWqWFhb',
-      callback: (token) => {
-        onSuccess(token);
-      },
-    });
-  }
+  const renderCaptcha = () => {
+    if (window.turnstile && captchaRef.current) {
+      window.turnstile.render(captchaRef.current, {
+        sitekey: '0x4AAAAAACVxScIQjmWqWFhb',
+        callback: (token) => {
+          onSuccess(token);
+        },
+      });
+    } else {
+      // Retry after 100ms if script not loaded yet
+      setTimeout(renderCaptcha, 100);
+    }
+  };
+
+  renderCaptcha();
 }, [onSuccess]);
 
   return (
