@@ -19,6 +19,7 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
 import HDBanner from '../../components/HDBanner';
+import CaptchaModal from '../../components/CaptchaModal';
 
 function CategoryContent({ slug, scores = {}, topImages = [] }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -30,7 +31,10 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
     setShowRateLimitModal,
     rateLimitError,
     downloadCount,
-    downloadingImage
+    downloadingImage,
+    showCaptcha,
+    setShowCaptcha,
+    handleCaptchaSuccess
   } = useImageDownload(cloudinaryUrls);
   const category = categoryInfo[slug];
   
@@ -96,7 +100,7 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
           <RelatedCategories currentSlug={slug} />
           <CategorySEOContent category={category} />
         </div>
-      </div>
+       </div>
 
       {previewImage && (
         <ImagePreviewModal
@@ -110,13 +114,14 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
       {showReviewModal && (
         <ReviewModal 
           onClose={() => setShowReviewModal(false)}
+          downloadCount={downloadCount}
         />
       )}
 
-      {showReviewModal && (
-        <ReviewModal 
-          onClose={() => setShowReviewModal(false)}
-          downloadCount={downloadCount}
+      {showCaptcha && (
+        <CaptchaModal
+          onSuccess={handleCaptchaSuccess}
+          onClose={() => setShowCaptcha(false)}
         />
       )}
       

@@ -74,11 +74,12 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing parameters' });
   }
 
-  const sessionData = parseSessionData(req);
+const sessionData = parseSessionData(req);
 const sessionId = sessionData.sessionId;
 
-// Block downloads without valid session
-if (!sessionId || sessionId === 'undefined') {
+// Block downloads without valid session (allow localhost bypass for testing)
+const isLocalhost = req.headers.host?.includes('localhost');
+if ((!sessionId || sessionId === 'undefined') && !isLocalhost) {
   return res.status(403).json({ 
     error: 'Session required. Please download from streambackdrops.com' 
   });

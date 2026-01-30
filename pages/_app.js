@@ -3,8 +3,15 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import Analytics from '../components/Analytics';
+import { useEffect } from 'react';
+import { getOrCreateSession } from '../lib/sessionTracking';
 
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    // Initialize session on app load
+    getOrCreateSession();
+  }, []);
+
   return (
     <>
       <Head>
