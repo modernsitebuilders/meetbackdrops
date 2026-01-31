@@ -42,7 +42,7 @@ async function checkIPLimit(hashedIP) {
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
       const eventType = row[1];
-      const rowHashedIP = row[12]; // Column M
+      const rowHashedIP = row[15]; // Column P
       const timestamp = new Date(row[0]).getTime();
       
       if (eventType === 'download' && rowHashedIP === hashedIP && timestamp > oneDayAgo) {
