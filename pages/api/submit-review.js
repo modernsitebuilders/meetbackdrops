@@ -24,34 +24,6 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
-    // NEW: Check if user has any page views
-    const visitorId = req.cookies?.sb_visitor_id;
-    
-    if (visitorId) {
-      const analytics = await sheets.spreadsheets.values.get({
-        spreadsheetId,
-        range: 'Analytics!A2:O'
-      });
-
-      const userActivity = (analytics.data.values || []).filter(row => {
-        const rowVisitorId = row[10]; // Column K (Visitor ID)
-        const eventType = row[1]; // Column B (Event Type)
-        return rowVisitorId === visitorId && eventType === 'page_view';
-      });
-
-      // Reject if 0 page views
-      if (userActivity.length === 0) {
-        return res.status(403).json({ 
-          error: 'Reviews must be from actual site visitors. Please browse the site before submitting feedback.' 
-        });
-      }
-    } else {
-      // No visitor ID = suspicious, reject
-      return res.status(403).json({ 
-        error: 'Unable to verify site usage. Please enable cookies and browse the site before submitting a review.' 
-      });
-    }
-
     // Check for duplicate reviews in last 7 days
     const recentReviews = await sheets.spreadsheets.values.get({
       spreadsheetId,
