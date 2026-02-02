@@ -56,6 +56,93 @@ async function checkIPLimit(hashedIP) {
     return 0;
   }
 }
+async function checkIPLimitMonthly(hashedIP) {
+  try {
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+    privateKey = privateKey.replace(/\\n/g, '\n');
+
+    const auth = new google.auth.JWT({
+      email: process.env.GOOGLE_SERVICE_EMAIL,
+      key: privateKey,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
+    });
+
+    const sheets = google.sheets({ version: 'v4', auth });
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Analytics!A:M',
+    });
+
+    const rows = response.data.values || [];
+    const thirtyDaysAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
+    
+    let monthlyCount = 0;
+
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      const eventType = row[1];
+      const rowHashedIP = row[15];
+      const timestamp = new Date(row[0]).getTime();
+      
+      if (eventType === 'download' && rowHashedIP === hashedIP && timestamp > thirtyDaysAgo) {
+        monthlyCount++;
+      }
+    }
+
+    return monthlyCount;
+  } catch (error) {
+    console.error('Monthly IP check failed:', error);
+    return 0;
+  }
+}
+
+async function getOldestDownloadDate(hashedIP) {
+  try {
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+    privateKey = privateKey.replace(/\\n/g, '\n');
+
+    const auth = new google.auth.JWT({
+      email: process.env.GOOGLE_SERVICE_EMAIL,
+      key: privateKey,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
+    });
+
+    const sheets = google.sheets({ version: 'v4', auth });
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Analytics!A:M',
+    });
+
+    const rows = response.data.values || [];
+    const thirtyDaysAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
+    
+    let oldestDate = null;
+
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      const eventType = row[1];
+      const rowHashedIP = row[15];
+      const timestamp = new Date(row[0]);
+      
+      if (eventType === 'download' && rowHashedIP === hashedIP && timestamp.getTime() > thirtyDaysAgo) {
+        if (!oldestDate || timestamp < oldestDate) {
+          oldestDate = timestamp;
+        }
+      }
+    }
+
+    return oldestDate;
+  } catch (error) {
+    console.error('Oldest download check failed:', error);
+    return null;
+  }
+}
 
 export default async function handler(req, res) {
   const { url, filename } = req.query;
@@ -77,11 +164,26 @@ export default async function handler(req, res) {
     });
   }
 
-  // Check IP-based limit (20 per day)
+  // Check IP-based limits
   const ipDownloads = await checkIPLimit(hashedIP);
-  if (ipDownloads >= 20) {
+  
+  // Daily limit: 5 downloads per day
+  const dailyLimit = 5;
+  const dailyDownloads = ipDownloads; // already counts last 24 hours
+  if (dailyDownloads >= dailyLimit) {
     return res.status(429).json({ 
-      error: 'Daily download limit reached for your network. Try again tomorrow.' 
+      error: 'Daily download limit reached. You can download 5 images per day. Come back tomorrow!' 
+    });
+  }
+  
+  // Monthly limit: 10 downloads per 30 days
+  const monthlyLimit = 10;
+  const monthlyDownloads = await checkIPLimitMonthly(hashedIP);
+  if (monthlyDownloads >= monthlyLimit) {
+    const oldestDownloadDate = await getOldestDownloadDate(hashedIP);
+    const daysUntilExpiry = oldestDownloadDate ? Math.ceil((oldestDownloadDate.getTime() + 30*24*60*60*1000 - Date.now()) / (24*60*60*1000)) : 1;
+    return res.status(429).json({ 
+      error: `Monthly download limit reached. Your oldest download will expire in ${daysUntilExpiry} day${daysUntilExpiry !== 1 ? 's' : ''}, then you can download more!`
     });
   }
 
