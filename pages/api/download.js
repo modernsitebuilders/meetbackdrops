@@ -31,7 +31,7 @@ async function checkIPLimit(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:M',
+      range: 'Analytics!A:P',
     });
 
     const rows = response.data.values || [];
@@ -73,7 +73,7 @@ async function checkIPLimitMonthly(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:M',
+      range: 'Analytics!A:P',
     });
 
     const rows = response.data.values || [];
@@ -116,7 +116,7 @@ async function getOldestDownloadDate(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:M',
+      range: 'Analytics!A:P',
     });
 
     const rows = response.data.values || [];
