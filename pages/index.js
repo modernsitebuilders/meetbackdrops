@@ -17,6 +17,7 @@ import FAQSchema from '../components/FAQSchema';
 import { getFAQs } from '../data/faqData';
 import { TOTAL_IMAGES_FORMATTED, CATEGORIES } from '../lib/categories-config';
 import HDBadge from '../components/HDBadge';
+import ValentinesBanner from '../components/ValentinesBanner';
 
 
 export default function Home({ structuredData }) {
@@ -46,7 +47,7 @@ export default function Home({ structuredData }) {
       <Head>
         <FAQSchema questions={getFAQs('homepage')} />
       </Head>
-      
+      <ValentinesBanner />
       {/* Hero Section */}
       <section className={styles.hero}>
         {/* Hero Image Collage */}
