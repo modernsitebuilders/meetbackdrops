@@ -92,6 +92,9 @@ export default function Footer() {
               <Link href="/category/halloween-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Halloween 🎃
               </Link>
+              <Link href="/category/valentines-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+  Valentine's Day 💕
+</Link>
             </div>
           </div>
           

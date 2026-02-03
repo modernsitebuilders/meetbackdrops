@@ -216,7 +216,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
+<url>
+  <loc>https://streambackdrops.com/category/valentines-backgrounds</loc>
+  <lastmod>2026-02-02</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
   <!-- Static Pages -->
   <url>
     <loc>https://streambackdrops.com/about</loc>

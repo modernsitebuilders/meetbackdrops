@@ -138,6 +138,7 @@ export default function Home({ structuredData }) {
         <Card href="/category/nature-landscapes" title="Nature & Landscapes" description="Stunning natural landscapes and scenic outdoor views for nature-inspired calls" imageSrc="/images/nature-landscapes/nature-landscape-01.webp" imageAlt="Nature landscape virtual background" navigate={navigate} count={CATEGORIES['nature-landscapes'].count} />        
         <Card href="/category/libraries" title="Libraries" description="Classic library rooms with floor-to-ceiling books" imageSrc="/images/libraries/library-1.webp" imageAlt="Library virtual background" navigate={navigate} count={CATEGORIES['libraries'].count} />
         <Card href="/category/bokeh-backgrounds" title="Bokeh Backgrounds" description="Beautiful bokeh light effects with artistic blur for elegant calls" imageSrc="/images/bokeh-backgrounds/bokeh-56.webp" imageAlt="Bokeh virtual background" navigate={navigate} count={CATEGORIES['bokeh-backgrounds'].count} />
+        <Card href="/category/valentines-backgrounds" title="Valentine's Day 💕" description="Romantic Valentine's Day backgrounds with hearts and festive decor" imageSrc="/images/valentines-backgrounds/valentines-background-01.webp" imageAlt="Valentine's Day virtual background" navigate={navigate} count={CATEGORIES['valentines-backgrounds'].count} />
       </div>
 
       {/* Social Proof */}

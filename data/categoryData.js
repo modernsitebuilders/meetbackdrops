@@ -161,6 +161,17 @@ export const categoryInfo = {
     }))
   },
 
+
+  'valentines-backgrounds': {
+  name: 'Valentine\'s Day Backgrounds',
+  description: 'Romantic Valentine\'s Day backgrounds with hearts and festive decor',
+  seoDescription: 'Download free Valentine\'s Day virtual backgrounds for video calls. Romantic backgrounds with hearts and festive decor.',
+  images: Array.from({length: CATEGORIES['valentines-backgrounds'].count}, (_, i) => ({
+    filename: `valentines-background-${String(i + 1).padStart(2, '0')}.webp`,
+    title: `Valentine's Day Background ${i + 1}`
+  }))
+},
+
   
   'bokeh-backgrounds': {
     name: 'Bokeh Backgrounds',
@@ -190,5 +201,6 @@ export const folderMap = {
   'libraries': 'libraries',
   'christmas-backgrounds': 'christmas-backgrounds',
   'halloween-backgrounds': 'halloween-backgrounds',
+  'valentines-backgrounds': 'valentines-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds'
 };
