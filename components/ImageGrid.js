@@ -6,7 +6,7 @@ import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
 import PopularBadge from './PopularBadge';
 
-export default function ImageGrid({ images, slug, onImageClick, onDownload, topImages = [], scores = {}, downloadingImage }) {
+export default function ImageGrid({ images, slug, onImageClick, onDownload = [], scores = {}, downloadingImage }) {
   const [sortedImages, setSortedImages] = useState(images);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -69,7 +69,6 @@ useEffect(() => {
               aspectRatio: '16/9',
               overflow: 'hidden'
             }}>
-              {topImages.includes(image.filename) && <PopularBadge />}
               <Image
                 src={`/images/${folderMap[slug]}/${image.filename}`}
                 alt={`${image.title} - Free virtual background for Zoom, Teams & Google Meet`}

@@ -21,7 +21,7 @@ import BackToTop from '../../components/BackToTop';
 import HDBanner from '../../components/HDBanner';
 import { findMatchingAnalytics } from '../../lib/imageScoring';
 
-function CategoryContent({ slug, scores = {}, topImages = [] }) {
+function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
   const { 
     handleDownload,
@@ -89,7 +89,6 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
   slug={slug}
   onImageClick={setPreviewImage}
   onDownload={(image) => handleDownload(image, slug)}
-  topImages={topImages}
   cloudinaryUrls={cloudinaryUrls}
   downloadingImage={downloadingImage}
 />
@@ -120,7 +119,7 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
   );
 }
 
-export default function CategoryPage({ slug, scores, topImages, metadata = {} }) {
+export default function CategoryPage({ slug, scores, metadata = {} }) {
   const router = useRouter();
   const currentSlug = slug || router.query.slug;
   const category = categoryInfo[currentSlug];
@@ -207,7 +206,7 @@ export default function CategoryPage({ slug, scores, topImages, metadata = {} })
           ))}
         </Head>
         
-<CategoryContent slug={currentSlug} scores={scores} topImages={topImages} />
+<CategoryContent slug={currentSlug} scores={scores} />
       </Layout>
     </>
   );
@@ -253,7 +252,6 @@ export async function getStaticProps({ params }) {
   const path = require('path');
 
   let scores = {};
-  let topImages = [];
   let imageMetadata = {}; 
 
   try {
@@ -364,11 +362,6 @@ export async function getStaticProps({ params }) {
       score: scores[image.filename] || 0
     }));
     
-    topImages = imagesWithScores
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 10)
-      .map(img => img.filename);
-    
   } catch (error) {
     console.error('Build-time scoring failed:', error);
     
@@ -386,7 +379,6 @@ export async function getStaticProps({ params }) {
         
         scores[image.filename] = daysOld < 90 ? 65 : 50;
       });
-      topImages = [];
     }
   }
 
@@ -394,7 +386,6 @@ export async function getStaticProps({ params }) {
     props: {
       slug: params.slug,
       scores,
-      topImages,
       metadata: imageMetadata
     },
     revalidate: 3600 // Revalidate every hour

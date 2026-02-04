@@ -72,28 +72,61 @@ function toWebpFilename(filename) {
 function extractCategory(filename, rawCategory) {
   let category = rawCategory || '';
   
-  // Apply category mapping
+  // Apply category mapping if needed
   if (categoryMapping[category]) {
     category = categoryMapping[category];
   }
   
-  // Try to extract from filename if category is empty or weird
+  // If category is empty or looks like a filename (contains .png/.webp), extract from filename
   if (!category || category.includes('.webp') || category.includes('.png')) {
     const baseName = filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
     const nameParts = baseName.split('-');
     
-    // Remove number suffix
+    // Remove number suffix and get the category part
     const withoutNumber = nameParts.filter(part => !/^\d+$/.test(part)).join('-');
     
-    // Map to folder
-    if (folderMap[withoutNumber]) {
-      category = folderMap[withoutNumber];
-    } else {
-      category = withoutNumber;
+    // Handle special cases - these return CLEAN category slugs
+    if (withoutNumber.includes('office-spaces') || withoutNumber === 'office-spaces') {
+      return 'office-spaces';
+    } else if (withoutNumber.includes('bookshelves-bright') || withoutNumber === 'bookshelves-bright') {
+      return 'bookshelves-bright';
+    } else if (withoutNumber.includes('bookshelves-dark') || withoutNumber === 'bookshelves-dark') {
+      return 'bookshelves-dark';
+    } else if (withoutNumber.includes('wall-shelves-bright') || withoutNumber === 'wall-shelves-bright') {
+      return 'wall-shelves-bright';
+    } else if (withoutNumber.includes('wall-shelves-dark') || withoutNumber === 'wall-shelves-dark') {
+      return 'wall-shelves-dark';
+    } else if (withoutNumber.includes('living-room') || withoutNumber === 'living-room') {
+      return 'living-rooms';
+    } else if (withoutNumber.includes('nature-landscape') || withoutNumber === 'nature-landscape') {
+      return 'nature-landscapes';
+    } else if (withoutNumber.includes('coffee-shop') || withoutNumber === 'coffee-shop') {
+      return 'coffee-shops';
+    } else if (withoutNumber.includes('art-gallery') || withoutNumber === 'art-gallery') {
+      return 'art-galleries';
+    } else if (withoutNumber.includes('urban-loft') || withoutNumber === 'urban-loft') {
+      return 'urban-lofts';
+    } else if (withoutNumber.includes('garden') || withoutNumber === 'garden') {
+      return 'gardens-patios';
+    } else if (withoutNumber.includes('historic-space') || withoutNumber === 'historic-space') {
+      return 'historic-spaces';
+    } else if (withoutNumber.includes('library') || withoutNumber === 'library') {
+      return 'libraries';
+    } else if (withoutNumber.includes('kitchen') || withoutNumber === 'kitchen') {
+      return 'kitchens';
+    } else if (withoutNumber.includes('christmas-background') || withoutNumber === 'christmas-background') {
+      return 'christmas-backgrounds';
+    } else if (withoutNumber.includes('halloween-background') || withoutNumber === 'halloween-background') {
+      return 'halloween-backgrounds';
+    } else if (withoutNumber.includes('bokeh') || withoutNumber === 'bokeh') {
+      return 'bokeh-backgrounds';
     }
+    
+    // Map to folder for any remaining cases
+    return folderMap[withoutNumber] || withoutNumber;
   }
   
-  // Final folder mapping
+  // Final folder mapping for whatever remains
   return folderMap[category] || category;
 }
 
@@ -236,61 +269,68 @@ export default async function handler(req, res) {
 
     console.log(`Top image: ${topImages[0]?.filename} with score ${topImages[0]?.score}`);
 
-    // 6. Prepare data for Google Sheets
-    const sheetData = [
-      ['=== POPULAR IMAGES CACHE ==='],
-      ['Last Updated', new Date().toISOString()],
-      ['Total Images Processed', scoredImages.length],
-      ['Average Score', Math.round(scoredImages.reduce((sum, img) => sum + img.score, 0) / scoredImages.length)],
-      [''],
-      ['Rank', 'Web Filename', 'Original Filename', 'Category', 'Score', 'Downloads', 'Last Download', 'Web Path']
-    ];
-    
-    topImages.forEach((img, index) => {
-      sheetData.push([
-        index + 1,
-        img.filename,
-        img.originalFilename,
-        img.category,
-        img.score,
-        img.downloadCount,
-        img.lastDownload ? new Date(img.lastDownload).toISOString() : 'Never',
-        img.webPath
-      ]);
-    });
+   // 6. Prepare data for Google Sheets - FIXED VERSION
+const sheetData = [
+  ['=== POPULAR IMAGES CACHE ==='],
+  ['Last Updated', new Date().toISOString()],
+  ['Total Images Processed', scoredImages.length],
+  ['Average Score', Math.round(scoredImages.reduce((sum, img) => sum + img.score, 0) / scoredImages.length)],
+  [''],
+  ['Rank', 'Web Filename', 'Category', 'Score', 'Downloads', 'Last Download', 'Web Path']
+];
 
-    // 7. Write to Google Sheets "PopularCache" tab
-    console.log('Writing to Google Sheets...');
-    
-    // Clear existing data
-    await sheets.spreadsheets.values.clear({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'PopularCache!A1:Z1000'
-    });
-    
-    // Write new data
-    await sheets.spreadsheets.values.update({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'PopularCache!A1',
-      valueInputOption: 'RAW',
-      resource: { values: sheetData }
-    });
-    
-    // 8. Also write a simple JSON version for quick reading
-    const metadata = {
-      lastUpdated: new Date().toISOString(),
-      totalImages: scoredImages.length,
-      topImage: topImages[0]?.filename || '',
-      topScore: topImages[0]?.score || 0,
-      topImages: topImages
-    };
-    
-    await sheets.spreadsheets.values.update({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'PopularCache!A30',
-      valueInputOption: 'RAW',
-      resource: { values: [['=== JSON VERSION ==='], [JSON.stringify(metadata, null, 2)]] }
-    });
+topImages.forEach((img, index) => {
+  sheetData.push([
+    index + 1,
+    img.filename,                    // office-spaces-19.webp
+    img.category,                    // office-spaces (NOT the filename!)
+    img.score,                       // Actual score (not 0!)
+    img.downloadCount,               // Downloads count
+    img.lastDownload ? new Date(img.lastDownload).toISOString() : 'Never',
+    img.webPath                      // /images/office-spaces/office-spaces-19.webp
+  ]);
+});
+
+// 7. Write to Google Sheets "PopularCache" tab
+console.log('Writing to Google Sheets...');
+
+// Clear existing data
+await sheets.spreadsheets.values.clear({
+  spreadsheetId: process.env.GOOGLE_SHEET_ID,
+  range: 'PopularCache!A1:Z1000'
+});
+
+// Write new data
+await sheets.spreadsheets.values.update({
+  spreadsheetId: process.env.GOOGLE_SHEET_ID,
+  range: 'PopularCache!A1',
+  valueInputOption: 'RAW',
+  resource: { values: sheetData }
+});
+
+// 8. Also write a simple JSON version for quick reading
+const metadata = {
+  lastUpdated: new Date().toISOString(),
+  totalImages: scoredImages.length,
+  topImage: topImages[0]?.filename || '',
+  topScore: topImages[0]?.score || 0,
+  topImages: topImages.map(img => ({
+    rank: topImages.indexOf(img) + 1,
+    filename: img.filename,
+    category: img.category,
+    score: img.score,
+    downloads: img.downloadCount,
+    lastDownload: img.lastDownload ? new Date(img.lastDownload).toISOString() : null,
+    webPath: img.webPath
+  }))
+};
+
+await sheets.spreadsheets.values.update({
+  spreadsheetId: process.env.GOOGLE_SHEET_ID,
+  range: 'PopularCache!A30',
+  valueInputOption: 'RAW',
+  resource: { values: [['=== JSON VERSION ==='], [JSON.stringify(metadata, null, 2)]] }
+});
     
     // 9. Backup: Write to /tmp for fallback
     try {
