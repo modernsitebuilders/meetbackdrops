@@ -57,7 +57,7 @@ export default function ValentinesBanner() {
             margin: 0,
             fontSize: '0.95rem'
           }}>
-            20 romantic backgrounds perfect for virtual dates & celebrations
+            Bring a Hint of Celebration to Your Workday
           </p>
         </div>
 
