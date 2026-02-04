@@ -19,6 +19,7 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
 import HDBanner from '../../components/HDBanner';
+import { findMatchingAnalytics } from '../../lib/imageScoring';
 
 function CategoryContent({ slug, scores = {}, topImages = [] }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -119,7 +120,8 @@ function CategoryContent({ slug, scores = {}, topImages = [] }) {
   );
 }
 
-export default function CategoryPage({ slug, scores, topImages, metadata = {} }) {  const router = useRouter();
+export default function CategoryPage({ slug, scores, topImages, metadata = {} }) {
+  const router = useRouter();
   const currentSlug = slug || router.query.slug;
   const category = categoryInfo[currentSlug];
 
@@ -242,6 +244,9 @@ export async function getStaticPaths() {
   };
 }
 
+// Import the scoring functions
+const { calculateImageScore } = require('../../lib/imageScoring');
+
 export async function getStaticProps({ params }) {
   const { google } = require('googleapis');
   const fs = require('fs');
@@ -252,7 +257,11 @@ export async function getStaticProps({ params }) {
   let imageMetadata = {}; 
 
   try {
-    // Get scores
+    // Load metadata
+    const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
+    imageMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+    
+    // Get analytics from Google Sheets
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
       privateKey = privateKey.slice(1, -1);
@@ -271,54 +280,123 @@ export async function getStaticProps({ params }) {
       range: 'Analytics!A:I',
     });
 
-    // ADD THIS:
-    const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
-    imageMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
-
     const rows = response.data.values || [];
-    const downloadCounts = {};
-    const imageScores = {};
-
-    // Count downloads for popular badge (from Jan 25 forward only)
     const RESET_DATE = new Date('2026-01-25');
+    const now = new Date();
+    
+    // Process analytics data with proper filename matching
+    const analyticsData = {};
+    
+    // Process rows with proper filename cleaning
     rows.slice(1).forEach(row => {
       const timestamp = row[0];
-      const actionType = row[1];
-      const filename = row[3];
+      const eventType = row[1];
+      let filename = row[3];
+      
+      if (!filename || eventType !== 'download') return;
+      
+      // Strip StreamBackdrops prefix
+      if (filename.startsWith('StreamBackdrops-')) {
+        filename = filename.replace('StreamBackdrops-', '');
+      }
+      
+      // Skip non-image entries
+      if (filename.startsWith('/') ||
+          filename.includes('/category/') || 
+          filename.includes('/blog') ||
+          filename.includes('/contact') ||
+          filename.includes('/about') ||
+          !filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
+        return;
+      }
       
       const eventDate = new Date(timestamp);
       
-      if (actionType === 'download' && 
-          filename && 
-          filename.match(/\.(webp|png|jpg|jpeg)$/i) &&
-          eventDate >= RESET_DATE) {
-        downloadCounts[filename] = (downloadCounts[filename] || 0) + 1;
+      // Only count events from reset date forward
+      if (eventDate < RESET_DATE) return;
+      
+      // Convert to webp for consistency
+      filename = filename.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+      
+      // Update analytics
+      if (!analyticsData[filename]) {
+        analyticsData[filename] = {
+          downloads: 0,
+          lastDownload: null
+        };
+      }
+      
+      analyticsData[filename].downloads += 1;
+      
+      if (!analyticsData[filename].lastDownload || eventDate > analyticsData[filename].lastDownload) {
+        analyticsData[filename].lastDownload = eventDate;
       }
     });
-
-    // Top 10 badges disabled - fresh start
-    topImages = [];
-
-  // Calculate scores for this category
-const category = categoryInfo[params.slug];
-if (category) {
-  category.images.forEach(image => {
-    imageScores[image.filename] = 30; // Fresh start
-  });
-}
-
-    scores = imageScores;
+    
+    // Get category images
+    const category = categoryInfo[params.slug];
+    if (!category) {
+      return { notFound: true };
+    }
+    
+    // Calculate scores using improved matching
+    category.images.forEach(image => {
+      const filename = image.filename;
+      const meta = imageMetadata[filename] || {};
+      
+      // Find matching analytics using our improved function
+      const analytics = findMatchingAnalytics(filename, analyticsData) || {};
+      
+      // Prepare image data for scoring
+      const imageData = {
+        createdDate: meta.firstSeen || RESET_DATE,
+        totalDownloads: analytics.downloads || 0,
+        lastDownload: analytics.lastDownload || null
+      };
+      
+      // Calculate score
+      scores[filename] = calculateImageScore(imageData, now);
+    });
+    
+    // Get top 10 images for this category (for popular badges)
+    const imagesWithScores = category.images.map(image => ({
+      ...image,
+      score: scores[image.filename] || 0
+    }));
+    
+    topImages = imagesWithScores
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10)
+      .map(img => img.filename);
+    
   } catch (error) {
-    console.error('Build-time data fetch failed:', error);
+    console.error('Build-time scoring failed:', error);
+    
+    // Fallback: assign base scores
+    const category = categoryInfo[params.slug];
+    if (category) {
+      const now = new Date();
+      const RESET_DATE = new Date('2026-01-25');
+      
+      category.images.forEach(image => {
+        // Simple fallback: new images get 65, older get 50
+        const meta = imageMetadata[image.filename] || {};
+        const createdDate = meta.firstSeen ? new Date(meta.firstSeen) : RESET_DATE;
+        const daysOld = Math.floor((now - createdDate) / (1000 * 60 * 60 * 24));
+        
+        scores[image.filename] = daysOld < 90 ? 65 : 50;
+      });
+      topImages = [];
+    }
   }
 
   return {
-  props: {
-    slug: params.slug,
-    scores,
-    topImages,
-    metadata: imageMetadata
-  },
-  revalidate: 3600
-};
+    props: {
+      slug: params.slug,
+      scores,
+      topImages,
+      metadata: imageMetadata
+    },
+    revalidate: 3600 // Revalidate every hour
+  };
 }

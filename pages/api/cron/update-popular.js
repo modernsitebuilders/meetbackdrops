@@ -1,16 +1,117 @@
+// pages/api/cron/update-popular.js
 import { google } from 'googleapis';
-import fs from 'fs';
-import path from 'path';
+import { calculateImageScore } from '../../../lib/imageScoring';
 
 const RESET_DATE = new Date('2026-01-25');
 
+// Map old category names to new slugs (same as calculate-scores.js)
+const categoryMapping = {
+  'ambient-lighting': 'wall-shelves-dark',
+  'Ambient Lighting': 'wall-shelves-dark',
+  'well-lit': 'wall-shelves-bright',
+  'Well Lit': 'wall-shelves-bright'
+};
+
+// Folder map for conversion
+const folderMap = {
+  'christmas-background': 'christmas-backgrounds',
+  'halloween-background': 'halloween-backgrounds',
+  'nature-landscape': 'nature-landscapes',
+  'nature-landscapes': 'nature-landscapes',
+  'living-room': 'living-rooms',
+  'living-rooms': 'living-rooms',
+  'office-space': 'office-spaces',
+  'office-spaces': 'office-spaces',
+  'bookshelf': 'bookshelves-dark',
+  'bookshelves-bright': 'bookshelves-bright',
+  'bookshelves-dark': 'bookshelves-dark',
+  'library': 'libraries',
+  'kitchen': 'kitchens',
+  'garden': 'gardens-patios',
+  'coffee-shop': 'coffee-shops',
+  'historic-space': 'historic-spaces',
+  'historic-spaces': 'historic-spaces',
+  'urban-loft': 'urban-lofts',
+  'wall-shelves-bright': 'wall-shelves-bright',
+  'wall-shelves-dark': 'wall-shelves-dark',
+  'bokeh': 'bokeh-backgrounds',
+  'bokeh-backgrounds': 'bokeh-backgrounds',
+  'art-gallery': 'art-galleries',
+  'art-galleries': 'art-galleries'
+};
+
+// Helper function to clean and match filenames (same as calculate-scores.js)
+function cleanFilename(filename) {
+  if (!filename) return null;
+  
+  // Strip StreamBackdrops prefix
+  let clean = filename;
+  if (clean.startsWith('StreamBackdrops-')) {
+    clean = clean.replace('StreamBackdrops-', '');
+  }
+  
+  // Skip non-image entries
+  if (clean.startsWith('/') ||
+      clean.includes('/category/') || 
+      clean.includes('/blog') ||
+      clean.includes('/contact') ||
+      clean.includes('/about') ||
+      !clean.match(/\.(webp|png|jpg|jpeg)$/i)) {
+    return null;
+  }
+  
+  return clean;
+}
+
+// Helper to get webp version
+function toWebpFilename(filename) {
+  return filename.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+}
+
+// Helper to extract category from filename
+function extractCategory(filename, rawCategory) {
+  let category = rawCategory || '';
+  
+  // Apply category mapping
+  if (categoryMapping[category]) {
+    category = categoryMapping[category];
+  }
+  
+  // Try to extract from filename if category is empty or weird
+  if (!category || category.includes('.webp') || category.includes('.png')) {
+    const baseName = filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+    const nameParts = baseName.split('-');
+    
+    // Remove number suffix
+    const withoutNumber = nameParts.filter(part => !/^\d+$/.test(part)).join('-');
+    
+    // Map to folder
+    if (folderMap[withoutNumber]) {
+      category = folderMap[withoutNumber];
+    } else {
+      category = withoutNumber;
+    }
+  }
+  
+  // Final folder mapping
+  return folderMap[category] || category;
+}
+
 export default async function handler(req, res) {
+  // Security check
   if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
+  console.log('Starting popular cache update at', new Date().toISOString());
+
   try {
+    // 1. Setup Google Sheets API
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    if (!privateKey) {
+      throw new Error('GOOGLE_PRIVATE_KEY environment variable is missing');
+    }
+    
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
       privateKey = privateKey.slice(1, -1);
     }
@@ -23,119 +124,210 @@ export default async function handler(req, res) {
     });
 
     const sheets = google.sheets({ version: 'v4', auth });
+    
+    // 2. Fetch download data from Google Sheets
+    console.log('Fetching data from Google Sheets...');
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: 'Analytics!A:O',
     });
 
-    const rows = response.data.values;
+    const rows = response.data.values || [];
+    console.log(`Found ${rows.length} rows in Google Sheets`);
+    
     const imageStats = {};
     const now = new Date();
     
+    // 3. Process downloads from Jan 25, 2026 forward (SAME LOGIC AS calculate-scores.js)
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
       const timestamp = row[0];
-      const actionType = row[1];
+      const eventType = row[1];
       const filename = row[3];
-      const category = row[4];
+      let category = row[4];
+      
+      // Clean filename
+      const cleanName = cleanFilename(filename);
+      if (!cleanName || eventType !== 'download') continue;
       
       const eventDate = new Date(timestamp);
+      if (eventDate < RESET_DATE) continue;
       
-      if (actionType === 'download' && 
-          filename && 
-          filename.match(/\.(webp|png|jpg|jpeg)$/i) &&
-          eventDate >= RESET_DATE) {
-        if (!imageStats[filename]) {
-          imageStats[filename] = {
-            filename: filename,
+      // Apply category mapping
+      if (categoryMapping[category]) {
+        category = categoryMapping[category];
+      }
+      
+      // Try to find matching image by stripping extension (SAME AS calculate-scores.js)
+      let matchedFilename = cleanName;
+      if (!imageStats[cleanName]) {
+        const baseName = cleanName.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+        const variants = [
+          `${baseName}.webp`,
+          `${baseName}.png`,
+          `${baseName}.jpg`,
+          `${baseName}.jpeg`
+        ];
+        
+        let found = false;
+        for (const variant of variants) {
+          if (imageStats[variant]) {
+            matchedFilename = variant;
+            found = true;
+            break;
+          }
+        }
+        
+        if (!found) {
+          // Initialize new entry
+          imageStats[cleanName] = {
+            filename: cleanName,
             category: category || 'unknown',
             downloads: 0,
             lastDownload: null
           };
+          matchedFilename = cleanName;
         }
-        imageStats[filename].downloads++;
-        
-        if (!imageStats[filename].lastDownload || eventDate > imageStats[filename].lastDownload) {
-          imageStats[filename].lastDownload = eventDate;
-        }
+      }
+      
+      // Update stats
+      const stats = imageStats[matchedFilename];
+      stats.downloads += 1;
+      
+      if (!stats.lastDownload || eventDate > stats.lastDownload) {
+        stats.lastDownload = eventDate;
       }
     }
 
-    const folderMap = {
-      'christmas-background': 'christmas-backgrounds',
-      'halloween-background': 'halloween-backgrounds',
-      'nature-landscape': 'nature-landscapes',
-      'living-room': 'living-rooms',
-      'office-space': 'office-spaces',
-      'office-spaces': 'office-spaces',
-      'bookshelf': 'bookshelves-dark',
-      'bookshelves-bright': 'bookshelves-bright',
-      'bookshelves-dark': 'bookshelves-dark',
-      'library': 'libraries',
-      'kitchen': 'kitchens',
-      'garden': 'gardens-patios',
-      'coffee-shop': 'coffee-shops',
-      'historic-space': 'historic-spaces',
-      'historic-spaces': 'historic-spaces',
-      'urban-loft': 'urban-lofts',
-      'wall-shelves-bright': 'wall-shelves-bright',
-      'wall-shelves-dark': 'wall-shelves-dark',
-      'bokeh': 'bokeh-backgrounds',
-      'bokeh-backgrounds': 'bokeh-backgrounds',
-      'art-gallery': 'art-galleries',
-      'art-galleries': 'art-galleries'
-    };
+    console.log(`Processed ${Object.keys(imageStats).length} unique images with downloads`);
 
+    // 4. Calculate scores using new system
+    console.log('Calculating scores...');
     const scoredImages = Object.values(imageStats).map(item => {
-      let score = 30;
-      score += item.downloads * 10;
+      const imageData = {
+        createdDate: RESET_DATE,
+        totalDownloads: item.downloads,
+        lastDownload: item.lastDownload
+      };
       
-      if (item.lastDownload) {
-        const monthsSince = (now - item.lastDownload) / (1000 * 60 * 60 * 24 * 30);
-        score -= Math.floor(monthsSince) * 5;
-      } else {
-        const monthsSince = (now - RESET_DATE) / (1000 * 60 * 60 * 24 * 30);
-        score -= Math.floor(monthsSince) * 5;
-      }
+      const score = calculateImageScore(imageData, now);
       
-      score = Math.max(0, score);
+      // Convert to webp for web display
+      const webFilename = toWebpFilename(item.filename);
       
-      const webFilename = item.filename
-          .replace('StreamBackdrops-', '')
-          .replace('.png', '.webp');
-      const extracted = item.category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');
-      const category = folderMap[extracted] || extracted;
+      // Extract and clean category
+      const finalCategory = extractCategory(item.filename, item.category);
       
       return {
-        filename: item.filename,
-        category: category,
+        filename: webFilename,  // office-spaces-35.webp
+        originalFilename: item.filename,  // office-spaces-35.png (without StreamBackdrops-)
+        category: finalCategory,
         downloadCount: item.downloads,
         score: score,
-        webPath: `/images/${category}/${webFilename}`
+        lastDownload: item.lastDownload,
+        webPath: `/images/${finalCategory}/${webFilename}`
       };
     });
 
+    // 5. Sort and get top 25
     const topImages = scoredImages
       .sort((a, b) => b.score - a.score)
       .slice(0, 25);
 
-    const cacheData = {
+    console.log(`Top image: ${topImages[0]?.filename} with score ${topImages[0]?.score}`);
+
+    // 6. Prepare data for Google Sheets
+    const sheetData = [
+      ['=== POPULAR IMAGES CACHE ==='],
+      ['Last Updated', new Date().toISOString()],
+      ['Total Images Processed', scoredImages.length],
+      ['Average Score', Math.round(scoredImages.reduce((sum, img) => sum + img.score, 0) / scoredImages.length)],
+      [''],
+      ['Rank', 'Web Filename', 'Original Filename', 'Category', 'Score', 'Downloads', 'Last Download', 'Web Path']
+    ];
+    
+    topImages.forEach((img, index) => {
+      sheetData.push([
+        index + 1,
+        img.filename,
+        img.originalFilename,
+        img.category,
+        img.score,
+        img.downloadCount,
+        img.lastDownload ? new Date(img.lastDownload).toISOString() : 'Never',
+        img.webPath
+      ]);
+    });
+
+    // 7. Write to Google Sheets "PopularCache" tab
+    console.log('Writing to Google Sheets...');
+    
+    // Clear existing data
+    await sheets.spreadsheets.values.clear({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'PopularCache!A1:Z1000'
+    });
+    
+    // Write new data
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'PopularCache!A1',
+      valueInputOption: 'RAW',
+      resource: { values: sheetData }
+    });
+    
+    // 8. Also write a simple JSON version for quick reading
+    const metadata = {
       lastUpdated: new Date().toISOString(),
-      images: topImages
+      totalImages: scoredImages.length,
+      topImage: topImages[0]?.filename || '',
+      topScore: topImages[0]?.score || 0,
+      topImages: topImages
     };
+    
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'PopularCache!A30',
+      valueInputOption: 'RAW',
+      resource: { values: [['=== JSON VERSION ==='], [JSON.stringify(metadata, null, 2)]] }
+    });
+    
+    // 9. Backup: Write to /tmp for fallback
+    try {
+      const fs = await import('fs');
+      const path = await import('path');
+      const cacheData = {
+        lastUpdated: new Date().toISOString(),
+        images: topImages,
+        source: 'google-sheets-backup'
+      };
+      
+      const tmpPath = path.join('/tmp', 'popular-cache.json');
+      fs.writeFileSync(tmpPath, JSON.stringify(cacheData, null, 2));
+      console.log('Backup written to /tmp');
+    } catch (tmpError) {
+      console.warn('Could not write backup to /tmp:', tmpError.message);
+    }
 
-    fs.writeFileSync(
-      path.join(process.cwd(), 'public/popular-cache.json'),
-      JSON.stringify(cacheData, null, 2)
-    );
-
+    // 10. Return success response
     res.status(200).json({ 
       success: true, 
       updated: new Date().toISOString(),
-      topScore: topImages[0]?.score || 0 
+      domain: 'streambackdrops.com',
+      recordsProcessed: scoredImages.length,
+      topScore: topImages[0]?.score || 0,
+      topImage: topImages[0]?.filename || 'None',
+      sheetUrl: `https://docs.google.com/spreadsheets/d/${process.env.GOOGLE_SHEET_ID}/edit#gid=0`,
+      message: 'Popular cache updated in Google Sheets successfully'
     });
     
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error updating popular cache:', error);
+    res.status(500).json({ 
+      error: error.message,
+      domain: 'streambackdrops.com',
+      timestamp: new Date().toISOString(),
+      hint: 'Check Google Sheets API permissions and ensure "PopularCache" sheet exists'
+    });
   }
 }
