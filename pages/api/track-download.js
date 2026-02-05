@@ -80,7 +80,7 @@ export default async function handler(req, res) {
     // Check for duplicate downloads in last 10 seconds
     const recentData = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:K',
+      range: 'Analytics!A:P',
     });
     
     const rows = recentData.data.values || [];
