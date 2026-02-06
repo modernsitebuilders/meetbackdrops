@@ -152,7 +152,6 @@ export default function Header({ currentPage }) {
                 onMouseLeave={(e) => e.target.style.background = 'transparent'}
               >
                 {item.name}
-                {item.name}
                 <span style={{ marginLeft: '0.5rem' }}>‹</span>
               </button>
               
