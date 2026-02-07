@@ -334,22 +334,23 @@ export default function Header({ currentPage }) {
             {/* More Categories Dropdown */}
             <div style={{ position: 'relative' }}>
               <button
-  onClick={(e) => {
-    e.stopPropagation();
-    setOpenNestedDropdown(openNestedDropdown === item.name ? null : item.name);
-  }}
-  style={{
-    ...dropdownItemStyle(false),
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  }}
-  onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-  onMouseLeave={(e) => e.target.style.background = 'transparent'}
->
-  {item.name}
-  <span style={{ marginLeft: '0.5rem' }}>‹</span>
-</button>
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(openDropdown === 'more' ? null : 'more');
+                  setOpenNestedDropdown(null);
+                }}
+                style={{
+                  ...navButtonStyle(false, hoveredNav === 'more'),
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}
+                onMouseEnter={() => setHoveredNav('more')}
+                onMouseLeave={() => setHoveredNav(null)}
+              >
+                More Categories
+                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+              </button>
               {openDropdown === 'more' && renderDropdown(moreCategories, 'more')}
             </div>
 
