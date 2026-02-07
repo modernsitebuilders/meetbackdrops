@@ -49,6 +49,13 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
         <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+        {/* ✅ Google AdSense */}
+  <script 
+    async 
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8364914545820320"
+    crossOrigin="anonymous"
+  />
         
         {/* ✅ SEO Meta Tags */}
         <meta name="description" content={description} />
