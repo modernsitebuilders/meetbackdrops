@@ -142,6 +142,16 @@ export const categoryInfo = {
     }))
   },
 
+  'conference-rooms': {
+    name: 'Conference Rooms',
+    description: 'Professional conference room backgrounds for team meetings and presentations',
+    seoDescription: 'Download free conference room virtual backgrounds for video calls. Modern meeting spaces for collaborative calls.',
+    images: Array.from({length: CATEGORIES['conference-rooms'].count}, (_, i) => ({
+      filename: `conference-room-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Conference Room Background ${i + 1}`
+    }))
+  },
+
  'christmas-backgrounds': {
     name: 'Christmas Backgrounds',
     description: 'Festive Christmas backgrounds with holiday decorations for seasonal video calls',
@@ -199,6 +209,7 @@ export const folderMap = {
   'historic-spaces': 'historic-spaces',
   'nature-landscapes': 'nature-landscapes',
   'libraries': 'libraries',
+  'conference-rooms': 'conference-rooms',
   'christmas-backgrounds': 'christmas-backgrounds',
   'halloween-backgrounds': 'halloween-backgrounds',
   'valentines-backgrounds': 'valentines-backgrounds',
