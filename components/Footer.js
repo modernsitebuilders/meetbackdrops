@@ -62,6 +62,9 @@ export default function Footer() {
               <Link href="/category/wall-shelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Wall Shelves - Dark
               </Link>
+              <Link href="/category/conference-rooms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Conference Rooms
+              </Link>
               <Link href="/category/coffee-shops" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Coffee Shops
               </Link>

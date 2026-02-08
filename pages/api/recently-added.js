@@ -39,6 +39,7 @@ export default async function handler(req, res) {
         else if (filename.startsWith('office-spaces-')) category = 'office-spaces';
         else if (filename.startsWith('living-room-')) category = 'living-rooms';
         else if (filename.startsWith('kitchen-')) category = 'kitchens';
+        else if (filename.startsWith('conference-room-')) category = 'conference-rooms';
         else if (filename.startsWith('coffee-shop-')) category = 'coffee-shops';
         else if (filename.startsWith('art-gallery-')) category = 'art-galleries';
         else if (filename.startsWith('urban-loft-')) category = 'urban-lofts';

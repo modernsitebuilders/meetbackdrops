@@ -105,6 +105,7 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
             <link rel="prefetch" href="/category/office-spaces" />
             <link rel="prefetch" href="/category/living-rooms" />
             <link rel="prefetch" href="/category/kitchens" />
+            <link rel="prefetch" href="/category/conference-rooms" />
             <link rel="prefetch" href="/category/coffee-shops" />
             <link rel="prefetch" href="/category/art-galleries" />
             <link rel="prefetch" href="/category/urban-lofts" />

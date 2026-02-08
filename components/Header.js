@@ -116,7 +116,8 @@ export default function Header({ currentPage }) {
     { name: 'Historic Spaces', path: '/category/historic-spaces' },
     { name: 'Nature & Landscapes', path: '/category/nature-landscapes' },
     { name: 'Libraries', path: '/category/libraries' },
-    { name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds' }
+{ name: 'Conference Rooms', path: '/category/conference-rooms' },
+{ name: 'Bokeh Backgrounds', path: '/category/bokeh-backgrounds' }
   ];
 
   const renderDropdown = (items, dropdownKey) => (

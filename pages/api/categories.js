@@ -31,6 +31,11 @@ export default function handler(req, res) {
     count: 18,
     description: 'Warm kitchen spaces that create a friendly, approachable atmosphere for casual video calls'
   },
+  'conference-rooms': {
+    name: 'Conference Rooms',
+    description: 'Professional conference room backgrounds for team meetings',
+    count: 48
+  },
   'coffee-shops': {
     name: 'Coffee Shops',
     count: 3,

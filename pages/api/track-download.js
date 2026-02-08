@@ -48,6 +48,7 @@ export default async function handler(req, res) {
     'historic-space': 'historic-spaces',
     'nature-landscape': 'nature-landscapes',
     'living-room': 'living-rooms',
+    'conference-room': 'conference-rooms',
     'coffee-shop': 'coffee-shops',
     'urban-loft': 'urban-lofts',
     'garden': 'gardens-patios',

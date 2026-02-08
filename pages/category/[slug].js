@@ -159,6 +159,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'living-rooms': 'living-room-1.webp',
     'kitchens': 'kitchen-1.webp',
     'coffee-shops': 'coffee-shop-01.webp',
+    'conference-rooms': 'conference-room-01.webp',
     'art-galleries': 'art-gallery-23.webp',
     'urban-lofts': 'urban-loft-1.webp',
     'gardens-patios': 'garden-patio-1.webp',

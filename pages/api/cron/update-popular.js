@@ -28,6 +28,7 @@ const folderMap = {
   'library': 'libraries',
   'kitchen': 'kitchens',
   'garden': 'gardens-patios',
+  'conference-room': 'conference-rooms',
   'coffee-shop': 'coffee-shops',
   'historic-space': 'historic-spaces',
   'historic-spaces': 'historic-spaces',
@@ -101,6 +102,8 @@ function extractCategory(filename, rawCategory) {
     } else if (withoutNumber.includes('nature-landscape') || withoutNumber === 'nature-landscape') {
       return 'nature-landscapes';
     } else if (withoutNumber.includes('coffee-shop') || withoutNumber === 'coffee-shop') {
+      return 'conference-rooms';
+    } else if (filename.startsWith('coffee-shop-')) {
       return 'coffee-shops';
     } else if (withoutNumber.includes('art-gallery') || withoutNumber === 'art-gallery') {
       return 'art-galleries';

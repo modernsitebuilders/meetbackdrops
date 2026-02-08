@@ -34,6 +34,7 @@ export default function ImageLookup() {
       else if (cleanFilename.startsWith('living-room-')) cat = 'living-rooms';
       else if (cleanFilename.startsWith('kitchen-')) cat = 'kitchens';
       else if (cleanFilename.startsWith('coffee-shop-')) cat = 'coffee-shops';
+      else if (cleanFilename.startsWith('conference-room-')) cat = 'conference-rooms';
       else if (cleanFilename.startsWith('art-gallery-')) cat = 'art-galleries';
       else if (cleanFilename.startsWith('urban-loft-')) cat = 'urban-lofts';
       else if (cleanFilename.startsWith('garden-patio-')) cat = 'gardens-patios';

@@ -112,11 +112,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/category/conference-rooms',
-        destination: '/410',
-        permanent: true,
-      },
-      {
         source: '/category/minimalist',
         destination: '/410',
         permanent: true,

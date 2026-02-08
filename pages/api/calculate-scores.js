@@ -65,6 +65,7 @@ export default async function handler(req, res) {
       'office-spaces': 'Office Spaces',
       'living-rooms': 'Living Rooms',
       'kitchens': 'Kitchens',
+      'conference-rooms': 'Conference Rooms',
       'coffee-shops': 'Coffee Shops',
       'art-galleries': 'Art Galleries',
       'urban-lofts': 'Urban Lofts',
