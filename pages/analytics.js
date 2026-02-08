@@ -50,7 +50,7 @@ export default function Analytics() {
       }}>
         <h1 style={{ marginBottom: '10px' }}>Download Analytics</h1>
         <p style={{ color: '#666', marginBottom: '30px' }}>
-          Showing all-time download statistics
+          Showing unique downloads (one download per user per file)
         </p>
 
         <div style={{ 
@@ -67,7 +67,7 @@ export default function Analytics() {
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#2563eb' }}>
               {data.totalDownloads.toLocaleString()}
             </div>
-            <div style={{ color: '#666', marginTop: '5px' }}>Total Downloads</div>
+            <div style={{ color: '#666', marginTop: '5px' }}>Unique Downloads</div>
           </div>
           
           <div style={{
