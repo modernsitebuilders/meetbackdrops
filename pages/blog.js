@@ -37,6 +37,14 @@ export default function Blog() {
 
   const blogPosts = [
     {
+    title: "Complete Video Call Setup Guide: Equipment That Actually Makes a Difference",
+    slug: "video-call-equipment-guide",
+    excerpt: "The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.",
+    date: "February 2026",
+    readTime: "15 min read",
+    category: "Equipment Guide"
+  },
+    {
     title: "Best Virtual Backgrounds for Job Interviews 2025: Complete Guide",
     slug: "job-interview-backgrounds",
     excerpt: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression on video calls.",
@@ -170,6 +178,11 @@ export default function Blog() {
               }
             },
             "blogPost": [
+  {
+    "@type": "BlogPosting",
+    "headline": "Complete Video Call Setup Guide: Equipment That Actually Makes a Difference",
+    "url": "https://streambackdrops.com/blog/video-call-equipment-guide"
+  },
               {
                 "@type": "BlogPosting",
                 "headline": "Free Bokeh Virtual Backgrounds for Video Calls 2025",

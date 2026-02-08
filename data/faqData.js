@@ -465,7 +465,33 @@ export const faqData = {
       question: "Should I use video backgrounds for all work calls?",
       answer: "Use virtual backgrounds for client meetings, presentations, and formal calls. For casual team meetings, your actual background may be fine if it's clean and professional."
     }
-  ]
+  ],
+  "video-call-equipment-guide": [
+  {
+    question: "Do I really need to buy equipment for video calls?",
+    answer: "While not strictly necessary, investing in proper equipment (ring light, webcam, microphone, green screen) dramatically improves your professional appearance and can pay for itself in a single important call. The complete setup costs under $150 and lasts for years."
+  },
+  {
+    question: "What's the single most important equipment upgrade for video calls?",
+    answer: "Lighting is the most important upgrade. A $40 ring light will make more difference than any other single purchase. Even an expensive webcam looks bad with poor lighting, while a basic webcam looks great with proper lighting."
+  },
+  {
+    question: "Can I use my phone or laptop camera instead of buying a webcam?",
+    answer: "You can, but laptop cameras are typically low-resolution (720p) with poor low-light performance. A dedicated 1080p webcam for $50-80 provides noticeably sharper, more professional video quality."
+  },
+  {
+    question: "Do I need a green screen to use virtual backgrounds?",
+    answer: "No, but a green screen significantly improves virtual background quality. Without one, you may see halos, fuzzy edges, or parts of you disappearing. A collapsible green screen costs $25-35 and eliminates these issues completely."
+  },
+  {
+    question: "Will this equipment work with my laptop?",
+    answer: "Yes! All recommended equipment (ring light, webcam, microphone, green screen) is USB plug-and-play and works with Mac, Windows, and Chromebook. No special installation or technical knowledge required."
+  },
+  {
+    question: "Where can I buy this video call equipment?",
+    answer: "All recommended equipment is available on Amazon with fast shipping. We've included direct links to specific products that offer the best value for professional video calls."
+  }
+]
 };
 
 // Helper function to get FAQs for a specific page

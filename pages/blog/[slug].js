@@ -22,6 +22,7 @@ import { bestVirtualBackgroundSites2025Content } from '../../data/blog-content/b
 import { christmasBackgroundsContent } from '../../data/blog-content/christmas-backgrounds';
 import { halloweenBackgroundsContent } from '../../data/blog-content/halloween-backgrounds';
 import { bokehBackgroundsContent } from '../../data/blog-content/bokeh-backgrounds';
+import { videoCallEquipmentGuideContent } from '../../data/blog-content/video-call-equipment-guide';
 
 // Map slugs to their respective content and metadata
 const blogPosts = {
@@ -37,6 +38,18 @@ const blogPosts = {
     dateModified: "2025-10-09",
     faqKey: 'background-mistakes'
   },
+  'video-call-equipment-guide': {
+  content: videoCallEquipmentGuideContent,
+  title: "Complete Video Call Setup Guide: Equipment That Makes a Difference - StreamBackdrops",
+  description: "The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.",
+  keywords: "video call equipment, webcam, ring light, green screen, home office setup, remote work equipment, virtual background setup",
+  canonical: "https://streambackdrops.com/blog/video-call-equipment-guide",
+  headline: "Complete Video Call Setup Guide: Equipment That Actually Makes a Difference",
+  image: "/images/office-spaces/office-spaces-01.webp",
+  datePublished: "2026-02-07",
+  dateModified: "2026-02-07",
+  faqKey: 'video-call-equipment'
+},
   'job-interview-backgrounds': {
     content: () => jobInterviewBackgroundsContent(categoryInfo),
     title: "Job Interview Virtual Backgrounds 2025 - StreamBackdrops",
