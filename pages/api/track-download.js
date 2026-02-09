@@ -1,7 +1,16 @@
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
+  console.log('📥 Download tracking request received:', {
+    method: req.method,
+    hasBody: !!req.body,
+    filename: req.body?.filename,
+    category: req.body?.category,
+    timestamp: new Date().toISOString()
+  });
+
   if (req.method !== 'POST') {
+    console.log('❌ Method not allowed:', req.method);
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
@@ -9,7 +18,7 @@ export default async function handler(req, res) {
   const userAgent = req.headers['user-agent'] || '';
   
   // Only block actual bots, not real browsers
-  if (!userAgent || 
+  const isBot = !userAgent || 
     userAgent.includes('bot') || 
     userAgent.includes('Bot') ||
     userAgent.includes('crawler') || 
@@ -19,9 +28,12 @@ export default async function handler(req, res) {
     userAgent.includes('axios') ||
     userAgent.includes('python') ||
     userAgent.includes('curl') ||
-    userAgent.includes('wget')) {
-  return res.status(200).json({ success: true, skipped: 'bot' });
-}
+    userAgent.includes('wget');
+  
+  if (isBot) {
+    console.log('🤖 Skipping bot/crawler:', userAgent);
+    return res.status(200).json({ success: true, skipped: 'bot' });
+  }
 
   const { 
     filename, 
@@ -39,6 +51,20 @@ export default async function handler(req, res) {
     visitorType
   } = req.body;
   
+  // Validate required fields
+  if (!filename) {
+    console.log('❌ Missing filename in request');
+    return res.status(400).json({ success: false, error: 'Missing filename' });
+  }
+  
+  console.log('📊 Processing download tracking for:', {
+    filename,
+    category,
+    sessionId: sessionId?.substring(0, 10) + '...',
+    visitorId: visitorId?.substring(0, 10) + '...',
+    visitorType
+  });
+
   // Normalize category to canonical folder names
   const categoryMap = {
     'art-gallery': 'art-galleries',
@@ -56,13 +82,20 @@ export default async function handler(req, res) {
     'kitchen': 'kitchens'
   };
   
-  let cleanCategory = category.includes('.') 
-    ? category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '')
-    : category;
+  let cleanCategory = category || 'unknown';
+  if (cleanCategory.includes('.')) {
+    cleanCategory = cleanCategory.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');
+  }
   
   cleanCategory = categoryMap[cleanCategory] || cleanCategory;
   
   try {
+    // Validate environment variables
+    if (!process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SERVICE_EMAIL || !process.env.GOOGLE_SHEET_ID) {
+      console.error('❌ Missing Google Sheets environment variables');
+      throw new Error('Google Sheets configuration missing');
+    }
+
     // Fix private key format
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
@@ -79,25 +112,47 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth });
 
     // Check for duplicate downloads in last 10 seconds
-    const recentData = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:P',
-    });
+    console.log('🔍 Checking for duplicates...');
+    let duplicateCheckPassed = true;
     
-    const rows = recentData.data.values || [];
-    const tenSecondsAgo = Date.now() - 10000;
-    
-    for (let i = rows.length - 1; i >= Math.max(0, rows.length - 20); i--) {
-      const row = rows[i];
-      const rowTime = new Date(row[0]).getTime();
+    try {
+      const recentData = await sheets.spreadsheets.values.get({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID,
+        range: 'Analytics!A:P',
+      });
       
-      if (rowTime < tenSecondsAgo) break;
+      const rows = recentData.data.values || [];
+      const tenSecondsAgo = Date.now() - 10000;
       
-      if (row[1] === 'download' && 
-          row[3] === filename && 
-          row[9] === sessionId) {
-        return res.status(200).json({ success: true, skipped: 'recent_duplicate' });
+      // Only check last 50 rows for performance
+      const checkLimit = Math.min(50, rows.length);
+      for (let i = rows.length - 1; i >= Math.max(0, rows.length - checkLimit); i--) {
+        const row = rows[i];
+        if (row && row.length >= 10) {
+          const rowTime = row[0] ? new Date(row[0]).getTime() : 0;
+          
+          if (rowTime && rowTime < tenSecondsAgo) break;
+          
+          if (row[1] === 'download' && 
+              row[3] === filename && 
+              row[9] === sessionId) {
+            console.log('⏭️ Skipping duplicate download:', {
+              filename,
+              sessionId: sessionId?.substring(0, 10) + '...',
+              rowTime: new Date(rowTime).toISOString()
+            });
+            duplicateCheckPassed = false;
+            break;
+          }
+        }
       }
+    } catch (duplicateError) {
+      console.warn('⚠️ Duplicate check failed, proceeding anyway:', duplicateError.message);
+      // Continue even if duplicate check fails
+    }
+
+    if (!duplicateCheckPassed) {
+      return res.status(200).json({ success: true, skipped: 'recent_duplicate' });
     }
 
     // Build the original source string (most important for conversion attribution)
@@ -112,8 +167,9 @@ export default async function handler(req, res) {
       }
     }
 
+    const now = new Date();
     const downloadData = [
-      new Date().toLocaleString('en-US', {
+      now.toLocaleString('en-US', {
         timeZone: 'America/New_York',
         year: 'numeric',
         month: '2-digit', 
@@ -132,8 +188,8 @@ export default async function handler(req, res) {
       landingPage || '',
       sessionId || '',
       visitorId || 'unknown',
-      new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
-      new Date().toLocaleTimeString('en-US', {
+      now.toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
+      now.toLocaleTimeString('en-US', {
         timeZone: 'America/New_York',
         hour: '2-digit',
         minute: '2-digit',
@@ -143,6 +199,12 @@ export default async function handler(req, res) {
       req.headers['referer'] || 'direct',
       req.headers['x-hashed-ip'] || 'unknown' 
     ];
+
+    console.log('📝 Appending to Google Sheets:', {
+      filename,
+      cleanCategory,
+      timestamp: downloadData[0]
+    });
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
@@ -154,10 +216,30 @@ export default async function handler(req, res) {
       }
     });
 
+    console.log('✅ Download tracked successfully:', {
+      filename,
+      category: cleanCategory,
+      sessionId: sessionId?.substring(0, 10) + '...',
+      timestamp: now.toISOString()
+    });
+    
     res.status(200).json({ success: true });
     
   } catch (error) {
-    console.error('Download tracking failed:', error);
-    res.status(500).json({ error: 'Tracking failed' });
+    console.error('❌ Download tracking failed:', {
+      error: error.message,
+      stack: error.stack,
+      filename,
+      category: cleanCategory,
+      timestamp: new Date().toISOString()
+    });
+    
+    // IMPORTANT: Return 200 even on error so user download isn't blocked
+    res.status(200).json({ 
+      success: false, 
+      error: 'Tracking failed but download may proceed',
+      message: error.message,
+      timestamp: new Date().toISOString() 
+    });
   }
 }
