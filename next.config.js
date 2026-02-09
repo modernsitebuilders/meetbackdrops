@@ -85,6 +85,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/blog/best-virtual-background-sites-2025',
+        destination: '/blog/best-virtual-background-sites-2026',
+        permanent: true, 
+      },
+      {
         source: '/blog-background-mistakes',
         destination: '/410',
         permanent: true,

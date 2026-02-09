@@ -104,8 +104,8 @@ export default function Home({ structuredData }) {
 
         <div className={styles.blogGrid}>
           <Card 
-            href="/blog/best-virtual-background-sites-2025"
-            title="Best Free Background Sites 2025"
+            href="/blog/best-virtual-background-sites-2026"
+            title="Best Free Background Sites 2026"
             description="Complete comparison: StreamBackdrops vs competitors"
             className="blog-card"
           />

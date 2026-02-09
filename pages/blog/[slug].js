@@ -18,7 +18,7 @@ import { zoomTeamsGoogleContent } from '../../data/blog-content/zoom-teams-googl
 import { lightingTipsContent } from '../../data/blog-content/lighting-tips';
 import { videoCallEtiquetteContent } from '../../data/blog-content/video-call-etiquette';
 import { backgroundsByIndustryContent } from '../../data/blog-content/backgrounds-by-industry';
-import { bestVirtualBackgroundSites2025Content } from '../../data/blog-content/best-virtual-background-sites-2025';
+import { bestVirtualBackgroundSites2026Content } from '../../data/blog-content/best-virtual-background-sites-2026';
 import { christmasBackgroundsContent } from '../../data/blog-content/christmas-backgrounds';
 import { halloweenBackgroundsContent } from '../../data/blog-content/halloween-backgrounds';
 import { bokehBackgroundsContent } from '../../data/blog-content/bokeh-backgrounds';
@@ -135,18 +135,24 @@ const blogPosts = {
     dateModified: "2025-10-09",
     faqKey: 'backgrounds-by-industry'
   },
-  'best-virtual-background-sites-2025': {
-    content: bestVirtualBackgroundSites2025Content,
-    title: "Best Virtual Background Sites 2025 - StreamBackdrops",
-    description: "Discover the best websites for free virtual backgrounds in 2025. Compare features, quality, and download options across top platforms.",
-    keywords: "virtual background sites, free backgrounds, zoom backgrounds, teams backgrounds, background websites",
-    canonical: "https://streambackdrops.com/blog/best-virtual-background-sites-2025",
-    headline: "Best Virtual Background Sites 2025",
-    image: "/images/office-spaces/office-spaces-07.webp",
-    datePublished: "2025-02-10",
-    dateModified: "2025-10-09",
-    faqKey: 'best-virtual-background-sites-2025'
-  },
+  'best-virtual-background-sites-2026': {
+  content: bestVirtualBackgroundSites2026Content,
+  title: "Best Virtual Background Sites 2026 - StreamBackdrops",
+  description: "Discover the best websites for free virtual backgrounds in 2026. Compare features, quality, and download options across top platforms.",
+  keywords: "virtual background sites, free backgrounds, zoom backgrounds, teams backgrounds, background websites",
+  canonical: "https://streambackdrops.com/blog/best-virtual-background-sites-2026",
+  headline: "Best Virtual Background Sites 2026",
+  image: "/images/office-spaces/office-spaces-07.webp",
+  
+  // Fix these dates:
+  datePublished: "2026-02-09", // Match actual publication date
+  dateModified: "2026-02-09", // Should be today's date if you just updated
+  
+  // Also add this field for the blog listing:
+  date: "February 2026", // Human-readable date for display
+  
+  faqKey: 'best-virtual-background-sites-2026'
+},
   'christmas-backgrounds': {
     content: christmasBackgroundsContent,
     title: "Free Christmas Virtual Backgrounds for Video Calls 2025 - StreamBackdrops",

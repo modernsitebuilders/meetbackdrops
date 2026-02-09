@@ -277,7 +277,7 @@ export const faqData = {
     }
   ],
 
-  "best-virtual-background-sites-2025": [
+  "best-virtual-background-sites-2026": [
     {
       question: "What's the best site for free virtual backgrounds?",
       answer: "StreamBackdrops offers 337+ free high quality virtual backgrounds specifically optimized for video calls, with no signup required and no watermarks. Unlike stock photo sites, all our backgrounds are curated for professional video conferencing."

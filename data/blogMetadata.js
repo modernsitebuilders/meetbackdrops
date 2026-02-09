@@ -21,12 +21,12 @@ export const blogMetadata = {
     datePublished: "2025-11-06",
     dateModified: "2025-11-06"
   },
-  "best-virtual-background-sites-2025": {
-    headline: "Best Free Virtual Background Sites in 2025: Complete Comparison",
-    description: "Compare the best free virtual background sites in 2025. Learn why StreamBackdrops beats stock photo sites for professional video calls.",
+  "best-virtual-background-sites-2026": {
+    headline: "Best Free Virtual Background Sites in 2026: Complete Comparison",
+    description: "Compare the best free virtual background sites in 2026. Learn why StreamBackdrops beats stock photo sites for professional video calls.",
     image: "/images/art-galleries/art-gallery-1.webp",
-    datePublished: "2025-01-15",
-    dateModified: "2025-10-09"
+    datePublished: "2026-02-09",
+    dateModified: "2026-02-09"
   },
   "video-call-etiquette": {
     headline: "Video Call Etiquette: Essential Rules for Professional Meetings",
