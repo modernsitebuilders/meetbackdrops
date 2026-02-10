@@ -338,7 +338,18 @@ export default function Terms() {
               <p style={{ marginBottom: '1.5rem' }}>
                 In no event shall StreamBackdrops, nor any of its officers, directors, and employees, be held liable for anything arising out of or in any way connected with your use of our virtual backgrounds, whether such liability is under contract, tort, or otherwise.
               </p>
-
+<h3 style={{
+                fontSize: '1.8rem',
+                fontWeight: 'bold',
+                color: '#111827',
+                marginTop: '2rem',
+                marginBottom: '1rem'
+              }}>
+                10. Refund Policy
+              </h3>
+              <p style={{ marginBottom: '1.5rem' }}>
+                All sales are final. Due to the digital nature of our products, we do not offer refunds, exchanges, or credits once a purchase is completed. By completing a purchase, you acknowledge and agree to this no-refund policy.
+              </p>
               <h3 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
@@ -346,7 +357,7 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                10. Privacy Policy
+                11. Privacy Policy
               </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the Service, to understand our practices.
@@ -359,7 +370,7 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                11. Termination
+                12. Termination
               </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 We may terminate or suspend your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.
@@ -372,7 +383,7 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                12. Changes to Terms
+                13. Changes to Terms
               </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect.
@@ -385,7 +396,7 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                13. Governing Law
+                14. Governing Law
               </h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 These Terms shall be interpreted and governed by the laws of the State of Pennsylvania, United States, without regard to its conflict of law provisions.
@@ -398,7 +409,7 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                14. Contact Information
+                15. Contact Information
               </h3>
               <p style={{ marginBottom: '2rem' }}>
                 If you have any questions about these Terms of Service, please contact us through our website contact form or at the address provided on our Contact page.
