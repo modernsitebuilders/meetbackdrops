@@ -206,28 +206,6 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', 'image/png');
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
     
-    const category = filename.match(/^StreamBackdrops-(.+?)-\d+\.png$/)?.[1] || 'unknown';
-
-    try {
-      await fetch(`${req.headers.origin || 'https://streambackdrops.com'}/api/track-download`, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'user-agent': req.headers['user-agent'] || 'browser',
-          'x-forwarded-for': req.headers['x-forwarded-for'] || req.socket.remoteAddress,
-          'x-hashed-ip': hashedIP
-        },
-        body: JSON.stringify({
-          filename,
-          category,
-          hashedIP,
-          ...sessionData
-        })
-      });
-    } catch (trackError) {
-      console.error('Tracking failed:', trackError);
-    }
-    
     res.send(Buffer.from(buffer));
     
   } catch (error) {
