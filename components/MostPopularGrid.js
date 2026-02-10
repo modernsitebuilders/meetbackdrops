@@ -4,16 +4,35 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useImageDownload } from '../lib/useImageDownload';
+import ReviewModal from './ReviewModal';
+import RateLimitModal from './RateLimitModal';
+import ImagePreviewModal from './ImagePreviewModal';
 
 export default function MostPopularGrid() {
   const [popularData, setPopularData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cloudinaryUrls, setCloudinaryUrls] = useState({});
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const {
+    handleDownload,
+    showReviewModal,
+    setShowReviewModal,
+    showRateLimitModal,
+    setShowRateLimitModal,
+    rateLimitError,
+    downloadingImage
+  } = useImageDownload(cloudinaryUrls);
 
   useEffect(() => {
     fetchPopularData();
+    fetch('/cloudinary-urls.json')
+      .then(r => r.ok ? r.json() : {})
+      .then(setCloudinaryUrls)
+      .catch(() => {});
     
-    // Refresh every 5 minutes
     const interval = setInterval(fetchPopularData, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
@@ -156,7 +175,14 @@ export default function MostPopularGrid() {
             </div>
             
             {/* Image */}
-            <Link href={image.webPath} target="_blank">
+            <div 
+              onClick={() => setSelectedImage({
+                filename: image.filename,
+                title: image.filename.replace('.webp', '').replace(/-/g, ' '),
+                category: image.category
+              })}
+              style={{ cursor: 'pointer' }}
+            >
               <div style={{
                 position: 'relative',
                 width: '100%',
@@ -171,7 +197,7 @@ export default function MostPopularGrid() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-            </Link>
+            </div>
             
             {/* Info */}
             <div style={{ padding: '1rem' }}>
@@ -207,30 +233,57 @@ export default function MostPopularGrid() {
               )}
               
               <div style={{ marginTop: '0.75rem' }}>
-                <Link 
-                  href={image.webPath}
-                  target="_blank"
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDownload(
+                      { filename: image.filename, category: image.category },
+                      image.category
+                    );
+                  }}
+                  disabled={downloadingImage === image.filename}
                   style={{
                     display: 'inline-block',
                     width: '100%',
                     textAlign: 'center',
                     padding: '0.5rem',
-                    background: '#2563eb',
+                    background: downloadingImage === image.filename ? '#93c5fd' : '#2563eb',
                     color: 'white',
-                    textDecoration: 'none',
+                    border: 'none',
                     borderRadius: '0.375rem',
                     fontWeight: '500',
-                    fontSize: '0.875rem'
+                    fontSize: '0.875rem',
+                    cursor: downloadingImage === image.filename ? 'wait' : 'pointer'
                   }}
                 >
-                  Download This Background
-                </Link>
+                  {downloadingImage === image.filename ? 'Downloading...' : 'Download This Background'}
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
       
+      {selectedImage && (
+        <ImagePreviewModal
+          image={selectedImage}
+          slug={selectedImage.category}
+          onClose={() => setSelectedImage(null)}
+          onDownload={(img) => handleDownload(img, img.category)}
+        />
+      )}
+
+      {showReviewModal && (
+        <ReviewModal onClose={() => setShowReviewModal(false)} />
+      )}
+
+      {showRateLimitModal && (
+        <RateLimitModal 
+          onClose={() => setShowRateLimitModal(false)}
+          errorMessage={rateLimitError}
+        />
+      )}
+
       {/* Refresh button */}
       <div style={{ textAlign: 'center', marginTop: '2rem' }}>
         <button 

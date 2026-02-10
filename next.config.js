@@ -106,6 +106,7 @@ const nextConfig = {
         destination: '/410',
         permanent: true,
       },
+    
       {
         source: '/category/lounges',
         destination: '/410',
@@ -176,6 +177,11 @@ const nextConfig = {
      {
         source: '/office/modern-meeting-room',
         destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/most-popular',
+        destination: '/most-popular',
         permanent: true,
       }
     ];
