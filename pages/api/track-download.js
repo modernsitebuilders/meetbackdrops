@@ -118,7 +118,7 @@ export default async function handler(req, res) {
     try {
       const recentData = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: 'Analytics!A:P',
+        range: 'Analytics!A:Q', // Updated to A:Q for 17 columns
       });
       
       const rows = recentData.data.values || [];
@@ -128,14 +128,14 @@ export default async function handler(req, res) {
       const checkLimit = Math.min(50, rows.length);
       for (let i = rows.length - 1; i >= Math.max(0, rows.length - checkLimit); i--) {
         const row = rows[i];
-        if (row && row.length >= 10) {
+        if (row && row.length >= 11) { // Updated to check for at least 11 columns
           const rowTime = row[0] ? new Date(row[0]).getTime() : 0;
           
           if (rowTime && rowTime < tenSecondsAgo) break;
           
           if (row[1] === 'download' && 
               row[3] === filename && 
-              row[9] === sessionId) {
+              row[10] === sessionId) { // Updated index from 9 to 10
             console.log('⏭️ Skipping duplicate download:', {
               filename,
               sessionId: sessionId?.substring(0, 10) + '...',
@@ -168,6 +168,12 @@ export default async function handler(req, res) {
     }
 
     const now = new Date();
+    
+    // Extract file extension for tracking
+    const fileExtension = filename.toLowerCase().endsWith('.png') ? 'png' : 
+                         filename.toLowerCase().endsWith('.webp') ? 'webp' : 
+                         filename.toLowerCase().endsWith('.jpg') || filename.toLowerCase().endsWith('.jpeg') ? 'jpg' : 'other';
+
     const downloadData = [
       now.toLocaleString('en-US', {
         timeZone: 'America/New_York',
@@ -182,6 +188,7 @@ export default async function handler(req, res) {
       originalSource,
       filename,
       cleanCategory,
+      fileExtension, // New column: Track the actual file type being downloaded
       pageViewsInSession || 0,
       downloadsInSession || 0,
       visitorType || 'new',
@@ -203,12 +210,13 @@ export default async function handler(req, res) {
     console.log('📝 Appending to Google Sheets:', {
       filename,
       cleanCategory,
+      fileExtension,
       timestamp: downloadData[0]
     });
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:O',
+      range: 'Analytics!A:Q', // Changed from A:O to A:Q to include new column
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {
@@ -219,6 +227,7 @@ export default async function handler(req, res) {
     console.log('✅ Download tracked successfully:', {
       filename,
       category: cleanCategory,
+      fileExtension,
       sessionId: sessionId?.substring(0, 10) + '...',
       timestamp: now.toISOString()
     });

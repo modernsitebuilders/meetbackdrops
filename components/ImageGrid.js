@@ -47,16 +47,17 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
           // Still try to track asynchronously without blocking
           setTimeout(() => {
             fetch('/api/track-download', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                filename: image.filename,
-                category: slug,
-                fallback: true,
-                timestamp: new Date().toISOString(),
-                note: 'Direct download fallback after retry failure'
-              })
-            })
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    filename: `StreamBackdrops-${image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '')}.png`, // PNG filename
+    originalFilename: image.filename, // Original WebP
+    category: slug,
+    fallback: true,
+    timestamp: new Date().toISOString(),
+    note: 'Direct download fallback after retry failure'
+  })
+})
             .then(response => response.json())
             .then(data => {
               console.log('📊 Fallback tracking result:', data);
