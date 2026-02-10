@@ -31,7 +31,7 @@ async function checkIPLimit(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:P',
+      range: 'Analytics!A:Q', // Updated to A:Q (17 columns)
     });
 
     const rows = response.data.values || [];
@@ -41,8 +41,10 @@ async function checkIPLimit(hashedIP) {
 
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
+      if (!row || row.length < 17) continue;
+      
       const eventType = row[1];
-      const rowHashedIP = row[15]; // Column P
+      const rowHashedIP = row[16]; // Column Q (now index 16, was 15)
       const timestamp = new Date(row[0]).getTime();
       
       if (eventType === 'download' && rowHashedIP === hashedIP && timestamp > oneDayAgo) {
@@ -56,6 +58,7 @@ async function checkIPLimit(hashedIP) {
     return 0;
   }
 }
+
 async function checkIPLimitMonthly(hashedIP) {
   try {
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -73,7 +76,7 @@ async function checkIPLimitMonthly(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:P',
+      range: 'Analytics!A:Q', // Updated to A:Q
     });
 
     const rows = response.data.values || [];
@@ -83,8 +86,10 @@ async function checkIPLimitMonthly(hashedIP) {
 
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
+      if (!row || row.length < 17) continue;
+      
       const eventType = row[1];
-      const rowHashedIP = row[15];
+      const rowHashedIP = row[16]; // Column Q (index 16)
       const timestamp = new Date(row[0]).getTime();
       
       if (eventType === 'download' && rowHashedIP === hashedIP && timestamp > thirtyDaysAgo) {
@@ -116,7 +121,7 @@ async function getOldestDownloadDate(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:P',
+      range: 'Analytics!A:Q', // Updated to A:Q
     });
 
     const rows = response.data.values || [];
@@ -126,8 +131,10 @@ async function getOldestDownloadDate(hashedIP) {
 
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
+      if (!row || row.length < 17) continue;
+      
       const eventType = row[1];
-      const rowHashedIP = row[15];
+      const rowHashedIP = row[16]; // Column Q (index 16)
       const timestamp = new Date(row[0]);
       
       if (eventType === 'download' && rowHashedIP === hashedIP && timestamp.getTime() > thirtyDaysAgo) {
@@ -169,7 +176,7 @@ export default async function handler(req, res) {
   
   // Daily limit: 5 downloads per day
   const dailyLimit = 5;
-  const dailyDownloads = ipDownloads; // already counts last 24 hours
+  const dailyDownloads = ipDownloads;
   if (dailyDownloads >= dailyLimit) {
     return res.status(429).json({ 
       error: 'Daily download limit reached. You can download 5 images per day. Come back tomorrow!' 
@@ -191,7 +198,7 @@ export default async function handler(req, res) {
     const response = await fetch(url);
     
     if (!response.ok) {
-      return res.status(429).json({ error: 'Download failed' });
+      return res.status(500).json({ error: 'Download failed' });
     }
     
     const buffer = await response.arrayBuffer();
