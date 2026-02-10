@@ -31,7 +31,7 @@ async function checkIPLimit(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:Q', // Updated to A:Q (17 columns)
+      range: 'Analytics!A:P',
     });
 
     const rows = response.data.values || [];
@@ -41,10 +41,10 @@ async function checkIPLimit(hashedIP) {
 
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      if (!row || row.length < 17) continue;
+      if (!row || row.length < 16) continue;
       
       const eventType = row[1];
-      const rowHashedIP = row[16]; // Column Q (now index 16, was 15)
+      const rowHashedIP = row[15]; // Column P
       const timestamp = new Date(row[0]).getTime();
       
       if (eventType === 'download' && rowHashedIP === hashedIP && timestamp > oneDayAgo) {
@@ -76,7 +76,7 @@ async function checkIPLimitMonthly(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:Q', // Updated to A:Q
+      range: 'Analytics!A:P',
     });
 
     const rows = response.data.values || [];
@@ -86,10 +86,10 @@ async function checkIPLimitMonthly(hashedIP) {
 
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      if (!row || row.length < 17) continue;
+      if (!row || row.length < 16) continue;
       
       const eventType = row[1];
-      const rowHashedIP = row[16]; // Column Q (index 16)
+      const rowHashedIP = row[15]; // Column P
       const timestamp = new Date(row[0]).getTime();
       
       if (eventType === 'download' && rowHashedIP === hashedIP && timestamp > thirtyDaysAgo) {
@@ -121,7 +121,7 @@ async function getOldestDownloadDate(hashedIP) {
     const sheets = google.sheets({ version: 'v4', auth });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:Q', // Updated to A:Q
+      range: 'Analytics!A:P',
     });
 
     const rows = response.data.values || [];
@@ -131,10 +131,10 @@ async function getOldestDownloadDate(hashedIP) {
 
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      if (!row || row.length < 17) continue;
+      if (!row || row.length < 16) continue;
       
       const eventType = row[1];
-      const rowHashedIP = row[16]; // Column Q (index 16)
+      const rowHashedIP = row[15]; // Column P
       const timestamp = new Date(row[0]);
       
       if (eventType === 'download' && rowHashedIP === hashedIP && timestamp.getTime() > thirtyDaysAgo) {

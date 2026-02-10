@@ -17,7 +17,6 @@ export default async function handler(req, res) {
   // Block tracking from bots, crawlers, and build processes
   const userAgent = req.headers['user-agent'] || '';
   
-  // Only block actual bots, not real browsers
   const isBot = !userAgent || 
     userAgent.includes('bot') || 
     userAgent.includes('Bot') ||
@@ -38,7 +37,6 @@ export default async function handler(req, res) {
   const { 
     filename, 
     category,
-    // New session-based attribution
     sessionId,
     originalReferrer,
     originalUtmSource,
@@ -51,7 +49,6 @@ export default async function handler(req, res) {
     visitorType
   } = req.body;
   
-  // Validate required fields
   if (!filename) {
     console.log('❌ Missing filename in request');
     return res.status(400).json({ success: false, error: 'Missing filename' });
@@ -65,7 +62,6 @@ export default async function handler(req, res) {
     visitorType
   });
 
-  // Normalize category to canonical folder names
   const categoryMap = {
     'art-gallery': 'art-galleries',
     'bokeh': 'bokeh-backgrounds',
@@ -90,13 +86,11 @@ export default async function handler(req, res) {
   cleanCategory = categoryMap[cleanCategory] || cleanCategory;
   
   try {
-    // Validate environment variables
     if (!process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SERVICE_EMAIL || !process.env.GOOGLE_SHEET_ID) {
       console.error('❌ Missing Google Sheets environment variables');
       throw new Error('Google Sheets configuration missing');
     }
 
-    // Fix private key format
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
       privateKey = privateKey.slice(1, -1);
@@ -111,32 +105,30 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
-    // Check for duplicate downloads in last 10 seconds
     console.log('🔍 Checking for duplicates...');
     let duplicateCheckPassed = true;
     
     try {
       const recentData = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: 'Analytics!A:Q', // Updated to A:Q for 17 columns
+        range: 'Analytics!A:P',
       });
       
       const rows = recentData.data.values || [];
       const tenSecondsAgo = Date.now() - 10000;
       
-      // Only check last 50 rows for performance
       const checkLimit = Math.min(50, rows.length);
       for (let i = rows.length - 1; i >= Math.max(0, rows.length - checkLimit); i--) {
         const row = rows[i];
-        if (row && row.length >= 11) { // Updated to check for at least 11 columns
+        if (row && row.length >= 10) {
           const rowTime = row[0] ? new Date(row[0]).getTime() : 0;
           
           if (rowTime && rowTime < tenSecondsAgo) break;
           
           if (row[1] === 'download' && 
               row[3] === filename && 
-              row[10] === sessionId) { // Updated index from 9 to 10
-            console.log('⏭️ Skipping duplicate download:', {
+              row[9] === sessionId) {
+            console.log('⭕ Skipping duplicate download:', {
               filename,
               sessionId: sessionId?.substring(0, 10) + '...',
               rowTime: new Date(rowTime).toISOString()
@@ -148,14 +140,12 @@ export default async function handler(req, res) {
       }
     } catch (duplicateError) {
       console.warn('⚠️ Duplicate check failed, proceeding anyway:', duplicateError.message);
-      // Continue even if duplicate check fails
     }
 
     if (!duplicateCheckPassed) {
       return res.status(200).json({ success: true, skipped: 'recent_duplicate' });
     }
 
-    // Build the original source string (most important for conversion attribution)
     let originalSource = originalReferrer || 'direct';
     if (originalUtmSource) {
       originalSource = originalUtmSource;
@@ -168,11 +158,6 @@ export default async function handler(req, res) {
     }
 
     const now = new Date();
-    
-    // Extract file extension for tracking
-    const fileExtension = filename.toLowerCase().endsWith('.png') ? 'png' : 
-                         filename.toLowerCase().endsWith('.webp') ? 'webp' : 
-                         filename.toLowerCase().endsWith('.jpg') || filename.toLowerCase().endsWith('.jpeg') ? 'jpg' : 'other';
 
     const downloadData = [
       now.toLocaleString('en-US', {
@@ -188,7 +173,6 @@ export default async function handler(req, res) {
       originalSource,
       filename,
       cleanCategory,
-      fileExtension, // New column: Track the actual file type being downloaded
       pageViewsInSession || 0,
       downloadsInSession || 0,
       visitorType || 'new',
@@ -210,13 +194,12 @@ export default async function handler(req, res) {
     console.log('📝 Appending to Google Sheets:', {
       filename,
       cleanCategory,
-      fileExtension,
       timestamp: downloadData[0]
     });
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:Q', // Changed from A:O to A:Q to include new column
+      range: 'Analytics!A:P',
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: {
@@ -227,7 +210,6 @@ export default async function handler(req, res) {
     console.log('✅ Download tracked successfully:', {
       filename,
       category: cleanCategory,
-      fileExtension,
       sessionId: sessionId?.substring(0, 10) + '...',
       timestamp: now.toISOString()
     });
@@ -243,7 +225,6 @@ export default async function handler(req, res) {
       timestamp: new Date().toISOString()
     });
     
-    // IMPORTANT: Return 200 even on error so user download isn't blocked
     res.status(200).json({ 
       success: false, 
       error: 'Tracking failed but download may proceed',
