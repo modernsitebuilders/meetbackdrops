@@ -56,53 +56,68 @@ export default function ReviewModal({ onClose, downloadCount = 1 }) {
     }
   };
 
-  const handleStarClick = async (starRating) => {
-    setRating(starRating);
-    
-    // Immediately submit the rating
-    try {
-      await fetch('/api/submit-review', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          rating: starRating,
-          comment: 'No comment provided',
-          name: 'Anonymous',
-          email: 'Not provided',
-          date: new Date().toISOString()
-        })
-      });
-
-      // Show thank you and optional fields
-      setShowThankYou(true);
-      setTimeout(() => setShowOptionalFields(true), 500);
-      
-    } catch (error) {
-      console.error('Error submitting review:', error);
-    }
-  };
-
   const handleAddDetails = async () => {
-    // Update the review with additional details
-    try {
-      await fetch('/api/submit-review', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          rating,
-          comment: comment || 'No comment provided',
-          name: name || 'Anonymous',
-          email: email || 'Not provided',
-          date: new Date().toISOString()
-        })
+  try {
+    await fetch('/api/submit-review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        rating,
+        comment: comment || 'No comment provided',
+        name: name || 'Anonymous',
+        email: email || 'Not provided',
+        date: new Date().toISOString()
+      })
+    });
+
+    // ✅ ADD TRACKING HERE TOO
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'submit_review', {
+        'event_category': 'engagement',
+        'event_label': 'with_details',
+        'value': rating
       });
-      
-      onClose();
-    } catch (error) {
-      console.error('Error updating review:', error);
-      onClose();
     }
-  };
+
+    onClose();
+  } catch (error) {
+    console.error('Error updating review:', error);
+    onClose();
+  }
+};
+
+  const handleStarClick = async (starRating) => {
+  setRating(starRating);
+  
+  try {
+    await fetch('/api/submit-review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        rating: starRating,
+        comment: 'No comment provided',
+        name: 'Anonymous',
+        email: 'Not provided',
+        date: new Date().toISOString()
+      })
+    });
+
+    // ✅ TRACKING – only this line is new
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'submit_review', {
+        'event_category': 'engagement',
+        'event_label': 'rating',
+        'value': starRating
+      });
+    }
+
+    setShowThankYou(true);
+    setTimeout(() => setShowOptionalFields(true), 500);
+    
+  } catch (error) {
+    console.error('Error submitting review:', error);
+  }
+};
 
   const response = getResponseMessage(rating);
 
