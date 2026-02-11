@@ -78,7 +78,7 @@ export default async function handler(req, res) {
       req.headers['referer'] || 'direct'
     ];
 
-    await sheets.spreadsheets.values.append({
+        const appendResponse = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: 'Analytics!A:O',
       valueInputOption: 'RAW',
@@ -87,6 +87,54 @@ export default async function handler(req, res) {
         values: [eventData]
       }
     });
+
+    // 🟩 Highlight HD purchases in light green
+    if (eventType === 'hd_purchase') {
+      const updatedRange = appendResponse.data.updatedRange; // e.g. "Analytics!A1523:O1523"
+      const match = updatedRange.match(/!A(\d+):O(\d+)/);
+      if (match) {
+        const rowNumber = parseInt(match[1], 10);
+        
+        // Get the sheet ID for "Analytics" sheet
+        const spreadsheet = await sheets.spreadsheets.get({
+          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          fields: 'sheets.properties'
+        });
+        const sheet = spreadsheet.data.sheets.find(s => s.properties.title === 'Analytics');
+        if (!sheet) throw new Error('Analytics sheet not found');
+        const sheetId = sheet.properties.sheetId;
+        
+        await sheets.spreadsheets.batchUpdate({
+          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          resource: {
+            requests: [
+              {
+                repeatCell: {
+                  range: {
+                    sheetId: sheetId,
+                    startRowIndex: rowNumber - 1,
+                    endRowIndex: rowNumber
+                    // No column range → entire row is highlighted
+                  },
+                  cell: {
+                    userEnteredFormat: {
+                      backgroundColor: {
+                        red: 0.85,
+                        green: 0.92,
+                        blue: 0.83
+                      }
+                    }
+                  },
+                  fields: 'userEnteredFormat.backgroundColor'
+                }
+              }
+            ]
+          }
+        });
+        
+        console.log(`✅ Highlighted HD purchase at row ${rowNumber}`);
+      }
+    }
 
     res.status(200).json({ success: true });
     
