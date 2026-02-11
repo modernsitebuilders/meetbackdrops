@@ -177,7 +177,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                     e.stopPropagation();
                     handleDownloadWithRetry(image);
                   }}
-                  disabled={downloadingImage === image.filename}
+                  disabled={downloadingImage !== null}
                   style={{
                     background: downloadingImage === image.filename ? '#10b981' : '#2563eb',
                     color: 'white',
@@ -186,7 +186,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                     borderRadius: '0.5rem',
                     fontSize: '1rem',
                     fontWeight: '600',
-                    cursor: downloadingImage === image.filename ? 'not-allowed' : 'pointer',
+                    cursor: downloadingImage !== null ? 'not-allowed' : 'pointer',
                     opacity: downloadingImage === image.filename ? 0.9 : 1,
                     transition: 'background 0.1s',
                     minWidth: '140px'
