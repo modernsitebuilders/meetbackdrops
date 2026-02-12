@@ -190,8 +190,8 @@ export default function Blog() {
               },
               {
                 "@type": "BlogPosting",
-                "headline": "Best Free Virtual Background Sites in 2025: Complete Comparison",
-                "url": "https://streambackdrops.com/blog/best-virtual-background-sites-2025"
+                "headline": "Best Free Virtual Background Sites in 2026: Complete Comparison",
+                "url": "https://streambackdrops.com/blog/best-virtual-background-sites-2026"
               },
               {
                 "@type": "BlogPosting",
