@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "update-counts": "node generate-category-counts.js"
+    "update-counts": "node generate-category-counts.js",
+    "backdrop-inventory": "node scripts/backdrop-inventory.js"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.6.1",
