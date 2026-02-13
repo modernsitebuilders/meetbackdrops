@@ -1,4 +1,9 @@
 import { google } from 'googleapis';
+import crypto from 'crypto';
+
+function hashIP(ip) {
+  return crypto.createHash('sha256').update(ip + 'salt_streambackdrops').digest('hex').substring(0, 16);
+}
 
 export default async function handler(req, res) {
   console.log('📥 Download tracking request received:', {
@@ -28,13 +33,17 @@ export default async function handler(req, res) {
     userAgent.includes('python') ||
     userAgent.includes('curl') ||
     userAgent.includes('wget');
-  
+
   if (isBot) {
     console.log('🤖 Skipping bot/crawler:', userAgent);
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 
-  const { 
+  // Hash IP for rate limiting
+  const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.socket.remoteAddress;
+  const hashedIP = hashIP(ip);
+
+  const {
     filename, 
     category,
     sessionId,
@@ -107,6 +116,7 @@ export default async function handler(req, res) {
 
     console.log('🔍 Checking for duplicates...');
     let duplicateCheckPassed = true;
+    let rows = []; 
     
     try {
       const recentData = await sheets.spreadsheets.values.get({
@@ -114,7 +124,7 @@ export default async function handler(req, res) {
         range: 'Analytics!A:P',
       });
       
-      const rows = recentData.data.values || [];
+      rows = recentData.data.values || [];
       const tenSecondsAgo = Date.now() - 10000;
       
       const checkLimit = Math.min(50, rows.length);
@@ -142,8 +152,152 @@ export default async function handler(req, res) {
       console.warn('⚠️ Duplicate check failed, proceeding anyway:', duplicateError.message);
     }
 
-    if (!duplicateCheckPassed) {
+   if (!duplicateCheckPassed) {
       return res.status(200).json({ success: true, skipped: 'recent_duplicate' });
+    }
+
+    // Check admin bypass
+    const isAdmin = req.body.isAdmin === true;
+    
+    if (!isAdmin) {
+      // Check daily limit (5 downloads per 24 hours)
+      const oneDayAgo = Date.now() - (24 * 60 * 60 * 1000);
+      let dailyCount = 0;
+      
+      for (let i = rows.length - 1; i >= 1; i--) {
+        const row = rows[i];
+        if (!row || row.length < 16) continue;
+        const eventType = row[1];
+        const rowHashedIP = row[15];
+        const timestamp = new Date(row[0]).getTime();
+        
+        if (eventType === 'download' && rowHashedIP === hashedIP && timestamp > oneDayAgo) {
+          dailyCount++;
+        }
+      }
+      
+      if (dailyCount >= 5) {
+        const now = new Date();
+        const deniedData = [
+          now.toLocaleString('en-US', {
+            timeZone: 'America/New_York',
+            year: 'numeric',
+            month: '2-digit', 
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          }),
+          'download_denied',
+          originalUtmSource ? `${originalUtmSource}${originalUtmMedium ? '/' + originalUtmMedium : ''}${originalUtmCampaign ? '/' + originalUtmCampaign : ''}` : (originalReferrer || 'direct'),
+          filename,
+          cleanCategory,
+          pageViewsInSession || 0,
+          downloadsInSession || 0,
+          visitorType || 'new',
+          landingPage || '',
+          sessionId || '',
+          visitorId || 'unknown',
+          now.toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
+          now.toLocaleTimeString('en-US', {
+            timeZone: 'America/New_York',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          }),
+          req.headers['user-agent'] || 'unknown',
+          req.headers['referer'] || 'direct',
+          hashedIP
+        ];
+        
+        await sheets.spreadsheets.values.append({
+          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          range: 'Analytics!A:P',
+          valueInputOption: 'RAW',
+          insertDataOption: 'INSERT_ROWS',
+          resource: {
+            values: [deniedData]
+          }
+        });
+        
+        console.log('⛔ Daily limit reached for IP:', hashedIP.substring(0, 8) + '...');
+        return res.status(429).json({ 
+          error: 'Daily download limit reached. You can download 5 images per day. Come back tomorrow!'
+        });
+      }
+      
+      // Check monthly limit (10 downloads per 30 days)
+      const thirtyDaysAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
+      let monthlyCount = 0;
+      let oldestDownloadDate = null;
+      
+      for (let i = rows.length - 1; i >= 1; i--) {
+        const row = rows[i];
+        if (!row || row.length < 16) continue;
+        const eventType = row[1];
+        const rowHashedIP = row[15];
+        const timestamp = new Date(row[0]);
+        
+        if (eventType === 'download' && rowHashedIP === hashedIP && timestamp.getTime() > thirtyDaysAgo) {
+          monthlyCount++;
+          if (!oldestDownloadDate || timestamp < oldestDownloadDate) {
+            oldestDownloadDate = timestamp;
+          }
+        }
+      }
+      
+      if (monthlyCount >= 10) {
+        const daysUntilExpiry = oldestDownloadDate ? Math.ceil((oldestDownloadDate.getTime() + 30*24*60*60*1000 - Date.now()) / (24*60*60*1000)) : 1;
+        const now = new Date();
+        const deniedData = [
+          now.toLocaleString('en-US', {
+            timeZone: 'America/New_York',
+            year: 'numeric',
+            month: '2-digit', 
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          }),
+          'download_denied',
+          originalUtmSource ? `${originalUtmSource}${originalUtmMedium ? '/' + originalUtmMedium : ''}${originalUtmCampaign ? '/' + originalUtmCampaign : ''}` : (originalReferrer || 'direct'),
+          filename,
+          cleanCategory,
+          pageViewsInSession || 0,
+          downloadsInSession || 0,
+          visitorType || 'new',
+          landingPage || '',
+          sessionId || '',
+          visitorId || 'unknown',
+          now.toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
+          now.toLocaleTimeString('en-US', {
+            timeZone: 'America/New_York',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          }),
+          req.headers['user-agent'] || 'unknown',
+          req.headers['referer'] || 'direct',
+          hashedIP
+        ];
+        
+        await sheets.spreadsheets.values.append({
+          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          range: 'Analytics!A:P',
+          valueInputOption: 'RAW',
+          insertDataOption: 'INSERT_ROWS',
+          resource: {
+            values: [deniedData]
+          }
+        });
+        
+        console.log('⛔ Monthly limit reached for IP:', hashedIP.substring(0, 8) + '...');
+        return res.status(429).json({ 
+          error: `Monthly download limit reached. Your oldest download will expire in ${daysUntilExpiry} day${daysUntilExpiry !== 1 ? 's' : ''}, then you can download more!`
+        });
+      }
+    } else {
+      console.log('👑 Admin bypass - skipping limits');
     }
 
     let originalSource = originalReferrer || 'direct';
@@ -188,7 +342,7 @@ export default async function handler(req, res) {
       }),
       req.headers['user-agent'] || 'unknown',
       req.headers['referer'] || 'direct',
-      req.headers['x-hashed-ip'] || 'unknown' 
+      hashedIP
     ];
 
     console.log('📝 Appending to Google Sheets:', {
