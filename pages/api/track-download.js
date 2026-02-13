@@ -114,7 +114,7 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
-    console.log('🔍 Checking for duplicates...');
+   console.log('🔍 Checking for duplicates...');
     let duplicateCheckPassed = true;
     let rows = []; 
     
@@ -125,23 +125,20 @@ export default async function handler(req, res) {
       });
       
       rows = recentData.data.values || [];
-      const tenSecondsAgo = Date.now() - 10000;
       
-      const checkLimit = Math.min(50, rows.length);
-      for (let i = rows.length - 1; i >= Math.max(0, rows.length - checkLimit); i--) {
+      // Check entire session history (no time limit) - prevent same file download twice
+      for (let i = rows.length - 1; i >= 1; i--) {
         const row = rows[i];
         if (row && row.length >= 10) {
-          const rowTime = row[0] ? new Date(row[0]).getTime() : 0;
+          // If different session, skip (no need to check other sessions)
+          if (row[9] !== sessionId) continue;
           
-          if (rowTime && rowTime < tenSecondsAgo) break;
-          
-          if (row[1] === 'download' && 
-              row[3] === filename && 
-              row[9] === sessionId) {
+          // Found our session - check if same file was already downloaded
+          if (row[1] === 'download' && row[3] === filename) {
             console.log('⭕ Skipping duplicate download:', {
               filename,
               sessionId: sessionId?.substring(0, 10) + '...',
-              rowTime: new Date(rowTime).toISOString()
+              previousDownloadTime: row[0]
             });
             duplicateCheckPassed = false;
             break;
