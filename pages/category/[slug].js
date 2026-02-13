@@ -114,6 +114,13 @@ function CategoryContent({ slug, scores = {}}) {
         />
       )}
       
+      {showRateLimitModal && (
+        <RateLimitModal 
+          onClose={() => setShowRateLimitModal(false)}
+          errorMessage={rateLimitError}
+        />
+      )}
+      
       <BackToTop hide={!!previewImage} />
     </>
   );
