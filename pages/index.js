@@ -40,7 +40,7 @@ export default function Home({ structuredData }) {
   return (
     <Layout
       title="Free Professional Virtual Backgrounds - StreamBackdrops"
-      description={`Download ${TOTAL_IMAGES_FORMATTED} free professional virtual backgrounds for Zoom, Teams, and Meet. Perfect for video calls, remote work, and online meetings. No signup required, no watermarks.`}
+      description={`Download ${TOTAL_IMAGES_FORMATTED} free professional virtual backgrounds for Zoom, Teams & Meet. Perfect for video calls and remote work. No signup, no watermarks.`}
       currentPage="home"
       canonical="https://streambackdrops.com"
       structuredData={structuredData}
