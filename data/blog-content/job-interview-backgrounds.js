@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export const jobInterviewBackgrounds2026Content = (categoryInfo) => {
+export const jobInterviewBackgroundsContent = (categoryInfo) => {
   // Get dynamic image counts from categoryData
   const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
   const homeOfficesCount = categoryInfo['home-offices']?.images?.length || 0;
