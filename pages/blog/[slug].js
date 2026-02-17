@@ -56,10 +56,10 @@ const blogPosts = {
     description: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression.",
     keywords: "job interview backgrounds, interview tips, professional backgrounds, virtual interview, career advice",
     canonical: "https://streambackdrops.com/blog/job-interview-backgrounds",
-    headline: "Best Virtual Backgrounds for Job Interviews 2025",
+    headline: "Best Virtual Backgrounds for Job Interviews 2026",
     image: "/images/office-spaces/office-spaces-05.webp",
     datePublished: "2025-01-21",
-    dateModified: "2025-01-21",
+    dateModified: "2026-02-16",
     faqKey: 'job-interview-backgrounds'
   },
   'professional-video-calls': {
