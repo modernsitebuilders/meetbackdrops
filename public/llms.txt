@@ -1,0 +1,43 @@
+# StreamBackdrops
+
+> Free virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Hundreds of images across professional and seasonal categories, all free with no signup required.
+
+## Pages
+
+- [Home](https://streambackdrops.com/): Browse all background categories
+- [HD Backgrounds](https://streambackdrops.com/hd): Premium higher-quality backgrounds
+- [Search](https://streambackdrops.com/search): Search all backgrounds
+- [Blog](https://streambackdrops.com/blog): Tips and guides for video calls and remote work
+- [FAQ](https://streambackdrops.com/faq): Common questions about using virtual backgrounds
+- [About](https://streambackdrops.com/about): About StreamBackdrops
+- [Contact](https://streambackdrops.com/contact): Contact us
+- [License & Usage](https://streambackdrops.com/license): Free for personal use only
+
+## Categories
+
+- [Bookshelves (Bright)](https://streambackdrops.com/category/bookshelves-bright)
+- [Bookshelves (Dark)](https://streambackdrops.com/category/bookshelves-dark)
+- [Wall Shelves (Bright)](https://streambackdrops.com/category/wall-shelves-bright)
+- [Wall Shelves (Dark)](https://streambackdrops.com/category/wall-shelves-dark)
+- [Office Spaces](https://streambackdrops.com/category/office-spaces)
+- [Living Rooms](https://streambackdrops.com/category/living-rooms)
+- [Kitchens](https://streambackdrops.com/category/kitchens)
+- [Coffee Shops](https://streambackdrops.com/category/coffee-shops)
+- [Art Galleries](https://streambackdrops.com/category/art-galleries)
+- [Urban Lofts](https://streambackdrops.com/category/urban-lofts)
+- [Gardens & Patios](https://streambackdrops.com/category/gardens-patios)
+- [Historic Spaces](https://streambackdrops.com/category/historic-spaces)
+- [Nature & Landscapes](https://streambackdrops.com/category/nature-landscapes)
+- [Libraries](https://streambackdrops.com/category/libraries)
+- [Conference Rooms](https://streambackdrops.com/category/conference-rooms)
+- [Christmas Backgrounds](https://streambackdrops.com/category/christmas-backgrounds)
+- [Halloween Backgrounds](https://streambackdrops.com/category/halloween-backgrounds)
+- [Valentine's Backgrounds](https://streambackdrops.com/category/valentines-backgrounds)
+- [Bokeh Backgrounds](https://streambackdrops.com/category/bokeh-backgrounds)
+
+## Notes
+
+- All backgrounds free, no watermarks, no signup
+- Personal use only — not for commercial use
+- Amazon Associate affiliate links present on some pages
+- Built with Next.js, hosted on Vercel
