@@ -52,7 +52,7 @@ const blogPosts = {
 },
   'job-interview-backgrounds': {
     content: () => jobInterviewBackgroundsContent(categoryInfo),
-    title: "Job Interview Virtual Backgrounds 2025 - StreamBackdrops",
+    title: "Job Interview Virtual Backgrounds 2026 - StreamBackdrops",
     description: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression.",
     keywords: "job interview backgrounds, interview tips, professional backgrounds, virtual interview, career advice",
     canonical: "https://streambackdrops.com/blog/job-interview-backgrounds",
