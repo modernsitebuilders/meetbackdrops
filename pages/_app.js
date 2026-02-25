@@ -39,8 +39,8 @@ export default function App({ Component, pageProps }) {
         `}
       </Script>
       
+      <CookieBanner />
       <Component {...pageProps} />
-      <CookieBanner /> {/* ← Moved AFTER Component */}
       <VercelAnalytics />
     </>
   );
