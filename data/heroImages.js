@@ -7,12 +7,12 @@ export const HERO_IMAGES = [
   {
     src: '/images/bookshelves-bright/bookshelves-bright-01.webp',
     alt: 'Bright bookshelves background',
-    priority: true
+    priority: false
   },
   {
     src: '/images/wall-shelves-bright/wall-shelves-bright-02.webp',
     alt: 'Bright wall shelf background',
-    priority: true
+    priority: false
   },
   {
     src: '/images/office-spaces/office-spaces-36.webp',
