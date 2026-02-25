@@ -6,6 +6,7 @@ import TrustBadges from '../components/TrustBadges';
 import HeroCTA from '../components/HeroCTA';
 import HDBadge from '../components/HDBadge';
 import WhyDifferent from '../components/WhyDifferent';
+import SocialProof from '../components/SocialProof';
 
 export default function Home() {
   return (
@@ -42,6 +43,7 @@ export default function Home() {
 <HeroCTA />
 <HDBadge />
 <WhyDifferent />
+<SocialProof />
       </section>
     </Layout>
   );
