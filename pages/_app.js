@@ -7,10 +7,12 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 // import { getOrCreateSession } from '../lib/sessionTracking';
 
+import { getOrCreateSession } from '../lib/sessionTracking';
+
 export default function App({ Component, pageProps }) {
-  // useEffect(() => {
-  //   getOrCreateSession();
-  // }, []);
+  useEffect(() => {
+    getOrCreateSession();
+  }, []);
 
   return (
     <>
