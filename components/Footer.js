@@ -109,8 +109,8 @@ export default function Footer() {
               <Link href="/blog/job-interview-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Job Interview Backgrounds
               </Link>
-              <Link href="/blog/video-call-etiquette" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Video Call Etiquette
+              <Link href="/blog/best-virtual-background-sites-2026" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Best Background Sites 2026
               </Link>
               <Link href="/blog/virtual-background-guide" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Setup Guide

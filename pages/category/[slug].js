@@ -19,7 +19,6 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
 import HDBanner from '../../components/HDBanner';
-import { findMatchingAnalytics } from '../../lib/imageScoring';
 
 function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -252,143 +251,51 @@ export async function getStaticPaths() {
   };
 }
 
-// Import the scoring functions
-const { calculateImageScore } = require('../../lib/imageScoring');
-
 export async function getStaticProps({ params }) {
-  const { google } = require('googleapis');
   const fs = require('fs');
   const path = require('path');
 
   let scores = {};
-  let imageMetadata = {}; 
+  let imageMetadata = {};
+
+  const category = categoryInfo[params.slug];
+  if (!category) {
+    return { notFound: true };
+  }
 
   try {
     // Load metadata
     const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
     imageMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
-    
-    // Get analytics from Google Sheets
-    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
-    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
-      privateKey = privateKey.slice(1, -1);
-    }
-    privateKey = privateKey.replace(/\\n/g, '\n');
 
-    const auth = new google.auth.JWT({
-      email: process.env.GOOGLE_SERVICE_EMAIL,
-      key: privateKey,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets']
-    });
+    // Fetch pre-computed scores from the shared API endpoint (has 1-hour in-memory cache)
+    // This means all 20 category pages share a single Sheets read instead of each hitting Sheets directly
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ||
+      (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://streambackdrops.com');
+    const response = await fetch(`${baseUrl}/api/calculate-scores`);
 
-    const sheets = google.sheets({ version: 'v4', auth });
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I',
-    });
+    if (response.ok) {
+      const data = await response.json();
+      const allScores = data.scores || {};
 
-    const rows = response.data.values || [];
-    const RESET_DATE = new Date('2026-01-25');
-    const now = new Date();
-    
-    // Process analytics data with proper filename matching
-    const analyticsData = {};
-    
-    // Process rows with proper filename cleaning
-    rows.slice(1).forEach(row => {
-      const timestamp = row[0];
-      const eventType = row[1];
-      let filename = row[3];
-      
-      if (!filename || eventType !== 'download') return;
-      
-      // Strip StreamBackdrops prefix
-      if (filename.startsWith('StreamBackdrops-')) {
-        filename = filename.replace('StreamBackdrops-', '');
-      }
-      
-      // Skip non-image entries
-      if (filename.startsWith('/') ||
-          filename.includes('/category/') || 
-          filename.includes('/blog') ||
-          filename.includes('/contact') ||
-          filename.includes('/about') ||
-          !filename.match(/\.(webp|png|jpg|jpeg)$/i)) {
-        return;
-      }
-      
-      const eventDate = new Date(timestamp);
-      
-      // Only count events from reset date forward
-      if (eventDate < RESET_DATE) return;
-      
-      // Convert to webp for consistency
-      filename = filename.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-      
-      // Update analytics
-      if (!analyticsData[filename]) {
-        analyticsData[filename] = {
-          downloads: 0,
-          lastDownload: null
-        };
-      }
-      
-      analyticsData[filename].downloads += 1;
-      
-      if (!analyticsData[filename].lastDownload || eventDate > analyticsData[filename].lastDownload) {
-        analyticsData[filename].lastDownload = eventDate;
-      }
-    });
-    
-    // Get category images
-    const category = categoryInfo[params.slug];
-    if (!category) {
-      return { notFound: true };
-    }
-    
-    // Calculate scores using improved matching
-    category.images.forEach(image => {
-      const filename = image.filename;
-      const meta = imageMetadata[filename] || {};
-      
-      // Find matching analytics using our improved function
-      const analytics = findMatchingAnalytics(filename, analyticsData) || {};
-      
-      // Prepare image data for scoring
-      const imageData = {
-        createdDate: meta.firstSeen || RESET_DATE,
-        totalDownloads: analytics.downloads || 0,
-        lastDownload: analytics.lastDownload || null
-      };
-      
-      // Calculate score
-      scores[filename] = calculateImageScore(imageData, now);
-    });
-    
-    // Get top 10 images for this category (for popular badges)
-    const imagesWithScores = category.images.map(image => ({
-      ...image,
-      score: scores[image.filename] || 0
-    }));
-    
-  } catch (error) {
-    console.error('Build-time scoring failed:', error);
-    
-    // Fallback: assign base scores
-    const category = categoryInfo[params.slug];
-    if (category) {
-      const now = new Date();
-      const RESET_DATE = new Date('2026-01-25');
-      
+      // Extract just the score numbers for this category's images
       category.images.forEach(image => {
-        // Simple fallback: new images get 65, older get 50
-        const meta = imageMetadata[image.filename] || {};
-        const createdDate = meta.firstSeen ? new Date(meta.firstSeen) : RESET_DATE;
-        const daysOld = Math.floor((now - createdDate) / (1000 * 60 * 60 * 24));
-        
-        scores[image.filename] = daysOld < 90 ? 65 : 50;
+        const imageStats = allScores[image.filename];
+        scores[image.filename] = imageStats?.score ?? 30;
       });
     }
+  } catch (error) {
+    console.error('Build-time scoring failed, using fallback scores:', error.message);
+  }
+
+  // Fallback: if scores are still empty, assign neutral defaults
+  if (Object.keys(scores).length === 0) {
+    category.images.forEach(image => {
+      const meta = imageMetadata[image.filename] || {};
+      const createdDate = meta.firstSeen ? new Date(meta.firstSeen) : new Date('2026-01-25');
+      const daysOld = Math.floor((Date.now() - createdDate) / (1000 * 60 * 60 * 24));
+      scores[image.filename] = daysOld < 90 ? 65 : 50;
+    });
   }
 
   return {
@@ -397,6 +304,6 @@ export async function getStaticProps({ params }) {
       scores,
       metadata: imageMetadata
     },
-    revalidate: 3600 // Revalidate every hour
+    revalidate: 86400 // Revalidate once per day — scores only update daily via cron
   };
 }

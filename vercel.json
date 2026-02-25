@@ -44,14 +44,5 @@
       ]
     }
   ],
-  "crons": [
-    {
-      "path": "/api/calculate-scores",
-      "schedule": "0 2 * * *"
-    },
-    {
-      "path": "/api/cron/update-popular",
-      "schedule": "0 3 * * *"
-    }
-  ]
+  "crons": []
 }
