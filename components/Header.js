@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import MobileMenu from './MobileMenu';
 
 export default function Header({ currentPage }) {
   const router = useRouter();
@@ -239,6 +240,9 @@ export default function Header({ currentPage }) {
           <button
             className="mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open navigation menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
             style={{
               display: 'none',
               background: 'none',
@@ -268,6 +272,8 @@ export default function Header({ currentPage }) {
                   setOpenDropdown(openDropdown === 'bookshelves' ? null : 'bookshelves');
                   setOpenNestedDropdown(null);
                 }}
+                aria-expanded={openDropdown === 'bookshelves'}
+                aria-haspopup="true"
                 style={{
                   ...navButtonStyle(
                     currentPage === 'bookshelves-bright' || currentPage === 'bookshelves-dark',
@@ -281,7 +287,7 @@ export default function Header({ currentPage }) {
                 onMouseLeave={() => setHoveredNav(null)}
               >
                 Bookshelves
-                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+                <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
               </button>
               {openDropdown === 'bookshelves' && renderDropdown(bookshelvesItems, 'bookshelves')}
             </div>
@@ -294,6 +300,8 @@ export default function Header({ currentPage }) {
                   setOpenDropdown(openDropdown === 'wall-shelves' ? null : 'wall-shelves');
                   setOpenNestedDropdown(null);
                 }}
+                aria-expanded={openDropdown === 'wall-shelves'}
+                aria-haspopup="true"
                 style={{
                   ...navButtonStyle(
                     currentPage === 'wall-shelves-bright' || currentPage === 'wall-shelves-dark',
@@ -307,7 +315,7 @@ export default function Header({ currentPage }) {
                 onMouseLeave={() => setHoveredNav(null)}
               >
                 Wall Shelves
-                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+                <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
               </button>
               {openDropdown === 'wall-shelves' && renderDropdown(wallShelvesItems, 'wall-shelves')}
             </div>
@@ -340,6 +348,8 @@ export default function Header({ currentPage }) {
                   setOpenDropdown(openDropdown === 'more' ? null : 'more');
                   setOpenNestedDropdown(null);
                 }}
+                aria-expanded={openDropdown === 'more'}
+                aria-haspopup="true"
                 style={{
                   ...navButtonStyle(false, hoveredNav === 'more'),
                   display: 'flex',
@@ -350,7 +360,7 @@ export default function Header({ currentPage }) {
                 onMouseLeave={() => setHoveredNav(null)}
               >
                 More Categories
-                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+                <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
               </button>
               {openDropdown === 'more' && renderDropdown(moreCategories, 'more')}
             </div>
@@ -363,6 +373,8 @@ export default function Header({ currentPage }) {
                   setOpenDropdown(openDropdown === 'collections' ? null : 'collections');
                   setOpenNestedDropdown(null);
                 }}
+                aria-expanded={openDropdown === 'collections'}
+                aria-haspopup="true"
                 style={{
                   ...navButtonStyle(false, hoveredNav === 'collections'),
                   display: 'flex',
@@ -373,7 +385,7 @@ export default function Header({ currentPage }) {
                 onMouseLeave={() => setHoveredNav(null)}
               >
                 Collections
-                <span style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+                <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
               </button>
               {openDropdown === 'collections' && renderDropdown(collectionsItems, 'collections')}
             </div>
@@ -406,357 +418,16 @@ export default function Header({ currentPage }) {
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0, 0, 0, 0.5)',
-              zIndex: 99998
-            }}
-          />
-          
-          {/* Slide-in Menu */}
-          <div style={{
-            position: 'fixed',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            width: '80%',
-            maxWidth: '300px',
-            background: 'white',
-            zIndex: 99999,
-            overflowY: 'auto',
-            boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.1)',
-            animation: 'slideIn 0.3s ease-out'
-          }}>
-            {/* Close Button */}
-            <div style={{
-              padding: '1rem',
-              borderBottom: '1px solid #e5e7eb',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
-            }}>
-              <span style={{ fontWeight: 'bold', color: '#2563eb' }}>Menu</span>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  fontSize: '1.5rem',
-                  cursor: 'pointer',
-                  color: '#6b7280'
-                }}
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Menu Items */}
-            <div style={{ padding: '0.5rem' }}>
-              {/* Bookshelves Section */}
-              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
-                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>BOOKSHELVES</div>
-                {bookshelvesItems.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      navigate(item.path);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      textAlign: 'left',
-                      background: 'transparent',
-                      border: 'none',
-                      borderRadius: '0.5rem',
-                      color: '#374151',
-                      fontWeight: '500',
-                      fontSize: '0.95rem',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                      transition: 'background 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                    onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Wall Shelves Section */}
-              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
-                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>WALL SHELVES</div>
-                {wallShelvesItems.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      navigate(item.path);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      textAlign: 'left',
-                      background: 'transparent',
-                      border: 'none',
-                      borderRadius: '0.5rem',
-                      color: '#374151',
-                      fontWeight: '500',
-                      fontSize: '0.95rem',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                      transition: 'background 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                    onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Featured Categories */}
-              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
-                <button
-                  onClick={() => {
-                    navigate('/category/office-spaces');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    textAlign: 'left',
-                    background: 'transparent',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: '#374151',
-                    fontWeight: '500',
-                    fontSize: '0.95rem',
-                    cursor: 'pointer',
-                    fontFamily: 'inherit',
-                    transition: 'background 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                  onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                >
-                  Office Spaces
-                </button>
-                <button
-                  onClick={() => {
-                    navigate('/category/living-rooms');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    textAlign: 'left',
-                    background: 'transparent',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: '#374151',
-                    fontWeight: '500',
-                    fontSize: '0.95rem',
-                    cursor: 'pointer',
-                    fontFamily: 'inherit',
-                    transition: 'background 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                  onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                >
-                  Living Rooms
-                </button>
-              </div>
-
-              {/* Collections */}
-              <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb' }}>
-                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>COLLECTIONS</div>
-                {collectionsItems.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      navigate(item.path);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      textAlign: 'left',
-                      background: 'transparent',
-                      border: 'none',
-                      borderRadius: '0.5rem',
-                      color: '#374151',
-                      fontWeight: '500',
-                      fontSize: '0.95rem',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                      transition: 'background 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                    onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Other Categories */}
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem' }}>MORE CATEGORIES</div>
-                {moreCategories.map((item, index) => (
-                  item.isNested ? (
-                    <div key={index}>
-                      <div style={{ padding: '0.5rem 1rem', fontWeight: '600', color: '#6b7280', fontSize: '0.85rem', marginTop: '0.5rem' }}>{item.name.toUpperCase()}</div>
-                      {item.items.map((subItem, subIndex) => (
-                        <button
-                          key={subIndex}
-                          onClick={() => {
-                            navigate(subItem.path);
-                            setIsMobileMenuOpen(false);
-                          }}
-                          style={{
-                            display: 'block',
-                            width: '100%',
-                            padding: '0.75rem 1rem 0.75rem 2rem',
-                            textAlign: 'left',
-                            background: 'transparent',
-                            border: 'none',
-                            borderRadius: '0.5rem',
-                            color: '#374151',
-                            fontWeight: '500',
-                            fontSize: '0.95rem',
-                            cursor: 'pointer',
-                            fontFamily: 'inherit',
-                            transition: 'background 0.2s ease'
-                          }}
-                          onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                          onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                        >
-                          {subItem.name}
-                        </button>
-                      ))}
-                    </div>
-                  ) : (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        navigate(item.path);
-                        setIsMobileMenuOpen(false);
-                      }}
-                      style={{
-                        display: 'block',
-                        width: '100%',
-                        padding: '0.75rem 1rem',
-                        textAlign: 'left',
-                        background: 'transparent',
-                        border: 'none',
-                        borderRadius: '0.5rem',
-                        color: '#374151',
-                        fontWeight: '500',
-                        fontSize: '0.95rem',
-                        cursor: 'pointer',
-                        fontFamily: 'inherit',
-                        transition: 'background 0.2s ease'
-                      }}
-                      onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                      onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                    >
-                      {item.name}
-                    </button>
-                  )
-                ))}
-              </div>
-
-              {/* Blog */}
-              <button
-                onClick={() => {
-                  navigate('/blog');
-                  setIsMobileMenuOpen(false);
-                }}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  padding: '1rem',
-                  textAlign: 'left',
-                  background: currentPage === 'blog' ? '#eff6ff' : 'transparent',
-                  border: 'none',
-                  borderRadius: '0.5rem',
-                  color: currentPage === 'blog' ? '#2563eb' : '#374151',
-                  fontWeight: currentPage === 'blog' ? '600' : '500',
-                  fontSize: '0.95rem',
-                  cursor: 'pointer',
-                  fontFamily: 'inherit',
-                  transition: 'background 0.2s ease',
-                  marginTop: '0.5rem'
-                }}
-                onMouseEnter={(e) => {
-                  if (currentPage !== 'blog') {
-                    e.target.style.background = '#f3f4f6';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (currentPage !== 'blog') {
-                    e.target.style.background = 'transparent';
-                  }
-                }}
-              >
-                📝 Blog
-              </button>
-
-              {/* HD Premium */}
-              <button
-                onClick={() => {
-                  navigate('/hd');
-                  setIsMobileMenuOpen(false);
-                }}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  padding: '1rem',
-                  textAlign: 'left',
-                  background: currentPage === 'hd' ? '#fef3c7' : 'transparent',
-                  border: 'none',
-                  borderRadius: '0.5rem',
-                  color: '#92400e',
-                  fontWeight: '600',
-                  fontSize: '0.95rem',
-                  cursor: 'pointer',
-                  fontFamily: 'inherit',
-                  transition: 'background 0.2s ease',
-                  marginTop: '0.5rem'
-                }}
-                onMouseEnter={(e) => {
-                  if (currentPage !== 'hd') {
-                    e.target.style.background = '#fef3c7';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (currentPage !== 'hd') {
-                    e.target.style.background = 'transparent';
-                  }
-                }}
-              >
-                ⭐ HD Backgrounds
-              </button>
-            </div>
-          </div>
-        </>
-      )}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        navigate={navigate}
+        currentPage={currentPage}
+        bookshelvesItems={bookshelvesItems}
+        wallShelvesItems={wallShelvesItems}
+        collectionsItems={collectionsItems}
+        moreCategories={moreCategories}
+      />
 
       {/* Mobile Styles */}
       <style jsx global>{`

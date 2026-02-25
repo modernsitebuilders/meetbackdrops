@@ -11,101 +11,221 @@ import { getReviewsData } from '../lib/reviews';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
+const PRICE_IDS = {
+  1: 'price_1Sr4U0Q695ongkMjxUtnf9NA',
+  2: 'price_1Sr4VEQ695ongkMjkaclxw67',
+  3: 'price_1Sr4WYQ695ongkMjRUTPsoIr'
+};
+
+const PRICES = { 1: 4.99, 2: 6.99, 3: 8.99 };
+
+function trackAnalytics(eventType, filename, category) {
+  fetch('/api/analytics', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      eventType,
+      filename,
+      category,
+      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+    })
+  }).catch(() => {});
+}
+
+function HdProductCard({ product, isSelected, onToggle, onPreview }) {
+  return (
+    <div
+      style={{
+        border: isSelected ? '3px solid #2563eb' : '3px solid gold',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        position: 'relative',
+        cursor: 'pointer'
+      }}
+      onClick={() => onToggle(product.id)}
+    >
+      {isSelected && (
+        <div style={{
+          position: 'absolute',
+          top: '10px', right: '10px',
+          background: '#2563eb', color: 'white',
+          width: '30px', height: '30px',
+          borderRadius: '50%',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontWeight: 'bold', zIndex: 1
+        }}>✓</div>
+      )}
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          trackAnalytics('hd_preview_opened', product.id, product.category);
+          const baseFilename = product.id.replace('-hd', '');
+          const imageUrl = cloudinaryUrls[baseFilename];
+          if (imageUrl) {
+            onPreview({
+              id: product.id,
+              standard: imageUrl,
+              hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
+            });
+          }
+        }}
+        style={{
+          position: 'absolute',
+          top: '50%', left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: 'rgba(0,0,0,0.8)', color: 'white',
+          padding: '0.75rem 1.5rem',
+          border: 'none', borderRadius: '8px',
+          cursor: 'pointer', opacity: 0,
+          transition: 'opacity 0.3s',
+          zIndex: 2, fontWeight: 'bold'
+        }}
+        className="preview-btn"
+      >
+        👁️ Preview HD
+      </button>
+
+      <img
+        src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
+        alt={`${product.name} - Premium HD Virtual Background`}
+        style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+      />
+      <div style={{ padding: '1.5rem' }}>
+        <h3 style={{ marginBottom: '0.5rem' }}>{product.name}</h3>
+        <p style={{ color: '#666', fontSize: '0.9rem' }}>Premium HD - 2912×1632</p>
+      </div>
+    </div>
+  );
+}
+
+function CheckoutBar({ selected, onClear }) {
+  const price = PRICES[selected.length];
+
+  const handleCheckout = async (e) => {
+    e.stopPropagation();
+    const response = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        priceId: PRICE_IDS[selected.length],
+        selectedImages: selected
+      })
+    });
+    const { url } = await response.json();
+    window.location.href = url;
+  };
+
+  return (
+    <div style={{
+      position: 'fixed', bottom: '2rem', right: '2rem',
+      background: '#2563eb', color: 'white',
+      padding: '1.5rem 2rem', borderRadius: '12px',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.3)', zIndex: 100
+    }}>
+      <button
+        onClick={(e) => { e.stopPropagation(); onClear(); }}
+        aria-label="Clear selection"
+        style={{
+          position: 'absolute', top: '10px', right: '10px',
+          background: 'transparent', border: 'none',
+          color: 'white', cursor: 'pointer',
+          fontSize: '1.2rem', padding: '0.25rem'
+        }}
+      >×</button>
+
+      <div style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>
+        {selected.length} image{selected.length > 1 ? 's' : ''} selected
+      </div>
+      <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+        ${price}
+      </div>
+      <button
+        onClick={handleCheckout}
+        style={{
+          background: 'white', color: '#2563eb',
+          border: 'none', padding: '0.75rem 2rem',
+          borderRadius: '8px', fontWeight: 'bold',
+          cursor: 'pointer', width: '100%', fontSize: '1rem'
+        }}
+      >
+        Checkout
+      </button>
+    </div>
+  );
+}
+
+const products = [
+  // Bookshelves Bright
+  { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-04-hd', name: 'Bright Bookshelf #4', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-06-hd', name: 'Bright Bookshelf #6', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-07-hd', name: 'Bright Bookshelf #7', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-10-hd', name: 'Bright Bookshelf #10', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-16-hd', name: 'Bright Bookshelf #16', category: 'bookshelves-bright' },
+  // Bookshelves Dark
+  { id: 'bookshelves-dark-02-hd', name: 'Dark Bookshelf #2', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-07-hd', name: 'Dark Bookshelf #7', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-09-hd', name: 'Dark Bookshelf #9', category: 'bookshelves-dark' },
+  // Wall Shelves Bright
+  { id: 'wall-shelves-bright-28-hd', name: 'Bright Wall Shelf #28', category: 'wall-shelves-bright' },
+  // Coffee Shops
+  { id: 'coffee-shop-03-hd', name: 'Coffee Shop #3', category: 'coffee-shops' },
+  // Libraries
+  { id: 'library-17-hd', name: 'Library #17', category: 'libraries' },
+  // Office Spaces
+  { id: 'office-spaces-01-hd', name: 'Office Space #1', category: 'office-spaces' },
+  { id: 'office-spaces-02-hd', name: 'Office Space #2', category: 'office-spaces' },
+  { id: 'office-spaces-03-hd', name: 'Office Space #3', category: 'office-spaces' },
+  { id: 'office-spaces-05-hd', name: 'Office Space #5', category: 'office-spaces' },
+  { id: 'office-spaces-06-hd', name: 'Office Space #6', category: 'office-spaces' },
+  { id: 'office-spaces-07-hd', name: 'Office Space #7', category: 'office-spaces' },
+  { id: 'office-spaces-08-hd', name: 'Office Space #8', category: 'office-spaces' },
+  { id: 'office-spaces-17-hd', name: 'Office Space #17', category: 'office-spaces' },
+  { id: 'office-spaces-19-hd', name: 'Office Space #19', category: 'office-spaces' },
+  { id: 'office-spaces-24-hd', name: 'Office Space #24', category: 'office-spaces' },
+  { id: 'office-spaces-33-hd', name: 'Office Space #33', category: 'office-spaces' },
+  { id: 'office-spaces-36-hd', name: 'Office Space #36', category: 'office-spaces' },
+  { id: 'office-spaces-43-hd', name: 'Office Space #43', category: 'office-spaces' },
+  { id: 'office-spaces-77-hd', name: 'Office Space #77', category: 'office-spaces' },
+  { id: 'office-spaces-10-hd', name: 'Office Space #10', category: 'office-spaces' },
+  { id: 'office-spaces-12-hd', name: 'Office Space #12', category: 'office-spaces' },
+  { id: 'office-spaces-14-hd', name: 'Office Space #14', category: 'office-spaces' },
+  { id: 'office-spaces-15-hd', name: 'Office Space #15', category: 'office-spaces' },
+  { id: 'office-spaces-16-hd', name: 'Office Space #16', category: 'office-spaces' },
+  { id: 'office-spaces-25-hd', name: 'Office Space #25', category: 'office-spaces' },
+  { id: 'office-spaces-28-hd', name: 'Office Space #28', category: 'office-spaces' },
+  { id: 'office-spaces-35-hd', name: 'Office Space #35', category: 'office-spaces' },
+  { id: 'office-spaces-69-hd', name: 'Office Space #69', category: 'office-spaces' },
+  // Nature Landscapes
+  { id: 'nature-landscape-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes' },
+  { id: 'nature-landscape-20-hd', name: 'Nature Landscape #20', category: 'nature-landscapes' },
+  { id: 'nature-landscape-21-hd', name: 'Nature Landscape #21', category: 'nature-landscapes' },
+  { id: 'nature-landscape-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes' },
+  { id: 'nature-landscape-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes' }
+];
+
 export default function Premium({ reviewsData }) {
-  const products = [
-    // Bookshelves Bright
-    { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright' },
-    { id: 'bookshelves-bright-04-hd', name: 'Bright Bookshelf #4', category: 'bookshelves-bright' },
-    { id: 'bookshelves-bright-06-hd', name: 'Bright Bookshelf #6', category: 'bookshelves-bright' },
-    { id: 'bookshelves-bright-07-hd', name: 'Bright Bookshelf #7', category: 'bookshelves-bright' },
-    { id: 'bookshelves-bright-10-hd', name: 'Bright Bookshelf #10', category: 'bookshelves-bright' },
-    { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright' },
-    { id: 'bookshelves-bright-16-hd', name: 'Bright Bookshelf #16', category: 'bookshelves-bright' },
-
-    // Bookshelves Dark
-    { id: 'bookshelves-dark-02-hd', name: 'Dark Bookshelf #2', category: 'bookshelves-dark' },
-    { id: 'bookshelves-dark-07-hd', name: 'Dark Bookshelf #7', category: 'bookshelves-dark' },
-    { id: 'bookshelves-dark-09-hd', name: 'Dark Bookshelf #9', category: 'bookshelves-dark' },
-
-    // Wall Shelves Bright
-    { id: 'wall-shelves-bright-28-hd', name: 'Bright Wall Shelf #28', category: 'wall-shelves-bright' },
-    
-    // Coffee Shops
-    { id: 'coffee-shop-03-hd', name: 'Coffee Shop #3', category: 'coffee-shops' },
-
-    // Libraries
-    { id: 'library-17-hd', name: 'Library #17', category: 'libraries' },
-    
-    // Office Spaces
-    { id: 'office-spaces-01-hd', name: 'Office Space #1', category: 'office-spaces' },
-    { id: 'office-spaces-02-hd', name: 'Office Space #2', category: 'office-spaces' },
-    { id: 'office-spaces-03-hd', name: 'Office Space #3', category: 'office-spaces' },
-    { id: 'office-spaces-05-hd', name: 'Office Space #5', category: 'office-spaces' },
-    { id: 'office-spaces-06-hd', name: 'Office Space #6', category: 'office-spaces' },
-    { id: 'office-spaces-07-hd', name: 'Office Space #7', category: 'office-spaces' },
-    { id: 'office-spaces-08-hd', name: 'Office Space #8', category: 'office-spaces' },
-    { id: 'office-spaces-17-hd', name: 'Office Space #17', category: 'office-spaces' },
-    { id: 'office-spaces-19-hd', name: 'Office Space #19', category: 'office-spaces' },
-    { id: 'office-spaces-24-hd', name: 'Office Space #24', category: 'office-spaces' },
-    { id: 'office-spaces-33-hd', name: 'Office Space #33', category: 'office-spaces' },
-    { id: 'office-spaces-36-hd', name: 'Office Space #36', category: 'office-spaces' },
-    { id: 'office-spaces-43-hd', name: 'Office Space #43', category: 'office-spaces' },
-    { id: 'office-spaces-77-hd', name: 'Office Space #77', category: 'office-spaces' },
-    { id: 'office-spaces-10-hd', name: 'Office Space #10', category: 'office-spaces' },
-{ id: 'office-spaces-12-hd', name: 'Office Space #12', category: 'office-spaces' },
-{ id: 'office-spaces-14-hd', name: 'Office Space #14', category: 'office-spaces' },
-{ id: 'office-spaces-15-hd', name: 'Office Space #15', category: 'office-spaces' },
-{ id: 'office-spaces-16-hd', name: 'Office Space #16', category: 'office-spaces' },
-{ id: 'office-spaces-25-hd', name: 'Office Space #25', category: 'office-spaces' },
-{ id: 'office-spaces-28-hd', name: 'Office Space #28', category: 'office-spaces' },
-{ id: 'office-spaces-35-hd', name: 'Office Space #35', category: 'office-spaces' },
-{ id: 'office-spaces-69-hd', name: 'Office Space #69', category: 'office-spaces' },
-    // Nature Landscapes
-    { id: 'nature-landscape-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes' },
-    { id: 'nature-landscape-20-hd', name: 'Nature Landscape #20', category: 'nature-landscapes' },
-    { id: 'nature-landscape-21-hd', name: 'Nature Landscape #21', category: 'nature-landscapes' },
-    { id: 'nature-landscape-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes' },
-    { id: 'nature-landscape-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes' }
-  ];
-
   const [selected, setSelected] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
 
   const toggleSelect = (id) => {
     setSelected(prev => {
-      const newSelected = prev.includes(id) 
-        ? prev.filter(i => i !== id) 
-        : prev.length >= 3 
-          ? prev 
-          : [...prev, id];
-      
-      // Track selection
+      const newSelected = prev.includes(id)
+        ? prev.filter(i => i !== id)
+        : prev.length >= 3 ? prev : [...prev, id];
+
       if (!prev.includes(id) && newSelected.includes(id)) {
-        fetch('/api/analytics', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            eventType: 'hd_image_selected',
-            filename: id,
-            category: 'hd',
-            originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
-          })
-        }).catch(() => {});
+        trackAnalytics('hd_image_selected', id, 'hd');
       }
-      
       return newSelected;
     });
   };
 
-  const getPrice = () => {
-    if (selected.length === 0) return null;
-    if (selected.length === 1) return 4.99;
-    if (selected.length === 2) return 6.99;
-    return 8.99;
-  };
-
   return (
-    <Layout 
+    <Layout
       title="Premium HD Virtual Backgrounds | 2912×1632 Resolution | StreamBackdrops"
       description="Professional HD virtual backgrounds in stunning 2912×1632 resolution. Perfect for Zoom, Teams, and Google Meet. 2x sharper than standard backgrounds."
       canonical="https://streambackdrops.com/hd"
@@ -119,89 +239,59 @@ export default function Premium({ reviewsData }) {
         ]} />
         <ProductSchema products={products} reviewsData={reviewsData} />
         <ComparisonWidgetSchema />
-        
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Premium HD Virtual Backgrounds | StreamBackdrops" />
         <meta property="og:description" content="Professional HD virtual backgrounds in 2912×1632 resolution. 2x sharper than standard backgrounds." />
         <meta property="og:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
         <meta property="og:url" content="https://streambackdrops.com/hd" />
-        
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Premium HD Virtual Backgrounds" />
         <meta name="twitter:description" content="Professional HD backgrounds in 2912×1632 resolution" />
         <meta name="twitter:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
       </Head>
 
-      <section style={{ 
+      <section style={{
         padding: '2rem 2rem 3rem 2rem',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white',
-        textAlign: 'center'
+        color: 'white', textAlign: 'center'
       }}>
         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: '700' }}>Premium HD Backgrounds</h1>
-        <div style={{ 
-          background: 'rgba(255,255,255,0.2)', 
-          padding: '1rem', 
-          borderRadius: '8px',
-          display: 'inline-block',
-          marginBottom: '1.5rem'
+        <div style={{
+          background: 'rgba(255,255,255,0.2)',
+          padding: '1rem', borderRadius: '8px',
+          display: 'inline-block', marginBottom: '1.5rem'
         }}>
           <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
             1 image: $4.99 • 2 images: $6.99 • 3 images: $8.99
           </div>
           <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
-            {selected.length === 3 
-              ? '✓ Max 3 images selected - Ready to checkout!' 
+            {selected.length === 3
+              ? '✓ Max 3 images selected - Ready to checkout!'
               : 'Click images to select, then checkout'}
           </div>
         </div>
-        <p style={{ 
-          textAlign: 'center', 
-          fontSize: '1.1rem', 
-          marginBottom: '2rem',
-          color: 'white' 
-        }}>
+        <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '2rem', color: 'white' }}>
           Hover over images to preview HD quality with our comparison slider
         </p>
       </section>
 
-      {/* Free Backgrounds Banner */}
       <div style={{
         background: 'linear-gradient(135deg, #10b981, #059669)',
-        color: 'white',
-        padding: '1.25rem 2rem',
-        textAlign: 'center',
-        margin: '0 auto',
-        maxWidth: '800px',
-        borderRadius: '0.75rem',
-        marginTop: '-1.5rem',
-        marginBottom: '2rem',
+        color: 'white', padding: '1.25rem 2rem',
+        textAlign: 'center', margin: '0 auto',
+        maxWidth: '800px', borderRadius: '0.75rem',
+        marginTop: '-1.5rem', marginBottom: '2rem',
         boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
       }}>
         <p style={{ margin: 0, fontSize: '1.15rem', fontWeight: '500' }}>
-          Not ready for HD? 
-          <a 
-  href="/#categories" 
-  onClick={() => {
-    fetch('/api/analytics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        eventType: 'hd_free_link_clicked',
-        category: 'hd',
-        originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
-      })
-    }).catch(() => {});
-  }}
-  style={{ 
-    color: 'white', 
-    fontWeight: 'bold', 
-    textDecoration: 'underline',
-    textUnderlineOffset: '3px'
-  }}
->
-  Browse {TOTAL_IMAGES_FORMATTED} free backgrounds instead →
-</a>
+          Not ready for HD?{' '}
+          <a
+            href="/#categories"
+            onClick={() => trackAnalytics('hd_free_link_clicked', null, 'hd')}
+            style={{ color: 'white', fontWeight: 'bold', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+          >
+            Browse {TOTAL_IMAGES_FORMATTED} free backgrounds instead →
+          </a>
         </p>
       </div>
 
@@ -212,194 +302,38 @@ export default function Premium({ reviewsData }) {
           gap: '2rem'
         }}>
           {products.map(product => (
-            <div key={product.id} style={{
-              border: selected.includes(product.id) ? '3px solid #2563eb' : '3px solid gold',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              position: 'relative',
-              cursor: 'pointer'
-            }} onClick={() => toggleSelect(product.id)}>
-              
-              {selected.includes(product.id) && (
-                <div style={{
-                  position: 'absolute',
-                  top: '10px',
-                  right: '10px',
-                  background: '#2563eb',
-                  color: 'white',
-                  width: '30px',
-                  height: '30px',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 'bold',
-                  zIndex: 1
-                }}>✓</div>
-              )}
-              
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  
-                  // Track which image was previewed
-                  fetch('/api/analytics', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                      eventType: 'hd_preview_opened',
-                      filename: product.id,
-                      category: product.category,
-                      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
-                    })
-                  }).catch(() => {});
-                  
-                  const baseFilename = product.id.replace('-hd', '');
-const imageUrl = cloudinaryUrls[baseFilename];
-
-if (imageUrl) {
-  setPreviewImage({
-  id: product.id,  
-  standard: imageUrl,  // Use URL directly, already PNG
-  hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
-});
-}
-                }}
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'rgba(0,0,0,0.8)',
-                  color: 'white',
-                  padding: '0.75rem 1.5rem',
-                  border: 'none',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  opacity: 0,
-                  transition: 'opacity 0.3s',
-                  zIndex: 2,
-                  fontWeight: 'bold'
-                }}
-                className="preview-btn"
-              >
-                👁️ Preview HD
-              </button>
-              
-              <img 
-                src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
-                alt={`${product.name} - Premium HD Virtual Background`}
-                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-              />
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{ marginBottom: '0.5rem' }}>{product.name}</h3>
-                <p style={{ color: '#666', fontSize: '0.9rem' }}>
-                  Premium HD - 2912×1632
-                </p>
-              </div>
-            </div>
+            <HdProductCard
+              key={product.id}
+              product={product}
+              isSelected={selected.includes(product.id)}
+              onToggle={toggleSelect}
+              onPreview={setPreviewImage}
+            />
           ))}
         </div>
 
         {selected.length > 0 && (
-          <div style={{
-            position: 'fixed',
-            bottom: '2rem',
-            right: '2rem',
-            background: '#2563eb',
-            color: 'white',
-            padding: '1.5rem 2rem',
-            borderRadius: '12px',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-            zIndex: 100
-          }}>
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelected([]);
-              }}
-              style={{
-                position: 'absolute',
-                top: '10px',
-                right: '10px',
-                background: 'transparent',
-                border: 'none',
-                color: 'white',
-                cursor: 'pointer',
-                fontSize: '1.2rem',
-                padding: '0.25rem'
-              }}
-              title="Clear selection"
-            >×</button>
-            
-            <div style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>
-              {selected.length} image{selected.length > 1 ? 's' : ''} selected
-            </div>
-            <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-              ${getPrice()}
-            </div>
-            <button style={{
-              background: 'white',
-              color: '#2563eb',
-              border: 'none',
-              padding: '0.75rem 2rem',
-              borderRadius: '8px',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              width: '100%',
-              fontSize: '1rem'
-            }} onClick={async (e) => {
-              e.stopPropagation();
-              
-              const priceIds = {
-                1: 'price_1Sr4U0Q695ongkMjxUtnf9NA',
-                2: 'price_1Sr4VEQ695ongkMjkaclxw67',
-                3: 'price_1Sr4WYQ695ongkMjRUTPsoIr'
-              };
-              
-              const response = await fetch('/api/create-checkout', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  priceId: priceIds[selected.length],
-                  selectedImages: selected
-                })
-              });
-              
-              const { url } = await response.json();
-              window.location.href = url;
-            }}>
-              Checkout
-            </button>
-          </div>
+          <CheckoutBar selected={selected} onClear={() => setSelected([])} />
         )}
       </section>
 
       <ComparisonWidget
-  isOpen={!!previewImage}
-  onClose={() => setPreviewImage(null)}
-  standardImg={previewImage?.standard}
-  hdImg={previewImage?.hd}
-  imageId={previewImage?.id}
-/>
+        isOpen={!!previewImage}
+        onClose={() => setPreviewImage(null)}
+        standardImg={previewImage?.standard}
+        hdImg={previewImage?.hd}
+        imageId={previewImage?.id}
+      />
 
       <style jsx>{`
-        .preview-btn {
-          opacity: 0;
-        }
-        div:hover .preview-btn {
-          opacity: 1 !important;
-        }
+        .preview-btn { opacity: 0; }
+        div:hover .preview-btn { opacity: 1 !important; }
       `}</style>
     </Layout>
   );
 }
+
 export async function getServerSideProps() {
   const reviewsData = await getReviewsData();
-  return {
-    props: {
-      reviewsData
-    }
-  };
+  return { props: { reviewsData } };
 }

@@ -1,11 +1,28 @@
 import Image from 'next/image';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { getSessionData, getOrCreateVisitorId, isReturningVisitor } from '../lib/sessionTracking';
 
 export default function ImagePreviewModal({ image, slug, onClose, onDownload }) {
   if (!image) return null;
+
+  const closeButtonRef = useRef(null);
+  const previousFocusRef = useRef(null);
+
+  useEffect(() => {
+    previousFocusRef.current = document.activeElement;
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previousFocusRef.current?.focus();
+    };
+  }, [onClose]);
 
   useEffect(() => {
     if (!image) return;
@@ -33,7 +50,10 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
   }, [image, slug]);
 
   return (
-    <div 
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Preview: ${image.title}`}
       style={{
         position: 'fixed',
         inset: 0,
@@ -48,6 +68,8 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
     >
       {/* Close Button */}
       <button
+        ref={closeButtonRef}
+        aria-label="Close image preview"
         style={{
           position: 'fixed',
           top: window.innerWidth < 768 ? 'auto' : '5rem',
@@ -135,6 +157,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
           
           {/* Download Button */}
           <button
+            aria-label={`Download ${image.title}`}
             onClick={(e) => {
               e.stopPropagation();
               onDownload(image);

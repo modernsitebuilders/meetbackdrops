@@ -122,10 +122,40 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
         display: 'flex',
         flexDirection: 'column'
       }}>
+        <a
+          href="#main-content"
+          style={{
+            position: 'absolute',
+            left: '-9999px',
+            top: 'auto',
+            width: '1px',
+            height: '1px',
+            overflow: 'hidden',
+          }}
+          onFocus={(e) => {
+            e.target.style.left = '0';
+            e.target.style.width = 'auto';
+            e.target.style.height = 'auto';
+            e.target.style.padding = '0.75rem 1.5rem';
+            e.target.style.background = '#2563eb';
+            e.target.style.color = '#fff';
+            e.target.style.zIndex = '9999';
+            e.target.style.textDecoration = 'none';
+            e.target.style.fontWeight = '600';
+            e.target.style.borderRadius = '0 0 0.375rem 0';
+          }}
+          onBlur={(e) => {
+            e.target.style.left = '-9999px';
+            e.target.style.width = '1px';
+            e.target.style.height = '1px';
+          }}
+        >
+          Skip to content
+        </a>
         <Header currentPage={currentPage} />
 
         {/* Main Content */}
-        <main style={{ flex: 1 }}>
+        <main id="main-content" style={{ flex: 1 }}>
           {children}
         </main>
        <Footer />
