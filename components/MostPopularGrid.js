@@ -92,28 +92,11 @@ export default function MostPopularGrid() {
   return (
     <div>
       <div style={{
-        background: '#f8fafc',
-        padding: '1.5rem',
-        borderRadius: '0.5rem',
-        marginBottom: '2rem',
-        border: '1px solid #e2e8f0'
+        marginBottom: '2rem'
       }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.5rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: '600' }}>
           Most Popular Virtual Backgrounds
         </h2>
-        <p style={{ color: '#64748b', marginBottom: '0.5rem' }}>
-          Based on actual downloads and popularity scoring. Updated automatically.
-        </p>
-        <div style={{ 
-          display: 'flex', 
-          gap: '1.5rem', 
-          fontSize: '0.875rem',
-          color: '#475569'
-        }}>
-          <span>🕒 Last updated: {new Date(popularData.lastUpdated).toLocaleString()}</span>
-          <span>📊 Total images tracked: {popularData.totalImages}</span>
-          <span>⭐ Average score: {popularData.averageScore}</span>
-        </div>
       </div>
 
       <div style={{
@@ -138,42 +121,6 @@ export default function MostPopularGrid() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            {/* Rank badge */}
-            <div style={{
-              position: 'absolute',
-              top: '0.75rem',
-              left: '0.75rem',
-              background: index < 3 ? '#f59e0b' : '#6b7280',
-              color: 'white',
-              width: '2rem',
-              height: '2rem',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 'bold',
-              fontSize: '1rem',
-              zIndex: 10
-            }}>
-              #{index + 1}
-            </div>
-            
-            {/* Score badge */}
-            <div style={{
-              position: 'absolute',
-              top: '0.75rem',
-              right: '0.75rem',
-              background: '#10b981',
-              color: 'white',
-              padding: '0.25rem 0.5rem',
-              borderRadius: '0.25rem',
-              fontWeight: '600',
-              fontSize: '0.875rem',
-              zIndex: 10
-            }}>
-              {image.score} pts
-            </div>
-            
             {/* Image */}
             <div 
               onClick={() => setSelectedImage({
