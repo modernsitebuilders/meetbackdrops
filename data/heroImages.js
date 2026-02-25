@@ -25,8 +25,8 @@ export const HERO_IMAGES = [
     priority: false
   },
   {
-    src: '/images/christmas-backgrounds/christmas-background-35.webp',
-    alt: 'Christmas background',
+    src: '/images/wall-shelves-dark/wall-shelves-dark-04.webp',
+    alt: 'Dark wall shelf background',
     priority: false
   }
 ];

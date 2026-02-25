@@ -81,6 +81,7 @@ export default function Home({ structuredData }) {
     height={200}
     style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
     priority={img.priority}
+    sizes="(max-width: 768px) calc(100vw / 3), 333px"
   />
 ))}
         </div>
