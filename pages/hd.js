@@ -258,8 +258,6 @@ export default function Premium({ reviewsData }) {
                   const baseFilename = product.id.replace('-hd', '');
 const imageUrl = cloudinaryUrls[baseFilename];
 
-console.log('DEBUG:', baseFilename, '→', imageUrl);
-
 if (imageUrl) {
   setPreviewImage({
   id: product.id,  
