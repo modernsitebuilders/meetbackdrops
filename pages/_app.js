@@ -22,13 +22,16 @@ export default function App({ Component, pageProps }) {
       <Analytics />
       
       <Script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-  strategy="afterInteractive"
-/>
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        strategy="afterInteractive"
+      />
+      
+      {/* CookieYes - Changed to afterInteractive with lazyOnload fallback */}
       <Script
         id="cookieyes"
         src="https://cdn-cookieyes.com/client_data/8eb30da506758a4631261b2a/script.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
+        strategy="lazyOnload" // Alternative: use lazyOnload for even lower priority
       />
       
       <Script
