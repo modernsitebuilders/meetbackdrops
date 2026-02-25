@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useImageDownload } from '../lib/useImageDownload';
 import ReviewModal from './ReviewModal';
 import RateLimitModal from './RateLimitModal';
@@ -146,66 +145,33 @@ export default function MostPopularGrid() {
               </div>
             </div>
             
-            {/* Info */}
-            <div style={{ padding: '1rem' }}>
-              <h3 style={{
-                fontSize: '1rem',
-                fontWeight: '600',
-                marginBottom: '0.5rem',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap'
-              }}>
-                {image.filename.replace('.webp', '').replace(/-/g, ' ')}
-              </h3>
-              
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: '0.875rem',
-                color: '#6b7280'
-              }}>
-                <span>📁 {image.category}</span>
-                <span>📥 {image.downloads} downloads</span>
-              </div>
-              
-              {image.lastDownload && (
-                <div style={{
-                  fontSize: '0.75rem',
-                  color: '#9ca3af',
-                  marginTop: '0.5rem'
-                }}>
-                  Last downloaded: {new Date(image.lastDownload).toLocaleDateString()}
-                </div>
-              )}
-              
-              <div style={{ marginTop: '0.75rem' }}>
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDownload(
-                      { filename: image.filename, category: image.category },
-                      image.category
-                    );
-                  }}
-                  disabled={downloadingImage === image.filename}
-                  style={{
-                    display: 'inline-block',
-                    width: '100%',
-                    textAlign: 'center',
-                    padding: '0.5rem',
-                    background: downloadingImage === image.filename ? '#93c5fd' : '#2563eb',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '0.375rem',
-                    fontWeight: '500',
-                    fontSize: '0.875rem',
-                    cursor: downloadingImage === image.filename ? 'wait' : 'pointer'
-                  }}
-                >
-                  {downloadingImage === image.filename ? 'Downloading...' : 'Download This Background'}
-                </button>
-              </div>
+            {/* Download button */}
+            <div style={{ padding: '0.75rem' }}>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDownload(
+                    { filename: image.filename, category: image.category },
+                    image.category
+                  );
+                }}
+                disabled={downloadingImage === image.filename}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'center',
+                  padding: '0.5rem',
+                  background: downloadingImage === image.filename ? '#93c5fd' : '#2563eb',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '0.375rem',
+                  fontWeight: '500',
+                  fontSize: '0.875rem',
+                  cursor: downloadingImage === image.filename ? 'wait' : 'pointer'
+                }}
+              >
+                {downloadingImage === image.filename ? 'Downloading...' : 'Download'}
+              </button>
             </div>
           </div>
         ))}
@@ -231,27 +197,6 @@ export default function MostPopularGrid() {
         />
       )}
 
-      {/* Refresh button */}
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-        <button 
-          onClick={fetchPopularData}
-          style={{
-            padding: '0.75rem 1.5rem',
-            background: '#f1f5f9',
-            color: '#475569',
-            border: '1px solid #cbd5e1',
-            borderRadius: '0.5rem',
-            cursor: 'pointer',
-            fontSize: '0.875rem',
-            fontWeight: '500'
-          }}
-        >
-          ↻ Refresh Popular List
-        </button>
-        <p style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '0.5rem' }}>
-          Updates automatically every 5 minutes
-        </p>
-      </div>
     </div>
   );
 }
