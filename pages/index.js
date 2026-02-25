@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { generateHomepageSchema } from '../data/homepageSchema';
 import { getReviewsData } from '../lib/reviews';
 import Card from '../components/Card';
@@ -22,6 +22,13 @@ import EquipmentGuideCTA from '../components/EquipmentGuideCTA';
 
 export default function Home({ structuredData }) {
   const router = useRouter();
+  
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+  
+  const visibleHeroImages = isMobile ? HERO_IMAGES.slice(0, 3) : HERO_IMAGES;
   
   useEffect(() => {
     const link = document.createElement('link');
@@ -65,7 +72,7 @@ export default function Home({ structuredData }) {
           overflow: 'hidden',
           boxShadow: '0 20px 60px rgba(37, 99, 235, 0.15)'
         }}>
-          {HERO_IMAGES.map((img, i) => (
+          {visibleHeroImages.map((img, i) => (
   <Image 
     key={i}
     src={img.src}
