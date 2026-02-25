@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import Link from 'next/link'; // ← ADD THIS BACK
 import { HERO_IMAGES } from '../data/heroImages';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -7,7 +8,6 @@ import Layout from '../components/Layout';
 import { useEffect, useState } from 'react';
 import { generateHomepageSchema } from '../data/homepageSchema';
 import { getReviewsData } from '../lib/reviews';
-// REMOVED: import Card from '../components/Card';
 import TrustBadges from '../components/TrustBadges';
 import WhyDifferent from '../components/WhyDifferent';
 import SocialProof from '../components/SocialProof';
