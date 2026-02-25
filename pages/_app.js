@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import Analytics from '../components/Analytics';
-import CookieBanner from '../components/CookieBanner'; // ← Add this import
+import CookieBanner from '../components/CookieBanner';
 import { useEffect } from 'react';
 import { getOrCreateSession } from '../lib/sessionTracking';
 
@@ -26,8 +26,6 @@ export default function App({ Component, pageProps }) {
         strategy="lazyOnload"
       />
       
-      {/* REMOVE the old CookieYes script - it's now handled by CookieBanner */}
-      
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-QMD6NEPFWR"
         strategy="lazyOnload"
@@ -41,8 +39,8 @@ export default function App({ Component, pageProps }) {
         `}
       </Script>
       
-      <CookieBanner /> {/* ← Add this right before Component */}
       <Component {...pageProps} />
+      <CookieBanner /> {/* ← Moved AFTER Component */}
       <VercelAnalytics />
     </>
   );
