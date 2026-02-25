@@ -23,10 +23,9 @@ export default function App({ Component, pageProps }) {
       
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="afterInteractive"
+        strategy="lazyOnload"  // Changed from afterInteractive
       />
       
-      {/* CookieYes - Fixed: Only ONE strategy prop, using lazyOnload for best LCP */}
       <Script
         id="cookieyes"
         src="https://cdn-cookieyes.com/client_data/8eb30da506758a4631261b2a/script.js"
@@ -35,9 +34,9 @@ export default function App({ Component, pageProps }) {
       
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-QMD6NEPFWR"
-        strategy="afterInteractive"
+        strategy="lazyOnload"  // Changed from afterInteractive
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">  // Changed from afterInteractive
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
