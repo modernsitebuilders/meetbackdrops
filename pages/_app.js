@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import Analytics from '../components/Analytics';
-import CookieBanner from '../components/CookieBanner';
+// import CookieBanner from '../components/CookieBanner'; // ← Comment out
 import { useEffect } from 'react';
 import { getOrCreateSession } from '../lib/sessionTracking';
 
@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }) {
         `}
       </Script>
       
-      <CookieBanner />
+      {/* <CookieBanner /> */} {/* ← Comment out */}
       <Component {...pageProps} />
       <VercelAnalytics />
     </>
