@@ -4,10 +4,10 @@ import { HERO_IMAGES } from '../data/heroImages';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { generateHomepageSchema } from '../data/homepageSchema';
 import { getReviewsData } from '../lib/reviews';
-import Card from '../components/Card';
+// REMOVED: import Card from '../components/Card';
 import TrustBadges from '../components/TrustBadges';
 import WhyDifferent from '../components/WhyDifferent';
 import SocialProof from '../components/SocialProof';
@@ -19,37 +19,46 @@ import { TOTAL_IMAGES_FORMATTED, CATEGORIES } from '../lib/categories-config';
 import HDBadge from '../components/HDBadge';
 import EquipmentGuideCTA from '../components/EquipmentGuideCTA';
 
-// Lazy load the category grid - this prevents all category JS from loading on homepage
-const CategoryGrid = dynamic(() => import('../components/CategoryGrid'), {
-  loading: () => (
-    <div className={styles.categoryGridLoading} style={{ 
-      display: 'grid', 
-      gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-      gap: '1.5rem',
-      padding: '1rem',
-      minHeight: '400px'
-    }}>
-      {[...Array(6)].map((_, i) => (
-        <div key={i} style={{
-          height: '300px',
-          background: '#f0f0f0',
-          borderRadius: '1rem',
-          animation: 'pulse 1.5s infinite'
-        }} />
-      ))}
-    </div>
-  ),
-  ssr: false // Set to false since categories are below the fold
-});
+// Properly lazy load the category grid with no SSR
+const CategoryGrid = dynamic(
+  () => import('../components/CategoryGrid'),
+  { 
+    ssr: false,
+    loading: () => (
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+        gap: '1.5rem',
+        padding: '1rem'
+      }}>
+        {[...Array(8)].map((_, i) => (
+          <div key={i} style={{
+            height: '300px',
+            background: '#f0f0f0',
+            borderRadius: '1rem'
+          }} />
+        ))}
+      </div>
+    )
+  }
+);
 
 export default function Home({ structuredData }) {
   const router = useRouter();
+  const [showCategories, setShowCategories] = useState(false);
   
   useEffect(() => {
     const link = document.createElement('link');
     link.rel = 'preconnect';
     link.href = 'https://fonts.googleapis.com';
     document.head.appendChild(link);
+    
+    // Only load categories after the page is fully loaded
+    const timer = setTimeout(() => {
+      setShowCategories(true);
+    }, 3000); // Wait 3 seconds after page load
+    
+    return () => clearTimeout(timer);
   }, []);
   
   const navigate = (path) => {
@@ -95,8 +104,8 @@ export default function Home({ structuredData }) {
               width={333}
               height={200}
               style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-              priority={i === 0} // Only first image has priority
-              loading={i === 0 ? 'eager' : 'lazy'} // Lazy load others
+              priority={i === 0}
+              loading={i === 0 ? 'eager' : 'lazy'}
               sizes="(max-width: 768px) calc(100vw / 3), 333px"
             />
           ))}
@@ -118,7 +127,7 @@ export default function Home({ structuredData }) {
         <HDBadge />
       </section>
   
-      {/* Blog Cards Section */}
+      {/* Blog Cards Section - These don't have images, so they're fine */}
       <section className={styles.blogSection}>
         <h2 className={styles.sectionTitle}>Expert Tips for Video Call Success</h2>
         <p className={styles.sectionSubtitle}>
@@ -126,47 +135,40 @@ export default function Home({ structuredData }) {
         </p>
 
         <div className={styles.blogGrid}>
-          <Card 
-            href="/blog/best-virtual-background-sites-2026"
-            title="Best Free Background Sites 2026"
-            description="Complete comparison: StreamBackdrops vs competitors"
-            className="blog-card"
-          />
-          <Card
-            href="/blog/background-mistakes"
-            title="Perfect Lighting Setup"
-            description="Look professional with proper lighting"
-            className="blog-card"
-          />
-          <Card
-            href="/blog/background-mistakes"
-            title="5-Minute Setup Guide"
-            description="Quick steps for perfect video calls"
-            className="blog-card"
-          />
+          {/* These Card components don't have imageSrc, so they won't load images */}
+          <div className="blog-card"> 
+            <Link href="/blog/best-virtual-background-sites-2026">
+              <h3>Best Free Background Sites 2026</h3>
+              <p>Complete comparison: StreamBackdrops vs competitors</p>
+            </Link>
+          </div>
+          <div className="blog-card">
+            <Link href="/blog/background-mistakes">
+              <h3>Perfect Lighting Setup</h3>
+              <p>Look professional with proper lighting</p>
+            </Link>
+          </div>
+          <div className="blog-card">
+            <Link href="/blog/background-mistakes">
+              <h3>5-Minute Setup Guide</h3>
+              <p>Quick steps for perfect video calls</p>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Why We're Different */}
       <WhyDifferent />
 
-      {/* Lazy Loaded Category Cards Grid - Now loads only when scrolled to */}
-      <CategoryGrid navigate={navigate} />
+      {/* Category Cards Grid - Only loads after 3 seconds */}
+      {showCategories && <CategoryGrid navigate={navigate} />}
 
       {/* Social Proof */}
       <SocialProof />
-
-      <style jsx>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-      `}</style>
     </Layout>
   );
 }
 
-// Fetch review data every time the page loads
 export async function getStaticProps() {
   const reviewData = await getReviewsData();
   const structuredData = generateHomepageSchema(reviewData);
