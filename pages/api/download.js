@@ -17,9 +17,19 @@ function hashIP(ip) {
 
 export default async function handler(req, res) {
   const { url, filename } = req.query;
-  
+
   if (!url || !filename) {
     return res.status(400).json({ error: 'Missing parameters' });
+  }
+
+  // Only allow Cloudinary URLs to prevent server-side request forgery
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname !== 'res.cloudinary.com') {
+      return res.status(400).json({ error: 'Invalid image source' });
+    }
+  } catch {
+    return res.status(400).json({ error: 'Invalid URL' });
   }
 
   const sessionData = parseSessionData(req);
