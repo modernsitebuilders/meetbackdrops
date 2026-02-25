@@ -1,0 +1,26 @@
+import Card from './Card';
+import { CATEGORIES } from '../lib/categories-config';
+import styles from '../styles/HomePage.module.css';
+
+export default function CategoryGrid({ navigate }) {
+  return (
+    <div id="categories" className={`${styles.categoryGrid} category-grid`}>
+      <Card href="/category/bookshelves-bright" title="Bookshelves - Bright" description="Bright bookshelf backgrounds perfect for professional video calls" imageSrc="/images/bookshelves-bright/bookshelves-bright-01.webp" imageAlt="Bright bookshelf background for video calls" navigate={navigate} priority={false} count={CATEGORIES['bookshelves-bright'].count} />
+      <Card href="/category/bookshelves-dark" title="Bookshelves - Dark" description="Warm bookshelf backgrounds with ambient lighting for professional calls" imageSrc="/images/bookshelves-dark/bookshelves-dark-07.webp" imageAlt="Dark bookshelf background for video meetings" navigate={navigate} count={CATEGORIES['bookshelves-dark'].count} />
+      <Card href="/category/wall-shelves-bright" title="Wall Shelves - Bright" description="Clean, minimalist wall shelf backgrounds with bright lighting" imageSrc="/images/wall-shelves-bright/wall-shelves-bright-01.webp" imageAlt="Bright wall shelf background for video calls" navigate={navigate} count={CATEGORIES['wall-shelves-bright'].count} />
+      <Card href="/category/wall-shelves-dark" title="Wall Shelves - Dark" description="Sleek wall shelf backgrounds with warm ambient lighting" imageSrc="/images/wall-shelves-dark/wall-shelves-dark-01.webp" imageAlt="Dark wall shelf background for video meetings" navigate={navigate} count={CATEGORIES['wall-shelves-dark'].count} />
+      <Card href="/category/office-spaces" title="Office Spaces" description="Modern office settings that convey professionalism and focus" imageSrc="/images/office-spaces/office-spaces-19.webp" imageAlt="Professional office space background for business calls" navigate={navigate} count={CATEGORIES['office-spaces'].count} />
+      <Card href="/category/living-rooms" title="Living Rooms" description="Comfortable home settings that feel welcoming and professional" imageSrc="/images/living-rooms/living-room-12.webp" imageAlt="Comfortable living room backgrounds" navigate={navigate} count={CATEGORIES['living-rooms'].count} />
+      <Card href="/category/kitchens" title="Kitchen Backgrounds" description="Warm kitchen spaces that create a friendly, approachable atmosphere" imageSrc="/images/kitchens/kitchen-09.webp" imageAlt="Kitchen virtual background" navigate={navigate} count={CATEGORIES['kitchens'].count} />
+      <Card href="/category/coffee-shops" title="Coffee Shops" description="Cozy coffee shop backgrounds for casual meetings" imageSrc="/images/coffee-shops/coffee-shop-10.webp" imageAlt="Coffee shop virtual background" navigate={navigate} count={CATEGORIES['coffee-shops'].count} />
+      <Card href="/category/art-galleries" title="Art Galleries" description="Sophisticated art gallery spaces with clean walls" imageSrc="/images/art-galleries/art-gallery-18.webp" imageAlt="Art gallery virtual background" navigate={navigate} count={CATEGORIES['art-galleries'].count} />
+      <Card href="/category/urban-lofts" title="Urban Lofts" description="Modern industrial loft spaces with exposed brick" imageSrc="/images/urban-lofts/urban-loft-1.webp" imageAlt="Urban loft virtual background" navigate={navigate} count={CATEGORIES['urban-lofts'].count} />
+      <Card href="/category/gardens-patios" title="Gardens & Patios" description="Beautiful outdoor garden and patio backgrounds" imageSrc="/images/gardens-patios/garden-patio-1.webp" imageAlt="Garden and patio virtual background" navigate={navigate} count={CATEGORIES['gardens-patios'].count} />
+      <Card href="/category/historic-spaces" title="Historic Spaces" description="Elegant historic interiors including ballrooms" imageSrc="/images/historic-spaces/historic-space-6.webp" imageAlt="Historic space virtual background" navigate={navigate} count={CATEGORIES['historic-spaces'].count} />
+      <Card href="/category/nature-landscapes" title="Nature & Landscapes" description="Stunning natural landscapes and scenic outdoor views for nature-inspired calls" imageSrc="/images/nature-landscapes/nature-landscape-01.webp" imageAlt="Nature landscape virtual background" navigate={navigate} count={CATEGORIES['nature-landscapes'].count} />        
+      <Card href="/category/libraries" title="Libraries" description="Classic library rooms with floor-to-ceiling books" imageSrc="/images/libraries/library-1.webp" imageAlt="Library virtual background" navigate={navigate} count={CATEGORIES['libraries'].count} />
+      <Card href="/category/conference-rooms" title="Conference Rooms" description="Professional conference room backgrounds for team meetings" imageSrc="/images/conference-rooms/conference-room-01.webp" imageAlt="Conference room virtual background" navigate={navigate} count={CATEGORIES['conference-rooms'].count} />
+      <Card href="/category/bokeh-backgrounds" title="Bokeh Backgrounds" description="Beautiful bokeh light effects with artistic blur for elegant calls" imageSrc="/images/bokeh-backgrounds/bokeh-56.webp" imageAlt="Bokeh virtual background" navigate={navigate} count={CATEGORIES['bokeh-backgrounds'].count} />
+    </div>
+  );
+}
