@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import TrustBadges from '../components/TrustBadges';
 import HeroCTA from '../components/HeroCTA';
 import HDBadge from '../components/HDBadge';
+import WhyDifferent from '../components/WhyDifferent';
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
         <TrustBadges />
 <HeroCTA />
 <HDBadge />
+<WhyDifferent />
       </section>
     </Layout>
   );
