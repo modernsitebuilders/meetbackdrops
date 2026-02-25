@@ -67,7 +67,8 @@ export default async function handler(req, res) {
     const paginatedImages = allRecentImages.slice(startIndex, startIndex + limitNum);
     const hasMore = startIndex + limitNum < allRecentImages.length;
 
-    res.status(200).json({ 
+    res.setHeader('Cache-Control', 'public, max-age=1800, stale-while-revalidate=3600');
+    res.status(200).json({
       images: paginatedImages,
       total: allRecentImages.length,
       hasMore: hasMore,

@@ -99,6 +99,7 @@ export default async function handler(req, res) {
       ? (nonSeasonalDownloads.reduce((sum, item) => sum + item.count, 0) / uniqueVisitorCount).toFixed(2)
       : 0;
 
+    res.setHeader('Cache-Control', 'public, max-age=7200, stale-while-revalidate=86400');
     res.status(200).json({
       totalDownloads: nonSeasonalDownloads.reduce((sum, item) => sum + item.count, 0),
       seasonalDownloads: seasonalDownloads.reduce((sum, item) => sum + item.count, 0),

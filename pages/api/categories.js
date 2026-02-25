@@ -1,9 +1,6 @@
 // pages/api/categories.js - Updated without casual-backgrounds category
 export default function handler(req, res) {
-  // Prevent caching to ensure fresh data
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
   
   const categories = {
   'bookshelves-bright': {
@@ -73,6 +70,5 @@ export default function handler(req, res) {
   }
 };
   
-  console.log('📊 Serving categories:', Object.keys(categories));
   res.status(200).json(categories);
 }
