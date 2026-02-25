@@ -84,9 +84,11 @@ export default function Home() {
         <p style={{ textAlign: 'center' }}>Free backgrounds for video calls</p>
         
         <TrustBadges />
-        <HeroCTA />
-        <HDBadge />
-        <WhyDifferent />
+<HeroCTA />
+<div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+  <HDBadge />
+</div>
+<WhyDifferent />
         <SocialProof />
         
         {/* Category Grid - Lazy loaded */}
