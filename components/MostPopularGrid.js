@@ -14,6 +14,7 @@ export default function MostPopularGrid() {
   const [error, setError] = useState(null);
   const [cloudinaryUrls, setCloudinaryUrls] = useState({});
   const [selectedImage, setSelectedImage] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const {
     handleDownload,
@@ -104,74 +105,79 @@ export default function MostPopularGrid() {
         gap: '1.5rem'
       }}>
         {popularData.images.map((image, index) => (
-          <div 
-            key={image.filename} 
+          <div
+            key={image.filename}
             style={{
               position: 'relative',
+              cursor: 'pointer',
               borderRadius: '0.5rem',
               overflow: 'hidden',
-              boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
               transition: 'transform 0.2s ease'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-4px)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              setHoveredIndex(index);
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
+              setHoveredIndex(null);
             }}
+            onClick={() => setSelectedImage({
+              filename: image.filename,
+              title: image.filename.replace('.webp', '').replace(/-/g, ' '),
+              category: image.category
+            })}
           >
-            {/* Image */}
-            <div 
-              onClick={() => setSelectedImage({
-                filename: image.filename,
-                title: image.filename.replace('.webp', '').replace(/-/g, ' '),
-                category: image.category
-              })}
-              style={{ cursor: 'pointer' }}
-            >
+            <div style={{
+              position: 'relative',
+              width: '100%',
+              aspectRatio: '16/9',
+              overflow: 'hidden'
+            }}>
+              <Image
+                src={image.webPath}
+                alt={`${image.filename} - Popular virtual background`}
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+
+              {/* Hover overlay */}
               <div style={{
-                position: 'relative',
-                width: '100%',
-                aspectRatio: '16/9',
-                overflow: 'hidden'
+                position: 'absolute',
+                inset: 0,
+                background: 'rgba(0, 0, 0, 0.7)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: (hoveredIndex === index || downloadingImage === image.filename) ? 1 : 0,
+                transition: 'opacity 0.3s ease',
+                pointerEvents: (hoveredIndex === index || downloadingImage === image.filename) ? 'auto' : 'none'
               }}>
-                <Image
-                  src={image.webPath}
-                  alt={`${image.filename} - Popular virtual background`}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDownload(
+                      { filename: image.filename, category: image.category },
+                      image.category
+                    );
+                  }}
+                  disabled={downloadingImage === image.filename}
+                  style={{
+                    background: downloadingImage === image.filename ? '#10b981' : '#2563eb',
+                    color: 'white',
+                    padding: '0.75rem 1.5rem',
+                    border: 'none',
+                    borderRadius: '0.5rem',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    cursor: downloadingImage === image.filename ? 'not-allowed' : 'pointer',
+                    minWidth: '140px'
+                  }}
+                >
+                  {downloadingImage === image.filename ? 'Downloading...' : 'Download'}
+                </button>
               </div>
-            </div>
-            
-            {/* Download button */}
-            <div style={{ padding: '0.75rem' }}>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDownload(
-                    { filename: image.filename, category: image.category },
-                    image.category
-                  );
-                }}
-                disabled={downloadingImage === image.filename}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  textAlign: 'center',
-                  padding: '0.5rem',
-                  background: downloadingImage === image.filename ? '#93c5fd' : '#2563eb',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '0.375rem',
-                  fontWeight: '500',
-                  fontSize: '0.875rem',
-                  cursor: downloadingImage === image.filename ? 'wait' : 'pointer'
-                }}
-              >
-                {downloadingImage === image.filename ? 'Downloading...' : 'Download'}
-              </button>
             </div>
           </div>
         ))}
