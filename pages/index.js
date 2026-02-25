@@ -2,6 +2,9 @@ import Head from 'next/head';
 import { HERO_IMAGES } from '../data/heroImages';
 import Image from 'next/image';
 import Layout from '../components/Layout';
+import TrustBadges from '../components/TrustBadges';
+import HeroCTA from '../components/HeroCTA';
+import HDBadge from '../components/HDBadge';
 
 export default function Home() {
   return (
@@ -34,6 +37,9 @@ export default function Home() {
         
         <h1 style={{ textAlign: 'center' }}>Professional Virtual Backgrounds</h1>
         <p style={{ textAlign: 'center' }}>Free backgrounds for video calls</p>
+        <TrustBadges />
+<HeroCTA />
+<HDBadge />
       </section>
     </Layout>
   );
