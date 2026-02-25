@@ -45,8 +45,9 @@ export default function Home({ structuredData }) {
       structuredData={structuredData}
     >
       <Head>
-        <FAQSchema questions={getFAQs('homepage')} />
-      </Head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <FAQSchema questions={getFAQs('homepage')} />
+</Head>
 
       {/* Equipment Guide CTA */}
 <EquipmentGuideCTA />
