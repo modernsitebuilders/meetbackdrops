@@ -78,8 +78,11 @@ export default function Card({
             <Image
               src={imageSrc}
               alt={imageAlt || title}
-              fill
+              width={300}  // ← Added explicit width
+              height={200} // ← Added explicit height
               style={{ 
+                width: '100%',
+                height: '100%',
                 objectFit: 'cover',
                 transform: isHovered ? 'scale(1.05)' : 'scale(1)',
                 transition: 'transform 0.3s ease'
@@ -88,6 +91,8 @@ export default function Card({
               sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 300px"
               priority={priority}
               loading={priority ? 'eager' : 'lazy'}
+              // Add fetchPriority for non-critical images
+              fetchPriority={priority ? 'high' : 'low'}
             />
           </div>
         )}
