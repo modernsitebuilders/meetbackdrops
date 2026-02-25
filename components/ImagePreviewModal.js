@@ -26,7 +26,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
 
   useEffect(() => {
     if (!image) return;
-    
+
     const session = getSessionData();
     fetch('/api/track-preview', {
       method: 'POST',
@@ -66,15 +66,53 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
       }}
       onClick={onClose}
     >
+      <style>{`
+        .modal-close-btn {
+          position: fixed;
+          top: 5rem;
+          bottom: auto;
+          right: 1rem;
+        }
+        .modal-inner {
+          flex-direction: row;
+        }
+        .modal-social {
+          display: flex;
+        }
+        .modal-download-btn {
+          position: absolute;
+          bottom: 2.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          margin-top: 0;
+        }
+        @media (max-width: 767px) {
+          .modal-close-btn {
+            top: auto;
+            bottom: 2rem;
+          }
+          .modal-inner {
+            flex-direction: column;
+          }
+          .modal-social {
+            display: none;
+          }
+          .modal-download-btn {
+            position: static;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            margin-top: 1rem;
+          }
+        }
+      `}</style>
+
       {/* Close Button */}
       <button
         ref={closeButtonRef}
         aria-label="Close image preview"
+        className="modal-close-btn"
         style={{
-          position: 'fixed',
-          top: window.innerWidth < 768 ? 'auto' : '5rem',
-          bottom: window.innerWidth < 768 ? '2rem' : 'auto',
-          right: '1rem',
           background: 'rgba(255, 255, 255, 0.9)',
           color: '#000',
           border: '2px solid rgba(255, 255, 255, 0.3)',
@@ -98,35 +136,32 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
         ×
       </button>
 
-      <div 
+      <div
+        className="modal-inner"
         style={{
           display: 'flex',
           alignItems: 'center',
           gap: '1rem',
           maxWidth: '95vw',
           maxHeight: '90vh',
-          flexDirection: window.innerWidth < 768 ? 'column' : 'row'
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Vertical Social Share - Hidden on mobile */}
-        {window.innerWidth >= 768 && (
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
-            alignItems: 'center'
-          }}>
-            <SocialShare 
-              image={{...image, category: slug}}
-              title={`${image.title} - Free Virtual Background`}
-              size="large"
-              showLabels={false}
-              vertical={true}
-            />
-          </div>
-        )}
-        
+        {/* Vertical Social Share - Hidden on mobile via CSS */}
+        <div className="modal-social" style={{
+          flexDirection: 'column',
+          gap: '1rem',
+          alignItems: 'center'
+        }}>
+          <SocialShare
+            image={{...image, category: slug}}
+            title={`${image.title} - Free Virtual Background`}
+            size="large"
+            showLabels={false}
+            vertical={true}
+          />
+        </div>
+
         {/* Image Container */}
         <div style={{
           display: 'flex',
@@ -154,20 +189,16 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
               quality={90}
             />
           </div>
-          
+
           {/* Download Button */}
           <button
             aria-label={`Download ${image.title}`}
+            className="modal-download-btn"
             onClick={(e) => {
               e.stopPropagation();
               onDownload(image);
             }}
             style={{
-              position: window.innerWidth >= 768 ? 'absolute' : 'static',
-              bottom: window.innerWidth >= 768 ? '2.5rem' : 'auto',
-              left: window.innerWidth >= 768 ? '50%' : 'auto',
-              transform: window.innerWidth >= 768 ? 'translateX(-50%)' : 'none',
-              marginTop: window.innerWidth < 768 ? '1rem' : '0',
               backgroundColor: '#2563eb',
               color: '#ffffff',
               padding: '12px 24px',
