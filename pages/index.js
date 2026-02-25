@@ -152,13 +152,11 @@ export default function Home({ structuredData }) {
 }
 
 // Fetch review data every time the page loads
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const reviewData = await getReviewsData();
   const structuredData = generateHomepageSchema(reviewData);
-
   return {
-    props: {
-      structuredData
-    }
+    props: { structuredData },
+    revalidate: 3600
   };
 }
