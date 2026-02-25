@@ -30,12 +30,20 @@ if (!imageMeta) {
       "@type": "ImageObject",
       "position": index + 1,
       "contentUrl": `${baseUrl}/images/${categorySlug}/${image.filename}`,
-      "name": image.meta.title || `${category} virtual background ${index + 1}`,
-      "description": image.meta.alt || image.meta.description || `Free ${category.toLowerCase()} virtual background`,
+      "name": image.meta?.title || `${category} virtual background ${index + 1}`,
+      "description": image.meta?.alt || image.meta?.description || `Free ${category.toLowerCase()} virtual background`,
       "thumbnail": `${baseUrl}/images/${categorySlug}/${image.filename}`,
       "encodingFormat": "image/webp",
-      "width": image.meta.width || 1920,
-      "height": image.meta.height || 1080
+      "width": image.meta?.width || 1920,
+      "height": image.meta?.height || 1080,
+      "license": `${baseUrl}/license`,
+      "acquireLicensePage": `${baseUrl}/license`,
+      "creditText": "StreamBackdrops",
+      "creator": {
+        "@type": "Organization",
+        "name": "StreamBackdrops",
+        "url": baseUrl
+      }
     }))
   };
 
