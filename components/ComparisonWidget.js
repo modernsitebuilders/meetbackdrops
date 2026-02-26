@@ -255,20 +255,42 @@ const trackEvent = (action, label) => {
               }}
             />
 
-            {/* Labels */}
+            {/* Centered label - shows which version is dominant */}
             <div style={{
               position: 'absolute',
-              bottom: '20px',
+              bottom: '30px',
               left: 0,
               right: 0,
               display: 'flex',
-              justifyContent: 'space-between',
-              padding: '0 40px',
-              color: '#fff',
-              zIndex: 100
+              justifyContent: 'center',
+              zIndex: 100,
+              pointerEvents: 'none'
             }}>
-              <span style={{ fontSize: '18px' }}>← Standard (1456×816)</span>
-              <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#FFD700' }}>HD (2912×1632) →</span>
+              {sliderPosition > 50 ? (
+                <span style={{
+                  background: 'rgba(0,0,0,0.65)',
+                  color: '#fff',
+                  padding: '0.5rem 1.25rem',
+                  borderRadius: '999px',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  letterSpacing: '0.02em'
+                }}>
+                  Free Version
+                </span>
+              ) : (
+                <span style={{
+                  background: 'rgba(255,215,0,0.85)',
+                  color: '#000',
+                  padding: '0.5rem 1.25rem',
+                  borderRadius: '999px',
+                  fontSize: '16px',
+                  fontWeight: '700',
+                  letterSpacing: '0.02em'
+                }}>
+                  ⭐ HD Version
+                </span>
+              )}
             </div>
           </div>
         </div>

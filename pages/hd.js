@@ -32,7 +32,7 @@ function trackAnalytics(eventType, filename, category) {
   }).catch(() => {});
 }
 
-function HdProductCard({ product, isSelected, onToggle, onPreview }) {
+function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onMouseEnter, onMouseLeave }) {
   return (
     <div
       style={{
@@ -44,6 +44,8 @@ function HdProductCard({ product, isSelected, onToggle, onPreview }) {
         cursor: 'pointer'
       }}
       onClick={() => onToggle(product.id)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {isSelected && (
         <div style={{
@@ -78,11 +80,11 @@ function HdProductCard({ product, isSelected, onToggle, onPreview }) {
           background: 'rgba(0,0,0,0.8)', color: 'white',
           padding: '0.75rem 1.5rem',
           border: 'none', borderRadius: '8px',
-          cursor: 'pointer', opacity: 0,
+          cursor: 'pointer',
+          opacity: isHovered ? 1 : 0,
           transition: 'opacity 0.3s',
           zIndex: 2, fontWeight: 'bold'
         }}
-        className="preview-btn"
       >
         👁️ Preview HD
       </button>
@@ -210,6 +212,7 @@ const products = [
 export default function Premium({ reviewsData }) {
   const [selected, setSelected] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
 
   const toggleSelect = (id) => {
     setSelected(prev => {
@@ -306,8 +309,11 @@ export default function Premium({ reviewsData }) {
               key={product.id}
               product={product}
               isSelected={selected.includes(product.id)}
+              isHovered={hoveredProduct === product.id}
               onToggle={toggleSelect}
               onPreview={setPreviewImage}
+              onMouseEnter={() => setHoveredProduct(product.id)}
+              onMouseLeave={() => setHoveredProduct(null)}
             />
           ))}
         </div>
@@ -325,10 +331,6 @@ export default function Premium({ reviewsData }) {
         imageId={previewImage?.id}
       />
 
-      <style jsx>{`
-        .preview-btn { opacity: 0; }
-        div:hover .preview-btn { opacity: 1 !important; }
-      `}</style>
     </Layout>
   );
 }
