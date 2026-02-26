@@ -150,6 +150,9 @@ export default function Footer() {
               <Link href="/contact" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Contact
               </Link>
+              <a href="https://wolfresume.com" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+                Also: WolfResume.com — AI Resumes
+              </a>
             </div>
           </div>
         </div>
