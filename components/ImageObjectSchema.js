@@ -39,6 +39,7 @@ if (!imageMeta) {
       "license": `${baseUrl}/license`,
       "acquireLicensePage": `${baseUrl}/license`,
       "creditText": "StreamBackdrops",
+      "copyrightNotice": "© StreamBackdrops. Free for personal use only.",
       "creator": {
         "@type": "Organization",
         "name": "StreamBackdrops",
