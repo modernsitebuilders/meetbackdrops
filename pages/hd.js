@@ -170,6 +170,8 @@ const products = [
   { id: 'bookshelves-bright-06-hd', name: 'Bright Bookshelf #6', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-07-hd', name: 'Bright Bookshelf #7', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-10-hd', name: 'Bright Bookshelf #10', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-11-hd', name: 'Bright Bookshelf #11', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-13-hd', name: 'Bright Bookshelf #13', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-16-hd', name: 'Bright Bookshelf #16', category: 'bookshelves-bright' },
   // Bookshelves Dark
@@ -178,6 +180,9 @@ const products = [
   { id: 'bookshelves-dark-09-hd', name: 'Dark Bookshelf #9', category: 'bookshelves-dark' },
   // Wall Shelves Bright
   { id: 'wall-shelves-bright-28-hd', name: 'Bright Wall Shelf #28', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-54-hd', name: 'Bright Wall Shelf #54', category: 'wall-shelves-bright' },
+  // Wall Shelves Dark
+  { id: 'wall-shelves-dark-34-hd', name: 'Dark Wall Shelf #34', category: 'wall-shelves-dark' },
   // Coffee Shops
   { id: 'coffee-shop-03-hd', name: 'Coffee Shop #3', category: 'coffee-shops' },
   // Libraries
@@ -206,12 +211,17 @@ const products = [
   { id: 'office-spaces-28-hd', name: 'Office Space #28', category: 'office-spaces' },
   { id: 'office-spaces-35-hd', name: 'Office Space #35', category: 'office-spaces' },
   { id: 'office-spaces-69-hd', name: 'Office Space #69', category: 'office-spaces' },
+  { id: 'office-spaces-71-hd', name: 'Office Space #71', category: 'office-spaces' },
   // Nature Landscapes
   { id: 'nature-landscape-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes' },
   { id: 'nature-landscape-20-hd', name: 'Nature Landscape #20', category: 'nature-landscapes' },
   { id: 'nature-landscape-21-hd', name: 'Nature Landscape #21', category: 'nature-landscapes' },
   { id: 'nature-landscape-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes' },
-  { id: 'nature-landscape-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes' }
+  { id: 'nature-landscape-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes' },
+  { id: 'nature-landscape-98-hd', name: 'Nature Landscape #98', category: 'nature-landscapes' },
+  { id: 'nature-landscape-99-hd', name: 'Nature Landscape #99', category: 'nature-landscapes' },
+  // Living Rooms
+  { id: 'living-room-10-hd', name: 'Living Room #10', category: 'living-rooms' }
 ];
 
 export default function Premium({ reviewsData }) {
