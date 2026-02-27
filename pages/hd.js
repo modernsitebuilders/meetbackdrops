@@ -37,9 +37,8 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
     <div
       style={{
         border: isSelected ? '3px solid #2563eb' : '3px solid gold',
-        borderRadius: '12px',
+        borderRadius: '8px',
         overflow: 'hidden',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
         position: 'relative',
         cursor: 'pointer'
       }}
@@ -47,6 +46,15 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      {/* Dark overlay on hover */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'rgba(0,0,0,0.35)',
+        opacity: isHovered ? 1 : 0,
+        transition: 'opacity 0.2s',
+        zIndex: 1
+      }} />
+
       {isSelected && (
         <div style={{
           position: 'absolute',
@@ -55,7 +63,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
           width: '30px', height: '30px',
           borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontWeight: 'bold', zIndex: 1
+          fontWeight: 'bold', zIndex: 3
         }}>✓</div>
       )}
 
@@ -82,8 +90,9 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
           border: 'none', borderRadius: '8px',
           cursor: 'pointer',
           opacity: isHovered ? 1 : 0,
-          transition: 'opacity 0.3s',
-          zIndex: 2, fontWeight: 'bold'
+          transition: 'opacity 0.2s',
+          zIndex: 2, fontWeight: 'bold',
+          whiteSpace: 'nowrap'
         }}
       >
         👁️ Preview HD
@@ -92,12 +101,8 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
       <img
         src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
         alt={`${product.name} - Premium HD Virtual Background`}
-        style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+        style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }}
       />
-      <div style={{ padding: '1.5rem' }}>
-        <h3 style={{ marginBottom: '0.5rem' }}>{product.name}</h3>
-        <p style={{ color: '#666', fontSize: '0.9rem' }}>Premium HD - 2912×1632</p>
-      </div>
     </div>
   );
 }
@@ -301,8 +306,8 @@ export default function Premium({ reviewsData }) {
       <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: '1rem'
         }}>
           {products.map(product => (
             <HdProductCard
