@@ -224,10 +224,28 @@ const products = [
   { id: 'living-room-10-hd', name: 'Living Room #10', category: 'living-rooms' }
 ];
 
+// Derive ordered category list from products, with display labels
+const CATEGORY_LABELS = {
+  'bookshelves-bright': 'Bright Bookshelves',
+  'bookshelves-dark': 'Dark Bookshelves',
+  'wall-shelves-bright': 'Bright Wall Shelves',
+  'wall-shelves-dark': 'Dark Wall Shelves',
+  'office-spaces': 'Office Spaces',
+  'coffee-shops': 'Coffee Shops',
+  'libraries': 'Libraries',
+  'nature-landscapes': 'Nature',
+  'living-rooms': 'Living Rooms',
+};
+
+const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(
+  cat => products.some(p => p.category === cat)
+)];
+
 export default function Premium({ reviewsData }) {
   const [selected, setSelected] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('all');
 
   const toggleSelect = (id) => {
     setSelected(prev => {
@@ -313,13 +331,40 @@ export default function Premium({ reviewsData }) {
         </p>
       </div>
 
-      <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ padding: '2rem 2rem 4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+        {/* Category filter buttons */}
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', gap: '0.5rem',
+          marginBottom: '2rem', justifyContent: 'center'
+        }}>
+          {CATEGORIES.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              style={{
+                padding: '0.5rem 1.1rem',
+                borderRadius: '999px',
+                border: '2px solid',
+                borderColor: activeCategory === cat ? '#7c3aed' : '#e5e7eb',
+                background: activeCategory === cat ? '#7c3aed' : 'white',
+                color: activeCategory === cat ? 'white' : '#374151',
+                fontWeight: activeCategory === cat ? '600' : '400',
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                transition: 'all 0.15s'
+              }}
+            >
+              {cat === 'all' ? 'All' : CATEGORY_LABELS[cat]}
+            </button>
+          ))}
+        </div>
+
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
           gap: '1rem'
         }}>
-          {products.map(product => (
+          {products.filter(p => activeCategory === 'all' || p.category === activeCategory).map(product => (
             <HdProductCard
               key={product.id}
               product={product}
