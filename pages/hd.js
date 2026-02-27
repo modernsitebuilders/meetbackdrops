@@ -2,7 +2,7 @@ import Head from 'next/head';
 import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import ComparisonWidgetSchema from '../components/ComparisonWidgetSchema';
 import ProductSchema from '../components/ProductSchema';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import ComparisonWidget from '../components/ComparisonWidget';
@@ -32,17 +32,82 @@ function trackAnalytics(eventType, filename, category) {
   }).catch(() => {});
 }
 
-function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onMouseEnter, onMouseLeave }) {
+// ─── Subscriber Download Button ───────────────────────────────────────────────
+function SubscriberDownloadButton({ product, token, onDownloadComplete }) {
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const handleDownload = async (e) => {
+    e.stopPropagation();
+    setLoading(true);
+    try {
+      const res = await fetch('/api/subscription-download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token,
+          imageId: product.id,
+          category: product.category,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.url) {
+        // Trigger download
+        const a = document.createElement('a');
+        a.href = data.url;
+        a.download = `${product.id}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setDone(true);
+        onDownloadComplete(data.remaining);
+        trackAnalytics('hd_sub_download', product.id, product.category);
+      } else {
+        alert(data.error || 'Download failed. Please try again.');
+      }
+    } catch {
+      alert('Download failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleDownload}
+      disabled={loading || done}
+      style={{
+        position: 'absolute',
+        bottom: '10px', left: '50%',
+        transform: 'translateX(-50%)',
+        background: done ? '#10b981' : loading ? 'rgba(0,0,0,0.6)' : 'rgba(124,58,237,0.92)',
+        color: 'white',
+        padding: '0.5rem 1.2rem',
+        border: 'none', borderRadius: '8px',
+        cursor: done || loading ? 'default' : 'pointer',
+        zIndex: 3, fontWeight: 'bold',
+        fontSize: '0.85rem',
+        whiteSpace: 'nowrap',
+        transition: 'background 0.2s',
+      }}
+    >
+      {done ? '✓ Downloaded' : loading ? 'Preparing...' : '⬇ Download HD'}
+    </button>
+  );
+}
+
+// ─── HD Product Card ───────────────────────────────────────────────────────────
+function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete }) {
   return (
     <div
       style={{
-        border: isSelected ? '3px solid #2563eb' : '3px solid gold',
+        border: isSelected ? '3px solid #2563eb' : subscriberMode ? '3px solid #7c3aed' : '3px solid gold',
         borderRadius: '8px',
         overflow: 'hidden',
         position: 'relative',
-        cursor: 'pointer'
+        cursor: subscriberMode ? 'default' : 'pointer'
       }}
-      onClick={() => onToggle(product.id)}
+      onClick={() => !subscriberMode && onToggle(product.id)}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -55,7 +120,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
         zIndex: 1
       }} />
 
-      {isSelected && (
+      {isSelected && !subscriberMode && (
         <div style={{
           position: 'absolute',
           top: '10px', right: '10px',
@@ -67,6 +132,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
         }}>✓</div>
       )}
 
+      {/* Preview button */}
       <button
         onClick={(e) => {
           e.stopPropagation();
@@ -83,20 +149,31 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
         }}
         style={{
           position: 'absolute',
-          top: '50%', left: '50%',
-          transform: 'translate(-50%, -50%)',
+          top: subscriberMode ? '10px' : '50%',
+          left: '50%',
+          transform: subscriberMode ? 'translateX(-50%)' : 'translate(-50%, -50%)',
           background: 'rgba(0,0,0,0.8)', color: 'white',
-          padding: '0.75rem 1.5rem',
+          padding: '0.5rem 1.1rem',
           border: 'none', borderRadius: '8px',
           cursor: 'pointer',
           opacity: isHovered ? 1 : 0,
           transition: 'opacity 0.2s',
           zIndex: 2, fontWeight: 'bold',
-          whiteSpace: 'nowrap'
+          whiteSpace: 'nowrap',
+          fontSize: '0.85rem',
         }}
       >
         👁️ Preview HD
       </button>
+
+      {/* Subscriber download button */}
+      {subscriberMode && isHovered && (
+        <SubscriberDownloadButton
+          product={product}
+          token={subToken}
+          onDownloadComplete={onDownloadComplete}
+        />
+      )}
 
       <img
         src={`/images/${product.category}/${product.id.replace('-hd', '')}.webp`}
@@ -107,6 +184,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
   );
 }
 
+// ─── One-time Checkout Bar ─────────────────────────────────────────────────────
 function CheckoutBar({ selected, onClear }) {
   const price = PRICES[selected.length];
 
@@ -163,6 +241,157 @@ function CheckoutBar({ selected, onClear }) {
   );
 }
 
+// ─── Subscription CTA ──────────────────────────────────────────────────────────
+function SubscriptionCTA({ onVerifyClick }) {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/create-subscription-checkout', { method: 'POST' });
+      const { url } = await res.json();
+      window.location.href = url;
+    } catch {
+      alert('Something went wrong. Please try again.');
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div style={{
+      background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
+      color: 'white',
+      borderRadius: '12px',
+      padding: '1.5rem 2rem',
+      marginBottom: '2rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+      gap: '1rem',
+      boxShadow: '0 4px 16px rgba(124,58,237,0.3)',
+    }}>
+      <div>
+        <div style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.25rem' }}>
+          💎 Subscribe for $9/month
+        </div>
+        <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>
+          10 HD downloads per month · Downloads reset each billing cycle · Cancel anytime
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+        <button
+          onClick={handleSubscribe}
+          disabled={loading}
+          style={{
+            background: 'white', color: '#7c3aed',
+            border: 'none', padding: '0.7rem 1.75rem',
+            borderRadius: '8px', fontWeight: 'bold',
+            cursor: loading ? 'default' : 'pointer',
+            fontSize: '0.95rem', whiteSpace: 'nowrap',
+          }}
+        >
+          {loading ? 'Loading...' : 'Subscribe Now'}
+        </button>
+        <button
+          onClick={onVerifyClick}
+          style={{
+            background: 'transparent', color: 'white',
+            border: '1px solid rgba(255,255,255,0.5)',
+            padding: '0.65rem 1.2rem',
+            borderRadius: '8px', cursor: 'pointer',
+            fontSize: '0.85rem', whiteSpace: 'nowrap',
+          }}
+        >
+          Already subscribed?
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ─── Verify Email Modal ────────────────────────────────────────────────────────
+function VerifyEmailModal({ onClose, onVerified }) {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleVerify = async () => {
+    if (!email.includes('@')) { setError('Please enter a valid email address.'); return; }
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/refresh-subscription-token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem('sb_sub_token', data.token);
+        onVerified(data.token);
+      } else {
+        setError(data.error || 'No active subscription found for this email.');
+      }
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div style={{
+      position: 'fixed', inset: 0,
+      background: 'rgba(0,0,0,0.6)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      zIndex: 200, padding: '1rem',
+    }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          background: 'white', borderRadius: '12px',
+          padding: '2rem', maxWidth: '420px', width: '100%',
+        }}
+        onClick={e => e.stopPropagation()}
+      >
+        <h2 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>Verify your subscription</h2>
+        <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1.25rem' }}>
+          Enter the email address you subscribed with to restore access.
+        </p>
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && handleVerify()}
+          placeholder="your@email.com"
+          style={{
+            width: '100%', padding: '0.75rem 1rem',
+            border: '2px solid #e5e7eb', borderRadius: '8px',
+            fontSize: '1rem', marginBottom: '0.75rem',
+            boxSizing: 'border-box',
+          }}
+        />
+        {error && <p style={{ color: '#dc2626', fontSize: '0.875rem', marginBottom: '0.75rem' }}>{error}</p>}
+        <button
+          onClick={handleVerify}
+          disabled={loading}
+          style={{
+            width: '100%', background: '#7c3aed', color: 'white',
+            border: 'none', padding: '0.75rem',
+            borderRadius: '8px', fontWeight: 'bold',
+            cursor: loading ? 'default' : 'pointer', fontSize: '1rem',
+          }}
+        >
+          {loading ? 'Verifying...' : 'Verify Subscription'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ─── Products ─────────────────────────────────────────────────────────────────
 const products = [
   // Bookshelves Bright
   { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright' },
@@ -224,7 +453,6 @@ const products = [
   { id: 'living-room-10-hd', name: 'Living Room #10', category: 'living-rooms' }
 ];
 
-// Derive ordered category list from products, with display labels
 const CATEGORY_LABELS = {
   'bookshelves-bright': 'Bright Bookshelves',
   'bookshelves-dark': 'Dark Bookshelves',
@@ -241,11 +469,58 @@ const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(
   cat => products.some(p => p.category === cat)
 )];
 
+// ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
   const [selected, setSelected] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
+
+  // Subscription state
+  const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }
+  const [subToken, setSubToken] = useState(null);
+  const [showVerifyModal, setShowVerifyModal] = useState(false);
+
+  // Check for subscription token on mount
+  useEffect(() => {
+    const token = localStorage.getItem('sb_sub_token');
+    if (!token) return;
+    setSubToken(token);
+
+    fetch('/api/verify-subscription', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.valid) {
+          setSubStatus(data);
+        } else {
+          // Token invalid/expired — clear it
+          localStorage.removeItem('sb_sub_token');
+          setSubToken(null);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleDownloadComplete = (remaining) => {
+    setSubStatus(prev => prev ? { ...prev, remaining, downloadsThisMonth: 10 - remaining } : prev);
+  };
+
+  const handleVerified = (token) => {
+    setSubToken(token);
+    setShowVerifyModal(false);
+    fetch('/api/verify-subscription', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    })
+      .then(res => res.json())
+      .then(data => { if (data.valid) setSubStatus(data); })
+      .catch(() => {});
+  };
 
   const toggleSelect = (id) => {
     setSelected(prev => {
@@ -259,6 +534,9 @@ export default function Premium({ reviewsData }) {
       return newSelected;
     });
   };
+
+  const isSubscriber = subStatus?.valid;
+  const filteredProducts = products.filter(p => activeCategory === 'all' || p.category === activeCategory);
 
   return (
     <Layout
@@ -286,31 +564,52 @@ export default function Premium({ reviewsData }) {
         <meta name="twitter:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
       </Head>
 
+      {/* Hero */}
       <section style={{
         padding: '2rem 2rem 3rem 2rem',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white', textAlign: 'center'
       }}>
         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: '700' }}>Premium HD Backgrounds</h1>
-        <div style={{
-          background: 'rgba(255,255,255,0.2)',
-          padding: '1rem', borderRadius: '8px',
-          display: 'inline-block', marginBottom: '1.5rem'
-        }}>
-          <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-            1 image: $4.99 • 2 images: $6.99 • 3 images: $8.99
+
+        {isSubscriber ? (
+          /* ── Subscriber badge ── */
+          <div style={{
+            background: 'rgba(255,255,255,0.2)',
+            padding: '1rem 1.5rem', borderRadius: '8px',
+            display: 'inline-block', marginBottom: '1.5rem',
+          }}>
+            <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+              💎 Subscriber — {subStatus.remaining} of 10 downloads remaining this month
+            </div>
+            <div style={{ fontSize: '0.9rem', marginTop: '0.4rem', opacity: 0.9 }}>
+              Hover over any image and click ⬇ Download HD · {subStatus.email}
+            </div>
           </div>
-          <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
-            {selected.length === 3
-              ? '✓ Max 3 images selected - Ready to checkout!'
-              : 'Click images to select, then checkout'}
+        ) : (
+          /* ── One-time pricing ── */
+          <div style={{
+            background: 'rgba(255,255,255,0.2)',
+            padding: '1rem', borderRadius: '8px',
+            display: 'inline-block', marginBottom: '1.5rem'
+          }}>
+            <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+              1 image: $4.99 • 2 images: $6.99 • 3 images: $8.99
+            </div>
+            <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
+              {selected.length === 3
+                ? '✓ Max 3 images selected - Ready to checkout!'
+                : 'Click images to select, then checkout'}
+            </div>
           </div>
-        </div>
+        )}
+
         <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '2rem', color: 'white' }}>
           Hover over images to preview HD quality with our comparison slider
         </p>
       </section>
 
+      {/* Free backgrounds link */}
       <div style={{
         background: 'linear-gradient(135deg, #10b981, #059669)',
         color: 'white', padding: '1.25rem 2rem',
@@ -332,6 +631,12 @@ export default function Premium({ reviewsData }) {
       </div>
 
       <section style={{ padding: '2rem 2rem 4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+
+        {/* Subscription CTA — only shown to non-subscribers */}
+        {!isSubscriber && (
+          <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
+        )}
+
         {/* Category filter buttons */}
         <div style={{
           display: 'flex', flexWrap: 'wrap', gap: '0.5rem',
@@ -359,12 +664,13 @@ export default function Premium({ reviewsData }) {
           ))}
         </div>
 
+        {/* Image grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
           gap: '1rem'
         }}>
-          {products.filter(p => activeCategory === 'all' || p.category === activeCategory).map(product => (
+          {filteredProducts.map(product => (
             <HdProductCard
               key={product.id}
               product={product}
@@ -374,15 +680,20 @@ export default function Premium({ reviewsData }) {
               onPreview={setPreviewImage}
               onMouseEnter={() => setHoveredProduct(product.id)}
               onMouseLeave={() => setHoveredProduct(null)}
+              subscriberMode={isSubscriber}
+              subToken={subToken}
+              onDownloadComplete={handleDownloadComplete}
             />
           ))}
         </div>
 
-        {selected.length > 0 && (
+        {/* One-time checkout bar */}
+        {!isSubscriber && selected.length > 0 && (
           <CheckoutBar selected={selected} onClear={() => setSelected([])} />
         )}
       </section>
 
+      {/* Comparison widget */}
       <ComparisonWidget
         isOpen={!!previewImage}
         onClose={() => setPreviewImage(null)}
@@ -391,6 +702,13 @@ export default function Premium({ reviewsData }) {
         imageId={previewImage?.id}
       />
 
+      {/* Verify email modal */}
+      {showVerifyModal && (
+        <VerifyEmailModal
+          onClose={() => setShowVerifyModal(false)}
+          onVerified={handleVerified}
+        />
+      )}
     </Layout>
   );
 }
