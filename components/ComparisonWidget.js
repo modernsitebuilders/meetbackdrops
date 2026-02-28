@@ -165,19 +165,6 @@ const trackEvent = (action, label) => {
                   SAMPLE
                 </span>
               </div>
-              {/* Logo Corner */}
-              <img 
-                src="/favicon-96x96.png"
-                alt="Logo"
-                style={{
-                  position: 'absolute',
-                  bottom: '80px',
-                  right: '20px',
-                  width: '60px',
-                  opacity: 0.7,
-                  pointerEvents: 'none'
-                }}
-              />
             </div>
 
             {/* Slider Line */}
