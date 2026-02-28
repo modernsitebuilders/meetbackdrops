@@ -398,6 +398,7 @@ function VerifyEmailModal({ onClose, onVerified }) {
 const products = [
   // Bookshelves Bright
   { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-02-hd', name: 'Bright Bookshelf #2', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-04-hd', name: 'Bright Bookshelf #4', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-06-hd', name: 'Bright Bookshelf #6', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-07-hd', name: 'Bright Bookshelf #7', category: 'bookshelves-bright' },
@@ -405,18 +406,47 @@ const products = [
   { id: 'bookshelves-bright-11-hd', name: 'Bright Bookshelf #11', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-13-hd', name: 'Bright Bookshelf #13', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright' },
-  { id: 'bookshelves-bright-16-hd', name: 'Bright Bookshelf #16', category: 'bookshelves-bright' },
   // Bookshelves Dark
   { id: 'bookshelves-dark-02-hd', name: 'Dark Bookshelf #2', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-06-hd', name: 'Dark Bookshelf #6', category: 'bookshelves-dark' },
   { id: 'bookshelves-dark-07-hd', name: 'Dark Bookshelf #7', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-08-hd', name: 'Dark Bookshelf #8', category: 'bookshelves-dark' },
   { id: 'bookshelves-dark-09-hd', name: 'Dark Bookshelf #9', category: 'bookshelves-dark' },
   // Wall Shelves Bright
+  { id: 'wall-shelves-bright-01-hd', name: 'Bright Wall Shelf #1', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-02-hd', name: 'Bright Wall Shelf #2', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-03-hd', name: 'Bright Wall Shelf #3', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-05-hd', name: 'Bright Wall Shelf #5', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-10-hd', name: 'Bright Wall Shelf #10', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-13-hd', name: 'Bright Wall Shelf #13', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-16-hd', name: 'Bright Wall Shelf #16', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-17-hd', name: 'Bright Wall Shelf #17', category: 'wall-shelves-bright' },
   { id: 'wall-shelves-bright-28-hd', name: 'Bright Wall Shelf #28', category: 'wall-shelves-bright' },
   { id: 'wall-shelves-bright-54-hd', name: 'Bright Wall Shelf #54', category: 'wall-shelves-bright' },
   // Wall Shelves Dark
+  { id: 'wall-shelves-dark-01-hd', name: 'Dark Wall Shelf #1', category: 'wall-shelves-dark' },
+  { id: 'wall-shelves-dark-02-hd', name: 'Dark Wall Shelf #2', category: 'wall-shelves-dark' },
+  { id: 'wall-shelves-dark-04-hd', name: 'Dark Wall Shelf #4', category: 'wall-shelves-dark' },
+  { id: 'wall-shelves-dark-06-hd', name: 'Dark Wall Shelf #6', category: 'wall-shelves-dark' },
+  { id: 'wall-shelves-dark-17-hd', name: 'Dark Wall Shelf #17', category: 'wall-shelves-dark' },
+  { id: 'wall-shelves-dark-19-hd', name: 'Dark Wall Shelf #19', category: 'wall-shelves-dark' },
+  { id: 'wall-shelves-dark-28-hd', name: 'Dark Wall Shelf #28', category: 'wall-shelves-dark' },
+  { id: 'wall-shelves-dark-29-hd', name: 'Dark Wall Shelf #29', category: 'wall-shelves-dark' },
   { id: 'wall-shelves-dark-34-hd', name: 'Dark Wall Shelf #34', category: 'wall-shelves-dark' },
   // Coffee Shops
   { id: 'coffee-shop-03-hd', name: 'Coffee Shop #3', category: 'coffee-shops' },
+  { id: 'coffee-shop-04-hd', name: 'Coffee Shop #4', category: 'coffee-shops' },
+  { id: 'coffee-shop-10-hd', name: 'Coffee Shop #10', category: 'coffee-shops' },
+  { id: 'coffee-shop-12-hd', name: 'Coffee Shop #12', category: 'coffee-shops' },
+  { id: 'coffee-shop-13-hd', name: 'Coffee Shop #13', category: 'coffee-shops' },
+  { id: 'coffee-shop-19-hd', name: 'Coffee Shop #19', category: 'coffee-shops' },
+  // Conference Rooms
+  { id: 'conference-room-01-hd', name: 'Conference Room #1', category: 'conference-rooms' },
+  { id: 'conference-room-02-hd', name: 'Conference Room #2', category: 'conference-rooms' },
+  { id: 'conference-room-03-hd', name: 'Conference Room #3', category: 'conference-rooms' },
+  { id: 'conference-room-04-hd', name: 'Conference Room #4', category: 'conference-rooms' },
+  { id: 'conference-room-05-hd', name: 'Conference Room #5', category: 'conference-rooms' },
+  { id: 'conference-room-06-hd', name: 'Conference Room #6', category: 'conference-rooms' },
   // Libraries
   { id: 'library-17-hd', name: 'Library #17', category: 'libraries' },
   // Office Spaces
@@ -435,25 +465,45 @@ const products = [
   { id: 'office-spaces-43-hd', name: 'Office Space #43', category: 'office-spaces' },
   { id: 'office-spaces-77-hd', name: 'Office Space #77', category: 'office-spaces' },
   { id: 'office-spaces-10-hd', name: 'Office Space #10', category: 'office-spaces' },
-  { id: 'office-spaces-12-hd', name: 'Office Space #12', category: 'office-spaces' },
-  { id: 'office-spaces-14-hd', name: 'Office Space #14', category: 'office-spaces' },
-  { id: 'office-spaces-15-hd', name: 'Office Space #15', category: 'office-spaces' },
+  { id: 'office-spaces-11-hd', name: 'Office Space #11', category: 'office-spaces' },
   { id: 'office-spaces-16-hd', name: 'Office Space #16', category: 'office-spaces' },
-  { id: 'office-spaces-25-hd', name: 'Office Space #25', category: 'office-spaces' },
+  { id: 'office-spaces-18-hd', name: 'Office Space #18', category: 'office-spaces' },
   { id: 'office-spaces-28-hd', name: 'Office Space #28', category: 'office-spaces' },
   { id: 'office-spaces-35-hd', name: 'Office Space #35', category: 'office-spaces' },
+  { id: 'office-spaces-38-hd', name: 'Office Space #38', category: 'office-spaces' },
   { id: 'office-spaces-69-hd', name: 'Office Space #69', category: 'office-spaces' },
   { id: 'office-spaces-71-hd', name: 'Office Space #71', category: 'office-spaces' },
   // Nature Landscapes
+  { id: 'nature-landscape-10-hd', name: 'Nature Landscape #10', category: 'nature-landscapes' },
   { id: 'nature-landscape-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes' },
+  { id: 'nature-landscape-14-hd', name: 'Nature Landscape #14', category: 'nature-landscapes' },
+  { id: 'nature-landscape-18-hd', name: 'Nature Landscape #18', category: 'nature-landscapes' },
+  { id: 'nature-landscape-19-hd', name: 'Nature Landscape #19', category: 'nature-landscapes' },
   { id: 'nature-landscape-20-hd', name: 'Nature Landscape #20', category: 'nature-landscapes' },
   { id: 'nature-landscape-21-hd', name: 'Nature Landscape #21', category: 'nature-landscapes' },
+  { id: 'nature-landscape-22-hd', name: 'Nature Landscape #22', category: 'nature-landscapes' },
   { id: 'nature-landscape-30-hd', name: 'Nature Landscape #30', category: 'nature-landscapes' },
   { id: 'nature-landscape-46-hd', name: 'Nature Landscape #46', category: 'nature-landscapes' },
   { id: 'nature-landscape-98-hd', name: 'Nature Landscape #98', category: 'nature-landscapes' },
   { id: 'nature-landscape-99-hd', name: 'Nature Landscape #99', category: 'nature-landscapes' },
   // Living Rooms
-  { id: 'living-room-10-hd', name: 'Living Room #10', category: 'living-rooms' }
+  { id: 'living-room-10-hd', name: 'Living Room #10', category: 'living-rooms' },
+  { id: 'living-room-11-hd', name: 'Living Room #11', category: 'living-rooms' },
+  { id: 'living-room-14-hd', name: 'Living Room #14', category: 'living-rooms' },
+  { id: 'living-room-17-hd', name: 'Living Room #17', category: 'living-rooms' },
+  // Kitchens
+  { id: 'kitchen-04-hd', name: 'Kitchen #4', category: 'kitchens' },
+  { id: 'kitchen-05-hd', name: 'Kitchen #5', category: 'kitchens' },
+  { id: 'kitchen-06-hd', name: 'Kitchen #6', category: 'kitchens' },
+  { id: 'kitchen-14-hd', name: 'Kitchen #14', category: 'kitchens' },
+  { id: 'kitchen-15-hd', name: 'Kitchen #15', category: 'kitchens' },
+  { id: 'kitchen-16-hd', name: 'Kitchen #16', category: 'kitchens' },
+  // Gardens & Patios
+  { id: 'garden-patio-01-hd', name: 'Garden & Patio #1', category: 'gardens-patios' },
+  { id: 'garden-patio-12-hd', name: 'Garden & Patio #12', category: 'gardens-patios' },
+  { id: 'garden-patio-14-hd', name: 'Garden & Patio #14', category: 'gardens-patios' },
+  // Christmas
+  { id: 'christmas-background-35-hd', name: 'Christmas #35', category: 'christmas-backgrounds' },
 ];
 
 const CATEGORY_LABELS = {
@@ -463,9 +513,13 @@ const CATEGORY_LABELS = {
   'wall-shelves-dark': 'Dark Wall Shelves',
   'office-spaces': 'Office Spaces',
   'coffee-shops': 'Coffee Shops',
+  'conference-rooms': 'Conference Rooms',
   'libraries': 'Libraries',
   'nature-landscapes': 'Nature',
   'living-rooms': 'Living Rooms',
+  'kitchens': 'Kitchens',
+  'gardens-patios': 'Gardens & Patios',
+  'christmas-backgrounds': 'Christmas',
 };
 
 const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(
