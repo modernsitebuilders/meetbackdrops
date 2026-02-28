@@ -88,13 +88,13 @@ export default async function handler(req, res) {
       }
     });
 
-    // 🟩 Highlight HD purchases in light green
-    if (eventType === 'hd_purchase') {
+    // 🟩 Highlight revenue events
+    if (eventType === 'hd_purchase' || eventType === 'hd_subscription') {
       const updatedRange = appendResponse.data.updatedRange; // e.g. "Analytics!A1523:O1523"
       const match = updatedRange.match(/!A(\d+):O(\d+)/);
       if (match) {
         const rowNumber = parseInt(match[1], 10);
-        
+
         // Get the sheet ID for "Analytics" sheet
         const spreadsheet = await sheets.spreadsheets.get({
           spreadsheetId: process.env.GOOGLE_SHEET_ID,
@@ -103,7 +103,12 @@ export default async function handler(req, res) {
         const sheet = spreadsheet.data.sheets.find(s => s.properties.title === 'Analytics');
         if (!sheet) throw new Error('Analytics sheet not found');
         const sheetId = sheet.properties.sheetId;
-        
+
+        // hd_purchase = light green, hd_subscription = vivid green
+        const color = eventType === 'hd_subscription'
+          ? { red: 0.42, green: 0.78, blue: 0.42 }
+          : { red: 0.85, green: 0.92, blue: 0.83 };
+
         await sheets.spreadsheets.batchUpdate({
           spreadsheetId: process.env.GOOGLE_SHEET_ID,
           resource: {
@@ -114,15 +119,10 @@ export default async function handler(req, res) {
                     sheetId: sheetId,
                     startRowIndex: rowNumber - 1,
                     endRowIndex: rowNumber
-                    // No column range → entire row is highlighted
                   },
                   cell: {
                     userEnteredFormat: {
-                      backgroundColor: {
-                        red: 0.85,
-                        green: 0.92,
-                        blue: 0.83
-                      }
+                      backgroundColor: color
                     }
                   },
                   fields: 'userEnteredFormat.backgroundColor'
@@ -131,8 +131,8 @@ export default async function handler(req, res) {
             ]
           }
         });
-        
-        console.log(`✅ Highlighted HD purchase at row ${rowNumber}`);
+
+        console.log(`✅ Highlighted ${eventType} at row ${rowNumber}`);
       }
     }
 

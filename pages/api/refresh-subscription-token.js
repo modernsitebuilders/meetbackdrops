@@ -62,6 +62,19 @@ export default async function handler(req, res) {
       { ex: 3600 }
     );
 
+    // Track token refresh (new device / session restore)
+    const baseUrl = `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}`;
+    fetch(`${baseUrl}/api/analytics`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'user-agent': 'subscriber' },
+      body: JSON.stringify({
+        eventType: 'sub_token_refresh',
+        filename: activeCustomer.email,
+        category: 'subscription',
+        originalSource: req.headers['referer'] || 'direct',
+      }),
+    }).catch(() => {});
+
     return res.status(200).json({ token });
 
   } catch (error) {

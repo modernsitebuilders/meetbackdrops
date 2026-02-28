@@ -16,6 +16,15 @@ cloudinary.config({
 
 const MONTHLY_LIMIT = 10;
 
+function track(req, eventType, filename, category) {
+  const baseUrl = `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}`;
+  fetch(`${baseUrl}/api/analytics`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'user-agent': 'subscriber' },
+    body: JSON.stringify({ eventType, filename, category, originalSource: 'subscription' }),
+  }).catch(() => {});
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -66,6 +75,7 @@ export default async function handler(req, res) {
     const downloadData = await redis.get(downloadKey) || { count: 0, images: [] };
 
     if (downloadData.count >= MONTHLY_LIMIT) {
+      track(req, 'sub_limit_reached', imageId, category);
       return res.status(429).json({
         error: `Monthly download limit reached (${MONTHLY_LIMIT}/month). Your limit resets on your next billing date.`,
       });
@@ -89,6 +99,8 @@ export default async function handler(req, res) {
       images: [...(downloadData.images || []), imageId],
     };
     await redis.set(downloadKey, newDownloadData, { ex: 45 * 24 * 60 * 60 });
+
+    track(req, 'hd_sub_download', imageId, category);
 
     return res.status(200).json({
       url: signedUrl,

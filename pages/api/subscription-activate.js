@@ -1,12 +1,59 @@
 import Stripe from 'stripe';
 import { Redis } from '@upstash/redis';
 import crypto from 'crypto';
+import { google } from 'googleapis';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const redis = new Redis({
   url: process.env.KV_REST_API_URL,
   token: process.env.KV_REST_API_TOKEN,
 });
+
+async function addToEmailList(email) {
+  try {
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+    privateKey = privateKey.replace(/\\n/g, '\n');
+
+    const auth = new google.auth.JWT({
+      email: process.env.GOOGLE_SERVICE_EMAIL,
+      key: privateKey,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+    const sheets = google.sheets({ version: 'v4', auth });
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+
+    // Check for duplicate
+    const existing = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: 'Email List!A:A',
+    });
+    const emails = existing.data.values || [];
+    const alreadyExists = emails.some(row => row[0] === email);
+    if (alreadyExists) return;
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: 'Email List!A:C',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [[
+          email,
+          'Subscriber',
+          new Date().toLocaleString('en-US', {
+            timeZone: 'America/New_York',
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit',
+          }),
+        ]],
+      },
+    });
+  } catch (err) {
+    console.error('Email List write failed:', err.message);
+  }
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -51,6 +98,21 @@ export default async function handler(req, res) {
       { active: true, periodStart },
       { ex: 3600 }
     );
+
+    // Add email to Email List sheet (fire-and-forget, deduped)
+    if (email) addToEmailList(email).catch(() => {});
+
+    // Track subscription in analytics (fire-and-forget)
+    fetch(`${req.headers.origin || 'http://localhost:3000'}/api/analytics`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'user-agent': 'subscriber' },
+      body: JSON.stringify({
+        eventType: 'hd_subscription',
+        filename: email,
+        category: 'subscription',
+        originalSource: req.headers['referer'] || 'direct',
+      }),
+    }).catch(() => {});
 
     return res.status(200).json({ token, email });
 

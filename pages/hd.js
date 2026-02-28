@@ -33,7 +33,7 @@ function trackAnalytics(eventType, filename, category) {
 }
 
 // ─── Subscriber Download Button ───────────────────────────────────────────────
-function SubscriberDownloadButton({ product, token, onDownloadComplete }) {
+function SubscriberDownloadButton({ product, token, onDownloadComplete, onLimitReached }) {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
@@ -52,7 +52,6 @@ function SubscriberDownloadButton({ product, token, onDownloadComplete }) {
       });
       const data = await res.json();
       if (res.ok && data.url) {
-        // Trigger download
         const a = document.createElement('a');
         a.href = data.url;
         a.download = `${product.id}.png`;
@@ -62,11 +61,13 @@ function SubscriberDownloadButton({ product, token, onDownloadComplete }) {
         setDone(true);
         onDownloadComplete(data.remaining);
         trackAnalytics('hd_sub_download', product.id, product.category);
+      } else if (res.status === 429) {
+        onLimitReached(data.error);
       } else {
-        alert(data.error || 'Download failed. Please try again.');
+        onLimitReached(data.error || 'Download failed. Please try again.');
       }
     } catch {
-      alert('Download failed. Please try again.');
+      onLimitReached('Download failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -97,7 +98,7 @@ function SubscriberDownloadButton({ product, token, onDownloadComplete }) {
 }
 
 // ─── HD Product Card ───────────────────────────────────────────────────────────
-function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete }) {
+function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
   return (
     <div
       style={{
@@ -172,6 +173,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
           product={product}
           token={subToken}
           onDownloadComplete={onDownloadComplete}
+          onLimitReached={onLimitReached}
         />
       )}
 
@@ -247,6 +249,7 @@ function SubscriptionCTA({ onVerifyClick }) {
 
   const handleSubscribe = async () => {
     setLoading(true);
+    trackAnalytics('sub_cta_click', null, 'subscription');
     try {
       const res = await fetch('/api/create-subscription-checkout', { method: 'POST' });
       const { url } = await res.json();
@@ -480,6 +483,7 @@ export default function Premium({ reviewsData }) {
   const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }
   const [subToken, setSubToken] = useState(null);
   const [showVerifyModal, setShowVerifyModal] = useState(false);
+  const [limitMessage, setLimitMessage] = useState('');
 
   // Check for subscription token on mount
   useEffect(() => {
@@ -574,17 +578,31 @@ export default function Premium({ reviewsData }) {
 
         {isSubscriber ? (
           /* ── Subscriber badge ── */
-          <div style={{
-            background: 'rgba(255,255,255,0.2)',
-            padding: '1rem 1.5rem', borderRadius: '8px',
-            display: 'inline-block', marginBottom: '1.5rem',
-          }}>
-            <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-              💎 Subscriber — {subStatus.remaining} of 10 downloads remaining this month
+          <div style={{ display: 'inline-block', marginBottom: '1.5rem' }}>
+            <div style={{
+              background: 'rgba(255,255,255,0.2)',
+              padding: '1rem 1.5rem', borderRadius: '8px',
+            }}>
+              <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+                💎 Subscriber — {subStatus.remaining} of 10 downloads remaining this month
+              </div>
+              <div style={{ fontSize: '0.9rem', marginTop: '0.4rem', opacity: 0.9 }}>
+                Hover over any image and click ⬇ Download HD · {subStatus.email}
+              </div>
             </div>
-            <div style={{ fontSize: '0.9rem', marginTop: '0.4rem', opacity: 0.9 }}>
-              Hover over any image and click ⬇ Download HD · {subStatus.email}
-            </div>
+            {limitMessage && (
+              <div style={{
+                marginTop: '0.6rem',
+                background: 'rgba(251,146,60,0.92)',
+                color: 'white',
+                borderRadius: '8px',
+                padding: '0.7rem 1.2rem',
+                fontSize: '0.95rem',
+                fontWeight: '500',
+              }}>
+                ⚠️ {limitMessage}
+              </div>
+            )}
           </div>
         ) : (
           /* ── One-time pricing ── */
@@ -683,6 +701,7 @@ export default function Premium({ reviewsData }) {
               subscriberMode={isSubscriber}
               subToken={subToken}
               onDownloadComplete={handleDownloadComplete}
+              onLimitReached={setLimitMessage}
             />
           ))}
         </div>
