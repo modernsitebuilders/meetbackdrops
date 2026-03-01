@@ -17,14 +17,14 @@ export const blogMetadata = {
   "bokeh-backgrounds": {
     headline: "Free Bokeh Virtual Backgrounds for Video Calls 2025",
     description: "Download 66 free bokeh virtual backgrounds for Zoom, Teams, and Google Meet. Elegant soft-focus light effects and artistic blur backgrounds perfect for professional video calls.",
-    image: "/images/bokeh-backgrounds/bokeh-1.webp",
+    image: "/images/bokeh-backgrounds/bokeh-01.webp",
     datePublished: "2025-11-06",
     dateModified: "2025-11-06"
   },
   "best-virtual-background-sites-2026": {
     headline: "Best Free Virtual Background Sites in 2026: Complete Comparison",
     description: "Compare the best free virtual background sites in 2026. Learn why StreamBackdrops beats stock photo sites for professional video calls.",
-    image: "/images/art-galleries/art-gallery-1.webp",
+    image: "/images/art-galleries/art-gallery-01.webp",
     datePublished: "2026-02-09",
     dateModified: "2026-02-09"
   },

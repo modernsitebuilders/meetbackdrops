@@ -139,7 +139,7 @@ export const blogPosts = [
     headline: 'Free Bokeh Virtual Backgrounds for Video Calls 2025',
     keywords: 'bokeh backgrounds, bokeh lights, soft focus backgrounds, artistic blur, light effects, elegant backgrounds, professional bokeh',
     canonical: 'https://streambackdrops.com/blog/bokeh-backgrounds',
-    image: '/images/bokeh-backgrounds/bokeh-1.webp',
+    image: '/images/bokeh-backgrounds/bokeh-01.webp',
     category: 'Background Collections',
     readTime: '10 min read',
     date: 'November 6, 2025',

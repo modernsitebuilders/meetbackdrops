@@ -173,12 +173,12 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'coffee-shops': 'coffee-shop-01.webp',
     'conference-rooms': 'conference-room-01.webp',
     'art-galleries': 'art-gallery-23.webp',
-    'urban-lofts': 'urban-loft-1.webp',
+    'urban-lofts': 'urban-loft-01.webp',
     'gardens-patios': 'garden-patio-01.webp',
-    'historic-spaces': 'historic-1.webp',
+    'historic-spaces': 'historic-space-01.webp',
     'nature-landscapes': 'nature-1.webp',
-    'libraries': 'library-1.webp',
-    'bokeh-backgrounds': 'bokeh-1.webp',
+    'libraries': 'library-01.webp',
+    'bokeh-backgrounds': 'bokeh-01.webp',
   };
   
   const featuredImage = featuredImages[currentSlug] || 'og-image.png';
