@@ -174,7 +174,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'conference-rooms': 'conference-room-01.webp',
     'art-galleries': 'art-gallery-23.webp',
     'urban-lofts': 'urban-loft-1.webp',
-    'gardens-patios': 'garden-patio-1.webp',
+    'gardens-patios': 'garden-patio-01.webp',
     'historic-spaces': 'historic-1.webp',
     'nature-landscapes': 'nature-1.webp',
     'libraries': 'library-1.webp',

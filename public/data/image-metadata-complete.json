@@ -3617,159 +3617,6 @@
     "width": 1920,
     "height": 1080
   },
-  "garden-patio-1": {
-    "filename": "garden-patio-1.webp",
-    "downloadName": "garden-patio-1.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 1",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "santorini style blue and white patio with pink bougainvillea flowers pottery and ocean view mediterranean zoom background traditional bright natural light plants",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-2": {
-    "filename": "garden-patio-2.webp",
-    "downloadName": "garden-patio-2.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 2",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "greek white buildings with blue windows pink bougainvillea flowers and clear blue sky mediterranean zoom background traditional bright natural light plants",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-3": {
-    "filename": "garden-patio-3.webp",
-    "downloadName": "garden-patio-3.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 3",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "white curved patio walls with blue door red bougainvillea tree mediterranean style zoom background traditional bright natural light plants",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-4": {
-    "filename": "garden-patio-4.webp",
-    "downloadName": "garden-patio-4.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 4",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "white mediterranean terrace with colorful planters pink bougainvillea umbrellas bright zoom background traditional bright natural light plants",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-5": {
-    "filename": "garden-patio-5.webp",
-    "downloadName": "garden-patio-5.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 5",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "minimalist concrete patio with wooden fence small tree and dramatic shadows zen zoom background minimalist bright natural light plants wood",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-6": {
-    "filename": "garden-patio-6.webp",
-    "downloadName": "garden-patio-6.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 6",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "japanese zen garden with bamboo fence stone lantern blue water feature tranquil zoom background traditional bright natural light plants wood",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-7": {
-    "filename": "garden-patio-7.webp",
-    "downloadName": "garden-patio-7.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 7",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "modern white minimalist patio with geometric planters ocean view luxury zoom background modern minimalist bright natural light plants luxury",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-8": {
-    "filename": "garden-patio-8.webp",
-    "downloadName": "garden-patio-8.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 8",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "concrete geometric patio with white tile checkerboard pattern and grass contemporary zoom background modern bright natural light",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
-  "garden-patio-9": {
-    "filename": "garden-patio-9.webp",
-    "downloadName": "garden-patio-9.png",
-    "category": "gardens-patios",
-    "title": "Gardens Patios Background 9",
-    "description": "Professional gardens patios virtual background for video calls",
-    "alt": "minimalist concrete patio with single tree dramatic shadows artistic zoom background minimalist bright natural light plants",
-    "keywords": [
-      "virtual background",
-      "zoom background",
-      "video call",
-      "streaming",
-      "gardens patios"
-    ],
-    "width": 1920,
-    "height": 1080
-  },
   "garden-patio-10": {
     "filename": "garden-patio-10.webp",
     "downloadName": "garden-patio-10.png",
@@ -18050,6 +17897,159 @@
       "zoom background",
       "video call",
       "streaming"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-01": {
+    "filename": "garden-patio-01.webp",
+    "downloadName": "garden-patio-01.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 1",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "santorini style blue and white patio with pink bougainvillea flowers pottery and ocean view mediterranean zoom background traditional bright natural light plants",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-02": {
+    "filename": "garden-patio-02.webp",
+    "downloadName": "garden-patio-02.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 2",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "greek white buildings with blue windows pink bougainvillea flowers and clear blue sky mediterranean zoom background traditional bright natural light plants",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-03": {
+    "filename": "garden-patio-03.webp",
+    "downloadName": "garden-patio-03.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 3",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "white curved patio walls with blue door red bougainvillea tree mediterranean style zoom background traditional bright natural light plants",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-04": {
+    "filename": "garden-patio-04.webp",
+    "downloadName": "garden-patio-04.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 4",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "white mediterranean terrace with colorful planters pink bougainvillea umbrellas bright zoom background traditional bright natural light plants",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-05": {
+    "filename": "garden-patio-05.webp",
+    "downloadName": "garden-patio-05.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 5",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "minimalist concrete patio with wooden fence small tree and dramatic shadows zen zoom background minimalist bright natural light plants wood",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-06": {
+    "filename": "garden-patio-06.webp",
+    "downloadName": "garden-patio-06.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 6",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "japanese zen garden with bamboo fence stone lantern blue water feature tranquil zoom background traditional bright natural light plants wood",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-07": {
+    "filename": "garden-patio-07.webp",
+    "downloadName": "garden-patio-07.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 7",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "modern white minimalist patio with geometric planters ocean view luxury zoom background modern minimalist bright natural light plants luxury",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-08": {
+    "filename": "garden-patio-08.webp",
+    "downloadName": "garden-patio-08.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 8",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "concrete geometric patio with white tile checkerboard pattern and grass contemporary zoom background modern bright natural light",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
+    ],
+    "width": 1920,
+    "height": 1080
+  },
+  "garden-patio-09": {
+    "filename": "garden-patio-09.webp",
+    "downloadName": "garden-patio-09.png",
+    "category": "gardens-patios",
+    "title": "Gardens Patios Background 9",
+    "description": "Professional gardens patios virtual background for video calls",
+    "alt": "minimalist concrete patio with single tree dramatic shadows artistic zoom background minimalist bright natural light plants",
+    "keywords": [
+      "virtual background",
+      "zoom background",
+      "video call",
+      "streaming",
+      "gardens patios"
     ],
     "width": 1920,
     "height": 1080
