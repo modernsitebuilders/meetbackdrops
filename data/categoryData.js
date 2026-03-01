@@ -87,7 +87,7 @@ export const categoryInfo = {
     description: 'Sophisticated art gallery spaces with clean walls and/or artwork',
     seoDescription: 'Download free art gallery virtual backgrounds for video calls. Clean, artistic spaces for professional presentations.',
     images: Array.from({length: CATEGORIES['art-galleries'].count}, (_, i) => ({
-      filename: `art-gallery-${i + 1}.webp`,
+      filename: `art-gallery-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Art Gallery Background ${i + 1}`
     }))
   },
@@ -97,7 +97,7 @@ export const categoryInfo = {
     description: 'Modern industrial loft spaces with contemporary design',
     seoDescription: 'Download free urban loft virtual backgrounds for video calls. Industrial spaces for creative professionals.',
     images: Array.from({length: CATEGORIES['urban-lofts'].count}, (_, i) => ({
-      filename: `urban-loft-${i + 1}.webp`,
+      filename: `urban-loft-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Urban Loft Background ${i + 1}`
     }))
   },
@@ -107,7 +107,7 @@ export const categoryInfo = {
     description: 'Beautiful outdoor garden and patio backgrounds',
     seoDescription: 'Download free garden and patio virtual backgrounds for video calls. Natural outdoor beauty for your meetings.',
     images: Array.from({length: CATEGORIES['gardens-patios'].count}, (_, i) => ({
-      filename: `garden-patio-${i + 1}.webp`,
+      filename: `garden-patio-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Garden Patio Background ${i + 1}`
     }))
   },
@@ -117,7 +117,7 @@ export const categoryInfo = {
     description: 'Elegant historic interiors and architectural spaces',
     seoDescription: 'Download free historic space virtual backgrounds for video calls. Ballrooms and Art Deco spaces for distinguished calls.',
     images: Array.from({length: CATEGORIES['historic-spaces'].count}, (_, i) => ({
-      filename: `historic-space-${i + 1}.webp`,
+      filename: `historic-space-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Historic Space Background ${i + 1}`
     }))
   },
@@ -137,7 +137,7 @@ export const categoryInfo = {
     description: 'Classic library rooms with floor-to-ceiling books',
     seoDescription: 'Download free library virtual backgrounds for video calls. Perfect for academic presentations and professional settings.',
     images: Array.from({length: CATEGORIES['libraries'].count}, (_, i) => ({
-      filename: `library-${i + 1}.webp`,
+      filename: `library-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Library Background ${i + 1}`
     }))
   },
@@ -188,7 +188,7 @@ export const categoryInfo = {
     description: 'Beautiful bokeh light backgrounds with soft, artistic blur effects for elegant video calls',
     seoDescription: 'Download free bokeh virtual backgrounds for video calls. Soft-focus light effects and artistic blur backgrounds.',
     images: Array.from({length: CATEGORIES['bokeh-backgrounds'].count}, (_, i) => ({
-      filename: `bokeh-${i + 1}.webp`,
+      filename: `bokeh-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Bokeh Background ${i + 1}`
     }))
   }
