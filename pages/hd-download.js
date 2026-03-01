@@ -26,14 +26,10 @@ export default function HDDownload() {
         if (data.verified) {
           const imageIds = data.selected_images.split(',');
           const downloadLinks = imageIds.map(id => {
-            const parts = id.replace('-hd', '').split('-');
-            const num = parts.pop();
-            const category = parts.join('-');
-            
             return {
               id,
               name: id.replace('-hd', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-              url: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${category}/${id}.png`
+              url: `/api/hd-s3-download?session_id=${sessionId}&imageId=${id}`
             };
           });
           

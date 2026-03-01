@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 import { Redis } from '@upstash/redis';
-import { v2 as cloudinary } from 'cloudinary';
+import AWS from 'aws-sdk';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const redis = new Redis({
@@ -8,10 +8,10 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN,
 });
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'dnhju6mhg',
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION,
 });
 
 const MONTHLY_LIMIT = 10;
@@ -81,16 +81,12 @@ export default async function handler(req, res) {
       });
     }
 
-    // 4. Generate signed Cloudinary URL expiring in 1 hour
-    const publicId = `streambackdrops/${category}/${imageId}`;
-    const expiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hour from now
-
-    const signedUrl = cloudinary.url(publicId, {
-      resource_type: 'image',
-      type: 'upload',
-      sign_url: true,
-      expires_at: expiresAt,
-      format: 'png',
+    // 4. Generate signed S3 URL expiring in 1 hour
+    const signedUrl = s3.getSignedUrl('getObject', {
+      Bucket: 'streambackdrops-premium',
+      Key: `${imageId}.png`,
+      Expires: 3600,
+      ResponseContentDisposition: `attachment; filename="${imageId}.png"`,
     });
 
     // 5. Increment download count (45-day TTL so it auto-expires after billing period)

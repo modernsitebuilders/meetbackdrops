@@ -135,17 +135,24 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
 
       {/* Preview button */}
       <button
-        onClick={(e) => {
+        onClick={async (e) => {
           e.stopPropagation();
           trackAnalytics('hd_preview_opened', product.id, product.category);
           const baseFilename = product.id.replace('-hd', '');
           const imageUrl = cloudinaryUrls[baseFilename];
           if (imageUrl) {
-            onPreview({
-              id: product.id,
-              standard: imageUrl,
-              hd: `https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/${product.category}/${product.id}.png`
-            });
+            try {
+              const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
+              const data = await res.json();
+              onPreview({
+                id: product.id,
+                standard: imageUrl,
+                hd: data.url
+              });
+            } catch {
+              // fallback — open without HD side if fetch fails
+              onPreview({ id: product.id, standard: imageUrl, hd: null });
+            }
           }
         }}
         style={{
