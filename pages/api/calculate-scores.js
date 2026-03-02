@@ -149,12 +149,15 @@ export default async function handler(req, res) {
       }
       
       const eventDate = new Date(timestamp);
-      
-      // Track first appearance
+
+      // Track first appearance (all time, so we know the image exists)
       if (eventDate < imageStats[matchedFilename].firstSeen) {
         imageStats[matchedFilename].firstSeen = eventDate;
       }
-      
+
+      // Only count downloads from the reset date onwards — ignore all pre-Jan-25 data
+      if (eventDate < RESET_DATE) return;
+
       if (eventType === 'download') {
         imageStats[matchedFilename].downloads += 1;
         
