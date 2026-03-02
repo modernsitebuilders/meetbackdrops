@@ -1,4 +1,4 @@
-export default function MobileMenu({ isOpen, onClose, navigate, currentPage, bookshelvesItems, wallShelvesItems, collectionsItems, moreCategories }) {
+export default function MobileMenu({ isOpen, onClose, navigate, currentPage, bookshelvesItems, wallShelvesItems, officesItems, collectionsItems, moreCategories }) {
   if (!isOpen) return null;
 
   const menuButtonStyle = (isActive = false, indent = false) => ({
@@ -120,16 +120,24 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, boo
             ))}
           </div>
 
-          {/* Featured Categories */}
+          {/* Offices */}
           <div style={sectionStyle}>
-            <button
-              onClick={() => handleNav('/category/office-spaces')}
-              style={menuButtonStyle()}
-              onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-              onMouseLeave={(e) => e.target.style.background = 'transparent'}
-            >
-              Office Spaces
-            </button>
+            <div style={sectionLabelStyle}>OFFICES</div>
+            {officesItems.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => handleNav(item.path)}
+                style={menuButtonStyle()}
+                onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+                onMouseLeave={(e) => e.target.style.background = 'transparent'}
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Living Rooms */}
+          <div style={sectionStyle}>
             <button
               onClick={() => handleNav('/category/living-rooms')}
               style={menuButtonStyle()}

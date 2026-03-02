@@ -47,6 +47,9 @@ export default function Footer() {
               <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Office Spaces
               </Link>
+              <Link href="/category/home-office" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Home Offices
+              </Link>
               <Link href="/category/bookshelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Bookshelves - Dark
               </Link>

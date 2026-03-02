@@ -90,6 +90,11 @@ export default function Header({ currentPage }) {
     { name: 'Dark', path: '/category/wall-shelves-dark' }
   ];
 
+  const officesItems = [
+    { name: 'Office Spaces', path: '/category/office-spaces' },
+    { name: 'Home Offices', path: '/category/home-office' }
+  ];
+
   const collectionsItems = [
     { name: 'Most Popular', path: '/category/most-popular' },
     { name: 'Browse by Keywords', path: '/browse' },
@@ -320,15 +325,33 @@ export default function Header({ currentPage }) {
               {openDropdown === 'wall-shelves' && renderDropdown(wallShelvesItems, 'wall-shelves')}
             </div>
 
-            {/* Office Spaces */}
-            <button 
-              onClick={() => navigate('/category/office-spaces')}
-              style={navButtonStyle(currentPage === 'office-spaces', hoveredNav === 'office-spaces')}
-              onMouseEnter={() => setHoveredNav('office-spaces')}
-              onMouseLeave={() => setHoveredNav(null)}
-            >
-              Office Spaces
-            </button>
+            {/* Offices Dropdown */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(openDropdown === 'offices' ? null : 'offices');
+                  setOpenNestedDropdown(null);
+                }}
+                aria-expanded={openDropdown === 'offices'}
+                aria-haspopup="true"
+                style={{
+                  ...navButtonStyle(
+                    currentPage === 'office-spaces' || currentPage === 'home-office',
+                    hoveredNav === 'offices'
+                  ),
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}
+                onMouseEnter={() => setHoveredNav('offices')}
+                onMouseLeave={() => setHoveredNav(null)}
+              >
+                Offices
+                <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
+              </button>
+              {openDropdown === 'offices' && renderDropdown(officesItems, 'offices')}
+            </div>
 
             {/* Living Rooms */}
             <button 
@@ -425,6 +448,7 @@ export default function Header({ currentPage }) {
         currentPage={currentPage}
         bookshelvesItems={bookshelvesItems}
         wallShelvesItems={wallShelvesItems}
+        officesItems={officesItems}
         collectionsItems={collectionsItems}
         moreCategories={moreCategories}
       />

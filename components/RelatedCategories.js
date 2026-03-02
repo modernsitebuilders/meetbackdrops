@@ -5,18 +5,23 @@ import styles from '../styles/RelatedCategories.module.css';
 
 const RELATED_MAP = {
   'office-spaces': [
+    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home settings', img: '/images/home-office/home-offices-05.webp' },
     { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Professional library look', img: '/images/bookshelves-dark/bookshelves-dark-02.webp' },
-    { slug: 'libraries', name: 'Libraries', desc: 'Sophisticated meeting background', img: '/images/libraries/library-01.webp' },
-    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, approachable setting', img: '/images/bookshelves-bright/bookshelves-bright-02.webp' }
+    { slug: 'libraries', name: 'Libraries', desc: 'Sophisticated meeting background', img: '/images/libraries/library-01.webp' }
+  ],
+  'home-office': [
+    { slug: 'office-spaces', name: 'Office Spaces', desc: 'More formal corporate settings', img: '/images/office-spaces/office-spaces-01.webp' },
+    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, approachable setting', img: '/images/bookshelves-bright/bookshelves-bright-02.webp' },
+    { slug: 'living-rooms', name: 'Living Rooms', desc: 'Comfortable home backgrounds', img: '/images/living-rooms/living-room-12.webp' }
   ],
   'bookshelves-bright': [
     { slug: 'libraries', name: 'Libraries', desc: 'Classic study atmosphere', img: '/images/libraries/library-01.webp' },
-    { slug: 'office-spaces', name: 'Office Spaces', desc: 'Professional business setting', img: '/images/office-spaces/office-spaces-01.webp' },
+    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home setting', img: '/images/home-office/home-offices-05.webp' },
     { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Ambient evening lighting', img: '/images/bookshelves-dark/bookshelves-dark-02.webp' }
   ],
   'bookshelves-dark': [
     { slug: 'libraries', name: 'Libraries', desc: 'Classic study atmosphere', img: '/images/libraries/library-01.webp' },
-    { slug: 'office-spaces', name: 'Office Spaces', desc: 'Professional business setting', img: '/images/office-spaces/office-spaces-01.webp' },
+    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home setting', img: '/images/home-office/home-offices-05.webp' },
     { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Bright daytime setting', img: '/images/bookshelves-bright/bookshelves-bright-02.webp' }
   ],
   'libraries': [
@@ -29,8 +34,8 @@ const RELATED_MAP = {
 // Default for all other categories
 const DEFAULT_RELATED = [
   { slug: 'office-spaces', name: 'Office Spaces', desc: 'Professional business backgrounds', img: '/images/office-spaces/office-spaces-01.webp' },
-  { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, intellectual setting', img: '/images/bookshelves-bright/bookshelves-bright-02.webp' },
-  { slug: 'libraries', name: 'Libraries', desc: 'Classic study backgrounds', img: '/images/libraries/library-01.webp' }
+  { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home settings', img: '/images/home-office/home-offices-05.webp' },
+  { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, intellectual setting', img: '/images/bookshelves-bright/bookshelves-bright-02.webp' }
 ];
 
 export default function RelatedCategories({ currentSlug }) {

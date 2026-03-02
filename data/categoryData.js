@@ -52,6 +52,16 @@ export const categoryInfo = {
     }))
   },
   
+  'home-office': {
+    name: 'Home Offices',
+    description: 'Warm, personal home office backgrounds for work-from-home video calls',
+    seoDescription: 'Download free home office virtual backgrounds for video calls. Cozy and professional work-from-home settings for remote workers.',
+    images: Array.from({length: CATEGORIES['home-office'].count}, (_, i) => ({
+      filename: `home-offices-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Home Office Background ${i + 1}`
+    }))
+  },
+  
   'living-rooms': {
     name: 'Living Rooms',
     description: 'Comfortable home backgrounds for casual video calls',
@@ -200,6 +210,8 @@ export const folderMap = {
   'wall-shelves-bright': 'wall-shelves-bright',
   'wall-shelves-dark': 'wall-shelves-dark',
   'office-spaces': 'office-spaces',
+  'home-office': 'home-office',
+
   'living-rooms': 'living-rooms',
   'kitchens': 'kitchens',
   'coffee-shops': 'coffee-shops',

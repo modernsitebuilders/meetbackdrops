@@ -76,7 +76,7 @@ function CategoryContent({ slug, scores = {}}) {
           </nav>
 
           {/* HD Banner - High Traffic Categories */}
-{['bookshelves-bright', 'bookshelves-dark', 'wall-shelves-bright', 'wall-shelves-dark', 'office-spaces', 'nature-landscapes'].includes(slug) && (
+{['bookshelves-bright', 'bookshelves-dark', 'wall-shelves-bright', 'wall-shelves-dark', 'office-spaces', 'home-office', 'nature-landscapes'].includes(slug) && (
   <HDBanner />
 )}
 
@@ -168,6 +168,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'wall-shelves-bright': 'wall-shelves-bright-01.webp',
     'wall-shelves-dark': 'wall-shelves-dark-01.webp',
     'office-spaces': 'office-1.webp',
+    'home-office': 'home-offices-05.webp',
     'living-rooms': 'living-room-1.webp',
     'kitchens': 'kitchen-1.webp',
     'coffee-shops': 'coffee-shop-01.webp',
@@ -232,6 +233,7 @@ export async function getStaticPaths() {
     'wall-shelves-bright',
     'wall-shelves-dark',
     'office-spaces',
+    'home-office',
     'living-rooms',
     'kitchens',
     'coffee-shops',

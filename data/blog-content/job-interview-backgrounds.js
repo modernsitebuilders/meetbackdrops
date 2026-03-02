@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const jobInterviewBackgroundsContent = (categoryInfo) => {
   // Get dynamic image counts from categoryData
   const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
-  const homeOfficesCount = categoryInfo['home-offices']?.images?.length || 0;
+  const homeOfficesCount = categoryInfo['home-office']?.images?.length || 0;
   const conferenceRoomsCount = categoryInfo['conference-rooms']?.images?.length || 0;
   const brightBookshelvesCount = categoryInfo['bookshelves-bright']?.images?.length || 0;
   const darkBookshelvesCount = categoryInfo['bookshelves-dark']?.images?.length || 0;

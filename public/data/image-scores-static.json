@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-03-02T15:17:00.332424+00:00",
   "resetDate": "2026-01-25",
-  "totalImages": 965,
+  "totalImages": 1062,
   "scores": {
     "office-spaces-01.webp": {
       "score": 80,
@@ -4825,6 +4825,491 @@
     },
     "garden-patio-44.webp": {
       "score": 25,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-83.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-84.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-85.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-86.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-87.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-88.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-89.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-90.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-91.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-92.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-93.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-94.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-95.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-96.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-97.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-98.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-99.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-100.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-101.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-102.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-103.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "office-spaces-104.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-01.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-02.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-03.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-04.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-05.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-06.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-07.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-08.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-09.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-10.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-11.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-12.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-13.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-14.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-15.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-16.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-17.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-18.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-19.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-20.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-21.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-22.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-23.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-24.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-25.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-26.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-27.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-28.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-29.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-30.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-31.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-32.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-33.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-34.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-35.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-36.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-37.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-38.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-39.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-40.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-41.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-42.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-43.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-44.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-45.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-46.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-47.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-48.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-49.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-50.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-51.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-52.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-53.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-54.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-55.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-56.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-57.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-58.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-59.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-60.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-61.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-62.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-63.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-64.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-65.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-66.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-67.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-68.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-69.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-70.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-71.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-72.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-73.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-74.webp": {
+      "score": 30,
+      "downloads": 0,
+      "lastDownload": null
+    },
+    "home-offices-75.webp": {
+      "score": 30,
       "downloads": 0,
       "lastDownload": null
     }
