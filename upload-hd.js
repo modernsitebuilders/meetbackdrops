@@ -10,6 +10,24 @@ cloudinary.config({
 });
 
 const hdImages = [
+  // New batch — Mar 2, 2026 (batch 3) — uploaded via upload-hd-s3-batch3.js
+  { id: 'bookshelves-bright-19-hd', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-42-hd', category: 'bookshelves-bright' },
+  { id: 'bookshelves-dark-25-hd', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-27-hd', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-28-hd', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-37-hd', category: 'bookshelves-dark' },
+  { id: 'wall-shelves-bright-20-hd', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-29-hd', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-51-hd', category: 'wall-shelves-bright' },
+  { id: 'office-spaces-20-hd', category: 'office-spaces' },
+  { id: 'office-spaces-48-hd', category: 'office-spaces' },
+  { id: 'office-spaces-50-hd', category: 'office-spaces' },
+  { id: 'office-spaces-59-hd', category: 'office-spaces' },
+  { id: 'office-spaces-62-hd', category: 'office-spaces' },
+  { id: 'office-spaces-63-hd', category: 'office-spaces' },
+  { id: 'office-spaces-66-hd', category: 'office-spaces' },
+  { id: 'office-spaces-70-hd', category: 'office-spaces' },
   // New batch — Feb 2026 (batch 2)
   { id: 'bookshelves-bright-02-hd', category: 'bookshelves-bright' },
   { id: 'bookshelves-dark-06-hd', category: 'bookshelves-dark' },
