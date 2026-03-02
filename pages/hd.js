@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import ComparisonWidgetSchema from '../components/ComparisonWidgetSchema';
+import HdFaqSchema from '../components/HdFaqSchema';
 import ProductSchema from '../components/ProductSchema';
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
@@ -625,8 +626,8 @@ export default function Premium({ reviewsData }) {
       title="Premium HD Virtual Backgrounds | 2912×1632 Resolution | StreamBackdrops"
       description="Professional HD virtual backgrounds in stunning 2912×1632 resolution. Perfect for Zoom, Teams, and Google Meet. 2x sharper than standard backgrounds."
       canonical="https://streambackdrops.com/hd"
-      keywords="HD virtual backgrounds, high resolution backgrounds, 4K backgrounds, premium zoom backgrounds, professional video call backgrounds"
-      image="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png"
+      keywords="HD virtual backgrounds, high resolution backgrounds, premium zoom backgrounds, professional video call backgrounds, high definition virtual backgrounds"
+      image="/images/bookshelves-dark/bookshelves-dark-09.webp"
     >
       <Head>
         <BreadcrumbSchema items={[
@@ -635,15 +636,7 @@ export default function Premium({ reviewsData }) {
         ]} />
         <ProductSchema products={products} reviewsData={reviewsData} />
         <ComparisonWidgetSchema />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Premium HD Virtual Backgrounds | StreamBackdrops" />
-        <meta property="og:description" content="Professional HD virtual backgrounds in 2912×1632 resolution. 2x sharper than standard backgrounds." />
-        <meta property="og:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
-        <meta property="og:url" content="https://streambackdrops.com/hd" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Premium HD Virtual Backgrounds" />
-        <meta name="twitter:description" content="Professional HD backgrounds in 2912×1632 resolution" />
-        <meta name="twitter:image" content="https://res.cloudinary.com/dnhju6mhg/image/upload/streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png" />
+        <HdFaqSchema />
       </Head>
 
       {/* Hero */}

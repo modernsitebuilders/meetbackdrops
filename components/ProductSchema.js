@@ -40,7 +40,7 @@ export default function ProductSchema({ products, reviewsData }) {
           "@type": "Offer",
           "price": "4.99",
           "priceCurrency": "USD",
-          "priceValidUntil": "2026-12-31",
+          "priceValidUntil": "2027-12-31",
           "availability": "https://schema.org/InStock",
           "url": "https://streambackdrops.com/hd",
           "shippingDetails": {
