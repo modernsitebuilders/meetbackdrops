@@ -48,6 +48,10 @@
     {
       "path": "/api/cron/update-popular",
       "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/revalidate-categories",
+      "schedule": "30 3 * * *"
     }
   ]
 }
