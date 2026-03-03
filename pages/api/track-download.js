@@ -116,14 +116,29 @@ export default async function handler(req, res) {
 
    console.log('🔍 Checking for duplicates...');
     let duplicateCheckPassed = true;
-    let rows = []; 
-    
+    let rows = [];
+
     try {
+      // Get sheet row count first (fast metadata call, no data transfer)
+      const meta = await sheets.spreadsheets.get({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID,
+        ranges: ['Analytics'],
+        includeGridData: false,
+        fields: 'sheets.properties.gridProperties.rowCount,sheets.properties.title'
+      });
+      const totalRows = meta.data.sheets?.find(s => s.properties.title === 'Analytics')
+        ?.properties.gridProperties.rowCount || 20000;
+
+      // Read only the last 3,500 rows (~35 days at current volume) instead of all 18k+
+      const ROWS_TO_READ = 3500;
+      const startRow = Math.max(2, totalRows - ROWS_TO_READ);
+      console.log(`📊 Reading rows ${startRow}–${totalRows} of Analytics (${totalRows - startRow} rows)`);
+
       const recentData = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: 'Analytics!A:P',
+        range: `Analytics!A${startRow}:P`,
       });
-      
+
       rows = recentData.data.values || [];
       
       // Check entire session history (no time limit) - prevent same file download twice
