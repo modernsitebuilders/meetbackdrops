@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
+import { getSessionData, getVisitorType } from '../lib/sessionTracking';
 
 export default function HDDownload() {
   const [status, setStatus] = useState('verifying');
@@ -36,6 +37,7 @@ export default function HDDownload() {
           setImages(downloadLinks);
           setStatus('success');
 
+          const session = getSessionData();
           fetch('/api/analytics', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -43,7 +45,13 @@ export default function HDDownload() {
               eventType: 'hd_purchase',
               filename: data.selected_images,
               category: 'hd',
-              originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
+              originalSource: session?.originalReferrer || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
+              sessionId: session?.id || '',
+              visitorId: session?.visitorId || '',
+              pageViewsInSession: session?.pageViews || 0,
+              downloadsInSession: session?.downloads || 0,
+              visitorType: getVisitorType(),
+              landingPage: session?.landingPage || ''
             })
           }).catch(() => {});
 

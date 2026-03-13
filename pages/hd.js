@@ -609,12 +609,15 @@ export default function Premium({ reviewsData }) {
 
   const toggleSelect = (id) => {
     setSelected(prev => {
-      const newSelected = prev.includes(id)
+      const isRemoving = prev.includes(id);
+      const newSelected = isRemoving
         ? prev.filter(i => i !== id)
         : prev.length >= 3 ? prev : [...prev, id];
 
-      if (!prev.includes(id) && newSelected.includes(id)) {
+      if (!isRemoving && newSelected.includes(id)) {
         trackAnalytics('hd_image_selected', id, 'hd');
+      } else if (isRemoving) {
+        trackAnalytics('hd_image_deselected', id, 'hd');
       }
       return newSelected;
     });
