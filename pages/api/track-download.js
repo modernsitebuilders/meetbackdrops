@@ -472,7 +472,7 @@ async function archiveOldAnalyticsData(sheets, spreadsheetId) {
       console.log('📦 Created Analytics_Archive sheet');
     }
 
-    // Append old rows to Archive
+    // Append old rows to Archive FIRST (safe — Analytics untouched until this succeeds)
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: 'Analytics_Archive!A:P',
@@ -481,13 +481,31 @@ async function archiveOldAnalyticsData(sheets, spreadsheetId) {
       resource: { values: rowsToArchive }
     });
 
-    // Rewrite Analytics with only header + recent rows
-    await sheets.spreadsheets.values.clear({ spreadsheetId, range: 'Analytics!A:P' });
-    await sheets.spreadsheets.values.update({
+    // Get the Analytics sheet ID for deleteDimension
+    const sheetMeta2 = await sheets.spreadsheets.get({
       spreadsheetId,
-      range: 'Analytics!A1',
-      valueInputOption: 'RAW',
-      resource: { values: [header, ...rowsToKeep] }
+      fields: 'sheets.properties'
+    });
+    const analyticsSheetId = sheetMeta2.data.sheets.find(
+      s => s.properties.title === 'Analytics'
+    )?.properties.sheetId;
+
+    // Delete old rows from Analytics (rows 1..rowsToArchive.length, 0-indexed, after header)
+    // This is safe: if it fails, Analytics still has all its data intact.
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      resource: {
+        requests: [{
+          deleteDimension: {
+            range: {
+              sheetId: analyticsSheetId,
+              dimension: 'ROWS',
+              startIndex: 1,                      // row after header (0-indexed)
+              endIndex: rowsToArchive.length + 1  // exclusive
+            }
+          }
+        }]
+      }
     });
 
     console.log(`✅ Archive complete. Analytics trimmed to ${rowsToKeep.length + 1} rows.`);

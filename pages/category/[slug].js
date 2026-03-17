@@ -163,6 +163,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'halloween-backgrounds': 'halloween-background-20.webp',
     'valentines-backgrounds': 'valentines-background-01.webp',
     'christmas-backgrounds': 'christmas-background-1.webp',
+    'easter-backgrounds': 'easter-background-01.webp',
     'bookshelves-bright': 'bookshelves-bright-01.webp',
     'bookshelves-dark': 'bookshelves-dark-01.webp',
     'wall-shelves-bright': 'wall-shelves-bright-01.webp',
@@ -247,6 +248,7 @@ export async function getStaticPaths() {
     'christmas-backgrounds',
     'halloween-backgrounds',
     'valentines-backgrounds',
+    'easter-backgrounds',
     'eid-backgrounds',
     'bokeh-backgrounds'
   ].map((slug) => ({

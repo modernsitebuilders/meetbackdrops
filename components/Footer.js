@@ -101,6 +101,9 @@ export default function Footer() {
               <Link href="/category/valentines-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
   Valentine's Day 💕
 </Link>
+              <Link href="/category/easter-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Easter 🐣
+              </Link>
             </div>
           </div>
           

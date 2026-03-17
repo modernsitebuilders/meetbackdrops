@@ -22,6 +22,7 @@ import { backgroundsByIndustryContent }        from './blog-content/backgrounds-
 import { bestVirtualBackgroundSites2026Content } from './blog-content/best-virtual-background-sites-2026';
 import { christmasBackgroundsContent }         from './blog-content/christmas-backgrounds';
 import { halloweenBackgroundsContent }         from './blog-content/halloween-backgrounds';
+import { easterBackgroundsContent }            from './blog-content/easter-backgrounds';
 import { bokehBackgroundsContent }             from './blog-content/bokeh-backgrounds';
 import { videoCallEquipmentGuideContent }      from './blog-content/video-call-equipment-guide';
 // ─── ↑ Add new content imports above this line ───────────────────────────────
@@ -312,6 +313,26 @@ export const blogPosts = [
     live: true,
     faqKey: 'halloween-backgrounds',
     content: halloweenBackgroundsContent
+  },
+  {
+    slug: 'easter-backgrounds',
+    title: 'Free Easter Virtual Backgrounds for Zoom, Teams & Google Meet',
+    description: 'Download 55 free Easter virtual backgrounds for Zoom, Teams & Google Meet. Spring pastel scenes, Easter eggs, bunnies & seasonal decor. No signup required.',
+    excerpt: 'Download 55 free Easter virtual backgrounds for Zoom, Teams, and Google Meet. Perfect for spring video calls with pastel decor, Easter eggs, and bunny scenes.',
+    headline: 'Free Easter Virtual Backgrounds for Zoom, Teams & Google Meet',
+    keywords: 'easter backgrounds, easter zoom backgrounds, spring backgrounds, easter virtual backgrounds, holiday video call backgrounds, seasonal backgrounds',
+    canonical: 'https://streambackdrops.com/blog/easter-backgrounds',
+    image: '/images/easter-backgrounds/easter-background-01.webp',
+    category: 'Seasonal',
+    readTime: '5 min read',
+    date: 'March 2026',
+    datePublished: '2026-03-17',
+    dateModified: '2026-03-17',
+    featured: false,
+    sortOrder: 72,
+    live: true,
+    faqKey: 'easter-backgrounds',
+    content: easterBackgroundsContent
   }
   // ─── ↑ Add new blog posts above this line ────────────────────────────────
 ];

@@ -28,6 +28,7 @@ const CATEGORY_SLUGS = [
   'christmas-backgrounds',
   'halloween-backgrounds',
   'valentines-backgrounds',
+  'easter-backgrounds',
   'bokeh-backgrounds',
 ];
 

@@ -193,6 +193,16 @@ export const categoryInfo = {
 },
 
   
+  'easter-backgrounds': {
+    name: 'Easter Backgrounds',
+    description: 'Bright Easter backgrounds with spring pastel decor, bunnies, and seasonal charm for holiday video calls',
+    seoDescription: 'Download free Easter virtual backgrounds for Zoom, Teams & Google Meet. Spring pastel scenes with Easter eggs, bunnies & seasonal holiday decor — no signup required, no watermarks, instant download.',
+    images: Array.from({length: CATEGORIES['easter-backgrounds'].count}, (_, i) => ({
+      filename: `easter-background-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Easter Background ${i + 1}`
+    }))
+  },
+
   'bokeh-backgrounds': {
     name: 'Bokeh Backgrounds',
     description: 'Beautiful bokeh light backgrounds with soft, artistic blur effects for elegant video calls',
@@ -225,5 +235,6 @@ export const folderMap = {
   'christmas-backgrounds': 'christmas-backgrounds',
   'halloween-backgrounds': 'halloween-backgrounds',
   'valentines-backgrounds': 'valentines-backgrounds',
+  'easter-backgrounds': 'easter-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds'
 };

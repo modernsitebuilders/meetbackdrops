@@ -149,6 +149,15 @@ export default function Blog() {
       readTime: '4 min read',
       category: 'Seasonal',
       emoji: '🎃'
+    },
+    {
+      title: 'Free Easter Virtual Backgrounds for Zoom, Teams & Google Meet',
+      slug: 'easter-backgrounds',
+      excerpt: 'Download 55 free Easter virtual backgrounds for Zoom, Teams, and Google Meet. Spring pastel scenes with Easter eggs, bunnies & seasonal decor. No signup required.',
+      date: 'March 2026',
+      readTime: '5 min read',
+      category: 'Seasonal',
+      emoji: '🐣'
     }
   ];
 
@@ -237,6 +246,11 @@ export default function Blog() {
                 "@type": "BlogPosting",
                 "headline": "Best Halloween Virtual Backgrounds for Video Calls 2025",
                 "url": "https://streambackdrops.com/blog/halloween-backgrounds"
+              },
+              {
+                "@type": "BlogPosting",
+                "headline": "Free Easter Virtual Backgrounds for Zoom, Teams & Google Meet",
+                "url": "https://streambackdrops.com/blog/easter-backgrounds"
               }
             ]
           })}

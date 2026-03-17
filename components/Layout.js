@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import Footer from './Footer';
 import Header from './Header';
+import EasterBanner from './EasterBanner';
 
 export default function Layout({
   children,
@@ -153,6 +154,7 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
           Skip to content
         </a>
         <Header currentPage={currentPage} />
+        <EasterBanner />
 
         {/* Main Content */}
         <main id="main-content" style={{ flex: 1 }}>
