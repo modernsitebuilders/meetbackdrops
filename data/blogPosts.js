@@ -52,7 +52,7 @@ export const blogPosts = [
   {
     slug: 'job-interview-backgrounds',
     title: 'Best Virtual Backgrounds for Job Interviews 2026 — Free Download',
-    description: 'Free professional virtual backgrounds made for job interviews. No distracting clutter, perfect lighting, instant download. Used by thousands of job seekers on Zoom & Teams.',
+    description: 'Free professional virtual backgrounds for job interviews. No clutter, perfect lighting, instant download. Used by thousands of job seekers on Zoom & Teams.',
     excerpt: 'Free professional virtual backgrounds made for job interviews. No distracting clutter, perfect lighting, instant download. Used by thousands of job seekers on Zoom & Teams.',
     headline: 'Best Virtual Backgrounds for Job Interviews 2026',
     keywords: 'job interview backgrounds, interview tips, professional backgrounds, virtual interview, career advice',
@@ -135,7 +135,7 @@ export const blogPosts = [
   {
     slug: 'bokeh-backgrounds',
     title: 'Free Bokeh Virtual Backgrounds for Video Calls 2025',
-    description: 'Download 66 free bokeh virtual backgrounds for Zoom, Teams, and Google Meet. Elegant soft-focus light effects and artistic blur backgrounds for professional video calls.',
+    description: 'Download 66 free bokeh virtual backgrounds for Zoom, Teams & Google Meet. Soft-focus light effects & artistic blur backgrounds for professional video calls.',
     excerpt: 'Download 66 free bokeh virtual backgrounds for Zoom, Teams, and Google Meet. Elegant soft-focus light effects and artistic blur backgrounds perfect for professional video calls.',
     headline: 'Free Bokeh Virtual Backgrounds for Video Calls 2025',
     keywords: 'bokeh backgrounds, bokeh lights, soft focus backgrounds, artistic blur, light effects, elegant backgrounds, professional bokeh',
@@ -297,7 +297,7 @@ export const blogPosts = [
   {
     slug: 'halloween-backgrounds',
     title: 'Best Halloween Virtual Backgrounds for 2025',
-    description: 'Spook up your video calls with Halloween virtual backgrounds. Fun, professional Halloween themes for Zoom, Teams and Google Meet.',
+    description: 'Download free Halloween virtual backgrounds for Zoom, Teams & Google Meet. Spooky pumpkins & haunted scenes — instant download, no signup required.',
     excerpt: 'Download 25 free Halloween virtual backgrounds for Zoom, Teams, and Google Meet. Perfect for October video calls with festive fall decor.',
     headline: 'Halloween Virtual Backgrounds',
     keywords: 'halloween backgrounds, spooky backgrounds, holiday backgrounds, themed backgrounds, halloween zoom backgrounds',

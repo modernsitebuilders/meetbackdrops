@@ -196,7 +196,7 @@ export const categoryInfo = {
   'easter-backgrounds': {
     name: 'Easter Backgrounds',
     description: 'Bright Easter backgrounds with spring pastel decor, bunnies, and seasonal charm for holiday video calls',
-    seoDescription: 'Download free Easter virtual backgrounds for Zoom, Teams & Google Meet. Spring pastel scenes with Easter eggs, bunnies & seasonal holiday decor — no signup required, no watermarks, instant download.',
+    seoDescription: 'Download free Easter virtual backgrounds for Zoom, Teams & Google Meet. Spring scenes with Easter eggs & bunnies. No signup required, instant download.',
     images: Array.from({length: CATEGORIES['easter-backgrounds'].count}, (_, i) => ({
       filename: `easter-background-${String(i + 1).padStart(2, '0')}.webp`,
       title: `Easter Background ${i + 1}`
