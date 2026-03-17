@@ -1,14 +1,19 @@
+// consolidate-analytics.js
+// Manual archive endpoint. Call POST /api/consolidate-analytics to immediately
+// move old Analytics rows to Analytics_Archive, keeping the last KEEP_ROWS rows.
+// This runs automatically from track-download.js when rows exceed 18,000,
+// but can also be triggered manually at any time.
+
 import { google } from 'googleapis';
 
+const KEEP_ROWS = 10000;
+
 export default async function handler(req, res) {
-  // You can call this endpoint manually or set up a cron job
-  // For security, you might want to add a secret key check
-  
-  const CONSOLIDATION_THRESHOLD = 20000; // Consolidate when we have more than this many rows
-  const ROWS_TO_KEEP_DETAILED = 10000; // Keep the most recent 1000 rows detailed
-  
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
   try {
-    // Setup Google Sheets auth
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
     if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
       privateKey = privateKey.slice(1, -1);
@@ -22,144 +27,83 @@ export default async function handler(req, res) {
     });
 
     const sheets = google.sheets({ version: 'v4', auth });
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
-    // Read all current data
+    // Read all Analytics data
     const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I'
+      spreadsheetId,
+      range: 'Analytics!A:P'
     });
 
-    const rows = response.data.values;
-    
-    if (!rows || rows.length <= CONSOLIDATION_THRESHOLD) {
-      return res.status(200).json({ 
-        message: 'No consolidation needed yet',
-        currentRows: rows?.length || 0,
-        threshold: CONSOLIDATION_THRESHOLD
+    const allRows = response.data.values || [];
+
+    if (allRows.length <= KEEP_ROWS + 1) {
+      return res.status(200).json({
+        message: 'No archive needed',
+        currentRows: allRows.length,
+        keepRows: KEEP_ROWS
       });
     }
 
-    // Separate header, old rows to consolidate, and recent rows to keep
-    const header = rows[0]; // First row is your header
-    const dataRows = rows.slice(1); // All data rows
-    
-    const oldRows = dataRows.slice(0, dataRows.length - ROWS_TO_KEEP_DETAILED);
-    const recentRows = dataRows.slice(dataRows.length - ROWS_TO_KEEP_DETAILED);
+    const header = allRows[0];
+    const dataRows = allRows.slice(1);
+    const rowsToArchive = dataRows.slice(0, dataRows.length - KEEP_ROWS);
+    const rowsToKeep = dataRows.slice(dataRows.length - KEEP_ROWS);
 
-    // Create summary statistics from old rows
-    const summary = consolidateRows(oldRows);
-    
-    // Build new sheet: header + summary rows + recent detailed rows
-    const newData = [
-      header,
-      ...summary,
-      ...recentRows
-    ];
+    console.log(`📦 Manual archive: moving ${rowsToArchive.length} rows, keeping ${rowsToKeep.length}`);
 
-    // Clear the entire sheet
-    await sheets.spreadsheets.values.clear({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I'
+    // Check if Analytics_Archive sheet exists
+    const spreadsheetMeta = await sheets.spreadsheets.get({
+      spreadsheetId,
+      fields: 'sheets.properties'
     });
+    const archiveExists = spreadsheetMeta.data.sheets.some(
+      s => s.properties.title === 'Analytics_Archive'
+    );
 
-    // Write back the consolidated data
-    await sheets.spreadsheets.values.update({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:I',
+    if (!archiveExists) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        resource: { requests: [{ addSheet: { properties: { title: 'Analytics_Archive' } } }] }
+      });
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: 'Analytics_Archive!A1',
+        valueInputOption: 'RAW',
+        resource: { values: [header] }
+      });
+      console.log('📦 Created Analytics_Archive sheet');
+    }
+
+    // Append old rows to Archive
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: 'Analytics_Archive!A:P',
       valueInputOption: 'RAW',
-      resource: {
-        values: newData
-      }
+      insertDataOption: 'INSERT_ROWS',
+      resource: { values: rowsToArchive }
     });
 
-    res.status(200).json({ 
+    // Rewrite Analytics with only header + recent rows
+    await sheets.spreadsheets.values.clear({ spreadsheetId, range: 'Analytics!A:P' });
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: 'Analytics!A1',
+      valueInputOption: 'RAW',
+      resource: { values: [header, ...rowsToKeep] }
+    });
+
+    console.log(`✅ Manual archive complete.`);
+
+    return res.status(200).json({
       success: true,
-      originalRows: rows.length,
-      consolidatedRows: newData.length,
-      oldRowsConsolidated: oldRows.length,
-      summaryRowsCreated: summary.length,
-      recentRowsKept: recentRows.length
+      rowsArchived: rowsToArchive.length,
+      rowsKept: rowsToKeep.length,
+      analyticsNowHas: rowsToKeep.length + 1
     });
-    
+
   } catch (error) {
-    console.error('Consolidation failed:', error);
-    res.status(500).json({ error: error.message });
+    console.error('Archive failed:', error);
+    return res.status(500).json({ error: error.message });
   }
-}
-
-function consolidateRows(rows) {
-  // Group by date (column H is the date)
-  const byDate = {};
-  
-  rows.forEach(row => {
-    const date = row[7] || 'unknown'; // Column H (index 7) is the date
-    if (!byDate[date]) {
-      byDate[date] = {
-        pageViews: 0,
-        downloads: 0,
-        categories: {},
-        filenames: {}
-      };
-    }
-    
-    const eventType = row[1]; // Column B is event type
-    if (eventType === 'page_view') {
-      byDate[date].pageViews++;
-    } else if (eventType === 'download') {
-      byDate[date].downloads++;
-      
-      // Track which files were downloaded
-      const filename = row[2] || 'unknown';
-      byDate[date].filenames[filename] = (byDate[date].filenames[filename] || 0) + 1;
-    }
-    
-    // Track categories
-    const category = row[3] || 'n/a';
-    byDate[date].categories[category] = (byDate[date].categories[category] || 0) + 1;
-  });
-
-  // Convert to summary rows
-  const summaryRows = [];
-  
-  Object.keys(byDate).sort().forEach(date => {
-    const stats = byDate[date];
-    
-    // Add a page view summary row
-    if (stats.pageViews > 0) {
-      summaryRows.push([
-        date,
-        'SUMMARY',
-        `${stats.pageViews} page views`,
-        'all categories',
-        'consolidated',
-        'n/a',
-        'n/a',
-        date,
-        '00:00:00'
-      ]);
-    }
-    
-    // Add a download summary row
-    if (stats.downloads > 0) {
-      const topFiles = Object.entries(stats.filenames)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3)
-        .map(([file, count]) => `${file}(${count})`)
-        .join(', ');
-      
-      summaryRows.push([
-        date,
-        'SUMMARY',
-        `${stats.downloads} downloads`,
-        Object.keys(stats.categories).join(', '),
-        'consolidated',
-        'n/a',
-        'n/a',
-        date,
-        '00:00:00'
-      ]);
-    }
-  });
-  
-  return summaryRows;
 }

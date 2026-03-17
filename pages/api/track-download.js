@@ -117,6 +117,7 @@ export default async function handler(req, res) {
    console.log('🔍 Checking for duplicates...');
     let duplicateCheckPassed = true;
     let rows = [];
+    let totalRows = 0;
 
     try {
       // Get sheet row count first (fast metadata call, no data transfer)
@@ -126,7 +127,7 @@ export default async function handler(req, res) {
         includeGridData: false,
         fields: 'sheets.properties.gridProperties.rowCount,sheets.properties.title'
       });
-      const totalRows = meta.data.sheets?.find(s => s.properties.title === 'Analytics')
+      totalRows = meta.data.sheets?.find(s => s.properties.title === 'Analytics')
         ?.properties.gridProperties.rowCount || 20000;
 
       // Read only the last 3,500 rows (~35 days at current volume) instead of all 18k+
@@ -379,9 +380,17 @@ export default async function handler(req, res) {
       sessionId: sessionId?.substring(0, 10) + '...',
       timestamp: now.toISOString()
     });
-    
+
     res.status(200).json({ success: true });
-    
+
+    // Archive old rows if sheet is getting large (fire and forget — does not block response)
+    if (totalRows > 18000) {
+      console.log(`📦 Sheet at ${totalRows} rows — triggering background archive...`);
+      archiveOldAnalyticsData(sheets, process.env.GOOGLE_SHEET_ID).catch(err => {
+        console.error('📦 Archive error (non-critical):', err.message);
+      });
+    }
+
   } catch (error) {
     console.error('❌ Download tracking failed:', {
       error: error.message,
@@ -391,11 +400,98 @@ export default async function handler(req, res) {
       timestamp: new Date().toISOString()
     });
     
-    res.status(200).json({ 
-      success: false, 
+    res.status(200).json({
+      success: false,
       error: 'Tracking failed but download may proceed',
       message: error.message,
-      timestamp: new Date().toISOString() 
+      timestamp: new Date().toISOString()
     });
+  }
+}
+
+// Moves rows older than the most recent KEEP_ROWS to Analytics_Archive tab.
+// Called fire-and-forget when Analytics exceeds 18,000 rows.
+async function archiveOldAnalyticsData(sheets, spreadsheetId) {
+  const KEEP_ROWS = 10000; // ~100 days at current volume; covers the 30-day rate-limit window easily
+
+  try {
+    // Re-check row count in case another request already archived
+    const meta = await sheets.spreadsheets.get({
+      spreadsheetId,
+      ranges: ['Analytics'],
+      includeGridData: false,
+      fields: 'sheets.properties.gridProperties.rowCount,sheets.properties.title'
+    });
+    const currentRows = meta.data.sheets?.find(s => s.properties.title === 'Analytics')
+      ?.properties.gridProperties.rowCount || 0;
+
+    if (currentRows <= 18000) {
+      console.log('📦 Archive skipped — row count already at', currentRows);
+      return;
+    }
+
+    console.log(`📦 Archiving Analytics: ${currentRows} rows → keeping last ${KEEP_ROWS}`);
+
+    // Read all Analytics data
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: 'Analytics!A:P'
+    });
+
+    const allRows = response.data.values || [];
+    if (allRows.length <= KEEP_ROWS + 1) return;
+
+    const header = allRows[0];
+    const dataRows = allRows.slice(1);
+    const rowsToArchive = dataRows.slice(0, dataRows.length - KEEP_ROWS);
+    const rowsToKeep = dataRows.slice(dataRows.length - KEEP_ROWS);
+
+    console.log(`📦 Moving ${rowsToArchive.length} rows to Archive, keeping ${rowsToKeep.length}`);
+
+    // Check if Analytics_Archive sheet exists
+    const spreadsheetMeta = await sheets.spreadsheets.get({
+      spreadsheetId,
+      fields: 'sheets.properties'
+    });
+    const archiveExists = spreadsheetMeta.data.sheets.some(
+      s => s.properties.title === 'Analytics_Archive'
+    );
+
+    if (!archiveExists) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        resource: { requests: [{ addSheet: { properties: { title: 'Analytics_Archive' } } }] }
+      });
+      // Write header to the new archive sheet
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: 'Analytics_Archive!A1',
+        valueInputOption: 'RAW',
+        resource: { values: [header] }
+      });
+      console.log('📦 Created Analytics_Archive sheet');
+    }
+
+    // Append old rows to Archive
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: 'Analytics_Archive!A:P',
+      valueInputOption: 'RAW',
+      insertDataOption: 'INSERT_ROWS',
+      resource: { values: rowsToArchive }
+    });
+
+    // Rewrite Analytics with only header + recent rows
+    await sheets.spreadsheets.values.clear({ spreadsheetId, range: 'Analytics!A:P' });
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: 'Analytics!A1',
+      valueInputOption: 'RAW',
+      resource: { values: [header, ...rowsToKeep] }
+    });
+
+    console.log(`✅ Archive complete. Analytics trimmed to ${rowsToKeep.length + 1} rows.`);
+  } catch (err) {
+    console.error('📦 archiveOldAnalyticsData failed:', err.message);
   }
 }
