@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    outputFileTracingExcludes: {
+      '*': [
+        './public/images/**/*',
+        './public/data/**/*',
+      ],
+    },
+  },
   images: {
   domains: ['streambackdrops.com'],
   formats: ['image/webp', 'image/avif'],
