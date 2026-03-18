@@ -8,6 +8,7 @@ import HowToSchema from '../../components/HowToSchema';
 import { howToData } from '../../data/howToData';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import { blogPosts } from '../../data/blogPosts';
+import EasterHDBanner from '../../components/EasterHDBanner';
 
 // Single source of truth — all post metadata & content lives in data/blogPosts.js
 const postsBySlug = Object.fromEntries(blogPosts.map(p => [p.slug, p]));
@@ -63,6 +64,7 @@ export default function BlogPost() {
         />
       )}
 
+      {slug === 'easter-backgrounds' && <EasterHDBanner />}
       <ContentComponent />
     </BlogLayout>
   );

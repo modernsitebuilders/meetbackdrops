@@ -332,7 +332,7 @@ export const blogPosts = [
     sortOrder: 72,
     live: true,
     faqKey: 'easter-backgrounds',
-    content: easterBackgroundsContent
+    content: (categoryInfo) => easterBackgroundsContent(categoryInfo)
   }
   // ─── ↑ Add new blog posts above this line ────────────────────────────────
 ];

@@ -19,6 +19,7 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
 import HDBanner from '../../components/HDBanner';
+import EasterHDBanner from '../../components/EasterHDBanner';
 
 function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -79,6 +80,7 @@ function CategoryContent({ slug, scores = {}}) {
 {['bookshelves-bright', 'bookshelves-dark', 'wall-shelves-bright', 'wall-shelves-dark', 'office-spaces', 'home-office', 'nature-landscapes'].includes(slug) && (
   <HDBanner />
 )}
+{slug === 'easter-backgrounds' && <EasterHDBanner />}
 
           <CategoryHeader category={category} />
 

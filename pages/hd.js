@@ -4,6 +4,7 @@ import ComparisonWidgetSchema from '../components/ComparisonWidgetSchema';
 import HdFaqSchema from '../components/HdFaqSchema';
 import ProductSchema from '../components/ProductSchema';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import ComparisonWidget from '../components/ComparisonWidget';
@@ -530,6 +531,11 @@ const products = [
   { id: 'garden-patio-14-hd', name: 'Garden & Patio #14', category: 'gardens-patios' },
   // Christmas
   { id: 'christmas-background-35-hd', name: 'Christmas #35', category: 'christmas-backgrounds' },
+  // Easter
+  { id: 'easter-background-03-hd', name: 'Easter #3', category: 'easter-backgrounds' },
+  { id: 'easter-background-39-hd', name: 'Easter #39', category: 'easter-backgrounds' },
+  { id: 'easter-background-42-hd', name: 'Easter #42', category: 'easter-backgrounds' },
+  { id: 'easter-background-48-hd', name: 'Easter #48', category: 'easter-backgrounds' },
 ];
 
 const CATEGORY_LABELS = {
@@ -547,6 +553,7 @@ const CATEGORY_LABELS = {
   'kitchens': 'Kitchens',
   'gardens-patios': 'Gardens & Patios',
   'christmas-backgrounds': 'Christmas',
+  'easter-backgrounds': 'Easter',
 };
 
 const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(
@@ -555,10 +562,21 @@ const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
+  const router = useRouter();
   const [selected, setSelected] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
+
+  // Pre-select category from URL param (e.g. ?category=easter-backgrounds)
+  useEffect(() => {
+    if (router.isReady && router.query.category) {
+      const cat = router.query.category;
+      if (CATEGORIES.includes(cat)) {
+        setActiveCategory(cat);
+      }
+    }
+  }, [router.isReady, router.query.category]);
 
   // Subscription state
   const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }

@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const easterBackgroundsContent = () => (
+export const easterBackgroundsContent = (categoryInfo) => {
+  const count = categoryInfo?.['easter-backgrounds']?.images?.length || 55;
+  return (
   <article style={{
     background: '#f8fafc',
     minHeight: '100vh'
@@ -64,7 +66,7 @@ export const easterBackgroundsContent = () => (
               margin: '0 auto',
               color: '#2d4a35'
             }}>
-              Brighten your spring video calls with 55 free Easter backgrounds — bunnies, pastel decor, and seasonal charm
+              Brighten your spring video calls with {count} free Easter backgrounds — bunnies, pastel decor, and seasonal charm
             </p>
           </header>
 
@@ -90,7 +92,7 @@ export const easterBackgroundsContent = () => (
               color: '#374151',
               marginBottom: '1.5rem'
             }}>
-              We've put together <strong>55 free Easter virtual backgrounds</strong> featuring soft pastel interiors, spring garden scenes, Easter egg details, and tasteful bunny accents. Whether you're on a work call or catching up with family, there's something in here for every occasion.
+              We've put together <strong>{count} free Easter virtual backgrounds</strong> featuring soft pastel interiors, spring garden scenes, Easter egg details, and tasteful bunny accents. Whether you're on a work call or catching up with family, there's something in here for every occasion.
             </p>
 
             {/* Preview Image */}
@@ -126,7 +128,7 @@ export const easterBackgroundsContent = () => (
                 color: '#1a3a24',
                 marginBottom: '1rem'
               }}>
-                🐰 Download All 55 Easter Backgrounds Free
+                🐰 Download All {count} Easter Backgrounds Free
               </h3>
               <Link
                 href="/category/easter-backgrounds"
@@ -229,7 +231,7 @@ export const easterBackgroundsContent = () => (
                 color: '#374151',
                 marginBottom: '1.5rem'
               }}>
-                Our collection features <strong>55 unique Easter backgrounds</strong> including:
+                Our collection features <strong>{count} unique Easter backgrounds</strong> including:
               </p>
 
               <ul style={{
@@ -299,7 +301,7 @@ export const easterBackgroundsContent = () => (
                   paddingLeft: '1.5rem'
                 }}>
                   <li style={{ marginBottom: '1rem' }}>
-                    <strong>Visit the Easter backgrounds page</strong> — Browse all 55 options
+                    <strong>Visit the Easter backgrounds page</strong> — Browse all {count} options
                   </li>
                   <li style={{ marginBottom: '1rem' }}>
                     <strong>Click any background</strong> — Opens full preview
@@ -383,7 +385,7 @@ export const easterBackgroundsContent = () => (
                   lineHeight: '1.8',
                   color: '#4b5563'
                 }}>
-                  With 55 backgrounds to choose from, there's no reason to stick with just one. Try a garden scene for morning calls and a cozy decorated interior for the afternoon.
+                  With {count} backgrounds to choose from, there's no reason to stick with just one. Try a garden scene for morning calls and a cozy decorated interior for the afternoon.
                 </p>
               </div>
             </section>
@@ -410,7 +412,7 @@ export const easterBackgroundsContent = () => (
                 opacity: 0.95,
                 marginBottom: '2rem'
               }}>
-                Download all 55 Easter backgrounds completely free — no signup, no watermarks
+                Download all {count} Easter backgrounds completely free — no signup, no watermarks
               </p>
               <Link
                 href="/category/easter-backgrounds"
@@ -494,4 +496,5 @@ export const easterBackgroundsContent = () => (
       </div>
     </div>
   </article>
-);
+  );
+};
