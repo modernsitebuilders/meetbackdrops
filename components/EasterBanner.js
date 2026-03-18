@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { CATEGORIES } from '../lib/categories-config';
 
 export default function EasterBanner() {
   const [isVisible, setIsVisible] = useState(true);
@@ -53,7 +54,7 @@ export default function EasterBanner() {
             margin: 0,
             fontSize: '0.95rem'
           }}>
-            55 free spring backgrounds — bunnies, pastels & Easter charm
+            {CATEGORIES['easter-backgrounds'].count} free spring backgrounds — bunnies, pastels & Easter charm
           </p>
         </div>
 
