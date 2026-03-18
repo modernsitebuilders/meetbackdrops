@@ -45,6 +45,7 @@ export default function ImageLookup() {
       else if (cleanFilename.startsWith('christmas-')) cat = 'christmas-backgrounds';
       else if (cleanFilename.startsWith('halloween-')) cat = 'halloween-backgrounds';
       else if (cleanFilename.startsWith('valentines-background-')) cat = 'valentines-backgrounds';
+      else if (cleanFilename.startsWith('easter-background-')) cat = 'easter-backgrounds';
       
       if (!cat) {
         setError('Could not determine category from filename. Make sure it starts with the category prefix.');
