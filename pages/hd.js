@@ -547,6 +547,12 @@ const products = [
   { id: 'easter-background-75-hd', name: 'Easter #75', category: 'easter-backgrounds' },
   { id: 'easter-background-87-hd', name: 'Easter #87', category: 'easter-backgrounds' },
   { id: 'easter-background-88-hd', name: 'Easter #88', category: 'easter-backgrounds' },
+  { id: 'easter-background-91-hd', name: 'Easter #91', category: 'easter-backgrounds' },
+  { id: 'easter-background-92-hd', name: 'Easter #92', category: 'easter-backgrounds' },
+  { id: 'easter-background-93-hd', name: 'Easter #93', category: 'easter-backgrounds' },
+  { id: 'easter-background-99-hd', name: 'Easter #99', category: 'easter-backgrounds' },
+  { id: 'easter-background-101-hd', name: 'Easter #101', category: 'easter-backgrounds' },
+  { id: 'easter-background-106-hd', name: 'Easter #106', category: 'easter-backgrounds' },
 ];
 
 const CATEGORY_LABELS = {
