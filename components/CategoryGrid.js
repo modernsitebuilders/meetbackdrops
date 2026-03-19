@@ -22,7 +22,7 @@ export default function CategoryGrid({ navigate }) {
       <Card href="/category/libraries" title="Libraries" description="Classic library rooms with floor-to-ceiling books" imageSrc="/images/libraries/library-01.webp" imageAlt="Library virtual background" navigate={navigate} count={CATEGORIES['libraries'].count} />
       <Card href="/category/conference-rooms" title="Conference Rooms" description="Professional conference room backgrounds for team meetings" imageSrc="/images/conference-rooms/conference-room-01.webp" imageAlt="Conference room virtual background" navigate={navigate} count={CATEGORIES['conference-rooms'].count} />
       <Card href="/category/bokeh-backgrounds" title="Bokeh Backgrounds" description="Beautiful bokeh light effects with artistic blur for elegant calls" imageSrc="/images/bokeh-backgrounds/bokeh-56.webp" imageAlt="Bokeh virtual background" navigate={navigate} count={CATEGORIES['bokeh-backgrounds'].count} />
-      <Card href="/category/easter-backgrounds" title="Easter Backgrounds" description="Bright spring pastel backgrounds with Easter eggs, bunnies & seasonal charm" imageSrc="/images/easter-backgrounds/easter-background-01.webp" imageAlt="Easter virtual background for video calls" navigate={navigate} count={CATEGORIES['easter-backgrounds'].count} />
+      <Card href="/category/easter-backgrounds" title="Easter Backgrounds" description="Bright spring pastel backgrounds with Easter eggs, bunnies & seasonal charm" imageSrc="/images/easter-backgrounds/easter-background-03.webp" imageAlt="Easter virtual background for video calls" navigate={navigate} count={CATEGORIES['easter-backgrounds'].count} />
     </div>
   );
 }
