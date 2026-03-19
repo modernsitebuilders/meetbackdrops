@@ -127,8 +127,11 @@ export default async function handler(req, res) {
         includeGridData: false,
         fields: 'sheets.properties.gridProperties.rowCount,sheets.properties.title'
       });
-      totalRows = meta.data.sheets?.find(s => s.properties.title === 'Analytics')
-        ?.properties.gridProperties.rowCount || 20000;
+      // gridProperties.rowCount = total grid rows (includes empty rows), used only to
+      // compute startRow for the windowed read. The actual data row count is set below.
+      const gridRows = meta.data.sheets?.find(s => s.properties.title === 'Analytics')
+        ?.properties.gridProperties.rowCount || 0;
+      totalRows = gridRows; // temporary — overwritten with actual data count after reading
 
       // Read only the last 3,500 rows (~35 days at current volume) instead of all 18k+
       const ROWS_TO_READ = 3500;
@@ -141,6 +144,9 @@ export default async function handler(req, res) {
       });
 
       rows = recentData.data.values || [];
+      // Use actual data row count instead of gridProperties.rowCount (which includes empty rows
+      // and stays inflated after archives, causing spurious re-triggers)
+      totalRows = (startRow - 2) + rows.length; // rows before our range + rows we read
       
       // Check entire session history (no time limit) - prevent same file download twice
       for (let i = rows.length - 1; i >= 1; i--) {
@@ -415,31 +421,19 @@ async function archiveOldAnalyticsData(sheets, spreadsheetId) {
   const KEEP_ROWS = 10000; // ~100 days at current volume; covers the 30-day rate-limit window easily
 
   try {
-    // Re-check row count in case another request already archived
-    const meta = await sheets.spreadsheets.get({
-      spreadsheetId,
-      ranges: ['Analytics'],
-      includeGridData: false,
-      fields: 'sheets.properties.gridProperties.rowCount,sheets.properties.title'
-    });
-    const currentRows = meta.data.sheets?.find(s => s.properties.title === 'Analytics')
-      ?.properties.gridProperties.rowCount || 0;
-
-    if (currentRows <= 18000) {
-      console.log('📦 Archive skipped — row count already at', currentRows);
-      return;
-    }
-
-    console.log(`📦 Archiving Analytics: ${currentRows} rows → keeping last ${KEEP_ROWS}`);
-
-    // Read all Analytics data
+    // Read all Analytics data (allRows.length is the accurate data count, unlike
+    // gridProperties.rowCount which includes empty rows and stays inflated after archives)
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range: 'Analytics!A:P'
     });
 
     const allRows = response.data.values || [];
-    if (allRows.length <= KEEP_ROWS + 1) return;
+    if (allRows.length <= KEEP_ROWS + 1) {
+      console.log('📦 Archive skipped — actual data rows:', allRows.length);
+      return;
+    }
+    console.log(`📦 Archiving Analytics: ${allRows.length} data rows → keeping last ${KEEP_ROWS}`);
 
     const header = allRows[0];
     const dataRows = allRows.slice(1);
