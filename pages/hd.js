@@ -532,10 +532,15 @@ const products = [
   // Christmas
   { id: 'christmas-background-35-hd', name: 'Christmas #35', category: 'christmas-backgrounds' },
   // Easter
+  { id: 'easter-background-02-hd', name: 'Easter #2', category: 'easter-backgrounds' },
   { id: 'easter-background-03-hd', name: 'Easter #3', category: 'easter-backgrounds' },
+  { id: 'easter-background-04-hd', name: 'Easter #4', category: 'easter-backgrounds' },
+  { id: 'easter-background-32-hd', name: 'Easter #32', category: 'easter-backgrounds' },
+  { id: 'easter-background-35-hd', name: 'Easter #35', category: 'easter-backgrounds' },
   { id: 'easter-background-39-hd', name: 'Easter #39', category: 'easter-backgrounds' },
   { id: 'easter-background-42-hd', name: 'Easter #42', category: 'easter-backgrounds' },
   { id: 'easter-background-48-hd', name: 'Easter #48', category: 'easter-backgrounds' },
+  { id: 'easter-background-49-hd', name: 'Easter #49', category: 'easter-backgrounds' },
   { id: 'easter-background-56-hd', name: 'Easter #56', category: 'easter-backgrounds' },
   { id: 'easter-background-57-hd', name: 'Easter #57', category: 'easter-backgrounds' },
   { id: 'easter-background-59-hd', name: 'Easter #59', category: 'easter-backgrounds' },
