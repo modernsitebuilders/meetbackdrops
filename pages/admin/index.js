@@ -1,9 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
 export default function AdminHub() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [revalidating, setRevalidating] = useState(false);
+  const [revalidateResult, setRevalidateResult] = useState(null);
+
+  const handleRevalidate = useCallback(async () => {
+    setRevalidating(true);
+    setRevalidateResult(null);
+    try {
+      const res = await fetch('/api/admin/revalidate-all', { method: 'POST' });
+      const data = await res.json();
+      setRevalidateResult(data);
+    } catch (e) {
+      setRevalidateResult({ success: false, error: e.message });
+    } finally {
+      setRevalidating(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem('streambackdrops_admin') !== 'true') {
@@ -32,6 +48,7 @@ export default function AdminHub() {
     { action: () => window.open('/api/consolidate-analytics', '_blank'), title: '🔄 Consolidate Analytics', desc: 'Compress old analytics data' },
     { action: () => window.open('/api/cache-popular', '_blank'), title: '⚡ Cache Popular Images', desc: 'Refresh popular images cache' }
   ];
+
 
   return (
     <>
@@ -73,6 +90,41 @@ export default function AdminHub() {
               <p style={{ margin: '0.5rem 0 0 0', color: '#6b7280' }}>{action.desc}</p>
             </button>
           ))}
+        </div>
+
+        <h2 style={{ marginTop: '3rem', marginBottom: '1rem' }}>Image Grid Order</h2>
+        <div>
+          <button
+            onClick={handleRevalidate}
+            disabled={revalidating}
+            style={{
+              padding: '1.5rem',
+              background: revalidating ? '#d1fae5' : '#dcfce7',
+              borderRadius: '8px',
+              border: 'none',
+              cursor: revalidating ? 'not-allowed' : 'pointer',
+              textAlign: 'left',
+              width: '100%',
+              transition: 'all 0.2s'
+            }}
+          >
+            <h3 style={{ margin: 0 }}>{revalidating ? '⏳ Revalidating...' : '🔃 Force Revalidate All Category Pages'}</h3>
+            <p style={{ margin: '0.5rem 0 0 0', color: '#6b7280' }}>Rebuilds all category image grids with latest download scores immediately</p>
+          </button>
+          {revalidateResult && (
+            <div style={{
+              marginTop: '0.75rem',
+              padding: '1rem',
+              background: revalidateResult.success ? '#f0fdf4' : '#fef2f2',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              color: revalidateResult.success ? '#166534' : '#991b1b'
+            }}>
+              {revalidateResult.success
+                ? `✅ ${revalidateResult.revalidated} pages revalidated${revalidateResult.failed?.length ? ` (${revalidateResult.failed.length} failed)` : ''}`
+                : `❌ Error: ${revalidateResult.error}`}
+            </div>
+          )}
         </div>
       </div>
     </>
