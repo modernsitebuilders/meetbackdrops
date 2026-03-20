@@ -18,8 +18,7 @@ import { useImageDownload } from '../../lib/useImageDownload';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema'; 
 import ImageObjectSchema from '../../components/ImageObjectSchema';
 import BackToTop from '../../components/BackToTop';
-import HDBanner from '../../components/HDBanner';
-import EasterHDBanner from '../../components/EasterHDBanner';
+import HDComparisonHero from '../../components/HDComparisonHero';
 
 function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -76,14 +75,9 @@ function CategoryContent({ slug, scores = {}}) {
             </span>
           </nav>
 
-          {/* HD Banner - High Traffic Categories */}
-{['bookshelves-bright', 'bookshelves-dark', 'wall-shelves-bright', 'wall-shelves-dark', 'office-spaces', 'home-office', 'nature-landscapes'].includes(slug) && (
-  <HDBanner />
-)}
-{slug === 'easter-backgrounds' && <EasterHDBanner />}
           <CategoryHeader category={category} />
 
-<ImageGrid 
+<ImageGrid
   images={category.images}
   scores={scores}
   slug={slug}
@@ -93,6 +87,7 @@ function CategoryContent({ slug, scores = {}}) {
   downloadingImage={downloadingImage}
 />
 
+          <HDComparisonHero slug={slug} images={category.images} scores={scores} />
           <RelatedCategories currentSlug={slug} />
           <CategorySEOContent category={category} />
         </div>

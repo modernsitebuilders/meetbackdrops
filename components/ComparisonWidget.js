@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
 
-export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose }) {
-  const [sliderPosition, setSliderPosition] = useState(95);
+export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose, hdPageUrl }) {
+  const [sliderPosition, setSliderPosition] = useState(50);
   const [showInstruction, setShowInstruction] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -80,29 +80,53 @@ const trackEvent = (action, label) => {
           justifyContent: 'center',
           flexDirection: 'column'
         }}>
-          {/* Close Button */}
-          <button
-            onClick={() => {
-              onClose();
-              setSliderPosition(95);
-              setShowInstruction(true);
-              trackEvent('widget_closed', `Comparison Modal Closed - ${imageId}`);
-            }}
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              padding: '10px 20px',
-              fontSize: '16px',
-              backgroundColor: '#fff',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              zIndex: 10000
-            }}
-          >
-            Close ✕
-          </button>
+          {/* Top controls */}
+          <div style={{
+            position: 'absolute',
+            top: '20px',
+            right: '20px',
+            display: 'flex',
+            gap: '10px',
+            zIndex: 10000,
+          }}>
+            {hdPageUrl && (
+              <a
+                href={hdPageUrl}
+                style={{
+                  padding: '10px 20px',
+                  fontSize: '16px',
+                  backgroundColor: '#FFD700',
+                  color: '#000',
+                  fontWeight: '700',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                }}
+              >
+                See them all
+              </a>
+            )}
+            <button
+              onClick={() => {
+                onClose();
+                setSliderPosition(95);
+                setShowInstruction(true);
+                trackEvent('widget_closed', `Comparison Modal Closed - ${imageId}`);
+              }}
+              style={{
+                padding: '10px 20px',
+                fontSize: '16px',
+                backgroundColor: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              Close ✕
+            </button>
+          </div>
 
           {/* Comparison Container */}
           <div style={{
