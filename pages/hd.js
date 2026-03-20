@@ -405,6 +405,7 @@ function VerifyEmailModal({ onClose, onVerified }) {
 
 // ─── Products ─────────────────────────────────────────────────────────────────
 const products = [
+  // HD Products
   // Bookshelves Bright
   { id: 'bookshelves-bright-01-hd', name: 'Bright Bookshelf #1', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-02-hd', name: 'Bright Bookshelf #2', category: 'bookshelves-bright' },
