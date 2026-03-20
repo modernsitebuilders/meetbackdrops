@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ComparisonWidget from './ComparisonWidget';
 import cloudinaryUrls from '../cloudinary-urls.json';
+import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
 
 // All image base IDs (no extension, no -hd) that have HD versions available
 const HD_BASE_IDS = new Set([
@@ -87,21 +88,42 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
 
   if (!freeUrl) return null;
 
+  const trackCompareClick = () => {
+    const session = getOrCreateSession();
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'cat_page_hd_compare_clicked', {
+        event_category: 'Category Page HD Promo',
+        event_label: slug,
+      });
+    }
+    fetch('/api/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventType: 'cat_page_hd_compare_clicked',
+        filename: hdId,
+        category: slug,
+        source: 'category_page_hd_promo',
+        originalSource: session?.originalUtmSource || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
+        sessionId: session?.id || 'unknown',
+        visitorId: session?.visitorId || 'unknown',
+        pageViewsInSession: session?.pageViews || 0,
+        visitorType: getVisitorType(),
+        landingPage: session?.landingPage || '',
+      }),
+    }).catch(() => {});
+  };
+
   const handleCompare = async () => {
     if (hdUrl) { setModalOpen(true); return; }
     setLoading(true);
+    trackCompareClick();
     try {
       const res = await fetch(`/api/hd-preview-url?imageId=${hdId}`);
       const data = await res.json();
       if (data.url) {
         setHdUrl(data.url);
         setModalOpen(true);
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'hero_compare_clicked', {
-            event_category: 'HD Comparison Hero',
-            event_label: slug,
-          });
-        }
       }
     } catch (_) {}
     setLoading(false);
