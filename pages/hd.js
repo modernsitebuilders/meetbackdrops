@@ -843,7 +843,7 @@ export default function Premium({ reviewsData }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const reviewsData = await getReviewsData();
-  return { props: { reviewsData } };
+  return { props: { reviewsData }, revalidate: 3600 };
 }
