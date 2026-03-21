@@ -47,7 +47,7 @@
   "crons": [
     {
       "path": "/api/cron/flush-analytics",
-      "schedule": "0 0 * * *"
+      "schedule": "*/5 * * * *"
     },
     {
       "path": "/api/cron/update-popular",

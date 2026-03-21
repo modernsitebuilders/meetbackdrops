@@ -89,6 +89,7 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   if (!freeUrl) return null;
 
   const trackCompareClick = () => {
+    if (process.env.NODE_ENV !== 'production') return;
     const session = getOrCreateSession();
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'cat_page_hd_compare_clicked', {
