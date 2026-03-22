@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { rating, comment, name, email, date } = req.body;
+  const { rating, comment, name, email } = req.body;
 
   try {
     // Set up Google auth
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[
-          new Date(date).toLocaleString('en-US', { 
+          new Date().toLocaleString('en-US', {
             timeZone: 'America/New_York',
             year: 'numeric',
             month: '2-digit',
@@ -96,7 +96,7 @@ export default async function handler(req, res) {
               values: [[
                 email,
                 name || 'Anonymous',
-                new Date(date).toLocaleString('en-US', { 
+                new Date().toLocaleString('en-US', {
                   timeZone: 'America/New_York',
                   year: 'numeric',
                   month: '2-digit',
