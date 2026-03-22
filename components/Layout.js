@@ -154,7 +154,7 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
           Skip to content
         </a>
         <Header currentPage={currentPage} />
-        {router.asPath !== '/category/easter-backgrounds' && <EasterBanner />}
+        {router.asPath !== '/category/easter-backgrounds' && router.asPath !== '/hd' && <EasterBanner />}
 
         {/* Main Content */}
         <main id="main-content" style={{ flex: 1 }}>

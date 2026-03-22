@@ -21,9 +21,15 @@ export default async function handler(req, res) {
       ],
       success_url: `${req.headers.origin}/hd-download?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,
-      metadata: {
-        selected_images: selectedImages.join(',')
-      }
+      metadata: (() => {
+        const str = selectedImages.join(',');
+        if (str.length <= 490) return { selected_images: str };
+        const mid = Math.ceil(selectedImages.length / 2);
+        return {
+          selected_images_1: selectedImages.slice(0, mid).join(','),
+          selected_images_2: selectedImages.slice(mid).join(','),
+        };
+      })()
     });
 
     res.status(200).json({ url: session.url });

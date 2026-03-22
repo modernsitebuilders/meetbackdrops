@@ -3,7 +3,7 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import ComparisonWidgetSchema from '../components/ComparisonWidgetSchema';
 import HdFaqSchema from '../components/HdFaqSchema';
 import ProductSchema from '../components/ProductSchema';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Link from 'next/link';
@@ -14,12 +14,22 @@ import cloudinaryUrls from '../cloudinary-urls.json';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
 const PRICE_IDS = {
-  1: 'price_1Sr4U0Q695ongkMjxUtnf9NA',
-  2: 'price_1Sr4VEQ695ongkMjkaclxw67',
-  3: 'price_1Sr4WYQ695ongkMjRUTPsoIr'
+  1:  'price_1Sr4U0Q695ongkMjxUtnf9NA',
+  2:  'price_1Sr4VEQ695ongkMjkaclxw67',
+  3:  'price_1Sr4WYQ695ongkMjRUTPsoIr',
+  5:  'price_1TDoudQ695ongkMj0hGBVZfc',
+  10: 'price_1TDovCQ695ongkMjnZptC1zz',
+  20: 'price_1TDowHQ695ongkMjwk1xZFAO',
 };
 
-const PRICES = { 1: 4.99, 2: 6.99, 3: 8.99 };
+const PACK_OPTIONS = [
+  { size: 1,  price: 4.99,  savings: null },
+  { size: 2,  price: 6.99,  savings: 30 },
+  { size: 3,  price: 8.99,  savings: 40 },
+  { size: 5,  price: 12.99, savings: 48 },
+  { size: 10, price: 22.99, savings: 54 },
+  { size: 20, price: 39.99, savings: 60 },
+];
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -195,9 +205,147 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
   );
 }
 
+// ─── Sticky Pack Bar ───────────────────────────────────────────────────────────
+function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) {
+  const isFull = packSize && selected.length === packSize;
+  const packOption = packSize ? PACK_OPTIONS.find(o => o.size === packSize) : null;
+
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0, left: 0, right: 0,
+      zIndex: 200,
+      background: 'linear-gradient(135deg, #4c1d95, #3730a3)',
+      color: 'white',
+      padding: '0.5rem 1rem',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '0.4rem',
+      flexWrap: 'nowrap',
+      overflowX: 'auto',
+      transform: visible ? 'translateY(0)' : 'translateY(-110%)',
+      transition: 'transform 0.25s ease',
+    }}>
+      {!packSize ? (
+        <>
+          <span style={{ fontSize: '0.8rem', opacity: 0.8, marginRight: '0.25rem', whiteSpace: 'nowrap' }}>
+            Choose a pack:
+          </span>
+          {PACK_OPTIONS.map(opt => (
+            <button
+              key={opt.size}
+              onClick={() => onSelect(opt.size)}
+              style={{
+                background: 'rgba(255,255,255,0.12)',
+                color: 'white',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '6px',
+                padding: '0.3rem 0.65rem',
+                cursor: 'pointer',
+                fontSize: '0.8rem',
+                fontWeight: '500',
+                whiteSpace: 'nowrap',
+                transition: 'background 0.15s',
+              }}
+            >
+              {opt.size} · ${opt.price}
+            </button>
+          ))}
+        </>
+      ) : (
+        <>
+          <span style={{ fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
+            {isFull ? `✓ All ${packSize} selected` : `${selected.length} of ${packSize} selected`}
+            {' · '}${packOption.price}
+          </span>
+          {!isFull && (
+            <span style={{ fontSize: '0.8rem', opacity: 0.75, whiteSpace: 'nowrap' }}>
+              — pick {packSize - selected.length} more
+            </span>
+          )}
+          <button
+            onClick={onChangePack}
+            style={{
+              background: 'transparent',
+              color: 'rgba(255,255,255,0.65)',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderRadius: '6px',
+              padding: '0.25rem 0.6rem',
+              cursor: 'pointer',
+              fontSize: '0.75rem',
+              marginLeft: '0.25rem',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Change
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ─── Pack Picker ───────────────────────────────────────────────────────────────
+function PackPicker({ packSize, onSelect }) {
+  return (
+    <div style={{ marginBottom: '0.5rem' }}>
+      <div style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.75rem', opacity: 0.9 }}>
+        Choose your HD pack:
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
+        {PACK_OPTIONS.map(opt => {
+          const isSelected = packSize === opt.size;
+          return (
+            <button
+              key={opt.size}
+              onClick={() => onSelect(opt.size)}
+              style={{
+                background: isSelected ? 'white' : 'rgba(255,255,255,0.15)',
+                color: isSelected ? '#2563eb' : 'white',
+                border: isSelected ? '2px solid white' : '2px solid rgba(255,255,255,0.4)',
+                borderRadius: '8px',
+                padding: '0.5rem 0.9rem',
+                cursor: 'pointer',
+                fontWeight: isSelected ? '700' : '500',
+                fontSize: '0.85rem',
+                transition: 'all 0.15s',
+                position: 'relative',
+                minWidth: '80px',
+              }}
+            >
+              <div>{opt.size} image{opt.size > 1 ? 's' : ''}</div>
+              <div style={{ fontSize: '1rem', fontWeight: 'bold' }}>${opt.price}</div>
+              {opt.savings && (
+                <div style={{
+                  position: 'absolute', top: '-8px', right: '-8px',
+                  background: '#10b981', color: 'white',
+                  fontSize: '0.6rem', fontWeight: 'bold',
+                  padding: '2px 4px', borderRadius: '4px',
+                  whiteSpace: 'nowrap',
+                }}>
+                  save {opt.savings}%
+                </div>
+              )}
+            </button>
+          );
+        })}
+      </div>
+      <div style={{ fontSize: '0.85rem', marginTop: '0.75rem', opacity: 0.85, minHeight: '1.2em' }}>
+        {packSize
+          ? `✓ ${packSize}-image pack selected — now pick ${packSize} image${packSize > 1 ? 's' : ''} below`
+          : 'Select a pack to get started'}
+      </div>
+    </div>
+  );
+}
+
 // ─── One-time Checkout Bar ─────────────────────────────────────────────────────
-function CheckoutBar({ selected, onClear }) {
-  const price = PRICES[selected.length];
+function CheckoutBar({ selected, packSize, onClear, onChangePack }) {
+  const packOption = PACK_OPTIONS.find(o => o.size === packSize);
+  const remaining = packSize - selected.length;
+  const isFull = selected.length === packSize;
 
   const handleCheckout = async (e) => {
     e.stopPropagation();
@@ -205,7 +353,7 @@ function CheckoutBar({ selected, onClear }) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        priceId: PRICE_IDS[selected.length],
+        priceId: PRICE_IDS[packSize],
         selectedImages: selected
       })
     });
@@ -216,9 +364,11 @@ function CheckoutBar({ selected, onClear }) {
   return (
     <div style={{
       position: 'fixed', bottom: '2rem', right: '2rem',
-      background: '#2563eb', color: 'white',
+      background: isFull ? '#2563eb' : '#1e293b', color: 'white',
       padding: '1.5rem 2rem', borderRadius: '12px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.3)', zIndex: 100
+      boxShadow: '0 4px 20px rgba(0,0,0,0.3)', zIndex: 100,
+      transition: 'background 0.2s',
+      minWidth: '200px',
     }}>
       <button
         onClick={(e) => { e.stopPropagation(); onClear(); }}
@@ -231,22 +381,50 @@ function CheckoutBar({ selected, onClear }) {
         }}
       >×</button>
 
-      <div style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>
-        {selected.length} image{selected.length > 1 ? 's' : ''} selected
+      <div style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '0.2rem' }}>
+        {packSize}-image pack
+      </div>
+      <div style={{ marginBottom: '0.25rem', fontSize: '1rem', fontWeight: '500' }}>
+        {isFull
+          ? `✓ All ${packSize} selected`
+          : `${selected.length} of ${packSize} — pick ${remaining} more`}
       </div>
       <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-        ${price}
+        ${packOption.price}
       </div>
+
+      {isFull ? (
+        <button
+          onClick={handleCheckout}
+          style={{
+            background: 'white', color: '#2563eb',
+            border: 'none', padding: '0.75rem 2rem',
+            borderRadius: '8px', fontWeight: 'bold',
+            cursor: 'pointer', width: '100%', fontSize: '1rem'
+          }}
+        >
+          Checkout
+        </button>
+      ) : (
+        <div style={{
+          background: 'rgba(255,255,255,0.1)',
+          borderRadius: '8px', padding: '0.6rem',
+          textAlign: 'center', fontSize: '0.85rem', opacity: 0.8,
+        }}>
+          {remaining} more to checkout
+        </div>
+      )}
+
       <button
-        onClick={handleCheckout}
+        onClick={onChangePack}
         style={{
-          background: 'white', color: '#2563eb',
-          border: 'none', padding: '0.75rem 2rem',
-          borderRadius: '8px', fontWeight: 'bold',
-          cursor: 'pointer', width: '100%', fontSize: '1rem'
+          background: 'transparent', color: 'rgba(255,255,255,0.6)',
+          border: 'none', padding: '0.5rem 0 0',
+          cursor: 'pointer', fontSize: '0.78rem', width: '100%',
+          textAlign: 'center', textDecoration: 'underline', display: 'block',
         }}
       >
-        Checkout
+        Change pack
       </button>
     </div>
   );
@@ -586,10 +764,13 @@ const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
   const router = useRouter();
+  const [packSize, setPackSize] = useState(null);
   const [selected, setSelected] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [showStickyBar, setShowStickyBar] = useState(false);
+  const heroRef = useRef(null);
 
   // Pre-select category from URL param (e.g. ?category=easter-backgrounds)
   useEffect(() => {
@@ -600,6 +781,17 @@ export default function Premium({ reviewsData }) {
       }
     }
   }, [router.isReady, router.query.category]);
+
+  // Show sticky bar when hero scrolls out of view
+  useEffect(() => {
+    if (!heroRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowStickyBar(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(heroRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   // Subscription state
   const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }
@@ -648,12 +840,18 @@ export default function Premium({ reviewsData }) {
       .catch(() => {});
   };
 
+  const handlePackSelect = (size) => {
+    setPackSize(size);
+    setSelected([]);
+  };
+
   const toggleSelect = (id) => {
+    if (!packSize) return;
     setSelected(prev => {
       const isRemoving = prev.includes(id);
       const newSelected = isRemoving
         ? prev.filter(i => i !== id)
-        : prev.length >= 3 ? prev : [...prev, id];
+        : prev.length >= packSize ? prev : [...prev, id];
 
       if (!isRemoving && newSelected.includes(id)) {
         trackAnalytics('hd_image_selected', id, 'hd');
@@ -685,8 +883,19 @@ export default function Premium({ reviewsData }) {
         <HdFaqSchema />
       </Head>
 
+      {/* Sticky pack bar — non-subscribers only */}
+      {!isSubscriber && (
+        <StickyPackBar
+          packSize={packSize}
+          selected={selected}
+          onSelect={handlePackSelect}
+          onChangePack={() => { setPackSize(null); setSelected([]); }}
+          visible={showStickyBar}
+        />
+      )}
+
       {/* Hero */}
-      <section style={{
+      <section ref={heroRef} style={{
         padding: '2rem 2rem 3rem 2rem',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white', textAlign: 'center'
@@ -722,20 +931,14 @@ export default function Premium({ reviewsData }) {
             )}
           </div>
         ) : (
-          /* ── One-time pricing ── */
+          /* ── Pack picker ── */
           <div style={{
-            background: 'rgba(255,255,255,0.2)',
-            padding: '1rem', borderRadius: '8px',
-            display: 'inline-block', marginBottom: '1.5rem'
+            background: 'rgba(255,255,255,0.15)',
+            padding: '1.25rem 1.5rem', borderRadius: '12px',
+            display: 'inline-block', marginBottom: '1.5rem',
+            textAlign: 'center',
           }}>
-            <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-              1 image: $4.99 • 2 images: $6.99 • 3 images: $8.99
-            </div>
-            <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
-              {selected.length === 3
-                ? '✓ Max 3 images selected - Ready to checkout!'
-                : 'Click images to select, then checkout'}
-            </div>
+            <PackPicker packSize={packSize} onSelect={handlePackSelect} />
           </div>
         )}
 
@@ -766,11 +969,6 @@ export default function Premium({ reviewsData }) {
       </div>
 
       <section style={{ padding: '2rem 2rem 4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
-
-        {/* Subscription CTA — only shown to non-subscribers */}
-        {!isSubscriber && (
-          <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
-        )}
 
         {/* Category filter buttons */}
         <div style={{
@@ -823,9 +1021,19 @@ export default function Premium({ reviewsData }) {
           ))}
         </div>
 
+        {/* Subscription CTA — below the grid for non-subscribers */}
+        {!isSubscriber && (
+          <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
+        )}
+
         {/* One-time checkout bar */}
-        {!isSubscriber && selected.length > 0 && (
-          <CheckoutBar selected={selected} onClear={() => setSelected([])} />
+        {!isSubscriber && packSize !== null && selected.length > 0 && (
+          <CheckoutBar
+            selected={selected}
+            packSize={packSize}
+            onClear={() => setSelected([])}
+            onChangePack={() => { setPackSize(null); setSelected([]); }}
+          />
         )}
       </section>
 

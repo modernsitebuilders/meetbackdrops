@@ -29,7 +29,10 @@ export default async function handler(req, res) {
     }
 
     // Ensure requested image was actually purchased
-    const allowedImages = session.metadata.selected_images.split(',');
+    const m = session.metadata;
+    const imageStr = m.selected_images
+      || [m.selected_images_1, m.selected_images_2].filter(Boolean).join(',');
+    const allowedImages = imageStr.split(',');
     if (!allowedImages.includes(imageId)) {
       return res.status(403).json({ error: 'Image not included in this purchase' });
     }
