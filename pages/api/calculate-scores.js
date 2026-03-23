@@ -1,6 +1,4 @@
 import { google } from 'googleapis';
-import fs from 'fs';
-import path from 'path';
 
 // Fresh start date - all existing images reset to this date
 const RESET_DATE = new Date('2026-01-25');
@@ -36,9 +34,8 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
     
-    // Load ALL images from metadata
-    const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
-    const allImagesData = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+    // Load ALL images from metadata (bundled via require so it's available in serverless)
+    const allImagesData = require('../../public/data/image-metadata-complete.json');
     
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
