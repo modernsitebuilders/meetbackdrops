@@ -593,8 +593,9 @@ const products = [
   { id: 'bookshelves-bright-10-hd', name: 'Bright Bookshelf #10', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-11-hd', name: 'Bright Bookshelf #11', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-13-hd', name: 'Bright Bookshelf #13', category: 'bookshelves-bright' },
-  { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-19-hd', name: 'Bright Bookshelf #19', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-20-hd', name: 'Bright Bookshelf #20', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-42-hd', name: 'Bright Bookshelf #42', category: 'bookshelves-bright' },
   // Bookshelves Dark
   { id: 'bookshelves-dark-02-hd', name: 'Dark Bookshelf #2', category: 'bookshelves-dark' },
@@ -646,6 +647,14 @@ const products = [
   { id: 'conference-room-06-hd', name: 'Conference Room #6', category: 'conference-rooms' },
   // Libraries
   { id: 'library-17-hd', name: 'Library #17', category: 'libraries' },
+  { id: 'library-33-hd', name: 'Library #33', category: 'libraries' },
+  { id: 'library-34-hd', name: 'Library #34', category: 'libraries' },
+  // Urban Lofts
+  { id: 'urban-loft-10-hd', name: 'Urban Loft #10', category: 'urban-lofts' },
+  { id: 'urban-loft-18-hd', name: 'Urban Loft #18', category: 'urban-lofts' },
+  { id: 'urban-loft-20-hd', name: 'Urban Loft #20', category: 'urban-lofts' },
+  { id: 'urban-loft-26-hd', name: 'Urban Loft #26', category: 'urban-lofts' },
+  { id: 'urban-loft-28-hd', name: 'Urban Loft #28', category: 'urban-lofts' },
   // Office Spaces
   { id: 'office-spaces-01-hd', name: 'Office Space #1', category: 'office-spaces' },
   { id: 'office-spaces-02-hd', name: 'Office Space #2', category: 'office-spaces' },
@@ -662,6 +671,8 @@ const products = [
   { id: 'office-spaces-62-hd', name: 'Office Space #62', category: 'office-spaces' },
   { id: 'office-spaces-63-hd', name: 'Office Space #63', category: 'office-spaces' },
   { id: 'office-spaces-66-hd', name: 'Office Space #66', category: 'office-spaces' },
+  { id: 'office-spaces-69-hd', name: 'Office Space #69', category: 'office-spaces' },
+  { id: 'office-spaces-71-hd', name: 'Office Space #71', category: 'office-spaces' },
   // Home Offices
   { id: 'home-offices-01-hd', name: 'Home Office #1', category: 'home-office' },
   { id: 'home-offices-03-hd', name: 'Home Office #3', category: 'home-office' },
@@ -749,6 +760,7 @@ const CATEGORY_LABELS = {
   'coffee-shops': 'Coffee Shops',
   'conference-rooms': 'Conference Rooms',
   'libraries': 'Libraries',
+  'urban-lofts': 'Urban Lofts',
   'nature-landscapes': 'Nature',
   'living-rooms': 'Living Rooms',
   'kitchens': 'Kitchens',
@@ -970,6 +982,11 @@ export default function Premium({ reviewsData }) {
 
       <section style={{ padding: '2rem 2rem 4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
 
+        {/* Subscription CTA — above the grid for non-subscribers */}
+        {!isSubscriber && (
+          <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
+        )}
+
         {/* Category filter buttons */}
         <div style={{
           display: 'flex', flexWrap: 'wrap', gap: '0.5rem',
@@ -1020,11 +1037,6 @@ export default function Premium({ reviewsData }) {
             />
           ))}
         </div>
-
-        {/* Subscription CTA — below the grid for non-subscribers */}
-        {!isSubscriber && (
-          <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
-        )}
 
         {/* One-time checkout bar */}
         {!isSubscriber && packSize !== null && selected.length > 0 && (

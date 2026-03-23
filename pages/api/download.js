@@ -43,22 +43,16 @@ export default async function handler(req, res) {
     });
   }
 
+  // Insert fl_attachment into the Cloudinary URL so the browser downloads
+  // directly from Cloudinary instead of proxying through Vercel.
   try {
-    const response = await fetch(url);
-    
-    if (!response.ok) {
-      return res.status(500).json({ error: 'Download failed' });
-    }
-    
-    const buffer = await response.arrayBuffer();
-    
-    res.setHeader('Content-Type', 'image/png');
-    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-    
-    res.send(Buffer.from(buffer));
-    
+    const downloadUrl = url.replace(
+      '/image/upload/',
+      `/image/upload/fl_attachment:${filename.replace(/\.[^.]+$/, '')}/`
+    );
+    return res.redirect(302, downloadUrl);
   } catch (error) {
-    console.error('Download failed:', error);
+    console.error('Download redirect failed:', error);
     res.status(500).json({ error: 'Download failed' });
   }
 }

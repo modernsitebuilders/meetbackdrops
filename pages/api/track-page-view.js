@@ -17,7 +17,10 @@ export default async function handler(req, res) {
       userAgent.includes('Bot') ||
       userAgent.includes('crawler') ||
       userAgent.includes('spider') ||
-      userAgent.includes('Prerender')) {
+      userAgent.includes('Spider') ||
+      userAgent.includes('Prerender') ||
+      userAgent.includes('HeadlessChrome') ||
+      userAgent.includes('YisouSpider')) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 

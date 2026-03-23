@@ -11,7 +11,7 @@ const HD_BASE_IDS = new Set([
   'bookshelves-bright-01', 'bookshelves-bright-02', 'bookshelves-bright-04',
   'bookshelves-bright-06', 'bookshelves-bright-07', 'bookshelves-bright-10',
   'bookshelves-bright-11', 'bookshelves-bright-13', 'bookshelves-bright-19',
-  'bookshelves-bright-23', 'bookshelves-bright-42',
+  'bookshelves-bright-20', 'bookshelves-bright-23', 'bookshelves-bright-42',
   // Bookshelves Dark
   'bookshelves-dark-02', 'bookshelves-dark-06', 'bookshelves-dark-07',
   'bookshelves-dark-08', 'bookshelves-dark-09', 'bookshelves-dark-25',
@@ -33,13 +33,16 @@ const HD_BASE_IDS = new Set([
   'conference-room-01', 'conference-room-02', 'conference-room-03',
   'conference-room-04', 'conference-room-05', 'conference-room-06',
   // Libraries
-  'library-17',
+  'library-17', 'library-33', 'library-34',
+  // Urban Lofts
+  'urban-loft-10', 'urban-loft-18', 'urban-loft-20', 'urban-loft-26', 'urban-loft-28',
   // Office Spaces
   'office-spaces-01', 'office-spaces-02', 'office-spaces-08',
   'office-spaces-19', 'office-spaces-20', 'office-spaces-28',
   'office-spaces-33', 'office-spaces-35', 'office-spaces-36',
   'office-spaces-38', 'office-spaces-43', 'office-spaces-59',
   'office-spaces-62', 'office-spaces-63', 'office-spaces-66',
+  'office-spaces-69', 'office-spaces-71',
   // Home Offices
   'home-offices-01', 'home-offices-03', 'home-offices-04', 'home-offices-05',
   'home-offices-07', 'home-offices-08', 'home-offices-12', 'home-offices-13',

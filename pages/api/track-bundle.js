@@ -1,4 +1,9 @@
-import { google } from 'googleapis';
+import { Redis } from '@upstash/redis';
+
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -6,71 +11,48 @@ export default async function handler(req, res) {
   }
 
   const userAgent = req.headers['user-agent'] || '';
-  
-  if (!userAgent || 
-      userAgent.includes('bot') || 
+
+  if (!userAgent ||
+      userAgent.includes('bot') ||
       userAgent.includes('Bot') ||
-      userAgent.includes('crawler') || 
+      userAgent.includes('crawler') ||
       userAgent.includes('spider') ||
       userAgent.includes('Prerender')) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
-  
-  const { 
+
+  const {
     event,
     bundle,
     price,
     sessionId,
     visitorId
   } = req.body;
-  
+
+  const now = new Date();
+  const row = [
+    now.toLocaleString('en-US', { timeZone: 'America/New_York' }),
+    event,
+    'direct',
+    '/bundles',
+    bundle,
+    0,
+    0,
+    'unknown',
+    '',
+    sessionId || '',
+    visitorId || 'unknown',
+    now.toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
+    now.toLocaleTimeString('en-US', { timeZone: 'America/New_York' }),
+    req.headers['user-agent'] || 'unknown',
+    `bundle:${bundle}:$${price}`,
+  ];
+
   try {
-    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
-    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
-      privateKey = privateKey.slice(1, -1);
-    }
-    privateKey = privateKey.replace(/\\n/g, '\n');
-
-    const auth = new google.auth.JWT({
-      email: process.env.GOOGLE_SERVICE_EMAIL,
-      key: privateKey,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets']
-    });
-
-    const sheets = google.sheets({ version: 'v4', auth });
-
-    const eventData = [
-      new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }),
-      event,                            // 'bundle_scroll' or 'bundle_click'
-      'direct',                         // Original Source
-      `/bundles`,                       // Page
-      bundle,                           // Category (e.g., 'christmas')
-      0,                                // Page Views in Session
-      0,                                // Downloads in Session
-      'unknown',                        // Visitor Type
-      '',                               // Landing Page
-      sessionId || '',                  // Session ID
-      visitorId || 'unknown',           // Visitor ID
-      new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
-      new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York' }),
-      req.headers['user-agent'] || 'unknown',
-      `bundle:${bundle}:$${price}`      // Current Source (bundle info)
-    ];
-
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Analytics!A:O',
-      valueInputOption: 'RAW',
-      insertDataOption: 'INSERT_ROWS',
-      resource: {
-        values: [eventData]
-      }
-    });
-
+    await redis.rpush('analytics:queue', JSON.stringify(row));
     res.status(200).json({ success: true });
-    
   } catch (error) {
-    console.error('Bundle tracking failed:', error.message);
+    console.error('Bundle tracking queueing failed:', error.message);
     res.status(500).json({ error: error.message });
   }
 }
