@@ -199,8 +199,8 @@ export const remoteWorkProductivityContent = () => {
                 How you look on video calls matters. It affects your career and client relationships.
               </p>
               <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem', lineHeight: '2'}}>
-                <li>Get good lighting for your desk</li>
-                <li>Use professional virtual backgrounds</li>
+                <li><Link href="/blog/lighting-tips" style={{color: '#6b7280', textDecoration: 'underline'}}>Get good lighting for your desk</Link></li>
+                <li><Link href="/category/home-office" style={{color: '#6b7280', textDecoration: 'underline'}}>Use professional virtual backgrounds</Link></li>
                 <li>Dress for the meeting</li>
                 <li>Test your camera and mic before calls</li>
                 <li>Put your camera at eye level</li>
@@ -223,20 +223,33 @@ export const remoteWorkProductivityContent = () => {
                 marginTop: '2rem'
               }}>
                 <p style={{color: '#1e40af', fontWeight: '500', marginBottom: '1rem'}}>
-                  Look professional on video calls with our free virtual backgrounds. Perfect for your home office.
+                  Look professional on every video call with free virtual backgrounds — perfect for home offices. Also read: <Link href="/blog/lighting-tips" style={{color: '#1e40af', textDecoration: 'underline'}}>lighting tips for video calls</Link> and <Link href="/blog/professional-video-calls" style={{color: '#1e40af', textDecoration: 'underline'}}>the full video call guide</Link>.
                 </p>
-                <Link href="/" style={{
-                  background: '#2563eb',
-                  color: 'white',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '0.5rem',
-                  fontWeight: '500',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  transition: 'background-color 0.2s'
-                }}>
-                  Browse Professional Backgrounds →
-                </Link>
+                <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                  <Link href="/category/home-office" style={{
+                    background: '#2563eb',
+                    color: 'white',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Home Office Backgrounds →
+                  </Link>
+                  <Link href="/category/office-spaces" style={{
+                    background: 'white',
+                    color: '#2563eb',
+                    border: '2px solid #2563eb',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Office Spaces →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

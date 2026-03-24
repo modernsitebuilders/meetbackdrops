@@ -92,14 +92,14 @@ export const lightingTipsContent = () => {
                 <li>Helps virtual backgrounds work more effectively</li>
               </ul>
               <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
-                In fact, studies show that proper lighting can increase perceived trustworthiness and competence by up to 30% in video calls.
+                Poor lighting is consistently cited as one of the top complaints viewers have about video calls — and it's entirely within your control to fix.
               </p>
 
               <h2 style={{fontSize: '1.75rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                 The Virtual Background Factor
               </h2>
               <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                While professional lighting is important for all video calls, it becomes absolutely crucial when using virtual backgrounds.
+                While professional lighting is important for all video calls, it becomes absolutely crucial when using virtual backgrounds. A well-lit setup is what separates a convincing <Link href="/category/office-spaces" style={{color: '#2563eb', textDecoration: 'underline'}}>virtual office background</Link> from one that looks obviously fake.
               </p>
               <p style={{color: '#6b7280', marginBottom: '0.5rem'}}>When using virtual backgrounds, proper lighting becomes even more critical because:</p>
               <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
@@ -227,13 +227,23 @@ export const lightingTipsContent = () => {
               </ul>
 
               <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+                Choosing a Background That Works With Your Lighting
+              </h3>
+              <p style={{color: '#6b7280', marginBottom: '1rem'}}>
+                Once your lighting is dialled in, choosing the right background matters too. Warm-toned lighting pairs naturally with <Link href="/category/bookshelves-dark" style={{color: '#2563eb', textDecoration: 'underline'}}>dark bookshelf backgrounds</Link> and <Link href="/category/home-office" style={{color: '#2563eb', textDecoration: 'underline'}}>home office settings</Link>. Cool, neutral lighting works well with <Link href="/category/bookshelves-bright" style={{color: '#2563eb', textDecoration: 'underline'}}>bright bookshelf backgrounds</Link>, <Link href="/category/office-spaces" style={{color: '#2563eb', textDecoration: 'underline'}}>corporate office spaces</Link>, and <Link href="/category/conference-rooms" style={{color: '#2563eb', textDecoration: 'underline'}}>conference room backgrounds</Link>.
+              </p>
+              <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
+                If you want the cleanest result possible, our <Link href="/hd" style={{color: '#2563eb', textDecoration: 'underline'}}>HD backgrounds</Link> are higher resolution and show noticeably less artifacting around edges — particularly when your lighting is good.
+              </p>
+
+              <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                 Conclusion
               </h3>
               <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                Great lighting doesn't require expensive equipment - it requires understanding the principles and working with what you have. Start with natural window light, add affordable LED lights as needed, and always prioritize soft, even illumination over harsh, direct lighting.
+                Great lighting doesn't require expensive equipment — it requires understanding the principles and working with what you have. Start with natural window light, add affordable LED lights as needed, and always prioritize soft, even illumination over harsh, direct lighting.
               </p>
               <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
-                The investment in good lighting pays dividends in how others perceive your professionalism during video calls. Whether you're meeting with clients, interviewing for jobs, or presenting to your team, proper lighting ensures you always put your best face forward.
+                The investment in good lighting pays dividends in how others perceive your professionalism during video calls. Whether you're <Link href="/blog/job-interview-backgrounds" style={{color: '#2563eb', textDecoration: 'underline'}}>interviewing for jobs</Link>, presenting to clients, or joining a team standup, proper lighting ensures you always put your best face forward.
               </p>
 
               <div style={{
@@ -243,20 +253,33 @@ export const lightingTipsContent = () => {
                 marginTop: '2rem'
               }}>
                 <p style={{color: '#1e40af', fontWeight: '500', marginBottom: '1rem'}}>
-                  Pair great lighting with our professional virtual backgrounds for the ultimate video call setup.
+                  Ready to pair great lighting with the right background? Browse 1,300+ free professional virtual backgrounds — no signup, no watermarks.
                 </p>
-                <Link href="/" style={{
-                  background: '#2563eb',
-                  color: 'white',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '0.5rem',
-                  fontWeight: '500',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  transition: 'background-color 0.2s'
-                }}>
-                  Browse Backgrounds →
-                </Link>
+                <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                  <Link href="/category/office-spaces" style={{
+                    background: '#2563eb',
+                    color: 'white',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Office Backgrounds →
+                  </Link>
+                  <Link href="/hd" style={{
+                    background: 'white',
+                    color: '#2563eb',
+                    border: '2px solid #2563eb',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    View HD Backgrounds →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

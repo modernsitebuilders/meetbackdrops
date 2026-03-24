@@ -184,20 +184,33 @@ export const professionalVideoCallsContent = () => {
                 marginTop: '2rem'
               }}>
                 <p style={{color: '#1e40af', fontWeight: '500', marginBottom: '1rem'}}>
-                  Looking for professional virtual backgrounds? Browse our free collection of high-quality backgrounds designed specifically for video calls.
+                  Browse 1,300+ free professional virtual backgrounds — no signup, no watermarks. Also see our guides on <Link href="/blog/lighting-tips" style={{color: '#1e40af', textDecoration: 'underline'}}>perfecting your lighting</Link> and <Link href="/blog/backgrounds-by-industry" style={{color: '#1e40af', textDecoration: 'underline'}}>choosing by industry</Link>.
                 </p>
-                <Link href="/" style={{
-                  background: '#2563eb',
-                  color: 'white',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '0.5rem',
-                  fontWeight: '500',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  transition: 'background-color 0.2s'
-                }}>
-                  Browse Backgrounds →
-                </Link>
+                <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                  <Link href="/category/office-spaces" style={{
+                    background: '#2563eb',
+                    color: 'white',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Office Backgrounds →
+                  </Link>
+                  <Link href="/hd" style={{
+                    background: 'white',
+                    color: '#2563eb',
+                    border: '2px solid #2563eb',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    View HD Backgrounds →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

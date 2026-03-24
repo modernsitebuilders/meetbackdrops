@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    outputFileTracingExcludes: {
-      '*': [
-        './public/images/**/*',
-        './public/data/**/*',
-      ],
-    },
+  outputFileTracingExcludes: {
+    '*': [
+      './public/images/**/*',
+      './public/data/**/*',
+    ],
   },
   images: {
   domains: ['streambackdrops.com'],
@@ -49,6 +47,15 @@ const nextConfig = {
     return config;
   },
   
+  async rewrites() {
+    return [
+      {
+        source: '/llms.txt',
+        destination: '/api/llms',
+      },
+    ];
+  },
+
   // Redirects for old URLs
   async redirects() {
     return [

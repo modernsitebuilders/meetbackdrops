@@ -331,20 +331,33 @@ export const videoCallEtiquetteContent = () => {
                 marginTop: '2rem'
               }}>
                 <p style={{color: '#1e40af', fontWeight: '500', marginBottom: '1rem'}}>
-                  Complete your professional setup with our free virtual backgrounds designed specifically for business meetings.
+                  Complete your professional setup with 1,300+ free virtual backgrounds — no signup required. Also read: <Link href="/blog/lighting-tips" style={{color: '#1e40af', textDecoration: 'underline'}}>lighting tips</Link>, <Link href="/blog/professional-video-calls" style={{color: '#1e40af', textDecoration: 'underline'}}>professional video call guide</Link>, and <Link href="/blog/background-mistakes" style={{color: '#1e40af', textDecoration: 'underline'}}>common background mistakes</Link>.
                 </p>
-                <Link href="/" style={{
-                  background: '#2563eb',
-                  color: 'white',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '0.5rem',
-                  fontWeight: '500',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  transition: 'background-color 0.2s'
-                }}>
-                  Browse Professional Backgrounds →
-                </Link>
+                <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                  <Link href="/category/office-spaces" style={{
+                    background: '#2563eb',
+                    color: 'white',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Office Backgrounds →
+                  </Link>
+                  <Link href="/category/conference-rooms" style={{
+                    background: 'white',
+                    color: '#2563eb',
+                    border: '2px solid #2563eb',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Conference Rooms →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

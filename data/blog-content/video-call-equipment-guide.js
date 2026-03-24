@@ -609,21 +609,35 @@ export const videoCallEquipmentGuideContent = () => (
                 Ready to upgrade your setup?
               </p>
               <p style={{color: '#065f46', marginBottom: '1.5rem'}}>
-                Browse our collection of free professional virtual backgrounds to complete your new professional video call setup. With the right equipment and the perfect background, you'll never worry about how you look on camera again.
+                Complete your setup with 1,300+ free professional virtual backgrounds — no signup required. Also read: <Link href="/blog/lighting-tips" style={{color: '#065f46', textDecoration: 'underline'}}>lighting tips for video calls</Link> and <Link href="/blog/backgrounds-by-industry" style={{color: '#065f46', textDecoration: 'underline'}}>backgrounds by industry</Link>.
               </p>
-              <Link href="/" style={{
-                background: '#10b981',
-                color: 'white',
-                padding: '0.75rem 2rem',
-                borderRadius: '0.5rem',
-                fontWeight: '600',
-                textDecoration: 'none',
-                display: 'inline-block',
-                transition: 'background-color 0.2s',
-                fontSize: '1.1rem'
-              }}>
-                Get Professional Backgrounds →
-              </Link>
+              <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center'}}>
+                <Link href="/category/office-spaces" style={{
+                  background: '#10b981',
+                  color: 'white',
+                  padding: '0.75rem 2rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: '600',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  fontSize: '1.1rem'
+                }}>
+                  Browse Office Backgrounds →
+                </Link>
+                <Link href="/hd" style={{
+                  background: 'white',
+                  color: '#10b981',
+                  border: '2px solid #10b981',
+                  padding: '0.75rem 2rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: '600',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  fontSize: '1.1rem'
+                }}>
+                  View HD Backgrounds →
+                </Link>
+              </div>
             </div>
 
             <p style={{fontSize: '0.875rem', color: '#9ca3af', fontStyle: 'italic', marginTop: '2rem', textAlign: 'center'}}>

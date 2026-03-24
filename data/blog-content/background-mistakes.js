@@ -270,20 +270,33 @@ export const backgroundMistakesContent = () => (
                 marginTop: '2rem'
               }}>
                 <p style={{color: '#059669', fontWeight: '500', marginBottom: '1rem'}}>
-                  Download our professionally designed virtual backgrounds, optimized to avoid all these common mistakes and enhance your professional image.
+                  Browse 1,300+ clean, professional virtual backgrounds — all free, no signup. Also read: <Link href="/blog/lighting-tips" style={{color: '#059669', textDecoration: 'underline'}}>lighting tips</Link>, <Link href="/blog/backgrounds-by-industry" style={{color: '#059669', textDecoration: 'underline'}}>backgrounds by industry</Link>, and <Link href="/blog/professional-video-calls" style={{color: '#059669', textDecoration: 'underline'}}>the full video call guide</Link>.
                 </p>
-                <Link href="/" style={{
-                  background: '#10b981',
-                  color: 'white',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '0.5rem',
-                  fontWeight: '500',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  transition: 'background-color 0.2s'
-                }}>
-                  Get Professional Backgrounds →
-                </Link>
+                <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                  <Link href="/category/office-spaces" style={{
+                    background: '#10b981',
+                    color: 'white',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Office Backgrounds →
+                  </Link>
+                  <Link href="/category/bookshelves-bright" style={{
+                    background: 'white',
+                    color: '#10b981',
+                    border: '2px solid #10b981',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block'
+                  }}>
+                    Browse Bookshelf Backgrounds →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

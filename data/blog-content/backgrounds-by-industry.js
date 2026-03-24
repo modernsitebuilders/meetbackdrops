@@ -110,9 +110,9 @@ export const backgroundsByIndustryContent = () => (
                   <div>
                     <h4 style={{fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#1e40af'}}>
-                      <li>Clean medical offices</li>
+                      <li><Link href="/category/office-spaces" style={{color: '#1e40af'}}>Clean professional offices</Link></li>
                       <li>Simple consultation rooms</li>
-                      <li>Professional home offices</li>
+                      <li><Link href="/category/home-office" style={{color: '#1e40af'}}>Professional home offices</Link></li>
                     </ul>
                   </div>
                   <div>
@@ -150,9 +150,9 @@ export const backgroundsByIndustryContent = () => (
                   <div>
                     <h4 style={{fontWeight: '600', color: '#065f46', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#065f46'}}>
-                      <li>Executive offices</li>
-                      <li>Wood-paneled rooms</li>
-                      <li>Modern conference rooms</li>
+                      <li><Link href="/category/office-spaces" style={{color: '#065f46'}}>Executive office spaces</Link></li>
+                      <li><Link href="/category/bookshelves-dark" style={{color: '#065f46'}}>Wood-paneled bookshelf backgrounds</Link></li>
+                      <li><Link href="/category/conference-rooms" style={{color: '#065f46'}}>Modern conference rooms</Link></li>
                     </ul>
                   </div>
                   <div>
@@ -190,9 +190,9 @@ export const backgroundsByIndustryContent = () => (
                   <div>
                     <h4 style={{fontWeight: '600', color: '#581c87', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#581c87'}}>
-                      <li>Law libraries</li>
-                      <li>Formal offices</li>
-                      <li>Conference rooms</li>
+                      <li><Link href="/category/libraries" style={{color: '#581c87'}}>Law libraries</Link></li>
+                      <li><Link href="/category/office-spaces" style={{color: '#581c87'}}>Formal office spaces</Link></li>
+                      <li><Link href="/category/conference-rooms" style={{color: '#581c87'}}>Conference rooms</Link></li>
                     </ul>
                   </div>
                   <div>
@@ -230,9 +230,9 @@ export const backgroundsByIndustryContent = () => (
                   <div>
                     <h4 style={{fontWeight: '600', color: '#92400e', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#92400e'}}>
-                      <li>Bright, welcoming offices</li>
-                      <li>Bookshelves</li>
-                      <li>Clean home offices</li>
+                      <li><Link href="/category/bookshelves-bright" style={{color: '#92400e'}}>Bright, welcoming bookshelves</Link></li>
+                      <li><Link href="/category/wall-shelves-bright" style={{color: '#92400e'}}>Clean wall shelves</Link></li>
+                      <li><Link href="/category/home-office" style={{color: '#92400e'}}>Clean home offices</Link></li>
                     </ul>
                   </div>
                   <div>
@@ -270,9 +270,9 @@ export const backgroundsByIndustryContent = () => (
                   <div>
                     <h4 style={{fontWeight: '600', color: '#1f2937', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#1f2937'}}>
-                      <li>Modern minimalist spaces</li>
-                      <li>Open office designs</li>
-                      <li>Clean home setups</li>
+                      <li><Link href="/category/office-spaces" style={{color: '#1f2937'}}>Modern minimalist office spaces</Link></li>
+                      <li><Link href="/category/urban-lofts" style={{color: '#1f2937'}}>Urban loft designs</Link></li>
+                      <li><Link href="/category/home-office" style={{color: '#1f2937'}}>Clean home office setups</Link></li>
                     </ul>
                   </div>
                   <div>
@@ -310,9 +310,9 @@ export const backgroundsByIndustryContent = () => (
                   <div>
                     <h4 style={{fontWeight: '600', color: '#831843', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#831843'}}>
-                      <li>Artistic spaces</li>
-                      <li>Gallery-style walls</li>
-                      <li>Colorful studios</li>
+                      <li><Link href="/category/art-galleries" style={{color: '#831843'}}>Art gallery spaces</Link></li>
+                      <li><Link href="/category/urban-lofts" style={{color: '#831843'}}>Creative urban lofts</Link></li>
+                      <li><Link href="/category/coffee-shops" style={{color: '#831843'}}>Cozy studio settings</Link></li>
                     </ul>
                   </div>
                   <div>
@@ -351,9 +351,9 @@ export const backgroundsByIndustryContent = () => (
               <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#374151', lineHeight: '2'}}>
                 <li>Match your background to your audience</li>
                 <li>Keep it simple and clean</li>
-                <li>Good lighting always matters</li>
+                <li><Link href="/blog/lighting-tips" style={{color: '#2563eb', textDecoration: 'underline'}}>Good lighting</Link> always matters — it affects how any background looks</li>
                 <li>Test before important calls</li>
-                <li>When in doubt, go professional</li>
+                <li>When in doubt, go professional — <Link href="/category/office-spaces" style={{color: '#2563eb', textDecoration: 'underline'}}>office spaces</Link> and <Link href="/category/bookshelves-bright" style={{color: '#2563eb', textDecoration: 'underline'}}>bookshelves</Link> work for almost any industry</li>
                 <li>Your background should support you, not distract</li>
               </ul>
             </div>
@@ -382,20 +382,33 @@ export const backgroundsByIndustryContent = () => (
               marginTop: '2rem'
             }}>
               <p style={{color: '#1e40af', fontWeight: '500', marginBottom: '1rem'}}>
-                Browse our professional virtual backgrounds. Find the perfect match for your industry. All backgrounds are free and ready to download.
+                Browse 1,300+ free professional virtual backgrounds by category — no signup, no watermarks. Or check out our <Link href="/hd" style={{color: '#1e40af', textDecoration: 'underline'}}>HD backgrounds</Link> for higher resolution options.
               </p>
-              <Link href="/" style={{
-                background: '#2563eb',
-                color: 'white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '0.5rem',
-                fontWeight: '500',
-                textDecoration: 'none',
-                display: 'inline-block',
-                transition: 'background-color 0.2s'
-              }}>
-                Browse Backgrounds →
-              </Link>
+              <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                <Link href="/category/office-spaces" style={{
+                  background: '#2563eb',
+                  color: 'white',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: '500',
+                  textDecoration: 'none',
+                  display: 'inline-block'
+                }}>
+                  Browse Office Backgrounds →
+                </Link>
+                <Link href="/blog/job-interview-backgrounds" style={{
+                  background: 'white',
+                  color: '#2563eb',
+                  border: '2px solid #2563eb',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: '500',
+                  textDecoration: 'none',
+                  display: 'inline-block'
+                }}>
+                  Interview Background Guide →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
