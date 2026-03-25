@@ -8,8 +8,8 @@ export default function About() {
 
   return (
     <Layout
-      title="Frequently Asked Questions - StreamBackdrops"
-      description="Get answers to common questions about using free virtual backgrounds for Zoom, Teams, and Google Meet."
+      title="About StreamBackdrops | Free Virtual Backgrounds"
+      description="StreamBackdrops helps remote workers look professional on video calls. 1300+ free virtual backgrounds for Zoom, Teams & Google Meet. No signup required."
       canonical="https://streambackdrops.com/about"
     >
 

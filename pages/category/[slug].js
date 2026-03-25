@@ -152,12 +152,12 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
   ? '150+ Free Christmas Backgrounds for Google Meet, Zoom & Teams'
   : currentSlug === 'valentines-backgrounds'
   ? 'Free Valentine\'s Day Backgrounds for Zoom, Teams & Google Meet'
-  : `Free ${categoryName} Backgrounds for Zoom & Teams | StreamBackdrops`;
+  : `Free ${categoryName} Virtual Backgrounds | StreamBackdrops`;
   const pageDescription = currentSlug === 'christmas-backgrounds'
   ? 'Download 150+ free Christmas virtual backgrounds for Google Meet, Zoom & Teams. Festive holiday scenes, Christmas trees & winter decorations. No signup required.'
   : currentSlug === 'valentines-backgrounds'
   ? 'Download free Valentine\'s Day virtual backgrounds for Zoom, Teams & Google Meet. Romantic hearts, flowers & Valentine scenes. Free instant download, no watermarks.'
-  : String(category.seoDescription || `Download free ${categoryName.toLowerCase()} virtual backgrounds for Zoom, Teams & Google Meet. No signup required, no watermarks — instant download. Perfect for remote work and video calls.`);
+  : String(category.seoDescription || `Download free ${categoryName.toLowerCase()} virtual backgrounds for Zoom, Teams & Google Meet. No signup, no watermarks — instant download.`);
   
   const featuredImages = {
     'halloween-backgrounds': 'halloween-background-20.webp',
