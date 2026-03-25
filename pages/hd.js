@@ -1115,7 +1115,7 @@ export default function Premium({ reviewsData }) {
 
   return (
     <Layout
-      title="Premium HD Virtual Backgrounds | 2912×1632 Resolution | StreamBackdrops"
+      title="Premium HD Virtual Backgrounds | 2912×1632 | StreamBackdrops"
       description="Professional HD virtual backgrounds in stunning 2912×1632 resolution. Perfect for Zoom, Teams, and Google Meet. 2x sharper than standard backgrounds."
       canonical="https://streambackdrops.com/hd"
       keywords="HD virtual backgrounds, high resolution backgrounds, premium zoom backgrounds, professional video call backgrounds, high definition virtual backgrounds"
