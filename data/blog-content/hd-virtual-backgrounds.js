@@ -122,6 +122,40 @@ export const hdVirtualBackgroundsContent = () => (
               </table>
             </div>
 
+            {/* Mid-post CTA — after comparison table */}
+            <div style={{
+              border: '2px solid #7c3aed',
+              borderRadius: '0.75rem',
+              padding: '1.5rem',
+              marginBottom: '2.5rem',
+              background: '#faf5ff',
+            }}>
+              <p style={{ margin: '0 0 1rem', fontWeight: '700', color: '#4c1d95', fontSize: '1rem' }}>
+                ⭐ StreamBackdrops HD Backgrounds — 2912×1632
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', marginBottom: '1rem' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/bookshelves-bright/bookshelves-bright-01.webp" alt="HD bright bookshelf virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/office-spaces/office-spaces-05.webp" alt="HD office space virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/bookshelves-dark/bookshelves-dark-09.webp" alt="HD dark bookshelf virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+                <span style={{ fontSize: '0.85rem', color: '#6b21a8' }}>
+                  Packs from $4.99 · PNG · Instant download · No subscription
+                </span>
+                <Link href="/hd" style={{
+                  background: '#7c3aed', color: 'white',
+                  padding: '0.6rem 1.25rem', borderRadius: '7px',
+                  textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem',
+                  whiteSpace: 'nowrap',
+                }}>
+                  Browse HD Packs →
+                </Link>
+              </div>
+            </div>
+
             <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.75rem', color: '#111827' }}>
               Why most "HD" background sites aren't actually HD for video calls
             </h2>
@@ -152,6 +186,36 @@ export const hdVirtualBackgroundsContent = () => (
               <li><strong>Client-facing calls</strong> — polished detail reinforces professional credibility</li>
               <li><strong>Bookshelves and textured backgrounds</strong> — these categories especially benefit; book spines and wood grain degrade badly at low resolution</li>
             </ul>
+
+            {/* Second CTA — after "when HD makes a difference" */}
+            <div style={{
+              background: 'linear-gradient(135deg, #4c1d95, #3730a3)',
+              borderRadius: '0.75rem',
+              padding: '1.5rem 2rem',
+              marginBottom: '2.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '1rem',
+            }}>
+              <div>
+                <p style={{ color: 'white', fontWeight: '700', fontSize: '1.05rem', margin: '0 0 0.3rem' }}>
+                  Ready to upgrade your background?
+                </p>
+                <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.88rem', margin: 0 }}>
+                  150+ HD backgrounds at 2912×1632 · from $4.99
+                </p>
+              </div>
+              <Link href="/hd" style={{
+                background: 'white', color: '#4c1d95',
+                padding: '0.65rem 1.4rem', borderRadius: '7px',
+                textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem',
+                whiteSpace: 'nowrap', flexShrink: 0,
+              }}>
+                Browse HD Packs →
+              </Link>
+            </div>
 
             <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.75rem', color: '#111827' }}>
               How to set up a virtual background in HD
