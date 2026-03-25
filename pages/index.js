@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <Layout
-      title="Free Virtual Backgrounds — Zoom, Teams & Meet | StreamBackdrops"
+      title="Free Virtual Backgrounds for Zoom & Teams | StreamBackdrops"
       description="Download 1300+ free virtual backgrounds for Zoom, Teams & Google Meet. No signup, no watermarks. Bookshelf, office, nature & more — instant download."
       currentPage="home"
     >
