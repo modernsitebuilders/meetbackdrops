@@ -5,6 +5,7 @@ import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import Footer from './Footer';
 import Header from './Header';
 import EasterBanner from './EasterBanner';
+import WishlistDrawer from './WishlistDrawer';
 
 export default function Layout({
   children,
@@ -155,6 +156,7 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
         </a>
         <Header currentPage={currentPage} />
         {router.asPath !== '/category/easter-backgrounds' && router.asPath !== '/hd' && <EasterBanner />}
+        <WishlistDrawer />
 
         {/* Main Content */}
         <main id="main-content" style={{ flex: 1 }}>

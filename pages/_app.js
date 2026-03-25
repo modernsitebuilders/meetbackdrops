@@ -5,6 +5,7 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import Analytics from '../components/Analytics';
 import { useEffect } from 'react';
 import { getOrCreateSession } from '../lib/sessionTracking';
+import { WishlistProvider } from '../lib/WishlistContext';
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <>
+    <WishlistProvider>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -22,6 +23,6 @@ export default function App({ Component, pageProps }) {
       <Script id="google-analytics" strategy="lazyOnload">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QMD6NEPFWR');`}</Script>
       <Component {...pageProps} />
       <VercelAnalytics />
-    </>
+    </WishlistProvider>
   );
 }

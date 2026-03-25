@@ -22,7 +22,7 @@ export default function WhyDifferent() {
     {
       icon: '💎',
       title: 'No Watermarks Ever',
-      description: 'What you see is what you get. High-quality, free forever, no hidden costs or premium tiers.'
+      description: 'Every free background downloads clean — no logos, no watermarks. Need extra sharpness? HD versions at 2912×1632 are available from $4.99.'
     }
   ];
 

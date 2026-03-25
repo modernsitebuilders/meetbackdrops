@@ -2,6 +2,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+
+function trackAnalytics(eventType, filename, category) {
+  fetch('/api/analytics', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ eventType, filename, category }),
+  }).catch(() => {});
+}
 import Image from 'next/image';
 import { useImageDownload } from '../lib/useImageDownload';
 import ReviewModal from './ReviewModal';
@@ -122,11 +130,7 @@ export default function MostPopularGrid() {
               e.currentTarget.style.transform = 'translateY(0)';
               setHoveredIndex(null);
             }}
-            onClick={() => setSelectedImage({
-              filename: image.filename,
-              title: image.filename.replace('.webp', '').replace(/-/g, ' '),
-              category: image.category
-            })}
+            onClick={() => { trackAnalytics('popular_image_click', image.filename, image.category); setSelectedImage({ filename: image.filename, title: image.filename.replace('.webp', '').replace(/-/g, ' '), category: image.category }); }}
           >
             <div style={{
               position: 'relative',
@@ -157,6 +161,7 @@ export default function MostPopularGrid() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
+                    trackAnalytics('popular_download', image.filename, image.category);
                     handleDownload(
                       { filename: image.filename, category: image.category },
                       image.category

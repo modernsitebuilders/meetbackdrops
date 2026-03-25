@@ -1,5 +1,13 @@
 import Image from 'next/image';
 
+function trackAnalytics(eventType, filename, category) {
+  fetch('/api/analytics', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ eventType, filename, category }),
+  }).catch(() => {});
+}
+
 export default function SearchResults({ 
   results, 
   displayCount,
@@ -85,7 +93,7 @@ export default function SearchResults({
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
-            onClick={() => onImageClick && onImageClick(image)}
+            onClick={() => { trackAnalytics('search_image_click', image.filename, image.category); onImageClick && onImageClick(image); }}
           >
             <div style={{
               position: 'relative',
@@ -127,6 +135,7 @@ export default function SearchResults({
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
+                    trackAnalytics('search_download', image.filename, image.category);
                     onDownload(image, image.category);
                   }}
                   disabled={downloadingImage === image.filename}

@@ -11,11 +11,10 @@ export default async function handler(req, res) {
   try {
     // If we have cached scores less than 1 hour old, return them
     if (cachedScores && lastCalculated && (Date.now() - lastCalculated < 3600000)) {
-      return res.status(200).json({ 
+      return res.status(200).json({
         message: 'Returning cached scores',
         cached: true,
-        calculatedAt: new Date(lastCalculated).toISOString(),
-        scores: cachedScores
+        calculatedAt: new Date(lastCalculated).toISOString()
       });
     }
 
@@ -237,12 +236,11 @@ export default async function handler(req, res) {
         }))
     };
 
-    res.status(200).json({ 
+    res.status(200).json({
       message: 'Scores calculated successfully',
       cached: false,
       calculatedAt: new Date(lastCalculated).toISOString(),
-      summary,
-      scores: imageStats
+      summary
     });
 
   } catch (error) {

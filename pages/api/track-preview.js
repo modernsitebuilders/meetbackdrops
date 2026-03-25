@@ -34,8 +34,13 @@ export default async function handler(req, res) {
     downloadsInSession,
     visitorId,
     visitorType,
-    page
+    page,
+    isAdmin
   } = req.body;
+
+  if (isAdmin === true) {
+    return res.status(200).json({ success: true, skipped: 'admin' });
+  }
 
   let originalSource = originalReferrer || 'direct';
   if (originalUtmSource) {

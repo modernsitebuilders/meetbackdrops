@@ -22,15 +22,17 @@ import HDComparisonHero from '../../components/HDComparisonHero';
 
 function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
-  const { 
+  const {
     handleDownload,
-    showReviewModal, 
+    showReviewModal,
     setShowReviewModal,
     showRateLimitModal,
     setShowRateLimitModal,
     rateLimitError,
     downloadCount,
     downloadingImage,
+    emailBonusUsed,
+    handleEmailBonus,
   } = useImageDownload(cloudinaryUrls);
   const category = categoryInfo[slug];
   
@@ -110,9 +112,11 @@ function CategoryContent({ slug, scores = {}}) {
       )}
       
       {showRateLimitModal && (
-        <RateLimitModal 
+        <RateLimitModal
           onClose={() => setShowRateLimitModal(false)}
           errorMessage={rateLimitError}
+          onEmailBonus={handleEmailBonus}
+          emailBonusUsed={emailBonusUsed}
         />
       )}
       
@@ -333,6 +337,6 @@ export async function getStaticProps({ params }) {
       scores,
       metadata: imageMetadata
     },
-    revalidate: 3600 // Revalidate every hour (was 86400) so live scores stay fresh
+    revalidate: 3600
   };
 }

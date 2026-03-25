@@ -492,6 +492,62 @@ export const faqData = {
     answer: "All recommended equipment is available on Amazon with fast shipping. We've included direct links to specific products that offer the best value for professional video calls."
   }
 ]
+  ,
+
+  // HD Virtual Backgrounds FAQs
+  'hd-virtual-backgrounds': [
+    {
+      question: "What resolution are the HD virtual backgrounds?",
+      answer: "Our HD backgrounds are 2912×1632 pixels — roughly 2.5K resolution. That's approximately 2.3× the pixel count of a standard 1080p image, giving the codec significantly more detail to work with before compression."
+    },
+    {
+      question: "Why do HD backgrounds look better on Zoom and Teams?",
+      answer: "Zoom, Teams, and Google Meet compress your video stream before sending it to other participants. A higher-resolution source image retains more detail after that compression. A 2912×1632 background stays visibly sharper than a 1080p one at the same stream quality."
+    },
+    {
+      question: "Are the free backgrounds lower quality than the HD ones?",
+      answer: "The free backgrounds are 1456×816 — high enough for most video calls. The HD versions (2912×1632) are noticeably sharper on large monitors, during presentations on room screens, and any time the background is scrutinised closely."
+    },
+    {
+      question: "What file format are the HD backgrounds?",
+      answer: "HD backgrounds download as PNG files. PNG is the recommended format for all three major platforms — Zoom, Teams, and Google Meet accept it directly with no conversion needed."
+    },
+    {
+      question: "How much do HD virtual backgrounds cost?",
+      answer: "HD backgrounds are available in packs starting at $4.99 for a single image. Multi-image packs offer savings up to 60% — a 20-image pack is $39.99. There is also a monthly subscription option for 10 downloads per month."
+    },
+    {
+      question: "Do I need a green screen for HD virtual backgrounds?",
+      answer: "No green screen is required. HD backgrounds work with your platform's built-in background removal. A green screen will improve edge quality for any virtual background, but it is not a requirement for the HD versions specifically."
+    },
+    {
+      question: "Are HD backgrounds optimised for Zoom, Teams, and Google Meet?",
+      answer: "Yes. Unlike stock photo sites that offer general-purpose images, every background on StreamBackdrops — including HD versions — is composed specifically for video calls: correct 16:9 framing, depth that reads as a real space, and lighting that matches typical webcam setups."
+    }
+  ],
+
+  'logo-virtual-background': [
+    {
+      question: "Can I add my company logo to a virtual background for free?",
+      answer: "Yes. Download a free background from StreamBackdrops, then use Canva or Adobe Express (both free) to overlay your logo PNG. Export the result as a PNG and upload it to Zoom, Teams, or Google Meet like any other virtual background."
+    },
+    {
+      question: "What format should my logo be for a virtual background?",
+      answer: "Use a PNG file with a transparent background — not JPG. A transparent PNG lets your logo sit cleanly on the background without a white or coloured box around it. If you only have a JPG, you can remove the background free at remove.bg."
+    },
+    {
+      question: "Which virtual backgrounds work best for adding a logo?",
+      answer: "Backgrounds with a relatively plain area — clean walls, uncluttered surfaces — give your logo the most visibility. Art galleries, conference rooms, and office spaces tend to have the most suitable areas. Avoid busy textures like bookshelves, where logos get lost."
+    },
+    {
+      question: "Where should I position my logo on a virtual background?",
+      answer: "The bottom-right corner is usually best — it's below and beside where your torso appears, so it stays visible without competing with your face. Top-right also works well. Avoid the centre and top-centre, which will overlap with your head."
+    },
+    {
+      question: "Can I use a branded background across my whole team?",
+      answer: "Yes. Create the final image (background + logo) once in Canva or Adobe Express, then share the PNG directly with your team via Slack, email, or a shared drive. Each person uploads it to their own Zoom or Teams settings. No need for everyone to repeat the design steps."
+    }
+  ]
 };
 
 // Helper function to get FAQs for a specific page

@@ -1,12 +1,28 @@
-export default function RateLimitModal({ onClose, errorMessage }) {
+import { useState } from 'react';
+
+export default function RateLimitModal({ onClose, errorMessage, onEmailBonus, emailBonusUsed }) {
   const isDaily = errorMessage?.includes('Daily download limit');
-  const isMonthly = errorMessage?.includes('Monthly download limit');
-  
+
   const daysMatch = errorMessage?.match(/(\d+) day/);
   const daysRemaining = daysMatch ? daysMatch[1] : '?';
 
+  const [email, setEmail] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState('');
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+    setSubmitting(true);
+    await onEmailBonus(email);
+    setSubmitting(false);
+  };
+
   return (
-    <div 
+    <div
       style={{
         position: 'fixed',
         inset: 0,
@@ -19,12 +35,12 @@ export default function RateLimitModal({ onClose, errorMessage }) {
       }}
       onClick={onClose}
     >
-      <div 
+      <div
         style={{
           background: 'white',
           borderRadius: '1rem',
           padding: '2rem',
-          maxWidth: '500px',
+          maxWidth: '480px',
           width: '100%',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
           position: 'relative'
@@ -49,147 +65,161 @@ export default function RateLimitModal({ onClose, errorMessage }) {
           ×
         </button>
 
-        <div style={{
-          fontSize: '4rem',
-          textAlign: 'center',
-          marginBottom: '1rem'
-        }}>
-          ⏱️
-        </div>
+        <div style={{ fontSize: '3rem', textAlign: 'center', marginBottom: '0.75rem' }}>⏱️</div>
 
         <h2 style={{
-          fontSize: '1.5rem',
+          fontSize: '1.4rem',
           fontWeight: 'bold',
           color: '#111827',
           textAlign: 'center',
-          marginBottom: '1rem'
+          marginBottom: '0.5rem'
         }}>
-          {isDaily ? 'Daily Download Limit Reached' : 'Monthly Download Limit Reached'}
+          {isDaily ? 'Daily Limit Reached' : 'Monthly Limit Reached'}
         </h2>
 
         <p style={{
-          color: '#4b5563',
-          fontSize: '1rem',
-          lineHeight: '1.6',
+          color: '#6b7280',
+          fontSize: '0.9rem',
           textAlign: 'center',
-          marginBottom: '1.5rem'
+          marginBottom: '1.5rem',
+          lineHeight: '1.5'
         }}>
-          {isDaily ? (
-            <>Thank you for loving our backgrounds! 🎉 To keep this free for everyone, we have a daily limit of 5 downloads. Come back tomorrow for more!</>
-          ) : (
-            <>You have reached your monthly limit of 10 downloads. Your oldest download will expire in <strong>{daysRemaining} day{daysRemaining !== '1' ? 's' : ''}</strong>, then you can download more!</>
-          )}
+          {isDaily
+            ? 'You\'ve hit the 5 free downloads per day. Come back tomorrow — or get 1 more right now.'
+            : `You've used your 10 monthly downloads. Your oldest expires in ${daysRemaining} day${daysRemaining !== '1' ? 's' : ''} — or get 1 more right now.`}
         </p>
 
-        <div style={{
-          background: '#eff6ff',
-          border: '2px solid #3b82f6',
-          borderRadius: '0.75rem',
-          padding: '1.25rem',
-          marginBottom: '1.5rem'
-        }}>
+        {/* Email bonus section */}
+        {!emailBonusUsed ? (
           <div style={{
-            fontSize: '0.9rem',
-            color: '#1e40af',
-            fontWeight: '600',
-            marginBottom: '0.75rem'
+            background: '#f0fdf4',
+            border: '2px solid #22c55e',
+            borderRadius: '0.75rem',
+            padding: '1.25rem',
+            marginBottom: '1.25rem'
           }}>
-            📋 Fair Use Limits
+            <div style={{
+              fontSize: '0.95rem',
+              fontWeight: '700',
+              color: '#15803d',
+              marginBottom: '0.4rem'
+            }}>
+              Get 1 Free Bonus Download
+            </div>
+            <p style={{
+              fontSize: '0.82rem',
+              color: '#166534',
+              margin: '0 0 0.85rem',
+              lineHeight: '1.5'
+            }}>
+              Enter your email and we&apos;ll unlock one extra download right now. No spam, ever.
+            </p>
+            <form onSubmit={handleEmailSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); setEmailError(''); }}
+                placeholder="you@example.com"
+                style={{
+                  padding: '0.6rem 0.85rem',
+                  border: emailError ? '1.5px solid #ef4444' : '1.5px solid #d1fae5',
+                  borderRadius: '0.5rem',
+                  fontSize: '0.9rem',
+                  outline: 'none',
+                  width: '100%',
+                  boxSizing: 'border-box',
+                }}
+              />
+              {emailError && (
+                <span style={{ fontSize: '0.78rem', color: '#dc2626' }}>{emailError}</span>
+              )}
+              <button
+                type="submit"
+                disabled={submitting}
+                style={{
+                  padding: '0.65rem',
+                  background: submitting ? '#86efac' : '#16a34a',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '0.5rem',
+                  fontSize: '0.95rem',
+                  fontWeight: '600',
+                  cursor: submitting ? 'default' : 'pointer',
+                  transition: 'background 0.2s'
+                }}
+              >
+                {submitting ? 'Downloading...' : 'Unlock 1 Free Download'}
+              </button>
+            </form>
           </div>
-          <ul style={{
-            margin: 0,
-            paddingLeft: '1.25rem',
-            color: '#1e3a8a',
-            fontSize: '0.9rem',
-            lineHeight: '1.8'
-          }}>
-            <li><strong>Daily:</strong> 5 downloads per day</li>
-            <li><strong>Monthly:</strong> 10 downloads per 30-day period</li>
-            <li><strong>Note:</strong> Downloads expire after 30 days</li>
-          </ul>
-        </div>
-
-        <div style={{
-          background: '#fef3c7',
-          border: '2px solid #f59e0b',
-          borderRadius: '0.75rem',
-          padding: '1.25rem',
-          marginBottom: '1.5rem'
-        }}>
+        ) : (
           <div style={{
-            fontSize: '0.9rem',
-            color: '#92400e',
-            fontWeight: '600',
-            marginBottom: '0.5rem'
-          }}>
-            💼 Need More Downloads?
-          </div>
-          <p style={{
+            background: '#f3f4f6',
+            borderRadius: '0.75rem',
+            padding: '1rem',
+            marginBottom: '1.25rem',
             fontSize: '0.85rem',
-            color: '#78350f',
-            margin: 0,
-            lineHeight: '1.6'
+            color: '#6b7280',
+            textAlign: 'center'
           }}>
-            If you need unlimited downloads for your business or organization, please contact us about commercial licensing options.
-          </p>
-        </div>
+            Bonus download already used on this device.
+          </div>
+        )}
 
+        {/* HD upsell */}
         <div style={{
+          background: '#faf5ff',
+          border: '2px solid #a855f7',
+          borderRadius: '0.75rem',
+          padding: '1.1rem 1.25rem',
+          marginBottom: '1.25rem',
           display: 'flex',
-          gap: '0.75rem',
-          flexDirection: 'row'
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1rem',
+          flexWrap: 'wrap'
         }}>
-          <button
-            onClick={onClose}
+          <div>
+            <div style={{ fontSize: '0.9rem', fontWeight: '700', color: '#7e22ce', marginBottom: '0.2rem' }}>
+              ⭐ Unlimited HD Downloads
+            </div>
+            <div style={{ fontSize: '0.8rem', color: '#6b21a8', lineHeight: '1.4' }}>
+              2912×1632 resolution. From $4.99 per image.
+            </div>
+          </div>
+          <a
+            href="/hd"
             style={{
-              flex: 1,
-              padding: '0.75rem 1.5rem',
-              background: '#2563eb',
+              padding: '0.55rem 1.1rem',
+              background: '#7c3aed',
               color: 'white',
-              border: 'none',
               borderRadius: '0.5rem',
-              fontSize: '1rem',
+              fontSize: '0.875rem',
               fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#1d4ed8';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#2563eb';
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
-            Got It
-          </button>
-          
-          <a
-            href={isDaily ? "/hd" : "/contact"}
-            style={{
-              flex: 1,
-              padding: '0.75rem 1.5rem',
-              background: 'white',
-              color: '#2563eb',
-              border: '2px solid #2563eb',
-              borderRadius: '0.5rem',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              textDecoration: 'none',
-              textAlign: 'center',
-              transition: 'all 0.2s',
-              display: 'inline-block'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#eff6ff';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'white';
-            }}
-         >
-            {isDaily ? "View HDs" : "Contact Us"}
+            View HD Packs
           </a>
         </div>
+
+        <button
+          onClick={onClose}
+          style={{
+            width: '100%',
+            padding: '0.65rem',
+            background: 'white',
+            color: '#6b7280',
+            border: '1.5px solid #e5e7eb',
+            borderRadius: '0.5rem',
+            fontSize: '0.9rem',
+            cursor: 'pointer',
+          }}
+        >
+          Close
+        </button>
       </div>
     </div>
   );

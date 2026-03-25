@@ -30,7 +30,7 @@ export default function HDBadge() {
   }}
 >
         <span style={{ fontSize: '1.2rem' }}>⭐</span>
-        New: Premium HD Backgrounds (2x Resolution)
+        Premium HD Backgrounds — 2912×1632 · Crisp after Zoom compression
         <span style={{ fontSize: '0.9rem' }}>→</span>
       </Link>
     </div>

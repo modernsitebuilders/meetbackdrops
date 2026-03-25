@@ -97,7 +97,7 @@ export default function Privacy() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: November 21, 2025
+                Last updated: March 24, 2026
               </p>
             </div>
 
@@ -163,6 +163,8 @@ export default function Privacy() {
                   <li>Pages you visit and time spent on our site</li>
                   <li>Referring website information</li>
                   <li>Device information (mobile, desktop, etc.)</li>
+                  <li>Interaction events such as image previews, downloads, category filters selected, pack sizes viewed, and checkout initiations — used solely to improve site performance and content</li>
+                  <li>Search queries entered on our site</li>
                 </ul>
               </section>
 
@@ -202,6 +204,7 @@ export default function Privacy() {
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
                   <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website (hosting, analytics, etc.)</li>
+                  <li><strong>Payment Processing (Stripe):</strong> When you purchase HD images, your payment is processed by Stripe, Inc. Stripe receives your payment details and billing information directly. StreamBackdrops does not store your card details. Stripe&apos;s privacy policy is available at <a href="https://stripe.com/privacy" style={{color: '#2563eb'}} target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
                   <li><strong>Legal Requirements:</strong> We may disclose information when required by law or to protect our rights</li>
                   <li><strong>Business Transfers:</strong> In the event of a merger or acquisition, your information may be transferred</li>
                 </ul>
@@ -222,15 +225,18 @@ export default function Privacy() {
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
                   <li><strong>Essential Cookies:</strong> Required for basic website functionality</li>
                   <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our site</li>
-                 <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
-<li><strong>Visitor ID:</strong> We store an anonymous, randomly-generated identifier in your browser's local storage to understand how often visitors return. This ID cannot be used to identify you personally.</li>
-</ul>
-<p style={{color: '#6b7280', marginBottom: '1rem'}}>
-  You can control cookies through your browser settings, though this may affect site functionality.
-</p>
-<p style={{color: '#6b7280', fontWeight: '600'}}>
-  We do not collect or store IP addresses.
-</p>
+                  <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+                  <li><strong>Visitor ID</strong> (<code>sb_visitor_id</code>): An anonymous, randomly-generated identifier stored in your browser&apos;s local storage to understand return visit frequency. Cannot be used to identify you personally.</li>
+                  <li><strong>Download Counter</strong> (<code>sb_download_count</code>): Tracks the number of free images downloaded in your current session to enforce fair-use limits.</li>
+                  <li><strong>Subscription Token</strong> (<code>sb_sub_token</code>): Stored locally if you purchase a subscription, to authenticate your download access without requiring a login.</li>
+                  <li><strong>Wishlist</strong> (<code>sb_wishlist</code>): Stores the IDs of HD images you have saved to your wishlist. This data never leaves your device — it is not transmitted to our servers.</li>
+                </ul>
+                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
+                  You can clear all locally stored data at any time through your browser&apos;s settings. Doing so will remove your wishlist, download count, and subscription token.
+                </p>
+                <p style={{color: '#6b7280', fontWeight: '600'}}>
+                  We do not collect or store IP addresses.
+                </p>
               </section>
 
               <section style={{marginBottom: '2rem'}}>

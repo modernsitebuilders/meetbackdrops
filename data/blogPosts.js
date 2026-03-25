@@ -25,10 +25,32 @@ import { halloweenBackgroundsContent }         from './blog-content/halloween-ba
 import { easterBackgroundsContent }            from './blog-content/easter-backgrounds';
 import { bokehBackgroundsContent }             from './blog-content/bokeh-backgrounds';
 import { videoCallEquipmentGuideContent }      from './blog-content/video-call-equipment-guide';
+import { hdVirtualBackgroundsContent }         from './blog-content/hd-virtual-backgrounds';
+import { logoVirtualBackgroundContent }        from './blog-content/logo-virtual-background';
 // ─── ↑ Add new content imports above this line ───────────────────────────────
 
 export const blogPosts = [
   // ─── Featured / high-priority posts ────────────────────────────────────────
+  {
+    slug: 'hd-virtual-backgrounds',
+    title: 'HD Virtual Backgrounds: Why Resolution Actually Matters for Video Calls',
+    description: 'Zoom and Teams compress your stream. Learn why 2912×1632 HD backgrounds stay crisp after compression — and when the upgrade is worth it.',
+    excerpt: 'Zoom and Teams compress your stream. Learn why 2912×1632 HD backgrounds stay crisp after compression — and when the upgrade is worth it.',
+    headline: 'HD Virtual Backgrounds: Why Resolution Actually Matters for Video Calls',
+    keywords: 'HD virtual backgrounds, high resolution virtual backgrounds, 4K zoom backgrounds, crisp virtual backgrounds, high definition backgrounds Zoom Teams',
+    canonical: 'https://streambackdrops.com/blog/hd-virtual-backgrounds',
+    image: '/images/bookshelves-dark/bookshelves-dark-09.webp',
+    category: 'HD Backgrounds',
+    readTime: '8 min read',
+    date: 'March 2026',
+    datePublished: '2026-03-23',
+    dateModified: '2026-03-23',
+    featured: true,
+    sortOrder: 1,
+    live: true,
+    faqKey: 'hd-virtual-backgrounds',
+    content: hdVirtualBackgroundsContent
+  },
   {
     slug: 'video-call-equipment-guide',
     title: 'Complete Video Call Setup Guide: Equipment That Actually Makes a Difference',
@@ -132,6 +154,26 @@ export const blogPosts = [
   },
 
   // ─── Regular posts ──────────────────────────────────────────────────────────
+  {
+    slug: 'logo-virtual-background',
+    title: 'How to Add Your Logo to a Virtual Background (Free)',
+    description: 'A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.',
+    excerpt: 'A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.',
+    headline: 'How to Add Your Logo to a Virtual Background (Free)',
+    keywords: 'logo virtual background, branded virtual background, add logo to zoom background, company logo background, virtual background branding',
+    canonical: 'https://streambackdrops.com/blog/logo-virtual-background',
+    image: '/images/art-galleries/art-gallery-01.webp',
+    category: 'Branding Guide',
+    readTime: '7 min read',
+    date: 'March 2026',
+    datePublished: '2026-03-24',
+    dateModified: '2026-03-24',
+    featured: false,
+    sortOrder: 11,
+    live: true,
+    faqKey: 'logo-virtual-background',
+    content: logoVirtualBackgroundContent
+  },
   {
     slug: 'bokeh-backgrounds',
     title: 'Free Bokeh Virtual Backgrounds for Video Calls 2025',
@@ -377,6 +419,7 @@ export const BLOG_CATEGORIES = [
   'All Posts',
   'Equipment Guide',
   'Career Guide',
+  'Branding Guide',
   'Background Collections',
   'Platform Comparison',
   'Video Call Tips',

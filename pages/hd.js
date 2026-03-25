@@ -12,6 +12,16 @@ import { loadStripe } from '@stripe/stripe-js';
 import { getReviewsData } from '../lib/reviews';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+import allImageMetadata from '../public/data/image-metadata-complete.json';
+import { useWishlist } from '../lib/WishlistContext';
+
+// Build a set of filenames that are HD-only (no free version)
+const hdOnlyFilenames = new Set(
+  allImageMetadata.filter(img => img.hdOnly).map(img => img.filename)
+);
+function isHdOnly(productId) {
+  return hdOnlyFilenames.has(productId.replace(/-hd$/, '') + '.webp');
+}
 
 const PRICE_IDS = {
   1:  'price_1Sr4U0Q695ongkMjxUtnf9NA',
@@ -109,8 +119,165 @@ function SubscriberDownloadButton({ product, token, onDownloadComplete, onLimitR
   );
 }
 
+// ─── HD-Only Lightbox ─────────────────────────────────────────────────────────
+const HD_ONLY_TIERS = [
+  { size: 1,  price: 4.99,  savings: null,  label: '1 image' },
+  { size: 3,  price: 8.99,  savings: 40,    label: '3 images' },
+  { size: 5,  price: 12.99, savings: 48,    label: '5 images', best: true },
+  { size: 10, price: 22.99, savings: 54,    label: '10 images' },
+];
+
+function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
+  const [buying, setBuying] = useState(null);
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  const handleTier = async (size) => {
+    setBuying(size);
+    trackAnalytics('hd_lightbox_tier_selected', productId, String(size));
+    await onBuyNow(productId, size);
+    setBuying(null);
+  };
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0,
+        background: 'rgba(0,0,0,0.92)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        zIndex: 300, padding: '1rem',
+      }}
+    >
+      <button
+        onClick={onClose}
+        aria-label="Close preview"
+        style={{
+          position: 'fixed', top: '1rem', right: '1.25rem',
+          background: 'rgba(255,255,255,0.15)',
+          border: 'none', color: 'white',
+          fontSize: '1.75rem', lineHeight: 1,
+          width: '2.5rem', height: '2.5rem',
+          borderRadius: '50%', cursor: 'pointer',
+          zIndex: 301, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}
+      >×</button>
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{ position: 'relative', lineHeight: 0 }}
+      >
+        <img
+          src={imageUrl}
+          alt="HD preview"
+          style={{
+            maxWidth: '100%', maxHeight: '90vh',
+            objectFit: 'contain', borderRadius: '8px',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
+            display: 'block',
+          }}
+        />
+        {/* Resolution banner */}
+        <div
+          style={{
+            position: 'absolute', top: 0, left: 0, right: 0,
+            background: 'rgba(0,0,0,0.6)',
+            color: 'white',
+            fontSize: '0.7rem',
+            fontWeight: 600,
+            letterSpacing: '0.06em',
+            padding: '5px 10px',
+            borderRadius: '8px 8px 0 0',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            pointerEvents: 'none',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+          }}
+        >
+          <span style={{ color: '#facc15' }}>💎 HD Only</span>
+          <span style={{ opacity: 0.6, margin: '0 6px' }}>·</span>
+          <span style={{ flex: 1 }}>2912 × 1632 · PNG</span>
+          <span style={{ opacity: 0.55, fontSize: '0.65rem' }}>preview only</span>
+        </div>
+        {/* Watermark overlay — prevents clean right-click save */}
+        <div
+          style={{
+            position: 'absolute', inset: 0,
+            borderRadius: '8px',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='150'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 150 75)' font-family='Arial,sans-serif' font-size='15' font-weight='bold' fill='rgba(255,255,255,0.22)' letter-spacing='2'%3EStreamBackdrops%3C/text%3E%3C/svg%3E")`,
+            backgroundSize: '300px 150px',
+            pointerEvents: 'none',
+          }}
+        />
+        {/* Pricing tier strip */}
+        <div
+          style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0,
+            background: 'rgba(0,0,0,0.82)',
+            borderRadius: '0 0 8px 8px',
+            padding: '10px 12px',
+            display: 'flex', gap: '8px', alignItems: 'stretch',
+          }}
+        >
+          {HD_ONLY_TIERS.map(tier => (
+            <button
+              key={tier.size}
+              onClick={() => handleTier(tier.size)}
+              disabled={buying !== null}
+              style={{
+                flex: 1,
+                background: tier.best ? '#2563eb' : 'rgba(255,255,255,0.1)',
+                border: tier.best ? '1.5px solid #3b82f6' : '1px solid rgba(255,255,255,0.18)',
+                borderRadius: '6px',
+                color: 'white',
+                cursor: buying !== null ? 'wait' : 'pointer',
+                padding: '7px 4px',
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px',
+                transition: 'background 0.15s',
+                position: 'relative',
+              }}
+            >
+              {tier.best && (
+                <span style={{
+                  position: 'absolute', top: '-9px',
+                  background: '#facc15', color: '#000',
+                  fontSize: '0.55rem', fontWeight: 700,
+                  padding: '1px 6px', borderRadius: '99px',
+                  letterSpacing: '0.04em', whiteSpace: 'nowrap',
+                }}>BEST VALUE</span>
+              )}
+              <span style={{ fontSize: '0.72rem', fontWeight: 600, opacity: 0.9 }}>
+                {buying === tier.size ? '...' : tier.label}
+              </span>
+              <span style={{ fontSize: '0.8rem', fontWeight: 700 }}>
+                ${tier.price}
+              </span>
+              {tier.savings && (
+                <span style={{ fontSize: '0.6rem', opacity: 0.65 }}>save {tier.savings}%</span>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── HD Product Card ───────────────────────────────────────────────────────────
-function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
+function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onHdOnlyPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
+  const { toggleWishlist, isWishlisted, openDrawer } = useWishlist();
+  const wishlisted = isWishlisted(product.id);
+  const thumb = `/images/${product.category}/${product.id.replace('-hd', '')}.webp`;
+
+  const handleWishlist = (e) => {
+    e.stopPropagation();
+    trackAnalytics(wishlisted ? 'wishlist_remove' : 'wishlist_add', product.id, product.category);
+    toggleWishlist({ id: product.id, name: product.name, category: product.category, hdOnly, thumb });
+  };
+
   return (
     <div
       style={{
@@ -145,25 +312,76 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
         }}>✓</div>
       )}
 
+      {/* Wishlist heart — top-right when not selected */}
+      {!isSelected && (
+        <button
+          onClick={handleWishlist}
+          aria-label={wishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
+          style={{
+            position: 'absolute', top: '8px', right: '8px',
+            background: wishlisted ? 'rgba(37,99,235,0.9)' : 'rgba(0,0,0,0.45)',
+            border: 'none', borderRadius: '50%',
+            width: '28px', height: '28px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: 'pointer', zIndex: 3,
+            fontSize: '0.85rem',
+            opacity: isHovered || wishlisted ? 1 : 0,
+            transition: 'opacity 0.2s, background 0.15s',
+          }}
+        >{wishlisted ? '💙' : '🤍'}</button>
+      )}
+
+      {/* Exclusive chip — no free version available */}
+      {hdOnly && !isSelected && (
+        <div style={{
+          position: 'absolute',
+          top: '10px', left: '10px',
+          background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
+          color: 'white',
+          fontSize: '0.62rem',
+          fontWeight: '700',
+          padding: '3px 7px',
+          borderRadius: '4px',
+          letterSpacing: '0.05em',
+          textTransform: 'uppercase',
+          zIndex: 3,
+          pointerEvents: 'none',
+          boxShadow: '0 2px 6px rgba(91,33,182,0.5)',
+        }}>
+          Exclusive
+        </div>
+      )}
+
       {/* Preview button */}
       <button
         onClick={async (e) => {
           e.stopPropagation();
-          trackAnalytics('hd_preview_opened', product.id, product.category);
-          const baseFilename = product.id.replace('-hd', '');
-          const imageUrl = cloudinaryUrls[baseFilename];
-          if (imageUrl) {
+          trackAnalytics(hdOnly ? 'hd_exclusive_preview' : 'hd_preview_opened', product.id, product.category);
+          if (hdOnly) {
+            // HD-only: show single fullscreen lightbox with the HD image
             try {
               const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
               const data = await res.json();
-              onPreview({
-                id: product.id,
-                standard: imageUrl,
-                hd: data.url
-              });
+              onHdOnlyPreview({ url: data.url, productId: product.id });
             } catch {
-              // fallback — open without HD side if fetch fails
-              onPreview({ id: product.id, standard: imageUrl, hd: null });
+              // fallback to standard webp if HD url fetch fails
+              onHdOnlyPreview({ url: `/images/${product.category}/${product.id.replace('-hd', '')}.webp`, productId: product.id });
+            }
+          } else {
+            const baseFilename = product.id.replace('-hd', '');
+            const imageUrl = cloudinaryUrls[baseFilename];
+            if (imageUrl) {
+              try {
+                const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
+                const data = await res.json();
+                onPreview({
+                  id: product.id,
+                  standard: imageUrl,
+                  hd: data.url
+                });
+              } catch {
+                onPreview({ id: product.id, standard: imageUrl, hd: null });
+              }
             }
           }
         }}
@@ -236,7 +454,7 @@ function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) 
           {PACK_OPTIONS.map(opt => (
             <button
               key={opt.size}
-              onClick={() => onSelect(opt.size)}
+              onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'sticky_bar'); onSelect(opt.size); }}
               style={{
                 background: 'rgba(255,255,255,0.12)',
                 color: 'white',
@@ -300,7 +518,7 @@ function PackPicker({ packSize, onSelect }) {
           return (
             <button
               key={opt.size}
-              onClick={() => onSelect(opt.size)}
+              onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'pack_picker'); onSelect(opt.size); }}
               style={{
                 background: isSelected ? 'white' : 'rgba(255,255,255,0.15)',
                 color: isSelected ? '#2563eb' : 'white',
@@ -349,6 +567,7 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack }) {
 
   const handleCheckout = async (e) => {
     e.stopPropagation();
+    trackAnalytics('hd_checkout_initiated', String(packSize), 'checkout_bar');
     const response = await fetch('/api/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -484,7 +703,7 @@ function SubscriptionCTA({ onVerifyClick }) {
           {loading ? 'Loading...' : 'Subscribe Now'}
         </button>
         <button
-          onClick={onVerifyClick}
+          onClick={() => { trackAnalytics('hd_verify_sub_click', null, 'subscription'); onVerifyClick(); }}
           style={{
             background: 'transparent', color: 'white',
             border: '1px solid rgba(255,255,255,0.5)',
@@ -779,6 +998,7 @@ export default function Premium({ reviewsData }) {
   const [packSize, setPackSize] = useState(null);
   const [selected, setSelected] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
+  const [hdOnlyPreview, setHdOnlyPreview] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [showStickyBar, setShowStickyBar] = useState(false);
@@ -855,6 +1075,22 @@ export default function Premium({ reviewsData }) {
   const handlePackSelect = (size) => {
     setPackSize(size);
     setSelected([]);
+  };
+
+  const handleHdOnlyBuy = async (productId, size) => {
+    setHdOnlyPreview(null);
+    if (size === 1) {
+      const res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [productId] }),
+      });
+      const { url } = await res.json();
+      window.location.href = url;
+    } else {
+      setPackSize(size);
+      setSelected([productId]);
+    }
   };
 
   const toggleSelect = (id) => {
@@ -995,7 +1231,7 @@ export default function Premium({ reviewsData }) {
           {CATEGORIES.map(cat => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => { trackAnalytics('hd_category_filter', cat, 'hd'); setActiveCategory(cat); }}
               style={{
                 padding: '0.5rem 1.1rem',
                 borderRadius: '999px',
@@ -1028,6 +1264,8 @@ export default function Premium({ reviewsData }) {
               isHovered={hoveredProduct === product.id}
               onToggle={toggleSelect}
               onPreview={setPreviewImage}
+              onHdOnlyPreview={setHdOnlyPreview}
+              hdOnly={isHdOnly(product.id)}
               onMouseEnter={() => setHoveredProduct(product.id)}
               onMouseLeave={() => setHoveredProduct(null)}
               subscriberMode={isSubscriber}
@@ -1049,7 +1287,7 @@ export default function Premium({ reviewsData }) {
         )}
       </section>
 
-      {/* Comparison widget */}
+      {/* Comparison widget — standard images */}
       <ComparisonWidget
         isOpen={!!previewImage}
         onClose={() => setPreviewImage(null)}
@@ -1057,6 +1295,16 @@ export default function Premium({ reviewsData }) {
         hdImg={previewImage?.hd}
         imageId={previewImage?.id}
       />
+
+      {/* Fullscreen lightbox — HD-only images */}
+      {hdOnlyPreview && (
+        <HdOnlyLightbox
+          imageUrl={hdOnlyPreview.url}
+          productId={hdOnlyPreview.productId}
+          onClose={() => setHdOnlyPreview(null)}
+          onBuyNow={handleHdOnlyBuy}
+        />
+      )}
 
       {/* Verify email modal */}
       {showVerifyModal && (

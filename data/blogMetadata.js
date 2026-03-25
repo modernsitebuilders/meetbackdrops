@@ -1,5 +1,19 @@
 // data/blogMetadata.js
 export const blogMetadata = {
+  "logo-virtual-background": {
+    headline: "How to Add Your Logo to a Virtual Background (Free)",
+    description: "A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.",
+    image: "/images/art-galleries/art-gallery-01.webp",
+    datePublished: "2026-03-24",
+    dateModified: "2026-03-24"
+  },
+  "hd-virtual-backgrounds": {
+    headline: "HD Virtual Backgrounds: Why Resolution Actually Matters for Video Calls",
+    description: "Zoom and Teams compress your stream. Learn why 2912×1632 HD backgrounds stay crisp after compression — and when the upgrade is worth it.",
+    image: "/images/bookshelves-dark/bookshelves-dark-09.webp",
+    datePublished: "2026-03-23",
+    dateModified: "2026-03-23"
+  },
   "job-interview-backgrounds": {
     headline: "Best Virtual Backgrounds for Job Interviews 2025: Complete Guide",
     description: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression.",
@@ -90,5 +104,19 @@ export const blogMetadata = {
     image: "/images/living-rooms/living-room-15.webp",
     datePublished: "2025-08-02",
     dateModified: "2025-10-09"
+  },
+  "video-call-equipment-guide": {
+    headline: "Complete Video Call Setup Guide: Equipment That Actually Makes a Difference",
+    description: "The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.",
+    image: "/images/office-spaces/office-spaces-01.webp",
+    datePublished: "2026-02-15",
+    dateModified: "2026-02-15"
+  },
+  "easter-backgrounds": {
+    headline: "Free Easter Virtual Backgrounds for Zoom, Teams & Google Meet",
+    description: "Download 55 free Easter virtual backgrounds for Zoom, Teams, and Google Meet. Spring pastel scenes with Easter eggs, bunnies and seasonal decor. No signup required.",
+    image: "/images/easter-backgrounds/easter-background-01.webp",
+    datePublished: "2026-03-01",
+    dateModified: "2026-03-01"
   }
 };

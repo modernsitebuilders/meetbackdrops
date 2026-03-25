@@ -1,9 +1,19 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import MobileMenu from './MobileMenu';
+import { useWishlist } from '../lib/WishlistContext';
+
+function trackAnalytics(eventType, filename, category) {
+  fetch('/api/analytics', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ eventType, filename, category }),
+  }).catch(() => {});
+}
 
 export default function Header({ currentPage }) {
   const router = useRouter();
+  const { wishlist, openDrawer } = useWishlist();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openNestedDropdown, setOpenNestedDropdown] = useState(null);
   const [hoveredNav, setHoveredNav] = useState(null);
@@ -424,9 +434,36 @@ export default function Header({ currentPage }) {
               Blog
             </button>
 
+           {/* Wishlist */}
+           <button
+             onClick={() => { trackAnalytics('wishlist_drawer_opened', null, 'header'); openDrawer(); }}
+             aria-label={`Saved HD images${wishlist.length > 0 ? ` (${wishlist.length})` : ''}`}
+             style={{
+               position: 'relative',
+               background: 'none', border: 'none',
+               cursor: 'pointer', padding: '0.5rem 0.6rem',
+               borderRadius: '0.5rem',
+               color: wishlist.length > 0 ? '#2563eb' : '#6b7280',
+               fontSize: '1.25rem', lineHeight: 1,
+               transition: 'color 0.15s',
+             }}
+           >
+             {wishlist.length > 0 ? '💙' : '🤍'}
+             {wishlist.length > 0 && (
+               <span style={{
+                 position: 'absolute', top: '2px', right: '2px',
+                 background: '#2563eb', color: 'white',
+                 borderRadius: '99px', fontSize: '0.6rem',
+                 fontWeight: 700, minWidth: '16px', height: '16px',
+                 display: 'flex', alignItems: 'center', justifyContent: 'center',
+                 padding: '0 3px',
+               }}>{wishlist.length}</span>
+             )}
+           </button>
+
            {/* HD Backgrounds */}
-<button 
-  onClick={() => navigate('/hd')}
+<button
+  onClick={() => { trackAnalytics('nav_hd_click', null, 'header'); navigate('/hd'); }}
   style={{
     ...navButtonStyle(currentPage === 'hd', hoveredNav === 'hd'),
     background: hoveredNav === 'hd' ? '#fef3c7' : (currentPage === 'hd' ? '#fef3c7' : 'transparent'),

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import { useEffect } from 'react';
 import BreadcrumbSchema from '../components/BreadcrumbSchema';
+import { blogMetadata } from '../data/blogMetadata';
 
 export default function Blog() {
   useEffect(() => {
@@ -37,6 +38,22 @@ export default function Blog() {
 
   const blogPosts = [
     {
+    title: "HD Virtual Backgrounds: Why Resolution Actually Matters for Video Calls",
+    slug: "hd-virtual-backgrounds",
+    excerpt: "Zoom and Teams compress your stream. Learn why 2912×1632 HD backgrounds stay crisp after compression — and when the upgrade is worth it.",
+    date: "March 2026",
+    readTime: "8 min read",
+    category: "HD Backgrounds"
+  },
+  {
+    title: "How to Add Your Logo to a Virtual Background (Free)",
+    slug: "logo-virtual-background",
+    excerpt: "A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.",
+    date: "March 2026",
+    readTime: "7 min read",
+    category: "Branding Guide"
+  },
+    {
     title: "Complete Video Call Setup Guide: Equipment That Actually Makes a Difference",
     slug: "video-call-equipment-guide",
     excerpt: "The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.",
@@ -45,10 +62,10 @@ export default function Blog() {
     category: "Equipment Guide"
   },
     {
-    title: "Best Virtual Backgrounds for Job Interviews 2025: Complete Guide",
+    title: "Best Virtual Backgrounds for Job Interviews 2026 — Free Download",
     slug: "job-interview-backgrounds",
     excerpt: "Choose the perfect virtual background for your job interview. Expert tips on professional backgrounds, what to avoid, and how to make a great first impression on video calls.",
-    date: "January 2025",
+    date: "January 2026",
     readTime: "12 min read",
     category: "Career Guide"
   },
@@ -186,73 +203,32 @@ export default function Blog() {
                 "url": "https://streambackdrops.com/logo.png"
               }
             },
-            "blogPost": [
-  {
-    "@type": "BlogPosting",
-    "headline": "Complete Video Call Setup Guide: Equipment That Actually Makes a Difference",
-    "url": "https://streambackdrops.com/blog/video-call-equipment-guide"
-  },
-              {
-                "@type": "BlogPosting",
-                "headline": "Free Bokeh Virtual Backgrounds for Video Calls 2025",
-                "url": "https://streambackdrops.com/blog/bokeh-backgrounds"
+            "blogPost": Object.entries(blogMetadata).map(([slug, meta]) => ({
+              "@type": "BlogPosting",
+              "headline": meta.headline,
+              "url": `https://streambackdrops.com/blog/${slug}`,
+              "description": meta.description,
+              "datePublished": meta.datePublished,
+              "dateModified": meta.dateModified,
+              "image": {
+                "@type": "ImageObject",
+                "url": `https://streambackdrops.com${meta.image}`
               },
-              {
-                "@type": "BlogPosting",
-                "headline": "Best Free Virtual Background Sites in 2026: Complete Comparison",
-                "url": "https://streambackdrops.com/blog/best-virtual-background-sites-2026"
+              "author": {
+                "@type": "Organization",
+                "name": "StreamBackdrops",
+                "url": "https://streambackdrops.com"
               },
-              {
-                "@type": "BlogPosting",
-                "headline": "10 Essential Tips for Professional Video Calls",
-                "url": "https://streambackdrops.com/blog/professional-video-calls"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings",
-                "url": "https://streambackdrops.com/blog/video-call-etiquette"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Best Virtual Backgrounds by Industry: Complete Professional Guide",
-                "url": "https://streambackdrops.com/blog/backgrounds-by-industry"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "15 Virtual Background Mistakes That Ruin Your Professional Image",
-                "url": "https://streambackdrops.com/blog/background-mistakes"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Perfect Lighting Setup for Virtual Backgrounds: Complete Guide",
-                "url": "https://streambackdrops.com/blog/lighting-tips"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Complete Guide to Virtual Backgrounds for Video Calls 2025",
-                "url": "https://streambackdrops.com/blog/virtual-background-guide"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Zoom vs Teams vs Google Meet: Virtual Background Setup & Best Practices",
-                "url": "https://streambackdrops.com/blog/zoom-teams-google"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Remote Work Productivity: Creating Your Perfect Home Office Environment",
-                "url": "https://streambackdrops.com/blog/remote-work-productivity"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Best Halloween Virtual Backgrounds for Video Calls 2025",
-                "url": "https://streambackdrops.com/blog/halloween-backgrounds"
-              },
-              {
-                "@type": "BlogPosting",
-                "headline": "Free Easter Virtual Backgrounds for Zoom, Teams & Google Meet",
-                "url": "https://streambackdrops.com/blog/easter-backgrounds"
+              "publisher": {
+                "@type": "Organization",
+                "name": "StreamBackdrops",
+                "url": "https://streambackdrops.com",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://streambackdrops.com/logo.png"
+                }
               }
-            ]
+            }))
           })}
         </script>
 

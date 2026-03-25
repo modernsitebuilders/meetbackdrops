@@ -43,10 +43,13 @@ export default async function handler(req, res) {
       return res.status(200).json({ message: 'Queue empty', flushed: 0 });
     }
 
-    // Read all queued items and trim them atomically from the front.
-    // Any events that arrive after llen() go into positions count..N and are
-    // left in the queue for the next flush run.
-    const items = await redis.lrange(QUEUE_KEY, 0, count - 1);
+    // Cap per-run to 1000 rows to stay within cron-job.org's 30s request timeout.
+    // Any remaining items will be processed on the next flush run.
+    const MAX_PER_RUN = 1000;
+    const processCount = Math.min(count, MAX_PER_RUN);
+
+    // Read queued items and trim them atomically from the front.
+    const items = await redis.lrange(QUEUE_KEY, 0, processCount - 1);
 
     const rows = items
       .map(item => {
@@ -56,7 +59,7 @@ export default async function handler(req, res) {
       .filter(Boolean);
 
     if (rows.length === 0) {
-      await redis.ltrim(QUEUE_KEY, count, -1);
+      await redis.ltrim(QUEUE_KEY, processCount, -1);
       return res.status(200).json({ message: 'No valid rows', flushed: 0 });
     }
 
@@ -143,10 +146,11 @@ export default async function handler(req, res) {
     }
 
     // Only trim the queue AFTER successful write so data isn't lost on failure
-    await redis.ltrim(QUEUE_KEY, count, -1);
+    await redis.ltrim(QUEUE_KEY, processCount, -1);
 
-    console.log(`✅ Flushed ${rows.length} analytics events to Sheets`);
-    return res.status(200).json({ message: 'Flushed', flushed: rows.length });
+    const remaining = count - processCount;
+    console.log(`✅ Flushed ${rows.length} analytics events to Sheets${remaining > 0 ? `, ${remaining} remaining` : ''}`);
+    return res.status(200).json({ message: 'Flushed', flushed: rows.length, remaining });
 
   } catch (error) {
     console.error('❌ Flush failed:', error.message);
