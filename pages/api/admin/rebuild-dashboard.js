@@ -31,11 +31,29 @@ const CATEGORY_MAP = {
   'halloween-background': 'halloween-backgrounds',
 };
 
+// Known valid category slugs
+const VALID_CATEGORIES = new Set([
+  'bookshelves-bright', 'bookshelves-dark',
+  'wall-shelves-bright', 'wall-shelves-dark',
+  'office-spaces', 'living-rooms', 'kitchens', 'conference-rooms',
+  'coffee-shops', 'art-galleries', 'urban-lofts', 'gardens-patios',
+  'historic-spaces', 'nature-landscapes', 'libraries',
+  'christmas-backgrounds', 'halloween-backgrounds', 'bokeh-backgrounds',
+  'valentines-backgrounds', 'easter-backgrounds', 'home-office',
+  'spring-backgrounds',
+]);
+
 function normalizeCategory(raw) {
   if (!raw) return null;
-  // Strip StreamBackdrops- prefix
+  // Strip StreamBackdrops- prefix, lowercase
   let c = raw.replace(/^StreamBackdrops-/i, '').trim().toLowerCase();
-  return CATEGORY_MAP[c] || c;
+  // Map old slugs to current slugs
+  c = CATEGORY_MAP[c] || c;
+  // Reject anything that looks like a filename, URL, or other garbage
+  if (c.includes('.') || c.includes('/') || c.length > 40) return null;
+  // Only count recognised category slugs
+  if (!VALID_CATEGORIES.has(c)) return null;
+  return c;
 }
 
 function classifySource(raw) {
