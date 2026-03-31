@@ -265,14 +265,23 @@ export default async function handler(req, res) {
       };
     });
 
-    // 5. Sort and get top 25 — exclude HD-only images
+    // 5. Sort and get top 25 — exclude HD-only images and holiday categories
+    const EXCLUDED_CATEGORIES = [
+      'valentines-backgrounds',
+      'christmas-backgrounds',
+      'halloween-backgrounds',
+      'easter-backgrounds'
+    ];
+
     const allImagesArray = require('../../../public/data/image-metadata-complete.json');
     const allImagesData = {};
     allImagesArray.forEach(img => { allImagesData[img.filename] = img; });
     const topImages = scoredImages
       .filter(img => {
         const meta = allImagesData[img.filename] || allImagesData[img.originalFilename];
-        return !meta?.hdOnly;
+        if (meta?.hdOnly) return false;
+        if (EXCLUDED_CATEGORIES.includes(img.category)) return false;
+        return true;
       })
       .sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;

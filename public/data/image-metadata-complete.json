@@ -14965,7 +14965,8 @@
       "libraries"
     ],
     "width": 1920,
-    "height": 1080
+    "height": 1080,
+    "hdOnly": true
   },
   {
     "filename": "library-18.webp",
@@ -20688,7 +20689,8 @@
       "Minimalist"
     ],
     "width": 1920,
-    "height": 1080
+    "height": 1080,
+    "hdOnly": true
   },
   {
     "filename": "urban-loft-21.webp",
@@ -21313,7 +21315,8 @@
       "Modern"
     ],
     "width": 1920,
-    "height": 1080
+    "height": 1080,
+    "hdOnly": true
   },
   {
     "filename": "valentines-background-15.webp",
