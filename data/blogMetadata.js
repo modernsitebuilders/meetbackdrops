@@ -1,5 +1,12 @@
 // data/blogMetadata.js
 export const blogMetadata = {
+  "virtual-background-setup-by-platform": {
+    headline: "How to Set Up a Virtual Background: Step-by-Step for Every Platform",
+    description: "Exact steps to set up a virtual background on Zoom, Teams, Google Meet & Webex — desktop and mobile. No green screen needed.",
+    image: "/images/office-spaces/office-spaces-01.webp",
+    datePublished: "2026-03-26",
+    dateModified: "2026-03-26"
+  },
   "logo-virtual-background": {
     headline: "How to Add Your Logo to a Virtual Background (Free)",
     description: "A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.",

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { webpUrl } from '../lib/cloudinaryUrl';
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -102,7 +103,7 @@ export default function SearchResults({
               overflow: 'hidden'
             }}>
               <Image
-                src={`/images/${image.category}/${image.filename}`}
+                src={webpUrl(image.category, image.filename)}
                 alt={`${image.title} - Free virtual background`}
                 title={`Download ${image.title} - Professional video call background`}
                 width={1456}

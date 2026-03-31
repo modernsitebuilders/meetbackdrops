@@ -58,7 +58,8 @@ export default async function handler(req, res) {
     pageViewsInSession,
     downloadsInSession,
     visitorId,
-    visitorType
+    visitorType,
+    eventType = 'cat_image_download'
   } = req.body;
 
   if (!filename) {
@@ -197,7 +198,7 @@ export default async function handler(req, res) {
     }
 
     // ── 5. Queue event ─────────────────────────────────────────────────────────
-    const row = buildRow('download');
+    const row = buildRow(eventType);
     await redis.rpush('analytics:queue', JSON.stringify(row));
 
     console.log('✅ Download queued successfully:', { filename, category: cleanCategory });

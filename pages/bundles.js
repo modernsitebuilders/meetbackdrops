@@ -45,6 +45,9 @@ export default function Bundles() {
     }).catch(err => console.error('Tracking failed:', err));
   };
 
+  // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
+  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
       title="Premium Background Bundles - StreamBackdrops"
@@ -116,7 +119,7 @@ export default function Bundles() {
                 height: '300px'
               }}>
                 <img 
-                  src="/images/office-spaces/office-spaces-19.webp"
+                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-19.webp"
                   alt="Office Spaces Backgrounds Bundle"
                   style={{
                     width: '100%',
@@ -224,7 +227,7 @@ export default function Bundles() {
                     }}
                   >
                     <img
-                      src={`/images/office-spaces/office-spaces-${num}.webp`}
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-${num}.webp`}
                       alt={`Office Space ${num}`}
                       style={{
                         width: '100%',
@@ -265,7 +268,7 @@ export default function Bundles() {
                 height: '300px'
               }}>
                 <img 
-                  src="/images/christmas-backgrounds/christmas-background-35.webp"
+                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/christmas-backgrounds/christmas-background-35.webp"
                   alt="Christmas Backgrounds Bundle"
                   style={{
                     width: '100%',
@@ -373,7 +376,7 @@ export default function Bundles() {
                     }}
                   >
                     <img
-                      src={`/images/christmas-backgrounds/christmas-background-${num}.webp`}
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/christmas-backgrounds/christmas-background-${num}.webp`}
                       alt={`Christmas Background ${num}`}
                       style={{
                         width: '100%',

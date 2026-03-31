@@ -261,13 +261,25 @@ export default async function handler(req, res) {
         downloadCount: item.downloads,
         score: score,
         lastDownload: item.lastDownload,
-        webPath: `/images/${finalCategory}/${webFilename}`
+        webPath: `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${finalCategory}/${webFilename}`
       };
     });
 
-    // 5. Sort and get top 25
+    // 5. Sort and get top 25 — exclude HD-only images
+    const allImagesArray = require('../../../public/data/image-metadata-complete.json');
+    const allImagesData = {};
+    allImagesArray.forEach(img => { allImagesData[img.filename] = img; });
     const topImages = scoredImages
-      .sort((a, b) => b.score - a.score)
+      .filter(img => {
+        const meta = allImagesData[img.filename] || allImagesData[img.originalFilename];
+        return !meta?.hdOnly;
+      })
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (b.downloadCount !== a.downloadCount) return b.downloadCount - a.downloadCount;
+        if (a.lastDownload && b.lastDownload) return new Date(b.lastDownload) - new Date(a.lastDownload);
+        return 0;
+      })
       .slice(0, 25);
 
     console.log(`Top image: ${topImages[0]?.filename} with score ${topImages[0]?.score}`);

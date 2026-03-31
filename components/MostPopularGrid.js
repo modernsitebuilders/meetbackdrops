@@ -100,14 +100,6 @@ export default function MostPopularGrid() {
   return (
     <div>
       <div style={{
-        marginBottom: '2rem'
-      }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: '600' }}>
-          Most Popular Virtual Backgrounds
-        </h2>
-      </div>
-
-      <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
         gap: '1.5rem'
@@ -139,7 +131,7 @@ export default function MostPopularGrid() {
               overflow: 'hidden'
             }}>
               <Image
-                src={image.webPath}
+                src={image.webPath?.startsWith('/images/') ? `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp${image.webPath.slice('/images'.length)}` : image.webPath}
                 alt={`${image.filename} - Popular virtual background`}
                 fill
                 style={{ objectFit: 'cover' }}
@@ -193,7 +185,7 @@ export default function MostPopularGrid() {
           image={selectedImage}
           slug={selectedImage.category}
           onClose={() => setSelectedImage(null)}
-          onDownload={(img) => handleDownload(img, img.category)}
+          onDownload={(img, eventType) => handleDownload(img, img.category, eventType)}
         />
       )}
 

@@ -4,6 +4,9 @@ import Head from 'next/head';
 import MostPopularGrid from '../components/MostPopularGrid';
 
 export default function MostPopularPage() {
+  // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
+  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
       title="Most Popular Virtual Backgrounds - StreamBackdrops"
@@ -13,7 +16,6 @@ export default function MostPopularPage() {
       keywords="most popular virtual backgrounds, trending zoom backgrounds, top downloaded backgrounds"
     >
       <Head>
-        <link rel="canonical" href="https://streambackdrops.com/most-popular" />
         <meta property="og:title" content="Most Popular Virtual Backgrounds - StreamBackdrops" />
         <meta property="og:description" content="Discover trending virtual backgrounds based on actual downloads." />
         <script type="application/ld+json">
@@ -63,6 +65,10 @@ export default function MostPopularPage() {
             </span>
           </nav>
           
+          <h1 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1.5rem', color: '#111827' }}>
+            Most Popular Virtual Backgrounds
+          </h1>
+
           <MostPopularGrid />
           
           {/* Explanation section */}

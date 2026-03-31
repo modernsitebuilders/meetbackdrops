@@ -55,7 +55,7 @@ export default function ImageLookup() {
       
       setCategory(cat);
       // Use the local WebP file
-      const webpUrl = `/images/${cat}/${cleanFilename}.webp`;
+      const webpUrl = `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${cat}/${cleanFilename}.webp`;
       setImageUrl(webpUrl);
       
     } catch (err) {
@@ -81,6 +81,9 @@ export default function ImageLookup() {
     }
   };
 
+  // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
+  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
       title="Image Lookup Tool - StreamBackdrops"

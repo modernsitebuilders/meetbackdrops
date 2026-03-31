@@ -2,6 +2,7 @@ import Link from 'next/link';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
 import { useEffect, useRef } from 'react';
+import { webpUrl } from '../lib/cloudinaryUrl';
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -176,7 +177,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
           <div style={{ position: 'relative', lineHeight: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`/images/${folderMap[slug]}/${image.filename}`}
+              src={webpUrl(folderMap[slug], image.filename)}
               alt={image.title}
               style={{
                 display: 'block',
@@ -222,8 +223,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
             aria-label={`Download ${image.title}`}
             onClick={(e) => {
               e.stopPropagation();
-              trackAnalytics('modal_download', image.filename, slug);
-              onDownload(image);
+              onDownload(image, 'modal_download');
             }}
             style={{
               flexShrink: 0,

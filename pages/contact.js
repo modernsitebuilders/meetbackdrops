@@ -35,6 +35,9 @@ export default function Contact() {
     }
   }, []);
 
+  // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
+  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
           title="Contact Us - StreamBackdrops"

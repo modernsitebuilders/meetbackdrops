@@ -31,6 +31,10 @@ export default function BlogLayout({
   return (
     <>
       <Head>
+        {/* NOTE: the `title` and `description` props are the COMPLETE strings shown in search
+            results — BlogLayout does NOT append any suffix or template. Each post in
+            data/blogPosts.js owns its full title/description. Do not add "| StreamBackdrops"
+            or any other template here; it would break the carefully tuned SEO character limits. */}
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />

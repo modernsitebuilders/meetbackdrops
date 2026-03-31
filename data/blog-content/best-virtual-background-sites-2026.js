@@ -87,19 +87,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                   <li><strong>Burst by Shopify</strong> - Limited but consistently high quality</li>
                 </ol>
 
-                <div style={{
-                  background: '#fef3f2',
-                  borderLeft: '4px solid #dc2626',
-                  padding: '1rem 1.5rem',
-                  marginBottom: '2rem',
-                  borderRadius: '0 0.5rem 0.5rem 0'
-                }}>
-                  <p style={{color: '#7c2d12', margin: 0, fontSize: '0.95rem'}}>
-                    <strong>Note:</strong> Pixabay removed from 2026 list due to inconsistent quality and increased ads. Canva Free added for its integrated editing tools.
-                  </p>
-                </div>
-
-                <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
+<h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
                   StreamBackdrops vs The Competition: 2026 Analysis
                 </h3>
 
@@ -115,7 +103,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                 </p>
 
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  <strong>Video Compression Aware:</strong> Images are optimized for the heavy compression applied by video platforms. Regular stock photos often become blurry or pixelated.
+                  <strong>Video Compression Aware:</strong> Images are optimized for the heavy compression applied by video platforms. Regular stock photos often become blurry or pixelated. For the sharpest result, StreamBackdrops also offers <Link href="/hd" style={{color: '#2563eb'}}>HD backgrounds at 2912×1632</Link> — extra resolution that survives platform compression with detail to spare.
                 </p>
 
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
@@ -136,6 +124,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                     <li><strong>Licensing:</strong> Free for personal use only - commercial use requires permission</li>
                     <li><strong>Signup Required:</strong> No - immediate access</li>
                     <li><strong>Watermarks:</strong> None - clean professional images</li>
+                    <li><strong>HD Option:</strong> 2912×1632 HD backgrounds available for client-facing meetings where sharpness matters most</li>
                     <li><strong>New Categories:</strong> Added hybrid office spaces and home studio setups</li>
                     <li><strong>Download Process:</strong> Direct download with no intermediate pages</li>
                   </ul>
@@ -219,7 +208,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li>You have back-to-back meetings and need reliability</li>
-                  <li>You work with clients who notice professional presentation</li>
+                  <li>You work with clients who notice professional presentation — <Link href="/hd" style={{color: '#2563eb'}}>HD backgrounds</Link> take it a step further</li>
                   <li>You use multiple platforms (Zoom, Teams, Meet) and need consistency</li>
                   <li>You value time - no searching through thousands of options</li>
                 </ul>
@@ -271,6 +260,20 @@ export const bestVirtualBackgroundSites2026Content = () => (
                     marginRight: '1rem'
                   }}>
                     Browse 2026 Backgrounds
+                  </Link>
+                  <Link href="/hd" style={{
+                    background: 'transparent',
+                    color: '#2563eb',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    border: '1px solid #2563eb',
+                    transition: 'all 0.2s',
+                    marginRight: '1rem'
+                  }}>
+                    HD Backgrounds
                   </Link>
                   <Link href="/blog/virtual-background-guide" style={{
                     background: 'transparent',

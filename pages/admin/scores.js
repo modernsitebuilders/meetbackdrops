@@ -181,7 +181,7 @@ export default function ScoresAdmin() {
                   <tr key={filename} style={{ borderBottom: '1px solid #e5e7eb' }}>
                     <td style={{ padding: '1rem' }}>
                       <img 
-                        src={`/images/${data.categorySlug}/${filename}`}
+                        src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${data.categorySlug}/${filename}`}
                         alt={filename}
                         style={{ height: '48px', width: '64px', objectFit: 'cover', borderRadius: '4px' }}
                       />

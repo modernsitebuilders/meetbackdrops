@@ -83,7 +83,7 @@ export default async function handler(req, res) {
           filename: item.filename,
           category: category,
           downloadCount: item.count,
-          webPath: `/images/${category}/${webFilename}`
+          webPath: `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${category}/${webFilename}`
         };
       });
 

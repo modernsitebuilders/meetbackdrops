@@ -29,10 +29,10 @@ if (!imageMeta) {
     "itemListElement": topImages.map((image, index) => ({
       "@type": "ImageObject",
       "position": index + 1,
-      "contentUrl": `${baseUrl}/images/${categorySlug}/${image.filename}`,
+      "contentUrl": `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${categorySlug}/${image.filename}`,
       "name": image.meta?.title || `${category} virtual background ${index + 1}`,
       "description": image.meta?.alt || image.meta?.description || `Free ${category.toLowerCase()} virtual background`,
-      "thumbnail": `${baseUrl}/images/${categorySlug}/${image.filename}`,
+      "thumbnail": `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${categorySlug}/${image.filename}`,
       "encodingFormat": "image/webp",
       "width": image.meta?.width || 1920,
       "height": image.meta?.height || 1080,

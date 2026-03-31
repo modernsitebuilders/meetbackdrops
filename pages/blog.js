@@ -38,6 +38,14 @@ export default function Blog() {
 
   const blogPosts = [
     {
+    title: "How to Set Up a Virtual Background on Zoom, Teams & Meet",
+    slug: "virtual-background-setup-by-platform",
+    excerpt: "Exact step-by-step instructions for setting up a virtual background on Zoom, Microsoft Teams, Google Meet, and Webex — plus the one thing most setup guides miss.",
+    date: "March 2026",
+    readTime: "9 min read",
+    category: "Platform Guide"
+  },
+    {
     title: "HD Virtual Backgrounds: Why Resolution Actually Matters for Video Calls",
     slug: "hd-virtual-backgrounds",
     excerpt: "Zoom and Teams compress your stream. Learn why 2912×1632 HD backgrounds stay crisp after compression — and when the upgrade is worth it.",
@@ -178,6 +186,9 @@ export default function Blog() {
     }
   ];
 
+  // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
+  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
       title="Virtual Background Blog - StreamBackdrops"

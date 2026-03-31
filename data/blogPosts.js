@@ -27,13 +27,15 @@ import { bokehBackgroundsContent }             from './blog-content/bokeh-backgr
 import { videoCallEquipmentGuideContent }      from './blog-content/video-call-equipment-guide';
 import { hdVirtualBackgroundsContent }         from './blog-content/hd-virtual-backgrounds';
 import { logoVirtualBackgroundContent }        from './blog-content/logo-virtual-background';
+import { virtualBackgroundSetupByPlatformContent } from './blog-content/virtual-background-setup-by-platform';
 // ─── ↑ Add new content imports above this line ───────────────────────────────
 
 export const blogPosts = [
   // ─── Featured / high-priority posts ────────────────────────────────────────
   {
     slug: 'hd-virtual-backgrounds',
-    title: 'HD Virtual Backgrounds: Why Resolution Actually Matters for Video Calls',
+    // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.
+    title: 'HD Virtual Backgrounds: Why Resolution Matters for Video Calls',
     description: 'Zoom and Teams compress your stream. Learn why 2912×1632 HD backgrounds stay crisp after compression — and when the upgrade is worth it.',
     excerpt: 'Zoom and Teams compress your stream. Learn why 2912×1632 HD backgrounds stay crisp after compression — and when the upgrade is worth it.',
     headline: 'HD Virtual Backgrounds: Why Resolution Actually Matters for Video Calls',
@@ -53,7 +55,8 @@ export const blogPosts = [
   },
   {
     slug: 'video-call-equipment-guide',
-    title: 'Complete Video Call Setup Guide: Equipment That Actually Makes a Difference',
+    // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.
+    title: 'Complete Video Call Setup Guide: Equipment That Makes a Difference',
     description: 'The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.',
     excerpt: 'The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.',
     headline: 'Complete Video Call Setup Guide: Equipment That Actually Makes a Difference',
@@ -155,6 +158,29 @@ export const blogPosts = [
 
   // ─── Regular posts ──────────────────────────────────────────────────────────
   {
+    slug: 'virtual-background-setup-by-platform',
+    // NOTE: title and description below are the COMPLETE values used in <title> and
+    // meta description — BlogLayout applies no template suffix. Lengths are intentionally
+    // optimised: title ≤60 chars, description ≤155 chars. Do not alter without rechecking.
+    title: 'How to Set Up a Virtual Background on Zoom, Teams & Meet',
+    description: 'Exact steps to set up a virtual background on Zoom, Teams, Google Meet & Webex — desktop and mobile. No green screen needed.',
+    excerpt: 'Exact step-by-step instructions for setting up a virtual background on Zoom, Microsoft Teams, Google Meet, and Webex — plus the one thing most setup guides miss.',
+    headline: 'How to Set Up a Virtual Background: Step-by-Step for Every Platform',
+    keywords: 'how to set up virtual background, zoom virtual background, teams background, google meet background, webex virtual background, virtual background setup',
+    canonical: 'https://streambackdrops.com/blog/virtual-background-setup-by-platform',
+    image: '/images/office-spaces/office-spaces-01.webp',
+    category: 'Platform Guide',
+    readTime: '9 min read',
+    date: 'March 2026',
+    datePublished: '2026-03-26',
+    dateModified: '2026-03-26',
+    featured: false,
+    sortOrder: 12,
+    live: true,
+    faqKey: 'virtual-background-setup-by-platform',
+    content: virtualBackgroundSetupByPlatformContent
+  },
+  {
     slug: 'logo-virtual-background',
     title: 'How to Add Your Logo to a Virtual Background (Free)',
     description: 'A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.',
@@ -216,7 +242,8 @@ export const blogPosts = [
   },
   {
     slug: 'video-call-etiquette',
-    title: "Video Call Etiquette: Essential Do's and Don'ts for Professional Virtual Meetings",
+    // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.
+    title: "Video Call Etiquette: Professional Do's and Don'ts",
     description: 'Master video call etiquette with professional guidelines for virtual meetings. Learn proper behavior, communication tips, and platform-specific best practices.',
     excerpt: 'Master video call etiquette with our complete guide. Learn professional meeting behavior, technical best practices, and communication tips for Zoom, Teams, and Google Meet.',
     headline: 'Video Call Etiquette: Professional Guide for Virtual Meetings',
@@ -276,7 +303,8 @@ export const blogPosts = [
   },
   {
     slug: 'zoom-teams-google',
-    title: 'Zoom vs Teams vs Google Meet: Virtual Background Setup & Best Practices',
+    // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.
+    title: 'Zoom vs Teams vs Google Meet: Virtual Background Comparison',
     description: 'Compare virtual backgrounds across Zoom, Microsoft Teams, and Google Meet. Which platform offers the best quality and features?',
     excerpt: 'Complete comparison of virtual backgrounds on Zoom, Microsoft Teams, and Google Meet. Setup guides, troubleshooting tips, and platform-specific best practices.',
     headline: 'Zoom vs Teams vs Google Meet: Virtual Background Comparison 2025',
@@ -296,7 +324,8 @@ export const blogPosts = [
   },
   {
     slug: 'remote-work-productivity',
-    title: 'Remote Work Productivity: Creating Your Perfect Home Office Environment',
+    // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.
+    title: 'Remote Work Productivity: Your Perfect Home Office Setup',
     description: 'Boost remote work productivity with expert tips for creating the perfect home office environment, managing distractions, and maintaining work-life balance.',
     excerpt: 'Boost your remote work productivity with expert tips for creating the perfect home office environment, managing distractions, and maintaining work-life balance.',
     headline: 'Remote Work Productivity: Creating Your Perfect Home Office Environment',

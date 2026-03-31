@@ -9,7 +9,7 @@ export default function ProductSchema({ products, reviewsData }) {
         "@type": "Product",
         "name": product.name,
         "description": `Premium HD virtual background in 2912×1632 resolution. ${product.name} for Zoom, Teams, and Google Meet.`,
-        "image": `https://streambackdrops.com/images/${product.category}/${product.id.replace('-hd', '')}.webp`,
+        "image": `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${product.id.replace('-hd', '')}.webp`,
         ...(reviewsData && reviewsData.totalReviews > 0 && {
           "aggregateRating": {
             "@type": "AggregateRating",

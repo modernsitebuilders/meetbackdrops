@@ -1,7 +1,4 @@
 User-agent: *
-Allow: /
-
-# Allow all search engines to crawl all pages
 Disallow: /api/
 Disallow: /admin/
 

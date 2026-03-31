@@ -981,7 +981,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   gridTemplateColumns: '1fr'
                 }}>
                   <Link
-                    href="/blog/best-zoom-backgrounds-professional"
+                    href="/blog/best-virtual-background-sites-2026"
                     style={{
                       display: 'block',
                       padding: '1.25rem',
@@ -1002,7 +1002,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   </Link>
 
                   <Link
-                    href="/blog/virtual-background-setup-guide"
+                    href="/blog/video-call-equipment-guide"
                     style={{
                       display: 'block',
                       padding: '1.25rem',
@@ -1023,7 +1023,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   </Link>
 
                   <Link
-                    href="/blog/home-office-backgrounds"
+                    href="/category/home-office"
                     style={{
                       display: 'block',
                       padding: '1.25rem',

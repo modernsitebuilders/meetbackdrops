@@ -113,7 +113,7 @@ async function updateCache() {
       category: category,
       downloadCount: item.downloads,
       score: score,
-      webPath: `/images/${category}/${webFilename}`
+      webPath: `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${category}/${webFilename}`
     };
   });
 

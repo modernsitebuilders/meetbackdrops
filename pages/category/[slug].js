@@ -100,7 +100,7 @@ function CategoryContent({ slug, scores = {}}) {
           image={previewImage}
           slug={slug}
           onClose={() => setPreviewImage(null)}
-          onDownload={(image) => handleDownload(image, slug)}
+          onDownload={(image, eventType) => handleDownload(image, slug, eventType)}
         />
       )}
       
@@ -185,6 +185,9 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
   
   const featuredImage = featuredImages[currentSlug] || 'og-image.png';
 
+  // NOTE: pageTitle and pageDescription below are the COMPLETE values seen in search results.
+  // Layout does not append "| StreamBackdrops" or any other suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <>
       <Layout
@@ -193,7 +196,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
         canonical={'https://streambackdrops.com/category/' + currentSlug}
         currentPage={currentSlug}
         keywords={categoryName.toLowerCase() + ' virtual backgrounds'}
-        image={'/images/' + currentSlug + '/' + featuredImage}
+        image={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${currentSlug}/${featuredImage}`}
       >
         <Head>
           <FAQSchema questions={getFAQs(currentSlug)} />
@@ -215,7 +218,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
               key={i}
               rel="preload"
               as="image"
-              href={`/images/${currentSlug}/${image.filename}`}
+              href={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${currentSlug}/${image.filename}`}
               media="(max-width: 768px)"
             />
           ))}
@@ -276,7 +279,13 @@ export async function getStaticProps({ params }) {
   try {
     // Load metadata
     const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
-    imageMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+    const allMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+    // Only pass metadata for images in this category — full file is 750 KB and
+    // would bloat every page's ISR payload unnecessarily.
+    const categoryFilenames = new Set(category.images.map(img => img.filename));
+    imageMetadata = Object.fromEntries(
+      Object.entries(allMetadata).filter(([, v]) => categoryFilenames.has(v.filename))
+    );
 
     // ── Primary: fetch live scores from Google Sheets via API ──
     // During ISR revalidation (nightly cron) this gives fresh real-time scores.

@@ -33,6 +33,9 @@ export default function BlogPost() {
     ? () => blogPost.content(categoryInfo)  // parameterised (e.g. job-interview-backgrounds)
     : blogPost.content;                     // plain component
 
+  // NOTE: blogPost.title and blogPost.description (from data/blogPosts.js) are the COMPLETE
+  // values seen in search results. BlogLayout does not append any suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <BlogLayout
       title={blogPost.title}

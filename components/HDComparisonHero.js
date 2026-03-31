@@ -5,6 +5,7 @@ import ComparisonWidget from './ComparisonWidget';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
 import { HD_BASE_IDS } from '../lib/hdImages';
+import { webpUrl } from '../lib/cloudinaryUrl';
 
 export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -102,7 +103,7 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
         >
           <div style={{ aspectRatio: '16/9' }}>
             <img
-              src={`/images/${slug}/${topImage.filename}`}
+              src={webpUrl(slug, topImage.filename)}
               alt="HD preview"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />

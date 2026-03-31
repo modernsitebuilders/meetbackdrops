@@ -547,6 +547,33 @@ export const faqData = {
       question: "Can I use a branded background across my whole team?",
       answer: "Yes. Create the final image (background + logo) once in Canva or Adobe Express, then share the PNG directly with your team via Slack, email, or a shared drive. Each person uploads it to their own Zoom or Teams settings. No need for everyone to repeat the design steps."
     }
+  ],
+
+  'virtual-background-setup-by-platform': [
+    {
+      question: "How do I set up a virtual background on Zoom?",
+      answer: "Open Zoom Settings → Background & Effects → Virtual Background → click the + button to upload your image. Once added, the background persists between calls. You can also change it during a call via the ^ arrow next to your video button → Choose Virtual Background."
+    },
+    {
+      question: "How do I add a virtual background in Microsoft Teams?",
+      answer: "On the pre-join screen, click Background effects → Add new to upload your image. During a call, go to the three-dot More menu → Video effects and avatars → Add new. Teams accepts JPG and PNG files up to 5 MB."
+    },
+    {
+      question: "How do I use a custom background in Google Meet?",
+      answer: "Before joining, click Apply visual effects below your video preview → scroll to the bottom → click the + upload icon. During a call, go to More options (⋮) → Apply visual effects → upload icon. Custom backgrounds persist between calls since 2023."
+    },
+    {
+      question: "Do I need a green screen to use a virtual background?",
+      answer: "No. All four major platforms — Zoom, Teams, Google Meet, and Webex — use AI to detect your outline without a green screen. A green screen improves edge quality if you want sharper results, but it is not required."
+    },
+    {
+      question: "Why does my virtual background look fake or pixelated?",
+      answer: "The issue is almost always the background image rather than the setup. Use a 16:9 image (1920×1080 or higher) — never a portrait or square photo. Images of real physical spaces with depth and natural lighting look far more convincing than flat illustrations or gradient patterns."
+    },
+    {
+      question: "What image formats do video call platforms accept for virtual backgrounds?",
+      answer: "Zoom accepts JPG, PNG, GIF, and MP4 (video). Microsoft Teams, Google Meet, and Webex accept JPG and PNG. All platforms recommend images no larger than 5 MB and at least 1920×1080 pixels for best quality."
+    }
   ]
 };
 

@@ -45,6 +45,11 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
   return (
     <>
       <Head>
+        {/* NOTE: title values passed to Layout are the COMPLETE string shown in search results.
+            There is no "| StreamBackdrops" suffix appended here — each page includes it in its
+            own title prop. Do not shorten titles just because they look long; they are
+            intentionally optimised to fit the 50-60 character SEO limit including the suffix. */}
+        <meta charSet="utf-8" />
         <title>{title}</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />

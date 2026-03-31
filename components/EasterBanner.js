@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react';
 import { CATEGORIES } from '../lib/categories-config';
 
 export default function EasterBanner() {
+  // Start visible so server and initial client render match (no CLS).
+  // Hide after mount only if the user previously dismissed it.
   const [isVisible, setIsVisible] = useState(true);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-    const dismissed = localStorage.getItem('easter-banner-2026-dismissed');
-    if (dismissed) {
+    if (localStorage.getItem('easter-banner-2026-dismissed')) {
       setIsVisible(false);
     }
   }, []);
@@ -19,7 +18,7 @@ export default function EasterBanner() {
     setIsVisible(false);
   };
 
-  if (!isMounted || !isVisible) return null;
+  if (!isVisible) return null;
 
   return (
     <div style={{

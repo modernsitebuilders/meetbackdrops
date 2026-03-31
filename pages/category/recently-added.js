@@ -72,6 +72,9 @@ export default function RecentlyAdded() {
     fetchRecentImages(offset, true);
   };
 
+  // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
+  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
       title="Recently Added Virtual Backgrounds | StreamBackdrops"
@@ -80,8 +83,6 @@ export default function RecentlyAdded() {
       currentPage="recently-added"
     >
       <Head>
-        <link rel="canonical" href="https://streambackdrops.com/category/recently-added" />
-
         <BreadcrumbSchema items={[
           { name: "Home", url: "https://streambackdrops.com" },
           { name: "Recently Added", url: "https://streambackdrops.com/category/recently-added" }
@@ -125,7 +126,7 @@ export default function RecentlyAdded() {
                 >
                   <div className={styles.imageWrapper}>
                     <Image
-                      src={`/images/${image.category}/${image.filename}`}
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${image.category}/${image.filename}`}
                       alt={`Recently added ${image.title}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -200,7 +201,7 @@ export default function RecentlyAdded() {
             image={selectedImage}
             slug={selectedImage.category}
             onClose={() => setSelectedImage(null)}
-            onDownload={(image) => handleDownload(image, image.category)}
+            onDownload={(image, eventType) => handleDownload(image, image.category, eventType)}
           />
         )}
 

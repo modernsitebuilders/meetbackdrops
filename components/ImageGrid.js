@@ -8,6 +8,7 @@ import PopularBadge from './PopularBadge';
 import { useRouter } from 'next/router';
 import allImageMetadata from '../public/data/image-metadata-complete.json';
 import { useWishlist } from '../lib/WishlistContext';
+import { webpUrl } from '../lib/cloudinaryUrl';
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -55,7 +56,6 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
   // Enhanced download handler with retry logic
   const handleDownloadWithRetry = async (image) => {
     const maxRetries = 2;
-    trackAnalytics('cat_image_download', image.filename, slug);
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
         console.log(`📥 Download attempt ${attempt}/${maxRetries} for:`, image.filename);
@@ -70,7 +70,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
           
           // Last attempt failed, use direct download
           const link = document.createElement('a');
-          link.href = `/images/${folderMap[slug] || slug}/${image.filename}`;
+          link.href = webpUrl(folderMap[slug] || slug, image.filename);
           link.download = `StreamBackdrops-${image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '')}.png`;
           document.body.appendChild(link);
           link.click();
@@ -169,7 +169,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
               e.currentTarget.style.transform = 'translateY(0)';
               setHoveredIndex(null);
             }}
-            onClick={() => { if (hdOnly) { trackAnalytics('hd_cat_exclusive_click', image.filename, slug); window.location.href = '/hd'; } else { trackAnalytics('cat_image_preview', image.filename, slug); onImageClick(image); } }}
+            onClick={() => { if (hdOnly) { trackAnalytics('hd_cat_exclusive_click', image.filename, slug); window.location.href = '/hd'; } else { onImageClick(image); } }}
           >
             <div style={{
               position: 'relative',
@@ -178,7 +178,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
               overflow: 'hidden'
             }}>
               <Image
-                src={`/images/${folderMap[slug] || slug}/${image.filename}`}
+                src={webpUrl(folderMap[slug] || slug, image.filename)}
                 alt={`${image.title} - Free virtual background for Zoom, Teams & Google Meet`}
                 title={`Download ${image.title} - Professional video call background`}
                 width={1456}
@@ -232,7 +232,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                         name: image.filename.replace(/\.webp$/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
                         category: slug,
                         hdOnly: true,
-                        thumb: `/images/${folderMap[slug] || slug}/${image.filename}`,
+                        thumb: webpUrl(folderMap[slug] || slug, image.filename),
                       });
                     }}
                     aria-label={saved ? 'Remove from wishlist' : 'Save to wishlist'}
