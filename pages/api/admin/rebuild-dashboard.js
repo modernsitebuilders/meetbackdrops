@@ -40,7 +40,7 @@ const VALID_CATEGORIES = new Set([
   'historic-spaces', 'nature-landscapes', 'libraries',
   'christmas-backgrounds', 'halloween-backgrounds', 'bokeh-backgrounds',
   'valentines-backgrounds', 'easter-backgrounds', 'home-office',
-  'spring-backgrounds',
+  'spring-backgrounds', 'eid-backgrounds',
 ]);
 
 function normalizeCategory(raw) {

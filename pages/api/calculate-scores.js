@@ -36,7 +36,16 @@ export default async function handler(req, res) {
     
     // Load ALL images from metadata (bundled via require so it's available in serverless)
     const allImagesData = require('../../public/data/image-metadata-complete.json');
-    
+
+    // Load static scores as baseline for images with no post-reset activity
+    let staticScores = {};
+    try {
+      const staticData = require('../../public/data/image-scores-static.json');
+      staticScores = staticData.scores || {};
+    } catch (e) {
+      // Static file unavailable — fall back to neutral baseline
+    }
+
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: 'Analytics!A:I',
@@ -172,22 +181,33 @@ export default async function handler(req, res) {
     // Calculate final scores - FRESH START
     Object.keys(imageStats).forEach(filename => {
       const stats = imageStats[filename];
-      
-      // Everyone starts at 30
-      let score = 30;
-      
-      // Downloads = +10 each
-      score += (stats.downloads * 10);
-      
-      // Month without download = -5
-      if (stats.lastDownload) {
-        const monthsSinceDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24 * 30);
-        score -= Math.floor(monthsSinceDownload) * 5;
-      } else if (stats.downloads === 0) {
-        // Never downloaded: use reset date for old images, firstSeen for new
+
+      let score;
+
+      if (stats.downloads === 0) {
+        // No post-reset downloads: seed from static file so historical ranking is preserved
+        const baseName = filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+        const staticEntry = staticScores[filename]
+          || staticScores[`${baseName}.webp`]
+          || staticScores[`${baseName}.png`];
+        const baseScore = staticEntry?.score ?? 30;
+
+        // Apply gentle decay from reset date so stale images gradually drop
         const startDate = stats.firstSeen < RESET_DATE ? RESET_DATE : stats.firstSeen;
         const monthsOld = (now - startDate) / (1000 * 60 * 60 * 24 * 30);
-        score -= Math.floor(monthsOld) * 5;
+        score = Math.max(0, baseScore - Math.floor(monthsOld) * 2);
+      } else {
+        // Has post-reset downloads: use live formula
+        score = 30;
+
+        // Downloads = +10 each
+        score += (stats.downloads * 10);
+
+        // Month without download = -5
+        if (stats.lastDownload) {
+          const monthsSinceDownload = (now - stats.lastDownload) / (1000 * 60 * 60 * 24 * 30);
+          score -= Math.floor(monthsSinceDownload) * 5;
+        }
       }
       
       stats.score = score;
