@@ -12,6 +12,32 @@ import { google } from 'googleapis';
 const SOURCES = ['bing', 'google', 'chatgpt', 'duckduckgo', 'yahoo', 'direct'];
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
+const CATEGORY_MAP = {
+  'art-gallery': 'art-galleries',
+  'bokeh': 'bokeh-backgrounds',
+  'bookshelf': 'bookshelves-dark',
+  'office-space': 'office-spaces',
+  'historic-space': 'historic-spaces',
+  'nature-landscape': 'nature-landscapes',
+  'living-room': 'living-rooms',
+  'conference-room': 'conference-rooms',
+  'coffee-shop': 'coffee-shops',
+  'urban-loft': 'urban-lofts',
+  'garden': 'gardens-patios',
+  'garden-patio': 'gardens-patios',
+  'library': 'libraries',
+  'kitchen': 'kitchens',
+  'christmas-background': 'christmas-backgrounds',
+  'halloween-background': 'halloween-backgrounds',
+};
+
+function normalizeCategory(raw) {
+  if (!raw) return null;
+  // Strip StreamBackdrops- prefix
+  let c = raw.replace(/^StreamBackdrops-/i, '').trim().toLowerCase();
+  return CATEGORY_MAP[c] || c;
+}
+
 function classifySource(raw) {
   if (!raw) return 'other';
   const s = raw.toLowerCase();
@@ -61,13 +87,16 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
-    // ── 1. Read all Analytics rows ─────────────────────────────────────────
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: 'Analytics!A:P',
-    });
+    // ── 1. Read Analytics + Analytics_Archive ─────────────────────────────
+    const [mainResp, archiveResp] = await Promise.all([
+      sheets.spreadsheets.values.get({ spreadsheetId, range: 'Analytics!A:P' }),
+      sheets.spreadsheets.values.get({ spreadsheetId, range: 'Analytics_Archive!A:P' }).catch(() => ({ data: { values: [] } })),
+    ]);
 
-    const allRows = (response.data.values || []).slice(1); // skip header
+    const allRows = [
+      ...(mainResp.data.values || []).slice(1),      // skip header
+      ...(archiveResp.data.values || []).slice(1),   // skip header
+    ];
     const now = new Date();
     const thirtyDaysAgo = new Date(now - THIRTY_DAYS_MS);
 
@@ -87,7 +116,7 @@ export default async function handler(req, res) {
       const timestamp = row[0];
       const eventType = row[1];
       const source = row[2] || 'direct';
-      const category = row[4];
+      const category = normalizeCategory(row[4]);
       const sessionId = row[9];
 
       const date = parseRowDate(timestamp);
@@ -129,6 +158,7 @@ export default async function handler(req, res) {
         }
         if (category) {
           categoryStats[category] = (categoryStats[category] || 0) + 1;
+          if (!sourceCategory[src]) sourceCategory[src] = {};
           sourceCategory[src][category] = (sourceCategory[src][category] || 0) + 1;
         }
       }
