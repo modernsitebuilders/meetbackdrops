@@ -203,6 +203,16 @@ export const categoryInfo = {
     }))
   },
 
+  'spring-backgrounds': {
+    name: 'Spring Backgrounds',
+    description: 'Fresh spring backgrounds with blooming flowers, sunrooms, and outdoor seasonal scenery',
+    seoDescription: 'Download free spring virtual backgrounds for Zoom, Teams & Google Meet. Fresh flowers, sunrooms, greenhouses & seasonal outdoor scenes — no signup, instant download.',
+    images: Array.from({length: CATEGORIES['spring-backgrounds'].count}, (_, i) => ({
+      filename: `spring-background-${String(i + 1).padStart(2, '0')}.webp`,
+      title: `Spring Background ${i + 1}`
+    }))
+  },
+
   'bokeh-backgrounds': {
     name: 'Bokeh Backgrounds',
     description: 'Beautiful bokeh light backgrounds with soft, artistic blur effects for elegant video calls',
@@ -236,5 +246,6 @@ export const folderMap = {
   'halloween-backgrounds': 'halloween-backgrounds',
   'valentines-backgrounds': 'valentines-backgrounds',
   'easter-backgrounds': 'easter-backgrounds',
+  'spring-backgrounds': 'spring-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds'
 };

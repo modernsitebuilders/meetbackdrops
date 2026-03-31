@@ -14,7 +14,8 @@ export default async function handler(req, res) {
       return res.status(200).json({
         message: 'Returning cached scores',
         cached: true,
-        calculatedAt: new Date(lastCalculated).toISOString()
+        calculatedAt: new Date(lastCalculated).toISOString(),
+        scores: cachedScores
       });
     }
 
@@ -240,6 +241,7 @@ export default async function handler(req, res) {
       message: 'Scores calculated successfully',
       cached: false,
       calculatedAt: new Date(lastCalculated).toISOString(),
+      scores: imageStats,
       summary
     });
 

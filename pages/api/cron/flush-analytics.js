@@ -106,7 +106,7 @@ export default async function handler(req, res) {
 
       // Highlight revenue rows (hd_purchase = light green, hd_subscription = vivid green)
       if (analyticsSheetId !== null) {
-        const updatedRange = appendResponse.data.updatedRange; // e.g. "Analytics!A1523:P1573"
+        const updatedRange = appendResponse.data.updates?.updatedRange; // e.g. "Analytics!A1523:P1573"
         const match = updatedRange?.match(/!A(\d+):/);
         if (match) {
           const batchStartRow = parseInt(match[1], 10);

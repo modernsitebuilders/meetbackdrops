@@ -115,7 +115,8 @@ export default function Header({ currentPage }) {
     { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
     { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' },
     { name: 'Valentine\'s Day 💕', path: '/category/valentines-backgrounds' },
-    { name: 'Easter 🐣', path: '/category/easter-backgrounds' }
+    { name: 'Easter 🐣', path: '/category/easter-backgrounds' },
+    { name: 'Spring 🌸', path: '/category/spring-backgrounds' }
   ];
 
   const moreCategories = [
