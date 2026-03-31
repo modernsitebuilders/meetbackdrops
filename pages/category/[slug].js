@@ -101,6 +101,7 @@ function CategoryContent({ slug, scores = {}}) {
           slug={slug}
           onClose={() => setPreviewImage(null)}
           onDownload={(image, eventType) => handleDownload(image, slug, eventType)}
+          cloudinaryUrls={cloudinaryUrls}
         />
       )}
       

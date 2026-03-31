@@ -14,11 +14,14 @@ function trackAnalytics(eventType, filename, category) {
 import { getSessionData, getOrCreateVisitorId, isReturningVisitor } from '../lib/sessionTracking';
 import { HD_BASE_IDS } from '../lib/hdImages';
 
-export default function ImagePreviewModal({ image, slug, onClose, onDownload }) {
+export default function ImagePreviewModal({ image, slug, onClose, onDownload, cloudinaryUrls }) {
   if (!image) return null;
 
   const baseId = image.filename ? image.filename.replace(/\.\w+$/, '') : null;
   const hasHd = baseId ? HD_BASE_IDS.has(baseId) : false;
+  const previewSrc = (cloudinaryUrls && baseId && cloudinaryUrls[baseId])
+    ? cloudinaryUrls[baseId]
+    : webpUrl(folderMap[slug], image.filename);
 
   const closeButtonRef = useRef(null);
   const previousFocusRef = useRef(null);
@@ -177,7 +180,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload }) 
           <div style={{ position: 'relative', lineHeight: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={webpUrl(folderMap[slug], image.filename)}
+              src={previewSrc}
               alt={image.title}
               style={{
                 display: 'block',
