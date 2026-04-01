@@ -153,7 +153,8 @@ export default function MostPopularGrid() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    trackAnalytics('popular_download', image.filename, image.category);
+                    const baseFilename = image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '');
+                    trackAnalytics('popular_download', `StreamBackdrops-${baseFilename}.png`, image.category);
                     handleDownload(
                       { filename: image.filename, category: image.category },
                       image.category

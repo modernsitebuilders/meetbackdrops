@@ -198,6 +198,13 @@ export default function Footer() {
   As an Amazon Associate, we earn from qualifying purchases at no cost to you.
 </p>
 
+  {/* OpenHunts Badge */}
+  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
+    <a href="https://openhunts.com" target="_blank" title="OpenHunts Club" rel="noopener noreferrer">
+      <img alt="OpenHunts Club Member" height="105" src="https://cdn.openhunts.com/badges/club.webp" style={{ width: '195px', height: 'auto' }} width="486" />
+    </a>
+  </div>
+
 </div>
       </div>
     </footer>
