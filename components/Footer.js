@@ -193,10 +193,6 @@ export default function Footer() {
   <p style={{ color: '#e5e7eb', margin: '0.5rem 0 0 0', textAlign: 'center', fontSize: '0.85rem' }}>
     A Modern Site Builders Production
   </p>
-  {/* Affiliate Disclosure */}
-<p style={{ color: '#9ca3af', margin: '0.5rem 0 0 0', textAlign: 'center', fontSize: '0.8rem' }}>
-  As an Amazon Associate, we earn from qualifying purchases at no cost to you.
-</p>
 
   {/* OpenHunts Badge */}
   <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
