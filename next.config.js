@@ -7,12 +7,11 @@ const nextConfig = {
     ],
   },
   images: {
-  domains: ['streambackdrops.com'],
-  formats: ['image/webp', 'image/avif'],
-  deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-  imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  unoptimized: true,
-},
+    loaderFile: './lib/cloudinary-loader.js',
+    domains: ['streambackdrops.com', 'res.cloudinary.com'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
   
   webpack: (config, { dev, isServer }) => {
     if (dev && !isServer) {
