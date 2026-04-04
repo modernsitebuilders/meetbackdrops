@@ -23,6 +23,7 @@ import { bestVirtualBackgroundSites2026Content } from './blog-content/best-virtu
 import { christmasBackgroundsContent }         from './blog-content/christmas-backgrounds';
 import { halloweenBackgroundsContent }         from './blog-content/halloween-backgrounds';
 import { easterBackgroundsContent }            from './blog-content/easter-backgrounds';
+import { springBackgroundsContent }            from './blog-content/spring-backgrounds';
 import { bokehBackgroundsContent }             from './blog-content/bokeh-backgrounds';
 import { videoCallEquipmentGuideContent }      from './blog-content/video-call-equipment-guide';
 import { hdVirtualBackgroundsContent }         from './blog-content/hd-virtual-backgrounds';
@@ -438,6 +439,26 @@ export const blogPosts = [
     live: true,
     faqKey: 'easter-backgrounds',
     content: (categoryInfo) => easterBackgroundsContent(categoryInfo)
+  },
+  {
+    slug: 'spring-backgrounds',
+    title: 'Free Spring Virtual Backgrounds for Zoom, Teams & Google Meet',
+    description: 'Download 96 free spring virtual backgrounds for Zoom, Teams & Google Meet. Blooming gardens, sunrooms & seasonal outdoor scenes. No signup required.',
+    excerpt: 'Download 96 free spring virtual backgrounds for Zoom, Teams, and Google Meet. Blooming flower gardens, sunlit greenhouses, and fresh spring interiors.',
+    headline: 'Free Spring Virtual Backgrounds for Zoom, Teams & Google Meet',
+    keywords: 'spring backgrounds, spring zoom backgrounds, spring virtual backgrounds, flower backgrounds, seasonal backgrounds, spring video call backgrounds',
+    canonical: 'https://streambackdrops.com/blog/spring-backgrounds',
+    image: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/spring-backgrounds/spring-background-01.webp',
+    category: 'Seasonal',
+    readTime: '5 min read',
+    date: 'April 2026',
+    datePublished: '2026-04-04',
+    dateModified: '2026-04-04',
+    featured: false,
+    sortOrder: 73,
+    live: true,
+    faqKey: 'spring-backgrounds',
+    content: (categoryInfo) => springBackgroundsContent(categoryInfo)
   }
   // ─── ↑ Add new blog posts above this line ────────────────────────────────
 ];

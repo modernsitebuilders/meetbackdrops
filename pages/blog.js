@@ -191,6 +191,15 @@ export default function Blog() {
       readTime: '5 min read',
       category: 'Seasonal',
       emoji: '🐣'
+    },
+    {
+      title: 'Free Spring Virtual Backgrounds for Zoom, Teams & Google Meet',
+      slug: 'spring-backgrounds',
+      excerpt: 'Download 96 free spring virtual backgrounds for Zoom, Teams, and Google Meet. Blooming flower gardens, sunlit greenhouses, and fresh spring interiors. No signup required.',
+      date: 'April 2026',
+      readTime: '5 min read',
+      category: 'Seasonal',
+      emoji: '🌸'
     }
   ];
 
