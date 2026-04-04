@@ -125,5 +125,19 @@ export const blogMetadata = {
     image: "https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/easter-backgrounds/easter-background-01.webp",
     datePublished: "2026-03-01",
     dateModified: "2026-03-01"
+  },
+  "how-to-change-zoom-background-pc": {
+    headline: "How to Change Your Zoom Background on a PC (2026 Tutorial)",
+    description: "Step-by-step tutorial: change your Zoom virtual background on a Windows PC in under 60 seconds. Includes fix if the option is greyed out.",
+    image: "https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-01.webp",
+    datePublished: "2026-04-03",
+    dateModified: "2026-04-03"
+  },
+  "spring-backgrounds": {
+    headline: "Free Spring Virtual Backgrounds for Zoom, Teams & Google Meet",
+    description: "Download 96 free spring virtual backgrounds for Zoom, Teams & Google Meet. Blooming gardens, sunrooms & seasonal outdoor scenes. No signup required.",
+    image: "https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/spring-backgrounds/spring-background-01.webp",
+    datePublished: "2026-04-04",
+    dateModified: "2026-04-04"
   }
 };
