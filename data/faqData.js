@@ -549,6 +549,25 @@ export const faqData = {
     }
   ],
 
+  'how-to-change-zoom-background-pc': [
+    {
+      question: "How do I change my Zoom background on a PC?",
+      answer: "Open Zoom and click the gear icon (Settings) in the top-right corner. Select Background & Effects in the left panel, then click the Virtual Background tab. Click the + button to upload your image file. Zoom saves it automatically for future calls."
+    },
+    {
+      question: "Why is the virtual background option greyed out in Zoom?",
+      answer: "On a personal or free account, go to zoom.us → sign in → Settings → scroll to Virtual background → toggle it on, then reopen the desktop app. On a work account managed by your company, you need to ask your IT administrator to enable it in the Zoom admin console."
+    },
+    {
+      question: "What image format should I use for a Zoom background on PC?",
+      answer: "Zoom accepts JPG, PNG, GIF, and MP4 video files. Use a 16:9 landscape image at 1920×1080 pixels or higher. Portrait-format photos and square images will stretch or tile incorrectly."
+    },
+    {
+      question: "How do I make my Zoom background look realistic?",
+      answer: "Use a high-resolution 16:9 image of a real space — an office, bookshelf, or room with visible depth. Flat graphics and gradient backgrounds make the AI blending obvious. Face a light source (window or ring light) to improve edge detection quality."
+    }
+  ],
+
   'virtual-background-setup-by-platform': [
     {
       question: "How do I set up a virtual background on Zoom?",

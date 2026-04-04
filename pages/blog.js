@@ -38,6 +38,14 @@ export default function Blog() {
 
   const blogPosts = [
     {
+    title: "How to Change Your Zoom Background on a PC (2026 Tutorial)",
+    slug: "how-to-change-zoom-background-pc",
+    excerpt: "Step-by-step tutorial for changing your Zoom virtual background on a PC — watch the video or follow the written steps. Includes the fix if the option is greyed out.",
+    date: "April 2026",
+    readTime: "3 min read",
+    category: "Platform Guide"
+  },
+    {
     title: "How to Set Up a Virtual Background on Zoom, Teams & Meet",
     slug: "virtual-background-setup-by-platform",
     excerpt: "Exact step-by-step instructions for setting up a virtual background on Zoom, Microsoft Teams, Google Meet, and Webex — plus the one thing most setup guides miss.",

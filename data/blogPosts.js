@@ -28,6 +28,7 @@ import { videoCallEquipmentGuideContent }      from './blog-content/video-call-e
 import { hdVirtualBackgroundsContent }         from './blog-content/hd-virtual-backgrounds';
 import { logoVirtualBackgroundContent }        from './blog-content/logo-virtual-background';
 import { virtualBackgroundSetupByPlatformContent } from './blog-content/virtual-background-setup-by-platform';
+import { howToChangeZoomBackgroundPcContent }      from './blog-content/how-to-change-zoom-background-pc';
 // ─── ↑ Add new content imports above this line ───────────────────────────────
 
 export const blogPosts = [
@@ -157,6 +158,39 @@ export const blogPosts = [
   },
 
   // ─── Regular posts ──────────────────────────────────────────────────────────
+  {
+    slug: 'how-to-change-zoom-background-pc',
+    // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.
+    title: 'How to Change Your Zoom Background on a PC (2026 Tutorial)',
+    description: 'Step-by-step tutorial: change your Zoom virtual background on a Windows PC in under 60 seconds. Includes fix if the option is greyed out.',
+    excerpt: 'Step-by-step tutorial for changing your Zoom virtual background on a PC — watch the video or follow the written steps. Includes the fix if the option is greyed out.',
+    headline: 'How to Change Your Zoom Background on a PC (2026 Tutorial)',
+    keywords: 'how to change zoom background, zoom background PC, zoom virtual background windows, change background zoom, zoom background not showing',
+    canonical: 'https://streambackdrops.com/blog/how-to-change-zoom-background-pc',
+    image: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-01.webp',
+    category: 'Platform Guide',
+    readTime: '3 min read',
+    date: 'April 2026',
+    datePublished: '2026-04-03',
+    dateModified: '2026-04-03',
+    featured: false,
+    sortOrder: 13,
+    live: true,
+    faqKey: 'how-to-change-zoom-background-pc',
+    // VideoObject schema — tells Google this page contains an embedded video.
+    // thumbnailUrl: YouTube auto-generates this from the video ID.
+    // Update `duration` (ISO 8601) once you know the exact video length.
+    videoSchema: {
+      name: 'How to Change Your Zoom Background on a PC (2026 Tutorial)',
+      description: 'Step-by-step tutorial showing how to change your Zoom virtual background on a Windows PC in under 60 seconds, including the fix when the option is greyed out.',
+      thumbnailUrl: 'https://img.youtube.com/vi/mBHIi4X8um0/maxresdefault.jpg',
+      uploadDate: '2026-04-03',
+      contentUrl: 'https://www.youtube.com/watch?v=mBHIi4X8um0',
+      embedUrl: 'https://www.youtube.com/embed/mBHIi4X8um0',
+      duration: 'PT1M8S'
+    },
+    content: howToChangeZoomBackgroundPcContent
+  },
   {
     slug: 'virtual-background-setup-by-platform',
     // NOTE: title and description below are the COMPLETE values used in <title> and

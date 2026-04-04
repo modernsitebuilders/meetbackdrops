@@ -2,6 +2,30 @@
 // HowTo structured data for tutorial blog posts
 
 export const howToData = {
+  'how-to-change-zoom-background-pc': {
+    name: "How to Change Your Zoom Background on a PC",
+    description: "Step-by-step guide to changing your Zoom virtual background on a Windows PC in under 60 seconds",
+    totalTime: "PT2M", // 2 minutes
+    steps: [
+      {
+        name: "Open Zoom Settings",
+        text: "Open Zoom on your PC and click the gear icon in the top-right corner to open the Settings panel."
+      },
+      {
+        name: "Go to Background & Effects",
+        text: "In the left panel of Settings, click 'Background & Effects', then make sure the 'Virtual Background' tab is selected."
+      },
+      {
+        name: "Upload Your Background Image",
+        text: "Click the + button (Add image or video) and select your background image file from your computer. Use a 16:9 JPG or PNG image at 1920×1080 pixels or higher."
+      },
+      {
+        name: "Apply the Background",
+        text: "Click your newly uploaded background thumbnail to apply it. Zoom saves it automatically — it will be active for every future call without needing to repeat these steps."
+      }
+    ]
+  },
+
   'virtual-background-guide': {
     name: "How to Set Up Virtual Backgrounds for Video Calls",
     description: "Complete step-by-step guide to setting up virtual backgrounds on Zoom, Microsoft Teams, and Google Meet",

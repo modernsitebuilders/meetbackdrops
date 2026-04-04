@@ -6,6 +6,7 @@ import { getFAQs } from '../../data/faqData';
 import { categoryInfo } from '../../data/categoryData';
 import HowToSchema from '../../components/HowToSchema';
 import { howToData } from '../../data/howToData';
+import VideoObjectSchema from '../../components/VideoObjectSchema';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import { blogPosts } from '../../data/blogPosts';
 import EasterHDBanner from '../../components/EasterHDBanner';
@@ -64,6 +65,19 @@ export default function BlogPost() {
           image={blogPost.image}
           totalTime={howToData[slug].totalTime}
           steps={howToData[slug].steps}
+        />
+      )}
+
+      {/* VideoObject schema for posts that embed a video */}
+      {blogPost.videoSchema && (
+        <VideoObjectSchema
+          name={blogPost.videoSchema.name}
+          description={blogPost.videoSchema.description}
+          thumbnailUrl={blogPost.videoSchema.thumbnailUrl}
+          uploadDate={blogPost.videoSchema.uploadDate}
+          contentUrl={blogPost.videoSchema.contentUrl}
+          embedUrl={blogPost.videoSchema.embedUrl}
+          duration={blogPost.videoSchema.duration}
         />
       )}
 
