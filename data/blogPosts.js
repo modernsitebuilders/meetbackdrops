@@ -185,7 +185,7 @@ export const blogPosts = [
       name: 'How to Change Your Zoom Background on a PC (2026 Tutorial)',
       description: 'Step-by-step tutorial showing how to change your Zoom virtual background on a Windows PC in under 60 seconds, including the fix when the option is greyed out.',
       thumbnailUrl: 'https://img.youtube.com/vi/mBHIi4X8um0/maxresdefault.jpg',
-      uploadDate: '2026-04-03',
+      uploadDate: '2026-04-03T00:00:00+00:00',
       contentUrl: 'https://www.youtube.com/watch?v=mBHIi4X8um0',
       embedUrl: 'https://www.youtube.com/embed/mBHIi4X8um0',
       duration: 'PT1M8S'
