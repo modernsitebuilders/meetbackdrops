@@ -6,7 +6,6 @@ import Layout from '../components/Layout';
 import TrustBadges from '../components/TrustBadges';
 import HeroCTA from '../components/HeroCTA';
 import HDBadge from '../components/HDBadge';
-import EasterHDBanner from '../components/EasterHDBanner';
 import WhyDifferent from '../components/WhyDifferent';
 import SocialProof from '../components/SocialProof';
 import { useRouter } from 'next/router';
@@ -96,7 +95,6 @@ export default function Home() {
 <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
   <HDBadge />
 </div>
-<EasterHDBanner />
 <WhyDifferent />
         <SocialProof />
         

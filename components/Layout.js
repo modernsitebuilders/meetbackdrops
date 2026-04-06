@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import Footer from './Footer';
 import Header from './Header';
-import EasterBanner from './EasterBanner';
 import SpringBanner from './SpringBanner';
 import WishlistDrawer from './WishlistDrawer';
 
@@ -161,7 +160,6 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
           Skip to content
         </a>
         <Header currentPage={currentPage} />
-        {router.asPath !== '/category/easter-backgrounds' && router.asPath !== '/hd' && <EasterBanner />}
         {router.asPath !== '/category/spring-backgrounds' && <SpringBanner />}
         <WishlistDrawer />
 
