@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import YoutubeEmbed from '../../components/YoutubeEmbed';
 
 export const howToChangeZoomBackgroundPcContent = () => (
   <article style={{ background: '#f8fafc', minHeight: '100vh' }}>
@@ -70,28 +71,10 @@ export const howToChangeZoomBackgroundPcContent = () => (
 
             {/* VIDEO EMBED */}
             <div style={{ marginBottom: '2.5rem' }}>
-              <div style={{
-                position: 'relative',
-                paddingBottom: '56.25%', // 16:9
-                height: 0,
-                overflow: 'hidden',
-                borderRadius: '0.5rem',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-              }}>
-                <iframe
-                  style={{
-                    position: 'absolute',
-                    top: 0, left: 0,
-                    width: '100%', height: '100%',
-                    border: 0
-                  }}
-                  src="https://www.youtube.com/embed/mBHIi4X8um0"
-                  title="How to Change Your Zoom Background on a PC (2026 Tutorial)"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              </div>
+              <YoutubeEmbed
+                videoId="mBHIi4X8um0"
+                title="How to Change Your Zoom Background on a PC (2026 Tutorial)"
+              />
             </div>
 
             {/* WRITTEN STEPS */}
