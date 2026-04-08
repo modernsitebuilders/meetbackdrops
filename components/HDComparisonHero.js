@@ -67,6 +67,8 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
     setLoading(false);
   };
 
+  console.log('HDComparisonHero render - modalOpen:', modalOpen);
+
   return (
     <>
       <div style={{
