@@ -267,6 +267,12 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
 }
 
 // ─── HD Product Card ───────────────────────────────────────────────────────────
+// FIXED: 2026-04-08 16:30 UTC - Added multi-format lookup for cloudinaryUrls
+// REASON: cloudinary-urls.json uses different key formats (simple filename vs path-based).
+//         Previously only looked for simple filename (e.g., "bookshelves-bright-04"),
+//         but the JSON contains path-based keys (e.g., "webp/bookshelves-bright/bookshelves-bright-04").
+//         Now tries multiple formats before falling back to constructed URL.
+// DO NOT REMOVE or modify the multi-key lookup logic without testing all image types.
 function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onHdOnlyPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
   const { toggleWishlist, isWishlisted, openDrawer } = useWishlist();
   const wishlisted = isWishlisted(product.id);
@@ -370,16 +376,37 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
             }
           } else {
             const baseFilename = product.id.replace('-hd', '');
-            const imageUrl = cloudinaryUrls[baseFilename];
-            console.log('🔵 [HdProductCard] baseFilename:', baseFilename);
-            console.log('🔵 [HdProductCard] imageUrl found:', !!imageUrl);
+            
+            // FIX: Multi-format lookup for cloudinaryUrls (added 2026-04-08)
+            // The JSON file contains keys in multiple formats. Try each one.
+            let imageUrl = cloudinaryUrls[baseFilename];                           // Format 1: "bookshelves-bright-04"
+            
+            if (!imageUrl) {
+              // Format 2: "webp/bookshelves-bright/bookshelves-bright-04"
+              const pathKey = `webp/${product.category}/${baseFilename}`;
+              imageUrl = cloudinaryUrls[pathKey];
+              console.log('🔵 [HdProductCard] Trying pathKey:', pathKey, 'found:', !!imageUrl);
+            }
+            
+            if (!imageUrl) {
+              // Format 3: "bookshelves-bright-04.webp"
+              imageUrl = cloudinaryUrls[`${baseFilename}.webp`];
+            }
+            
+            if (!imageUrl) {
+              // Format 4: Direct construction as final fallback
+              imageUrl = `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${product.category}/${baseFilename}.webp`;
+              console.log('🔵 [HdProductCard] Using constructed URL:', imageUrl);
+            } else {
+              console.log('🔵 [HdProductCard] Found URL in cloudinaryUrls');
+            }
+            // END OF FIX - Do not modify the lookup logic above
             
             if (imageUrl) {
               try {
                 const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
                 const data = await res.json();
                 console.log('🔵 [HdProductCard] API response has URL:', !!data.url);
-                console.log('🔵 [HdProductCard] Calling onPreview');
                 onPreview({
                   id: product.id,
                   standard: imageUrl,
@@ -1302,7 +1329,7 @@ export default function Premium({ reviewsData }) {
 
       {/* Debug log for previewImage state */}
       {console.log('🔵 [Main] previewImage state:', previewImage)}
-      
+
       <ComparisonWidget
         isOpen={!!previewImage}
         onClose={() => setPreviewImage(null)}
