@@ -356,6 +356,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
       <button
         onClick={async (e) => {
           e.stopPropagation();
+          console.log('🔵 [HdProductCard] Preview clicked for:', product.id);
           trackAnalytics(hdOnly ? 'hd_exclusive_preview' : 'hd_preview_opened', product.id, product.category);
           if (hdOnly) {
             // HD-only: show single fullscreen lightbox with the HD image
@@ -370,16 +371,22 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
           } else {
             const baseFilename = product.id.replace('-hd', '');
             const imageUrl = cloudinaryUrls[baseFilename];
+            console.log('🔵 [HdProductCard] baseFilename:', baseFilename);
+            console.log('🔵 [HdProductCard] imageUrl found:', !!imageUrl);
+            
             if (imageUrl) {
               try {
                 const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
                 const data = await res.json();
+                console.log('🔵 [HdProductCard] API response has URL:', !!data.url);
+                console.log('🔵 [HdProductCard] Calling onPreview');
                 onPreview({
                   id: product.id,
                   standard: imageUrl,
                   hd: data.url
                 });
-              } catch {
+              } catch (error) {
+                console.log('🔵 [HdProductCard] API error:', error);
                 onPreview({ id: product.id, standard: imageUrl, hd: null });
               }
             }
@@ -1292,6 +1299,10 @@ export default function Premium({ reviewsData }) {
       </section>
 
       {/* Comparison widget — standard images */}
+
+      {/* Debug log for previewImage state */}
+      {console.log('🔵 [Main] previewImage state:', previewImage)}
+      
       <ComparisonWidget
         isOpen={!!previewImage}
         onClose={() => setPreviewImage(null)}
