@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
 
+console.log('Widget render - isOpen:', isOpen);
+if (isOpen) console.log('Modal should be visible');
+
 export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose, hdPageUrl }) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [showInstruction, setShowInstruction] = useState(true);
