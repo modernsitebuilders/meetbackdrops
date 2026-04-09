@@ -194,12 +194,32 @@ export default function Footer() {
     A Modern Site Builders Production
   </p>
 
+  {/* Trust Badges Section */}
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
   {/* OpenHunts Badge */}
-  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
-    <a href="https://openhunts.com" target="_blank" title="OpenHunts Club" rel="noopener noreferrer">
-      <img alt="OpenHunts Club Member" height="105" src="https://cdn.openhunts.com/badges/club.webp" style={{ width: '195px', height: 'auto' }} width="486" />
-    </a>
-  </div>
+  <a href="https://openhunts.com" target="_blank" rel="noopener noreferrer" title="OpenHunts Club">
+    <img 
+      alt="OpenHunts Club Member" 
+      height="105" 
+      src="https://cdn.openhunts.com/badges/club.webp" 
+      style={{ width: '195px', height: 'auto' }} 
+      width="486" 
+    />
+  </a>
+  
+  {/* SaaSHub Badge */}
+  <a 
+    href="https://www.saashub.com/streambackdrops?utm_source=badge&utm_campaign=badge&utm_content=streambackdrops&badge_variant=color&badge_kind=approved" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <img 
+      src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" 
+      alt="StreamBackdrops badge" 
+      style={{ maxWidth: '150px' }} 
+    />
+  </a>
+</div>
 
 </div>
       </div>
