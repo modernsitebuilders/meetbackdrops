@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { event } from '../lib/gtag';
+import { getOrCreateSession, getOrCreateVisitorId, getVisitorType } from '../lib/sessionTracking';
 
 // Module-level state so the YT API script is only loaded once
 let ytApiLoaded = false;
@@ -47,6 +48,30 @@ export default function YoutubeEmbed({ videoId, title }) {
               if (!hasStartedRef.current) {
                 hasStartedRef.current = true;
                 event('video_start', { video_title: title, video_id: videoId });
+
+                // Track first play to Sheets analytics queue
+                try {
+                  const session = getOrCreateSession();
+                  fetch('/api/track-video-play', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      videoId,
+                      videoTitle: title,
+                      page: window.location.pathname,
+                      sessionId: session?.id || null,
+                      originalReferrer: session?.originalReferrer || 'direct',
+                      originalUtmSource: session?.originalUtmSource || null,
+                      originalUtmMedium: session?.originalUtmMedium || null,
+                      originalUtmCampaign: session?.originalUtmCampaign || null,
+                      landingPage: session?.landingPage || null,
+                      pageViewsInSession: session?.pageViews || 0,
+                      downloadsInSession: session?.downloads || 0,
+                      visitorId: getOrCreateVisitorId(),
+                      visitorType: getVisitorType(),
+                    }),
+                  }).catch(() => {});
+                } catch (e) {}
               } else {
                 event('video_resume', { video_title: title, video_id: videoId });
               }
