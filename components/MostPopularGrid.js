@@ -10,7 +10,6 @@ function trackAnalytics(eventType, filename, category) {
     body: JSON.stringify({ eventType, filename, category }),
   }).catch(() => {});
 }
-import Image from 'next/image';
 import { useImageDownload } from '../lib/useImageDownload';
 import ReviewModal from './ReviewModal';
 import RateLimitModal from './RateLimitModal';
@@ -130,12 +129,11 @@ export default function MostPopularGrid() {
               aspectRatio: '16/9',
               overflow: 'hidden'
             }}>
-              <Image
-                src={image.webPath?.startsWith('/images/') ? `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp${image.webPath.slice('/images'.length)}` : image.webPath}
+              <img
+                src={image.webPath?.startsWith('/images/') ? `https://res.cloudinary.com/dnhju6mhg/image/upload/webp${image.webPath.slice('/images'.length)}` : image.webPath}
                 alt={`${image.filename} - Popular virtual background`}
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                loading="lazy"
+                style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', inset: 0 }}
               />
 
               {/* Hover overlay */}

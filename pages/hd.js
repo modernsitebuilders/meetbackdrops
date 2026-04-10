@@ -276,7 +276,7 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
 function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onHdOnlyPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
   const { toggleWishlist, isWishlisted, openDrawer } = useWishlist();
   const wishlisted = isWishlisted(product.id);
-  const thumb = `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
+  const thumb = `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
 
   const handleWishlist = (e) => {
     e.stopPropagation();
@@ -372,7 +372,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
               onHdOnlyPreview({ url: data.url, productId: product.id });
             } catch {
               // fallback to standard webp if HD url fetch fails
-              onHdOnlyPreview({ url: `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${product.category}/${product.id.replace('-hd', '')}.webp`, productId: product.id });
+              onHdOnlyPreview({ url: `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${product.id.replace('-hd', '')}.webp`, productId: product.id });
             }
           } else {
             const baseFilename = product.id.replace('-hd', '');
@@ -395,7 +395,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
             
             if (!imageUrl) {
               // Format 4: Direct construction as final fallback
-              imageUrl = `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${product.category}/${baseFilename}.webp`;
+              imageUrl = `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${baseFilename}.webp`;
               console.log('🔵 [HdProductCard] Using constructed URL:', imageUrl);
             } else {
               console.log('🔵 [HdProductCard] Found URL in cloudinaryUrls');
@@ -449,7 +449,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
       )}
 
       <img
-        src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${product.category}/${product.id.replace('-hd', '')}.webp`}
+        src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${product.id.replace('-hd', '')}.webp`}
         alt={`${product.name} - Premium HD Virtual Background`}
         style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }}
       />

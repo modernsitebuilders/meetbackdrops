@@ -1,41 +1,40 @@
 // components/RelatedCategories.js
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from '../styles/RelatedCategories.module.css';
 
 const RELATED_MAP = {
   'office-spaces': [
-    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home settings', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/home-office/home-offices-05.webp' },
-    { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Professional library look', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-dark/bookshelves-dark-02.webp' },
-    { slug: 'libraries', name: 'Libraries', desc: 'Sophisticated meeting background', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/libraries/library-01.webp' }
+    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home settings', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/home-office/home-offices-05.webp' },
+    { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Professional library look', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-dark/bookshelves-dark-02.webp' },
+    { slug: 'libraries', name: 'Libraries', desc: 'Sophisticated meeting background', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/libraries/library-01.webp' }
   ],
   'home-office': [
-    { slug: 'office-spaces', name: 'Office Spaces', desc: 'More formal corporate settings', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-01.webp' },
-    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, approachable setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-bright/bookshelves-bright-02.webp' },
-    { slug: 'living-rooms', name: 'Living Rooms', desc: 'Comfortable home backgrounds', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/living-rooms/living-room-12.webp' }
+    { slug: 'office-spaces', name: 'Office Spaces', desc: 'More formal corporate settings', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/office-spaces/office-spaces-01.webp' },
+    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, approachable setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-bright/bookshelves-bright-02.webp' },
+    { slug: 'living-rooms', name: 'Living Rooms', desc: 'Comfortable home backgrounds', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/living-rooms/living-room-12.webp' }
   ],
   'bookshelves-bright': [
-    { slug: 'libraries', name: 'Libraries', desc: 'Classic study atmosphere', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/libraries/library-01.webp' },
-    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/home-office/home-offices-05.webp' },
-    { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Ambient evening lighting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-dark/bookshelves-dark-02.webp' }
+    { slug: 'libraries', name: 'Libraries', desc: 'Classic study atmosphere', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/libraries/library-01.webp' },
+    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/home-office/home-offices-05.webp' },
+    { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Ambient evening lighting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-dark/bookshelves-dark-02.webp' }
   ],
   'bookshelves-dark': [
-    { slug: 'libraries', name: 'Libraries', desc: 'Classic study atmosphere', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/libraries/library-01.webp' },
-    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/home-office/home-offices-05.webp' },
-    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Bright daytime setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-bright/bookshelves-bright-02.webp' }
+    { slug: 'libraries', name: 'Libraries', desc: 'Classic study atmosphere', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/libraries/library-01.webp' },
+    { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/home-office/home-offices-05.webp' },
+    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Bright daytime setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-bright/bookshelves-bright-02.webp' }
   ],
   'libraries': [
-    { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Similar intimate atmosphere', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-dark/bookshelves-dark-02.webp' },
-    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Brighter book collection', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-bright/bookshelves-bright-02.webp' },
-    { slug: 'office-spaces', name: 'Office Spaces', desc: 'Modern professional look', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-01.webp' }
+    { slug: 'bookshelves-dark', name: 'Bookshelves - Dark', desc: 'Similar intimate atmosphere', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-dark/bookshelves-dark-02.webp' },
+    { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Brighter book collection', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-bright/bookshelves-bright-02.webp' },
+    { slug: 'office-spaces', name: 'Office Spaces', desc: 'Modern professional look', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/office-spaces/office-spaces-01.webp' }
   ]
 };
 
 // Default for all other categories
 const DEFAULT_RELATED = [
-  { slug: 'office-spaces', name: 'Office Spaces', desc: 'Professional business backgrounds', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-01.webp' },
-  { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home settings', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/home-office/home-offices-05.webp' },
-  { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, intellectual setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-bright/bookshelves-bright-02.webp' }
+  { slug: 'office-spaces', name: 'Office Spaces', desc: 'Professional business backgrounds', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/office-spaces/office-spaces-01.webp' },
+  { slug: 'home-office', name: 'Home Offices', desc: 'Cozy work-from-home settings', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/home-office/home-offices-05.webp' },
+  { slug: 'bookshelves-bright', name: 'Bookshelves - Bright', desc: 'Warm, intellectual setting', img: 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-bright/bookshelves-bright-02.webp' }
 ];
 
 export default function RelatedCategories({ currentSlug }) {
@@ -49,11 +48,11 @@ export default function RelatedCategories({ currentSlug }) {
         {related.map((cat) => (
           <Link key={cat.slug} href={`/category/${cat.slug}`} className={styles.card}>
             <div className={styles.imageContainer}>
-              <Image
+              <img
                 src={cat.img}
                 alt={cat.name}
-                fill
-                style={{ objectFit: 'cover' }}
+                loading="lazy"
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
               />
             </div>
             <div className={styles.content}>

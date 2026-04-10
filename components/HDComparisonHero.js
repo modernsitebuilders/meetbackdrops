@@ -12,42 +12,21 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [hdUrl, setHdUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  console.log('🔵 [HDComparisonHero] Component rendering with slug:', slug);
-  console.log('🔵 [HDComparisonHero] modalOpen state:', modalOpen);
-  console.log('🔵 [HDComparisonHero] hdUrl state:', hdUrl);
-  console.log('🔵 [HDComparisonHero] loading state:', loading);
-
   // Find the highest-scored image in this category that has an HD version
   const topImage = [...images]
     .filter(img => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
     .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
 
-  console.log('🔵 [HDComparisonHero] topImage found:', topImage?.filename || 'none');
-
-  if (!topImage) {
-    console.log('🔵 [HDComparisonHero] No topImage - component returning null');
-    return null;
-  }
+  if (!topImage) return null;
 
   const baseId = topImage.filename.replace(/\.\w+$/, '');
   const hdId = `${baseId}-hd`;
   const freeUrl = cloudinaryUrls[baseId];
 
-  console.log('🔵 [HDComparisonHero] baseId:', baseId);
-  console.log('🔵 [HDComparisonHero] hdId:', hdId);
-  console.log('🔵 [HDComparisonHero] freeUrl exists?', !!freeUrl);
-
-  if (!freeUrl) {
-    console.log('🔵 [HDComparisonHero] No freeUrl - component returning null');
-    return null;
-  }
+  if (!freeUrl) return null;
 
   const trackCompareClick = () => {
-    console.log('🔵 [trackCompareClick] Called');
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('🔵 [trackCompareClick] Not in production - skipping analytics');
-      return;
-    }
+    if (process.env.NODE_ENV !== 'production') return;
     const session = getOrCreateSession();
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'cat_page_hd_compare_clicked', {
@@ -70,56 +49,31 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
         visitorType: getVisitorType(),
         landingPage: session?.landingPage || '',
       }),
-    }).catch((err) => console.log('🔵 [trackCompareClick] Fetch error:', err));
+    }).catch(() => {});
   };
 
   const handleCompare = async () => {
-    console.log('🔵 [handleCompare] START - Button clicked!');
-    console.log('🔵 [handleCompare] Current hdUrl:', hdUrl);
-    console.log('🔵 [handleCompare] Current modalOpen:', modalOpen);
-    
-    if (hdUrl) { 
-      console.log('🔵 [handleCompare] hdUrl exists - opening modal');
-      setModalOpen(true); 
-      console.log('🔵 [handleCompare] setModalOpen(true) called');
-      return; 
+    if (hdUrl) {
+      setModalOpen(true);
+      return;
     }
-    
-    console.log('🔵 [handleCompare] No hdUrl yet - fetching from API');
+
     setLoading(true);
-    console.log('🔵 [handleCompare] setLoading(true) called');
-    
     trackCompareClick();
-    
+
     try {
-      console.log('🔵 [handleCompare] Fetching from API: /api/hd-preview-url?imageId=${hdId}');
       const res = await fetch(`/api/hd-preview-url?imageId=${hdId}`);
-      console.log('🔵 [handleCompare] API response status:', res.status);
-      
       const data = await res.json();
-      console.log('🔵 [handleCompare] API response data:', data);
-      
       if (data.url) {
-        console.log('🔵 [handleCompare] Setting hdUrl to:', data.url);
         setHdUrl(data.url);
-        console.log('🔵 [handleCompare] Opening modal');
         setModalOpen(true);
-        console.log('🔵 [handleCompare] setModalOpen(true) called');
-      } else {
-        console.log('🔵 [handleCompare] No URL in API response');
       }
     } catch (error) {
-      console.log('🔵 [handleCompare] API error:', error);
+      console.error('HD preview fetch error:', error);
     }
-    
-    setLoading(false);
-    console.log('🔵 [handleCompare] setLoading(false) called');
-    console.log('🔵 [handleCompare] END');
-  };
 
-  console.log('🔵 [HDComparisonHero] Before return - modalOpen:', modalOpen);
-  console.log('🔵 [HDComparisonHero] Before return - hdUrl exists?', !!hdUrl);
-  console.log('🔵 [HDComparisonHero] Before return - will render modal?', modalOpen && hdUrl);
+    setLoading(false);
+  };
 
   return (
     <>
@@ -144,10 +98,7 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
 
         {/* Right: image card with single button */}
         <div
-          onClick={() => {
-            console.log('🔵 [Button] Click detected!');
-            handleCompare();
-          }}
+          onClick={handleCompare}
           style={{
             position: 'relative',
             width: '300px',
@@ -183,21 +134,15 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
         </div>
       </div>
 
-      {console.log('🔵 [JSX] About to conditionally render modal - modalOpen:', modalOpen, 'hdUrl:', !!hdUrl)}
       {modalOpen && hdUrl && (
-        console.log('🔵 [JSX] Rendering ComparisonWidget!') || (
-          <ComparisonWidget
-            standardImg={freeUrl}
-            hdImg={hdUrl}
-            imageId={hdId}
-            isOpen={modalOpen}
-            onClose={() => {
-              console.log('🔵 [onClose] Closing modal');
-              setModalOpen(false);
-            }}
-            hdPageUrl={`/hd?category=${slug}`}
-          />
-        )
+        <ComparisonWidget
+          standardImg={freeUrl}
+          hdImg={hdUrl}
+          imageId={hdId}
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          hdPageUrl={`/hd?category=${slug}`}
+        />
       )}
     </>
   );

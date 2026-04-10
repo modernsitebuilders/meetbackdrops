@@ -9,12 +9,12 @@ import WishlistDrawer from './WishlistDrawer';
 
 export default function Layout({
   children,
-  title = 'StreamBackdrops - Free Professional Virtual Backgrounds',
-  description = `Download free professional virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Over ${TOTAL_IMAGES_FORMATTED} premium images for video calls.
-No signup required, no watermarks - just high-quality backgrounds perfect for video calls, remote work, and online meetings.`,
+  title = 'StreamBackdrops - Free Professional Virtual Background Images',
+  description = `Download free professional still image virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Over ${TOTAL_IMAGES_FORMATTED} static photo backgrounds for video calls.
+No signup required, no watermarks - just high-quality background images perfect for video calls, remote work, and online meetings.`,
   currentPage = null,
   canonical,
-  keywords = 'virtual backgrounds, Zoom backgrounds, Teams backgrounds, professional video calls, free download',
+  keywords = 'virtual backgrounds, virtual background images, Zoom backgrounds, Teams backgrounds, still image backgrounds, photo backgrounds, professional video calls, free download',
   image = '/og-image.png',
   structuredData,
   noIndex = false,
@@ -30,7 +30,7 @@ No signup required, no watermarks - just high-quality backgrounds perfect for vi
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "StreamBackdrops",
-    "description": "Free professional virtual backgrounds for video calls",
+    "description": "Free professional still image virtual backgrounds for video calls — static photos, not video streams",
     "url": "https://streambackdrops.com",
     "potentialAction": {
       "@type": "SearchAction",

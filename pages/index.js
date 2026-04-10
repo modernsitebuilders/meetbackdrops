@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { HERO_IMAGES } from '../data/heroImages';
-import Image from 'next/image';
 import Layout from '../components/Layout';
 import TrustBadges from '../components/TrustBadges';
 import HeroCTA from '../components/HeroCTA';
 import HDBadge from '../components/HDBadge';
 import WhyDifferent from '../components/WhyDifferent';
+import YoutubeEmbed from '../components/YoutubeEmbed';
 import SocialProof from '../components/SocialProof';
 import { useRouter } from 'next/router';
 
@@ -51,8 +51,8 @@ export default function Home() {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Free Virtual Backgrounds for Zoom & Teams | StreamBackdrops"
-      description="Download 1300+ free virtual backgrounds for Zoom, Teams & Google Meet. No signup, no watermarks. Bookshelf, office, nature & more — instant download."
+      title="Free Virtual Background Images for Zoom & Teams | StreamBackdrops"
+      description="Download 1300+ free still image virtual backgrounds for Zoom, Teams & Google Meet. Static photos — no video, no signup, no watermarks. Bookshelf, office, nature & more — instant download."
       currentPage="home"
     >
       <Head>
@@ -75,13 +75,12 @@ export default function Home() {
           margin: '0 auto'
         }}>
           {HERO_IMAGES.map((img, i) => (
-            <Image 
+            <img
               key={i}
               src={img.src}
               alt={img.alt}
-              width={333}
-              height={200}
-              priority={i === 0}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'auto'}
               style={{ width: '100%', height: '200px', objectFit: 'cover' }}
             />
           ))}
@@ -96,6 +95,12 @@ export default function Home() {
   <HDBadge />
 </div>
 <WhyDifferent />
+
+        <div style={{ maxWidth: '640px', margin: '0 auto 2rem', padding: '0 1rem' }}>
+          <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>See It in Action</h2>
+          <YoutubeEmbed videoId="RgI9cv7ri-w" title="StreamBackdrops Overview" />
+        </div>
+
         <SocialProof />
         
         {/* Category Grid - Lazy loaded */}

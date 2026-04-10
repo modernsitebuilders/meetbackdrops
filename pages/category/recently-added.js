@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import ReviewModal from '../../components/ReviewModal';
@@ -125,14 +124,11 @@ export default function RecentlyAdded() {
                   onClick={() => setSelectedImage(image)}
                 >
                   <div className={styles.imageWrapper}>
-                    <Image
-                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${image.category}/${image.filename}`}
+                    <img
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${image.category}/${image.filename}`}
                       alt={`Recently added ${image.title}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      style={{ objectFit: 'cover' }}
                       loading={index < 6 ? 'eager' : 'lazy'}
-                      priority={index < 3}
+                      style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', inset: 0 }}
                     />
                     <div className={styles.hoverOverlay}>
                       <button

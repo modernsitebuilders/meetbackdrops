@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
@@ -177,21 +176,17 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
               aspectRatio: '16/9',
               overflow: 'hidden'
             }}>
-              <Image
+              <img
                 src={webpUrl(folderMap[slug] || slug, image.filename)}
                 alt={`${image.title} - Free virtual background for Zoom, Teams & Google Meet`}
                 title={`Download ${image.title} - Professional video call background`}
-                width={1456}
-                height={816}
+                loading={index < 4 ? 'eager' : 'lazy'}
+                decoding={index < 4 ? 'sync' : 'async'}
                 style={{
                   objectFit: 'cover',
                   width: '100%',
                   height: '100%'
                 }}
-                priority={index < 4}
-                loading={index < 4 ? undefined : 'lazy'}
-                quality={75}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
               />
 
               {/* HD-only corner badge */}

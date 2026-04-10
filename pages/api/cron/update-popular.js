@@ -261,7 +261,7 @@ export default async function handler(req, res) {
         downloadCount: item.downloads,
         score: score,
         lastDownload: item.lastDownload,
-        webPath: `https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${finalCategory}/${webFilename}`
+        webPath: `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${finalCategory}/${webFilename}`
       };
     });
 

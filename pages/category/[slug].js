@@ -169,17 +169,17 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'bookshelves-dark': 'bookshelves-dark-01.webp',
     'wall-shelves-bright': 'wall-shelves-bright-01.webp',
     'wall-shelves-dark': 'wall-shelves-dark-01.webp',
-    'office-spaces': 'office-1.webp',
+    'office-spaces': 'office-spaces-01.webp',
     'home-office': 'home-offices-05.webp',
-    'living-rooms': 'living-room-1.webp',
-    'kitchens': 'kitchen-1.webp',
+    'living-rooms': 'living-room-01.webp',
+    'kitchens': 'kitchen-01.webp',
     'coffee-shops': 'coffee-shop-01.webp',
     'conference-rooms': 'conference-room-01.webp',
     'art-galleries': 'art-gallery-23.webp',
     'urban-lofts': 'urban-loft-01.webp',
     'gardens-patios': 'garden-patio-01.webp',
     'historic-spaces': 'historic-space-01.webp',
-    'nature-landscapes': 'nature-1.webp',
+    'nature-landscapes': 'nature-landscape-01.webp',
     'libraries': 'library-01.webp',
     'bokeh-backgrounds': 'bokeh-01.webp',
   };
@@ -219,7 +219,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
               key={i}
               rel="preload"
               as="image"
-              href={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/${currentSlug}/${image.filename}`}
+              href={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${currentSlug}/${image.filename}`}
               media="(max-width: 768px)"
             />
           ))}
