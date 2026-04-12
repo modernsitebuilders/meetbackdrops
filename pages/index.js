@@ -7,6 +7,7 @@ import HeroCTA from '../components/HeroCTA';
 import HDBadge from '../components/HDBadge';
 import WhyDifferent from '../components/WhyDifferent';
 import YoutubeEmbed from '../components/YoutubeEmbed';
+import VideoObjectSchema from '../components/VideoObjectSchema';
 import SocialProof from '../components/SocialProof';
 import { useRouter } from 'next/router';
 
@@ -56,6 +57,15 @@ export default function Home() {
       currentPage="home"
     >
       <Head>
+        <VideoObjectSchema
+          name="StreamBackdrops Overview"
+          description="See how to browse, preview, and download free professional virtual backgrounds from StreamBackdrops for Zoom, Teams, and Google Meet."
+          thumbnailUrl="https://img.youtube.com/vi/Vv1sMh3pG_I/maxresdefault.jpg"
+          uploadDate="2026-04-11"
+          embedUrl="https://www.youtube.com/embed/Vv1sMh3pG_I"
+          contentUrl="https://www.youtube.com/watch?v=Vv1sMh3pG_I"
+          duration="PT1M56S"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <style>{`
           @keyframes shimmer {
@@ -98,7 +108,7 @@ export default function Home() {
 
         <div style={{ maxWidth: '640px', margin: '0 auto 2rem', padding: '0 1rem' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>See It in Action</h2>
-          <YoutubeEmbed videoId="RgI9cv7ri-w" title="StreamBackdrops Overview" />
+          <YoutubeEmbed videoId="Vv1sMh3pG_I" title="StreamBackdrops Overview" />
         </div>
 
         <SocialProof />
