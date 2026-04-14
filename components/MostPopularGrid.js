@@ -130,7 +130,7 @@ export default function MostPopularGrid() {
               overflow: 'hidden'
             }}>
               <img
-                src={image.webPath?.startsWith('/images/') ? `https://res.cloudinary.com/dnhju6mhg/image/upload/webp${image.webPath.slice('/images'.length)}` : image.webPath}
+                src={image.webPath?.startsWith('/images/') ? `https://assets.streambackdrops.com/webp${image.webPath.slice('/images'.length)}` : image.webPath}
                 alt={`${image.filename} - Popular virtual background`}
                 loading="lazy"
                 style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', inset: 0 }}

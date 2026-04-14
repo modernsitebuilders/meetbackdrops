@@ -7,8 +7,14 @@ const nextConfig = {
     ],
   },
   images: {
-    loaderFile: './lib/cloudinary-loader.js',
-    domains: ['streambackdrops.com', 'res.cloudinary.com'],
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.streambackdrops.com',
+        pathname: '/**',
+      },
+    ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },

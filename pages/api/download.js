@@ -22,10 +22,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing parameters' });
   }
 
-  // Only allow Cloudinary URLs to prevent server-side request forgery
+  // Only allow R2 URLs to prevent server-side request forgery
   try {
     const parsed = new URL(url);
-    if (parsed.hostname !== 'res.cloudinary.com') {
+    if (parsed.hostname !== 'assets.streambackdrops.com') {
       return res.status(400).json({ error: 'Invalid image source' });
     }
   } catch {
@@ -43,16 +43,20 @@ export default async function handler(req, res) {
     });
   }
 
-  // Insert fl_attachment into the Cloudinary URL so the browser downloads
-  // directly from Cloudinary instead of proxying through Vercel.
+  // Proxy the file from R2 and set Content-Disposition so the browser downloads it.
   try {
-    const downloadUrl = url.replace(
-      '/image/upload/',
-      `/image/upload/fl_attachment:${filename.replace(/\.[^.]+$/, '')}/`
-    );
-    return res.redirect(302, downloadUrl);
+    const r2Response = await fetch(url);
+    if (!r2Response.ok) {
+      return res.status(404).json({ error: 'Image not found' });
+    }
+    const contentType = r2Response.headers.get('content-type') || 'image/png';
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Cache-Control', 'no-store');
+    const buffer = await r2Response.arrayBuffer();
+    return res.send(Buffer.from(buffer));
   } catch (error) {
-    console.error('Download redirect failed:', error);
+    console.error('Download proxy failed:', error);
     res.status(500).json({ error: 'Download failed' });
   }
 }

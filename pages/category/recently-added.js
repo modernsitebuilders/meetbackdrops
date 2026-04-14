@@ -125,7 +125,7 @@ export default function RecentlyAdded() {
                 >
                   <div className={styles.imageWrapper}>
                     <img
-                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${image.category}/${image.filename}`}
+                      src={`https://assets.streambackdrops.com/webp/${image.category}/${image.filename}`}
                       alt={`Recently added ${image.title}`}
                       loading={index < 6 ? 'eager' : 'lazy'}
                       style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', inset: 0 }}

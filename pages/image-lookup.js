@@ -55,7 +55,7 @@ export default function ImageLookup() {
       
       setCategory(cat);
       // Use the local WebP file
-      const webpUrl = `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${cat}/${cleanFilename}.webp`;
+      const webpUrl = `https://assets.streambackdrops.com/webp/${cat}/${cleanFilename}.webp`;
       setImageUrl(webpUrl);
       
     } catch (err) {

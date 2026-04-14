@@ -2,7 +2,7 @@ import Card from './Card';
 import { CATEGORIES } from '../lib/categories-config';
 import styles from '../styles/HomePage.module.css';
 
-const CDN = 'https://res.cloudinary.com/dnhju6mhg/image/upload/webp';
+const CDN = 'https://assets.streambackdrops.com/webp';
 
 export default function CategoryGrid({ navigate }) {
   return (

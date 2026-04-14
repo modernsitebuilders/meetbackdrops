@@ -103,7 +103,7 @@ export const halloweenBackgroundsContent = () => (
           }}>
             <Link href="/category/halloween-backgrounds">
               <Image
-                src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/halloween-backgrounds/halloween-background-20.webp"
+                src="https://assets.streambackdrops.com/webp/halloween-backgrounds/halloween-background-20.webp"
                 alt="Halloween virtual background preview"
                 width={800}
                 height={450}

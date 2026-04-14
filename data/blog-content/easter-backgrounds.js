@@ -104,7 +104,7 @@ export const easterBackgroundsContent = (categoryInfo) => {
             }}>
               <Link href="/category/easter-backgrounds">
                 <Image
-                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/easter-backgrounds/easter-background-01.webp"
+                  src="https://assets.streambackdrops.com/webp/easter-backgrounds/easter-background-01.webp"
                   alt="Easter virtual background preview"
                   width={800}
                   height={450}

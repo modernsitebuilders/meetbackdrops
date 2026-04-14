@@ -197,7 +197,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
         canonical={'https://streambackdrops.com/category/' + currentSlug}
         currentPage={currentSlug}
         keywords={categoryName.toLowerCase() + ' virtual backgrounds'}
-        image={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${currentSlug}/${featuredImage}`}
+        image={`https://assets.streambackdrops.com/webp/${currentSlug}/${featuredImage}`}
       >
         <Head>
           <FAQSchema questions={getFAQs(currentSlug)} />
@@ -219,7 +219,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
               key={i}
               rel="preload"
               as="image"
-              href={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${currentSlug}/${image.filename}`}
+              href={`https://assets.streambackdrops.com/webp/${currentSlug}/${image.filename}`}
               media="(max-width: 768px)"
             />
           ))}

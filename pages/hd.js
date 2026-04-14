@@ -276,7 +276,7 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
 function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onHdOnlyPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
   const { toggleWishlist, isWishlisted, openDrawer } = useWishlist();
   const wishlisted = isWishlisted(product.id);
-  const thumb = `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
+  const thumb = `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
 
   const handleWishlist = (e) => {
     e.stopPropagation();
@@ -372,7 +372,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
               onHdOnlyPreview({ url: data.url, productId: product.id });
             } catch {
               // fallback to standard webp if HD url fetch fails
-              onHdOnlyPreview({ url: `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${product.id.replace('-hd', '')}.webp`, productId: product.id });
+              onHdOnlyPreview({ url: `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`, productId: product.id });
             }
           } else {
             const baseFilename = product.id.replace('-hd', '');
@@ -395,7 +395,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
             
             if (!imageUrl) {
               // Format 4: Direct construction as final fallback
-              imageUrl = `https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${baseFilename}.webp`;
+              imageUrl = `https://assets.streambackdrops.com/webp/${product.category}/${baseFilename}.webp`;
               console.log('🔵 [HdProductCard] Using constructed URL:', imageUrl);
             } else {
               console.log('🔵 [HdProductCard] Found URL in cloudinaryUrls');
@@ -449,7 +449,7 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
       )}
 
       <img
-        src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/${product.category}/${product.id.replace('-hd', '')}.webp`}
+        src={`https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`}
         alt={`${product.name} - Premium HD Virtual Background`}
         style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }}
       />
@@ -1156,7 +1156,7 @@ export default function Premium({ reviewsData }) {
       description="Professional HD virtual backgrounds in stunning 2912×1632 resolution. Perfect for Zoom, Teams, and Google Meet. 2x sharper than standard backgrounds."
       canonical="https://streambackdrops.com/hd"
       keywords="HD virtual backgrounds, high resolution backgrounds, premium zoom backgrounds, professional video call backgrounds, high definition virtual backgrounds"
-      image="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-dark/bookshelves-dark-09.webp"
+      image="https://assets.streambackdrops.com/webp/bookshelves-dark/bookshelves-dark-09.webp"
     >
       <Head>
         {router.query.category && <meta name="robots" content="noindex, follow" />}
