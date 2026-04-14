@@ -69,7 +69,7 @@ export default function ChristmasStats() {
                 <tr key={img.filename} style={{ borderBottom: '1px solid #e5e7eb' }}>
                   <td style={{ padding: '1rem' }}>
                     <img 
-                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/christmas-backgrounds/${img.filename}`}
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/christmas-backgrounds/${img.filename}`}
                       alt={img.filename}
                       style={{ height: '60px', width: '80px', objectFit: 'cover', borderRadius: '4px' }}
                     />
@@ -97,7 +97,7 @@ export default function ChristmasStats() {
                 <tr key={img.filename} style={{ borderBottom: '1px solid #e5e7eb' }}>
                   <td style={{ padding: '1rem' }}>
                     <img 
-                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/christmas-backgrounds/${img.filename}`}
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/christmas-backgrounds/${img.filename}`}
                       alt={img.filename}
                       style={{ height: '60px', width: '80px', objectFit: 'cover', borderRadius: '4px' }}
                     />

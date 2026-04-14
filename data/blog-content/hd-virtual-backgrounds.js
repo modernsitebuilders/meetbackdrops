@@ -135,11 +135,11 @@ export const hdVirtualBackgroundsContent = () => (
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', marginBottom: '1rem' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-bright/bookshelves-bright-01.webp" alt="HD bright bookshelf virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
+                <img src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-bright/bookshelves-bright-01.webp" alt="HD bright bookshelf virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-05.webp" alt="HD office space virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
+                <img src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/office-spaces/office-spaces-05.webp" alt="HD office space virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/bookshelves-dark/bookshelves-dark-09.webp" alt="HD dark bookshelf virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
+                <img src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/bookshelves-dark/bookshelves-dark-09.webp" alt="HD dark bookshelf virtual background" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '6px' }} />
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
                 <span style={{ fontSize: '0.85rem', color: '#6b21a8' }}>

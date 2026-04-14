@@ -119,7 +119,7 @@ export default function Bundles() {
                 height: '300px'
               }}>
                 <img 
-                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-19.webp"
+                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/office-spaces/office-spaces-19.webp"
                   alt="Office Spaces Backgrounds Bundle"
                   style={{
                     width: '100%',
@@ -227,7 +227,7 @@ export default function Bundles() {
                     }}
                   >
                     <img
-                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/office-spaces/office-spaces-${num}.webp`}
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/office-spaces/office-spaces-${num}.webp`}
                       alt={`Office Space ${num}`}
                       style={{
                         width: '100%',
@@ -268,7 +268,7 @@ export default function Bundles() {
                 height: '300px'
               }}>
                 <img 
-                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/christmas-backgrounds/christmas-background-35.webp"
+                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/christmas-backgrounds/christmas-background-35.webp"
                   alt="Christmas Backgrounds Bundle"
                   style={{
                     width: '100%',
@@ -376,7 +376,7 @@ export default function Bundles() {
                     }}
                   >
                     <img
-                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/christmas-backgrounds/christmas-background-${num}.webp`}
+                      src={`https://res.cloudinary.com/dnhju6mhg/image/upload/webp/christmas-backgrounds/christmas-background-${num}.webp`}
                       alt={`Christmas Background ${num}`}
                       style={{
                         width: '100%',

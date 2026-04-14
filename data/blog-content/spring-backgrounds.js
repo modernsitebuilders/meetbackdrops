@@ -104,7 +104,7 @@ export const springBackgroundsContent = (categoryInfo) => {
             }}>
               <Link href="/category/spring-backgrounds">
                 <Image
-                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/f_auto,q_auto/webp/spring-backgrounds/spring-background-01.webp"
+                  src="https://res.cloudinary.com/dnhju6mhg/image/upload/webp/spring-backgrounds/spring-background-01.webp"
                   alt="Spring virtual background preview"
                   width={800}
                   height={450}
