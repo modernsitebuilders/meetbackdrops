@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
 
 
-export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose, hdPageUrl }) {
+export default function ComparisonWidget({ standardImg, hdImg, imageId, isOpen, onClose, hdPageUrl, onSliderUse }) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [showInstruction, setShowInstruction] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -61,8 +61,9 @@ const trackEvent = (action, label) => {
     if (sliderPosition !== 95 && showInstruction) {
       setShowInstruction(false);
       trackEvent('slider_used', `User Dragged Slider - ${imageId}`);
+      if (typeof onSliderUse === 'function') onSliderUse();
     }
-  }, [sliderPosition, showInstruction, imageId]);
+  }, [sliderPosition, showInstruction, imageId, onSliderUse]);
 
   return (
     <>

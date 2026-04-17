@@ -19,6 +19,7 @@ import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
 import ImageObjectSchema from '../../../components/ImageObjectSchema';
 import BackToTop from '../../../components/BackToTop';
 import HDComparisonHero from '../../../components/HDComparisonHero';
+import CategoryHub from '../../../components/CategoryHub/CategoryHub';
 
 function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -77,21 +78,34 @@ function CategoryContent({ slug, scores = {}}) {
             </span>
           </nav>
 
-          <CategoryHeader category={category} />
+          {slug === 'office-spaces' ? (
+            <CategoryHub
+              slug={slug}
+              images={category.images}
+              scores={scores}
+              onImageClick={setPreviewImage}
+              onDownload={(image) => handleDownload(image, slug)}
+              downloadingImage={downloadingImage}
+            />
+          ) : (
+            <>
+              <CategoryHeader category={category} />
 
-<ImageGrid
-  images={category.images}
-  scores={scores}
-  slug={slug}
-  onImageClick={setPreviewImage}
-  onDownload={(image) => handleDownload(image, slug)}
-  cloudinaryUrls={cloudinaryUrls}
-  downloadingImage={downloadingImage}
-/>
+              <ImageGrid
+                images={category.images}
+                scores={scores}
+                slug={slug}
+                onImageClick={setPreviewImage}
+                onDownload={(image) => handleDownload(image, slug)}
+                cloudinaryUrls={cloudinaryUrls}
+                downloadingImage={downloadingImage}
+              />
 
-          <HDComparisonHero slug={slug} images={category.images} scores={scores} />
-          <RelatedCategories currentSlug={slug} />
-          <CategorySEOContent category={category} slug={slug} />
+              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
+              <RelatedCategories currentSlug={slug} />
+              <CategorySEOContent category={category} slug={slug} />
+            </>
+          )}
         </div>
        </div>
 

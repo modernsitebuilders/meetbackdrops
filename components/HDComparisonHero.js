@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import ComparisonWidget from './ComparisonWidget';
-import cloudinaryUrls from '../cloudinary-urls.json';
+import PostCompareModal from './PostCompareModal';
 import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
 import { HD_BASE_IDS } from '../lib/hdImages';
 import { webpUrl } from '../lib/cloudinaryUrl';
@@ -11,19 +11,24 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [hdUrl, setHdUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [sliderUsed, setSliderUsed] = useState(false);
+  const [postCompareOpen, setPostCompareOpen] = useState(false);
 
   // Find the highest-scored image in this category that has an HD version
   const topImage = [...images]
     .filter(img => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
     .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
 
-  if (!topImage) return null;
+  if (!topImage) {
+    if (typeof window !== 'undefined') {
+      console.warn(`[HDComparisonHero] No HD variants for slug="${slug}". Promo hidden.`);
+    }
+    return null;
+  }
 
   const baseId = topImage.filename.replace(/\.\w+$/, '');
   const hdId = `${baseId}-hd`;
-  const freeUrl = cloudinaryUrls[baseId];
-
-  if (!freeUrl) return null;
+  const freeUrl = webpUrl(slug, topImage.filename);
 
   const trackCompareClick = () => {
     if (process.env.NODE_ENV !== 'production') return;
@@ -52,7 +57,23 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
     }).catch(() => {});
   };
 
+  const sessionFlagKey = `sb_post_compare_shown_${baseId}`;
+
+  const handleComparisonClose = () => {
+    setModalOpen(false);
+    const alreadyShown =
+      typeof window !== 'undefined' && window.sessionStorage.getItem(sessionFlagKey);
+    if (sliderUsed && !alreadyShown) {
+      try {
+        window.sessionStorage.setItem(sessionFlagKey, '1');
+      } catch (_) {}
+      setPostCompareOpen(true);
+    }
+    setSliderUsed(false);
+  };
+
   const handleCompare = async () => {
+    setSliderUsed(false);
     if (hdUrl) {
       setModalOpen(true);
       return;
@@ -140,10 +161,20 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
           hdImg={hdUrl}
           imageId={hdId}
           isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
+          onClose={handleComparisonClose}
           hdPageUrl={`/hd?category=${slug}`}
+          onSliderUse={() => setSliderUsed(true)}
         />
       )}
+
+      <PostCompareModal
+        isOpen={postCompareOpen}
+        imageId={baseId}
+        slug={slug}
+        primaryHref={`/hd?highlight=${baseId}`}
+        secondaryHref={`/hd?category=${slug}`}
+        onClose={() => setPostCompareOpen(false)}
+      />
     </>
   );
 }
