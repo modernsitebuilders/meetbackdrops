@@ -1,4 +1,9 @@
-export default function CategorySEOContent({ category }) {
+import { SEO_DESCRIPTIONS, CATEGORY_KEYWORDS } from '../lib/categories-config';
+
+export default function CategorySEOContent({ category, slug }) {
+  const seoDesc = (slug && SEO_DESCRIPTIONS[slug]) || `Download free ${category.name.toLowerCase()} virtual backgrounds optimized for Zoom, Microsoft Teams, Google Meet, and other video conferencing platforms.`;
+  const keywords = (slug && CATEGORY_KEYWORDS[slug]) || [];
+
   return (
     <section style={{
       background: 'white',
@@ -18,31 +23,47 @@ export default function CategorySEOContent({ category }) {
       }}>
         About {category.name} Virtual Backgrounds
       </h2>
-      <p style={{ 
-        lineHeight: '1.8', 
+
+      <p style={{
+        lineHeight: '1.8',
         color: '#374151',
         fontSize: '1.05rem',
         marginBottom: '1.5rem'
       }}>
-        Download free {category.name.toLowerCase()} virtual backgrounds optimized for Zoom, Microsoft Teams, Google Meet, and other video conferencing platforms. These professional backgrounds are designed specifically for video calls, providing excellent edge detection and clear image quality even with standard webcam setups.
+        {seoDesc}
       </p>
-      <h3 style={{
-        fontSize: '1.35rem',
-        fontWeight: '600',
-        color: '#111827',
-        marginBottom: '1rem',
-        marginTop: '2rem'
-      }}>
-        Perfect for Professional Use
-      </h3>
-      <p style={{ 
-        lineHeight: '1.8', 
+
+      <p style={{
+        lineHeight: '1.8',
         color: '#374151',
         fontSize: '1.05rem',
         marginBottom: '1.5rem'
       }}>
-        Our {category.name.toLowerCase()} backgrounds are perfect for remote work, online meetings, and professional presentations. All backgrounds are free to download and use for personal or commercial purposes. Simply click any image to preview in full size, then download directly to your device. For best results, ensure adequate front-facing lighting and position your camera at eye level before your video calls.
+        All backgrounds are free to download and use for personal or commercial purposes. Simply click any image to preview in full size, then download directly to your device. No signup, no watermarks — instant download. For best results, ensure adequate front-facing lighting and position your camera at eye level before your video calls.
       </p>
+
+      {keywords.length > 0 && (
+        <div style={{ marginBottom: '1.5rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {keywords.map(kw => (
+              <span
+                key={kw}
+                style={{
+                  background: '#f3f4f6',
+                  color: '#374151',
+                  padding: '0.3rem 0.75rem',
+                  borderRadius: '9999px',
+                  fontSize: '0.8rem',
+                  border: '1px solid #e5e7eb',
+                }}
+              >
+                {kw}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div style={{
         background: '#f8fafc',
         padding: '1.5rem',
@@ -57,8 +78,8 @@ export default function CategorySEOContent({ category }) {
         }}>
           Pro Tip:
         </h4>
-        <p style={{ 
-          margin: 0, 
+        <p style={{
+          margin: 0,
           color: '#374151',
           fontSize: '1rem'
         }}>

@@ -1,0 +1,1020 @@
+{'asset': '# art galleries (19)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# art gallery (9)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# bokeh backgrounds (50)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# bookshelves bright (66)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# bookshelves dark (51)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# christmas backgrounds (93)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# coffee shops (38)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# conference rooms (39)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# easter backgrounds (78)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# format: one webp filename per line. lines starting with # are comments.', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# garden patio (14)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# gardens patios (17)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# generated: 2026-04-16', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# halloween backgrounds (18)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# historic spaces (22)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# home office (56)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# kitchens (26)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# libraries (18)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# live assets — stream backdrops', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# living rooms (39)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# nature landscapes (40)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# office spaces (100)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# spring backgrounds (54)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# total: 991 images', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# urban lofts (28)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# valentines (11)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# wall shelves (11)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# wall shelves bright (41)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': '# wall shelves dark (53)', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'art-gallery-01.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-01.webp']}
+{'asset': 'art-gallery-02.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-02.webp']}
+{'asset': 'art-gallery-03.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-03.webp']}
+{'asset': 'art-gallery-04.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-04.webp']}
+{'asset': 'art-gallery-05.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-05.webp']}
+{'asset': 'art-gallery-09.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-09.webp']}
+{'asset': 'art-gallery-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-10.png'], 'webp': ['webp/art-galleries/art-gallery-10.webp']}
+{'asset': 'art-gallery-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-12.png'], 'webp': ['webp/art-galleries/art-gallery-12.webp']}
+{'asset': 'art-gallery-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-16.png'], 'webp': ['webp/art-galleries/art-gallery-16.webp']}
+{'asset': 'art-gallery-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-17.png'], 'webp': ['webp/art-galleries/art-gallery-17.webp']}
+{'asset': 'art-gallery-18.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-18.webp']}
+{'asset': 'art-gallery-19.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-19.webp']}
+{'asset': 'art-gallery-20.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-20.webp']}
+{'asset': 'art-gallery-22.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-22.webp']}
+{'asset': 'art-gallery-23.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-23.webp']}
+{'asset': 'art-gallery-24.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-24.webp']}
+{'asset': 'art-gallery-25.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-25.webp']}
+{'asset': 'art-gallery-26.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-26.webp']}
+{'asset': 'art-gallery-27.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/art-galleries/art-gallery-27.webp']}
+{'asset': 'art-gallery-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-28.png'], 'webp': ['webp/art-galleries/art-gallery-28.webp']}
+{'asset': 'art-gallery-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-30.png'], 'webp': ['webp/art-galleries/art-gallery-30.webp']}
+{'asset': 'art-gallery-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-32.png'], 'webp': ['webp/art-galleries/art-gallery-32.webp']}
+{'asset': 'art-gallery-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-33.png'], 'webp': ['webp/art-galleries/art-gallery-33.webp']}
+{'asset': 'art-gallery-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-34.png'], 'webp': ['webp/art-galleries/art-gallery-34.webp']}
+{'asset': 'art-gallery-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-35.png'], 'webp': ['webp/art-galleries/art-gallery-35.webp']}
+{'asset': 'art-gallery-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-36.png'], 'webp': ['webp/art-galleries/art-gallery-36.webp']}
+{'asset': 'art-gallery-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-40.png'], 'webp': ['webp/art-galleries/art-gallery-40.webp']}
+{'asset': 'art-gallery-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['art-gallery-43.png'], 'webp': ['webp/art-galleries/art-gallery-43.webp']}
+{'asset': 'bokeh-03.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/bokeh-backgrounds/bokeh-03.webp']}
+{'asset': 'bokeh-04.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/bokeh-backgrounds/bokeh-04.webp']}
+{'asset': 'bokeh-06.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/bokeh-backgrounds/bokeh-06.webp']}
+{'asset': 'bokeh-09.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/bokeh-backgrounds/bokeh-09.webp']}
+{'asset': 'bokeh-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-10.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-10.webp']}
+{'asset': 'bokeh-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-11.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-11.webp']}
+{'asset': 'bokeh-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-12.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-12.webp']}
+{'asset': 'bokeh-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-13.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-13.webp']}
+{'asset': 'bokeh-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-14.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-14.webp']}
+{'asset': 'bokeh-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-15.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-15.webp']}
+{'asset': 'bokeh-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-16.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-16.webp']}
+{'asset': 'bokeh-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-19.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-19.webp']}
+{'asset': 'bokeh-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-20.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-20.webp']}
+{'asset': 'bokeh-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-21.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-21.webp']}
+{'asset': 'bokeh-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-22.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-22.webp']}
+{'asset': 'bokeh-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-23.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-23.webp']}
+{'asset': 'bokeh-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-24.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-24.webp']}
+{'asset': 'bokeh-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-25.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-25.webp']}
+{'asset': 'bokeh-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-26.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-26.webp']}
+{'asset': 'bokeh-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-27.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-27.webp']}
+{'asset': 'bokeh-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-29.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-29.webp']}
+{'asset': 'bokeh-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-32.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-32.webp']}
+{'asset': 'bokeh-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-33.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-33.webp']}
+{'asset': 'bokeh-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-34.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-34.webp']}
+{'asset': 'bokeh-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-35.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-35.webp']}
+{'asset': 'bokeh-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-36.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-36.webp']}
+{'asset': 'bokeh-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-37.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-37.webp']}
+{'asset': 'bokeh-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-38.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-38.webp']}
+{'asset': 'bokeh-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-39.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-39.webp']}
+{'asset': 'bokeh-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-40.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-40.webp']}
+{'asset': 'bokeh-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-41.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-41.webp']}
+{'asset': 'bokeh-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-43.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-43.webp']}
+{'asset': 'bokeh-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-44.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-44.webp']}
+{'asset': 'bokeh-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-46.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-46.webp']}
+{'asset': 'bokeh-49.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-49.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-49.webp']}
+{'asset': 'bokeh-50.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-50.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-50.webp']}
+{'asset': 'bokeh-51.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-51.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-51.webp']}
+{'asset': 'bokeh-52.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-52.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-52.webp']}
+{'asset': 'bokeh-54.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-54.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-54.webp']}
+{'asset': 'bokeh-55.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-55.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-55.webp']}
+{'asset': 'bokeh-56.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-56.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-56.webp']}
+{'asset': 'bokeh-57.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-57.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-57.webp']}
+{'asset': 'bokeh-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-58.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-58.webp']}
+{'asset': 'bokeh-59.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-59.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-59.webp']}
+{'asset': 'bokeh-60.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-60.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-60.webp']}
+{'asset': 'bokeh-61.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-61.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-61.webp']}
+{'asset': 'bokeh-62.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-62.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-62.webp']}
+{'asset': 'bokeh-64.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-64.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-64.webp']}
+{'asset': 'bokeh-65.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-65.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-65.webp']}
+{'asset': 'bokeh-66.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bokeh-66.png'], 'webp': ['webp/bokeh-backgrounds/bokeh-66.webp']}
+{'asset': 'bookshelves-bright-01.webp', 'png_count': 3, 'webp_count': 1, 'png': ['bookshelves-bright-01.png', 'premium/bookshelves-bright-01-hd.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-01-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-01.webp']}
+{'asset': 'bookshelves-bright-02.webp', 'png_count': 2, 'webp_count': 1, 'png': ['bookshelves-bright-02.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-02-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-02.webp']}
+{'asset': 'bookshelves-bright-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-03.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-03.webp']}
+{'asset': 'bookshelves-bright-04.webp', 'png_count': 3, 'webp_count': 1, 'png': ['bookshelves-bright-04.png', 'premium/bookshelves-bright-04-hd.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-04-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-04.webp']}
+{'asset': 'bookshelves-bright-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-05.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-05.webp']}
+{'asset': 'bookshelves-bright-06.webp', 'png_count': 2, 'webp_count': 1, 'png': ['bookshelves-bright-06.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-06-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-06.webp']}
+{'asset': 'bookshelves-bright-07.webp', 'png_count': 3, 'webp_count': 1, 'png': ['bookshelves-bright-07.png', 'premium/bookshelves-bright-07-hd.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-07-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-07.webp']}
+{'asset': 'bookshelves-bright-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-09.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-09.webp']}
+{'asset': 'bookshelves-bright-10.webp', 'png_count': 3, 'webp_count': 1, 'png': ['bookshelves-bright-10.png', 'premium/bookshelves-bright-10-hd.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-10-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-10.webp']}
+{'asset': 'bookshelves-bright-11.webp', 'png_count': 2, 'webp_count': 1, 'png': ['bookshelves-bright-11.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-11-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-11.webp']}
+{'asset': 'bookshelves-bright-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-12.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-12.webp']}
+{'asset': 'bookshelves-bright-13.webp', 'png_count': 2, 'webp_count': 1, 'png': ['bookshelves-bright-13.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-13-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-13.webp']}
+{'asset': 'bookshelves-bright-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-14.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-14.webp']}
+{'asset': 'bookshelves-bright-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-15.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-15.webp']}
+{'asset': 'bookshelves-bright-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-16.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-16.webp']}
+{'asset': 'bookshelves-bright-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-17.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-17.webp']}
+{'asset': 'bookshelves-bright-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-19.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-19.webp']}
+{'asset': 'bookshelves-bright-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-20.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-20.webp']}
+{'asset': 'bookshelves-bright-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-21.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-21.webp']}
+{'asset': 'bookshelves-bright-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-22.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-22.webp']}
+{'asset': 'bookshelves-bright-23.webp', 'png_count': 2, 'webp_count': 1, 'png': ['bookshelves-bright-23.png', 'streambackdrops/bookshelves-bright/bookshelves-bright-23-hd.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-23.webp']}
+{'asset': 'bookshelves-bright-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-24.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-24.webp']}
+{'asset': 'bookshelves-bright-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-25.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-25.webp']}
+{'asset': 'bookshelves-bright-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-26.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-26.webp']}
+{'asset': 'bookshelves-bright-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-27.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-27.webp']}
+{'asset': 'bookshelves-bright-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-28.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-28.webp']}
+{'asset': 'bookshelves-bright-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-29.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-29.webp']}
+{'asset': 'bookshelves-bright-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-30.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-30.webp']}
+{'asset': 'bookshelves-bright-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-31.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-31.webp']}
+{'asset': 'bookshelves-bright-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-32.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-32.webp']}
+{'asset': 'bookshelves-bright-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-33.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-33.webp']}
+{'asset': 'bookshelves-bright-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-34.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-34.webp']}
+{'asset': 'bookshelves-bright-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-35.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-35.webp']}
+{'asset': 'bookshelves-bright-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-36.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-36.webp']}
+{'asset': 'bookshelves-bright-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-37.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-37.webp']}
+{'asset': 'bookshelves-bright-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-38.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-38.webp']}
+{'asset': 'bookshelves-bright-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-39.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-39.webp']}
+{'asset': 'bookshelves-bright-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-40.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-40.webp']}
+{'asset': 'bookshelves-bright-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-41.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-41.webp']}
+{'asset': 'bookshelves-bright-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-bright-42.png'], 'webp': ['webp/bookshelves-bright/bookshelves-bright-42.webp']}
+{'asset': 'bookshelves-bright-43.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-43.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-43.webp', 'webp/bookshelves-bright/bookshelves-bright-43.webp']}
+{'asset': 'bookshelves-bright-44.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-44.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-44.webp', 'webp/bookshelves-bright/bookshelves-bright-44.webp']}
+{'asset': 'bookshelves-bright-45.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-45.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-45.webp', 'webp/bookshelves-bright/bookshelves-bright-45.webp']}
+{'asset': 'bookshelves-bright-46.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-46.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-46.webp', 'webp/bookshelves-bright/bookshelves-bright-46.webp']}
+{'asset': 'bookshelves-bright-47.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-47.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-47.webp', 'webp/bookshelves-bright/bookshelves-bright-47.webp']}
+{'asset': 'bookshelves-bright-49.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-49.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-49.webp', 'webp/bookshelves-bright/bookshelves-bright-49.webp']}
+{'asset': 'bookshelves-bright-50.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-50.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-50.webp', 'webp/bookshelves-bright/bookshelves-bright-50.webp']}
+{'asset': 'bookshelves-bright-51.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-51.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-51.webp', 'webp/bookshelves-bright/bookshelves-bright-51.webp']}
+{'asset': 'bookshelves-bright-52.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-52.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-52.webp', 'webp/bookshelves-bright/bookshelves-bright-52.webp']}
+{'asset': 'bookshelves-bright-53.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-53.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-53.webp', 'webp/bookshelves-bright/bookshelves-bright-53.webp']}
+{'asset': 'bookshelves-bright-54.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-54.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-54.webp', 'webp/bookshelves-bright/bookshelves-bright-54.webp']}
+{'asset': 'bookshelves-bright-55.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-55.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-55.webp', 'webp/bookshelves-bright/bookshelves-bright-55.webp']}
+{'asset': 'bookshelves-bright-56.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-56.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-56.webp', 'webp/bookshelves-bright/bookshelves-bright-56.webp']}
+{'asset': 'bookshelves-bright-58.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-58.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-58.webp', 'webp/bookshelves-bright/bookshelves-bright-58.webp']}
+{'asset': 'bookshelves-bright-60.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-60.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-60.webp', 'webp/bookshelves-bright/bookshelves-bright-60.webp']}
+{'asset': 'bookshelves-bright-61.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-61.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-61.webp', 'webp/bookshelves-bright/bookshelves-bright-61.webp']}
+{'asset': 'bookshelves-bright-62.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-62.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-62.webp', 'webp/bookshelves-bright/bookshelves-bright-62.webp']}
+{'asset': 'bookshelves-bright-63.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-63.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-63.webp', 'webp/bookshelves-bright/bookshelves-bright-63.webp']}
+{'asset': 'bookshelves-bright-64.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-64.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-64.webp', 'webp/bookshelves-bright/bookshelves-bright-64.webp']}
+{'asset': 'bookshelves-bright-66.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-66.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-66.webp', 'webp/bookshelves-bright/bookshelves-bright-66.webp']}
+{'asset': 'bookshelves-bright-67.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-67.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-67.webp', 'webp/bookshelves-bright/bookshelves-bright-67.webp']}
+{'asset': 'bookshelves-bright-68.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-68.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-68.webp', 'webp/bookshelves-bright/bookshelves-bright-68.webp']}
+{'asset': 'bookshelves-bright-69.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-69.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-69.webp', 'webp/bookshelves-bright/bookshelves-bright-69.webp']}
+{'asset': 'bookshelves-bright-70.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-70.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-70.webp', 'webp/bookshelves-bright/bookshelves-bright-70.webp']}
+{'asset': 'bookshelves-bright-71.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-71.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-71.webp', 'webp/bookshelves-bright/bookshelves-bright-71.webp']}
+{'asset': 'bookshelves-bright-74.webp', 'png_count': 1, 'webp_count': 2, 'png': ['bookshelves-bright-74.png'], 'webp': ['streambackdrops/bookshelves-bright/bookshelves-bright-74.webp', 'webp/bookshelves-bright/bookshelves-bright-74.webp']}
+{'asset': 'bookshelves-dark-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-01.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-01.webp']}
+{'asset': 'bookshelves-dark-02.webp', 'png_count': 3, 'webp_count': 1, 'png': ['bookshelves-dark-02.png', 'premium/bookshelves-dark-02-hd.png', 'streambackdrops/bookshelves-dark/bookshelves-dark-02-hd.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-02.webp']}
+{'asset': 'bookshelves-dark-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-04.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-04.webp']}
+{'asset': 'bookshelves-dark-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-05.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-05.webp']}
+{'asset': 'bookshelves-dark-06.webp', 'png_count': 2, 'webp_count': 1, 'png': ['bookshelves-dark-06.png', 'streambackdrops/bookshelves-dark/bookshelves-dark-06-hd.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-06.webp']}
+{'asset': 'bookshelves-dark-07.webp', 'png_count': 3, 'webp_count': 1, 'png': ['bookshelves-dark-07.png', 'premium/bookshelves-dark-07-hd.png', 'streambackdrops/bookshelves-dark/bookshelves-dark-07-hd.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-07.webp']}
+{'asset': 'bookshelves-dark-08.webp', 'png_count': 2, 'webp_count': 1, 'png': ['bookshelves-dark-08.png', 'streambackdrops/bookshelves-dark/bookshelves-dark-08-hd.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-08.webp']}
+{'asset': 'bookshelves-dark-09.webp', 'png_count': 3, 'webp_count': 1, 'png': ['bookshelves-dark-09.png', 'premium/bookshelves-dark-09-hd.png', 'streambackdrops/bookshelves-dark/bookshelves-dark-09-hd.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-09.webp']}
+{'asset': 'bookshelves-dark-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-10.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-10.webp']}
+{'asset': 'bookshelves-dark-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-11.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-11.webp']}
+{'asset': 'bookshelves-dark-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-12.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-12.webp']}
+{'asset': 'bookshelves-dark-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-13.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-13.webp']}
+{'asset': 'bookshelves-dark-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-14.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-14.webp']}
+{'asset': 'bookshelves-dark-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-15.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-15.webp']}
+{'asset': 'bookshelves-dark-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-16.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-16.webp']}
+{'asset': 'bookshelves-dark-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-17.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-17.webp']}
+{'asset': 'bookshelves-dark-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-19.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-19.webp']}
+{'asset': 'bookshelves-dark-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-20.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-20.webp']}
+{'asset': 'bookshelves-dark-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-22.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-22.webp']}
+{'asset': 'bookshelves-dark-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-23.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-23.webp']}
+{'asset': 'bookshelves-dark-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-24.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-24.webp']}
+{'asset': 'bookshelves-dark-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-25.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-25.webp']}
+{'asset': 'bookshelves-dark-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-26.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-26.webp']}
+{'asset': 'bookshelves-dark-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-27.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-27.webp']}
+{'asset': 'bookshelves-dark-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-28.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-28.webp']}
+{'asset': 'bookshelves-dark-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-29.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-29.webp']}
+{'asset': 'bookshelves-dark-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-30.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-30.webp']}
+{'asset': 'bookshelves-dark-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-31.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-31.webp']}
+{'asset': 'bookshelves-dark-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-32.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-32.webp']}
+{'asset': 'bookshelves-dark-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-33.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-33.webp']}
+{'asset': 'bookshelves-dark-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-34.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-34.webp']}
+{'asset': 'bookshelves-dark-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-36.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-36.webp']}
+{'asset': 'bookshelves-dark-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-37.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-37.webp']}
+{'asset': 'bookshelves-dark-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-38.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-38.webp']}
+{'asset': 'bookshelves-dark-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-39.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-39.webp']}
+{'asset': 'bookshelves-dark-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-40.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-40.webp']}
+{'asset': 'bookshelves-dark-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-41.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-41.webp']}
+{'asset': 'bookshelves-dark-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-42.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-42.webp']}
+{'asset': 'bookshelves-dark-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-43.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-43.webp']}
+{'asset': 'bookshelves-dark-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-44.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-44.webp']}
+{'asset': 'bookshelves-dark-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-46.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-46.webp']}
+{'asset': 'bookshelves-dark-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-47.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-47.webp']}
+{'asset': 'bookshelves-dark-48.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-48.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-48.webp']}
+{'asset': 'bookshelves-dark-49.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-49.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-49.webp']}
+{'asset': 'bookshelves-dark-50.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-50.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-50.webp']}
+{'asset': 'bookshelves-dark-53.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-53.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-53.webp']}
+{'asset': 'bookshelves-dark-54.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-54.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-54.webp']}
+{'asset': 'bookshelves-dark-56.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-56.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-56.webp']}
+{'asset': 'bookshelves-dark-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-58.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-58.webp']}
+{'asset': 'bookshelves-dark-61.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-61.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-61.webp']}
+{'asset': 'bookshelves-dark-62.webp', 'png_count': 1, 'webp_count': 1, 'png': ['bookshelves-dark-62.png'], 'webp': ['webp/bookshelves-dark/bookshelves-dark-62.webp']}
+{'asset': 'christmas-background-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-01.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-01.webp']}
+{'asset': 'christmas-background-02.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-02.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-02.webp']}
+{'asset': 'christmas-background-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-03.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-03.webp']}
+{'asset': 'christmas-background-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-04.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-04.webp']}
+{'asset': 'christmas-background-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-05.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-05.webp']}
+{'asset': 'christmas-background-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-06.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-06.webp']}
+{'asset': 'christmas-background-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-07.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-07.webp']}
+{'asset': 'christmas-background-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-08.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-08.webp']}
+{'asset': 'christmas-background-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-09.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-09.webp']}
+{'asset': 'christmas-background-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-10.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-10.webp']}
+{'asset': 'christmas-background-100.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-100.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-100.webp']}
+{'asset': 'christmas-background-101.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-101.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-101.webp']}
+{'asset': 'christmas-background-102.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-102.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-102.webp']}
+{'asset': 'christmas-background-103.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-103.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-103.webp']}
+{'asset': 'christmas-background-104.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-104.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-104.webp']}
+{'asset': 'christmas-background-105.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-105.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-105.webp']}
+{'asset': 'christmas-background-106.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-106.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-106.webp']}
+{'asset': 'christmas-background-107.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-107.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-107.webp']}
+{'asset': 'christmas-background-108.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-108.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-108.webp']}
+{'asset': 'christmas-background-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-11.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-11.webp']}
+{'asset': 'christmas-background-112.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-112.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-112.webp']}
+{'asset': 'christmas-background-113.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-113.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-113.webp']}
+{'asset': 'christmas-background-114.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-114.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-114.webp']}
+{'asset': 'christmas-background-115.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-115.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-115.webp']}
+{'asset': 'christmas-background-116.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-116.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-116.webp']}
+{'asset': 'christmas-background-117.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-117.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-117.webp']}
+{'asset': 'christmas-background-118.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-118.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-118.webp']}
+{'asset': 'christmas-background-119.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-119.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-119.webp']}
+{'asset': 'christmas-background-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-12.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-12.webp']}
+{'asset': 'christmas-background-120.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-120.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-120.webp']}
+{'asset': 'christmas-background-122.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-122.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-122.webp']}
+{'asset': 'christmas-background-123.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-123.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-123.webp']}
+{'asset': 'christmas-background-125.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-125.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-125.webp']}
+{'asset': 'christmas-background-126.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-126.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-126.webp']}
+{'asset': 'christmas-background-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-13.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-13.webp']}
+{'asset': 'christmas-background-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-14.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-14.webp']}
+{'asset': 'christmas-background-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-15.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-15.webp']}
+{'asset': 'christmas-background-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-16.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-16.webp']}
+{'asset': 'christmas-background-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-17.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-17.webp']}
+{'asset': 'christmas-background-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-18.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-18.webp']}
+{'asset': 'christmas-background-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-19.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-19.webp']}
+{'asset': 'christmas-background-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-20.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-20.webp']}
+{'asset': 'christmas-background-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-21.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-21.webp']}
+{'asset': 'christmas-background-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-22.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-22.webp']}
+{'asset': 'christmas-background-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-23.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-23.webp']}
+{'asset': 'christmas-background-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-24.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-24.webp']}
+{'asset': 'christmas-background-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-25.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-25.webp']}
+{'asset': 'christmas-background-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-26.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-26.webp']}
+{'asset': 'christmas-background-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-27.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-27.webp']}
+{'asset': 'christmas-background-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-28.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-28.webp']}
+{'asset': 'christmas-background-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-29.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-29.webp']}
+{'asset': 'christmas-background-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-30.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-30.webp']}
+{'asset': 'christmas-background-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-31.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-31.webp']}
+{'asset': 'christmas-background-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-32.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-32.webp']}
+{'asset': 'christmas-background-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-33.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-33.webp']}
+{'asset': 'christmas-background-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-34.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-34.webp']}
+{'asset': 'christmas-background-35.webp', 'png_count': 2, 'webp_count': 1, 'png': ['christmas-background-35.png', 'streambackdrops/christmas-backgrounds/christmas-background-35-hd.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-35.webp']}
+{'asset': 'christmas-background-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-36.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-36.webp']}
+{'asset': 'christmas-background-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-37.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-37.webp']}
+{'asset': 'christmas-background-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-38.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-38.webp']}
+{'asset': 'christmas-background-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-39.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-39.webp']}
+{'asset': 'christmas-background-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-40.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-40.webp']}
+{'asset': 'christmas-background-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-41.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-41.webp']}
+{'asset': 'christmas-background-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-42.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-42.webp']}
+{'asset': 'christmas-background-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-43.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-43.webp']}
+{'asset': 'christmas-background-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-44.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-44.webp']}
+{'asset': 'christmas-background-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-45.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-45.webp']}
+{'asset': 'christmas-background-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-46.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-46.webp']}
+{'asset': 'christmas-background-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-47.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-47.webp']}
+{'asset': 'christmas-background-51.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-51.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-51.webp']}
+{'asset': 'christmas-background-52.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-52.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-52.webp']}
+{'asset': 'christmas-background-55.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-55.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-55.webp']}
+{'asset': 'christmas-background-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-58.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-58.webp']}
+{'asset': 'christmas-background-63.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-63.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-63.webp']}
+{'asset': 'christmas-background-64.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-64.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-64.webp']}
+{'asset': 'christmas-background-65.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-65.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-65.webp']}
+{'asset': 'christmas-background-66.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-66.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-66.webp']}
+{'asset': 'christmas-background-68.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-68.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-68.webp']}
+{'asset': 'christmas-background-69.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-69.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-69.webp']}
+{'asset': 'christmas-background-71.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-71.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-71.webp']}
+{'asset': 'christmas-background-74.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-74.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-74.webp']}
+{'asset': 'christmas-background-75.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-75.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-75.webp']}
+{'asset': 'christmas-background-79.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-79.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-79.webp']}
+{'asset': 'christmas-background-80.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-80.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-80.webp']}
+{'asset': 'christmas-background-83.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-83.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-83.webp']}
+{'asset': 'christmas-background-85.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-85.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-85.webp']}
+{'asset': 'christmas-background-90.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-90.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-90.webp']}
+{'asset': 'christmas-background-92.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-92.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-92.webp']}
+{'asset': 'christmas-background-95.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-95.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-95.webp']}
+{'asset': 'christmas-background-96.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-96.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-96.webp']}
+{'asset': 'christmas-background-97.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-97.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-97.webp']}
+{'asset': 'christmas-background-98.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-98.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-98.webp']}
+{'asset': 'christmas-background-99.webp', 'png_count': 1, 'webp_count': 1, 'png': ['christmas-background-99.png'], 'webp': ['webp/christmas-backgrounds/christmas-background-99.webp']}
+{'asset': 'coffee-shop-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-01.png'], 'webp': ['webp/coffee-shops/coffee-shop-01.webp']}
+{'asset': 'coffee-shop-02.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-02.png'], 'webp': ['webp/coffee-shops/coffee-shop-02.webp']}
+{'asset': 'coffee-shop-03.webp', 'png_count': 2, 'webp_count': 1, 'png': ['coffee-shop-03.png', 'streambackdrops/coffee-shops/coffee-shop-03-hd.png'], 'webp': ['webp/coffee-shops/coffee-shop-03.webp']}
+{'asset': 'coffee-shop-04.webp', 'png_count': 2, 'webp_count': 1, 'png': ['coffee-shop-04.png', 'streambackdrops/coffee-shops/coffee-shop-04-hd.png'], 'webp': ['webp/coffee-shops/coffee-shop-04.webp']}
+{'asset': 'coffee-shop-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-05.png'], 'webp': ['webp/coffee-shops/coffee-shop-05.webp']}
+{'asset': 'coffee-shop-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-06.png'], 'webp': ['webp/coffee-shops/coffee-shop-06.webp']}
+{'asset': 'coffee-shop-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-07.png'], 'webp': ['webp/coffee-shops/coffee-shop-07.webp']}
+{'asset': 'coffee-shop-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-08.png'], 'webp': ['webp/coffee-shops/coffee-shop-08.webp']}
+{'asset': 'coffee-shop-10.webp', 'png_count': 2, 'webp_count': 1, 'png': ['coffee-shop-10.png', 'streambackdrops/coffee-shops/coffee-shop-10-hd.png'], 'webp': ['webp/coffee-shops/coffee-shop-10.webp']}
+{'asset': 'coffee-shop-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-11.png'], 'webp': ['webp/coffee-shops/coffee-shop-11.webp']}
+{'asset': 'coffee-shop-12.webp', 'png_count': 2, 'webp_count': 1, 'png': ['coffee-shop-12.png', 'streambackdrops/coffee-shops/coffee-shop-12-hd.png'], 'webp': ['webp/coffee-shops/coffee-shop-12.webp']}
+{'asset': 'coffee-shop-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-15.png'], 'webp': ['webp/coffee-shops/coffee-shop-15.webp']}
+{'asset': 'coffee-shop-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-16.png'], 'webp': ['webp/coffee-shops/coffee-shop-16.webp']}
+{'asset': 'coffee-shop-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-17.png'], 'webp': ['webp/coffee-shops/coffee-shop-17.webp']}
+{'asset': 'coffee-shop-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-18.png'], 'webp': ['webp/coffee-shops/coffee-shop-18.webp']}
+{'asset': 'coffee-shop-19.webp', 'png_count': 2, 'webp_count': 1, 'png': ['coffee-shop-19.png', 'streambackdrops/coffee-shops/coffee-shop-19-hd.png'], 'webp': ['webp/coffee-shops/coffee-shop-19.webp']}
+{'asset': 'coffee-shop-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-21.png'], 'webp': ['webp/coffee-shops/coffee-shop-21.webp']}
+{'asset': 'coffee-shop-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-22.png'], 'webp': ['webp/coffee-shops/coffee-shop-22.webp']}
+{'asset': 'coffee-shop-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-23.png'], 'webp': ['webp/coffee-shops/coffee-shop-23.webp']}
+{'asset': 'coffee-shop-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-24.png'], 'webp': ['webp/coffee-shops/coffee-shop-24.webp']}
+{'asset': 'coffee-shop-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-25.png'], 'webp': ['webp/coffee-shops/coffee-shop-25.webp']}
+{'asset': 'coffee-shop-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-26.png'], 'webp': ['webp/coffee-shops/coffee-shop-26.webp']}
+{'asset': 'coffee-shop-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-27.png'], 'webp': ['webp/coffee-shops/coffee-shop-27.webp']}
+{'asset': 'coffee-shop-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-28.png'], 'webp': ['webp/coffee-shops/coffee-shop-28.webp']}
+{'asset': 'coffee-shop-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-29.png'], 'webp': ['webp/coffee-shops/coffee-shop-29.webp']}
+{'asset': 'coffee-shop-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-30.png'], 'webp': ['webp/coffee-shops/coffee-shop-30.webp']}
+{'asset': 'coffee-shop-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-31.png'], 'webp': ['webp/coffee-shops/coffee-shop-31.webp']}
+{'asset': 'coffee-shop-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-32.png'], 'webp': ['webp/coffee-shops/coffee-shop-32.webp']}
+{'asset': 'coffee-shop-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-33.png'], 'webp': ['webp/coffee-shops/coffee-shop-33.webp']}
+{'asset': 'coffee-shop-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-34.png'], 'webp': ['webp/coffee-shops/coffee-shop-34.webp']}
+{'asset': 'coffee-shop-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-35.png'], 'webp': ['webp/coffee-shops/coffee-shop-35.webp']}
+{'asset': 'coffee-shop-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-36.png'], 'webp': ['webp/coffee-shops/coffee-shop-36.webp']}
+{'asset': 'coffee-shop-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-38.png'], 'webp': ['webp/coffee-shops/coffee-shop-38.webp']}
+{'asset': 'coffee-shop-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-39.png'], 'webp': ['webp/coffee-shops/coffee-shop-39.webp']}
+{'asset': 'coffee-shop-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-40.png'], 'webp': ['webp/coffee-shops/coffee-shop-40.webp']}
+{'asset': 'coffee-shop-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-41.png'], 'webp': ['webp/coffee-shops/coffee-shop-41.webp']}
+{'asset': 'coffee-shop-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-43.png'], 'webp': ['webp/coffee-shops/coffee-shop-43.webp']}
+{'asset': 'coffee-shop-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['coffee-shop-44.png'], 'webp': ['webp/coffee-shops/coffee-shop-44.webp']}
+{'asset': 'conference-room-01.webp', 'png_count': 2, 'webp_count': 1, 'png': ['conference-room-01.png', 'streambackdrops/conference-rooms/conference-room-01-hd.png'], 'webp': ['webp/conference-rooms/conference-room-01.webp']}
+{'asset': 'conference-room-02.webp', 'png_count': 2, 'webp_count': 1, 'png': ['conference-room-02.png', 'streambackdrops/conference-rooms/conference-room-02-hd.png'], 'webp': ['webp/conference-rooms/conference-room-02.webp']}
+{'asset': 'conference-room-04.webp', 'png_count': 2, 'webp_count': 1, 'png': ['conference-room-04.png', 'streambackdrops/conference-rooms/conference-room-04-hd.png'], 'webp': ['webp/conference-rooms/conference-room-04.webp']}
+{'asset': 'conference-room-05.webp', 'png_count': 2, 'webp_count': 1, 'png': ['conference-room-05.png', 'streambackdrops/conference-rooms/conference-room-05-hd.png'], 'webp': ['webp/conference-rooms/conference-room-05.webp']}
+{'asset': 'conference-room-06.webp', 'png_count': 2, 'webp_count': 1, 'png': ['conference-room-06.png', 'streambackdrops/conference-rooms/conference-room-06-hd.png'], 'webp': ['webp/conference-rooms/conference-room-06.webp']}
+{'asset': 'conference-room-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-08.png'], 'webp': ['webp/conference-rooms/conference-room-08.webp']}
+{'asset': 'conference-room-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-09.png'], 'webp': ['webp/conference-rooms/conference-room-09.webp']}
+{'asset': 'conference-room-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-11.png'], 'webp': ['webp/conference-rooms/conference-room-11.webp']}
+{'asset': 'conference-room-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-12.png'], 'webp': ['webp/conference-rooms/conference-room-12.webp']}
+{'asset': 'conference-room-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-13.png'], 'webp': ['webp/conference-rooms/conference-room-13.webp']}
+{'asset': 'conference-room-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-14.png'], 'webp': ['webp/conference-rooms/conference-room-14.webp']}
+{'asset': 'conference-room-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-15.png'], 'webp': ['webp/conference-rooms/conference-room-15.webp']}
+{'asset': 'conference-room-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-16.png'], 'webp': ['webp/conference-rooms/conference-room-16.webp']}
+{'asset': 'conference-room-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-17.png'], 'webp': ['webp/conference-rooms/conference-room-17.webp']}
+{'asset': 'conference-room-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-18.png'], 'webp': ['webp/conference-rooms/conference-room-18.webp']}
+{'asset': 'conference-room-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-19.png'], 'webp': ['webp/conference-rooms/conference-room-19.webp']}
+{'asset': 'conference-room-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-21.png'], 'webp': ['webp/conference-rooms/conference-room-21.webp']}
+{'asset': 'conference-room-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-22.png'], 'webp': ['webp/conference-rooms/conference-room-22.webp']}
+{'asset': 'conference-room-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-23.png'], 'webp': ['webp/conference-rooms/conference-room-23.webp']}
+{'asset': 'conference-room-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-24.png'], 'webp': ['webp/conference-rooms/conference-room-24.webp']}
+{'asset': 'conference-room-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-26.png'], 'webp': ['webp/conference-rooms/conference-room-26.webp']}
+{'asset': 'conference-room-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-27.png'], 'webp': ['webp/conference-rooms/conference-room-27.webp']}
+{'asset': 'conference-room-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-28.png'], 'webp': ['webp/conference-rooms/conference-room-28.webp']}
+{'asset': 'conference-room-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-29.png'], 'webp': ['webp/conference-rooms/conference-room-29.webp']}
+{'asset': 'conference-room-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-30.png'], 'webp': ['webp/conference-rooms/conference-room-30.webp']}
+{'asset': 'conference-room-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-31.png'], 'webp': ['webp/conference-rooms/conference-room-31.webp']}
+{'asset': 'conference-room-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-32.png'], 'webp': ['webp/conference-rooms/conference-room-32.webp']}
+{'asset': 'conference-room-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-33.png'], 'webp': ['webp/conference-rooms/conference-room-33.webp']}
+{'asset': 'conference-room-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-34.png'], 'webp': ['webp/conference-rooms/conference-room-34.webp']}
+{'asset': 'conference-room-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-35.png'], 'webp': ['webp/conference-rooms/conference-room-35.webp']}
+{'asset': 'conference-room-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-36.png'], 'webp': ['webp/conference-rooms/conference-room-36.webp']}
+{'asset': 'conference-room-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-37.png'], 'webp': ['webp/conference-rooms/conference-room-37.webp']}
+{'asset': 'conference-room-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-38.png'], 'webp': ['webp/conference-rooms/conference-room-38.webp']}
+{'asset': 'conference-room-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-39.png'], 'webp': ['webp/conference-rooms/conference-room-39.webp']}
+{'asset': 'conference-room-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-44.png'], 'webp': ['webp/conference-rooms/conference-room-44.webp']}
+{'asset': 'conference-room-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-45.png'], 'webp': ['webp/conference-rooms/conference-room-45.webp']}
+{'asset': 'conference-room-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-46.png'], 'webp': ['webp/conference-rooms/conference-room-46.webp']}
+{'asset': 'conference-room-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-47.png'], 'webp': ['webp/conference-rooms/conference-room-47.webp']}
+{'asset': 'conference-room-48.webp', 'png_count': 1, 'webp_count': 1, 'png': ['conference-room-48.png'], 'webp': ['webp/conference-rooms/conference-room-48.webp']}
+{'asset': 'easter-background-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-03.png'], 'webp': ['webp/easter-backgrounds/easter-background-03.webp']}
+{'asset': 'easter-background-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-04.png'], 'webp': ['webp/easter-backgrounds/easter-background-04.webp']}
+{'asset': 'easter-background-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-05.png'], 'webp': ['webp/easter-backgrounds/easter-background-05.webp']}
+{'asset': 'easter-background-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-07.png'], 'webp': ['webp/easter-backgrounds/easter-background-07.webp']}
+{'asset': 'easter-background-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-09.png'], 'webp': ['webp/easter-backgrounds/easter-background-09.webp']}
+{'asset': 'easter-background-100.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-100.png'], 'webp': ['webp/easter-backgrounds/easter-background-100.webp']}
+{'asset': 'easter-background-101.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-101.png'], 'webp': ['webp/easter-backgrounds/easter-background-101.webp']}
+{'asset': 'easter-background-102.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-102.png'], 'webp': ['webp/easter-backgrounds/easter-background-102.webp']}
+{'asset': 'easter-background-103.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-103.png'], 'webp': ['webp/easter-backgrounds/easter-background-103.webp']}
+{'asset': 'easter-background-104.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-104.png'], 'webp': ['webp/easter-backgrounds/easter-background-104.webp']}
+{'asset': 'easter-background-105.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-105.png'], 'webp': ['webp/easter-backgrounds/easter-background-105.webp']}
+{'asset': 'easter-background-107.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-107.png'], 'webp': ['webp/easter-backgrounds/easter-background-107.webp']}
+{'asset': 'easter-background-108.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-108.png'], 'webp': ['webp/easter-backgrounds/easter-background-108.webp']}
+{'asset': 'easter-background-109.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-109.png'], 'webp': ['webp/easter-backgrounds/easter-background-109.webp']}
+{'asset': 'easter-background-110.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-110.png'], 'webp': ['webp/easter-backgrounds/easter-background-110.webp']}
+{'asset': 'easter-background-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-13.png'], 'webp': ['webp/easter-backgrounds/easter-background-13.webp']}
+{'asset': 'easter-background-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-16.png'], 'webp': ['webp/easter-backgrounds/easter-background-16.webp']}
+{'asset': 'easter-background-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-17.png'], 'webp': ['webp/easter-backgrounds/easter-background-17.webp']}
+{'asset': 'easter-background-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-18.png'], 'webp': ['webp/easter-backgrounds/easter-background-18.webp']}
+{'asset': 'easter-background-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-20.png'], 'webp': ['webp/easter-backgrounds/easter-background-20.webp']}
+{'asset': 'easter-background-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-21.png'], 'webp': ['webp/easter-backgrounds/easter-background-21.webp']}
+{'asset': 'easter-background-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-22.png'], 'webp': ['webp/easter-backgrounds/easter-background-22.webp']}
+{'asset': 'easter-background-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-23.png'], 'webp': ['webp/easter-backgrounds/easter-background-23.webp']}
+{'asset': 'easter-background-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-24.png'], 'webp': ['webp/easter-backgrounds/easter-background-24.webp']}
+{'asset': 'easter-background-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-25.png'], 'webp': ['webp/easter-backgrounds/easter-background-25.webp']}
+{'asset': 'easter-background-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-26.png'], 'webp': ['webp/easter-backgrounds/easter-background-26.webp']}
+{'asset': 'easter-background-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-28.png'], 'webp': ['webp/easter-backgrounds/easter-background-28.webp']}
+{'asset': 'easter-background-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-30.png'], 'webp': ['webp/easter-backgrounds/easter-background-30.webp']}
+{'asset': 'easter-background-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-31.png'], 'webp': ['webp/easter-backgrounds/easter-background-31.webp']}
+{'asset': 'easter-background-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-32.png'], 'webp': ['webp/easter-backgrounds/easter-background-32.webp']}
+{'asset': 'easter-background-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-35.png'], 'webp': ['webp/easter-backgrounds/easter-background-35.webp']}
+{'asset': 'easter-background-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-36.png'], 'webp': ['webp/easter-backgrounds/easter-background-36.webp']}
+{'asset': 'easter-background-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-37.png'], 'webp': ['webp/easter-backgrounds/easter-background-37.webp']}
+{'asset': 'easter-background-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-39.png'], 'webp': ['webp/easter-backgrounds/easter-background-39.webp']}
+{'asset': 'easter-background-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-40.png'], 'webp': ['webp/easter-backgrounds/easter-background-40.webp']}
+{'asset': 'easter-background-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-41.png'], 'webp': ['webp/easter-backgrounds/easter-background-41.webp']}
+{'asset': 'easter-background-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-42.png'], 'webp': ['webp/easter-backgrounds/easter-background-42.webp']}
+{'asset': 'easter-background-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-43.png'], 'webp': ['webp/easter-backgrounds/easter-background-43.webp']}
+{'asset': 'easter-background-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-44.png'], 'webp': ['webp/easter-backgrounds/easter-background-44.webp']}
+{'asset': 'easter-background-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-45.png'], 'webp': ['webp/easter-backgrounds/easter-background-45.webp']}
+{'asset': 'easter-background-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-46.png'], 'webp': ['webp/easter-backgrounds/easter-background-46.webp']}
+{'asset': 'easter-background-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-47.png'], 'webp': ['webp/easter-backgrounds/easter-background-47.webp']}
+{'asset': 'easter-background-48.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-48.png'], 'webp': ['webp/easter-backgrounds/easter-background-48.webp']}
+{'asset': 'easter-background-49.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-49.png'], 'webp': ['webp/easter-backgrounds/easter-background-49.webp']}
+{'asset': 'easter-background-51.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-51.png'], 'webp': ['webp/easter-backgrounds/easter-background-51.webp']}
+{'asset': 'easter-background-53.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-53.png'], 'webp': ['webp/easter-backgrounds/easter-background-53.webp']}
+{'asset': 'easter-background-55.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-55.png'], 'webp': ['webp/easter-backgrounds/easter-background-55.webp']}
+{'asset': 'easter-background-56.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-56.png'], 'webp': ['webp/easter-backgrounds/easter-background-56.webp']}
+{'asset': 'easter-background-57.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-57.png'], 'webp': ['webp/easter-backgrounds/easter-background-57.webp']}
+{'asset': 'easter-background-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-58.png'], 'webp': ['webp/easter-backgrounds/easter-background-58.webp']}
+{'asset': 'easter-background-61.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-61.png'], 'webp': ['webp/easter-backgrounds/easter-background-61.webp']}
+{'asset': 'easter-background-64.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-64.png'], 'webp': ['webp/easter-backgrounds/easter-background-64.webp']}
+{'asset': 'easter-background-66.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-66.png'], 'webp': ['webp/easter-backgrounds/easter-background-66.webp']}
+{'asset': 'easter-background-67.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-67.png'], 'webp': ['webp/easter-backgrounds/easter-background-67.webp']}
+{'asset': 'easter-background-68.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-68.png'], 'webp': ['webp/easter-backgrounds/easter-background-68.webp']}
+{'asset': 'easter-background-69.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-69.png'], 'webp': ['webp/easter-backgrounds/easter-background-69.webp']}
+{'asset': 'easter-background-70.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-70.png'], 'webp': ['webp/easter-backgrounds/easter-background-70.webp']}
+{'asset': 'easter-background-71.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-71.png'], 'webp': ['webp/easter-backgrounds/easter-background-71.webp']}
+{'asset': 'easter-background-72.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-72.png'], 'webp': ['webp/easter-backgrounds/easter-background-72.webp']}
+{'asset': 'easter-background-74.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-74.png'], 'webp': ['webp/easter-backgrounds/easter-background-74.webp']}
+{'asset': 'easter-background-75.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-75.png'], 'webp': ['webp/easter-backgrounds/easter-background-75.webp']}
+{'asset': 'easter-background-76.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-76.png'], 'webp': ['webp/easter-backgrounds/easter-background-76.webp']}
+{'asset': 'easter-background-77.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-77.png'], 'webp': ['webp/easter-backgrounds/easter-background-77.webp']}
+{'asset': 'easter-background-78.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-78.png'], 'webp': ['webp/easter-backgrounds/easter-background-78.webp']}
+{'asset': 'easter-background-80.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-80.png'], 'webp': ['webp/easter-backgrounds/easter-background-80.webp']}
+{'asset': 'easter-background-82.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-82.png'], 'webp': ['webp/easter-backgrounds/easter-background-82.webp']}
+{'asset': 'easter-background-83.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-83.png'], 'webp': ['webp/easter-backgrounds/easter-background-83.webp']}
+{'asset': 'easter-background-84.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-84.png'], 'webp': ['webp/easter-backgrounds/easter-background-84.webp']}
+{'asset': 'easter-background-85.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-85.png'], 'webp': ['webp/easter-backgrounds/easter-background-85.webp']}
+{'asset': 'easter-background-88.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-88.png'], 'webp': ['webp/easter-backgrounds/easter-background-88.webp']}
+{'asset': 'easter-background-91.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-91.png'], 'webp': ['webp/easter-backgrounds/easter-background-91.webp']}
+{'asset': 'easter-background-92.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-92.png'], 'webp': ['webp/easter-backgrounds/easter-background-92.webp']}
+{'asset': 'easter-background-93.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-93.png'], 'webp': ['webp/easter-backgrounds/easter-background-93.webp']}
+{'asset': 'easter-background-95.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-95.png'], 'webp': ['webp/easter-backgrounds/easter-background-95.webp']}
+{'asset': 'easter-background-96.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-96.png'], 'webp': ['webp/easter-backgrounds/easter-background-96.webp']}
+{'asset': 'easter-background-97.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-97.png'], 'webp': ['webp/easter-backgrounds/easter-background-97.webp']}
+{'asset': 'easter-background-98.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-98.png'], 'webp': ['webp/easter-backgrounds/easter-background-98.webp']}
+{'asset': 'easter-background-99.webp', 'png_count': 1, 'webp_count': 1, 'png': ['easter-background-99.png'], 'webp': ['webp/easter-backgrounds/easter-background-99.webp']}
+{'asset': 'garden-patio-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['streambackdrops/gardens-patios/garden-patio-01-hd.png'], 'webp': ['webp/gardens-patios/garden-patio-01.webp']}
+{'asset': 'garden-patio-02.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/gardens-patios/garden-patio-02.webp']}
+{'asset': 'garden-patio-07.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/gardens-patios/garden-patio-07.webp']}
+{'asset': 'garden-patio-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-10.png'], 'webp': ['webp/gardens-patios/garden-patio-10.webp']}
+{'asset': 'garden-patio-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-11.png'], 'webp': ['webp/gardens-patios/garden-patio-11.webp']}
+{'asset': 'garden-patio-12.webp', 'png_count': 2, 'webp_count': 1, 'png': ['garden-patio-12.png', 'streambackdrops/gardens-patios/garden-patio-12-hd.png'], 'webp': ['webp/gardens-patios/garden-patio-12.webp']}
+{'asset': 'garden-patio-14.webp', 'png_count': 2, 'webp_count': 1, 'png': ['garden-patio-14.png', 'streambackdrops/gardens-patios/garden-patio-14-hd.png'], 'webp': ['webp/gardens-patios/garden-patio-14.webp']}
+{'asset': 'garden-patio-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-16.png'], 'webp': ['webp/gardens-patios/garden-patio-16.webp']}
+{'asset': 'garden-patio-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-17.png'], 'webp': ['webp/gardens-patios/garden-patio-17.webp']}
+{'asset': 'garden-patio-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-18.png'], 'webp': ['webp/gardens-patios/garden-patio-18.webp']}
+{'asset': 'garden-patio-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-19.png'], 'webp': ['webp/gardens-patios/garden-patio-19.webp']}
+{'asset': 'garden-patio-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-20.png'], 'webp': ['webp/gardens-patios/garden-patio-20.webp']}
+{'asset': 'garden-patio-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-21.png'], 'webp': ['webp/gardens-patios/garden-patio-21.webp']}
+{'asset': 'garden-patio-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-22.png'], 'webp': ['webp/gardens-patios/garden-patio-22.webp']}
+{'asset': 'garden-patio-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-24.png'], 'webp': ['webp/gardens-patios/garden-patio-24.webp']}
+{'asset': 'garden-patio-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-25.png'], 'webp': ['webp/gardens-patios/garden-patio-25.webp']}
+{'asset': 'garden-patio-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-26.png'], 'webp': ['webp/gardens-patios/garden-patio-26.webp']}
+{'asset': 'garden-patio-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-27.png'], 'webp': ['webp/gardens-patios/garden-patio-27.webp']}
+{'asset': 'garden-patio-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-28.png'], 'webp': ['webp/gardens-patios/garden-patio-28.webp']}
+{'asset': 'garden-patio-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-29.png'], 'webp': ['webp/gardens-patios/garden-patio-29.webp']}
+{'asset': 'garden-patio-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-31.png'], 'webp': ['webp/gardens-patios/garden-patio-31.webp']}
+{'asset': 'garden-patio-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-32.png'], 'webp': ['webp/gardens-patios/garden-patio-32.webp']}
+{'asset': 'garden-patio-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-33.png'], 'webp': ['webp/gardens-patios/garden-patio-33.webp']}
+{'asset': 'garden-patio-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-34.png'], 'webp': ['webp/gardens-patios/garden-patio-34.webp']}
+{'asset': 'garden-patio-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-35.png'], 'webp': ['webp/gardens-patios/garden-patio-35.webp']}
+{'asset': 'garden-patio-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-36.png'], 'webp': ['webp/gardens-patios/garden-patio-36.webp']}
+{'asset': 'garden-patio-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-37.png'], 'webp': ['webp/gardens-patios/garden-patio-37.webp']}
+{'asset': 'garden-patio-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-38.png'], 'webp': ['webp/gardens-patios/garden-patio-38.webp']}
+{'asset': 'garden-patio-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-39.png'], 'webp': ['webp/gardens-patios/garden-patio-39.webp']}
+{'asset': 'garden-patio-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-42.png'], 'webp': ['webp/gardens-patios/garden-patio-42.webp']}
+{'asset': 'garden-patio-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['garden-patio-43.png'], 'webp': ['webp/gardens-patios/garden-patio-43.webp']}
+{'asset': 'halloween-background-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-01.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-01.webp']}
+{'asset': 'halloween-background-02.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-02.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-02.webp']}
+{'asset': 'halloween-background-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-03.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-03.webp']}
+{'asset': 'halloween-background-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-04.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-04.webp']}
+{'asset': 'halloween-background-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-05.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-05.webp']}
+{'asset': 'halloween-background-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-06.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-06.webp']}
+{'asset': 'halloween-background-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-08.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-08.webp']}
+{'asset': 'halloween-background-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-09.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-09.webp']}
+{'asset': 'halloween-background-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-10.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-10.webp']}
+{'asset': 'halloween-background-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-11.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-11.webp']}
+{'asset': 'halloween-background-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-12.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-12.webp']}
+{'asset': 'halloween-background-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-14.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-14.webp']}
+{'asset': 'halloween-background-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-18.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-18.webp']}
+{'asset': 'halloween-background-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-19.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-19.webp']}
+{'asset': 'halloween-background-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-21.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-21.webp']}
+{'asset': 'halloween-background-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-22.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-22.webp']}
+{'asset': 'halloween-background-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-23.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-23.webp']}
+{'asset': 'halloween-background-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['halloween-background-24.png'], 'webp': ['webp/halloween-backgrounds/halloween-background-24.webp']}
+{'asset': 'historic-space-02.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/historic-spaces/historic-space-02.webp']}
+{'asset': 'historic-space-03.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/historic-spaces/historic-space-03.webp']}
+{'asset': 'historic-space-06.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/historic-spaces/historic-space-06.webp']}
+{'asset': 'historic-space-09.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/historic-spaces/historic-space-09.webp']}
+{'asset': 'historic-space-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-13.png'], 'webp': ['webp/historic-spaces/historic-space-13.webp']}
+{'asset': 'historic-space-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-14.png'], 'webp': ['webp/historic-spaces/historic-space-14.webp']}
+{'asset': 'historic-space-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-15.png'], 'webp': ['webp/historic-spaces/historic-space-15.webp']}
+{'asset': 'historic-space-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-17.png'], 'webp': ['webp/historic-spaces/historic-space-17.webp']}
+{'asset': 'historic-space-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-18.png'], 'webp': ['webp/historic-spaces/historic-space-18.webp']}
+{'asset': 'historic-space-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-20.png'], 'webp': ['webp/historic-spaces/historic-space-20.webp']}
+{'asset': 'historic-space-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-21.png'], 'webp': ['webp/historic-spaces/historic-space-21.webp']}
+{'asset': 'historic-space-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-22.png'], 'webp': ['webp/historic-spaces/historic-space-22.webp']}
+{'asset': 'historic-space-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-25.png'], 'webp': ['webp/historic-spaces/historic-space-25.webp']}
+{'asset': 'historic-space-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-26.png'], 'webp': ['webp/historic-spaces/historic-space-26.webp']}
+{'asset': 'historic-space-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-28.png'], 'webp': ['webp/historic-spaces/historic-space-28.webp']}
+{'asset': 'historic-space-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-29.png'], 'webp': ['webp/historic-spaces/historic-space-29.webp']}
+{'asset': 'historic-space-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-30.png'], 'webp': ['webp/historic-spaces/historic-space-30.webp']}
+{'asset': 'historic-space-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-31.png'], 'webp': ['webp/historic-spaces/historic-space-31.webp']}
+{'asset': 'historic-space-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-32.png'], 'webp': ['webp/historic-spaces/historic-space-32.webp']}
+{'asset': 'historic-space-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-33.png'], 'webp': ['webp/historic-spaces/historic-space-33.webp']}
+{'asset': 'historic-space-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-34.png'], 'webp': ['webp/historic-spaces/historic-space-34.webp']}
+{'asset': 'historic-space-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['historic-space-37.png'], 'webp': ['webp/historic-spaces/historic-space-37.webp']}
+{'asset': 'home-offices-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-01.png'], 'webp': ['webp/home-office/home-offices-01.webp']}
+{'asset': 'home-offices-02.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-02.png'], 'webp': ['webp/home-office/home-offices-02.webp']}
+{'asset': 'home-offices-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-03.png'], 'webp': ['webp/home-office/home-offices-03.webp']}
+{'asset': 'home-offices-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-04.png'], 'webp': ['webp/home-office/home-offices-04.webp']}
+{'asset': 'home-offices-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-05.png'], 'webp': ['webp/home-office/home-offices-05.webp']}
+{'asset': 'home-offices-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-06.png'], 'webp': ['webp/home-office/home-offices-06.webp']}
+{'asset': 'home-offices-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-07.png'], 'webp': ['webp/home-office/home-offices-07.webp']}
+{'asset': 'home-offices-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-08.png'], 'webp': ['webp/home-office/home-offices-08.webp']}
+{'asset': 'home-offices-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-09.png'], 'webp': ['webp/home-office/home-offices-09.webp']}
+{'asset': 'home-offices-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-10.png'], 'webp': ['webp/home-office/home-offices-10.webp']}
+{'asset': 'home-offices-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-11.png'], 'webp': ['webp/home-office/home-offices-11.webp']}
+{'asset': 'home-offices-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-13.png'], 'webp': ['webp/home-office/home-offices-13.webp']}
+{'asset': 'home-offices-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-14.png'], 'webp': ['webp/home-office/home-offices-14.webp']}
+{'asset': 'home-offices-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-15.png'], 'webp': ['webp/home-office/home-offices-15.webp']}
+{'asset': 'home-offices-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-16.png'], 'webp': ['webp/home-office/home-offices-16.webp']}
+{'asset': 'home-offices-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-17.png'], 'webp': ['webp/home-office/home-offices-17.webp']}
+{'asset': 'home-offices-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-18.png'], 'webp': ['webp/home-office/home-offices-18.webp']}
+{'asset': 'home-offices-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-20.png'], 'webp': ['webp/home-office/home-offices-20.webp']}
+{'asset': 'home-offices-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-22.png'], 'webp': ['webp/home-office/home-offices-22.webp']}
+{'asset': 'home-offices-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-23.png'], 'webp': ['webp/home-office/home-offices-23.webp']}
+{'asset': 'home-offices-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-24.png'], 'webp': ['webp/home-office/home-offices-24.webp']}
+{'asset': 'home-offices-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-25.png'], 'webp': ['webp/home-office/home-offices-25.webp']}
+{'asset': 'home-offices-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-26.png'], 'webp': ['webp/home-office/home-offices-26.webp']}
+{'asset': 'home-offices-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-27.png'], 'webp': ['webp/home-office/home-offices-27.webp']}
+{'asset': 'home-offices-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-28.png'], 'webp': ['webp/home-office/home-offices-28.webp']}
+{'asset': 'home-offices-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-29.png'], 'webp': ['webp/home-office/home-offices-29.webp']}
+{'asset': 'home-offices-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-30.png'], 'webp': ['webp/home-office/home-offices-30.webp']}
+{'asset': 'home-offices-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-31.png'], 'webp': ['webp/home-office/home-offices-31.webp']}
+{'asset': 'home-offices-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-32.png'], 'webp': ['webp/home-office/home-offices-32.webp']}
+{'asset': 'home-offices-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-37.png'], 'webp': ['webp/home-office/home-offices-37.webp']}
+{'asset': 'home-offices-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-41.png'], 'webp': ['webp/home-office/home-offices-41.webp']}
+{'asset': 'home-offices-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-42.png'], 'webp': ['webp/home-office/home-offices-42.webp']}
+{'asset': 'home-offices-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-43.png'], 'webp': ['webp/home-office/home-offices-43.webp']}
+{'asset': 'home-offices-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-47.png'], 'webp': ['webp/home-office/home-offices-47.webp']}
+{'asset': 'home-offices-48.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-48.png'], 'webp': ['webp/home-office/home-offices-48.webp']}
+{'asset': 'home-offices-50.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-50.png'], 'webp': ['webp/home-office/home-offices-50.webp']}
+{'asset': 'home-offices-53.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-53.png'], 'webp': ['webp/home-office/home-offices-53.webp']}
+{'asset': 'home-offices-55.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-55.png'], 'webp': ['webp/home-office/home-offices-55.webp']}
+{'asset': 'home-offices-56.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-56.png'], 'webp': ['webp/home-office/home-offices-56.webp']}
+{'asset': 'home-offices-57.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-57.png'], 'webp': ['webp/home-office/home-offices-57.webp']}
+{'asset': 'home-offices-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-58.png'], 'webp': ['webp/home-office/home-offices-58.webp']}
+{'asset': 'home-offices-59.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-59.png'], 'webp': ['webp/home-office/home-offices-59.webp']}
+{'asset': 'home-offices-60.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-60.png'], 'webp': ['webp/home-office/home-offices-60.webp']}
+{'asset': 'home-offices-61.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-61.png'], 'webp': ['webp/home-office/home-offices-61.webp']}
+{'asset': 'home-offices-62.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-62.png'], 'webp': ['webp/home-office/home-offices-62.webp']}
+{'asset': 'home-offices-63.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-63.png'], 'webp': ['webp/home-office/home-offices-63.webp']}
+{'asset': 'home-offices-64.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-64.png'], 'webp': ['webp/home-office/home-offices-64.webp']}
+{'asset': 'home-offices-65.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-65.png'], 'webp': ['webp/home-office/home-offices-65.webp']}
+{'asset': 'home-offices-66.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-66.png'], 'webp': ['webp/home-office/home-offices-66.webp']}
+{'asset': 'home-offices-67.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-67.png'], 'webp': ['webp/home-office/home-offices-67.webp']}
+{'asset': 'home-offices-69.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-69.png'], 'webp': ['webp/home-office/home-offices-69.webp']}
+{'asset': 'home-offices-71.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-71.png'], 'webp': ['webp/home-office/home-offices-71.webp']}
+{'asset': 'home-offices-72.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-72.png'], 'webp': ['webp/home-office/home-offices-72.webp']}
+{'asset': 'home-offices-73.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-73.png'], 'webp': ['webp/home-office/home-offices-73.webp']}
+{'asset': 'home-offices-74.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-74.png'], 'webp': ['webp/home-office/home-offices-74.webp']}
+{'asset': 'home-offices-75.webp', 'png_count': 1, 'webp_count': 1, 'png': ['home-offices-75.png'], 'webp': ['webp/home-office/home-offices-75.webp']}
+{'asset': 'kitchen-01.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-01.webp']}
+{'asset': 'kitchen-03.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-03.webp']}
+{'asset': 'kitchen-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['streambackdrops/kitchens/kitchen-04-hd.png'], 'webp': ['webp/kitchens/kitchen-04.webp']}
+{'asset': 'kitchen-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['streambackdrops/kitchens/kitchen-05-hd.png'], 'webp': ['webp/kitchens/kitchen-05.webp']}
+{'asset': 'kitchen-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['streambackdrops/kitchens/kitchen-06-hd.png'], 'webp': ['webp/kitchens/kitchen-06.webp']}
+{'asset': 'kitchen-07.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-07.webp']}
+{'asset': 'kitchen-09.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-09.webp']}
+{'asset': 'kitchen-10.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-10.webp']}
+{'asset': 'kitchen-11.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-11.webp']}
+{'asset': 'kitchen-12.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-12.webp']}
+{'asset': 'kitchen-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['streambackdrops/kitchens/kitchen-14-hd.png'], 'webp': ['webp/kitchens/kitchen-14.webp']}
+{'asset': 'kitchen-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['streambackdrops/kitchens/kitchen-15-hd.png'], 'webp': ['webp/kitchens/kitchen-15.webp']}
+{'asset': 'kitchen-17.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-17.webp']}
+{'asset': 'kitchen-18.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/kitchens/kitchen-18.webp']}
+{'asset': 'kitchen-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-19.png'], 'webp': ['webp/kitchens/kitchen-19.webp']}
+{'asset': 'kitchen-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-20.png'], 'webp': ['webp/kitchens/kitchen-20.webp']}
+{'asset': 'kitchen-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-22.png'], 'webp': ['webp/kitchens/kitchen-22.webp']}
+{'asset': 'kitchen-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-24.png'], 'webp': ['webp/kitchens/kitchen-24.webp']}
+{'asset': 'kitchen-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-26.png'], 'webp': ['webp/kitchens/kitchen-26.webp']}
+{'asset': 'kitchen-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-28.png'], 'webp': ['webp/kitchens/kitchen-28.webp']}
+{'asset': 'kitchen-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-29.png'], 'webp': ['webp/kitchens/kitchen-29.webp']}
+{'asset': 'kitchen-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-30.png'], 'webp': ['webp/kitchens/kitchen-30.webp']}
+{'asset': 'kitchen-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-31.png'], 'webp': ['webp/kitchens/kitchen-31.webp']}
+{'asset': 'kitchen-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-32.png'], 'webp': ['webp/kitchens/kitchen-32.webp']}
+{'asset': 'kitchen-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-33.png'], 'webp': ['webp/kitchens/kitchen-33.webp']}
+{'asset': 'kitchen-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['kitchen-34.png'], 'webp': ['webp/kitchens/kitchen-34.webp']}
+{'asset': 'libraries-19.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-19.png'], 'webp': []}
+{'asset': 'libraries-22.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-22.png'], 'webp': []}
+{'asset': 'libraries-24.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-24.png'], 'webp': []}
+{'asset': 'libraries-25.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-25.png'], 'webp': []}
+{'asset': 'libraries-29.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-29.png'], 'webp': []}
+{'asset': 'libraries-30.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-30.png'], 'webp': []}
+{'asset': 'libraries-31.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-31.png'], 'webp': []}
+{'asset': 'libraries-32.webp', 'png_count': 1, 'webp_count': 0, 'png': ['libraries-32.png'], 'webp': []}
+{'asset': 'library-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-03.png'], 'webp': ['webp/libraries/library-03.webp']}
+{'asset': 'library-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-09.png'], 'webp': ['webp/libraries/library-09.webp']}
+{'asset': 'library-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-11.png'], 'webp': ['webp/libraries/library-11.webp']}
+{'asset': 'library-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-14.png'], 'webp': ['webp/libraries/library-14.webp']}
+{'asset': 'library-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-15.png'], 'webp': ['webp/libraries/library-15.webp']}
+{'asset': 'library-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-16.png'], 'webp': ['webp/libraries/library-16.webp']}
+{'asset': 'library-17.webp', 'png_count': 2, 'webp_count': 1, 'png': ['library-17.png', 'streambackdrops/libraries/library-17-hd.png'], 'webp': ['webp/libraries/library-17.webp']}
+{'asset': 'library-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-33.png'], 'webp': ['webp/libraries/library-33.webp']}
+{'asset': 'library-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-34.png'], 'webp': ['webp/libraries/library-34.webp']}
+{'asset': 'library-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['library-35.png'], 'webp': ['webp/libraries/library-35.webp']}
+{'asset': 'living-room-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-01.png'], 'webp': ['webp/living-rooms/living-room-01.webp']}
+{'asset': 'living-room-02.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-02.png'], 'webp': ['webp/living-rooms/living-room-02.webp']}
+{'asset': 'living-room-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-03.png'], 'webp': ['webp/living-rooms/living-room-03.webp']}
+{'asset': 'living-room-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-04.png'], 'webp': ['webp/living-rooms/living-room-04.webp']}
+{'asset': 'living-room-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-05.png'], 'webp': ['webp/living-rooms/living-room-05.webp']}
+{'asset': 'living-room-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-06.png'], 'webp': ['webp/living-rooms/living-room-06.webp']}
+{'asset': 'living-room-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-07.png'], 'webp': ['webp/living-rooms/living-room-07.webp']}
+{'asset': 'living-room-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-08.png'], 'webp': ['webp/living-rooms/living-room-08.webp']}
+{'asset': 'living-room-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-09.png'], 'webp': ['webp/living-rooms/living-room-09.webp']}
+{'asset': 'living-room-10.webp', 'png_count': 2, 'webp_count': 1, 'png': ['living-room-10.png', 'streambackdrops/living-rooms/living-room-10-hd.png'], 'webp': ['webp/living-rooms/living-room-10.webp']}
+{'asset': 'living-room-11.webp', 'png_count': 2, 'webp_count': 1, 'png': ['living-room-11.png', 'streambackdrops/living-rooms/living-room-11-hd.png'], 'webp': ['webp/living-rooms/living-room-11.webp']}
+{'asset': 'living-room-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-12.png'], 'webp': ['webp/living-rooms/living-room-12.webp']}
+{'asset': 'living-room-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-13.png'], 'webp': ['webp/living-rooms/living-room-13.webp']}
+{'asset': 'living-room-14.webp', 'png_count': 2, 'webp_count': 1, 'png': ['living-room-14.png', 'streambackdrops/living-rooms/living-room-14-hd.png'], 'webp': ['webp/living-rooms/living-room-14.webp']}
+{'asset': 'living-room-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-15.png'], 'webp': ['webp/living-rooms/living-room-15.webp']}
+{'asset': 'living-room-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-16.png'], 'webp': ['webp/living-rooms/living-room-16.webp']}
+{'asset': 'living-room-17.webp', 'png_count': 2, 'webp_count': 1, 'png': ['living-room-17.png', 'streambackdrops/living-rooms/living-room-17-hd.png'], 'webp': ['webp/living-rooms/living-room-17.webp']}
+{'asset': 'living-room-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-18.png'], 'webp': ['webp/living-rooms/living-room-18.webp']}
+{'asset': 'living-room-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-20.png'], 'webp': ['webp/living-rooms/living-room-20.webp']}
+{'asset': 'living-room-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-22.png'], 'webp': ['webp/living-rooms/living-room-22.webp']}
+{'asset': 'living-room-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-23.png'], 'webp': ['webp/living-rooms/living-room-23.webp']}
+{'asset': 'living-room-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-24.png'], 'webp': ['webp/living-rooms/living-room-24.webp']}
+{'asset': 'living-room-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-26.png'], 'webp': ['webp/living-rooms/living-room-26.webp']}
+{'asset': 'living-room-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-27.png'], 'webp': ['webp/living-rooms/living-room-27.webp']}
+{'asset': 'living-room-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-28.png'], 'webp': ['webp/living-rooms/living-room-28.webp']}
+{'asset': 'living-room-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-31.png'], 'webp': ['webp/living-rooms/living-room-31.webp']}
+{'asset': 'living-room-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-32.png'], 'webp': ['webp/living-rooms/living-room-32.webp']}
+{'asset': 'living-room-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-34.png'], 'webp': ['webp/living-rooms/living-room-34.webp']}
+{'asset': 'living-room-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-35.png'], 'webp': ['webp/living-rooms/living-room-35.webp']}
+{'asset': 'living-room-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-36.png'], 'webp': ['webp/living-rooms/living-room-36.webp']}
+{'asset': 'living-room-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-37.png'], 'webp': ['webp/living-rooms/living-room-37.webp']}
+{'asset': 'living-room-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-39.png'], 'webp': ['webp/living-rooms/living-room-39.webp']}
+{'asset': 'living-room-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-40.png'], 'webp': ['webp/living-rooms/living-room-40.webp']}
+{'asset': 'living-room-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-41.png'], 'webp': ['webp/living-rooms/living-room-41.webp']}
+{'asset': 'living-room-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-42.png'], 'webp': ['webp/living-rooms/living-room-42.webp']}
+{'asset': 'living-room-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-43.png'], 'webp': ['webp/living-rooms/living-room-43.webp']}
+{'asset': 'living-room-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-45.png'], 'webp': ['webp/living-rooms/living-room-45.webp']}
+{'asset': 'living-room-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-46.png'], 'webp': ['webp/living-rooms/living-room-46.webp']}
+{'asset': 'living-room-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['living-room-47.png'], 'webp': ['webp/living-rooms/living-room-47.webp']}
+{'asset': 'nature-landscape-1.webp', 'png_count': 1, 'webp_count': 0, 'png': ['nature-landscape-1.png'], 'webp': []}
+{'asset': 'nature-landscape-10.webp', 'png_count': 2, 'webp_count': 1, 'png': ['nature-landscape-10.png', 'streambackdrops/nature-landscapes/nature-landscape-10-hd.png'], 'webp': ['webp/nature-landscapes/nature-landscape-10.webp']}
+{'asset': 'nature-landscape-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-12.png'], 'webp': ['webp/nature-landscapes/nature-landscape-12.webp']}
+{'asset': 'nature-landscape-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-13.png'], 'webp': ['webp/nature-landscapes/nature-landscape-13.webp']}
+{'asset': 'nature-landscape-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-15.png'], 'webp': ['webp/nature-landscapes/nature-landscape-15.webp']}
+{'asset': 'nature-landscape-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-16.png'], 'webp': ['webp/nature-landscapes/nature-landscape-16.webp']}
+{'asset': 'nature-landscape-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-18.png'], 'webp': ['webp/nature-landscapes/nature-landscape-18.webp']}
+{'asset': 'nature-landscape-2.webp', 'png_count': 1, 'webp_count': 0, 'png': ['nature-landscape-2.png'], 'webp': []}
+{'asset': 'nature-landscape-21.webp', 'png_count': 3, 'webp_count': 1, 'png': ['nature-landscape-21.png', 'premium/nature-landscape-21-hd.png', 'streambackdrops/nature-landscapes/nature-landscape-21-hd.png'], 'webp': ['webp/nature-landscapes/nature-landscape-21.webp']}
+{'asset': 'nature-landscape-22.webp', 'png_count': 2, 'webp_count': 1, 'png': ['nature-landscape-22.png', 'streambackdrops/nature-landscapes/nature-landscape-22-hd.png'], 'webp': ['webp/nature-landscapes/nature-landscape-22.webp']}
+{'asset': 'nature-landscape-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-23.png'], 'webp': ['webp/nature-landscapes/nature-landscape-23.webp']}
+{'asset': 'nature-landscape-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-24.png'], 'webp': ['webp/nature-landscapes/nature-landscape-24.webp']}
+{'asset': 'nature-landscape-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-26.png'], 'webp': ['webp/nature-landscapes/nature-landscape-26.webp']}
+{'asset': 'nature-landscape-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-27.png'], 'webp': ['webp/nature-landscapes/nature-landscape-27.webp']}
+{'asset': 'nature-landscape-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-29.png'], 'webp': ['webp/nature-landscapes/nature-landscape-29.webp']}
+{'asset': 'nature-landscape-3.webp', 'png_count': 1, 'webp_count': 0, 'png': ['nature-landscape-3.png'], 'webp': []}
+{'asset': 'nature-landscape-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-31.png'], 'webp': ['webp/nature-landscapes/nature-landscape-31.webp']}
+{'asset': 'nature-landscape-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-32.png'], 'webp': ['webp/nature-landscapes/nature-landscape-32.webp']}
+{'asset': 'nature-landscape-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-34.png'], 'webp': ['webp/nature-landscapes/nature-landscape-34.webp']}
+{'asset': 'nature-landscape-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-36.png'], 'webp': ['webp/nature-landscapes/nature-landscape-36.webp']}
+{'asset': 'nature-landscape-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-37.png'], 'webp': ['webp/nature-landscapes/nature-landscape-37.webp']}
+{'asset': 'nature-landscape-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-39.png'], 'webp': ['webp/nature-landscapes/nature-landscape-39.webp']}
+{'asset': 'nature-landscape-4.webp', 'png_count': 1, 'webp_count': 0, 'png': ['nature-landscape-4.png'], 'webp': []}
+{'asset': 'nature-landscape-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-40.png'], 'webp': ['webp/nature-landscapes/nature-landscape-40.webp']}
+{'asset': 'nature-landscape-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-42.png'], 'webp': ['webp/nature-landscapes/nature-landscape-42.webp']}
+{'asset': 'nature-landscape-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-43.png'], 'webp': ['webp/nature-landscapes/nature-landscape-43.webp']}
+{'asset': 'nature-landscape-46.webp', 'png_count': 3, 'webp_count': 1, 'png': ['nature-landscape-46.png', 'premium/nature-landscape-46-hd.png', 'streambackdrops/nature-landscapes/nature-landscape-46-hd.png'], 'webp': ['webp/nature-landscapes/nature-landscape-46.webp']}
+{'asset': 'nature-landscape-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['nature-landscape-47.png'], 'webp': ['webp/nature-landscapes/nature-landscape-47.webp']}
+{'asset': 'nature-landscape-6.webp', 'png_count': 1, 'webp_count': 0, 'png': ['nature-landscape-6.png'], 'webp': []}
+{'asset': 'nature-landscape-8.webp', 'png_count': 1, 'webp_count': 0, 'png': ['nature-landscape-8.png'], 'webp': []}
+{'asset': 'nature-landscapes-50.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-55.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-69.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-70.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-75.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-93.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-94.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-95.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-96.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'nature-landscapes-97.webp', 'png_count': 0, 'webp_count': 0, 'png': [], 'webp': []}
+{'asset': 'office-spaces-01.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-01.png', 'streambackdrops/office-spaces/office-spaces-01-hd.png'], 'webp': ['webp/office-spaces/office-spaces-01.webp']}
+{'asset': 'office-spaces-02.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-02.png', 'premium/office-spaces-02-hd.png', 'streambackdrops/office-spaces/office-spaces-02-hd.png'], 'webp': ['webp/office-spaces/office-spaces-02.webp']}
+{'asset': 'office-spaces-03.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-03.png', 'streambackdrops/office-spaces/office-spaces-03-hd.png'], 'webp': ['webp/office-spaces/office-spaces-03.webp']}
+{'asset': 'office-spaces-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-04.png'], 'webp': ['webp/office-spaces/office-spaces-04.webp']}
+{'asset': 'office-spaces-05.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-05.png', 'streambackdrops/office-spaces/office-spaces-05-hd.png'], 'webp': ['webp/office-spaces/office-spaces-05.webp']}
+{'asset': 'office-spaces-06.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-06.png', 'streambackdrops/office-spaces/office-spaces-06-hd.png'], 'webp': ['webp/office-spaces/office-spaces-06.webp']}
+{'asset': 'office-spaces-08.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-08.png', 'streambackdrops/office-spaces/office-spaces-08-hd.png'], 'webp': ['webp/office-spaces/office-spaces-08.webp']}
+{'asset': 'office-spaces-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-09.png'], 'webp': ['webp/office-spaces/office-spaces-09.webp']}
+{'asset': 'office-spaces-10.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-10.png', 'streambackdrops/office-spaces/office-spaces-10-hd.png'], 'webp': ['webp/office-spaces/office-spaces-10.webp']}
+{'asset': 'office-spaces-100.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-100.png'], 'webp': ['webp/office-spaces/office-spaces-100.webp']}
+{'asset': 'office-spaces-101.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-101.png'], 'webp': ['webp/office-spaces/office-spaces-101.webp']}
+{'asset': 'office-spaces-102.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-102.png'], 'webp': ['webp/office-spaces/office-spaces-102.webp']}
+{'asset': 'office-spaces-103.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-103.png'], 'webp': ['webp/office-spaces/office-spaces-103.webp']}
+{'asset': 'office-spaces-104.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-104.png'], 'webp': ['webp/office-spaces/office-spaces-104.webp']}
+{'asset': 'office-spaces-106.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-106.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-106.webp', 'webp/office-spaces/office-spaces-106.webp']}
+{'asset': 'office-spaces-107.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-107.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-107.webp', 'webp/office-spaces/office-spaces-107.webp']}
+{'asset': 'office-spaces-109.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-109.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-109.webp', 'webp/office-spaces/office-spaces-109.webp']}
+{'asset': 'office-spaces-11.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-11.png', 'streambackdrops/office-spaces/office-spaces-11-hd.png'], 'webp': ['webp/office-spaces/office-spaces-11.webp']}
+{'asset': 'office-spaces-111.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-111.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-111.webp', 'webp/office-spaces/office-spaces-111.webp']}
+{'asset': 'office-spaces-115.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-115.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-115.webp', 'webp/office-spaces/office-spaces-115.webp']}
+{'asset': 'office-spaces-118.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-118.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-118.webp', 'webp/office-spaces/office-spaces-118.webp']}
+{'asset': 'office-spaces-119.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-119.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-119.webp', 'webp/office-spaces/office-spaces-119.webp']}
+{'asset': 'office-spaces-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-12.png'], 'webp': ['webp/office-spaces/office-spaces-12.webp']}
+{'asset': 'office-spaces-120.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-120.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-120.webp', 'webp/office-spaces/office-spaces-120.webp']}
+{'asset': 'office-spaces-121.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-121.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-121.webp', 'webp/office-spaces/office-spaces-121.webp']}
+{'asset': 'office-spaces-122.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-122.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-122.webp', 'webp/office-spaces/office-spaces-122.webp']}
+{'asset': 'office-spaces-124.webp', 'png_count': 1, 'webp_count': 2, 'png': ['office-spaces-124.png'], 'webp': ['streambackdrops/office-spaces/office-spaces-124.webp', 'webp/office-spaces/office-spaces-124.webp']}
+{'asset': 'office-spaces-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-13.png'], 'webp': ['webp/office-spaces/office-spaces-13.webp']}
+{'asset': 'office-spaces-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-14.png'], 'webp': ['webp/office-spaces/office-spaces-14.webp']}
+{'asset': 'office-spaces-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-15.png'], 'webp': ['webp/office-spaces/office-spaces-15.webp']}
+{'asset': 'office-spaces-16.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-16.png', 'streambackdrops/office-spaces/office-spaces-16-hd.png'], 'webp': ['webp/office-spaces/office-spaces-16.webp']}
+{'asset': 'office-spaces-17.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-17.png', 'premium/office-spaces-17-hd.png', 'streambackdrops/office-spaces/office-spaces-17-hd.png'], 'webp': ['webp/office-spaces/office-spaces-17.webp']}
+{'asset': 'office-spaces-18.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-18.png', 'streambackdrops/office-spaces/office-spaces-18-hd.png'], 'webp': ['webp/office-spaces/office-spaces-18.webp']}
+{'asset': 'office-spaces-19.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-19.png', 'premium/office-spaces-19-hd.png', 'streambackdrops/office-spaces/office-spaces-19-hd.png'], 'webp': ['webp/office-spaces/office-spaces-19.webp']}
+{'asset': 'office-spaces-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-20.png'], 'webp': ['webp/office-spaces/office-spaces-20.webp']}
+{'asset': 'office-spaces-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-21.png'], 'webp': ['webp/office-spaces/office-spaces-21.webp']}
+{'asset': 'office-spaces-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-22.png'], 'webp': ['webp/office-spaces/office-spaces-22.webp']}
+{'asset': 'office-spaces-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-23.png'], 'webp': ['webp/office-spaces/office-spaces-23.webp']}
+{'asset': 'office-spaces-24.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-24.png', 'premium/office-spaces-24-hd.png', 'streambackdrops/office-spaces/office-spaces-24-hd.png'], 'webp': ['webp/office-spaces/office-spaces-24.webp']}
+{'asset': 'office-spaces-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-25.png'], 'webp': ['webp/office-spaces/office-spaces-25.webp']}
+{'asset': 'office-spaces-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-26.png'], 'webp': ['webp/office-spaces/office-spaces-26.webp']}
+{'asset': 'office-spaces-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-27.png'], 'webp': ['webp/office-spaces/office-spaces-27.webp']}
+{'asset': 'office-spaces-28.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-28.png', 'streambackdrops/office-spaces/office-spaces-28-hd.png'], 'webp': ['webp/office-spaces/office-spaces-28.webp']}
+{'asset': 'office-spaces-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-30.png'], 'webp': ['webp/office-spaces/office-spaces-30.webp']}
+{'asset': 'office-spaces-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-31.png'], 'webp': ['webp/office-spaces/office-spaces-31.webp']}
+{'asset': 'office-spaces-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-32.png'], 'webp': ['webp/office-spaces/office-spaces-32.webp']}
+{'asset': 'office-spaces-33.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-33.png', 'premium/office-spaces-33-hd.png', 'streambackdrops/office-spaces/office-spaces-33-hd.png'], 'webp': ['webp/office-spaces/office-spaces-33.webp']}
+{'asset': 'office-spaces-34.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-34.png'], 'webp': ['webp/office-spaces/office-spaces-34.webp']}
+{'asset': 'office-spaces-35.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-35.png', 'streambackdrops/office-spaces/office-spaces-35-hd.png'], 'webp': ['webp/office-spaces/office-spaces-35.webp']}
+{'asset': 'office-spaces-36.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-36.png', 'premium/office-spaces-36-hd.png', 'streambackdrops/office-spaces/office-spaces-36-hd.png'], 'webp': ['webp/office-spaces/office-spaces-36.webp']}
+{'asset': 'office-spaces-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-37.png'], 'webp': ['webp/office-spaces/office-spaces-37.webp']}
+{'asset': 'office-spaces-38.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-38.png', 'streambackdrops/office-spaces/office-spaces-38-hd.png'], 'webp': ['webp/office-spaces/office-spaces-38.webp']}
+{'asset': 'office-spaces-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-39.png'], 'webp': ['webp/office-spaces/office-spaces-39.webp']}
+{'asset': 'office-spaces-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-40.png'], 'webp': ['webp/office-spaces/office-spaces-40.webp']}
+{'asset': 'office-spaces-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-42.png'], 'webp': ['webp/office-spaces/office-spaces-42.webp']}
+{'asset': 'office-spaces-43.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-43.png', 'premium/office-spaces-43-hd.png', 'streambackdrops/office-spaces/office-spaces-43-hd.png'], 'webp': ['webp/office-spaces/office-spaces-43.webp']}
+{'asset': 'office-spaces-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-44.png'], 'webp': ['webp/office-spaces/office-spaces-44.webp']}
+{'asset': 'office-spaces-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-45.png'], 'webp': ['webp/office-spaces/office-spaces-45.webp']}
+{'asset': 'office-spaces-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-46.png'], 'webp': ['webp/office-spaces/office-spaces-46.webp']}
+{'asset': 'office-spaces-48.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-48.png'], 'webp': ['webp/office-spaces/office-spaces-48.webp']}
+{'asset': 'office-spaces-50.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-50.png'], 'webp': ['webp/office-spaces/office-spaces-50.webp']}
+{'asset': 'office-spaces-51.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-51.png'], 'webp': ['webp/office-spaces/office-spaces-51.webp']}
+{'asset': 'office-spaces-52.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-52.png'], 'webp': ['webp/office-spaces/office-spaces-52.webp']}
+{'asset': 'office-spaces-53.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-53.png'], 'webp': ['webp/office-spaces/office-spaces-53.webp']}
+{'asset': 'office-spaces-54.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-54.png'], 'webp': ['webp/office-spaces/office-spaces-54.webp']}
+{'asset': 'office-spaces-55.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-55.png'], 'webp': ['webp/office-spaces/office-spaces-55.webp']}
+{'asset': 'office-spaces-56.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-56.png'], 'webp': ['webp/office-spaces/office-spaces-56.webp']}
+{'asset': 'office-spaces-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-58.png'], 'webp': ['webp/office-spaces/office-spaces-58.webp']}
+{'asset': 'office-spaces-59.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-59.png'], 'webp': ['webp/office-spaces/office-spaces-59.webp']}
+{'asset': 'office-spaces-61.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-61.png'], 'webp': ['webp/office-spaces/office-spaces-61.webp']}
+{'asset': 'office-spaces-62.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-62.png'], 'webp': ['webp/office-spaces/office-spaces-62.webp']}
+{'asset': 'office-spaces-63.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-63.png'], 'webp': ['webp/office-spaces/office-spaces-63.webp']}
+{'asset': 'office-spaces-64.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-64.png'], 'webp': ['webp/office-spaces/office-spaces-64.webp']}
+{'asset': 'office-spaces-65.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-65.png'], 'webp': ['webp/office-spaces/office-spaces-65.webp']}
+{'asset': 'office-spaces-66.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-66.png'], 'webp': ['webp/office-spaces/office-spaces-66.webp']}
+{'asset': 'office-spaces-69.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-69.png', 'streambackdrops/office-spaces/office-spaces-69-hd.png'], 'webp': ['webp/office-spaces/office-spaces-69.webp']}
+{'asset': 'office-spaces-70.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-70.png'], 'webp': ['webp/office-spaces/office-spaces-70.webp']}
+{'asset': 'office-spaces-71.webp', 'png_count': 2, 'webp_count': 1, 'png': ['office-spaces-71.png', 'streambackdrops/office-spaces/office-spaces-71-hd.png'], 'webp': ['webp/office-spaces/office-spaces-71.webp']}
+{'asset': 'office-spaces-72.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-72.png'], 'webp': ['webp/office-spaces/office-spaces-72.webp']}
+{'asset': 'office-spaces-73.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-73.png'], 'webp': ['webp/office-spaces/office-spaces-73.webp']}
+{'asset': 'office-spaces-74.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-74.png'], 'webp': ['webp/office-spaces/office-spaces-74.webp']}
+{'asset': 'office-spaces-76.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-76.png'], 'webp': ['webp/office-spaces/office-spaces-76.webp']}
+{'asset': 'office-spaces-77.webp', 'png_count': 3, 'webp_count': 1, 'png': ['office-spaces-77.png', 'premium/office-spaces-77-hd.png', 'streambackdrops/office-spaces/office-spaces-77-hd.png'], 'webp': ['webp/office-spaces/office-spaces-77.webp']}
+{'asset': 'office-spaces-78.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-78.png'], 'webp': ['webp/office-spaces/office-spaces-78.webp']}
+{'asset': 'office-spaces-79.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-79.png'], 'webp': ['webp/office-spaces/office-spaces-79.webp']}
+{'asset': 'office-spaces-80.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-80.png'], 'webp': ['webp/office-spaces/office-spaces-80.webp']}
+{'asset': 'office-spaces-81.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-81.png'], 'webp': ['webp/office-spaces/office-spaces-81.webp']}
+{'asset': 'office-spaces-83.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-83.png'], 'webp': ['webp/office-spaces/office-spaces-83.webp']}
+{'asset': 'office-spaces-84.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-84.png'], 'webp': ['webp/office-spaces/office-spaces-84.webp']}
+{'asset': 'office-spaces-85.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-85.png'], 'webp': ['webp/office-spaces/office-spaces-85.webp']}
+{'asset': 'office-spaces-86.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-86.png'], 'webp': ['webp/office-spaces/office-spaces-86.webp']}
+{'asset': 'office-spaces-89.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-89.png'], 'webp': ['webp/office-spaces/office-spaces-89.webp']}
+{'asset': 'office-spaces-90.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-90.png'], 'webp': ['webp/office-spaces/office-spaces-90.webp']}
+{'asset': 'office-spaces-93.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-93.png'], 'webp': ['webp/office-spaces/office-spaces-93.webp']}
+{'asset': 'office-spaces-94.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-94.png'], 'webp': ['webp/office-spaces/office-spaces-94.webp']}
+{'asset': 'office-spaces-95.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-95.png'], 'webp': ['webp/office-spaces/office-spaces-95.webp']}
+{'asset': 'office-spaces-96.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-96.png'], 'webp': ['webp/office-spaces/office-spaces-96.webp']}
+{'asset': 'office-spaces-97.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-97.png'], 'webp': ['webp/office-spaces/office-spaces-97.webp']}
+{'asset': 'office-spaces-98.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-98.png'], 'webp': ['webp/office-spaces/office-spaces-98.webp']}
+{'asset': 'office-spaces-99.webp', 'png_count': 1, 'webp_count': 1, 'png': ['office-spaces-99.png'], 'webp': ['webp/office-spaces/office-spaces-99.webp']}
+{'asset': 'spring-background-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-01.png'], 'webp': ['webp/spring-backgrounds/spring-background-01.webp']}
+{'asset': 'spring-background-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-03.png'], 'webp': ['webp/spring-backgrounds/spring-background-03.webp']}
+{'asset': 'spring-background-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-04.png'], 'webp': ['webp/spring-backgrounds/spring-background-04.webp']}
+{'asset': 'spring-background-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-05.png'], 'webp': ['webp/spring-backgrounds/spring-background-05.webp']}
+{'asset': 'spring-background-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-06.png'], 'webp': ['webp/spring-backgrounds/spring-background-06.webp']}
+{'asset': 'spring-background-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-07.png'], 'webp': ['webp/spring-backgrounds/spring-background-07.webp']}
+{'asset': 'spring-background-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-08.png'], 'webp': ['webp/spring-backgrounds/spring-background-08.webp']}
+{'asset': 'spring-background-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-09.png'], 'webp': ['webp/spring-backgrounds/spring-background-09.webp']}
+{'asset': 'spring-background-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-10.png'], 'webp': ['webp/spring-backgrounds/spring-background-10.webp']}
+{'asset': 'spring-background-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-11.png'], 'webp': ['webp/spring-backgrounds/spring-background-11.webp']}
+{'asset': 'spring-background-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-12.png'], 'webp': ['webp/spring-backgrounds/spring-background-12.webp']}
+{'asset': 'spring-background-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-13.png'], 'webp': ['webp/spring-backgrounds/spring-background-13.webp']}
+{'asset': 'spring-background-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-14.png'], 'webp': ['webp/spring-backgrounds/spring-background-14.webp']}
+{'asset': 'spring-background-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-17.png'], 'webp': ['webp/spring-backgrounds/spring-background-17.webp']}
+{'asset': 'spring-background-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-19.png'], 'webp': ['webp/spring-backgrounds/spring-background-19.webp']}
+{'asset': 'spring-background-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-20.png'], 'webp': ['webp/spring-backgrounds/spring-background-20.webp']}
+{'asset': 'spring-background-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-21.png'], 'webp': ['webp/spring-backgrounds/spring-background-21.webp']}
+{'asset': 'spring-background-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-22.png'], 'webp': ['webp/spring-backgrounds/spring-background-22.webp']}
+{'asset': 'spring-background-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-23.png'], 'webp': ['webp/spring-backgrounds/spring-background-23.webp']}
+{'asset': 'spring-background-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-25.png'], 'webp': ['webp/spring-backgrounds/spring-background-25.webp']}
+{'asset': 'spring-background-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-28.png'], 'webp': ['webp/spring-backgrounds/spring-background-28.webp']}
+{'asset': 'spring-background-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-29.png'], 'webp': ['webp/spring-backgrounds/spring-background-29.webp']}
+{'asset': 'spring-background-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-30.png'], 'webp': ['webp/spring-backgrounds/spring-background-30.webp']}
+{'asset': 'spring-background-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-32.png'], 'webp': ['webp/spring-backgrounds/spring-background-32.webp']}
+{'asset': 'spring-background-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-36.png'], 'webp': ['webp/spring-backgrounds/spring-background-36.webp']}
+{'asset': 'spring-background-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-37.png'], 'webp': ['webp/spring-backgrounds/spring-background-37.webp']}
+{'asset': 'spring-background-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-38.png'], 'webp': ['webp/spring-backgrounds/spring-background-38.webp']}
+{'asset': 'spring-background-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-40.png'], 'webp': ['webp/spring-backgrounds/spring-background-40.webp']}
+{'asset': 'spring-background-41.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-41.png'], 'webp': ['webp/spring-backgrounds/spring-background-41.webp']}
+{'asset': 'spring-background-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-43.png'], 'webp': ['webp/spring-backgrounds/spring-background-43.webp']}
+{'asset': 'spring-background-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-45.png'], 'webp': ['webp/spring-backgrounds/spring-background-45.webp']}
+{'asset': 'spring-background-52.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-52.png'], 'webp': ['webp/spring-backgrounds/spring-background-52.webp']}
+{'asset': 'spring-background-53.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-53.png'], 'webp': ['webp/spring-backgrounds/spring-background-53.webp']}
+{'asset': 'spring-background-55.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-55.png'], 'webp': ['webp/spring-backgrounds/spring-background-55.webp']}
+{'asset': 'spring-background-56.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-56.png'], 'webp': ['webp/spring-backgrounds/spring-background-56.webp']}
+{'asset': 'spring-background-57.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-57.png'], 'webp': ['webp/spring-backgrounds/spring-background-57.webp']}
+{'asset': 'spring-background-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-58.png'], 'webp': ['webp/spring-backgrounds/spring-background-58.webp']}
+{'asset': 'spring-background-60.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-60.png'], 'webp': ['webp/spring-backgrounds/spring-background-60.webp']}
+{'asset': 'spring-background-62.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-62.png'], 'webp': ['webp/spring-backgrounds/spring-background-62.webp']}
+{'asset': 'spring-background-63.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-63.png'], 'webp': ['webp/spring-backgrounds/spring-background-63.webp']}
+{'asset': 'spring-background-65.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-65.png'], 'webp': ['webp/spring-backgrounds/spring-background-65.webp']}
+{'asset': 'spring-background-66.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-66.png'], 'webp': ['webp/spring-backgrounds/spring-background-66.webp']}
+{'asset': 'spring-background-67.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-67.png'], 'webp': ['webp/spring-backgrounds/spring-background-67.webp']}
+{'asset': 'spring-background-68.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-68.png'], 'webp': ['webp/spring-backgrounds/spring-background-68.webp']}
+{'asset': 'spring-background-73.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-73.png'], 'webp': ['webp/spring-backgrounds/spring-background-73.webp']}
+{'asset': 'spring-background-74.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-74.png'], 'webp': ['webp/spring-backgrounds/spring-background-74.webp']}
+{'asset': 'spring-background-75.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-75.png'], 'webp': ['webp/spring-backgrounds/spring-background-75.webp']}
+{'asset': 'spring-background-80.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-80.png'], 'webp': ['webp/spring-backgrounds/spring-background-80.webp']}
+{'asset': 'spring-background-81.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-81.png'], 'webp': ['webp/spring-backgrounds/spring-background-81.webp']}
+{'asset': 'spring-background-83.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-83.png'], 'webp': ['webp/spring-backgrounds/spring-background-83.webp']}
+{'asset': 'spring-background-87.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-87.png'], 'webp': ['webp/spring-backgrounds/spring-background-87.webp']}
+{'asset': 'spring-background-89.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-89.png'], 'webp': ['webp/spring-backgrounds/spring-background-89.webp']}
+{'asset': 'spring-background-91.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-91.png'], 'webp': ['webp/spring-backgrounds/spring-background-91.webp']}
+{'asset': 'spring-background-94.webp', 'png_count': 1, 'webp_count': 1, 'png': ['spring-background-94.png'], 'webp': ['webp/spring-backgrounds/spring-background-94.webp']}
+{'asset': 'urban-loft-01.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/urban-lofts/urban-loft-01.webp']}
+{'asset': 'urban-loft-04.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/urban-lofts/urban-loft-04.webp']}
+{'asset': 'urban-loft-05.webp', 'png_count': 0, 'webp_count': 1, 'png': [], 'webp': ['webp/urban-lofts/urban-loft-05.webp']}
+{'asset': 'urban-loft-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-10.png'], 'webp': ['webp/urban-lofts/urban-loft-10.webp']}
+{'asset': 'urban-loft-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-13.png'], 'webp': ['webp/urban-lofts/urban-loft-13.webp']}
+{'asset': 'urban-loft-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-15.png'], 'webp': ['webp/urban-lofts/urban-loft-15.webp']}
+{'asset': 'urban-loft-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-16.png'], 'webp': ['webp/urban-lofts/urban-loft-16.webp']}
+{'asset': 'urban-loft-17.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-17.png'], 'webp': ['webp/urban-lofts/urban-loft-17.webp']}
+{'asset': 'urban-loft-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-18.png'], 'webp': ['webp/urban-lofts/urban-loft-18.webp']}
+{'asset': 'urban-loft-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-19.png'], 'webp': ['webp/urban-lofts/urban-loft-19.webp']}
+{'asset': 'urban-loft-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-20.png'], 'webp': ['webp/urban-lofts/urban-loft-20.webp']}
+{'asset': 'urban-loft-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-21.png'], 'webp': ['webp/urban-lofts/urban-loft-21.webp']}
+{'asset': 'urban-loft-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-22.png'], 'webp': ['webp/urban-lofts/urban-loft-22.webp']}
+{'asset': 'urban-loft-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-23.png'], 'webp': ['webp/urban-lofts/urban-loft-23.webp']}
+{'asset': 'urban-loft-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-24.png'], 'webp': ['webp/urban-lofts/urban-loft-24.webp']}
+{'asset': 'urban-loft-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-26.png'], 'webp': ['webp/urban-lofts/urban-loft-26.webp']}
+{'asset': 'urban-loft-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-27.png'], 'webp': ['webp/urban-lofts/urban-loft-27.webp']}
+{'asset': 'urban-loft-28.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-28.png'], 'webp': ['webp/urban-lofts/urban-loft-28.webp']}
+{'asset': 'urban-loft-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-29.png'], 'webp': ['webp/urban-lofts/urban-loft-29.webp']}
+{'asset': 'urban-loft-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-30.png'], 'webp': ['webp/urban-lofts/urban-loft-30.webp']}
+{'asset': 'urban-loft-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-31.png'], 'webp': ['webp/urban-lofts/urban-loft-31.webp']}
+{'asset': 'urban-loft-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-32.png'], 'webp': ['webp/urban-lofts/urban-loft-32.webp']}
+{'asset': 'urban-loft-37.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-37.png'], 'webp': ['webp/urban-lofts/urban-loft-37.webp']}
+{'asset': 'urban-loft-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-39.png'], 'webp': ['webp/urban-lofts/urban-loft-39.webp']}
+{'asset': 'urban-loft-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-40.png'], 'webp': ['webp/urban-lofts/urban-loft-40.webp']}
+{'asset': 'urban-loft-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-42.png'], 'webp': ['webp/urban-lofts/urban-loft-42.webp']}
+{'asset': 'urban-loft-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-44.png'], 'webp': ['webp/urban-lofts/urban-loft-44.webp']}
+{'asset': 'urban-loft-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['urban-loft-45.png'], 'webp': ['webp/urban-lofts/urban-loft-45.webp']}
+{'asset': 'valentines-background-01.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-01.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-01.webp']}
+{'asset': 'valentines-background-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-03.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-03.webp']}
+{'asset': 'valentines-background-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-07.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-07.webp']}
+{'asset': 'valentines-background-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-09.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-09.webp']}
+{'asset': 'valentines-background-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-10.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-10.webp']}
+{'asset': 'valentines-background-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-13.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-13.webp']}
+{'asset': 'valentines-background-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-14.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-14.webp']}
+{'asset': 'valentines-background-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-16.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-16.webp']}
+{'asset': 'valentines-background-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-18.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-18.webp']}
+{'asset': 'valentines-background-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-19.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-19.webp']}
+{'asset': 'valentines-background-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['valentines-background-20.png'], 'webp': ['webp/valentines-backgrounds/valentines-background-20.webp']}
+{'asset': 'wall-shelves-bright-01.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-01-hd.png', 'wall-shelves-bright-01.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-01.webp']}
+{'asset': 'wall-shelves-bright-02.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-02-hd.png', 'wall-shelves-bright-02.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-02.webp']}
+{'asset': 'wall-shelves-bright-03.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-03-hd.png', 'wall-shelves-bright-03.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-03.webp']}
+{'asset': 'wall-shelves-bright-05.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-05-hd.png', 'wall-shelves-bright-05.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-05.webp']}
+{'asset': 'wall-shelves-bright-06.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-06.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-06.webp']}
+{'asset': 'wall-shelves-bright-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-07.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-07.webp']}
+{'asset': 'wall-shelves-bright-10.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-10-hd.png', 'wall-shelves-bright-10.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-10.webp']}
+{'asset': 'wall-shelves-bright-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-11.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-11.webp']}
+{'asset': 'wall-shelves-bright-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-12.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-12.webp']}
+{'asset': 'wall-shelves-bright-13.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-13-hd.png', 'wall-shelves-bright-13.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-13.webp']}
+{'asset': 'wall-shelves-bright-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-14.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-14.webp']}
+{'asset': 'wall-shelves-bright-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-15.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-15.webp']}
+{'asset': 'wall-shelves-bright-16.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-16-hd.png', 'wall-shelves-bright-16.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-16.webp']}
+{'asset': 'wall-shelves-bright-17.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-17-hd.png', 'wall-shelves-bright-17.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-17.webp']}
+{'asset': 'wall-shelves-bright-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-18.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-18.webp']}
+{'asset': 'wall-shelves-bright-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-19.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-19.webp']}
+{'asset': 'wall-shelves-bright-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-20.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-20.webp']}
+{'asset': 'wall-shelves-bright-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-21.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-21.webp']}
+{'asset': 'wall-shelves-bright-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-22.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-22.webp']}
+{'asset': 'wall-shelves-bright-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-23.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-23.webp']}
+{'asset': 'wall-shelves-bright-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-24.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-24.webp']}
+{'asset': 'wall-shelves-bright-25.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-25.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-25.webp']}
+{'asset': 'wall-shelves-bright-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-26.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-26.webp']}
+{'asset': 'wall-shelves-bright-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-27.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-27.webp']}
+{'asset': 'wall-shelves-bright-28.webp', 'png_count': 3, 'webp_count': 1, 'png': ['premium/wall-shelves-bright-28-hd.png', 'streambackdrops/wall-shelves-bright/wall-shelves-bright-28-hd.png', 'wall-shelves-bright-28.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-28.webp']}
+{'asset': 'wall-shelves-bright-29.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-29.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-29.webp']}
+{'asset': 'wall-shelves-bright-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-30.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-30.webp']}
+{'asset': 'wall-shelves-bright-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-31.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-31.webp']}
+{'asset': 'wall-shelves-bright-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-32.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-32.webp']}
+{'asset': 'wall-shelves-bright-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-35.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-35.webp']}
+{'asset': 'wall-shelves-bright-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-38.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-38.webp']}
+{'asset': 'wall-shelves-bright-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-40.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-40.webp']}
+{'asset': 'wall-shelves-bright-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-43.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-43.webp']}
+{'asset': 'wall-shelves-bright-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-45.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-45.webp']}
+{'asset': 'wall-shelves-bright-46.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-46.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-46.webp']}
+{'asset': 'wall-shelves-bright-49.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-49.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-49.webp']}
+{'asset': 'wall-shelves-bright-50.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-50.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-50.webp']}
+{'asset': 'wall-shelves-bright-51.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-51.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-51.webp']}
+{'asset': 'wall-shelves-bright-52.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-52.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-52.webp']}
+{'asset': 'wall-shelves-bright-54.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-bright/wall-shelves-bright-54-hd.png', 'wall-shelves-bright-54.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-54.webp']}
+{'asset': 'wall-shelves-bright-55.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-bright-55.png'], 'webp': ['webp/wall-shelves-bright/wall-shelves-bright-55.webp']}
+{'asset': 'wall-shelves-dark-01.webp', 'png_count': 3, 'webp_count': 1, 'png': ['premium/wall-shelves-dark-01-hd.png', 'streambackdrops/wall-shelves-dark/wall-shelves-dark-01-hd.png', 'wall-shelves-dark-01.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-01.webp']}
+{'asset': 'wall-shelves-dark-02.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-dark/wall-shelves-dark-02-hd.png', 'wall-shelves-dark-02.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-02.webp']}
+{'asset': 'wall-shelves-dark-03.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-03.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-03.webp']}
+{'asset': 'wall-shelves-dark-04.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-04.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-04.webp']}
+{'asset': 'wall-shelves-dark-05.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-05.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-05.webp']}
+{'asset': 'wall-shelves-dark-06.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-dark/wall-shelves-dark-06-hd.png', 'wall-shelves-dark-06.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-06.webp']}
+{'asset': 'wall-shelves-dark-07.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-07.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-07.webp']}
+{'asset': 'wall-shelves-dark-08.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-08.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-08.webp']}
+{'asset': 'wall-shelves-dark-09.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-09.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-09.webp']}
+{'asset': 'wall-shelves-dark-10.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-10.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-10.webp']}
+{'asset': 'wall-shelves-dark-11.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-11.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-11.webp']}
+{'asset': 'wall-shelves-dark-12.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-12.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-12.webp']}
+{'asset': 'wall-shelves-dark-13.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-13.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-13.webp']}
+{'asset': 'wall-shelves-dark-14.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-14.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-14.webp']}
+{'asset': 'wall-shelves-dark-15.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-15.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-15.webp']}
+{'asset': 'wall-shelves-dark-16.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-16.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-16.webp']}
+{'asset': 'wall-shelves-dark-17.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-dark/wall-shelves-dark-17-hd.png', 'wall-shelves-dark-17.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-17.webp']}
+{'asset': 'wall-shelves-dark-18.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-18.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-18.webp']}
+{'asset': 'wall-shelves-dark-19.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-19.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-19.webp']}
+{'asset': 'wall-shelves-dark-20.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-20.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-20.webp']}
+{'asset': 'wall-shelves-dark-21.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-21.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-21.webp']}
+{'asset': 'wall-shelves-dark-22.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-22.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-22.webp']}
+{'asset': 'wall-shelves-dark-23.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-23.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-23.webp']}
+{'asset': 'wall-shelves-dark-24.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-24.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-24.webp']}
+{'asset': 'wall-shelves-dark-26.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-26.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-26.webp']}
+{'asset': 'wall-shelves-dark-27.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-27.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-27.webp']}
+{'asset': 'wall-shelves-dark-28.webp', 'png_count': 3, 'webp_count': 1, 'png': ['premium/wall-shelves-dark-28-hd.png', 'streambackdrops/wall-shelves-dark/wall-shelves-dark-28-hd.png', 'wall-shelves-dark-28.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-28.webp']}
+{'asset': 'wall-shelves-dark-29.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-dark/wall-shelves-dark-29-hd.png', 'wall-shelves-dark-29.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-29.webp']}
+{'asset': 'wall-shelves-dark-30.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-30.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-30.webp']}
+{'asset': 'wall-shelves-dark-31.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-31.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-31.webp']}
+{'asset': 'wall-shelves-dark-32.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-32.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-32.webp']}
+{'asset': 'wall-shelves-dark-33.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-33.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-33.webp']}
+{'asset': 'wall-shelves-dark-34.webp', 'png_count': 2, 'webp_count': 1, 'png': ['streambackdrops/wall-shelves-dark/wall-shelves-dark-34-hd.png', 'wall-shelves-dark-34.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-34.webp']}
+{'asset': 'wall-shelves-dark-35.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-35.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-35.webp']}
+{'asset': 'wall-shelves-dark-36.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-36.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-36.webp']}
+{'asset': 'wall-shelves-dark-38.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-38.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-38.webp']}
+{'asset': 'wall-shelves-dark-39.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-39.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-39.webp']}
+{'asset': 'wall-shelves-dark-40.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-40.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-40.webp']}
+{'asset': 'wall-shelves-dark-42.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-42.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-42.webp']}
+{'asset': 'wall-shelves-dark-43.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-43.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-43.webp']}
+{'asset': 'wall-shelves-dark-44.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-44.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-44.webp']}
+{'asset': 'wall-shelves-dark-45.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-45.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-45.webp']}
+{'asset': 'wall-shelves-dark-47.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-47.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-47.webp']}
+{'asset': 'wall-shelves-dark-48.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-48.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-48.webp']}
+{'asset': 'wall-shelves-dark-49.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-49.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-49.webp']}
+{'asset': 'wall-shelves-dark-51.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-51.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-51.webp']}
+{'asset': 'wall-shelves-dark-53.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-53.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-53.webp']}
+{'asset': 'wall-shelves-dark-56.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-56.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-56.webp']}
+{'asset': 'wall-shelves-dark-57.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-57.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-57.webp']}
+{'asset': 'wall-shelves-dark-58.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-58.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-58.webp']}
+{'asset': 'wall-shelves-dark-60.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-60.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-60.webp']}
+{'asset': 'wall-shelves-dark-61.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-61.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-61.webp']}
+{'asset': 'wall-shelves-dark-62.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-62.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-62.webp']}
+{'asset': 'wall-shelves-dark-64.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-64.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-64.webp']}
+{'asset': 'wall-shelves-dark-67.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-67.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-67.webp']}
+{'asset': 'wall-shelves-dark-68.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-68.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-68.webp']}
+{'asset': 'wall-shelves-dark-69.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-69.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-69.webp']}
+{'asset': 'wall-shelves-dark-71.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-71.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-71.webp']}
+{'asset': 'wall-shelves-dark-72.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-72.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-72.webp']}
+{'asset': 'wall-shelves-dark-73.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-73.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-73.webp']}
+{'asset': 'wall-shelves-dark-74.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-74.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-74.webp']}
+{'asset': 'wall-shelves-dark-75.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-75.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-75.webp']}
+{'asset': 'wall-shelves-dark-76.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-76.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-76.webp']}
+{'asset': 'wall-shelves-dark-77.webp', 'png_count': 1, 'webp_count': 1, 'png': ['wall-shelves-dark-77.png'], 'webp': ['webp/wall-shelves-dark/wall-shelves-dark-77.webp']}

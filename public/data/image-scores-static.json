@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-03-20T14:32:56.589Z",
   "resetDate": "2026-01-25",
-  "totalImages": 1172,
+  "totalImages": 845,
   "scores": {
     "office-spaces-01.webp": {
       "score": 80,
@@ -32,11 +32,6 @@
       "score": 70,
       "downloads": 4,
       "lastDownload": "2026-02-23T19:28:52.000Z"
-    },
-    "office-spaces-07.webp": {
-      "score": 70,
-      "downloads": 4,
-      "lastDownload": "2026-02-26T21:04:27.000Z"
     },
     "office-spaces-08.webp": {
       "score": 60,
@@ -143,11 +138,6 @@
       "downloads": 10,
       "lastDownload": "2026-03-04T15:05:17.000Z"
     },
-    "office-spaces-29.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "office-spaces-30.webp": {
       "score": 40,
       "downloads": 1,
@@ -203,11 +193,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "office-spaces-41.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "office-spaces-42.webp": {
       "score": 35,
       "downloads": 1,
@@ -233,20 +218,10 @@
       "downloads": 3,
       "lastDownload": "2026-02-26T15:02:28.000Z"
     },
-    "office-spaces-47.webp": {
-      "score": 45,
-      "downloads": 2,
-      "lastDownload": "2026-02-12T18:32:43.000Z"
-    },
     "office-spaces-48.webp": {
       "score": 100,
       "downloads": 7,
       "lastDownload": "2026-02-26T21:51:36.000Z"
-    },
-    "office-spaces-49.webp": {
-      "score": 50,
-      "downloads": 2,
-      "lastDownload": "2026-03-13T18:00:57.000Z"
     },
     "office-spaces-50.webp": {
       "score": 70,
@@ -283,11 +258,6 @@
       "downloads": 5,
       "lastDownload": "2026-03-16T22:39:36.000Z"
     },
-    "office-spaces-57.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "office-spaces-58.webp": {
       "score": 60,
       "downloads": 3,
@@ -297,11 +267,6 @@
       "score": 70,
       "downloads": 4,
       "lastDownload": "2026-02-20T10:19:54.000Z"
-    },
-    "office-spaces-60.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "office-spaces-61.webp": {
       "score": 70,
@@ -333,37 +298,12 @@
       "downloads": 8,
       "lastDownload": "2026-03-16T18:21:53.000Z"
     },
-    "office-spaces-67.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "art-gallery-10.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
-    "art-gallery-11.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "art-gallery-12.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-13.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-14.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-15.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -389,11 +329,6 @@
       "lastDownload": null
     },
     "art-gallery-20.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-21.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -443,11 +378,6 @@
       "downloads": 9,
       "lastDownload": "2026-03-18T10:45:11.000Z"
     },
-    "wall-shelves-bright-04.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-04T03:22:35.000Z"
-    },
     "wall-shelves-bright-05.webp": {
       "score": 50,
       "downloads": 2,
@@ -462,16 +392,6 @@
       "score": 30,
       "downloads": 0,
       "lastDownload": null
-    },
-    "wall-shelves-bright-08.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-bright-09.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-06T09:56:21.000Z"
     },
     "wall-shelves-bright-10.webp": {
       "score": 110,
@@ -588,52 +508,17 @@
       "downloads": 1,
       "lastDownload": "2026-03-01T05:37:23.000Z"
     },
-    "wall-shelves-bright-33.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-bright-34.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "wall-shelves-bright-35.webp": {
       "score": 45,
       "downloads": 2,
       "lastDownload": "2026-02-12T19:06:12.000Z"
-    },
-    "wall-shelves-bright-36.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-05T18:38:20.000Z"
-    },
-    "wall-shelves-bright-37.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
     },
     "wall-shelves-bright-38.webp": {
       "score": 80,
       "downloads": 5,
       "lastDownload": "2026-03-17T09:02:13.000Z"
     },
-    "wall-shelves-bright-39.webp": {
-      "score": 50,
-      "downloads": 2,
-      "lastDownload": "2026-03-18T14:50:36.000Z"
-    },
     "wall-shelves-bright-40.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-bright-41.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-bright-42.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -642,11 +527,6 @@
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-16T21:23:08.000Z"
-    },
-    "wall-shelves-bright-44.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "wall-shelves-bright-45.webp": {
       "score": 70,
@@ -657,11 +537,6 @@
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-13T19:51:38.000Z"
-    },
-    "wall-shelves-bright-47.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "wall-shelves-dark-01.webp": {
       "score": 110,
@@ -783,11 +658,6 @@
       "downloads": 5,
       "lastDownload": "2026-03-16T16:23:52.000Z"
     },
-    "wall-shelves-dark-25.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "wall-shelves-dark-26.webp": {
       "score": 110,
       "downloads": 8,
@@ -843,11 +713,6 @@
       "downloads": 1,
       "lastDownload": "2026-02-12T13:00:28.000Z"
     },
-    "wall-shelves-dark-37.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "wall-shelves-dark-38.webp": {
       "score": 30,
       "downloads": 0,
@@ -862,11 +727,6 @@
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-04T08:48:11.000Z"
-    },
-    "wall-shelves-dark-41.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "coffee-shop-01.webp": {
       "score": 60,
@@ -908,11 +768,6 @@
       "downloads": 3,
       "lastDownload": "2026-03-18T12:06:49.000Z"
     },
-    "coffee-shop-09.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "coffee-shop-10.webp": {
       "score": 50,
       "downloads": 2,
@@ -927,16 +782,6 @@
       "score": 100,
       "downloads": 7,
       "lastDownload": "2026-03-17T13:15:46.000Z"
-    },
-    "coffee-shop-13.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "coffee-shop-14.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
     },
     "coffee-shop-15.webp": {
       "score": 30,
@@ -978,11 +823,6 @@
       "downloads": 6,
       "lastDownload": "2026-03-17T09:30:38.000Z"
     },
-    "garden-patio-13.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "halloween-background-01.webp": {
       "score": 30,
       "downloads": 0,
@@ -1013,11 +853,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "halloween-background-07.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "halloween-background-08.webp": {
       "score": 30,
       "downloads": 0,
@@ -1043,27 +878,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "halloween-background-13.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "halloween-background-14.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "halloween-background-15.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "halloween-background-16.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "halloween-background-17.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -1074,11 +889,6 @@
       "lastDownload": null
     },
     "halloween-background-19.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "halloween-background-20.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -1099,11 +909,6 @@
       "lastDownload": null
     },
     "halloween-background-24.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "halloween-background-25.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -1223,11 +1028,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "kitchen-02.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "kitchen-03.webp": {
       "score": 30,
       "downloads": 0,
@@ -1253,11 +1053,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "kitchen-08.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "kitchen-09.webp": {
       "score": 30,
       "downloads": 0,
@@ -1278,22 +1073,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "kitchen-13.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "kitchen-14.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
     "kitchen-15.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "kitchen-16.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -1308,22 +1093,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "library-10.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "library-11.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-12.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-03-16T09:37:45.000Z"
-    },
-    "library-13.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -1347,11 +1117,6 @@
       "score": 190,
       "downloads": 16,
       "lastDownload": "2026-03-18T13:10:11.000Z"
-    },
-    "library-18.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "living-room-01.webp": {
       "score": 30,
@@ -1443,17 +1208,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "living-room-19.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "living-room-20.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "living-room-21.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -1473,11 +1228,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "living-room-25.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "living-room-26.webp": {
       "score": 30,
       "downloads": 0,
@@ -1493,16 +1243,6 @@
       "downloads": 1,
       "lastDownload": "2026-02-03T16:22:11.000Z"
     },
-    "living-room-29.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-12T12:58:27.000Z"
-    },
-    "living-room-30.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-03T16:22:31.000Z"
-    },
     "living-room-31.webp": {
       "score": 30,
       "downloads": 0,
@@ -1512,11 +1252,6 @@
       "score": 45,
       "downloads": 2,
       "lastDownload": "2026-02-03T14:08:11.000Z"
-    },
-    "living-room-33.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-12T19:41:35.000Z"
     },
     "living-room-34.webp": {
       "score": 80,
@@ -1537,11 +1272,6 @@
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-11T10:31:26.000Z"
-    },
-    "living-room-38.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
     },
     "living-room-39.webp": {
       "score": 40,
@@ -1568,11 +1298,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "living-room-44.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "living-room-45.webp": {
       "score": 60,
       "downloads": 3,
@@ -1593,25 +1318,10 @@
       "downloads": 3,
       "lastDownload": "2026-03-11T07:50:20.000Z"
     },
-    "urban-loft-11.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "urban-loft-12.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "urban-loft-13.webp": {
       "score": 35,
       "downloads": 1,
       "lastDownload": "2026-02-10T20:24:23.000Z"
-    },
-    "urban-loft-14.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
     },
     "urban-loft-15.webp": {
       "score": 50,
@@ -1863,21 +1573,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-48.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-49.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-50.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-51.webp": {
       "score": 30,
       "downloads": 0,
@@ -1888,52 +1583,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-53.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-54.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-55.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-56.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-57.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-58.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-59.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-60.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-61.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-62.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -1958,11 +1613,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-67.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-68.webp": {
       "score": 30,
       "downloads": 0,
@@ -1973,22 +1623,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-70.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-71.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-72.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-73.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -2003,21 +1638,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-76.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-77.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-78.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-79.webp": {
       "score": 30,
       "downloads": 0,
@@ -2028,22 +1648,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-81.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-82.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-83.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-84.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -2053,47 +1658,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-86.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-87.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-88.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-89.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-90.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-91.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-92.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-93.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-94.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -2168,21 +1738,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-109.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-110.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-111.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-112.webp": {
       "score": 30,
       "downloads": 0,
@@ -2228,11 +1783,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-121.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-122.webp": {
       "score": 30,
       "downloads": 0,
@@ -2243,22 +1793,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "christmas-background-124.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "christmas-background-125.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
     "christmas-background-126.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "christmas-background-127.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -2297,16 +1837,6 @@
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-16T07:36:33.000Z"
-    },
-    "bokeh-17.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-03-16T07:36:41.000Z"
-    },
-    "bokeh-18.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-01-29T03:02:13.000Z"
     },
     "bokeh-19.webp": {
       "score": 25,
@@ -2353,25 +1883,10 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "bokeh-28.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bokeh-29.webp": {
       "score": 60,
       "downloads": 3,
       "lastDownload": "2026-03-16T07:57:27.000Z"
-    },
-    "bokeh-30.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-13T00:55:39.000Z"
-    },
-    "bokeh-31.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "bokeh-32.webp": {
       "score": 25,
@@ -2423,11 +1938,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "bokeh-42.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-01-25T09:50:01.000Z"
-    },
     "bokeh-43.webp": {
       "score": 30,
       "downloads": 0,
@@ -2438,22 +1948,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "bokeh-45.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bokeh-46.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bokeh-47.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bokeh-48.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -2477,11 +1972,6 @@
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-13T03:42:36.000Z"
-    },
-    "bokeh-53.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "bokeh-54.webp": {
       "score": 30,
@@ -2528,11 +2018,6 @@
       "downloads": 1,
       "lastDownload": "2026-02-25T17:38:36.000Z"
     },
-    "bokeh-63.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bokeh-64.webp": {
       "score": 30,
       "downloads": 0,
@@ -2545,21 +2030,6 @@
     },
     "bokeh-66.webp": {
       "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-10.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-11.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-12.webp": {
-      "score": 25,
       "downloads": 0,
       "lastDownload": null
     },
@@ -2578,11 +2048,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "historic-space-16.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "historic-space-17.webp": {
       "score": 25,
       "downloads": 0,
@@ -2592,11 +2057,6 @@
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-04T22:46:10.000Z"
-    },
-    "historic-space-19.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
     },
     "historic-space-20.webp": {
       "score": 25,
@@ -2610,16 +2070,6 @@
     },
     "historic-space-22.webp": {
       "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-23.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-24.webp": {
-      "score": 25,
       "downloads": 0,
       "lastDownload": null
     },
@@ -2668,11 +2118,6 @@
       "downloads": 8,
       "lastDownload": "2026-03-13T17:44:09.000Z"
     },
-    "bookshelves-bright-08.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bookshelves-bright-09.webp": {
       "score": 70,
       "downloads": 4,
@@ -2718,11 +2163,6 @@
       "downloads": 4,
       "lastDownload": "2026-03-17T00:50:48.000Z"
     },
-    "bookshelves-bright-18.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bookshelves-dark-01.webp": {
       "score": 35,
       "downloads": 1,
@@ -2732,11 +2172,6 @@
       "score": 45,
       "downloads": 2,
       "lastDownload": "2026-02-09T08:52:57.000Z"
-    },
-    "bookshelves-dark-03.webp": {
-      "score": 60,
-      "downloads": 3,
-      "lastDownload": "2026-02-20T14:43:00.000Z"
     },
     "bookshelves-dark-04.webp": {
       "score": 40,
@@ -2808,11 +2243,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "bookshelves-dark-18.webp": {
-      "score": 70,
-      "downloads": 4,
-      "lastDownload": "2026-03-04T18:41:53.000Z"
-    },
     "bookshelves-dark-19.webp": {
       "score": 60,
       "downloads": 3,
@@ -2822,11 +2252,6 @@
       "score": 60,
       "downloads": 3,
       "lastDownload": "2026-03-04T18:41:18.000Z"
-    },
-    "bookshelves-dark-21.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-03-19T14:27:56.000Z"
     },
     "bookshelves-dark-22.webp": {
       "score": 25,
@@ -2848,22 +2273,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "libraries-20.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "libraries-21.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "libraries-22.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "libraries-23.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -2874,21 +2284,6 @@
       "lastDownload": null
     },
     "libraries-25.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "libraries-26.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "libraries-27.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "libraries-28.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -2912,11 +2307,6 @@
       "score": 30,
       "downloads": 0,
       "lastDownload": null
-    },
-    "office-spaces-68.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-10T14:06:35.000Z"
     },
     "office-spaces-69.webp": {
       "score": 230,
@@ -2948,11 +2338,6 @@
       "downloads": 2,
       "lastDownload": "2026-02-12T01:04:29.000Z"
     },
-    "office-spaces-75.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "office-spaces-76.webp": {
       "score": 35,
       "downloads": 1,
@@ -2973,11 +2358,6 @@
       "downloads": 4,
       "lastDownload": "2026-03-04T18:35:22.000Z"
     },
-    "wall-shelves-bright-48.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-13T00:54:43.000Z"
-    },
     "wall-shelves-bright-49.webp": {
       "score": 120,
       "downloads": 9,
@@ -2997,11 +2377,6 @@
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-02T15:19:42.000Z"
-    },
-    "wall-shelves-bright-53.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-11T16:33:47.000Z"
     },
     "wall-shelves-bright-54.webp": {
       "score": 210,
@@ -3148,21 +2523,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "library-36.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-37.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-38.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bookshelves-dark-25.webp": {
       "score": 140,
       "downloads": 11,
@@ -3213,11 +2573,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "bookshelves-dark-35.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bookshelves-dark-36.webp": {
       "score": 30,
       "downloads": 0,
@@ -3263,11 +2618,6 @@
       "downloads": 2,
       "lastDownload": "2026-03-19T14:31:50.000Z"
     },
-    "bookshelves-dark-45.webp": {
-      "score": 50,
-      "downloads": 2,
-      "lastDownload": "2026-03-18T13:17:51.000Z"
-    },
     "bookshelves-dark-46.webp": {
       "score": 40,
       "downloads": 1,
@@ -3293,11 +2643,6 @@
       "downloads": 1,
       "lastDownload": "2026-03-13T07:44:27.000Z"
     },
-    "wall-shelves-dark-46.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "wall-shelves-dark-47.webp": {
       "score": 40,
       "downloads": 1,
@@ -3313,33 +2658,13 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "wall-shelves-dark-50.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "wall-shelves-dark-51.webp": {
       "score": 80,
       "downloads": 5,
       "lastDownload": "2026-03-14T03:49:16.000Z"
     },
-    "wall-shelves-dark-52.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "wall-shelves-dark-53.webp": {
       "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-dark-54.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-dark-55.webp": {
-      "score": 25,
       "downloads": 0,
       "lastDownload": null
     },
@@ -3357,11 +2682,6 @@
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-13T18:23:34.000Z"
-    },
-    "wall-shelves-dark-59.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "wall-shelves-dark-60.webp": {
       "score": 30,
@@ -3383,11 +2703,6 @@
       "downloads": 3,
       "lastDownload": "2026-02-25T18:56:34.000Z"
     },
-    "nature-landscape-11.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscape-12.webp": {
       "score": 30,
       "downloads": 0,
@@ -3397,11 +2712,6 @@
       "score": 60,
       "downloads": 3,
       "lastDownload": "2026-03-17T01:51:28.000Z"
-    },
-    "nature-landscape-14.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
     },
     "nature-landscape-15.webp": {
       "score": 30,
@@ -3413,30 +2723,15 @@
       "downloads": 3,
       "lastDownload": "2026-02-18T21:24:40.000Z"
     },
-    "nature-landscape-17.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscape-18.webp": {
       "score": 90,
       "downloads": 6,
       "lastDownload": "2026-03-09T15:43:41.000Z"
     },
-    "nature-landscape-19.webp": {
-      "score": 50,
-      "downloads": 2,
-      "lastDownload": "2026-02-25T21:14:32.000Z"
-    },
     "nature-landscape-2.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
-    },
-    "nature-landscape-20.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-02-21T06:26:04.000Z"
     },
     "nature-landscape-21.webp": {
       "score": 30,
@@ -3458,11 +2753,6 @@
       "downloads": 1,
       "lastDownload": "2026-02-18T07:41:31.000Z"
     },
-    "nature-landscape-25.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-01-28T14:41:44.000Z"
-    },
     "nature-landscape-26.webp": {
       "score": 30,
       "downloads": 0,
@@ -3473,22 +2763,12 @@
       "downloads": 1,
       "lastDownload": "2026-03-18T20:27:04.000Z"
     },
-    "nature-landscape-28.webp": {
-      "score": 45,
-      "downloads": 2,
-      "lastDownload": "2026-02-18T08:07:09.000Z"
-    },
     "nature-landscape-29.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
     "nature-landscape-3.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscape-30.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -3503,20 +2783,10 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "nature-landscape-33.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscape-34.webp": {
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-18T20:27:11.000Z"
-    },
-    "nature-landscape-35.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "nature-landscape-36.webp": {
       "score": 80,
@@ -3524,11 +2794,6 @@
       "lastDownload": "2026-03-18T20:27:41.000Z"
     },
     "nature-landscape-37.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscape-38.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -3548,11 +2813,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "nature-landscape-41.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscape-42.webp": {
       "score": 30,
       "downloads": 0,
@@ -3562,16 +2822,6 @@
       "score": 90,
       "downloads": 6,
       "lastDownload": "2026-03-05T06:25:48.000Z"
-    },
-    "nature-landscape-44.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscape-45.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "nature-landscape-46.webp": {
       "score": 100,
@@ -3583,37 +2833,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "nature-landscape-48.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscape-49.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscape-5.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscape-6.webp": {
       "score": 25,
       "downloads": 0,
       "lastDownload": null
     },
-    "nature-landscape-7.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscape-8.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscape-9.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -3623,92 +2848,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "nature-landscapes-51.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-52.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-53.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-54.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscapes-55.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-56.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-57.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-58.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-59.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-60.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-61.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-62.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-63.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-64.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-65.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-66.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-67.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-68.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -3723,112 +2863,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "nature-landscapes-71.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-72.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-73.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-74.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "nature-landscapes-75.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-76.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-77.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-78.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-79.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-80.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-81.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-82.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-83.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-84.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-85.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-86.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-87.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-88.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-89.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-90.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-91.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-92.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -3858,32 +2893,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "nature-landscapes-98.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "nature-landscapes-99.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "art-gallery-28.webp": {
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-18T11:04:10.000Z"
     },
-    "art-gallery-29.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "art-gallery-30.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-31.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -3913,43 +2928,13 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "art-gallery-37.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-38.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-39.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "art-gallery-40.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-41.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-42.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
     "art-gallery-43.webp": {
       "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-44.webp": {
-      "score": 25,
       "downloads": 0,
       "lastDownload": null
     },
@@ -3973,16 +2958,6 @@
       "downloads": 2,
       "lastDownload": "2026-03-03T14:47:18.000Z"
     },
-    "bookshelves-dark-51.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bookshelves-dark-52.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bookshelves-dark-53.webp": {
       "score": 50,
       "downloads": 2,
@@ -3993,35 +2968,15 @@
       "downloads": 2,
       "lastDownload": "2026-03-16T17:56:34.000Z"
     },
-    "bookshelves-dark-55.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bookshelves-dark-56.webp": {
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-12T20:46:13.000Z"
     },
-    "bookshelves-dark-57.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-03-19T14:28:50.000Z"
-    },
     "bookshelves-dark-58.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
-    },
-    "bookshelves-dark-59.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bookshelves-dark-60.webp": {
-      "score": 50,
-      "downloads": 2,
-      "lastDownload": "2026-03-13T18:14:57.000Z"
     },
     "bookshelves-dark-61.webp": {
       "score": 30,
@@ -4032,16 +2987,6 @@
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-16T17:57:03.000Z"
-    },
-    "bookshelves-dark-63.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "coffee-shop-20.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
     },
     "coffee-shop-21.webp": {
       "score": 30,
@@ -4057,11 +3002,6 @@
       "score": 80,
       "downloads": 5,
       "lastDownload": "2026-03-06T16:16:43.000Z"
-    },
-    "garden-patio-15.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "garden-patio-16.webp": {
       "score": 30,
@@ -4098,11 +3038,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "garden-patio-23.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "garden-patio-24.webp": {
       "score": 30,
       "downloads": 0,
@@ -4130,16 +3065,6 @@
     },
     "garden-patio-29.webp": {
       "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-30.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-27.webp": {
-      "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
@@ -4178,16 +3103,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "historic-space-35.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-36.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "historic-space-37.webp": {
       "score": 30,
       "downloads": 0,
@@ -4202,11 +3117,6 @@
       "score": 35,
       "downloads": 1,
       "lastDownload": "2026-02-10T14:06:29.000Z"
-    },
-    "office-spaces-82.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-10T14:06:31.000Z"
     },
     "urban-loft-18.webp": {
       "score": 60,
@@ -4243,11 +3153,6 @@
       "downloads": 2,
       "lastDownload": "2026-03-11T22:05:10.000Z"
     },
-    "urban-loft-25.webp": {
-      "score": 50,
-      "downloads": 2,
-      "lastDownload": "2026-03-12T20:50:30.000Z"
-    },
     "urban-loft-26.webp": {
       "score": 80,
       "downloads": 5,
@@ -4283,45 +3188,15 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "urban-loft-33.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "urban-loft-34.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "urban-loft-35.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "wall-shelves-dark-62.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
-    "wall-shelves-dark-63.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-02-20T19:09:00.000Z"
-    },
     "wall-shelves-dark-64.webp": {
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-02-19T16:21:37.000Z"
-    },
-    "wall-shelves-dark-65.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-dark-66.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "wall-shelves-dark-67.webp": {
       "score": 70,
@@ -4337,11 +3212,6 @@
       "score": 80,
       "downloads": 5,
       "lastDownload": "2026-03-12T18:14:03.000Z"
-    },
-    "wall-shelves-dark-70.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "wall-shelves-dark-71.webp": {
       "score": 60,
@@ -4378,22 +3248,7 @@
       "downloads": 4,
       "lastDownload": "2026-03-17T14:48:02.000Z"
     },
-    "wall-shelves-dark-78.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "wall-shelves-dark-79.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "valentines-background-01.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "valentines-background-02.webp": {
       "score": 25,
       "downloads": 0,
       "lastDownload": null
@@ -4403,30 +3258,10 @@
       "downloads": 8,
       "lastDownload": "2026-03-05T22:34:30.000Z"
     },
-    "valentines-background-04.webp": {
-      "score": 85,
-      "downloads": 6,
-      "lastDownload": "2026-02-15T02:25:28.000Z"
-    },
-    "valentines-background-05.webp": {
-      "score": 100,
-      "downloads": 7,
-      "lastDownload": "2026-03-09T15:10:03.000Z"
-    },
-    "valentines-background-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "valentines-background-07.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
-    },
-    "valentines-background-08.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-13T13:50:16.000Z"
     },
     "valentines-background-09.webp": {
       "score": 30,
@@ -4438,16 +3273,6 @@
       "downloads": 1,
       "lastDownload": "2026-02-10T13:21:16.000Z"
     },
-    "valentines-background-11.webp": {
-      "score": 35,
-      "downloads": 1,
-      "lastDownload": "2026-02-10T21:16:53.000Z"
-    },
-    "valentines-background-12.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "valentines-background-13.webp": {
       "score": 55,
       "downloads": 3,
@@ -4458,20 +3283,10 @@
       "downloads": 20,
       "lastDownload": "2026-02-16T15:30:20.000Z"
     },
-    "valentines-background-15.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "valentines-background-16.webp": {
       "score": 105,
       "downloads": 8,
       "lastDownload": "2026-02-13T19:21:05.000Z"
-    },
-    "valentines-background-17.webp": {
-      "score": 45,
-      "downloads": 2,
-      "lastDownload": "2026-02-10T13:09:10.000Z"
     },
     "valentines-background-18.webp": {
       "score": 125,
@@ -4498,37 +3313,7 @@
       "downloads": 1,
       "lastDownload": "2026-03-10T21:05:54.000Z"
     },
-    "garden-patio-03.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-04.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-05.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "garden-patio-07.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-08.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-09.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -4558,27 +3343,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "art-gallery-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-07.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "art-gallery-08.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "art-gallery-09.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-01.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -4593,27 +3358,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "historic-space-04.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-05.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "historic-space-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-07.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "historic-space-08.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -4628,16 +3373,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "urban-loft-02.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "urban-loft-03.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "urban-loft-04.webp": {
       "score": 40,
       "downloads": 1,
@@ -4648,77 +3383,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "urban-loft-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "urban-loft-07.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "urban-loft-08.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "urban-loft-09.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-01.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-02.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "library-03.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
-    "library-04.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-05.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "library-07.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-03-18T13:10:41.000Z"
-    },
-    "library-08.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "library-09.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bokeh-01.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bokeh-02.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -4733,22 +3403,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "bokeh-05.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "bokeh-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bokeh-07.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "bokeh-08.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -4803,16 +3458,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "garden-patio-40.webp": {
-      "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-41.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "garden-patio-42.webp": {
       "score": 30,
       "downloads": 0,
@@ -4820,11 +3465,6 @@
     },
     "garden-patio-43.webp": {
       "score": 25,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "garden-patio-44.webp": {
-      "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
@@ -4848,16 +3488,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "office-spaces-87.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "office-spaces-88.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "office-spaces-89.webp": {
       "score": 50,
       "downloads": 2,
@@ -4867,16 +3497,6 @@
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-12T18:41:25.000Z"
-    },
-    "office-spaces-91.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "office-spaces-92.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "office-spaces-93.webp": {
       "score": 30,
@@ -4993,11 +3613,6 @@
       "downloads": 1,
       "lastDownload": "2026-03-13T03:27:59.000Z"
     },
-    "home-offices-12.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "home-offices-13.webp": {
       "score": 30,
       "downloads": 0,
@@ -5028,20 +3643,10 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "home-offices-19.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "home-offices-20.webp": {
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-06T02:32:25.000Z"
-    },
-    "home-offices-21.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "home-offices-22.webp": {
       "score": 60,
@@ -5098,42 +3703,7 @@
       "downloads": 1,
       "lastDownload": "2026-03-15T21:40:56.000Z"
     },
-    "home-offices-33.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-34.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-35.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-36.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "home-offices-37.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-38.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-39.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-40.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5153,21 +3723,6 @@
       "downloads": 1,
       "lastDownload": "2026-03-06T03:31:51.000Z"
     },
-    "home-offices-44.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-45.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-46.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "home-offices-47.webp": {
       "score": 30,
       "downloads": 0,
@@ -5178,32 +3733,12 @@
       "downloads": 2,
       "lastDownload": "2026-03-06T16:35:07.000Z"
     },
-    "home-offices-49.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "home-offices-50.webp": {
       "score": 50,
       "downloads": 2,
       "lastDownload": "2026-03-18T19:38:30.000Z"
     },
-    "home-offices-51.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-52.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "home-offices-53.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "home-offices-54.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5273,20 +3808,10 @@
       "downloads": 1,
       "lastDownload": "2026-03-14T19:38:31.000Z"
     },
-    "home-offices-68.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "home-offices-69.webp": {
       "score": 60,
       "downloads": 3,
       "lastDownload": "2026-03-15T21:38:50.000Z"
-    },
-    "home-offices-70.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
     },
     "home-offices-71.webp": {
       "score": 40,
@@ -5313,16 +3838,6 @@
       "downloads": 1,
       "lastDownload": "2026-03-14T19:37:19.000Z"
     },
-    "easter-background-01.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-02.webp": {
-      "score": 40,
-      "downloads": 1,
-      "lastDownload": "2026-03-19T13:28:11.000Z"
-    },
     "easter-background-03.webp": {
       "score": 70,
       "downloads": 4,
@@ -5338,17 +3853,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "easter-background-06.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-07.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-08.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5358,32 +3863,7 @@
       "downloads": 1,
       "lastDownload": "2026-03-18T17:39:50.000Z"
     },
-    "easter-background-10.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-11.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-12.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-13.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-14.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-15.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5399,11 +3879,6 @@
       "lastDownload": null
     },
     "easter-background-18.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-19.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5443,17 +3918,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "easter-background-27.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-28.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-29.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5473,16 +3938,6 @@
       "downloads": 2,
       "lastDownload": "2026-03-19T13:29:16.000Z"
     },
-    "easter-background-33.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-34.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-35.webp": {
       "score": 50,
       "downloads": 2,
@@ -5494,11 +3949,6 @@
       "lastDownload": null
     },
     "easter-background-37.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-38.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5558,27 +4008,12 @@
       "downloads": 2,
       "lastDownload": "2026-03-18T17:25:28.000Z"
     },
-    "easter-background-50.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-51.webp": {
       "score": 40,
       "downloads": 1,
       "lastDownload": "2026-03-18T17:24:24.000Z"
     },
-    "easter-background-52.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-53.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-54.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5603,37 +4038,12 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "easter-background-59.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-60.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-61.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
     },
-    "easter-background-62.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-63.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-64.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-65.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5673,11 +4083,6 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "easter-background-73.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-74.webp": {
       "score": 30,
       "downloads": 0,
@@ -5703,17 +4108,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "easter-background-79.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-80.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-81.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5738,27 +4133,7 @@
       "downloads": 0,
       "lastDownload": null
     },
-    "easter-background-86.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-87.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
     "easter-background-88.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-89.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-90.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5774,11 +4149,6 @@
       "lastDownload": null
     },
     "easter-background-93.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-94.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null
@@ -5834,11 +4204,6 @@
       "lastDownload": null
     },
     "easter-background-105.webp": {
-      "score": 30,
-      "downloads": 0,
-      "lastDownload": null
-    },
-    "easter-background-106.webp": {
       "score": 30,
       "downloads": 0,
       "lastDownload": null

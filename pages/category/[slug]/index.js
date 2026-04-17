@@ -1,24 +1,24 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../../components/Layout';
 import Head from 'next/head';
-import { categoryInfo, folderMap } from '../../data/categoryData';
-import ReviewModal from '../../components/ReviewModal';
-import RateLimitModal from '../../components/RateLimitModal';
-import RelatedCategories from '../../components/RelatedCategories';
-import CategoryHeader from '../../components/CategoryHeader';
-import ImageGrid from '../../components/ImageGrid';
-import ImagePreviewModal from '../../components/ImagePreviewModal';
-import CategorySEOContent from '../../components/CategorySEOContent';
-import cloudinaryUrls from '../../cloudinary-urls.json';
-import FAQSchema from '../../components/FAQSchema';
-import { getFAQs } from '../../data/faqData';
-import { useImageDownload } from '../../lib/useImageDownload';
-import BreadcrumbSchema from '../../components/BreadcrumbSchema'; 
-import ImageObjectSchema from '../../components/ImageObjectSchema';
-import BackToTop from '../../components/BackToTop';
-import HDComparisonHero from '../../components/HDComparisonHero';
+import { categoryInfo, folderMap } from '../../../data/categoryData';
+import ReviewModal from '../../../components/ReviewModal';
+import RateLimitModal from '../../../components/RateLimitModal';
+import RelatedCategories from '../../../components/RelatedCategories';
+import CategoryHeader from '../../../components/CategoryHeader';
+import ImageGrid from '../../../components/ImageGrid';
+import ImagePreviewModal from '../../../components/ImagePreviewModal';
+import CategorySEOContent from '../../../components/CategorySEOContent';
+import cloudinaryUrls from '../../../cloudinary-urls.json';
+import FAQSchema from '../../../components/FAQSchema';
+import { getFAQs } from '../../../data/faqData';
+import { useImageDownload } from '../../../lib/useImageDownload';
+import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
+import ImageObjectSchema from '../../../components/ImageObjectSchema';
+import BackToTop from '../../../components/BackToTop';
+import HDComparisonHero from '../../../components/HDComparisonHero';
 
 function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -35,7 +35,7 @@ function CategoryContent({ slug, scores = {}}) {
     handleEmailBonus,
   } = useImageDownload(cloudinaryUrls);
   const category = categoryInfo[slug];
-  
+
   if (!category) {
     return (
       <div style={{ padding: '2rem', textAlign: 'center' }}>
@@ -91,7 +91,7 @@ function CategoryContent({ slug, scores = {}}) {
 
           <HDComparisonHero slug={slug} images={category.images} scores={scores} />
           <RelatedCategories currentSlug={slug} />
-          <CategorySEOContent category={category} />
+          <CategorySEOContent category={category} slug={slug} />
         </div>
        </div>
 
@@ -104,14 +104,14 @@ function CategoryContent({ slug, scores = {}}) {
           cloudinaryUrls={cloudinaryUrls}
         />
       )}
-      
+
       {showReviewModal && (
-        <ReviewModal 
+        <ReviewModal
           onClose={() => setShowReviewModal(false)}
           downloadCount={downloadCount}
         />
       )}
-      
+
       {showRateLimitModal && (
         <RateLimitModal
           onClose={() => setShowRateLimitModal(false)}
@@ -120,7 +120,7 @@ function CategoryContent({ slug, scores = {}}) {
           emailBonusUsed={emailBonusUsed}
         />
       )}
-      
+
       <BackToTop hide={!!previewImage} />
     </>
   );
@@ -159,7 +159,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
   : currentSlug === 'valentines-backgrounds'
   ? 'Download free Valentine\'s Day virtual backgrounds for Zoom, Teams & Google Meet. Romantic hearts, flowers & Valentine scenes. Free instant download, no watermarks.'
   : String(category.seoDescription || `Download free ${categoryName.toLowerCase()} virtual backgrounds for Zoom, Teams & Google Meet. No signup, no watermarks — instant download.`);
-  
+
   const featuredImages = {
     'halloween-backgrounds': 'halloween-background-20.webp',
     'valentines-backgrounds': 'valentines-background-01.webp',
@@ -183,7 +183,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'libraries': 'library-01.webp',
     'bokeh-backgrounds': 'bokeh-01.webp',
   };
-  
+
   const featuredImage = featuredImages[currentSlug] || 'og-image.png';
 
   // NOTE: pageTitle and pageDescription below are the COMPLETE values seen in search results.
@@ -205,8 +205,8 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
             { name: "Home", url: "https://streambackdrops.com" },
             { name: categoryName, url: 'https://streambackdrops.com/category/' + currentSlug }
           ]} />
-          <ImageObjectSchema 
-  images={category.images} 
+          <ImageObjectSchema
+  images={category.images}
   category={categoryName}
   categorySlug={currentSlug}
   baseUrl="https://streambackdrops.com"
@@ -224,7 +224,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
             />
           ))}
         </Head>
-        
+
 <CategoryContent slug={currentSlug} scores={scores} />
       </Layout>
     </>
@@ -233,10 +233,8 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
 
 export async function getStaticPaths() {
   const paths = [
-    'bookshelves-bright',
-    'bookshelves-dark',
-    'wall-shelves-bright',
-    'wall-shelves-dark',
+    'bookshelves',
+    'wall-shelves',
     'office-spaces',
     'home-office',
     'living-rooms',

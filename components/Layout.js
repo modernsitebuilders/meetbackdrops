@@ -107,8 +107,8 @@ No signup required, no watermarks - just high-quality background images perfect 
         {/* Add prefetching for popular categories on homepage */}
         {currentPage === 'home' && (
           <>
-            <link rel="prefetch" href="/category/bookshelves-bright" />
-            <link rel="prefetch" href="/category/bookshelves-dark" />
+            <link rel="prefetch" href="/category/bookshelves" />
+            <link rel="prefetch" href="/category/wall-shelves" />
             <link rel="prefetch" href="/category/office-spaces" />
             <link rel="prefetch" href="/category/living-rooms" />
             <link rel="prefetch" href="/category/kitchens" />

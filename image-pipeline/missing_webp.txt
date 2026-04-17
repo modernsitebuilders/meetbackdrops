@@ -1,0 +1,53 @@
+# ART GALLERIES (19)
+# ART GALLERY (9)
+# BOKEH BACKGROUNDS (50)
+# BOOKSHELVES BRIGHT (66)
+# BOOKSHELVES DARK (51)
+# CHRISTMAS BACKGROUNDS (93)
+# COFFEE SHOPS (38)
+# CONFERENCE ROOMS (39)
+# EASTER BACKGROUNDS (78)
+# Format: one webp filename per line. Lines starting with # are comments.
+# GARDEN PATIO (14)
+# GARDENS PATIOS (17)
+# Generated: 2026-04-16
+# HALLOWEEN BACKGROUNDS (18)
+# HISTORIC SPACES (22)
+# HOME OFFICE (56)
+# KITCHENS (26)
+# LIBRARIES (18)
+# LIVE ASSETS — Stream Backdrops
+# LIVING ROOMS (39)
+# NATURE LANDSCAPES (40)
+# OFFICE SPACES (100)
+# SPRING BACKGROUNDS (54)
+# Total: 991 images
+# URBAN LOFTS (28)
+# VALENTINES (11)
+# WALL SHELVES (11)
+# WALL SHELVES BRIGHT (41)
+# WALL SHELVES DARK (53)
+libraries-19.webp
+libraries-22.webp
+libraries-24.webp
+libraries-25.webp
+libraries-29.webp
+libraries-30.webp
+libraries-31.webp
+libraries-32.webp
+nature-landscape-1.webp
+nature-landscape-2.webp
+nature-landscape-3.webp
+nature-landscape-4.webp
+nature-landscape-6.webp
+nature-landscape-8.webp
+nature-landscapes-50.webp
+nature-landscapes-55.webp
+nature-landscapes-69.webp
+nature-landscapes-70.webp
+nature-landscapes-75.webp
+nature-landscapes-93.webp
+nature-landscapes-94.webp
+nature-landscapes-95.webp
+nature-landscapes-96.webp
+nature-landscapes-97.webp

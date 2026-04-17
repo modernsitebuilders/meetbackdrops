@@ -41,8 +41,8 @@ export default function Footer() {
               gridTemplateColumns: '1fr 1fr', 
               gap: '0.5rem 2rem' 
             }}>
-              <Link href="/category/bookshelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Bookshelves - Bright
+              <Link href="/category/bookshelves" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Bookshelves
               </Link>
               <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Office Spaces
@@ -50,20 +50,14 @@ export default function Footer() {
               <Link href="/category/home-office" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Home Offices
               </Link>
-              <Link href="/category/bookshelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Bookshelves - Dark
+              <Link href="/category/wall-shelves" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Wall Shelves
               </Link>
               <Link href="/category/living-rooms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Living Rooms
               </Link>
-              <Link href="/category/wall-shelves-bright" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Wall Shelves - Bright
-              </Link>
               <Link href="/category/kitchens" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Kitchens
-              </Link>
-              <Link href="/category/wall-shelves-dark" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Wall Shelves - Dark
               </Link>
               <Link href="/category/conference-rooms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Conference Rooms

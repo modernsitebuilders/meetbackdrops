@@ -203,7 +203,28 @@ const nextConfig = {
         source: '/category/most-popular',
         destination: '/most-popular',
         permanent: true,
-      }
+      },
+      // Merged bookshelf/wall-shelf categories
+      {
+        source: '/category/bookshelves-bright',
+        destination: '/category/bookshelves',
+        permanent: true,
+      },
+      {
+        source: '/category/bookshelves-dark',
+        destination: '/category/bookshelves',
+        permanent: true,
+      },
+      {
+        source: '/category/wall-shelves-bright',
+        destination: '/category/wall-shelves',
+        permanent: true,
+      },
+      {
+        source: '/category/wall-shelves-dark',
+        destination: '/category/wall-shelves',
+        permanent: true,
+      },
     ];
   },
   

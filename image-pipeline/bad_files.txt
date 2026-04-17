@@ -1,0 +1,101 @@
+art-galleries/ (16)
+art-gallery-06.webp, art-gallery-07.webp, art-gallery-08.webp, art-gallery-11.webp, art-gallery-13.webp, art-gallery-14.webp, art-gallery-15.webp, art-gallery-21.webp, art-gallery-29.webp, art-gallery-31.webp, art-gallery-37.webp, art-gallery-38.webp, art-gallery-39.webp, art-gallery-41.webp, art-gallery-42.webp, art-gallery-44.webp
+
+bokeh-backgrounds/ (16)
+bokeh-01.webp, bokeh-02.webp, bokeh-05.webp, bokeh-07.webp, bokeh-08.webp, bokeh-17.webp, bokeh-18.webp, bokeh-28.webp, bokeh-30.webp, bokeh-31.webp, bokeh-42.webp, bokeh-45.webp, bokeh-47.webp, bokeh-48.webp, bokeh-53.webp, bokeh-63.webp
+
+bookshelves-bright/ (9)
+bookshelves-bright-08.webp, bookshelves-bright-18.webp, bookshelves-bright-48.webp, bookshelves-bright-57.webp, bookshelves-bright-59.webp, bookshelves-bright-65.webp, bookshelves-bright-72.webp, bookshelves-bright-73.webp, bookshelves-bright-75.webp
+
+bookshelves-dark/ (12)
+bookshelves-dark-03.webp, bookshelves-dark-18.webp, bookshelves-dark-21.webp, bookshelves-dark-35.webp, bookshelves-dark-45.webp, bookshelves-dark-51.webp, bookshelves-dark-52.webp, bookshelves-dark-55.webp, bookshelves-dark-57.webp, bookshelves-dark-59.webp, bookshelves-dark-60.webp, bookshelves-dark-63.webp
+
+christmas-backgrounds/ (34)
+christmas-background-48.webp, christmas-background-49.webp, christmas-background-50.webp, christmas-background-53.webp, christmas-background-54.webp, christmas-background-56.webp, christmas-background-57.webp, christmas-background-59.webp, christmas-background-60.webp, christmas-background-61.webp, christmas-background-62.webp, christmas-background-67.webp, christmas-background-70.webp, christmas-background-72.webp, christmas-background-73.webp, christmas-background-76.webp, christmas-background-77.webp, christmas-background-78.webp, christmas-background-81.webp, christmas-background-82.webp, christmas-background-84.webp, christmas-background-86.webp, christmas-background-87.webp, christmas-background-88.webp, christmas-background-89.webp, christmas-background-91.webp, christmas-background-93.webp, christmas-background-94.webp, christmas-background-109.webp, christmas-background-110.webp, christmas-background-111.webp, christmas-background-121.webp, christmas-background-124.webp, christmas-background-127.webp
+
+coffee-shops/ (4)
+coffee-shop-09.webp, coffee-shop-13.webp, coffee-shop-14.webp, coffee-shop-20.webp
+
+easter-backgrounds/ (32)
+easter-background-01.webp, easter-background-02.webp, easter-background-06.webp, easter-background-08.webp, easter-background-10.webp, easter-background-11.webp, easter-background-12.webp, easter-background-14.webp, easter-background-15.webp, easter-background-19.webp, easter-background-27.webp, easter-background-29.webp, easter-background-33.webp, easter-background-34.webp, easter-background-38.webp, easter-background-50.webp, easter-background-52.webp, easter-background-54.webp, easter-background-59.webp, easter-background-60.webp, easter-background-62.webp, easter-background-63.webp, easter-background-65.webp, easter-background-73.webp, easter-background-79.webp, easter-background-81.webp, easter-background-86.webp, easter-background-87.webp, easter-background-89.webp, easter-background-90.webp, easter-background-94.webp, easter-background-106.webp
+
+gardens-patios/ (13)
+garden-patio-03.webp, garden-patio-04.webp, garden-patio-05.webp, garden-patio-06.webp, garden-patio-08.webp, garden-patio-09.webp, garden-patio-13.webp, garden-patio-15.webp, garden-patio-23.webp, garden-patio-30.webp, garden-patio-40.webp, garden-patio-41.webp, garden-patio-44.webp
+
+halloween-backgrounds/ (7)
+halloween-background-07.webp, halloween-background-13.webp, halloween-background-15.webp, halloween-background-16.webp, halloween-background-17.webp, halloween-background-20.webp, halloween-background-25.webp
+
+historic-spaces/ (15)
+historic-space-01.webp, historic-space-04.webp, historic-space-05.webp, historic-space-07.webp, historic-space-08.webp, historic-space-10.webp, historic-space-11.webp, historic-space-12.webp, historic-space-16.webp, historic-space-19.webp, historic-space-23.webp, historic-space-24.webp, historic-space-27.webp, historic-space-35.webp, historic-space-36.webp
+
+home-office/ (19)
+home-offices-12.webp, home-offices-19.webp, home-offices-21.webp, home-offices-33.webp, home-offices-34.webp, home-offices-35.webp, home-offices-36.webp, home-offices-38.webp, home-offices-39.webp, home-offices-40.webp, home-offices-44.webp, home-offices-45.webp, home-offices-46.webp, home-offices-49.webp, home-offices-51.webp, home-offices-52.webp, home-offices-54.webp, home-offices-68.webp, home-offices-70.webp
+
+kitchens/ (4)
+kitchen-02.webp, kitchen-08.webp, kitchen-13.webp, kitchen-16.webp
+
+libraries/ (20)
+libraries-20.webp, libraries-21.webp, libraries-23.webp, libraries-26.webp, libraries-27.webp, libraries-28.webp, library-01.webp, library-02.webp, library-04.webp, library-05.webp, library-06.webp, library-07.webp, library-08.webp, library-10.webp, library-12.webp, library-13.webp, library-18.webp, library-36.webp, library-37.webp, library-38.webp
+
+living-rooms/ (8)
+living-room-19.webp, living-room-21.webp, living-room-25.webp, living-room-29.webp, living-room-30.webp, living-room-33.webp, living-room-38.webp, living-room-44.webp
+
+nature-landscapes/ (59)
+nature-landscape-5.webp, nature-landscape-7.webp, nature-landscape-9.webp, nature-landscape-11.webp, nature-landscape-14.webp, nature-landscape-17.webp, nature-landscape-19.webp, nature-landscape-20.webp, nature-landscape-25.webp, nature-landscape-28.webp, nature-landscape-30.webp, nature-landscape-33.webp, nature-landscape-35.webp, nature-landscape-38.webp, nature-landscape-41.webp, nature-landscape-44.webp, nature-landscape-45.webp, nature-landscape-48.webp, nature-landscape-49.webp, nature-landscapes-51.webp, nature-landscapes-52.webp, nature-landscapes-53.webp, nature-landscapes-54.webp, nature-landscapes-56.webp, nature-landscapes-57.webp, nature-landscapes-58.webp, nature-landscapes-59.webp, nature-landscapes-60.webp, nature-landscapes-61.webp, nature-landscapes-62.webp, nature-landscapes-63.webp, nature-landscapes-64.webp, nature-landscapes-65.webp, nature-landscapes-66.webp, nature-landscapes-67.webp, nature-landscapes-68.webp, nature-landscapes-71.webp, nature-landscapes-72.webp, nature-landscapes-73.webp, nature-landscapes-74.webp, nature-landscapes-76.webp, nature-landscapes-77.webp, nature-landscapes-78.webp, nature-landscapes-79.webp, nature-landscapes-80.webp, nature-landscapes-81.webp, nature-landscapes-82.webp, nature-landscapes-83.webp, nature-landscapes-84.webp, nature-landscapes-85.webp, nature-landscapes-86.webp, nature-landscapes-87.webp, nature-landscapes-88.webp, nature-landscapes-89.webp, nature-landscapes-90.webp, nature-landscapes-91.webp, nature-landscapes-92.webp, nature-landscapes-98.webp, nature-landscapes-99.webp
+
+⚠️ Note: nature has two filename conventions — lower numbers use nature-landscape- (singular, no zero-padding), higher numbers use nature-landscapes- (plural, zero-padded). Make sure to match the exact R2 filenames.
+
+office-spaces/ (24)
+office-spaces-07.webp, office-spaces-29.webp, office-spaces-41.webp, office-spaces-47.webp, office-spaces-49.webp, office-spaces-57.webp, office-spaces-60.webp, office-spaces-67.webp, office-spaces-68.webp, office-spaces-75.webp, office-spaces-82.webp, office-spaces-87.webp, office-spaces-88.webp, office-spaces-91.webp, office-spaces-92.webp, office-spaces-105.webp, office-spaces-108.webp, office-spaces-110.webp, office-spaces-112.webp, office-spaces-113.webp, office-spaces-114.webp, office-spaces-116.webp, office-spaces-117.webp, office-spaces-123.webp
+
+urban-lofts/ (13)
+urban-loft-02.webp, urban-loft-03.webp, urban-loft-06.webp, urban-loft-07.webp, urban-loft-08.webp, urban-loft-09.webp, urban-loft-11.webp, urban-loft-12.webp, urban-loft-14.webp, urban-loft-25.webp, urban-loft-33.webp, urban-loft-34.webp, urban-loft-35.webp
+
+valentines-backgrounds/ (9)
+valentines-background-02.webp, valentines-background-04.webp, valentines-background-05.webp, valentines-background-06.webp, valentines-background-08.webp, valentines-background-11.webp, valentines-background-12.webp, valentines-background-15.webp, valentines-background-17.webp
+
+wall-shelves-bright/ (14)
+wall-shelves-bright-04.webp, wall-shelves-bright-08.webp, wall-shelves-bright-09.webp, wall-shelves-bright-33.webp, wall-shelves-bright-34.webp, wall-shelves-bright-36.webp, wall-shelves-bright-37.webp, wall-shelves-bright-39.webp, wall-shelves-bright-41.webp, wall-shelves-bright-42.webp, wall-shelves-bright-44.webp, wall-shelves-bright-47.webp, wall-shelves-bright-48.webp, wall-shelves-bright-53.webp
+
+wall-shelves-dark/ (15)
+wall-shelves-dark-25.webp, wall-shelves-dark-37.webp, wall-shelves-dark-41.webp, wall-shelves-dark-46.webp, wall-shelves-dark-50.webp, wall-shelves-dark-52.webp, wall-shelves-dark-54.webp, wall-shelves-dark-55.webp, wall-shelves-dark-59.webp, wall-shelves-dark-63.webp, wall-shelves-dark-65.webp, wall-shelves-dark-66.webp, wall-shelves-dark-70.webp, wall-shelves-dark-78.webp, wall-shelves-dark-79.webp
+
+python3 - << 'EOF'
+import boto3, os
+
+bucket = "streambackdrops-images"
+
+s3 = boto3.client(
+    "s3",
+    endpoint_url=os.getenv("R2_ENDPOINT"),
+    aws_access_key_id=os.getenv("R2_ACCESS_KEY"),
+    aws_secret_access_key=os.getenv("R2_SECRET_KEY"),
+)
+
+# load bad filenames
+with open("bad_files.txt", "r") as f:
+    bad = set(line.strip().strip(",") for line in f if line.strip())
+
+print("BAD FILES LOADED:", len(bad))
+
+# fetch all R2 keys
+keys = []
+for page in s3.get_paginator("list_objects_v2").paginate(Bucket=bucket):
+    for obj in page.get("Contents", []):
+        keys.append(obj["Key"])
+
+# match by filename only
+to_delete = []
+for k in keys:
+    filename = k.split("/")[-1]
+    if filename in bad:
+        to_delete.append(k)
+
+print("\nTOTAL R2 OBJECTS:", len(keys))
+print("MATCHED FOR DELETION:", len(to_delete))
+
+print("\nSAMPLE DELETES:")
+for k in to_delete[:30]:
+    print(k)
+EOF
+Ctrl + C

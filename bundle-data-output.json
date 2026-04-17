@@ -1,0 +1,373 @@
+{
+  "summary": {
+    "totalSelectedImages": 46,
+    "hdExclusiveCount": 43,
+    "topPerformerCount": 10
+  },
+  "categoryStats": [
+    {
+      "category": "office-spaces",
+      "count": 7,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "wall-shelves-bright",
+      "count": 6,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "bookshelves-bright",
+      "count": 5,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "bookshelves-dark",
+      "count": 5,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "easter-backgrounds",
+      "count": 5,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "home-office",
+      "count": 5,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "living-rooms",
+      "count": 5,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "wall-shelves-dark",
+      "count": 5,
+      "hdExclusiveCount": 5
+    },
+    {
+      "category": "libraries",
+      "count": 1,
+      "hdExclusiveCount": 1
+    },
+    {
+      "category": "urban-lofts",
+      "count": 1,
+      "hdExclusiveCount": 1
+    },
+    {
+      "category": "valentines-backgrounds",
+      "count": 1,
+      "hdExclusiveCount": 1
+    }
+  ],
+  "bundles": [
+    {
+      "bundleName": "Bookshelves Bright Bundle",
+      "category": "bookshelves-bright",
+      "imageCount": 5,
+      "images": [
+        {
+          "filename": "bookshelves-bright-01.webp",
+          "title": "Bookshelves Bright Background 1",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-bright-02.webp",
+          "title": "Bookshelves Bright Background 2",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-bright-10.webp",
+          "title": "Bookshelves Bright Background 10",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-bright-13.webp",
+          "title": "Bookshelves Bright Background 13",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-bright-19.webp",
+          "title": "Bookshelves Bright Background 19",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Bookshelves Dark Bundle",
+      "category": "bookshelves-dark",
+      "imageCount": 5,
+      "images": [
+        {
+          "filename": "bookshelves-dark-07.webp",
+          "title": "Bookshelves Dark Background 7",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-dark-23.webp",
+          "title": "Bookshelves Dark Background 23",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-dark-25.webp",
+          "title": "Bookshelves Dark Background 25",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-dark-27.webp",
+          "title": "Bookshelves Dark Background 27",
+          "hdOnly": true
+        },
+        {
+          "filename": "bookshelves-dark-37.webp",
+          "title": "Bookshelves Dark Background 37",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Easter Backgrounds Bundle",
+      "category": "easter-backgrounds",
+      "imageCount": 5,
+      "images": [
+        {
+          "filename": "easter-background-03.webp",
+          "title": "Easter Background 3",
+          "hdOnly": true
+        },
+        {
+          "filename": "easter-background-04.webp",
+          "title": "Easter Background 4",
+          "hdOnly": true
+        },
+        {
+          "filename": "easter-background-21.webp",
+          "title": "Easter Background 21",
+          "hdOnly": true
+        },
+        {
+          "filename": "easter-background-32.webp",
+          "title": "Easter Background 32",
+          "hdOnly": true
+        },
+        {
+          "filename": "easter-background-49.webp",
+          "title": "Easter Background 49",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Home Office Bundle",
+      "category": "home-office",
+      "imageCount": 5,
+      "images": [
+        {
+          "filename": "home-offices-20.webp",
+          "title": "Home Office Background 20",
+          "hdOnly": true
+        },
+        {
+          "filename": "home-offices-48.webp",
+          "title": "Home Office Background 48",
+          "hdOnly": true
+        },
+        {
+          "filename": "home-offices-61.webp",
+          "title": "Home Office Background 61",
+          "hdOnly": true
+        },
+        {
+          "filename": "home-offices-69.webp",
+          "title": "Home Office Background 69",
+          "hdOnly": true
+        },
+        {
+          "filename": "home-offices-74.webp",
+          "title": "Home Office Background 74",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Libraries Bundle",
+      "category": "libraries",
+      "imageCount": 1,
+      "images": [
+        {
+          "filename": "library-17.webp",
+          "title": "Libraries Background 9",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Living Rooms Bundle",
+      "category": "living-rooms",
+      "imageCount": 5,
+      "images": [
+        {
+          "filename": "living-room-08.webp",
+          "title": "Living Rooms Background 8",
+          "hdOnly": true
+        },
+        {
+          "filename": "living-room-10.webp",
+          "title": "Living Rooms Background 10",
+          "hdOnly": true
+        },
+        {
+          "filename": "living-room-27.webp",
+          "title": "Living Rooms Background 27",
+          "hdOnly": true
+        },
+        {
+          "filename": "living-room-41.webp",
+          "title": "Living Rooms Background 41",
+          "hdOnly": true
+        },
+        {
+          "filename": "living-room-46.webp",
+          "title": "Living Rooms Background 46",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Office Spaces Bundle",
+      "category": "office-spaces",
+      "imageCount": 7,
+      "images": [
+        {
+          "filename": "office-spaces-02.webp",
+          "title": "Office Space Background 2",
+          "hdOnly": true
+        },
+        {
+          "filename": "office-spaces-19.webp",
+          "title": "Office Space Background 19",
+          "hdOnly": true
+        },
+        {
+          "filename": "office-spaces-28.webp",
+          "title": "Office Space Background 28",
+          "hdOnly": true
+        },
+        {
+          "filename": "office-spaces-33.webp",
+          "title": "Office Space Background 33",
+          "hdOnly": true
+        },
+        {
+          "filename": "office-spaces-35.webp",
+          "title": "Office Space Background 35",
+          "hdOnly": true
+        },
+        {
+          "filename": "office-spaces-69.webp",
+          "title": "Office Space Background 69",
+          "hdOnly": false
+        },
+        {
+          "filename": "office-spaces-71.webp",
+          "title": "Office Space Background 71",
+          "hdOnly": false
+        }
+      ]
+    },
+    {
+      "bundleName": "Urban Lofts Bundle",
+      "category": "urban-lofts",
+      "imageCount": 1,
+      "images": [
+        {
+          "filename": "urban-loft-20.webp",
+          "title": "Dark Green Industrial Loft",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Valentines Backgrounds Bundle",
+      "category": "valentines-backgrounds",
+      "imageCount": 1,
+      "images": [
+        {
+          "filename": "valentines-background-14.webp",
+          "title": "Bright White Bookshelves with Valentine's Hearts and Books",
+          "hdOnly": true
+        }
+      ]
+    },
+    {
+      "bundleName": "Wall Shelves Bright Bundle",
+      "category": "wall-shelves-bright",
+      "imageCount": 6,
+      "images": [
+        {
+          "filename": "wall-shelves-bright-01.webp",
+          "title": "Wall Shelves Bright Background 1",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-bright-02.webp",
+          "title": "Wall Shelves Bright Background 2",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-bright-03.webp",
+          "title": "Wall Shelves Bright Background 3",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-bright-16.webp",
+          "title": "Wall Shelves Bright Background 16",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-bright-49.webp",
+          "title": "Wall Shelves Bright Background 49",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-bright-54.webp",
+          "title": "Wall Shelves Bright Background 54",
+          "hdOnly": false
+        }
+      ]
+    },
+    {
+      "bundleName": "Wall Shelves Dark Bundle",
+      "category": "wall-shelves-dark",
+      "imageCount": 5,
+      "images": [
+        {
+          "filename": "wall-shelves-dark-04.webp",
+          "title": "Wall Shelves Dark Background 4",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-dark-06.webp",
+          "title": "Wall Shelves Dark Background 6",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-dark-19.webp",
+          "title": "Wall Shelves Dark Background 19",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-dark-27.webp",
+          "title": "Wall Shelves Dark Background 27",
+          "hdOnly": true
+        },
+        {
+          "filename": "wall-shelves-dark-34.webp",
+          "title": "Wall Shelves Dark Background 34",
+          "hdOnly": true
+        }
+      ]
+    }
+  ]
+}
