@@ -90,16 +90,6 @@ export default function Header({ currentPage }) {
   });
 
   // Navigation data structures
-  const bookshelvesItems = [
-    { name: 'Bright', path: '/category/bookshelves-bright' },
-    { name: 'Dark', path: '/category/bookshelves-dark' }
-  ];
-
-  const wallShelvesItems = [
-    { name: 'Bright', path: '/category/wall-shelves-bright' },
-    { name: 'Dark', path: '/category/wall-shelves-dark' }
-  ];
-
   const officesItems = [
     { name: 'Office Spaces', path: '/category/office-spaces' },
     { name: 'Home Offices', path: '/category/home-office' }
@@ -281,61 +271,25 @@ export default function Header({ currentPage }) {
           }}
           className="desktop-nav">
             
-            {/* Bookshelves Dropdown */}
-            <div style={{ position: 'relative' }}>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setOpenDropdown(openDropdown === 'bookshelves' ? null : 'bookshelves');
-                  setOpenNestedDropdown(null);
-                }}
-                aria-expanded={openDropdown === 'bookshelves'}
-                aria-haspopup="true"
-                style={{
-                  ...navButtonStyle(
-                    currentPage === 'bookshelves-bright' || currentPage === 'bookshelves-dark',
-                    hoveredNav === 'bookshelves'
-                  ),
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.25rem'
-                }}
-                onMouseEnter={() => setHoveredNav('bookshelves')}
-                onMouseLeave={() => setHoveredNav(null)}
-              >
-                Bookshelves
-                <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
-              </button>
-              {openDropdown === 'bookshelves' && renderDropdown(bookshelvesItems, 'bookshelves')}
-            </div>
+            {/* Bookshelves */}
+            <button
+              onClick={() => navigate('/category/bookshelves')}
+              style={navButtonStyle(currentPage === 'bookshelves', hoveredNav === 'bookshelves')}
+              onMouseEnter={() => setHoveredNav('bookshelves')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
+              Bookshelves
+            </button>
 
-{/* Wall Shelves Dropdown */}
-            <div style={{ position: 'relative' }}>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setOpenDropdown(openDropdown === 'wall-shelves' ? null : 'wall-shelves');
-                  setOpenNestedDropdown(null);
-                }}
-                aria-expanded={openDropdown === 'wall-shelves'}
-                aria-haspopup="true"
-                style={{
-                  ...navButtonStyle(
-                    currentPage === 'wall-shelves-bright' || currentPage === 'wall-shelves-dark',
-                    hoveredNav === 'wall-shelves'
-                  ),
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.25rem'
-                }}
-                onMouseEnter={() => setHoveredNav('wall-shelves')}
-                onMouseLeave={() => setHoveredNav(null)}
-              >
-                Wall Shelves
-                <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
-              </button>
-              {openDropdown === 'wall-shelves' && renderDropdown(wallShelvesItems, 'wall-shelves')}
-            </div>
+            {/* Wall Shelves */}
+            <button
+              onClick={() => navigate('/category/wall-shelves')}
+              style={navButtonStyle(currentPage === 'wall-shelves', hoveredNav === 'wall-shelves')}
+              onMouseEnter={() => setHoveredNav('wall-shelves')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
+              Wall Shelves
+            </button>
 
             {/* Offices Dropdown */}
             <div style={{ position: 'relative' }}>
@@ -485,8 +439,6 @@ export default function Header({ currentPage }) {
         onClose={() => setIsMobileMenuOpen(false)}
         navigate={navigate}
         currentPage={currentPage}
-        bookshelvesItems={bookshelvesItems}
-        wallShelvesItems={wallShelvesItems}
         officesItems={officesItems}
         collectionsItems={collectionsItems}
         moreCategories={moreCategories}

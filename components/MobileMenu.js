@@ -1,4 +1,4 @@
-export default function MobileMenu({ isOpen, onClose, navigate, currentPage, bookshelvesItems, wallShelvesItems, officesItems, collectionsItems, moreCategories }) {
+export default function MobileMenu({ isOpen, onClose, navigate, currentPage, officesItems, collectionsItems, moreCategories }) {
   if (!isOpen) return null;
 
   const menuButtonStyle = (isActive = false, indent = false) => ({
@@ -90,34 +90,26 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, boo
         <div style={{ padding: '0.5rem' }}>
           {/* Bookshelves */}
           <div style={sectionStyle}>
-            <div style={sectionLabelStyle}>BOOKSHELVES</div>
-            {bookshelvesItems.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => handleNav(item.path)}
-                style={menuButtonStyle()}
-                onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                onMouseLeave={(e) => e.target.style.background = 'transparent'}
-              >
-                {item.name}
-              </button>
-            ))}
+            <button
+              onClick={() => handleNav('/category/bookshelves')}
+              style={menuButtonStyle(currentPage === 'bookshelves')}
+              onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+              onMouseLeave={(e) => e.target.style.background = 'transparent'}
+            >
+              Bookshelves
+            </button>
           </div>
 
           {/* Wall Shelves */}
           <div style={sectionStyle}>
-            <div style={sectionLabelStyle}>WALL SHELVES</div>
-            {wallShelvesItems.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => handleNav(item.path)}
-                style={menuButtonStyle()}
-                onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                onMouseLeave={(e) => e.target.style.background = 'transparent'}
-              >
-                {item.name}
-              </button>
-            ))}
+            <button
+              onClick={() => handleNav('/category/wall-shelves')}
+              style={menuButtonStyle(currentPage === 'wall-shelves')}
+              onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+              onMouseLeave={(e) => e.target.style.background = 'transparent'}
+            >
+              Wall Shelves
+            </button>
           </div>
 
           {/* Offices */}

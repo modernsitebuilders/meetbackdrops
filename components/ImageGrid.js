@@ -191,30 +191,14 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                 }}
               />
 
-              {/* Filename label — real <a> so Google can crawl the image page */}
+              {/* Hidden <a> so Google can crawl the image page */}
               <a
                 href={imagePage}
                 onClick={(e) => e.stopPropagation()}
-                style={{
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '0',
-                  right: '0',
-                  background: 'rgba(0,0,0,0.65)',
-                  color: '#fff',
-                  fontSize: '0.65rem',
-                  fontFamily: 'monospace',
-                  padding: '3px 6px',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  userSelect: 'all',
-                  textDecoration: 'none',
-                  display: 'block',
-                }}
-              >
-                {image.filename}
-              </a>
+                style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', opacity: 0 }}
+                aria-hidden="true"
+                tabIndex={-1}
+              />
 
               {/* HD-only corner badge */}
               {hdOnly && (
