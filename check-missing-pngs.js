@@ -1,3 +1,4 @@
+// DEPRECATED: References Cloudinary for PNG existence checks — use R2 instead.
 // check-missing-pngs.js
 const fs = require('fs');
 const path = require('path');

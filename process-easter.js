@@ -1,3 +1,5 @@
+// DEPRECATED: Cloudinary upload steps no longer apply — images now go to R2.
+// Use image-pipeline/upload_nature_webps.py as the template for new R2 uploads.
 require('dotenv').config({ path: '.env.local' });
 const sharp = require('sharp');
 const cloudinary = require('cloudinary').v2;

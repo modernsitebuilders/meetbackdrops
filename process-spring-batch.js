@@ -1,3 +1,5 @@
+// DEPRECATED: Cloudinary upload steps no longer apply — images now go to R2.
+// Use image-pipeline/upload_nature_webps.py as the template for new R2 uploads.
 // process-spring-batch.js
 // Processes all spring images downloaded today from ~/Downloads:
 //   1. Renames them sequentially to spring-background-01.png etc.

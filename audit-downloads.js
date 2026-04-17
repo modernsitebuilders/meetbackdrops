@@ -1,3 +1,4 @@
+// DEPRECATED: Checks Cloudinary for PNG download URLs — no longer the source of truth.
 // audit-downloads.js
 const fs = require('fs');
 const path = require('path');

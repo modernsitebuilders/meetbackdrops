@@ -1,3 +1,6 @@
+// TODO: This endpoint still queries the Cloudinary API, which is no longer the
+// source of truth. Images now live in Cloudflare R2 (bucket: streambackdrops-images).
+// This needs to be rewritten to pull from R2 or from image-metadata-complete.json.
 import cloudinary from 'cloudinary';
 
 cloudinary.v2.config({
