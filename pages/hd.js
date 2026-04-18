@@ -891,12 +891,10 @@ const products = [
   { id: 'coffee-shop-04-hd', name: 'Coffee Shop #4', category: 'coffee-shops' },
   { id: 'coffee-shop-10-hd', name: 'Coffee Shop #10', category: 'coffee-shops' },
   { id: 'coffee-shop-12-hd', name: 'Coffee Shop #12', category: 'coffee-shops' },
-  { id: 'coffee-shop-13-hd', name: 'Coffee Shop #13', category: 'coffee-shops' },
   { id: 'coffee-shop-19-hd', name: 'Coffee Shop #19', category: 'coffee-shops' },
   // Conference Rooms
   { id: 'conference-room-01-hd', name: 'Conference Room #1', category: 'conference-rooms' },
   { id: 'conference-room-02-hd', name: 'Conference Room #2', category: 'conference-rooms' },
-  { id: 'conference-room-03-hd', name: 'Conference Room #3', category: 'conference-rooms' },
   { id: 'conference-room-04-hd', name: 'Conference Room #4', category: 'conference-rooms' },
   { id: 'conference-room-05-hd', name: 'Conference Room #5', category: 'conference-rooms' },
   { id: 'conference-room-06-hd', name: 'Conference Room #6', category: 'conference-rooms' },
@@ -936,7 +934,6 @@ const products = [
   { id: 'home-offices-05-hd', name: 'Home Office #5', category: 'home-office' },
   { id: 'home-offices-07-hd', name: 'Home Office #7', category: 'home-office' },
   { id: 'home-offices-08-hd', name: 'Home Office #8', category: 'home-office' },
-  { id: 'home-offices-12-hd', name: 'Home Office #12', category: 'home-office' },
   { id: 'home-offices-13-hd', name: 'Home Office #13', category: 'home-office' },
   { id: 'home-offices-14-hd', name: 'Home Office #14', category: 'home-office' },
   { id: 'home-offices-17-hd', name: 'Home Office #17', category: 'home-office' },
@@ -978,7 +975,6 @@ const products = [
   { id: 'kitchen-06-hd', name: 'Kitchen #6', category: 'kitchens' },
   { id: 'kitchen-14-hd', name: 'Kitchen #14', category: 'kitchens' },
   { id: 'kitchen-15-hd', name: 'Kitchen #15', category: 'kitchens' },
-  { id: 'kitchen-16-hd', name: 'Kitchen #16', category: 'kitchens' },
   // Gardens & Patios
   { id: 'garden-patio-01-hd', name: 'Garden & Patio #1', category: 'gardens-patios' },
   { id: 'garden-patio-12-hd', name: 'Garden & Patio #12', category: 'gardens-patios' },
