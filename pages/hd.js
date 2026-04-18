@@ -1096,7 +1096,8 @@ export default function Premium({ reviewsData }) {
   }, []);
 
   // Highlight & scroll to a specific product when ?highlight=<baseId> is set.
-  // DOM node is located via data-product-id to avoid callback-ref churn across re-renders.
+  // Deterministic 3-phase model: wait for DOM → one RAF → single scroll.
+  // The effect re-runs on activeCategory changes, so no polling is needed.
   useEffect(() => {
     if (!router.isReady) return;
     const raw = router.query.highlight;
@@ -1116,28 +1117,22 @@ export default function Premium({ reviewsData }) {
     const resolved = legacyMap[product.category] || product.category;
     if (activeCategory !== 'all' && activeCategory !== resolved) {
       setActiveCategory('all');
+      return;
     }
 
-    // Apply glow first so React commits it before the scroll animation begins.
-    setHighlightedId(productId);
-    trackAnalytics('hd_highlight_shown', productId, product.category);
+    // PHASE 1: DOM existence check (no offsetHeight, no retries).
+    const node = document.querySelector(`[data-product-id="${productId}"]`);
+    if (!node) return;
 
+    // PHASE 2: one animation frame to let React commit + layout flush.
     let cancelled = false;
-    let frames = 0;
-    const MAX_FRAMES = 90; // ~1.5s at 60fps
-
-    const findAndScroll = () => {
+    const rafId = requestAnimationFrame(() => {
       if (cancelled) return;
-      const node = document.querySelector(`[data-product-id="${productId}"]`);
-      if (node && node.offsetHeight > 0) {
-        node.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
-      }
-      if (++frames < MAX_FRAMES) {
-        requestAnimationFrame(findAndScroll);
-      }
-    };
-    requestAnimationFrame(findAndScroll);
+      // PHASE 3: single scroll; apply highlight state immediately after.
+      node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setHighlightedId(productId);
+      trackAnalytics('hd_highlight_shown', productId, product.category);
+    });
 
     const clearTimer = setTimeout(() => {
       if (!cancelled) setHighlightedId(null);
@@ -1145,9 +1140,10 @@ export default function Premium({ reviewsData }) {
 
     return () => {
       cancelled = true;
+      cancelAnimationFrame(rafId);
       clearTimeout(clearTimer);
     };
-  }, [router.isReady, router.query.highlight]);
+  }, [router.isReady, router.query.highlight, activeCategory]);
 
   // Subscription state
   const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }

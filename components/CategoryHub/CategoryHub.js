@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
-import { HD_BASE_IDS } from '../../lib/hdImages';
+import { isHdOnlyFilename } from '../../lib/hdOnly';
 import { getOrCreateSession, getVisitorType } from '../../lib/sessionTracking';
 import HubHero from './HubHero';
 import SocialProofBand from './SocialProofBand';
@@ -54,24 +54,16 @@ export default function CategoryHub({
 }) {
   const firedDepths = useRef(new Set());
 
-  // Top free images by score (hero + use-case pool)
+  // Top free images by score (hero + use-case pool). HD-only images must be
+  // excluded — they surface free Download buttons in UseCaseSection otherwise.
   const topImages = useMemo(() => {
-    const withScores = images
-      .filter((img) => !HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, ''))
-        || true) // keep all; we'll prefer non-HD-only for featured below
+    return images
+      .filter((img) => !isHdOnlyFilename(img.filename))
       .map((img) => ({
         ...img,
         score: scores[img.filename] ?? 0,
-        hdOnly: false, // metadata layer missing here; hdOnly badge logic lives in grid
-      }));
-
-    // Prefer images that are free (not HD-only) for featured hero and use-cases
-    // We don't have hdOnlyFilenames here without the metadata file; the data model
-    // passed in from category page includes the full list, and HD-only images are
-    // a small subset. Using HD_BASE_IDS set detects which HAVE an HD variant, not
-    // which are HD-only. The parent's ImageGrid uses image-metadata-complete.json
-    // for the real hdOnly flag. For the hub we sort purely by score.
-    return withScores.sort((a, b) => b.score - a.score);
+      }))
+      .sort((a, b) => b.score - a.score);
   }, [images, scores]);
 
   const heroImages = topImages.slice(0, 5);
