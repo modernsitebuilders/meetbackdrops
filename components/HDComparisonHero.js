@@ -28,7 +28,8 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
 
   const baseId = topImage.filename.replace(/\.\w+$/, '');
   const hdId = `${baseId}-hd`;
-  const freeUrl = webpUrl(slug, topImage.filename);
+  const imageFolder = topImage.folder || slug;
+  const freeUrl = webpUrl(imageFolder, topImage.filename);
 
   const trackCompareClick = () => {
     if (process.env.NODE_ENV !== 'production') return;
@@ -132,7 +133,7 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
         >
           <div style={{ aspectRatio: '16/9' }}>
             <img
-              src={webpUrl(slug, topImage.filename)}
+              src={webpUrl(imageFolder, topImage.filename)}
               alt="HD preview"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
