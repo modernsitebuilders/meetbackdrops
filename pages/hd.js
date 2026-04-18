@@ -12,16 +12,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { getReviewsData } from '../lib/reviews';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
-import allImageMetadata from '../public/data/image-metadata-complete.json';
+import { isHdOnlyProductId as isHdOnly } from '../lib/hdOnly';
 import { useWishlist } from '../lib/WishlistContext';
-
-// Build a set of filenames that are HD-only (no free version)
-const hdOnlyFilenames = new Set(
-  allImageMetadata.filter(img => img.hdOnly).map(img => img.filename)
-);
-function isHdOnly(productId) {
-  return hdOnlyFilenames.has(productId.replace(/-hd$/, '') + '.webp');
-}
 
 const PRICE_IDS = {
   1:  'price_1Sr4U0Q695ongkMjxUtnf9NA',
@@ -273,7 +265,7 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
 //         but the JSON contains path-based keys (e.g., "webp/bookshelves-bright/bookshelves-bright-04").
 //         Now tries multiple formats before falling back to constructed URL.
 // DO NOT REMOVE or modify the multi-key lookup logic without testing all image types.
-function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, onHdOnlyPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
+function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle, onPreview, onHdOnlyPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
   const { toggleWishlist, isWishlisted, openDrawer } = useWishlist();
   const wishlisted = isWishlisted(product.id);
   const thumb = `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
@@ -285,13 +277,19 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
   };
 
   return (
+    // NOTE: data-product-id is required for /hd?highlight scroll behavior
     <div
+      data-product-id={product.id}
       style={{
         border: isSelected ? '3px solid #2563eb' : subscriberMode ? '3px solid #7c3aed' : '3px solid gold',
         borderRadius: '8px',
         overflow: 'hidden',
         position: 'relative',
-        cursor: subscriberMode ? 'default' : 'pointer'
+        cursor: subscriberMode ? 'default' : 'pointer',
+        boxShadow: isHighlighted
+          ? '0 0 0 4px rgba(124, 58, 237, 0.9), 0 0 32px 6px rgba(124, 58, 237, 0.55)'
+          : 'none',
+        transition: 'box-shadow 0.35s ease',
       }}
       onClick={() => !subscriberMode && onToggle(product.id)}
       onMouseEnter={onMouseEnter}
@@ -453,6 +451,25 @@ function HdProductCard({ product, isSelected, isHovered, onToggle, onPreview, on
         alt={`${product.name} - Premium HD Virtual Background`}
         style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }}
       />
+
+      {/* Resolution chip — premium differentiation */}
+      <div style={{
+        position: 'absolute',
+        bottom: '8px',
+        left: '8px',
+        background: 'rgba(17, 24, 39, 0.85)',
+        color: 'white',
+        fontSize: '0.68rem',
+        fontWeight: 600,
+        padding: '3px 8px',
+        borderRadius: '4px',
+        letterSpacing: '0.02em',
+        zIndex: 2,
+        pointerEvents: 'none',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+      }}>
+        2912 × 1632 · PNG
+      </div>
     </div>
   );
 }
@@ -1046,6 +1063,7 @@ export default function Premium({ reviewsData }) {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [showStickyBar, setShowStickyBar] = useState(false);
+  const [highlightedId, setHighlightedId] = useState(null);
   const heroRef = useRef(null);
 
   // Pre-select category from URL param (e.g. ?category=easter-backgrounds)
@@ -1076,6 +1094,60 @@ export default function Premium({ reviewsData }) {
     observer.observe(heroRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // Highlight & scroll to a specific product when ?highlight=<baseId> is set.
+  // DOM node is located via data-product-id to avoid callback-ref churn across re-renders.
+  useEffect(() => {
+    if (!router.isReady) return;
+    const raw = router.query.highlight;
+    if (!raw) return;
+
+    const baseId = String(raw).replace(/-hd$/, '');
+    const productId = `${baseId}-hd`;
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const legacyMap = {
+      'bookshelves-bright': 'bookshelves',
+      'bookshelves-dark': 'bookshelves',
+      'wall-shelves-bright': 'wall-shelves',
+      'wall-shelves-dark': 'wall-shelves',
+    };
+    const resolved = legacyMap[product.category] || product.category;
+    if (activeCategory !== 'all' && activeCategory !== resolved) {
+      setActiveCategory('all');
+    }
+
+    // Apply glow first so React commits it before the scroll animation begins.
+    setHighlightedId(productId);
+    trackAnalytics('hd_highlight_shown', productId, product.category);
+
+    let cancelled = false;
+    let frames = 0;
+    const MAX_FRAMES = 90; // ~1.5s at 60fps
+
+    const findAndScroll = () => {
+      if (cancelled) return;
+      const node = document.querySelector(`[data-product-id="${productId}"]`);
+      if (node && node.offsetHeight > 0) {
+        node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (++frames < MAX_FRAMES) {
+        requestAnimationFrame(findAndScroll);
+      }
+    };
+    requestAnimationFrame(findAndScroll);
+
+    const clearTimer = setTimeout(() => {
+      if (!cancelled) setHighlightedId(null);
+    }, 4000);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(clearTimer);
+    };
+  }, [router.isReady, router.query.highlight]);
 
   // Subscription state
   const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }
@@ -1204,11 +1276,36 @@ export default function Premium({ reviewsData }) {
 
       {/* Hero */}
       <section ref={heroRef} style={{
-        padding: '2rem 2rem 3rem 2rem',
+        padding: '2.5rem 2rem 3rem 2rem',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white', textAlign: 'center'
       }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: '700' }}>Premium HD Backgrounds</h1>
+        <div style={{
+          display: 'inline-block',
+          fontSize: '0.78rem',
+          fontWeight: 600,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          background: 'rgba(255,255,255,0.14)',
+          padding: '0.3rem 0.85rem',
+          borderRadius: '999px',
+          marginBottom: '0.9rem',
+        }}>
+          2912 × 1632 · PNG
+        </div>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.6rem', fontWeight: '700', lineHeight: 1.15 }}>
+          HD Virtual Backgrounds
+        </h1>
+        <p style={{
+          fontSize: '1.1rem',
+          maxWidth: '640px',
+          margin: '0 auto 1.75rem',
+          lineHeight: 1.55,
+          opacity: 0.94,
+        }}>
+          Razor-sharp detail and true color depth — roughly 3× the effective resolution of standard
+          webcam backgrounds. Built for 4K monitors, TVs, and projectors where quality shows.
+        </p>
 
         {isSubscriber ? (
           /* ── Subscriber badge ── */
@@ -1313,8 +1410,8 @@ export default function Premium({ reviewsData }) {
         {/* Image grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '1rem'
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))',
+          gap: '1.5rem'
         }}>
           {filteredProducts.map(product => (
             <HdProductCard
@@ -1322,6 +1419,7 @@ export default function Premium({ reviewsData }) {
               product={product}
               isSelected={selected.includes(product.id)}
               isHovered={hoveredProduct === product.id}
+              isHighlighted={highlightedId === product.id}
               onToggle={toggleSelect}
               onPreview={setPreviewImage}
               onHdOnlyPreview={setHdOnlyPreview}

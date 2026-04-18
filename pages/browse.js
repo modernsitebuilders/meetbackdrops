@@ -7,7 +7,6 @@ import Layout from '../components/Layout';
 import KeywordFilter from '../components/KeywordFilter';
 import SearchResults from '../components/SearchResults';
 import ImagePreviewModal from '../components/ImagePreviewModal';
-import imageMetadata from '../public/data/image-metadata-complete.json';
 import { formatPublicCount, TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import ReviewModal from '../components/ReviewModal';
@@ -15,8 +14,8 @@ import RateLimitModal from '../components/RateLimitModal';
 import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 
-export default function BrowsePage() {
-  const { results, isSearching, hasSearched, performSearch } = useImageSearch(imageMetadata);
+export default function BrowsePage({ searchData = [] }) {
+  const { results, isSearching, hasSearched, performSearch } = useImageSearch(searchData);
   const { 
   handleDownload, 
   showReviewModal, 
@@ -140,11 +139,19 @@ export default function BrowsePage() {
       )}
     {/* Rate Limit Modal */}
       {showRateLimitModal && (
-        <RateLimitModal 
+        <RateLimitModal
           onClose={() => setShowRateLimitModal(false)}
           errorMessage={rateLimitError}
         />
       )}
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const { getSearchIndex } = require('../lib/imageIndex');
+  return {
+    props: { searchData: getSearchIndex() },
+    revalidate: 3600,
+  };
 }

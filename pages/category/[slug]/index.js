@@ -291,14 +291,24 @@ export async function getStaticProps({ params }) {
   }
 
   try {
-    // Load metadata
-    const metadataPath = path.join(process.cwd(), 'public', 'data', 'image-metadata-complete.json');
-    const allMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
-    // Only pass metadata for images in this category — full file is 750 KB and
-    // would bloat every page's ISR payload unnecessarily.
+    // Build metadata from canonical manifest (keyed by filename to match
+    // ImageObjectSchema's lookup). Scope to this category only so ISR payloads
+    // stay small. Intersect with categoryData.js so only images that the page
+    // actually renders contribute metadata.
+    const { getCategoryIndex } = require('../../../lib/imageIndex');
     const categoryFilenames = new Set(category.images.map(img => img.filename));
+    const manifestImages = getCategoryIndex(params.slug)
+      .filter(img => categoryFilenames.has(img.filename));
     imageMetadata = Object.fromEntries(
-      Object.entries(allMetadata).filter(([, v]) => categoryFilenames.has(v.filename))
+      manifestImages.map(img => [img.filename, {
+        filename: img.filename,
+        title: img.title,
+        description: img.description,
+        alt: img.alt,
+        keywords: img.keywords,
+        width: img.width,
+        height: img.height,
+      }])
     );
 
     // ── Primary: fetch live scores from Google Sheets via API ──

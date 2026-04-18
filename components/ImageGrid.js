@@ -5,7 +5,7 @@ import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
 import PopularBadge from './PopularBadge';
 import { useRouter } from 'next/router';
-import allImageMetadata from '../public/data/image-metadata-complete.json';
+import { isHdOnlyFilename } from '../lib/hdOnly';
 import { useWishlist } from '../lib/WishlistContext';
 import { webpUrl } from '../lib/cloudinaryUrl';
 
@@ -16,10 +16,6 @@ function trackAnalytics(eventType, filename, category) {
     body: JSON.stringify({ eventType, filename, category }),
   }).catch(() => {});
 }
-
-const hdOnlyFilenames = new Set(
-  allImageMetadata.filter(img => img.hdOnly).map(img => img.filename)
-);
 
 export default function ImageGrid({ images, slug, onImageClick, onDownload = [], scores = {}, downloadingImage }) {
   const [sortedImages, setSortedImages] = useState(images);
@@ -34,8 +30,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
     });
 
     // Split into free and HD-only pools, each sorted by score
-    const free = imagesWithScores.filter(i => !hdOnlyFilenames.has(i.filename)).sort((a, b) => b.score - a.score);
-    const hdOnly = imagesWithScores.filter(i => hdOnlyFilenames.has(i.filename)).sort((a, b) => b.score - a.score);
+    const free = imagesWithScores.filter(i => !isHdOnlyFilename(i.filename)).sort((a, b) => b.score - a.score);
+    const hdOnly = imagesWithScores.filter(i => isHdOnlyFilename(i.filename)).sort((a, b) => b.score - a.score);
 
     // Inject HD-only images at fixed slots so free images always lead
     const HD_SLOTS = [10, 17, 27, 36, 47];
@@ -121,35 +117,25 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
     }
   };
 
+  const freeCount = images.filter(i => !isHdOnlyFilename(i.filename)).length;
+
   return (
     <>
-      <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: '600',
-        color: '#111827',
-        marginBottom: '1rem'
-      }}>
-        {(() => {
-          const hdCount = images.filter(i => hdOnlyFilenames.has(i.filename)).length;
-          const freeCount = images.length - hdCount;
-          return `Browse ${freeCount} Free Backgrounds`;
-        })()}
-      </h2>
-
-      <p style={{
+      <div style={{
+        fontSize: '0.875rem',
         color: '#6b7280',
-        marginBottom: '2rem'
+        marginBottom: '1rem',
       }}>
-        Click to preview · 💎 HD Only images available on our HD page
-      </p>
+        {freeCount} free backgrounds
+      </div>
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-        gap: '1.5rem'
+        gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+        gap: '1rem'
       }}>
         {sortedImages.map((image, index) => {
-          const hdOnly = hdOnlyFilenames.has(image.filename);
+          const hdOnly = isHdOnlyFilename(image.filename);
           const imageSlug = image.filename.replace(/\.webp$/i, '');
           const imagePage = `/category/${slug}/${imageSlug}`;
           return (
@@ -160,16 +146,15 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
               cursor: 'pointer',
               borderRadius: '0.5rem',
               overflow: 'hidden',
-              transition: 'transform 0.2s ease'
+              background: '#fff',
+              boxShadow: hoveredIndex === index
+                ? '0 8px 20px rgba(0, 0, 0, 0.12)'
+                : '0 1px 3px rgba(0, 0, 0, 0.06)',
+              transform: hoveredIndex === index ? 'translateY(-3px)' : 'translateY(0)',
+              transition: 'transform 0.22s ease, box-shadow 0.22s ease',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              setHoveredIndex(index);
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              setHoveredIndex(null);
-            }}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
             onClick={() => { if (hdOnly) { trackAnalytics('hd_cat_exclusive_click', image.filename, slug); window.location.href = '/hd'; } else { onImageClick(image); } }}
           >
             <div style={{
@@ -187,7 +172,9 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                 style={{
                   objectFit: 'cover',
                   width: '100%',
-                  height: '100%'
+                  height: '100%',
+                  transform: hoveredIndex === index ? 'scale(1.03)' : 'scale(1)',
+                  transition: 'transform 0.3s ease',
                 }}
               />
 

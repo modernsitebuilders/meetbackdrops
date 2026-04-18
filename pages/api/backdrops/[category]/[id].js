@@ -1,19 +1,13 @@
 // pages/api/backdrops/[category]/[id].js
-import fs from 'fs';
-import path from 'path';
 import { CATEGORIES } from '../../../../lib/categories-config';
+import { getById, getByCategory } from '../../../../lib/manifest';
 
 export default async function handler(req, res) {
   const { category, id } = req.query;
 
   try {
-    // Read metadata
-    const metadataPath = path.join(process.cwd(), 'public/data/image-metadata-complete.json');
-    const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
-    
-    // Find the image
-    const imageData = metadata[id];
-    
+    const imageData = getById(id);
+
     if (!imageData) {
       return res.status(404).json({
         success: false,
@@ -21,25 +15,24 @@ export default async function handler(req, res) {
       });
     }
 
-    // Verify category matches (optional - prevents miscategorized URLs)
     if (imageData.category !== category && category !== 'recently-added' && category !== 'most-popular') {
-      // Still return the image, but note the mismatch
       console.warn(`Category mismatch: ${id} is in ${imageData.category}, requested from ${category}`);
     }
 
-    // Find related images (same category, different IDs)
+    const siblings = getByCategory(imageData.category);
     const related = [];
-    Object.entries(metadata).forEach(([relatedId, data]) => {
-      if (data.category === imageData.category && relatedId !== id && related.length < 8) {
-        related.push({
-          id: relatedId,
-          filename: data.filename,
-          title: data.title,
-          alt: data.alt?.split(' ').slice(0, 6).join(' ') + '...',
-          url: `/backdrop/${relatedId}`
-        });
-      }
-    });
+    for (const data of siblings) {
+      const relatedId = data.slug || data.id;
+      if (relatedId === id) continue;
+      if (related.length >= 8) break;
+      related.push({
+        id: relatedId,
+        filename: data.filename,
+        title: data.title,
+        alt: data.alt?.split(' ').slice(0, 6).join(' ') + '...',
+        url: `/backdrop/${relatedId}`
+      });
+    }
 
     res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=604800');
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -61,16 +54,16 @@ export default async function handler(req, res) {
         url: `/backdrop/${id}`,
         downloadUrl: `/api/download/${id}`,
         thumbnailUrl: `https://streambackdrops.com/backdrops/${imageData.filename}`,
-        fullSizeUrl: `https://streambackdrops.com/backdrops/${imageData.filename}` // or PNG version
+        fullSizeUrl: `https://streambackdrops.com/backdrops/${imageData.filename}`
       },
       related,
       categoryUrl: `/category/${imageData.category}`
     });
   } catch (error) {
     console.error('API Error:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: 'Failed to load backdrop' 
+    res.status(500).json({
+      success: false,
+      error: 'Failed to load backdrop'
     });
   }
 }

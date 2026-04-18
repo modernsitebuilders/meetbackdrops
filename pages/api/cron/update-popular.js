@@ -273,7 +273,8 @@ export default async function handler(req, res) {
       'easter-backgrounds'
     ];
 
-    const allImagesArray = require('../../../public/data/image-metadata-complete.json');
+    const { getAll } = require('../../../lib/manifest');
+    const allImagesArray = getAll();
     const allImagesData = {};
     allImagesArray.forEach(img => { allImagesData[img.filename] = img; });
     const topImages = scoredImages

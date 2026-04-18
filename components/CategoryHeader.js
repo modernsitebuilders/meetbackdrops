@@ -1,26 +1,31 @@
 // components/CategoryHeader.js
+import Link from 'next/link';
 import styles from '../styles/CategoryHeader.module.css';
 
-export default function CategoryHeader({ category }) {
-  // Fallback styles in case CSS module is missing
-
+export default function CategoryHeader({ category, featuredImageUrl }) {
+  const name = category?.name || 'Virtual';
+  const shortDescription =
+    category?.shortDescription ||
+    `Professional ${name.toLowerCase()} scenes for Zoom, Teams, and Google Meet. Instant download, no signup.`;
 
   return (
     <div className={styles.header}>
-<h1 className={styles.title}>
-          {category.name} Virtual Backgrounds
-      </h1>
-      
-<p className={styles.description}> Each background features professional lighting and 
-        composition designed specifically for video calls—not repurposed stock photos.
-      </p>
-      
-      <div className={styles.badges}>
-        <span className={styles.badge}>Video-Optimized Lighting</span>
-        <span className={styles.badge}>Perfect 16:9 Ratio</span>
-        <span className={styles.badge}>Instant Download</span>
-        <span className={styles.badge}>No Watermarks</span>
+      <div className={styles.text}>
+        <h1 className={styles.title}>Free {name} Virtual Backgrounds</h1>
+        <p className={styles.description}>{shortDescription}</p>
+        <Link href="/hd" className={styles.hdLink}>
+          Need higher resolution? Explore HD backgrounds →
+        </Link>
       </div>
+      {featuredImageUrl && (
+        <img
+          src={featuredImageUrl}
+          alt=""
+          aria-hidden="true"
+          className={styles.featured}
+          loading="lazy"
+        />
+      )}
     </div>
   );
 }

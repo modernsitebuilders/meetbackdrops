@@ -34,8 +34,9 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
     
-    // Load ALL images from metadata (bundled via require so it's available in serverless)
-    const allImagesData = require('../../public/data/image-metadata-complete.json');
+    // Load ALL images from the canonical manifest via the compat layer
+    const { getAll } = require('../../lib/manifest');
+    const allImagesData = getAll();
 
     // Load static scores as baseline for images with no post-reset activity
     let staticScores = {};

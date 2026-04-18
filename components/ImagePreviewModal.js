@@ -176,7 +176,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
           flex: '1 1 0',
           minWidth: 0,
         }}>
-          {/* Image wrapper — HD badge overlaid in corner, image constrained by max-height */}
+          {/* Image wrapper */}
           <div style={{ position: 'relative', lineHeight: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -192,33 +192,6 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
               }}
             />
-            {hasHd && (
-              <Link
-                href={`/hd?category=${slug}`}
-                onClick={(e) => { e.stopPropagation(); trackAnalytics('modal_hd_upgrade_click', image.filename, slug); }}
-                style={{
-                  position: 'absolute',
-                  bottom: '0.6rem',
-                  right: '0.6rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  background: 'linear-gradient(135deg, #4c1d95, #3730a3)',
-                  color: 'white',
-                  padding: '0.44rem 0.94rem',
-                  borderRadius: '6px',
-                  textDecoration: 'none',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.5)',
-                  whiteSpace: 'nowrap',
-                  backdropFilter: 'blur(4px)',
-                }}
-              >
-                <span>⭐</span>
-                <span>HD — from $4.99</span>
-              </Link>
-            )}
           </div>
 
           {/* Download button — single item, overlap impossible */}
@@ -247,6 +220,29 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
           >
             Download Free
           </button>
+
+          {/* HD upsell — text-only, secondary to Download */}
+          {hasHd && (
+            <Link
+              href={`/hd?highlight=${baseId}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                trackAnalytics('preview_modal_hd_click', image.filename, slug);
+              }}
+              style={{
+                color: 'rgba(255, 255, 255, 0.72)',
+                fontSize: '0.82rem',
+                textDecoration: 'none',
+                textAlign: 'center',
+                lineHeight: 1.4,
+              }}
+            >
+              Want this in higher resolution?{' '}
+              <span style={{ color: '#c4b5fd', fontWeight: 500 }}>
+                Get the HD version →
+              </span>
+            </Link>
+          )}
         </div>
       </div>
     </div>
