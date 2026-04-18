@@ -856,6 +856,7 @@ const products = [
   { id: 'bookshelves-dark-07-hd', name: 'Dark Bookshelf #7', category: 'bookshelves-dark' },
   { id: 'bookshelves-dark-08-hd', name: 'Dark Bookshelf #8', category: 'bookshelves-dark' },
   { id: 'bookshelves-dark-09-hd', name: 'Dark Bookshelf #9', category: 'bookshelves-dark' },
+  { id: 'bookshelves-dark-23-hd', name: 'Dark Bookshelf #23', category: 'bookshelves-dark' },
   { id: 'bookshelves-dark-25-hd', name: 'Dark Bookshelf #25', category: 'bookshelves-dark' },
   { id: 'bookshelves-dark-27-hd', name: 'Dark Bookshelf #27', category: 'bookshelves-dark' },
   { id: 'bookshelves-dark-28-hd', name: 'Dark Bookshelf #28', category: 'bookshelves-dark' },
@@ -873,6 +874,7 @@ const products = [
   { id: 'wall-shelves-bright-54-hd', name: 'Bright Wall Shelf #54', category: 'wall-shelves-bright' },
   { id: 'wall-shelves-bright-20-hd', name: 'Bright Wall Shelf #20', category: 'wall-shelves-bright' },
   { id: 'wall-shelves-bright-29-hd', name: 'Bright Wall Shelf #29', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-49-hd', name: 'Bright Wall Shelf #49', category: 'wall-shelves-bright' },
   { id: 'wall-shelves-bright-51-hd', name: 'Bright Wall Shelf #51', category: 'wall-shelves-bright' },
   // Wall Shelves Dark
   { id: 'wall-shelves-dark-01-hd', name: 'Dark Wall Shelf #1', category: 'wall-shelves-dark' },
@@ -929,6 +931,7 @@ const products = [
   // Home Offices
   { id: 'home-offices-01-hd', name: 'Home Office #1', category: 'home-office' },
   { id: 'home-offices-03-hd', name: 'Home Office #3', category: 'home-office' },
+  { id: 'home-offices-20-hd', name: 'Home Office #20', category: 'home-office' },
   { id: 'home-offices-04-hd', name: 'Home Office #4', category: 'home-office' },
   { id: 'home-offices-05-hd', name: 'Home Office #5', category: 'home-office' },
   { id: 'home-offices-07-hd', name: 'Home Office #7', category: 'home-office' },
@@ -943,6 +946,10 @@ const products = [
   { id: 'home-offices-29-hd', name: 'Home Office #29', category: 'home-office' },
   { id: 'home-offices-30-hd', name: 'Home Office #30', category: 'home-office' },
   { id: 'home-offices-31-hd', name: 'Home Office #31', category: 'home-office' },
+  { id: 'home-offices-48-hd', name: 'Home Office #48', category: 'home-office' },
+  { id: 'home-offices-61-hd', name: 'Home Office #61', category: 'home-office' },
+  { id: 'home-offices-69-hd', name: 'Home Office #69', category: 'home-office' },
+  { id: 'home-offices-74-hd', name: 'Home Office #74', category: 'home-office' },
   // Nature Landscapes
   { id: 'nature-landscape-10-hd', name: 'Nature Landscape #10', category: 'nature-landscapes' },
   { id: 'nature-landscape-11-hd', name: 'Nature Landscape #11', category: 'nature-landscapes' },
@@ -957,10 +964,14 @@ const products = [
   { id: 'nature-landscape-98-hd', name: 'Nature Landscape #98', category: 'nature-landscapes' },
   { id: 'nature-landscape-99-hd', name: 'Nature Landscape #99', category: 'nature-landscapes' },
   // Living Rooms
+  { id: 'living-room-08-hd', name: 'Living Room #8', category: 'living-rooms' },
   { id: 'living-room-10-hd', name: 'Living Room #10', category: 'living-rooms' },
   { id: 'living-room-11-hd', name: 'Living Room #11', category: 'living-rooms' },
   { id: 'living-room-14-hd', name: 'Living Room #14', category: 'living-rooms' },
   { id: 'living-room-17-hd', name: 'Living Room #17', category: 'living-rooms' },
+  { id: 'living-room-27-hd', name: 'Living Room #27', category: 'living-rooms' },
+  { id: 'living-room-41-hd', name: 'Living Room #41', category: 'living-rooms' },
+  { id: 'living-room-46-hd', name: 'Living Room #46', category: 'living-rooms' },
   // Kitchens
   { id: 'kitchen-04-hd', name: 'Kitchen #4', category: 'kitchens' },
   { id: 'kitchen-05-hd', name: 'Kitchen #5', category: 'kitchens' },
@@ -975,9 +986,9 @@ const products = [
   // Christmas
   { id: 'christmas-background-35-hd', name: 'Christmas #35', category: 'christmas-backgrounds' },
   // Easter
-  { id: 'easter-background-02-hd', name: 'Easter #2', category: 'easter-backgrounds' },
   { id: 'easter-background-03-hd', name: 'Easter #3', category: 'easter-backgrounds' },
   { id: 'easter-background-04-hd', name: 'Easter #4', category: 'easter-backgrounds' },
+  { id: 'easter-background-21-hd', name: 'Easter #21', category: 'easter-backgrounds' },
   { id: 'easter-background-32-hd', name: 'Easter #32', category: 'easter-backgrounds' },
   { id: 'easter-background-35-hd', name: 'Easter #35', category: 'easter-backgrounds' },
   { id: 'easter-background-39-hd', name: 'Easter #39', category: 'easter-backgrounds' },
@@ -986,28 +997,28 @@ const products = [
   { id: 'easter-background-49-hd', name: 'Easter #49', category: 'easter-backgrounds' },
   { id: 'easter-background-56-hd', name: 'Easter #56', category: 'easter-backgrounds' },
   { id: 'easter-background-57-hd', name: 'Easter #57', category: 'easter-backgrounds' },
-  { id: 'easter-background-59-hd', name: 'Easter #59', category: 'easter-backgrounds' },
   { id: 'easter-background-61-hd', name: 'Easter #61', category: 'easter-backgrounds' },
   { id: 'easter-background-66-hd', name: 'Easter #66', category: 'easter-backgrounds' },
   { id: 'easter-background-72-hd', name: 'Easter #72', category: 'easter-backgrounds' },
-  { id: 'easter-background-73-hd', name: 'Easter #73', category: 'easter-backgrounds' },
   { id: 'easter-background-74-hd', name: 'Easter #74', category: 'easter-backgrounds' },
   { id: 'easter-background-75-hd', name: 'Easter #75', category: 'easter-backgrounds' },
-  { id: 'easter-background-87-hd', name: 'Easter #87', category: 'easter-backgrounds' },
   { id: 'easter-background-88-hd', name: 'Easter #88', category: 'easter-backgrounds' },
   { id: 'easter-background-91-hd', name: 'Easter #91', category: 'easter-backgrounds' },
   { id: 'easter-background-92-hd', name: 'Easter #92', category: 'easter-backgrounds' },
   { id: 'easter-background-93-hd', name: 'Easter #93', category: 'easter-backgrounds' },
   { id: 'easter-background-99-hd', name: 'Easter #99', category: 'easter-backgrounds' },
   { id: 'easter-background-101-hd', name: 'Easter #101', category: 'easter-backgrounds' },
-  { id: 'easter-background-106-hd', name: 'Easter #106', category: 'easter-backgrounds' },
 ];
 
+// Maps display filter keys to one or more product category values
+const CATEGORY_GROUPS = {
+  'bookshelves': ['bookshelves-bright', 'bookshelves-dark'],
+  'wall-shelves': ['wall-shelves-bright', 'wall-shelves-dark'],
+};
+
 const CATEGORY_LABELS = {
-  'bookshelves-bright': 'Bright Bookshelves',
-  'bookshelves-dark': 'Dark Bookshelves',
-  'wall-shelves-bright': 'Bright Wall Shelves',
-  'wall-shelves-dark': 'Dark Wall Shelves',
+  'bookshelves': 'Bookshelves',
+  'wall-shelves': 'Wall Shelves',
   'office-spaces': 'Office Spaces',
   'home-office': 'Home Offices',
   'coffee-shops': 'Coffee Shops',
@@ -1022,9 +1033,12 @@ const CATEGORY_LABELS = {
   'easter-backgrounds': 'Easter',
 };
 
-const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(
-  cat => products.some(p => p.category === cat)
-)];
+const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(cat => {
+  const group = CATEGORY_GROUPS[cat];
+  return group
+    ? products.some(p => group.includes(p.category))
+    : products.some(p => p.category === cat);
+})];
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
@@ -1042,8 +1056,16 @@ export default function Premium({ reviewsData }) {
   useEffect(() => {
     if (router.isReady && router.query.category) {
       const cat = router.query.category;
-      if (CATEGORIES.includes(cat)) {
-        setActiveCategory(cat);
+      // Handle legacy bright/dark sub-category params
+      const legacyMap = {
+        'bookshelves-bright': 'bookshelves',
+        'bookshelves-dark': 'bookshelves',
+        'wall-shelves-bright': 'wall-shelves',
+        'wall-shelves-dark': 'wall-shelves',
+      };
+      const resolved = legacyMap[cat] || cat;
+      if (CATEGORIES.includes(resolved)) {
+        setActiveCategory(resolved);
       }
     }
   }, [router.isReady, router.query.category]);
@@ -1145,7 +1167,11 @@ export default function Premium({ reviewsData }) {
   };
 
   const isSubscriber = subStatus?.valid;
-  const filteredProducts = products.filter(p => !isHdOnly(p.id)).filter(p => activeCategory === 'all' || p.category === activeCategory);
+  const filteredProducts = products.filter(p => {
+    if (activeCategory === 'all') return true;
+    const group = CATEGORY_GROUPS[activeCategory];
+    return group ? group.includes(p.category) : p.category === activeCategory;
+  });
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| StreamBackdrops" or any other suffix.
