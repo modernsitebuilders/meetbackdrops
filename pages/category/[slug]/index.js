@@ -79,14 +79,56 @@ function CategoryContent({ slug, scores = {}}) {
           </nav>
 
           {slug === 'office-spaces' ? (
-            <CategoryHub
-              slug={slug}
-              images={category.images}
-              scores={scores}
-              onImageClick={setPreviewImage}
-              onDownload={(image) => handleDownload(image, slug)}
-              downloadingImage={downloadingImage}
-            />
+            <>
+              <CategoryHub
+                slug={slug}
+                images={category.images}
+                scores={scores}
+                onImageClick={setPreviewImage}
+                onDownload={(image) => handleDownload(image, slug)}
+                downloadingImage={downloadingImage}
+              />
+
+              <section
+                id="full-library"
+                style={{
+                  marginTop: '4rem',
+                  paddingTop: '2.5rem',
+                  borderTop: '1px solid #e5e7eb',
+                  textAlign: 'center',
+                }}
+              >
+                <h2 style={{
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                  fontWeight: 700,
+                  color: '#111827',
+                  margin: '0 0 0.5rem',
+                }}>
+                  All Office Spaces
+                </h2>
+                <p style={{
+                  fontSize: '1rem',
+                  color: '#6b7280',
+                  margin: '0 0 2rem',
+                }}>
+                  Every available background in this category
+                </p>
+              </section>
+
+              <ImageGrid
+                images={category.images}
+                scores={scores}
+                slug={slug}
+                onImageClick={setPreviewImage}
+                onDownload={(image) => handleDownload(image, slug)}
+                cloudinaryUrls={cloudinaryUrls}
+                downloadingImage={downloadingImage}
+              />
+
+              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
+              <RelatedCategories currentSlug={slug} />
+              <CategorySEOContent category={category} slug={slug} />
+            </>
           ) : (
             <>
               <CategoryHeader category={category} />
