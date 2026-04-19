@@ -3,7 +3,7 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import ComparisonWidgetSchema from '../components/ComparisonWidgetSchema';
 import HdFaqSchema from '../components/HdFaqSchema';
 import ProductSchema from '../components/ProductSchema';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useReducer, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Link from 'next/link';
@@ -604,7 +604,7 @@ function PackPicker({ packSize, onSelect }) {
 }
 
 // ─── One-time Checkout Bar ─────────────────────────────────────────────────────
-function CheckoutBar({ selected, packSize, onClear, onChangePack }) {
+function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckoutStart, onCheckoutEnd }) {
   const packOption = PACK_OPTIONS.find(o => o.size === packSize);
   const remaining = packSize - selected.length;
   const isFull = selected.length === packSize;
@@ -612,16 +612,21 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack }) {
   const handleCheckout = async (e) => {
     e.stopPropagation();
     trackAnalytics('hd_checkout_initiated', String(packSize), 'checkout_bar');
-    const response = await fetch('/api/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        priceId: PRICE_IDS[packSize],
-        selectedImages: selected
-      })
-    });
-    const { url } = await response.json();
-    window.location.href = url;
+    if (onCheckoutStart) onCheckoutStart();
+    try {
+      const response = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          priceId: PRICE_IDS[packSize],
+          selectedImages: selected
+        })
+      });
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch {
+      if (onCheckoutEnd) onCheckoutEnd();
+    }
   };
 
   return (
@@ -844,6 +849,287 @@ function VerifyEmailModal({ onClose, onVerified }) {
   );
 }
 
+// ─── HD V2 State Machine ──────────────────────────────────────────────────────
+// Phases:
+//   IDLE_BROWSE     — direct /hd load, no intent; grid is primary.
+//   FOCUS_LOCKED    — one image is dominant; inline Decision Card offers 1-buy or bundle.
+//   BUNDLE_BUILDING — pack size chosen; grid is primary selection surface. Seeded with focusedId.
+//   CHECKOUT        — transient; overlay visible while Stripe redirect is in flight.
+const HD_INITIAL_STATE = {
+  phase: 'IDLE_BROWSE',
+  focusedId: null,
+  packSize: null,
+  selected: [],
+  decisionOpen: false,
+  checkingOut: false,
+};
+
+function hdReducer(state, action) {
+  switch (action.type) {
+    case 'FOCUS': {
+      // In bundle mode, tapping a grid card is a selection toggle, not a focus swap.
+      if (state.phase === 'BUNDLE_BUILDING') return state;
+      if (state.focusedId === action.productId && state.phase === 'FOCUS_LOCKED') return state;
+      return {
+        ...state,
+        phase: 'FOCUS_LOCKED',
+        focusedId: action.productId,
+        decisionOpen: false,
+      };
+    }
+    case 'OPEN_DECISION':
+      return { ...state, decisionOpen: true };
+    case 'DISMISS_FOCUS':
+      return {
+        ...state,
+        phase: 'IDLE_BROWSE',
+        focusedId: null,
+        decisionOpen: false,
+      };
+    case 'START_BUNDLE': {
+      // CRITICAL: seed selected with focusedId — do not reset to [].
+      const seed = state.focusedId ? [state.focusedId] : [];
+      return {
+        ...state,
+        phase: 'BUNDLE_BUILDING',
+        packSize: action.packSize,
+        selected: seed,
+        decisionOpen: false,
+      };
+    }
+    case 'TOGGLE_SELECT': {
+      if (state.phase !== 'BUNDLE_BUILDING' || !state.packSize) return state;
+      const id = action.productId;
+      if (state.selected.includes(id)) {
+        // Never allow removing the focused anchor — it's slot 1.
+        if (id === state.focusedId) return state;
+        return { ...state, selected: state.selected.filter(x => x !== id) };
+      }
+      if (state.selected.length >= state.packSize) return state;
+      return { ...state, selected: [...state.selected, id] };
+    }
+    case 'CHANGE_PACK':
+      return {
+        ...state,
+        packSize: null,
+        selected: [],
+        phase: state.focusedId ? 'FOCUS_LOCKED' : 'IDLE_BROWSE',
+        decisionOpen: false,
+      };
+    case 'CLEAR_SELECTION':
+      // Keep the focused anchor when clearing; drop everything else.
+      return { ...state, selected: state.focusedId ? [state.focusedId] : [] };
+    case 'CHECKOUT_START':
+      return { ...state, checkingOut: true };
+    case 'CHECKOUT_END':
+      return { ...state, checkingOut: false };
+    default:
+      return state;
+  }
+}
+
+// ─── Focus Hero ────────────────────────────────────────────────────────────────
+function FocusHero({ product, hdOnly, decisionOpen, buying, onSingleBuy, onOpenDecision, onChoosePack, onDismiss }) {
+  if (!product) return null;
+  const thumb = `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
+
+  return (
+    <section style={{
+      background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+      color: 'white',
+      padding: '2rem 1.5rem 2.25rem',
+      borderBottom: '1px solid rgba(255,255,255,0.08)',
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1.6fr) minmax(280px, 1fr)',
+        gap: '2rem',
+        alignItems: 'start',
+      }}
+      className="hd-focus-hero-grid"
+      >
+        <div style={{ position: 'relative', lineHeight: 0 }}>
+          <button
+            onClick={onDismiss}
+            aria-label="Back to browsing"
+            style={{
+              position: 'absolute', top: '0.6rem', right: '0.6rem', zIndex: 5,
+              background: 'rgba(0,0,0,0.65)', border: 'none', color: 'white',
+              width: '2rem', height: '2rem', borderRadius: '50%',
+              cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >×</button>
+          <img
+            src={thumb}
+            alt={product.name}
+            style={{
+              width: '100%',
+              aspectRatio: '16/9',
+              objectFit: 'cover',
+              borderRadius: '14px',
+              border: '3px solid #7c3aed',
+              boxShadow: '0 24px 64px rgba(124,58,237,0.35), 0 8px 20px rgba(0,0,0,0.4)',
+              display: 'block',
+            }}
+          />
+          {hdOnly && (
+            <div style={{
+              position: 'absolute', top: '0.9rem', left: '0.9rem',
+              background: 'linear-gradient(135deg,#7c3aed,#5b21b6)',
+              color: 'white',
+              fontSize: '0.7rem', fontWeight: 700,
+              padding: '0.28rem 0.65rem', borderRadius: '4px',
+              letterSpacing: '0.06em', textTransform: 'uppercase',
+              boxShadow: '0 2px 6px rgba(91,33,182,0.5)',
+            }}>
+              Exclusive
+            </div>
+          )}
+          <div style={{
+            position: 'absolute', bottom: '0.9rem', left: '0.9rem',
+            background: 'rgba(17, 24, 39, 0.85)',
+            color: 'white',
+            fontSize: '0.7rem', fontWeight: 600,
+            padding: '0.22rem 0.6rem', borderRadius: '4px',
+            letterSpacing: '0.02em',
+          }}>
+            2912 × 1632 · PNG
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+          <div style={{ fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', opacity: 0.65 }}>
+            Selected
+          </div>
+          <h2 style={{ fontSize: '1.55rem', fontWeight: 700, margin: 0, lineHeight: 1.2 }}>
+            {product.name}
+          </h2>
+          <div style={{ fontSize: '0.85rem', opacity: 0.75 }}>
+            Instant download · 2912 × 1632 PNG
+          </div>
+
+          {!decisionOpen ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginTop: '0.85rem' }}>
+              <button
+                onClick={onSingleBuy}
+                disabled={buying}
+                style={{
+                  background: 'linear-gradient(135deg,#7c3aed,#6d28d9)',
+                  color: 'white', border: 'none',
+                  padding: '1rem 1.25rem', borderRadius: '10px',
+                  fontSize: '1.05rem', fontWeight: 700,
+                  cursor: buying ? 'wait' : 'pointer',
+                  boxShadow: '0 10px 25px rgba(124,58,237,0.4)',
+                  transition: 'transform 0.12s ease',
+                }}
+              >
+                {buying ? 'Preparing checkout…' : 'Buy this HD now — $4.99'}
+              </button>
+              <button
+                onClick={onOpenDecision}
+                style={{
+                  background: 'transparent', color: 'white',
+                  border: '1px solid rgba(255,255,255,0.35)',
+                  padding: '0.85rem 1rem', borderRadius: '10px',
+                  fontSize: '0.95rem', fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                Add more &amp; save →
+              </button>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.6rem' }}>
+              <div style={{ fontSize: '0.85rem', opacity: 0.85, marginBottom: '0.25rem' }}>
+                This image is slot 1 — add more to save.
+              </div>
+              {PACK_OPTIONS.map(opt => (
+                <button
+                  key={opt.size}
+                  onClick={() => onChoosePack(opt.size)}
+                  style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    background: opt.size === 1 ? 'rgba(255,255,255,0.08)' : 'rgba(124,58,237,0.18)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    color: 'white',
+                    padding: '0.7rem 0.9rem',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '0.9rem',
+                    textAlign: 'left',
+                    transition: 'background 0.12s ease',
+                  }}
+                >
+                  <span style={{ fontWeight: 600 }}>
+                    {opt.size} image{opt.size > 1 ? 's' : ''}
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ fontWeight: 700 }}>${opt.price}</span>
+                    {opt.savings && (
+                      <span style={{
+                        background: '#10b981', color: 'white',
+                        fontSize: '0.62rem', fontWeight: 700,
+                        padding: '0.15rem 0.4rem', borderRadius: '4px',
+                        whiteSpace: 'nowrap',
+                      }}>
+                        save {opt.savings}%
+                      </span>
+                    )}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      <style jsx>{`
+        @media (max-width: 720px) {
+          :global(.hd-focus-hero-grid) {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+// ─── Checkout Transition Overlay ──────────────────────────────────────────────
+function CheckoutOverlay({ visible }) {
+  if (!visible) return null;
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      style={{
+        position: 'fixed', inset: 0,
+        background: 'rgba(15,23,42,0.55)',
+        backdropFilter: 'blur(3px)',
+        WebkitBackdropFilter: 'blur(3px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        flexDirection: 'column', gap: '1rem',
+        zIndex: 500, color: 'white',
+      }}
+    >
+      <div
+        style={{
+          width: '3rem', height: '3rem',
+          border: '3px solid rgba(255,255,255,0.25)',
+          borderTopColor: 'white',
+          borderRadius: '50%',
+          animation: 'hdCheckoutSpin 0.8s linear infinite',
+        }}
+      />
+      <div style={{ fontWeight: 600, fontSize: '1rem', letterSpacing: '0.02em' }}>
+        Redirecting to secure checkout…
+      </div>
+      <style>{`@keyframes hdCheckoutSpin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+}
+
 // ─── Products ─────────────────────────────────────────────────────────────────
 const products = [
   // HD Products
@@ -1050,15 +1336,18 @@ const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(cat => {
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
   const router = useRouter();
-  const [packSize, setPackSize] = useState(null);
-  const [selected, setSelected] = useState([]);
+  const [hdState, dispatch] = useReducer(hdReducer, HD_INITIAL_STATE);
+  const { phase, focusedId, packSize, selected, decisionOpen, checkingOut } = hdState;
   const [previewImage, setPreviewImage] = useState(null);
   const [hdOnlyPreview, setHdOnlyPreview] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [showStickyBar, setShowStickyBar] = useState(false);
-  const [highlightedId, setHighlightedId] = useState(null);
   const heroRef = useRef(null);
+  const focusedProduct = useMemo(
+    () => (focusedId ? products.find(p => p.id === focusedId) : null),
+    [focusedId]
+  );
 
   // Pre-select category from URL param (e.g. ?category=easter-backgrounds)
   useEffect(() => {
@@ -1089,9 +1378,8 @@ export default function Premium({ reviewsData }) {
     return () => observer.disconnect();
   }, []);
 
-  // Highlight & scroll to a specific product when ?highlight=<baseId> is set.
-  // Deterministic 3-phase model: wait for DOM → one RAF → single scroll.
-  // The effect re-runs on activeCategory changes, so no polling is needed.
+  // When ?highlight=<baseId> arrives, dispatch FOCUS to enter FOCUS_LOCKED.
+  // V2 replaces scroll-to-grid + 4s purple border with a persistent hero above the grid.
   useEffect(() => {
     if (!router.isReady) return;
     const raw = router.query.highlight;
@@ -1102,42 +1390,14 @@ export default function Premium({ reviewsData }) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
 
-    const legacyMap = {
-      'bookshelves-bright': 'bookshelves',
-      'bookshelves-dark': 'bookshelves',
-      'wall-shelves-bright': 'wall-shelves',
-      'wall-shelves-dark': 'wall-shelves',
-    };
-    const resolved = legacyMap[product.category] || product.category;
-    if (activeCategory !== 'all' && activeCategory !== resolved) {
-      setActiveCategory('all');
-      return;
-    }
+    dispatch({ type: 'FOCUS', productId });
+    trackAnalytics('hd_focus_entered', productId, product.category);
 
-    // PHASE 1: DOM existence check (no offsetHeight, no retries).
-    const node = document.querySelector(`[data-product-id="${productId}"]`);
-    if (!node) return;
-
-    // PHASE 2: one animation frame to let React commit + layout flush.
-    let cancelled = false;
     const rafId = requestAnimationFrame(() => {
-      if (cancelled) return;
-      // PHASE 3: single scroll; apply highlight state immediately after.
-      node.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setHighlightedId(productId);
-      trackAnalytics('hd_highlight_shown', productId, product.category);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    const clearTimer = setTimeout(() => {
-      if (!cancelled) setHighlightedId(null);
-    }, 4000);
-
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(rafId);
-      clearTimeout(clearTimer);
-    };
-  }, [router.isReady, router.query.highlight, activeCategory]);
+    return () => cancelAnimationFrame(rafId);
+  }, [router.isReady, router.query.highlight]);
 
   // Subscription state
   const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }
@@ -1187,41 +1447,68 @@ export default function Premium({ reviewsData }) {
   };
 
   const handlePackSelect = (size) => {
-    setPackSize(size);
-    setSelected([]);
+    // Enter BUNDLE_BUILDING. Reducer seeds selected with focusedId (never empties it).
+    dispatch({ type: 'START_BUNDLE', packSize: size });
+    trackAnalytics('hd_bundle_started', String(size), 'hd');
+  };
+
+  const handleSingleBuy = async () => {
+    if (!focusedProduct) return;
+    trackAnalytics('hd_single_buy_clicked', focusedProduct.id, focusedProduct.category);
+    dispatch({ type: 'CHECKOUT_START' });
+    try {
+      const res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [focusedProduct.id] }),
+      });
+      const { url } = await res.json();
+      window.location.href = url;
+    } catch {
+      dispatch({ type: 'CHECKOUT_END' });
+    }
   };
 
   const handleHdOnlyBuy = async (productId, size) => {
     setHdOnlyPreview(null);
+    const product = products.find(p => p.id === productId);
     if (size === 1) {
-      const res = await fetch('/api/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [productId] }),
-      });
-      const { url } = await res.json();
-      window.location.href = url;
+      trackAnalytics('hd_single_buy_clicked', productId, product?.category);
+      dispatch({ type: 'CHECKOUT_START' });
+      try {
+        const res = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [productId] }),
+        });
+        const { url } = await res.json();
+        window.location.href = url;
+      } catch {
+        dispatch({ type: 'CHECKOUT_END' });
+      }
     } else {
-      setPackSize(size);
-      setSelected([productId]);
+      // Focus the HD-only image first so the bundle is seeded with it as slot 1.
+      dispatch({ type: 'FOCUS', productId });
+      dispatch({ type: 'START_BUNDLE', packSize: size });
     }
   };
 
-  const toggleSelect = (id) => {
-    if (!packSize) return;
-    setSelected(prev => {
-      const isRemoving = prev.includes(id);
-      const newSelected = isRemoving
-        ? prev.filter(i => i !== id)
-        : prev.length >= packSize ? prev : [...prev, id];
-
-      if (!isRemoving && newSelected.includes(id)) {
+  const handleCardClick = (id) => {
+    if (phase === 'BUNDLE_BUILDING') {
+      // In bundle mode, grid clicks toggle selection.
+      const isRemoving = selected.includes(id);
+      dispatch({ type: 'TOGGLE_SELECT', productId: id });
+      if (!isRemoving && selected.length < (packSize || 0)) {
         trackAnalytics('hd_image_selected', id, 'hd');
-      } else if (isRemoving) {
+      } else if (isRemoving && id !== focusedId) {
         trackAnalytics('hd_image_deselected', id, 'hd');
       }
-      return newSelected;
-    });
+      return;
+    }
+    // In IDLE_BROWSE or FOCUS_LOCKED, a grid click focuses the image and scrolls up.
+    dispatch({ type: 'FOCUS', productId: id });
+    trackAnalytics('hd_focus_entered', id, 'grid_click');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const isSubscriber = subStatus?.valid;
@@ -1253,14 +1540,40 @@ export default function Premium({ reviewsData }) {
         <HdFaqSchema />
       </Head>
 
-      {/* Sticky pack bar — non-subscribers only */}
-      {!isSubscriber && (
+      {/* Sticky pack bar — hidden during FOCUS_LOCKED so the hero owns attention */}
+      {!isSubscriber && phase !== 'FOCUS_LOCKED' && (
         <StickyPackBar
           packSize={packSize}
           selected={selected}
           onSelect={handlePackSelect}
-          onChangePack={() => { setPackSize(null); setSelected([]); }}
+          onChangePack={() => dispatch({ type: 'CHANGE_PACK' })}
           visible={showStickyBar}
+        />
+      )}
+
+      {/* Focus Hero — dominant surface when an image is selected */}
+      {!isSubscriber && phase === 'FOCUS_LOCKED' && focusedProduct && (
+        <FocusHero
+          product={focusedProduct}
+          hdOnly={isHdOnly(focusedProduct.id)}
+          decisionOpen={decisionOpen}
+          buying={checkingOut}
+          onSingleBuy={handleSingleBuy}
+          onOpenDecision={() => {
+            trackAnalytics('hd_decision_opened', focusedProduct.id, focusedProduct.category);
+            dispatch({ type: 'OPEN_DECISION' });
+          }}
+          onChoosePack={(size) => {
+            if (size === 1) {
+              handleSingleBuy();
+              return;
+            }
+            handlePackSelect(size);
+          }}
+          onDismiss={() => {
+            trackAnalytics('hd_focus_dismissed', focusedProduct.id, focusedProduct.category);
+            dispatch({ type: 'DISMISS_FOCUS' });
+          }}
         />
       )}
 
@@ -1397,11 +1710,14 @@ export default function Premium({ reviewsData }) {
           ))}
         </div>
 
-        {/* Image grid */}
+        {/* Image grid — dimmed and secondary while FOCUS_LOCKED; primary otherwise */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))',
-          gap: '1.5rem'
+          gap: '1.5rem',
+          opacity: phase === 'FOCUS_LOCKED' ? 0.55 : 1,
+          filter: phase === 'FOCUS_LOCKED' ? 'saturate(0.85)' : 'none',
+          transition: 'opacity 0.25s ease, filter 0.25s ease',
         }}>
           {filteredProducts.map(product => (
             <HdProductCard
@@ -1409,8 +1725,8 @@ export default function Premium({ reviewsData }) {
               product={product}
               isSelected={selected.includes(product.id)}
               isHovered={hoveredProduct === product.id}
-              isHighlighted={highlightedId === product.id}
-              onToggle={toggleSelect}
+              isHighlighted={focusedId === product.id && phase === 'BUNDLE_BUILDING'}
+              onToggle={handleCardClick}
               onPreview={setPreviewImage}
               onHdOnlyPreview={setHdOnlyPreview}
               hdOnly={isHdOnly(product.id)}
@@ -1424,13 +1740,15 @@ export default function Premium({ reviewsData }) {
           ))}
         </div>
 
-        {/* One-time checkout bar */}
-        {!isSubscriber && packSize !== null && selected.length > 0 && (
+        {/* One-time checkout bar — only during BUNDLE_BUILDING */}
+        {!isSubscriber && phase === 'BUNDLE_BUILDING' && packSize !== null && selected.length > 0 && (
           <CheckoutBar
             selected={selected}
             packSize={packSize}
-            onClear={() => setSelected([])}
-            onChangePack={() => { setPackSize(null); setSelected([]); }}
+            onClear={() => dispatch({ type: 'CLEAR_SELECTION' })}
+            onChangePack={() => dispatch({ type: 'CHANGE_PACK' })}
+            onCheckoutStart={() => dispatch({ type: 'CHECKOUT_START' })}
+            onCheckoutEnd={() => dispatch({ type: 'CHECKOUT_END' })}
           />
         )}
       </section>
@@ -1462,6 +1780,9 @@ export default function Premium({ reviewsData }) {
           onVerified={handleVerified}
         />
       )}
+
+      {/* Full-screen checkout redirect overlay */}
+      <CheckoutOverlay visible={checkingOut} />
     </Layout>
   );
 }
