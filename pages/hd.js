@@ -1333,6 +1333,38 @@ const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(cat => {
     : products.some(p => p.category === cat);
 })];
 
+// ─── Highlight → Product Resolver ─────────────────────────────────────────────
+// Category pages link to /hd?highlight=<baseId>; individual image pages use
+// /hd?product=<baseId>-hd. The param may or may not carry a -hd suffix and
+// may carry a file extension. HD_BASE_IDS (used on category pages) can also
+// contain IDs that don't have a corresponding product entry — those must not
+// crash the hero. Match permissively, return null only if nothing matches.
+function findProductByHighlight(rawHighlight, productList) {
+  if (rawHighlight == null) return null;
+  const raw = String(rawHighlight).trim();
+  if (!raw) return null;
+
+  const stripped = raw
+    .replace(/\.(webp|png|jpe?g)$/i, '')
+    .replace(/-hd$/i, '');
+
+  const candidates = [
+    `${stripped}-hd`,
+    stripped,
+    raw,
+    raw.replace(/\.(webp|png|jpe?g)$/i, ''),
+  ];
+  for (const cand of candidates) {
+    const match = productList.find(p => p.id === cand);
+    if (match) return match;
+  }
+
+  const norm = s => String(s).replace(/[-_\s]/g, '').toLowerCase();
+  const target = norm(stripped);
+  const fuzzy = productList.find(p => norm(p.id.replace(/-hd$/, '')) === target);
+  return fuzzy || null;
+}
+
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
   const router = useRouter();
@@ -1343,6 +1375,7 @@ export default function Premium({ reviewsData }) {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [showStickyBar, setShowStickyBar] = useState(false);
+  const [highlightMissError, setHighlightMissError] = useState(null);
   const heroRef = useRef(null);
   const focusedProduct = useMemo(
     () => (focusedId ? products.find(p => p.id === focusedId) : null),
@@ -1378,26 +1411,36 @@ export default function Premium({ reviewsData }) {
     return () => observer.disconnect();
   }, []);
 
-  // When ?highlight=<baseId> arrives, dispatch FOCUS to enter FOCUS_LOCKED.
-  // V2 replaces scroll-to-grid + 4s purple border with a persistent hero above the grid.
+  // When ?highlight=<baseId> (or legacy ?product=<baseId>-hd) arrives, resolve
+  // it to a product via findProductByHighlight and dispatch FOCUS.
+  // Missing matches surface a visible notice instead of failing silently.
   useEffect(() => {
     if (!router.isReady) return;
-    const raw = router.query.highlight;
-    if (!raw) return;
+    const raw = router.query.highlight ?? router.query.product;
+    if (!raw) {
+      setHighlightMissError(null);
+      return;
+    }
 
-    const baseId = String(raw).replace(/-hd$/, '');
-    const productId = `${baseId}-hd`;
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+    const product = findProductByHighlight(raw, products);
+    if (!product) {
+      if (typeof console !== 'undefined') {
+        console.warn('[hd] highlight did not match any product:', raw);
+      }
+      setHighlightMissError(String(raw));
+      trackAnalytics('hd_highlight_miss', String(raw), 'hd');
+      return;
+    }
 
-    dispatch({ type: 'FOCUS', productId });
-    trackAnalytics('hd_focus_entered', productId, product.category);
+    setHighlightMissError(null);
+    dispatch({ type: 'FOCUS', productId: product.id });
+    trackAnalytics('hd_focus_entered', product.id, product.category);
 
     const rafId = requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     return () => cancelAnimationFrame(rafId);
-  }, [router.isReady, router.query.highlight]);
+  }, [router.isReady, router.query.highlight, router.query.product]);
 
   // Subscription state
   const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }
@@ -1681,6 +1724,47 @@ export default function Premium({ reviewsData }) {
         {/* Subscription CTA — above the grid for non-subscribers */}
         {!isSubscriber && (
           <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
+        )}
+
+        {/* Highlight miss notice — shown when ?highlight= didn't match any HD product */}
+        {highlightMissError && phase !== 'FOCUS_LOCKED' && (
+          <div
+            role="status"
+            style={{
+              margin: '0 0 1.25rem',
+              padding: '0.85rem 1.1rem',
+              background: '#fef3c7',
+              border: '1px solid #fbbf24',
+              borderRadius: '10px',
+              color: '#78350f',
+              fontSize: '0.92rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            <span>
+              This image isn&rsquo;t available in HD yet — browse available HD images below.
+            </span>
+            <button
+              onClick={() => setHighlightMissError(null)}
+              style={{
+                background: 'transparent',
+                border: '1px solid #b45309',
+                color: '#78350f',
+                borderRadius: '6px',
+                padding: '0.3rem 0.75rem',
+                cursor: 'pointer',
+                fontSize: '0.82rem',
+                fontWeight: 500,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Dismiss
+            </button>
+          </div>
         )}
 
         {/* Category filter buttons */}
