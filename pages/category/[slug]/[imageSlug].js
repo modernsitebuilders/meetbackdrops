@@ -1,12 +1,15 @@
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import Layout from '../../../components/Layout';
 import Head from 'next/head';
 import cloudinaryUrls from '../../../cloudinary-urls.json';
 import { useImageDownload } from '../../../lib/useImageDownload';
 import ReviewModal from '../../../components/ReviewModal';
 import RateLimitModal from '../../../components/RateLimitModal';
+import PostCompareModal from '../../../components/PostCompareModal';
 import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
 import BackToTop from '../../../components/BackToTop';
+import { HD_BASE_IDS } from '../../../lib/hdImages';
 
 const CDN = 'https://assets.streambackdrops.com';
 
@@ -23,6 +26,16 @@ export default function ImagePage({ image, related, categoryName }) {
     emailBonusUsed,
     handleEmailBonus,
   } = useImageDownload(cloudinaryUrls);
+
+  const hasHd = HD_BASE_IDS.has(image.slug);
+  const [showHdModal, setShowHdModal] = useState(false);
+
+  useEffect(() => {
+    if (showReviewModal && hasHd) {
+      setShowReviewModal(false);
+      setShowHdModal(true);
+    }
+  }, [showReviewModal]);
 
   const webpUrl = `${CDN}/webp/${image.category}/${image.image_webp}`;
   const canonicalUrl = `https://streambackdrops.com/category/${image.category}/${image.slug}`;
@@ -137,6 +150,48 @@ export default function ImagePage({ image, related, categoryName }) {
               </button>
             </div>
 
+            {/* HD Upsell Card */}
+            {hasHd && (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '1rem',
+                background: 'linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 100%)',
+                borderRadius: '12px',
+                padding: '1.25rem 1.5rem',
+                marginBottom: '1.5rem',
+                flexWrap: 'wrap',
+              }}>
+                <div style={{ color: '#fff' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 700, background: '#facc15', color: '#111', padding: '0.15rem 0.5rem', borderRadius: '4px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>HD</span>
+                    <span style={{ fontSize: '1rem', fontWeight: 700 }}>Upgrade to HD</span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#bfdbfe', lineHeight: 1.4 }}>
+                    2912 × 1632 · Full resolution · Instant download
+                  </p>
+                </div>
+                <Link
+                  href={`/hd?product=${image.slug}-hd`}
+                  style={{
+                    display: 'inline-block',
+                    background: '#facc15',
+                    color: '#111827',
+                    textDecoration: 'none',
+                    padding: '0.7rem 1.5rem',
+                    borderRadius: '8px',
+                    fontWeight: 700,
+                    fontSize: '0.95rem',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                  }}
+                >
+                  Get HD — $4.99
+                </Link>
+              </div>
+            )}
+
             {/* Tags */}
             {image.tags?.length > 0 && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '3rem' }}>
@@ -213,6 +268,16 @@ export default function ImagePage({ image, related, categoryName }) {
             errorMessage={rateLimitError}
             onEmailBonus={handleEmailBonus}
             emailBonusUsed={emailBonusUsed}
+          />
+        )}
+        {showHdModal && (
+          <PostCompareModal
+            isOpen={showHdModal}
+            imageId={image.slug}
+            slug={image.category}
+            primaryHref={`/hd?product=${image.slug}-hd`}
+            secondaryHref="/hd"
+            onClose={() => setShowHdModal(false)}
           />
         )}
         <BackToTop />
