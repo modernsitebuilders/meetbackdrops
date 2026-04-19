@@ -21,43 +21,19 @@ export default function ImageLookup() {
     setCategory('');
 
     try {
-      // Remove .png or .webp extension if user added it
       const cleanFilename = filename.trim().replace(/\.(png|webp)$/i, '');
-      
-      // Determine category from filename
-      let cat = '';
-      if (cleanFilename.startsWith('bookshelves-bright-')) cat = 'bookshelves-bright';
-      else if (cleanFilename.startsWith('bookshelves-dark-')) cat = 'bookshelves-dark';
-      else if (cleanFilename.startsWith('wall-shelves-bright-')) cat = 'wall-shelves-bright';
-      else if (cleanFilename.startsWith('wall-shelves-dark-')) cat = 'wall-shelves-dark';
-      else if (cleanFilename.startsWith('office-spaces-')) cat = 'office-spaces';
-      else if (cleanFilename.startsWith('living-room-')) cat = 'living-rooms';
-      else if (cleanFilename.startsWith('kitchen-')) cat = 'kitchens';
-      else if (cleanFilename.startsWith('coffee-shop-')) cat = 'coffee-shops';
-      else if (cleanFilename.startsWith('conference-room-')) cat = 'conference-rooms';
-      else if (cleanFilename.startsWith('art-gallery-')) cat = 'art-galleries';
-      else if (cleanFilename.startsWith('urban-loft-')) cat = 'urban-lofts';
-      else if (cleanFilename.startsWith('garden-patio-')) cat = 'gardens-patios';
-      else if (cleanFilename.startsWith('historic-')) cat = 'historic-spaces';
-      else if (cleanFilename.startsWith('nature-')) cat = 'nature-landscapes';
-      else if (cleanFilename.startsWith('library-')) cat = 'libraries';
-      else if (cleanFilename.startsWith('bokeh-')) cat = 'bokeh-backgrounds';
-      else if (cleanFilename.startsWith('christmas-')) cat = 'christmas-backgrounds';
-      else if (cleanFilename.startsWith('halloween-')) cat = 'halloween-backgrounds';
-      else if (cleanFilename.startsWith('valentines-background-')) cat = 'valentines-backgrounds';
-      else if (cleanFilename.startsWith('easter-background-')) cat = 'easter-backgrounds';
-      
-      if (!cat) {
-        setError('Could not determine category from filename. Make sure it starts with the category prefix.');
+
+      const response = await fetch(`/api/resolve-image?filename=${encodeURIComponent(cleanFilename + '.webp')}`);
+      if (!response.ok) {
+        setError('Image not found in manifest. Check the filename is correct.');
         setLoading(false);
         return;
       }
-      
-      setCategory(cat);
-      // Use the local WebP file
-      const webpUrl = `https://assets.streambackdrops.com/webp/${cat}/${cleanFilename}.webp`;
-      setImageUrl(webpUrl);
-      
+      const entry = await response.json();
+
+      setCategory(entry.category);
+      const folderForUrl = entry.folder || entry.category;
+      setImageUrl(`https://assets.streambackdrops.com/webp/${folderForUrl}/${cleanFilename}.webp`);
     } catch (err) {
       setError('Error looking up image. Please try again.');
       setLoading(false);

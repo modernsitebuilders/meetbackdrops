@@ -8,52 +8,21 @@
  */
 
 import { google } from 'googleapis';
+import { resolveByAnyExtension } from '../../../lib/manifest';
+import { normalizeAnalyticsCategory } from '../../../lib/analyticsNormalize';
 
 const SOURCES = ['bing', 'google', 'chatgpt', 'duckduckgo', 'yahoo', 'direct'];
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
-const CATEGORY_MAP = {
-  'art-gallery': 'art-galleries',
-  'bokeh': 'bokeh-backgrounds',
-  'bookshelf': 'bookshelves-dark',
-  'office-space': 'office-spaces',
-  'historic-space': 'historic-spaces',
-  'nature-landscape': 'nature-landscapes',
-  'living-room': 'living-rooms',
-  'conference-room': 'conference-rooms',
-  'coffee-shop': 'coffee-shops',
-  'urban-loft': 'urban-lofts',
-  'garden': 'gardens-patios',
-  'garden-patio': 'gardens-patios',
-  'library': 'libraries',
-  'kitchen': 'kitchens',
-  'christmas-background': 'christmas-backgrounds',
-  'halloween-background': 'halloween-backgrounds',
-};
-
-// Known valid category slugs
-const VALID_CATEGORIES = new Set([
-  'bookshelves-bright', 'bookshelves-dark',
-  'wall-shelves-bright', 'wall-shelves-dark',
-  'office-spaces', 'living-rooms', 'kitchens', 'conference-rooms',
-  'coffee-shops', 'art-galleries', 'urban-lofts', 'gardens-patios',
-  'historic-spaces', 'nature-landscapes', 'libraries',
-  'christmas-backgrounds', 'halloween-backgrounds', 'bokeh-backgrounds',
-  'valentines-backgrounds', 'easter-backgrounds', 'home-office',
-  'spring-backgrounds', 'eid-backgrounds',
-]);
-
-function normalizeCategory(raw) {
-  if (!raw) return null;
-  // Strip StreamBackdrops- prefix, lowercase
-  let c = raw.replace(/^StreamBackdrops-/i, '').trim().toLowerCase();
-  // Map old slugs to current slugs
-  c = CATEGORY_MAP[c] || c;
-  // Reject anything that looks like a filename, URL, or other garbage
-  if (c.includes('.') || c.includes('/') || c.length > 40) return null;
-  // Only count recognised category slugs
-  if (!VALID_CATEGORIES.has(c)) return null;
-  return c;
+// Resolve a dashboard row's category: manifest lookup by filename first,
+// falling back to the shared analytics normalizer when the filename is
+// missing or unknown. Never infers from filename shape.
+function resolveRowCategory(filename, rawCategory) {
+  if (filename) {
+    const entry = resolveByAnyExtension(filename);
+    if (entry) return entry.category;
+  }
+  return normalizeAnalyticsCategory(rawCategory);
 }
 
 function classifySource(raw) {
@@ -134,7 +103,8 @@ export default async function handler(req, res) {
       const timestamp = row[0];
       const eventType = row[1];
       const source = row[2] || 'direct';
-      const category = normalizeCategory(row[4]);
+      const filename = row[3];
+      const category = resolveRowCategory(filename, row[4]);
       const sessionId = row[9];
 
       const date = parseRowDate(timestamp);

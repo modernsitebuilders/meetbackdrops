@@ -1,5 +1,7 @@
 import { Redis } from '@upstash/redis';
 import crypto from 'crypto';
+import { resolveByAnyExtension } from '../../lib/manifest';
+import { normalizeAnalyticsCategory } from '../../lib/analyticsNormalize';
 
 function hashIP(ip) {
   return crypto.createHash('sha256').update(ip + 'salt_streambackdrops').digest('hex').substring(0, 16);
@@ -75,27 +77,14 @@ export default async function handler(req, res) {
     visitorType
   });
 
-  const categoryMap = {
-    'art-gallery': 'art-galleries',
-    'bokeh': 'bokeh-backgrounds',
-    'bookshelf': 'bookshelves-dark',
-    'office-space': 'office-spaces',
-    'historic-space': 'historic-spaces',
-    'nature-landscape': 'nature-landscapes',
-    'living-room': 'living-rooms',
-    'conference-room': 'conference-rooms',
-    'coffee-shop': 'coffee-shops',
-    'urban-loft': 'urban-lofts',
-    'garden': 'gardens-patios',
-    'library': 'libraries',
-    'kitchen': 'kitchens'
-  };
-
-  let cleanCategory = category || 'unknown';
-  if (cleanCategory.includes('.')) {
-    cleanCategory = cleanCategory.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');
-  }
-  cleanCategory = categoryMap[cleanCategory] || cleanCategory;
+  // Canonical category comes from the manifest lookup by filename.
+  // If the filename doesn't resolve (should be rare for real downloads),
+  // fall back to normalizing the client-provided category via the
+  // shared analytics normalizer. Never inferred from filename shape.
+  const manifestEntry = resolveByAnyExtension(filename);
+  const cleanCategory = manifestEntry
+    ? manifestEntry.category
+    : (normalizeAnalyticsCategory(category) || 'unknown');
 
   const buildSourceString = () => {
     if (originalUtmSource) {

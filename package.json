@@ -4,9 +4,11 @@
   "description": "Professional virtual backgrounds for video calls",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/validate-dataset.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "validate-dataset": "node scripts/validate-dataset.js",
     "update-counts": "node generate-category-counts.js",
     "backdrop-inventory": "node scripts/backdrop-inventory.js"
   },

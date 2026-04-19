@@ -1,4 +1,6 @@
 import { google } from 'googleapis';
+import { resolveByAnyExtension } from '../../lib/manifest';
+import { normalizeAnalyticsCategory } from '../../lib/analyticsNormalize';
 
 export default async function handler(req, res) {
   try {
@@ -29,42 +31,39 @@ export default async function handler(req, res) {
       return res.status(200).json({ downloads: [] });
     }
 
-    function extractCategory(filename) {
-      if (!filename) return 'unknown';
-      
-      const name = filename.replace(/\.(png|jpg|jpeg|webp|gif)$/i, '');
-      const base = name.replace(/-\d+$/, '');
-      
-      if (base.endsWith('-background')) return base + 's';
-      if (base.endsWith('-space')) return base + 's';
-      if (base === 'library') return 'libraries';
-      
-      return base;
+    // Resolve canonical category from manifest by filename. Analytics
+    // rows that can't be resolved fall back to normalizeAnalyticsCategory
+    // against the row's category column — if that also fails, the row
+    // is skipped. Category is never inferred from filename shape.
+    function resolveCategory(filename, rawCategory) {
+      const entry = resolveByAnyExtension(filename);
+      if (entry) return entry.category;
+      return normalizeAnalyticsCategory(rawCategory);
     }
 
-    // NEW: Track unique downloads per user per file
-    const uniqueDownloads = new Set(); // Store "filename:visitorId" combinations
+    const uniqueDownloads = new Set();
     const downloadCounts = {};
-    const visitorDownloads = {}; // Track how many files each visitor downloaded
-    
+    const visitorDownloads = {};
+
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
       const actionType = row[1];
       const filename = row[3];
-      const visitorId = row[10] || 'unknown'; // Column K contains visitorId
-      
+      const rawCategory = row[4];
+      const visitorId = row[10] || 'unknown';
+
       if (actionType === 'download' && filename && visitorId) {
         const uniqueKey = `${filename}:${visitorId}`;
-        
-        // Skip if this user already downloaded this file
+
         if (uniqueDownloads.has(uniqueKey)) {
           continue;
         }
-        
+
         uniqueDownloads.add(uniqueKey);
-        
-        const category = extractCategory(filename);
-        
+
+        const category = resolveCategory(filename, rawCategory);
+        if (!category) continue;
+
         if (!downloadCounts[filename]) {
           downloadCounts[filename] = {
             filename: filename,
@@ -85,13 +84,12 @@ export default async function handler(req, res) {
     const allDownloads = Object.values(downloadCounts)
       .sort((a, b) => b.count - a.count);
 
-    const nonSeasonalDownloads = allDownloads.filter(item => {
-      return !item.filename.match(/^(halloween|christmas)-background/i);
-    });
-
-    const seasonalDownloads = allDownloads.filter(item => {
-      return item.filename.match(/^(halloween|christmas)-background/i);
-    });
+    const SEASONAL_CATEGORIES = new Set([
+      'halloween-backgrounds',
+      'christmas-backgrounds',
+    ]);
+    const nonSeasonalDownloads = allDownloads.filter(item => !SEASONAL_CATEGORIES.has(item.category));
+    const seasonalDownloads = allDownloads.filter(item => SEASONAL_CATEGORIES.has(item.category));
 
     // Optional: Calculate average downloads per unique visitor
     const uniqueVisitorCount = Object.keys(visitorDownloads).length;
