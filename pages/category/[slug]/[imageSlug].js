@@ -28,6 +28,7 @@ export default function ImagePage({ image, related, categoryName }) {
   } = useImageDownload(cloudinaryUrls);
 
   const hasHd = HD_BASE_IDS.has(image.slug);
+  const hdHref = hasHd ? `/hd?product=${image.slug}-hd` : '/hd';
   const [showHdModal, setShowHdModal] = useState(false);
 
   useEffect(() => {
@@ -173,7 +174,7 @@ export default function ImagePage({ image, related, categoryName }) {
                   </p>
                 </div>
                 <Link
-                  href={`/hd?product=${image.slug}-hd`}
+                  href={hdHref}
                   style={{
                     display: 'inline-block',
                     background: '#facc15',
@@ -275,7 +276,7 @@ export default function ImagePage({ image, related, categoryName }) {
             isOpen={showHdModal}
             imageId={image.slug}
             slug={image.category}
-            primaryHref={`/hd?product=${image.slug}-hd`}
+            primaryHref={hdHref}
             secondaryHref="/hd"
             onClose={() => setShowHdModal(false)}
           />

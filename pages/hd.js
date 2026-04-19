@@ -360,7 +360,6 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
       <button
         onClick={async (e) => {
           e.stopPropagation();
-          console.log('🔵 [HdProductCard] Preview clicked for:', product.id);
           trackAnalytics(hdOnly ? 'hd_exclusive_preview' : 'hd_preview_opened', product.id, product.category);
           if (hdOnly) {
             // HD-only: show single fullscreen lightbox with the HD image
@@ -383,7 +382,6 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
               // Format 2: "webp/bookshelves-bright/bookshelves-bright-04"
               const pathKey = `webp/${product.category}/${baseFilename}`;
               imageUrl = cloudinaryUrls[pathKey];
-              console.log('🔵 [HdProductCard] Trying pathKey:', pathKey, 'found:', !!imageUrl);
             }
             
             if (!imageUrl) {
@@ -394,9 +392,6 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
             if (!imageUrl) {
               // Format 4: Direct construction as final fallback
               imageUrl = `https://assets.streambackdrops.com/webp/${product.category}/${baseFilename}.webp`;
-              console.log('🔵 [HdProductCard] Using constructed URL:', imageUrl);
-            } else {
-              console.log('🔵 [HdProductCard] Found URL in cloudinaryUrls');
             }
             // END OF FIX - Do not modify the lookup logic above
             
@@ -404,14 +399,12 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
               try {
                 const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
                 const data = await res.json();
-                console.log('🔵 [HdProductCard] API response has URL:', !!data.url);
                 onPreview({
                   id: product.id,
                   standard: imageUrl,
                   hd: data.url
                 });
               } catch (error) {
-                console.log('🔵 [HdProductCard] API error:', error);
                 onPreview({ id: product.id, standard: imageUrl, hd: null });
               }
             }
@@ -992,6 +985,7 @@ const products = [
   { id: 'kitchen-06-hd', name: 'Kitchen #6', category: 'kitchens' },
   { id: 'kitchen-14-hd', name: 'Kitchen #14', category: 'kitchens' },
   { id: 'kitchen-15-hd', name: 'Kitchen #15', category: 'kitchens' },
+  { id: 'kitchen-16-hd', name: 'Kitchen #16', category: 'kitchens' },
   // Gardens & Patios
   { id: 'garden-patio-01-hd', name: 'Garden & Patio #1', category: 'gardens-patios' },
   { id: 'garden-patio-12-hd', name: 'Garden & Patio #12', category: 'gardens-patios' },
@@ -1442,9 +1436,6 @@ export default function Premium({ reviewsData }) {
       </section>
 
       {/* Comparison widget — standard images */}
-
-      {/* Debug log for previewImage state */}
-      {console.log('🔵 [Main] previewImage state:', previewImage)}
 
       <ComparisonWidget
         isOpen={!!previewImage}
