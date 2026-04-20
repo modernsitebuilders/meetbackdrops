@@ -21,7 +21,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
   const hasHd = baseId ? HD_BASE_IDS.has(baseId) : false;
   const previewSrc = (cloudinaryUrls && baseId && cloudinaryUrls[baseId])
     ? cloudinaryUrls[baseId]
-    : webpUrl(folderMap[slug], image.filename);
+    : webpUrl(image.folder || folderMap[slug], image.filename);
 
   const closeButtonRef = useRef(null);
   const previousFocusRef = useRef(null);
