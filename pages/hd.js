@@ -3,7 +3,7 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import ComparisonWidgetSchema from '../components/ComparisonWidgetSchema';
 import HdFaqSchema from '../components/HdFaqSchema';
 import ProductSchema from '../components/ProductSchema';
-import { useState, useEffect, useRef, useReducer, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Link from 'next/link';
@@ -15,23 +15,8 @@ import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import { isHdOnlyProductId as isHdOnly } from '../lib/hdOnly';
 import { useWishlist } from '../lib/WishlistContext';
 
-const PRICE_IDS = {
-  1:  'price_1Sr4U0Q695ongkMjxUtnf9NA',
-  2:  'price_1Sr4VEQ695ongkMjkaclxw67',
-  3:  'price_1Sr4WYQ695ongkMjRUTPsoIr',
-  5:  'price_1TDoudQ695ongkMj0hGBVZfc',
-  10: 'price_1TDovCQ695ongkMjnZptC1zz',
-  20: 'price_1TDowHQ695ongkMjwk1xZFAO',
-};
-
-const PACK_OPTIONS = [
-  { size: 1,  price: 4.99,  savings: null },
-  { size: 2,  price: 6.99,  savings: 30 },
-  { size: 3,  price: 8.99,  savings: 40 },
-  { size: 5,  price: 12.99, savings: 48 },
-  { size: 10, price: 22.99, savings: 54 },
-  { size: 20, price: 39.99, savings: 60 },
-];
+const SINGLE_PRICE_ID = 'price_1Sr4U0Q695ongkMjxUtnf9NA';
+const SINGLE_PRICE = 4.99;
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -112,15 +97,8 @@ function SubscriberDownloadButton({ product, token, onDownloadComplete, onLimitR
 }
 
 // ─── HD-Only Lightbox ─────────────────────────────────────────────────────────
-const HD_ONLY_TIERS = [
-  { size: 1,  price: 4.99,  savings: null,  label: '1 image' },
-  { size: 3,  price: 8.99,  savings: 40,    label: '3 images' },
-  { size: 5,  price: 12.99, savings: 48,    label: '5 images', best: true },
-  { size: 10, price: 22.99, savings: 54,    label: '10 images' },
-];
-
 function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
-  const [buying, setBuying] = useState(null);
+  const [buying, setBuying] = useState(false);
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
@@ -128,11 +106,11 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
 
-  const handleTier = async (size) => {
-    setBuying(size);
-    trackAnalytics('hd_lightbox_tier_selected', productId, String(size));
-    await onBuyNow(productId, size);
-    setBuying(null);
+  const handleBuy = async () => {
+    setBuying(true);
+    trackAnalytics('hd_lightbox_buy_clicked', productId, 'hd_only');
+    await onBuyNow(productId);
+    setBuying(false);
   };
 
   return (
@@ -204,54 +182,32 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
             pointerEvents: 'none',
           }}
         />
-        {/* Pricing tier strip */}
+        {/* Buy button */}
         <div
           style={{
             position: 'absolute', bottom: 0, left: 0, right: 0,
             background: 'rgba(0,0,0,0.82)',
             borderRadius: '0 0 8px 8px',
             padding: '10px 12px',
-            display: 'flex', gap: '8px', alignItems: 'stretch',
           }}
         >
-          {HD_ONLY_TIERS.map(tier => (
-            <button
-              key={tier.size}
-              onClick={() => handleTier(tier.size)}
-              disabled={buying !== null}
-              style={{
-                flex: 1,
-                background: tier.best ? '#2563eb' : 'rgba(255,255,255,0.1)',
-                border: tier.best ? '1.5px solid #3b82f6' : '1px solid rgba(255,255,255,0.18)',
-                borderRadius: '6px',
-                color: 'white',
-                cursor: buying !== null ? 'wait' : 'pointer',
-                padding: '7px 4px',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px',
-                transition: 'background 0.15s',
-                position: 'relative',
-              }}
-            >
-              {tier.best && (
-                <span style={{
-                  position: 'absolute', top: '-9px',
-                  background: '#facc15', color: '#000',
-                  fontSize: '0.55rem', fontWeight: 700,
-                  padding: '1px 6px', borderRadius: '99px',
-                  letterSpacing: '0.04em', whiteSpace: 'nowrap',
-                }}>BEST VALUE</span>
-              )}
-              <span style={{ fontSize: '0.72rem', fontWeight: 600, opacity: 0.9 }}>
-                {buying === tier.size ? '...' : tier.label}
-              </span>
-              <span style={{ fontSize: '0.8rem', fontWeight: 700 }}>
-                ${tier.price}
-              </span>
-              {tier.savings && (
-                <span style={{ fontSize: '0.6rem', opacity: 0.65 }}>save {tier.savings}%</span>
-              )}
-            </button>
-          ))}
+          <button
+            onClick={handleBuy}
+            disabled={buying}
+            style={{
+              width: '100%',
+              background: '#7c3aed',
+              border: 'none',
+              borderRadius: '6px',
+              color: 'white',
+              cursor: buying ? 'wait' : 'pointer',
+              padding: '10px',
+              fontWeight: 700,
+              fontSize: '0.95rem',
+            }}
+          >
+            {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
+          </button>
         </div>
       </div>
     </div>
@@ -467,266 +423,6 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
   );
 }
 
-// ─── Sticky Pack Bar ───────────────────────────────────────────────────────────
-function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) {
-  const isFull = packSize && selected.length === packSize;
-  const packOption = packSize ? PACK_OPTIONS.find(o => o.size === packSize) : null;
-
-  return (
-    <div style={{
-      position: 'fixed',
-      top: 0, left: 0, right: 0,
-      zIndex: 200,
-      background: 'linear-gradient(135deg, #4c1d95, #3730a3)',
-      color: 'white',
-      padding: '0.5rem 1rem',
-      boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '0.4rem',
-      flexWrap: 'nowrap',
-      overflowX: 'auto',
-      transform: visible ? 'translateY(0)' : 'translateY(-110%)',
-      transition: 'transform 0.25s ease',
-    }}>
-      {!packSize ? (
-        <>
-          <span style={{ fontSize: '0.8rem', opacity: 0.8, marginRight: '0.25rem', whiteSpace: 'nowrap' }}>
-            Choose a pack:
-          </span>
-          {PACK_OPTIONS.map(opt => (
-            <button
-              key={opt.size}
-              onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'sticky_bar'); onSelect(opt.size); }}
-              style={{
-                background: 'rgba(255,255,255,0.12)',
-                color: 'white',
-                border: '1px solid rgba(255,255,255,0.3)',
-                borderRadius: '6px',
-                padding: '0.3rem 0.65rem',
-                cursor: 'pointer',
-                fontSize: '0.8rem',
-                fontWeight: '500',
-                whiteSpace: 'nowrap',
-                transition: 'background 0.15s',
-              }}
-            >
-              {opt.size} · ${opt.price}
-            </button>
-          ))}
-        </>
-      ) : (
-        <>
-          <span style={{ fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
-            {isFull ? `✓ All ${packSize} selected` : `${selected.length} of ${packSize} selected`}
-            {' · '}${packOption.price}
-          </span>
-          {!isFull && (
-            <span style={{ fontSize: '0.8rem', opacity: 0.75, whiteSpace: 'nowrap' }}>
-              — pick {packSize - selected.length} more
-            </span>
-          )}
-          <button
-            onClick={onChangePack}
-            style={{
-              background: 'transparent',
-              color: 'rgba(255,255,255,0.65)',
-              border: '1px solid rgba(255,255,255,0.3)',
-              borderRadius: '6px',
-              padding: '0.25rem 0.6rem',
-              cursor: 'pointer',
-              fontSize: '0.75rem',
-              marginLeft: '0.25rem',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Change
-          </button>
-        </>
-      )}
-    </div>
-  );
-}
-
-// ─── Pack Picker ───────────────────────────────────────────────────────────────
-function PackPicker({ packSize, onSelect }) {
-  return (
-    <div style={{ marginBottom: '0.5rem' }}>
-      <div style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.75rem', opacity: 0.9 }}>
-        Choose your HD pack:
-      </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
-        {PACK_OPTIONS.map(opt => {
-          const isSelected = packSize === opt.size;
-          return (
-            <button
-              key={opt.size}
-              onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'pack_picker'); onSelect(opt.size); }}
-              style={{
-                background: isSelected ? 'white' : 'rgba(255,255,255,0.15)',
-                color: isSelected ? '#2563eb' : 'white',
-                border: isSelected ? '2px solid white' : '2px solid rgba(255,255,255,0.4)',
-                borderRadius: '8px',
-                padding: '0.5rem 0.9rem',
-                cursor: 'pointer',
-                fontWeight: isSelected ? '700' : '500',
-                fontSize: '0.85rem',
-                transition: 'all 0.15s',
-                position: 'relative',
-                minWidth: '80px',
-              }}
-            >
-              <div>{opt.size} image{opt.size > 1 ? 's' : ''}</div>
-              <div style={{ fontSize: '1rem', fontWeight: 'bold' }}>${opt.price}</div>
-              {opt.savings && (
-                <div style={{
-                  position: 'absolute', top: '-8px', right: '-8px',
-                  background: '#10b981', color: 'white',
-                  fontSize: '0.6rem', fontWeight: 'bold',
-                  padding: '2px 4px', borderRadius: '4px',
-                  whiteSpace: 'nowrap',
-                }}>
-                  save {opt.savings}%
-                </div>
-              )}
-            </button>
-          );
-        })}
-      </div>
-      <div style={{ fontSize: '0.85rem', marginTop: '0.75rem', opacity: 0.85, minHeight: '1.2em' }}>
-        {packSize
-          ? `✓ ${packSize}-image pack selected — now pick ${packSize} image${packSize > 1 ? 's' : ''} below`
-          : 'Select a pack to get started'}
-      </div>
-    </div>
-  );
-}
-
-// ─── One-time Checkout Bar ─────────────────────────────────────────────────────
-function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckoutStart, onCheckoutEnd }) {
-  const packOption = PACK_OPTIONS.find(o => o.size === packSize);
-  const remaining = packSize - selected.length;
-  const isFull = selected.length === packSize;
-
-  const handleCheckout = async (e) => {
-  e.stopPropagation();
-  if (packSize > 1) {
-    alert('Bundle packs are temporarily unavailable. Please buy images individually.');
-    return;
-  }
-
-  trackAnalytics('hd_checkout_initiated', String(packSize), 'checkout_bar');
-
-  if (onCheckoutStart) onCheckoutStart();
-
-try {
-  const response = await fetch('/api/create-checkout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      priceId: PRICE_IDS[packSize],
-      productId: selected[0]
-    })
-  });
-
-  console.log("CHECKOUT HTTP STATUS:", response.status);
-
-  const data = await response.json();
-  console.log("CHECKOUT RESPONSE:", data);
-
-  if (!response.ok) {
-    console.error("Checkout failed response:", data);
-    if (onCheckoutEnd) onCheckoutEnd();
-    alert(data.error || "Checkout failed");
-    return;
-  }
-
-  if (!data.url) {
-    console.error("Missing checkout URL:", data);
-    if (onCheckoutEnd) onCheckoutEnd();
-    alert("Stripe did not return a checkout URL");
-    return;
-  }
-
-  window.location.href = data.url;
-
-} catch (err) {
-  console.error("Checkout error:", err);
-  if (onCheckoutEnd) onCheckoutEnd();
-  alert("Checkout crashed — check console");
-}
-};
-
-  return (
-    <div style={{
-      position: 'fixed', bottom: '2rem', right: '2rem',
-      background: isFull ? '#2563eb' : '#1e293b', color: 'white',
-      padding: '1.5rem 2rem', borderRadius: '12px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.3)', zIndex: 100,
-      transition: 'background 0.2s',
-      minWidth: '200px',
-    }}>
-      <button
-        onClick={(e) => { e.stopPropagation(); onClear(); }}
-        aria-label="Clear selection"
-        style={{
-          position: 'absolute', top: '10px', right: '10px',
-          background: 'transparent', border: 'none',
-          color: 'white', cursor: 'pointer',
-          fontSize: '1.2rem', padding: '0.25rem'
-        }}
-      >×</button>
-
-      <div style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '0.2rem' }}>
-        {packSize}-image pack
-      </div>
-      <div style={{ marginBottom: '0.25rem', fontSize: '1rem', fontWeight: '500' }}>
-        {isFull
-          ? `✓ All ${packSize} selected`
-          : `${selected.length} of ${packSize} — pick ${remaining} more`}
-      </div>
-      <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-        ${packOption.price}
-      </div>
-
-      {isFull ? (
-        <button
-          onClick={handleCheckout}
-          style={{
-            background: 'white', color: '#2563eb',
-            border: 'none', padding: '0.75rem 2rem',
-            borderRadius: '8px', fontWeight: 'bold',
-            cursor: 'pointer', width: '100%', fontSize: '1rem'
-          }}
-        >
-          Checkout
-        </button>
-      ) : (
-        <div style={{
-          background: 'rgba(255,255,255,0.1)',
-          borderRadius: '8px', padding: '0.6rem',
-          textAlign: 'center', fontSize: '0.85rem', opacity: 0.8,
-        }}>
-          {remaining} more to checkout
-        </div>
-      )}
-
-      <button
-        onClick={onChangePack}
-        style={{
-          background: 'transparent', color: 'rgba(255,255,255,0.6)',
-          border: 'none', padding: '0.5rem 0 0',
-          cursor: 'pointer', fontSize: '0.78rem', width: '100%',
-          textAlign: 'center', textDecoration: 'underline', display: 'block',
-        }}
-      >
-        Change pack
-      </button>
-    </div>
-  );
-}
-
 // ─── Subscription CTA ──────────────────────────────────────────────────────────
 function SubscriptionCTA({ onVerifyClick }) {
   const [loading, setLoading] = useState(false);
@@ -878,87 +574,10 @@ function VerifyEmailModal({ onClose, onVerified }) {
   );
 }
 
-// ─── HD V2 State Machine ──────────────────────────────────────────────────────
-// Phases:
-//   IDLE_BROWSE     — direct /hd load, no intent; grid is primary.
-//   FOCUS_LOCKED    — one image is dominant; inline Decision Card offers 1-buy or bundle.
-//   BUNDLE_BUILDING — pack size chosen; grid is primary selection surface. Seeded with focusedId.
-//   CHECKOUT        — transient; overlay visible while Stripe redirect is in flight.
-const HD_INITIAL_STATE = {
-  phase: 'IDLE_BROWSE',
-  focusedId: null,
-  packSize: null,
-  selected: [],
-  decisionOpen: false,
-  checkingOut: false,
-};
-
-function hdReducer(state, action) {
-  switch (action.type) {
-    case 'FOCUS': {
-      // In bundle mode, tapping a grid card is a selection toggle, not a focus swap.
-      if (state.phase === 'BUNDLE_BUILDING') return state;
-      if (state.focusedId === action.productId && state.phase === 'FOCUS_LOCKED') return state;
-      return {
-        ...state,
-        phase: 'FOCUS_LOCKED',
-        focusedId: action.productId,
-        decisionOpen: false,
-      };
-    }
-    case 'OPEN_DECISION':
-      return { ...state, decisionOpen: true };
-    case 'DISMISS_FOCUS':
-      return {
-        ...state,
-        phase: 'IDLE_BROWSE',
-        focusedId: null,
-        decisionOpen: false,
-      };
-    case 'START_BUNDLE': {
-      // CRITICAL: seed selected with focusedId — do not reset to [].
-      const seed = state.focusedId ? [state.focusedId] : [];
-      return {
-        ...state,
-        phase: 'BUNDLE_BUILDING',
-        packSize: action.packSize,
-        selected: seed,
-        decisionOpen: false,
-      };
-    }
-    case 'TOGGLE_SELECT': {
-      if (state.phase !== 'BUNDLE_BUILDING' || !state.packSize) return state;
-      const id = action.productId;
-      if (state.selected.includes(id)) {
-        // Never allow removing the focused anchor — it's slot 1.
-        if (id === state.focusedId) return state;
-        return { ...state, selected: state.selected.filter(x => x !== id) };
-      }
-      if (state.selected.length >= state.packSize) return state;
-      return { ...state, selected: [...state.selected, id] };
-    }
-    case 'CHANGE_PACK':
-      return {
-        ...state,
-        packSize: null,
-        selected: [],
-        phase: state.focusedId ? 'FOCUS_LOCKED' : 'IDLE_BROWSE',
-        decisionOpen: false,
-      };
-    case 'CLEAR_SELECTION':
-      // Keep the focused anchor when clearing; drop everything else.
-      return { ...state, selected: state.focusedId ? [state.focusedId] : [] };
-    case 'CHECKOUT_START':
-      return { ...state, checkingOut: true };
-    case 'CHECKOUT_END':
-      return { ...state, checkingOut: false };
-    default:
-      return state;
-  }
-}
+// (State machine replaced with simple useState in main component)
 
 // ─── Focus Hero ────────────────────────────────────────────────────────────────
-function FocusHero({ product, hdOnly, decisionOpen, buying, onSingleBuy, onOpenDecision, onChoosePack, onDismiss }) {
+function FocusHero({ product, hdOnly, buying, onBuy, onDismiss }) {
   if (!product) return null;
   const thumb = `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
 
@@ -1039,79 +658,31 @@ function FocusHero({ product, hdOnly, decisionOpen, buying, onSingleBuy, onOpenD
           <div style={{ fontSize: '0.85rem', opacity: 0.75 }}>
             Instant download · 2912 × 1632 PNG
           </div>
+          <div style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '0.25rem' }}>
+            Each image is purchased individually in full resolution.
+          </div>
 
-          {!decisionOpen ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginTop: '0.85rem' }}>
-              <button
-                onClick={onSingleBuy}
-                disabled={buying}
-                style={{
-                  background: 'linear-gradient(135deg,#7c3aed,#6d28d9)',
-                  color: 'white', border: 'none',
-                  padding: '1rem 1.25rem', borderRadius: '10px',
-                  fontSize: '1.05rem', fontWeight: 700,
-                  cursor: buying ? 'wait' : 'pointer',
-                  boxShadow: '0 10px 25px rgba(124,58,237,0.4)',
-                  transition: 'transform 0.12s ease',
-                }}
-              >
-                {buying ? 'Preparing checkout…' : 'Buy this HD now — $4.99'}
-              </button>
-              <button
-                onClick={onOpenDecision}
-                style={{
-                  background: 'transparent', color: 'white',
-                  border: '1px solid rgba(255,255,255,0.35)',
-                  padding: '0.85rem 1rem', borderRadius: '10px',
-                  fontSize: '0.95rem', fontWeight: 600,
-                  cursor: 'pointer',
-                }}
-              >
-                Add more &amp; save →
-              </button>
+          <div style={{ marginTop: '0.85rem' }}>
+            <button
+              onClick={onBuy}
+              disabled={buying}
+              style={{
+                background: 'linear-gradient(135deg,#7c3aed,#6d28d9)',
+                color: 'white', border: 'none',
+                padding: '1rem 1.25rem', borderRadius: '10px',
+                fontSize: '1.05rem', fontWeight: 700,
+                cursor: buying ? 'wait' : 'pointer',
+                boxShadow: '0 10px 25px rgba(124,58,237,0.4)',
+                transition: 'transform 0.12s ease',
+                width: '100%',
+              }}
+            >
+              {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
+            </button>
+            <div style={{ fontSize: '0.8rem', opacity: 0.6, marginTop: '0.6rem', textAlign: 'center' }}>
+              Click Buy Now to continue to secure checkout
             </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.6rem' }}>
-              <div style={{ fontSize: '0.85rem', opacity: 0.85, marginBottom: '0.25rem' }}>
-                This image is slot 1 — add more to save.
-              </div>
-              {PACK_OPTIONS.map(opt => (
-                <button
-                  key={opt.size}
-                  onClick={() => onChoosePack(opt.size)}
-                  style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    background: opt.size === 1 ? 'rgba(255,255,255,0.08)' : 'rgba(124,58,237,0.18)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    color: 'white',
-                    padding: '0.7rem 0.9rem',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                    fontSize: '0.9rem',
-                    textAlign: 'left',
-                    transition: 'background 0.12s ease',
-                  }}
-                >
-                  <span style={{ fontWeight: 600 }}>
-                    {opt.size} image{opt.size > 1 ? 's' : ''}
-                  </span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{ fontWeight: 700 }}>${opt.price}</span>
-                    {opt.savings && (
-                      <span style={{
-                        background: '#10b981', color: 'white',
-                        fontSize: '0.62rem', fontWeight: 700,
-                        padding: '0.15rem 0.4rem', borderRadius: '4px',
-                        whiteSpace: 'nowrap',
-                      }}>
-                        save {opt.savings}%
-                      </span>
-                    )}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -1397,8 +968,8 @@ function findProductByHighlight(rawHighlight, productList) {
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
   const router = useRouter();
-  const [hdState, dispatch] = useReducer(hdReducer, HD_INITIAL_STATE);
-  const { phase, focusedId, packSize, selected, decisionOpen, checkingOut } = hdState;
+  const [selectedId, setSelectedId] = useState(null);
+  const [checkingOut, setCheckingOut] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
   const [hdOnlyPreview, setHdOnlyPreview] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -1406,9 +977,9 @@ export default function Premium({ reviewsData }) {
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [highlightMissError, setHighlightMissError] = useState(null);
   const heroRef = useRef(null);
-  const focusedProduct = useMemo(
-    () => (focusedId ? products.find(p => p.id === focusedId) : null),
-    [focusedId]
+  const selectedProduct = useMemo(
+    () => (selectedId ? products.find(p => p.id === selectedId) : null),
+    [selectedId]
   );
 
   // Pre-select category from URL param (e.g. ?category=easter-backgrounds)
@@ -1462,7 +1033,7 @@ export default function Premium({ reviewsData }) {
     }
 
     setHighlightMissError(null);
-    dispatch({ type: 'FOCUS', productId: product.id });
+    setSelectedId(product.id);
     trackAnalytics('hd_focus_entered', product.id, product.category);
 
     const rafId = requestAnimationFrame(() => {
@@ -1518,77 +1089,37 @@ export default function Premium({ reviewsData }) {
       .catch(() => {});
   };
 
-  const handlePackSelect = (size) => {
-    // Enter BUNDLE_BUILDING. Reducer seeds selected with focusedId (never empties it).
-    dispatch({ type: 'START_BUNDLE', packSize: size });
-    trackAnalytics('hd_bundle_started', String(size), 'hd');
-  };
-
-  const handleSingleBuy = async () => {
-    if (!focusedProduct) return;
-    trackAnalytics('hd_single_buy_clicked', focusedProduct.id, focusedProduct.category);
-    dispatch({ type: 'CHECKOUT_START' });
+  const handleBuy = async (productId) => {
+    const pid = productId || selectedId;
+    if (!pid) return;
+    const product = products.find(p => p.id === pid);
+    trackAnalytics('hd_single_buy_clicked', pid, product?.category);
+    setCheckingOut(true);
     try {
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId: PRICE_IDS[1], productId: focusedProduct.id }),
+        body: JSON.stringify({ priceId: SINGLE_PRICE_ID, productId: pid }),
       });
       const data = await res.json();
       if (!data.url) {
-        dispatch({ type: 'CHECKOUT_END' });
+        setCheckingOut(false);
         alert(data.error || 'Checkout failed — no URL returned');
         return;
       }
       window.location.href = data.url;
     } catch {
-      dispatch({ type: 'CHECKOUT_END' });
+      setCheckingOut(false);
     }
   };
 
-  const handleHdOnlyBuy = async (productId, size) => {
+  const handleHdOnlyBuy = async (productId) => {
     setHdOnlyPreview(null);
-    const product = products.find(p => p.id === productId);
-    if (size === 1) {
-      trackAnalytics('hd_single_buy_clicked', productId, product?.category);
-      dispatch({ type: 'CHECKOUT_START' });
-      try {
-        const res = await fetch('/api/create-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ priceId: PRICE_IDS[1], productId }),
-        });
-        const data = await res.json();
-        if (!data.url) {
-          dispatch({ type: 'CHECKOUT_END' });
-          alert(data.error || 'Checkout failed — no URL returned');
-          return;
-        }
-        window.location.href = data.url;
-      } catch {
-        dispatch({ type: 'CHECKOUT_END' });
-      }
-    } else {
-      // Focus the HD-only image first so the bundle is seeded with it as slot 1.
-      dispatch({ type: 'FOCUS', productId });
-      dispatch({ type: 'START_BUNDLE', packSize: size });
-    }
+    await handleBuy(productId);
   };
 
   const handleCardClick = (id) => {
-    if (phase === 'BUNDLE_BUILDING') {
-      // In bundle mode, grid clicks toggle selection.
-      const isRemoving = selected.includes(id);
-      dispatch({ type: 'TOGGLE_SELECT', productId: id });
-      if (!isRemoving && selected.length < (packSize || 0)) {
-        trackAnalytics('hd_image_selected', id, 'hd');
-      } else if (isRemoving && id !== focusedId) {
-        trackAnalytics('hd_image_deselected', id, 'hd');
-      }
-      return;
-    }
-    // In IDLE_BROWSE or FOCUS_LOCKED, a grid click focuses the image and scrolls up.
-    dispatch({ type: 'FOCUS', productId: id });
+    setSelectedId(id);
     trackAnalytics('hd_focus_entered', id, 'grid_click');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -1622,39 +1153,16 @@ export default function Premium({ reviewsData }) {
         <HdFaqSchema />
       </Head>
 
-      {/* Sticky pack bar — hidden during FOCUS_LOCKED so the hero owns attention */}
-      {!isSubscriber && phase !== 'FOCUS_LOCKED' && (
-        <StickyPackBar
-          packSize={packSize}
-          selected={selected}
-          onSelect={handlePackSelect}
-          onChangePack={() => dispatch({ type: 'CHANGE_PACK' })}
-          visible={showStickyBar}
-        />
-      )}
-
-      {/* Focus Hero — dominant surface when an image is selected */}
-      {!isSubscriber && phase === 'FOCUS_LOCKED' && focusedProduct && (
+      {/* Focus Hero — shown when an image is selected */}
+      {!isSubscriber && selectedProduct && (
         <FocusHero
-          product={focusedProduct}
-          hdOnly={isHdOnly(focusedProduct.id)}
-          decisionOpen={decisionOpen}
+          product={selectedProduct}
+          hdOnly={isHdOnly(selectedProduct.id)}
           buying={checkingOut}
-          onSingleBuy={handleSingleBuy}
-          onOpenDecision={() => {
-            trackAnalytics('hd_decision_opened', focusedProduct.id, focusedProduct.category);
-            dispatch({ type: 'OPEN_DECISION' });
-          }}
-          onChoosePack={(size) => {
-            if (size === 1) {
-              handleSingleBuy();
-              return;
-            }
-            handlePackSelect(size);
-          }}
+          onBuy={() => handleBuy()}
           onDismiss={() => {
-            trackAnalytics('hd_focus_dismissed', focusedProduct.id, focusedProduct.category);
-            dispatch({ type: 'DISMISS_FOCUS' });
+            trackAnalytics('hd_focus_dismissed', selectedProduct.id, selectedProduct.category);
+            setSelectedId(null);
           }}
         />
       )}
@@ -1721,14 +1229,19 @@ export default function Premium({ reviewsData }) {
             )}
           </div>
         ) : (
-          /* ── Pack picker ── */
+          /* ── Single-select prompt ── */
           <div style={{
             background: 'rgba(255,255,255,0.15)',
             padding: '1.25rem 1.5rem', borderRadius: '12px',
             display: 'inline-block', marginBottom: '1.5rem',
             textAlign: 'center',
           }}>
-            <PackPicker packSize={packSize} onSelect={handlePackSelect} />
+            <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              Select an image to purchase in HD
+            </div>
+            <div style={{ fontSize: '0.85rem', opacity: 0.85 }}>
+              Each image is purchased individually · ${SINGLE_PRICE} per image
+            </div>
           </div>
         )}
 
@@ -1766,7 +1279,7 @@ export default function Premium({ reviewsData }) {
         )}
 
         {/* Highlight miss notice — shown when ?highlight= didn't match any HD product */}
-        {highlightMissError && phase !== 'FOCUS_LOCKED' && (
+        {highlightMissError && !selectedProduct && (
           <div
             role="status"
             style={{
@@ -1833,22 +1346,21 @@ export default function Premium({ reviewsData }) {
           ))}
         </div>
 
-        {/* Image grid — dimmed and secondary while FOCUS_LOCKED; primary otherwise */}
+        {/* Image grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))',
           gap: '1.5rem',
-          opacity: phase === 'FOCUS_LOCKED' ? 0.55 : 1,
-          filter: phase === 'FOCUS_LOCKED' ? 'saturate(0.85)' : 'none',
-          transition: 'opacity 0.25s ease, filter 0.25s ease',
+          opacity: selectedId ? 0.75 : 1,
+          transition: 'opacity 0.25s ease',
         }}>
           {filteredProducts.map(product => (
             <HdProductCard
               key={product.id}
               product={product}
-              isSelected={selected.includes(product.id)}
+              isSelected={selectedId === product.id}
               isHovered={hoveredProduct === product.id}
-              isHighlighted={focusedId === product.id && phase === 'BUNDLE_BUILDING'}
+              isHighlighted={false}
               onToggle={handleCardClick}
               onPreview={setPreviewImage}
               onHdOnlyPreview={setHdOnlyPreview}
@@ -1862,18 +1374,6 @@ export default function Premium({ reviewsData }) {
             />
           ))}
         </div>
-
-        {/* One-time checkout bar — only during BUNDLE_BUILDING */}
-        {!isSubscriber && phase === 'BUNDLE_BUILDING' && packSize !== null && selected.length > 0 && (
-          <CheckoutBar
-            selected={selected}
-            packSize={packSize}
-            onClear={() => dispatch({ type: 'CLEAR_SELECTION' })}
-            onChangePack={() => dispatch({ type: 'CHANGE_PACK' })}
-            onCheckoutStart={() => dispatch({ type: 'CHECKOUT_START' })}
-            onCheckoutEnd={() => dispatch({ type: 'CHECKOUT_END' })}
-          />
-        )}
       </section>
 
       {/* Comparison widget — standard images */}
