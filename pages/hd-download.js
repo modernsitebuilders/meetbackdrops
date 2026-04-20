@@ -25,7 +25,7 @@ export default function HDDownload() {
       .then(res => res.json())
       .then(data => {
         if (data.verified) {
-          const imageIds = data.selected_images.split(',');
+          const imageIds = data.product_ids;
           const downloadLinks = imageIds.map(id => {
             return {
               id,
@@ -43,7 +43,7 @@ export default function HDDownload() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               eventType: 'hd_purchase',
-              filename: data.selected_images,
+              filename: data.product_ids.join(','),
               category: 'hd',
               originalSource: session?.originalReferrer || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
               sessionId: session?.id || '',

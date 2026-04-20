@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_TEST || process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -17,10 +17,8 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
     if (session.payment_status === 'paid') {
-      const m = session.metadata;
-      const selected_images = m.selected_images
-        || [m.selected_images_1, m.selected_images_2].filter(Boolean).join(',');
-      return res.status(200).json({ verified: true, selected_images });
+      const product_ids = JSON.parse(session.metadata?.product_ids || '[]');
+      return res.status(200).json({ verified: true, product_ids });
     }
 
     return res.status(400).json({ verified: false, error: 'Payment not completed' });

@@ -8,7 +8,7 @@ console.log("🔑 testKey exists:", !!testKey);
 console.log("🔑 liveKey exists:", !!liveKey);
 
 // 🧠 AUTO-DETECT SAFE MODE (NO STRIPE_MODE RELIANCE)
-const key = testKey || liveKey;
+const key = process.env.STRIPE_SECRET_KEY;
 
 if (!key) {
   throw new Error("Missing Stripe secret key (both test and live)");
