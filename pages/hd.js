@@ -610,24 +610,37 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckoutStar
   const isFull = selected.length === packSize;
 
   const handleCheckout = async (e) => {
-    e.stopPropagation();
-    trackAnalytics('hd_checkout_initiated', String(packSize), 'checkout_bar');
-    if (onCheckoutStart) onCheckoutStart();
-    try {
-      const response = await fetch('/api/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          priceId: PRICE_IDS[packSize],
-          selectedImages: selected
-        })
-      });
-      const { url } = await response.json();
-      window.location.href = url;
-    } catch {
+  e.stopPropagation();
+
+  trackAnalytics('hd_checkout_initiated', String(packSize), 'checkout_bar');
+
+  if (onCheckoutStart) onCheckoutStart();
+
+  try {
+    const response = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        priceId: PRICE_IDS[packSize],
+        selectedImages: selected
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.url) {
+      console.error("Checkout failed response:", data);
       if (onCheckoutEnd) onCheckoutEnd();
+      return;
     }
-  };
+
+    window.location.href = data.url;
+
+  } catch (err) {
+    console.error("Checkout error:", err);
+    if (onCheckoutEnd) onCheckoutEnd();
+  }
+};
 
   return (
     <div style={{
