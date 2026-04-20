@@ -1535,8 +1535,13 @@ export default function Premium({ reviewsData }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [focusedProduct.id] }),
       });
-      const { url } = await res.json();
-      window.location.href = url;
+      const data = await res.json();
+      if (!data.url) {
+        dispatch({ type: 'CHECKOUT_END' });
+        alert(data.error || 'Checkout failed — no URL returned');
+        return;
+      }
+      window.location.href = data.url;
     } catch {
       dispatch({ type: 'CHECKOUT_END' });
     }
@@ -1554,8 +1559,13 @@ export default function Premium({ reviewsData }) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [productId] }),
         });
-        const { url } = await res.json();
-        window.location.href = url;
+        const data = await res.json();
+        if (!data.url) {
+          dispatch({ type: 'CHECKOUT_END' });
+          alert(data.error || 'Checkout failed — no URL returned');
+          return;
+        }
+        window.location.href = data.url;
       } catch {
         dispatch({ type: 'CHECKOUT_END' });
       }

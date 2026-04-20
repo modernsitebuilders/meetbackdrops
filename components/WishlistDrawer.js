@@ -60,8 +60,13 @@ export default function WishlistDrawer() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ priceId: PRICE_IDS[tier.size], selectedImages: imageIds }),
       });
-      const { url } = await res.json();
-      window.location.href = url;
+      const data = await res.json();
+      if (!data.url) {
+        setBuying(false);
+        alert(data.error || 'Checkout failed — no URL returned');
+        return;
+      }
+      window.location.href = data.url;
     } catch {
       setBuying(false);
     }
