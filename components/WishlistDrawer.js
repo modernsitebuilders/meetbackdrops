@@ -19,6 +19,10 @@ const PRICE_IDS = {
   20: 'price_1TDowHQ695ongkMjwk1xZFAO',
 };
 
+// Set to false to re-enable purchases
+const CHECKOUT_PAUSED = true;
+const CHECKOUT_PAUSED_MSG = 'Purchases are temporarily paused while we fix checkout. Please check back shortly.';
+
 function bestTierForCount(count) {
   return PACK_OPTIONS.find(o => o.size >= count) || PACK_OPTIONS[PACK_OPTIONS.length - 1];
 }
@@ -50,6 +54,7 @@ export default function WishlistDrawer() {
 
   const handleBuy = async () => {
     if (!wishlist.length) return;
+    if (CHECKOUT_PAUSED) return;
     setBuying(true);
     trackAnalytics('wishlist_checkout', null, 'wishlist');
     try {
@@ -229,34 +234,50 @@ export default function WishlistDrawer() {
             flexShrink: 0,
             background: '#fff',
           }}>
-            <button
-              onClick={handleBuy}
-              disabled={buying}
-              style={{
+            {CHECKOUT_PAUSED ? (
+              <div style={{
                 width: '100%',
-                background: buying ? '#93c5fd' : '#2563eb',
-                color: 'white',
-                border: 'none', borderRadius: '10px',
+                background: '#f3f4f6',
+                border: '1px solid #e5e7eb',
+                borderRadius: '10px',
                 padding: '0.85rem',
-                fontWeight: 700, fontSize: '1rem',
-                cursor: buying ? 'wait' : 'pointer',
-                transition: 'background 0.15s',
-              }}
-            >
-              {buying ? 'Redirecting…' : (
-                <>
-                  Buy {tier.size}-pack · ${tier.price}
-                  {tier.savings && (
-                    <span style={{
-                      marginLeft: '8px',
-                      background: 'rgba(255,255,255,0.25)',
-                      borderRadius: '99px', fontSize: '0.72rem',
-                      padding: '2px 7px',
-                    }}>save {tier.savings}%</span>
-                  )}
-                </>
-              )}
-            </button>
+                fontSize: '0.85rem',
+                color: '#6b7280',
+                textAlign: 'center',
+                lineHeight: 1.4,
+              }}>
+                {CHECKOUT_PAUSED_MSG}
+              </div>
+            ) : (
+              <button
+                onClick={handleBuy}
+                disabled={buying}
+                style={{
+                  width: '100%',
+                  background: buying ? '#93c5fd' : '#2563eb',
+                  color: 'white',
+                  border: 'none', borderRadius: '10px',
+                  padding: '0.85rem',
+                  fontWeight: 700, fontSize: '1rem',
+                  cursor: buying ? 'wait' : 'pointer',
+                  transition: 'background 0.15s',
+                }}
+              >
+                {buying ? 'Redirecting…' : (
+                  <>
+                    Buy {tier.size}-pack · ${tier.price}
+                    {tier.savings && (
+                      <span style={{
+                        marginLeft: '8px',
+                        background: 'rgba(255,255,255,0.25)',
+                        borderRadius: '99px', fontSize: '0.72rem',
+                        padding: '2px 7px',
+                      }}>save {tier.savings}%</span>
+                    )}
+                  </>
+                )}
+              </button>
+            )}
             <button
               onClick={() => {
                 if (window.confirm('Clear all saved images?')) {
