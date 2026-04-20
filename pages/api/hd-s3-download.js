@@ -16,30 +16,29 @@ export default async function handler(req, res) {
 
   const { session_id, imageId } = req.query;
 
- console.log("STRIPE SESSION FOUND:", {
-  id: session.id,
-  payment_status: session.payment_status,
-  status: session.status,
-});
-
   if (!session_id || !imageId) {
     return res.status(400).json({ error: 'Missing parameters' });
   }
 
   try {
-    // 🔐 Verify purchase with Stripe
+    // 🔐 Verify purchase with Stripe (MUST happen before any session usage)
     const session = await stripe.checkout.sessions.retrieve(session_id);
+
+    // 🧪 Debug log (SAFE - after session exists)
+    console.log("STRIPE SESSION FOUND:", {
+      id: session.id,
+      payment_status: session.payment_status,
+      status: session.status,
+    });
 
     if (session.payment_status !== 'paid') {
       return res.status(403).json({ error: 'Payment not verified' });
     }
 
-    // 🧠 NEW: unified metadata format (multi-image safe)
-    const allowedImages = JSON.parse(
-      session.metadata?.product_ids || '[]'
-    );
+    // 🧠 Unified metadata format (multi-image safe)
+    const allowedImages = JSON.parse(session.metadata?.product_ids || '[]');
 
-    // 🔒 Ensure requested image was actually purchased
+    // 🔒 Validate purchase entitlement
     if (!allowedImages.includes(imageId)) {
       return res.status(403).json({
         error: 'Image not included in this purchase',
