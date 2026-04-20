@@ -16,6 +16,12 @@ export default async function handler(req, res) {
 
   const { session_id, imageId } = req.query;
 
+ console.log("STRIPE SESSION FOUND:", {
+  id: session.id,
+  payment_status: session.payment_status,
+  status: session.status,
+});
+
   if (!session_id || !imageId) {
     return res.status(400).json({ error: 'Missing parameters' });
   }
