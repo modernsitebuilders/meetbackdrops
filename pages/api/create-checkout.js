@@ -10,12 +10,15 @@ console.log("🔑 liveKey exists:", !!liveKey);
 // 🧠 CRITICAL DEBUG: what key is ACTUALLY used
 const key = process.env.STRIPE_SECRET_KEY;
 
-console.log("🔑 STRIPE KEY PREFIX:", key?.slice(0, 8));
-
-// 🧠 HARD FAIL IF MISSING
 if (!key) {
-  throw new Error("Missing Stripe secret key (STRIPE_SECRET_KEY is undefined)");
+  throw new Error("Missing Stripe secret key (both test and live)");
 }
+
+// 🧠 DEBUG: confirm what environment Vercel is actually using
+console.log("🔴 DEPLOY ENV CHECK:", {
+  nodeEnv: process.env.NODE_ENV,
+  stripePrefix: key?.slice(0, 7),
+});
 
 const stripe = new Stripe(key);
 
