@@ -3,20 +3,21 @@ import Stripe from "stripe";
 const testKey = process.env.STRIPE_SECRET_KEY_TEST;
 const liveKey = process.env.STRIPE_SECRET_KEY;
 
+// 🔴 DEBUG (safe to keep temporarily)
 console.log("🔑 testKey exists:", !!testKey);
 console.log("🔑 liveKey exists:", !!liveKey);
+console.log("🧪 STRIPE_MODE:", process.env.STRIPE_MODE);
 
-// ✅ Correct mode-based key selection
-const key =
-  process.env.STRIPE_MODE === "test"
-    ? testKey
-    : liveKey;
+// ⚠️ FIX #1: fallback safety (prevents accidental undefined mode)
+const mode = process.env.STRIPE_MODE || "live";
 
-console.log("🧪 STRIPE MODE:", process.env.STRIPE_MODE);
-console.log("🔑 USING KEY PREFIX:", key?.slice(0, 7));
+const key = mode === "test" ? testKey : liveKey;
+
+// 🔴 DEBUG: confirm actual key being used
+console.log("🔑 USING KEY PREFIX:", key?.slice(0, 10));
 
 if (!key) {
-  throw new Error("Missing Stripe secret key (test or live)");
+  throw new Error(`Missing Stripe secret key for mode: ${mode}`);
 }
 
 const stripe = new Stripe(key);
@@ -60,21 +61,22 @@ export default async function handler(req, res) {
     console.log("💳 Stripe session created:", session.id);
     console.log("🔗 Stripe session url:", session.url);
 
-    // 🚨 HARD GUARD (prevents /undefined forever)
-    if (!session || !session.url) {
+    // ⚠️ FIX #2: safer guard (prevents undefined redirect bugs)
+    if (!session?.url) {
       console.error("❌ Stripe session missing URL:", session);
       return res.status(500).json({
         error: "Stripe session missing URL",
       });
     }
 
-    return res.status(200).json({
-      url: session.url,
-    });
+    return res.status(200).json({ url: session.url });
 
   } catch (error) {
-    // ✅ THIS IS THE IMPORTANT CHANGE
-    console.error("❌ FULL STRIPE ERROR:", error);
+    console.error("❌ FULL STRIPE ERROR:", {
+      message: error.message,
+      type: error.type,
+      code: error.code,
+    });
 
     return res.status(500).json({
       error: error.message || "Checkout failed",
