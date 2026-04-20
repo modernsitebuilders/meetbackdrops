@@ -1,21 +1,17 @@
 import Stripe from "stripe";
 
-const isTest = process.env.STRIPE_MODE === "test";
+const testKey = process.env.STRIPE_SECRET_KEY_TEST;
+const liveKey = process.env.STRIPE_SECRET_KEY;
 
-// 🧠 DEBUG: environment visibility (safe to remove later)
-console.log("🔧 STRIPE_MODE:", process.env.STRIPE_MODE);
-console.log("🔑 TEST KEY EXISTS:", !!process.env.STRIPE_SECRET_KEY_TEST);
-console.log("🔑 LIVE KEY EXISTS:", !!process.env.STRIPE_SECRET_KEY);
+// 🧠 DEBUG (keep temporarily)
+console.log("🔑 testKey exists:", !!testKey);
+console.log("🔑 liveKey exists:", !!liveKey);
 
-const key = isTest
-  ? process.env.STRIPE_SECRET_KEY_TEST
-  : process.env.STRIPE_SECRET_KEY;
+// 🧠 AUTO-DETECT SAFE MODE (NO STRIPE_MODE RELIANCE)
+const key = testKey || liveKey;
 
-// 🧠 HARD FAIL IF MISCONFIGURED (prevents silent Stripe crash)
 if (!key) {
-  throw new Error(
-    `Missing Stripe secret key for mode: ${isTest ? "test" : "live"}`
-  );
+  throw new Error("Missing Stripe secret key (both test and live)");
 }
 
 const stripe = new Stripe(key);
@@ -27,7 +23,6 @@ export default async function handler(req, res) {
 
   const { priceId, selectedImages } = req.body;
 
-  // 🧠 DEBUG: incoming payload
   console.log("📦 priceId:", priceId);
   console.log("🖼 selectedImages:", selectedImages);
 
@@ -57,27 +52,12 @@ export default async function handler(req, res) {
       },
     });
 
-    // 🧠 DEBUG: Stripe response
-    console.log("💳 Stripe session created:", {
-      id: session.id,
-      url: session.url,
-    });
-
-    // 🧠 CRITICAL SAFETY CHECK
-    if (!session?.url) {
-      console.error("❌ Stripe session missing URL:", session);
-      return res.status(500).json({ error: "Stripe session missing URL" });
-    }
+    console.log("💳 Stripe session created:", session.id);
 
     return res.status(200).json({ url: session.url });
 
   } catch (error) {
-    // 🧠 DEBUG: full Stripe error
-    console.error("❌ Stripe checkout error:", {
-      message: error.message,
-      stack: error.stack,
-    });
-
+    console.error("❌ Stripe checkout error:", error);
     return res.status(500).json({ error: "Checkout failed" });
   }
 }
