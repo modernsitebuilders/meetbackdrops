@@ -21,23 +21,26 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Verify purchase with Stripe
+    // 🔐 Verify purchase with Stripe
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
     if (session.payment_status !== 'paid') {
       return res.status(403).json({ error: 'Payment not verified' });
     }
 
-    // Ensure requested image was actually purchased
-    const m = session.metadata;
-    const imageStr = m.selected_images
-      || [m.selected_images_1, m.selected_images_2].filter(Boolean).join(',');
-    const allowedImages = imageStr.split(',');
+    // 🧠 NEW: unified metadata format (multi-image safe)
+    const allowedImages = JSON.parse(
+      session.metadata?.product_ids || '[]'
+    );
+
+    // 🔒 Ensure requested image was actually purchased
     if (!allowedImages.includes(imageId)) {
-      return res.status(403).json({ error: 'Image not included in this purchase' });
+      return res.status(403).json({
+        error: 'Image not included in this purchase',
+      });
     }
 
-    // Generate signed S3 URL expiring in 1 hour
+    // ☁️ Generate signed S3 URL (1 hour expiry)
     const signedUrl = s3.getSignedUrl('getObject', {
       Bucket: 'streambackdrops-premium',
       Key: `${imageId}.png`,
@@ -49,6 +52,9 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('HD S3 download error:', error);
-    return res.status(500).json({ error: 'Download failed' });
+
+    return res.status(500).json({
+      error: 'Download failed',
+    });
   }
 }
