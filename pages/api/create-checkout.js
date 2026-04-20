@@ -2,11 +2,23 @@ import Stripe from "stripe";
 
 const isTest = process.env.STRIPE_MODE === "test";
 
-const stripe = new Stripe(
-  isTest
-    ? process.env.STRIPE_SECRET_KEY_TEST
-    : process.env.STRIPE_SECRET_KEY
-);
+// 🧠 DEBUG: environment visibility (safe to remove later)
+console.log("🔧 STRIPE_MODE:", process.env.STRIPE_MODE);
+console.log("🔑 TEST KEY EXISTS:", !!process.env.STRIPE_SECRET_KEY_TEST);
+console.log("🔑 LIVE KEY EXISTS:", !!process.env.STRIPE_SECRET_KEY);
+
+const key = isTest
+  ? process.env.STRIPE_SECRET_KEY_TEST
+  : process.env.STRIPE_SECRET_KEY;
+
+// 🧠 HARD FAIL IF MISCONFIGURED (prevents silent Stripe crash)
+if (!key) {
+  throw new Error(
+    `Missing Stripe secret key for mode: ${isTest ? "test" : "live"}`
+  );
+}
+
+const stripe = new Stripe(key);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -14,6 +26,10 @@ export default async function handler(req, res) {
   }
 
   const { priceId, selectedImages } = req.body;
+
+  // 🧠 DEBUG: incoming payload
+  console.log("📦 priceId:", priceId);
+  console.log("🖼 selectedImages:", selectedImages);
 
   if (!priceId || !Array.isArray(selectedImages)) {
     return res.status(400).json({ error: "Invalid request payload" });
@@ -41,16 +57,27 @@ export default async function handler(req, res) {
       },
     });
 
-    // 🧠 CRITICAL SAFETY CHECK (prevents silent redirect failure)
+    // 🧠 DEBUG: Stripe response
+    console.log("💳 Stripe session created:", {
+      id: session.id,
+      url: session.url,
+    });
+
+    // 🧠 CRITICAL SAFETY CHECK
     if (!session?.url) {
-      console.error("Stripe session missing URL:", session);
+      console.error("❌ Stripe session missing URL:", session);
       return res.status(500).json({ error: "Stripe session missing URL" });
     }
 
     return res.status(200).json({ url: session.url });
 
   } catch (error) {
-    console.error("Stripe checkout error:", error);
+    // 🧠 DEBUG: full Stripe error
+    console.error("❌ Stripe checkout error:", {
+      message: error.message,
+      stack: error.stack,
+    });
+
     return res.status(500).json({ error: "Checkout failed" });
   }
 }
