@@ -3,22 +3,14 @@ import Stripe from "stripe";
 const testKey = process.env.STRIPE_SECRET_KEY_TEST;
 const liveKey = process.env.STRIPE_SECRET_KEY;
 
-// 🧠 DEBUG (keep temporarily)
 console.log("🔑 testKey exists:", !!testKey);
 console.log("🔑 liveKey exists:", !!liveKey);
 
-// 🧠 CRITICAL DEBUG: what key is ACTUALLY used
 const key = process.env.STRIPE_SECRET_KEY;
 
 if (!key) {
   throw new Error("Missing Stripe secret key (both test and live)");
 }
-
-// 🧠 DEBUG: confirm what environment Vercel is actually using
-console.log("🔴 DEPLOY ENV CHECK:", {
-  nodeEnv: process.env.NODE_ENV,
-  stripePrefix: key?.slice(0, 7),
-});
 
 const stripe = new Stripe(key);
 
@@ -29,9 +21,6 @@ export default async function handler(req, res) {
 
   const { priceId, selectedImages } = req.body;
 
-  console.log("📦 priceId:", priceId);
-  console.log("🖼 selectedImages:", selectedImages);
-
   if (!priceId || !Array.isArray(selectedImages)) {
     return res.status(400).json({ error: "Invalid request payload" });
   }
@@ -40,17 +29,14 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
-
       line_items: [
         {
           price: priceId,
           quantity: 1,
         },
       ],
-
       success_url: `${req.headers.origin}/hd-download?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,
-
       metadata: {
         product_type: "hd_image",
         product_ids: JSON.stringify(selectedImages),
@@ -61,7 +47,6 @@ export default async function handler(req, res) {
     console.log("💳 Stripe session created:", session.id);
 
     return res.status(200).json({ url: session.url });
-
   } catch (error) {
     console.error("❌ Stripe checkout error:", error);
     return res.status(500).json({ error: "Checkout failed" });
