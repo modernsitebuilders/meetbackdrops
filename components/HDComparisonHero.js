@@ -13,6 +13,7 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [loading, setLoading] = useState(false);
   const [sliderUsed, setSliderUsed] = useState(false);
   const [postCompareOpen, setPostCompareOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // office-spaces: always use the fixed comparison pair
   let baseId, hdId, imageFolder, freeUrl;
@@ -136,6 +137,8 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
         {/* Right: image card with single button */}
         <div
           onClick={handleCompare}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           style={{
             position: 'relative',
             width: '300px',
@@ -153,21 +156,23 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           </div>
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'rgba(0,0,0,0.38)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <button style={{
-              background: '#FFD700', color: '#000',
-              border: 'none', borderRadius: '6px',
-              padding: '0.5rem 1rem',
-              fontWeight: '700', fontSize: '0.85rem',
-              cursor: 'pointer', pointerEvents: 'none',
+          {isHovered && (
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: 'rgba(0,0,0,0.38)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              {loading ? 'Loading...' : '🔍 See HD Quality'}
-            </button>
-          </div>
+              <button style={{
+                background: '#FFD700', color: '#000',
+                border: 'none', borderRadius: '6px',
+                padding: '0.5rem 1rem',
+                fontWeight: '700', fontSize: '0.85rem',
+                cursor: 'pointer', pointerEvents: 'none',
+              }}>
+                {loading ? 'Loading...' : '🔍 See HD Quality'}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
