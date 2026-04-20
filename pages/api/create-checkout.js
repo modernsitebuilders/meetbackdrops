@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 
-const isTest = process.env.STRIPE_MODE === 'test';
+const isTest = process.env.STRIPE_MODE === "test";
 
 const stripe = new Stripe(
   isTest
@@ -23,25 +23,34 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
+
       line_items: [
         {
           price: priceId,
           quantity: 1,
         },
       ],
+
       success_url: `${req.headers.origin}/hd-download?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,
 
       metadata: {
         product_type: "hd_image",
-        product_ids: JSON.stringify(selectedImages || []),
+        product_ids: JSON.stringify(selectedImages),
         primary_product_id: selectedImages?.[0] || "unknown",
       },
     });
 
-    res.status(200).json({ url: session.url });
+    // 🧠 CRITICAL SAFETY CHECK (prevents silent redirect failure)
+    if (!session?.url) {
+      console.error("Stripe session missing URL:", session);
+      return res.status(500).json({ error: "Stripe session missing URL" });
+    }
+
+    return res.status(200).json({ url: session.url });
+
   } catch (error) {
-    console.error("Stripe error:", error);
-    res.status(500).json({ error: "Checkout failed" });
+    console.error("Stripe checkout error:", error);
+    return res.status(500).json({ error: "Checkout failed" });
   }
 }
