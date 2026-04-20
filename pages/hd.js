@@ -15,10 +15,6 @@ import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import { isHdOnlyProductId as isHdOnly } from '../lib/hdOnly';
 import { useWishlist } from '../lib/WishlistContext';
 
-// Set to false to re-enable purchases
-const CHECKOUT_PAUSED = true;
-const CHECKOUT_PAUSED_MSG = 'Purchases are temporarily paused while we fix checkout. Please check back shortly.';
-
 const PRICE_IDS = {
   1:  'price_1Sr4U0Q695ongkMjxUtnf9NA',
   2:  'price_1Sr4VEQ695ongkMjkaclxw67',
@@ -615,24 +611,22 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckoutStar
 
   const handleCheckout = async (e) => {
   e.stopPropagation();
-  if (CHECKOUT_PAUSED) return;
+  if (packSize > 1) {
+    alert('Bundle packs are temporarily unavailable. Please buy images individually.');
+    return;
+  }
 
   trackAnalytics('hd_checkout_initiated', String(packSize), 'checkout_bar');
 
   if (onCheckoutStart) onCheckoutStart();
 
 try {
-  console.log("CHECKOUT PAYLOAD:", {
-    priceId: PRICE_IDS[packSize],
-    selectedImages: selected
-  });
-
   const response = await fetch('/api/create-checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       priceId: PRICE_IDS[packSize],
-      selectedImages: selected
+      productId: selected[0]
     })
   });
 
@@ -697,28 +691,17 @@ try {
       </div>
 
       {isFull ? (
-        CHECKOUT_PAUSED ? (
-          <div style={{
-            background: 'rgba(255,255,255,0.15)',
-            borderRadius: '8px', padding: '0.75rem',
-            textAlign: 'center', fontSize: '0.82rem',
-            color: 'rgba(255,255,255,0.9)', lineHeight: 1.4,
-          }}>
-            {CHECKOUT_PAUSED_MSG}
-          </div>
-        ) : (
-          <button
-            onClick={handleCheckout}
-            style={{
-              background: 'white', color: '#2563eb',
-              border: 'none', padding: '0.75rem 2rem',
-              borderRadius: '8px', fontWeight: 'bold',
-              cursor: 'pointer', width: '100%', fontSize: '1rem'
-            }}
-          >
-            Checkout
-          </button>
-        )
+        <button
+          onClick={handleCheckout}
+          style={{
+            background: 'white', color: '#2563eb',
+            border: 'none', padding: '0.75rem 2rem',
+            borderRadius: '8px', fontWeight: 'bold',
+            cursor: 'pointer', width: '100%', fontSize: '1rem'
+          }}
+        >
+          Checkout
+        </button>
       ) : (
         <div style={{
           background: 'rgba(255,255,255,0.1)',
@@ -1543,14 +1526,13 @@ export default function Premium({ reviewsData }) {
 
   const handleSingleBuy = async () => {
     if (!focusedProduct) return;
-    if (CHECKOUT_PAUSED) { alert(CHECKOUT_PAUSED_MSG); return; }
     trackAnalytics('hd_single_buy_clicked', focusedProduct.id, focusedProduct.category);
     dispatch({ type: 'CHECKOUT_START' });
     try {
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [focusedProduct.id] }),
+        body: JSON.stringify({ priceId: PRICE_IDS[1], productId: focusedProduct.id }),
       });
       const data = await res.json();
       if (!data.url) {
@@ -1566,7 +1548,6 @@ export default function Premium({ reviewsData }) {
 
   const handleHdOnlyBuy = async (productId, size) => {
     setHdOnlyPreview(null);
-    if (CHECKOUT_PAUSED) { alert(CHECKOUT_PAUSED_MSG); return; }
     const product = products.find(p => p.id === productId);
     if (size === 1) {
       trackAnalytics('hd_single_buy_clicked', productId, product?.category);
@@ -1575,7 +1556,7 @@ export default function Premium({ reviewsData }) {
         const res = await fetch('/api/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ priceId: PRICE_IDS[1], selectedImages: [productId] }),
+          body: JSON.stringify({ priceId: PRICE_IDS[1], productId }),
         });
         const data = await res.json();
         if (!data.url) {

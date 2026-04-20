@@ -25,16 +25,12 @@ export default function HDDownload() {
       .then(res => res.json())
       .then(data => {
         if (data.verified) {
-          const imageIds = data.product_ids;
-          const downloadLinks = imageIds.map(id => {
-            return {
-              id,
-              name: id.replace('-hd', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-              url: `/api/hd-s3-download?session_id=${sessionId}&imageId=${id}`
-            };
-          });
-          
-          setImages(downloadLinks);
+          const { product_id, product } = data;
+          setImages([{
+            id: product_id,
+            name: product.title,
+            url: `/api/hd-s3-download?session_id=${sessionId}&productId=${product_id}`
+          }]);
           setStatus('success');
 
           const session = getSessionData();
@@ -43,7 +39,7 @@ export default function HDDownload() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               eventType: 'hd_purchase',
-              filename: data.product_ids.join(','),
+              filename: product_id,
               category: 'hd',
               originalSource: session?.originalReferrer || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
               sessionId: session?.id || '',
