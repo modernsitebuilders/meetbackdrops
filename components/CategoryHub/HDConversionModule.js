@@ -14,20 +14,34 @@ export default function HDConversionModule({ slug, images = [], scores = {}, onC
   const [sliderUsed, setSliderUsed] = useState(false);
   const [postCompareOpen, setPostCompareOpen] = useState(false);
 
-  const topImage = [...images]
-    .filter((img) => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
-    .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
-
-  if (!topImage) {
-    if (typeof window !== 'undefined') {
-      console.warn(`[CategoryHub] HDConversionModule: no HD variants for slug="${slug}". Module hidden.`);
+  // office-spaces: always use the fixed comparison pair
+  let baseId, hdId, freeUrl;
+  if (slug === 'office-spaces') {
+    const fixedFilename = 'office-spaces-36.webp';
+    const fixedImage = images.find((img) => img.filename === fixedFilename);
+    if (!fixedImage) {
+      console.warn('[HDConversionModule] office-spaces-36.webp not found in images array. Module hidden.');
+      return null;
     }
-    return null;
-  }
+    baseId = 'office-spaces-36';
+    hdId = 'office-spaces-36-hd';
+    freeUrl = webpUrl(slug, fixedFilename);
+  } else {
+    const topImage = [...images]
+      .filter((img) => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
+      .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
 
-  const baseId = topImage.filename.replace(/\.\w+$/, '');
-  const hdId = `${baseId}-hd`;
-  const freeUrl = webpUrl(slug, topImage.filename);
+    if (!topImage) {
+      if (typeof window !== 'undefined') {
+        console.warn(`[CategoryHub] HDConversionModule: no HD variants for slug="${slug}". Module hidden.`);
+      }
+      return null;
+    }
+
+    baseId = topImage.filename.replace(/\.\w+$/, '');
+    hdId = `${baseId}-hd`;
+    freeUrl = webpUrl(slug, topImage.filename);
+  }
 
   const sessionFlagKey = `sb_post_compare_shown_${baseId}`;
 
@@ -45,7 +59,7 @@ export default function HDConversionModule({ slug, images = [], scores = {}, onC
   };
 
   const handleCompare = async () => {
-    onCompareClick && onCompareClick(topImage.filename);
+    onCompareClick && onCompareClick(`${baseId}.webp`);
     setSliderUsed(false);
     if (hdUrl) {
       setModalOpen(true);
@@ -112,7 +126,7 @@ export default function HDConversionModule({ slug, images = [], scores = {}, onC
         aria-label="Open HD comparison"
       >
         <img
-          src={webpUrl(slug, topImage.filename)}
+          src={freeUrl}
           alt="Preview of the HD comparison"
           loading="lazy"
         />

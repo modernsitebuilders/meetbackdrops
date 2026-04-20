@@ -14,22 +14,37 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [sliderUsed, setSliderUsed] = useState(false);
   const [postCompareOpen, setPostCompareOpen] = useState(false);
 
-  // Find the highest-scored image in this category that has an HD version
-  const topImage = [...images]
-    .filter(img => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
-    .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
-
-  if (!topImage) {
-    if (typeof window !== 'undefined') {
-      console.warn(`[HDComparisonHero] No HD variants for slug="${slug}". Promo hidden.`);
+  // office-spaces: always use the fixed comparison pair
+  let baseId, hdId, imageFolder, freeUrl;
+  if (slug === 'office-spaces') {
+    const fixedFilename = 'office-spaces-36.webp';
+    const fixedImage = images.find(img => img.filename === fixedFilename);
+    if (!fixedImage) {
+      console.warn('[HDComparisonHero] office-spaces-36.webp not found in images array. Promo hidden.');
+      return null;
     }
-    return null;
-  }
+    baseId = 'office-spaces-36';
+    hdId = 'office-spaces-36-hd';
+    imageFolder = fixedImage.folder || slug;
+    freeUrl = webpUrl(imageFolder, fixedFilename);
+  } else {
+    // Find the highest-scored image in this category that has an HD version
+    const topImage = [...images]
+      .filter(img => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
+      .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
 
-  const baseId = topImage.filename.replace(/\.\w+$/, '');
-  const hdId = `${baseId}-hd`;
-  const imageFolder = topImage.folder || slug;
-  const freeUrl = webpUrl(imageFolder, topImage.filename);
+    if (!topImage) {
+      if (typeof window !== 'undefined') {
+        console.warn(`[HDComparisonHero] No HD variants for slug="${slug}". Promo hidden.`);
+      }
+      return null;
+    }
+
+    baseId = topImage.filename.replace(/\.\w+$/, '');
+    hdId = `${baseId}-hd`;
+    imageFolder = topImage.folder || slug;
+    freeUrl = webpUrl(imageFolder, topImage.filename);
+  }
 
   const trackCompareClick = () => {
     if (process.env.NODE_ENV !== 'production') return;
@@ -133,7 +148,7 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
         >
           <div style={{ aspectRatio: '16/9' }}>
             <img
-              src={webpUrl(imageFolder, topImage.filename)}
+              src={freeUrl}
               alt="HD preview"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
