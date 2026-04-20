@@ -32,14 +32,22 @@ export default async function handler(req, res) {
   try {
     const rawBody = await getRawBody(req);
 
+    // 🧠 SAFE MODE SWITCH (TEST vs LIVE)
+    const webhookSecret =
+      process.env.STRIPE_WEBHOOK_SECRET_TEST ||
+      process.env.STRIPE_WEBHOOK_SECRET;
+
     event = stripe.webhooks.constructEvent(
       rawBody,
       sig,
-      process.env.STRIPE_WEBHOOK_SECRET
+      webhookSecret
     );
+
   } catch (err) {
     console.error('[stripe-webhook] Signature verification failed:', err.message);
-    return res.status(400).json({ error: `Webhook signature invalid: ${err.message}` });
+    return res.status(400).json({
+      error: `Webhook signature invalid: ${err.message}`,
+    });
   }
 
   // Only handle successful checkout sessions
@@ -56,14 +64,11 @@ export default async function handler(req, res) {
     metadata.product_type !== 'hd_image' ||
     !metadata.product_ids
   ) {
-    console.log(
-      '[stripe-webhook] Ignored — not an HD image purchase.',
-      {
-        session_id: session.id,
-        product_type: metadata?.product_type ?? '(missing)',
-        product_ids: metadata?.product_ids ?? '(missing)',
-      }
-    );
+    console.log('[stripe-webhook] Ignored — not an HD image purchase.', {
+      session_id: session.id,
+      product_type: metadata?.product_type ?? '(missing)',
+      product_ids: metadata?.product_ids ?? '(missing)',
+    });
 
     return res.status(200).json({ received: true, ignored: true });
   }
@@ -91,14 +96,13 @@ export default async function handler(req, res) {
     console.log('Unlock HD:', id);
 
     // TODO: persist entitlement
-    // e.g. db.purchases.create({
+    // Example:
+    // await db.purchases.create({
     //   session_id: session.id,
     //   product_id: id,
     //   paid_at: new Date(),
     // });
   }
-
-  // TODO: optional - mark session as fulfilled (idempotency layer later)
 
   return res.status(200).json({ received: true });
 }
