@@ -616,30 +616,47 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckoutStar
 
   if (onCheckoutStart) onCheckoutStart();
 
-  try {
-    const response = await fetch('/api/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        priceId: PRICE_IDS[packSize],
-        selectedImages: selected
-      })
-    });
+try {
+  console.log("CHECKOUT PAYLOAD:", {
+    priceId: PRICE_IDS[packSize],
+    selectedImages: selected
+  });
 
-    const data = await response.json();
+  const response = await fetch('/api/create-checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      priceId: PRICE_IDS[packSize],
+      selectedImages: selected
+    })
+  });
 
-    if (!response.ok || !data.url) {
-      console.error("Checkout failed response:", data);
-      if (onCheckoutEnd) onCheckoutEnd();
-      return;
-    }
+  console.log("CHECKOUT HTTP STATUS:", response.status);
 
-    window.location.href = data.url;
+  const data = await response.json();
+  console.log("CHECKOUT RESPONSE:", data);
 
-  } catch (err) {
-    console.error("Checkout error:", err);
+  if (!response.ok) {
+    console.error("Checkout failed response:", data);
     if (onCheckoutEnd) onCheckoutEnd();
+    alert(data.error || "Checkout failed");
+    return;
   }
+
+  if (!data.url) {
+    console.error("Missing checkout URL:", data);
+    if (onCheckoutEnd) onCheckoutEnd();
+    alert("Stripe did not return a checkout URL");
+    return;
+  }
+
+  window.location.href = data.url;
+
+} catch (err) {
+  console.error("Checkout error:", err);
+  if (onCheckoutEnd) onCheckoutEnd();
+  alert("Checkout crashed — check console");
+}
 };
 
   return (
