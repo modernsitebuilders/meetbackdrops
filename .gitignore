@@ -11,3 +11,4 @@ WEEKLY-UPDATE.txt
 # Exclude all HD images except the comparison widget image
 public/images/**/*-hd.png
 !public/images/bookshelves-dark/bookshelves-dark-09-hd.png
+.claude/worktrees/
