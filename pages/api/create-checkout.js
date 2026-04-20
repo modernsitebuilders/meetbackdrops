@@ -7,11 +7,14 @@ const liveKey = process.env.STRIPE_SECRET_KEY;
 console.log("🔑 testKey exists:", !!testKey);
 console.log("🔑 liveKey exists:", !!liveKey);
 
-// 🧠 AUTO-DETECT SAFE MODE (NO STRIPE_MODE RELIANCE)
+// 🧠 CRITICAL DEBUG: what key is ACTUALLY used
 const key = process.env.STRIPE_SECRET_KEY;
 
+console.log("🔑 STRIPE KEY PREFIX:", key?.slice(0, 8));
+
+// 🧠 HARD FAIL IF MISSING
 if (!key) {
-  throw new Error("Missing Stripe secret key (both test and live)");
+  throw new Error("Missing Stripe secret key (STRIPE_SECRET_KEY is undefined)");
 }
 
 const stripe = new Stripe(key);
