@@ -18,6 +18,10 @@ import { useWishlist } from '../lib/WishlistContext';
 const SINGLE_PRICE_ID = 'price_1Sr4U0Q695ongkMjxUtnf9NA';
 const SINGLE_PRICE = 4.99;
 
+// Set to false to re-enable purchases
+const CHECKOUT_PAUSED = true;
+const CHECKOUT_PAUSED_MSG = 'Purchases are temporarily paused while we fix checkout. Check back shortly.';
+
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
     method: 'POST',
@@ -191,23 +195,39 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
             padding: '10px 12px',
           }}
         >
-          <button
-            onClick={handleBuy}
-            disabled={buying}
-            style={{
+          {CHECKOUT_PAUSED ? (
+            <div style={{
               width: '100%',
-              background: '#7c3aed',
-              border: 'none',
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.15)',
               borderRadius: '6px',
-              color: 'white',
-              cursor: buying ? 'wait' : 'pointer',
+              color: 'rgba(255,255,255,0.85)',
               padding: '10px',
-              fontWeight: 700,
-              fontSize: '0.95rem',
-            }}
-          >
-            {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
-          </button>
+              fontSize: '0.85rem',
+              textAlign: 'center',
+              lineHeight: 1.4,
+            }}>
+              🔧 {CHECKOUT_PAUSED_MSG}
+            </div>
+          ) : (
+            <button
+              onClick={handleBuy}
+              disabled={buying}
+              style={{
+                width: '100%',
+                background: '#7c3aed',
+                border: 'none',
+                borderRadius: '6px',
+                color: 'white',
+                cursor: buying ? 'wait' : 'pointer',
+                padding: '10px',
+                fontWeight: 700,
+                fontSize: '0.95rem',
+              }}
+            >
+              {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -663,25 +683,42 @@ function FocusHero({ product, hdOnly, buying, onBuy, onDismiss }) {
           </div>
 
           <div style={{ marginTop: '0.85rem' }}>
-            <button
-              onClick={onBuy}
-              disabled={buying}
-              style={{
-                background: 'linear-gradient(135deg,#7c3aed,#6d28d9)',
-                color: 'white', border: 'none',
-                padding: '1rem 1.25rem', borderRadius: '10px',
-                fontSize: '1.05rem', fontWeight: 700,
-                cursor: buying ? 'wait' : 'pointer',
-                boxShadow: '0 10px 25px rgba(124,58,237,0.4)',
-                transition: 'transform 0.12s ease',
-                width: '100%',
-              }}
-            >
-              {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
-            </button>
-            <div style={{ fontSize: '0.8rem', opacity: 0.6, marginTop: '0.6rem', textAlign: 'center' }}>
-              Click Buy Now to continue to secure checkout
-            </div>
+            {CHECKOUT_PAUSED ? (
+              <div style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: '10px',
+                padding: '1rem 1.25rem',
+                textAlign: 'center',
+                fontSize: '0.9rem',
+                color: 'rgba(255,255,255,0.85)',
+                lineHeight: 1.5,
+              }}>
+                🔧 {CHECKOUT_PAUSED_MSG}
+              </div>
+            ) : (
+              <>
+                <button
+                  onClick={onBuy}
+                  disabled={buying}
+                  style={{
+                    background: 'linear-gradient(135deg,#7c3aed,#6d28d9)',
+                    color: 'white', border: 'none',
+                    padding: '1rem 1.25rem', borderRadius: '10px',
+                    fontSize: '1.05rem', fontWeight: 700,
+                    cursor: buying ? 'wait' : 'pointer',
+                    boxShadow: '0 10px 25px rgba(124,58,237,0.4)',
+                    transition: 'transform 0.12s ease',
+                    width: '100%',
+                  }}
+                >
+                  {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
+                </button>
+                <div style={{ fontSize: '0.8rem', opacity: 0.6, marginTop: '0.6rem', textAlign: 'center' }}>
+                  Click Buy Now to continue to secure checkout
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -1092,6 +1129,7 @@ export default function Premium({ reviewsData }) {
   const handleBuy = async (productId) => {
     const pid = productId || selectedId;
     if (!pid) return;
+    if (CHECKOUT_PAUSED) { alert(CHECKOUT_PAUSED_MSG); return; }
     const product = products.find(p => p.id === pid);
     trackAnalytics('hd_single_buy_clicked', pid, product?.category);
     setCheckingOut(true);
