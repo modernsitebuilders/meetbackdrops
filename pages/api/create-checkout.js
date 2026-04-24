@@ -1,82 +1,68 @@
 import Stripe from "stripe";
 import { getProduct } from "../../lib/products";
 
-const testKey = process.env.STRIPE_SECRET_KEY_TEST;
-const liveKey = process.env.STRIPE_SECRET_KEY;
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-console.log("🔑 testKey exists:", !!testKey);
-console.log("🔑 liveKey exists:", !!liveKey);
-console.log("🧪 STRIPE_MODE:", process.env.STRIPE_MODE);
+// All price IDs live server-side only — never sent to the client.
+const PRICE_IDS = {
+  1:  process.env.STRIPE_PRICE_1  || 'price_1Sr4U0Q695ongkMjxUtnf9NA',
+  2:  process.env.STRIPE_PRICE_2  || 'price_1Sr4VEQ695ongkMjkaclxw67',
+  3:  process.env.STRIPE_PRICE_3  || 'price_1Sr4WYQ695ongkMjRUTPsoIr',
+  5:  process.env.STRIPE_PRICE_5  || 'price_1TDoudQ695ongkMj0hGBVZfc',
+  10: process.env.STRIPE_PRICE_10 || 'price_1TDovCQ695ongkMjnZptC1zz',
+  20: process.env.STRIPE_PRICE_20 || 'price_1TDowHQ695ongkMjwk1xZFAO',
+};
 
-const mode = process.env.STRIPE_MODE || "live";
-const key = mode === "test" ? testKey : liveKey;
+const PACK_SIZES = [1, 2, 3, 5, 10, 20];
 
-console.log("🔑 USING KEY PREFIX:", key?.slice(0, 10));
-
-if (!key) {
-  throw new Error(`Missing Stripe secret key for mode: ${mode}`);
+function resolvePriceId(count) {
+  const tier = PACK_SIZES.find(s => s >= count) ?? 20;
+  return PRICE_IDS[tier];
 }
-
-const stripe = new Stripe(key);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { priceId, productId } = req.body;
+  const { productIds } = req.body;
 
-  console.log("📦 priceId:", priceId);
-  console.log("🖼 productId:", productId);
-
-  if (!priceId || !productId) {
-    return res.status(400).json({ error: "Invalid request payload" });
+  if (!Array.isArray(productIds) || productIds.length === 0) {
+    return res.status(400).json({ error: "productIds must be a non-empty array" });
   }
 
-  const product = getProduct(productId);
-  if (!product) {
-    return res.status(400).json({ error: `Unknown product: ${productId}` });
+  const ids = productIds;
+
+  // Validate all products exist
+  for (const id of ids) {
+    if (!getProduct(id)) {
+      return res.status(400).json({ error: `Unknown product: ${id}` });
+    }
   }
+
+  const priceId = resolvePriceId(ids.length);
 
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
-
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-
+      line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${req.headers.origin}/hd-download?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,
-
       metadata: {
-        product_id: productId,
+        product_ids: ids.join(","),
+        // Keep product_id singular for single-item backwards compat
+        ...(ids.length === 1 ? { product_id: ids[0] } : {}),
       },
     });
 
-    console.log("💳 Stripe session created:", session.id);
-    console.log("🔗 Stripe session url:", session.url);
-
     if (!session?.url) {
-      console.error("❌ Stripe session missing URL:", session);
       return res.status(500).json({ error: "Stripe session missing URL" });
     }
 
     return res.status(200).json({ url: session.url });
-
   } catch (error) {
-    console.error("❌ FULL STRIPE ERROR:", {
-      message: error.message,
-      type: error.type,
-      code: error.code,
-    });
-
-    return res.status(500).json({
-      error: error.message || "Checkout failed",
-    });
+    console.error("Stripe checkout error:", error.message);
+    return res.status(500).json({ error: error.message || "Checkout failed" });
   }
 }

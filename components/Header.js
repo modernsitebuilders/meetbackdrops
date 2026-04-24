@@ -13,7 +13,10 @@ function trackAnalytics(eventType, filename, category) {
 
 export default function Header({ currentPage }) {
   const router = useRouter();
-  const { wishlist, openDrawer } = useWishlist();
+  const wishlistContext = useWishlist() || {};
+
+const wishlist = wishlistContext.wishlist || [];
+const openDrawer = wishlistContext.openDrawer || (() => {});
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openNestedDropdown, setOpenNestedDropdown] = useState(null);
   const [hoveredNav, setHoveredNav] = useState(null);

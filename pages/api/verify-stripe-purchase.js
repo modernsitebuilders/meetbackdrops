@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { getProduct } from '../../lib/products';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_TEST || process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -21,21 +21,33 @@ export default async function handler(req, res) {
       return res.status(400).json({ verified: false, error: 'Payment not completed' });
     }
 
-    const productId = session.metadata?.product_id;
-    if (!productId) {
-      return res.status(400).json({ verified: false, error: 'No product_id in session metadata' });
+    // Support both bundle (product_ids) and single (product_id) metadata
+    const rawIds =
+      session.metadata?.product_ids ||
+      session.metadata?.productId ||
+      session.metadata?.product_id;
+
+    if (!rawIds) {
+      return res.status(400).json({ verified: false, error: 'No product IDs in session metadata' });
     }
 
-    const product = getProduct(productId);
-    if (!product) {
-      console.error('verify-stripe-purchase: unknown product_id in metadata:', productId);
-      return res.status(400).json({ verified: false, error: 'Unrecognised product' });
+    const ids = rawIds.split(',').map(s => s.trim()).filter(Boolean);
+    const products = ids.map(id => getProduct(id)).filter(Boolean);
+
+    if (products.length === 0) {
+      return res.status(400).json({ verified: false, error: 'Unrecognised product(s)' });
     }
 
-    return res.status(200).json({ verified: true, product_id: productId, product });
-
+    return res.status(200).json({
+      verified: true,
+      product_ids: ids,
+      products,
+      // Backwards compat for single-item consumers
+      product_id: ids[0],
+      product: products[0],
+    });
   } catch (error) {
     console.error('Stripe verification failed:', error);
-    return res.status(500).json({ verified: false, error: 'Verification failed' });
+    return res.status(500).json({ verified: false, error: error.message });
   }
 }

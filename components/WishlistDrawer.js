@@ -10,19 +10,8 @@ const PACK_OPTIONS = [
   { size: 20, price: 39.99, savings: 60 },
 ];
 
-const PRICE_IDS = {
-  1:  'price_1Sr4U0Q695ongkMjxUtnf9NA',
-  2:  'price_1Sr4VEQ695ongkMjkaclxw67',
-  3:  'price_1Sr4WYQ695ongkMjRUTPsoIr',
-  5:  'price_1TDoudQ695ongkMj0hGBVZfc',
-  10: 'price_1TDovCQ695ongkMjnZptC1zz',
-  20: 'price_1TDowHQ695ongkMjwk1xZFAO',
-};
 
-
-// Set to false to re-enable purchases
-const CHECKOUT_PAUSED = true;
-const CHECKOUT_PAUSED_MSG = 'Purchases are temporarily paused while we fix checkout. Check back shortly.';
+const CHECKOUT_PAUSED = false;
 
 function bestTierForCount(count) {
   return PACK_OPTIONS.find(o => o.size >= count) || PACK_OPTIONS[PACK_OPTIONS.length - 1];
@@ -59,11 +48,11 @@ export default function WishlistDrawer() {
     setBuying(true);
     trackAnalytics('wishlist_checkout', null, 'wishlist');
     try {
-      const productId = wishlist[0].id;
+      const productIds = wishlist.map(i => i.id);
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId: PRICE_IDS[1], productId }),
+        body: JSON.stringify({ productIds }),
       });
       const data = await res.json();
       if (!data.url) {
@@ -234,21 +223,7 @@ export default function WishlistDrawer() {
             flexShrink: 0,
             background: '#fff',
           }}>
-            {CHECKOUT_PAUSED ? (
-              <div style={{
-                width: '100%',
-                background: '#fef3c7',
-                border: '1px solid #fcd34d',
-                borderRadius: '10px',
-                padding: '0.85rem',
-                fontSize: '0.85rem',
-                color: '#92400e',
-                textAlign: 'center',
-                lineHeight: 1.5,
-              }}>
-                🔧 {CHECKOUT_PAUSED_MSG}
-              </div>
-            ) : (
+            {CHECKOUT_PAUSED ? null : (
               <button
                 onClick={handleBuy}
                 disabled={buying}

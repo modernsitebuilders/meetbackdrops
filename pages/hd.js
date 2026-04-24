@@ -9,18 +9,14 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import ComparisonWidget from '../components/ComparisonWidget';
 import { loadStripe } from '@stripe/stripe-js';
-import { getReviewsData } from '../lib/reviews';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import { isHdOnlyProductId as isHdOnly } from '../lib/hdOnly';
 import { useWishlist } from '../lib/WishlistContext';
 
-const SINGLE_PRICE_ID = 'price_1Sr4U0Q695ongkMjxUtnf9NA';
 const SINGLE_PRICE = 4.99;
 
-// Set to false to re-enable purchases
-const CHECKOUT_PAUSED = true;
-const CHECKOUT_PAUSED_MSG = 'Purchases are temporarily paused while we fix checkout. Check back shortly.';
+const CHECKOUT_PAUSED = false;
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -443,6 +439,244 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
   );
 }
 
+// ─── Pack Options ─────────────────────────────────────────────────────────────
+const PACK_OPTIONS = [
+  { size: 1,  price: 4.99,  savings: null },
+  { size: 2,  price: 6.99,  savings: 30 },
+  { size: 3,  price: 8.99,  savings: 40 },
+  { size: 5,  price: 12.99, savings: 48 },
+  { size: 10, price: 22.99, savings: 54 },
+  { size: 20, price: 39.99, savings: 60 },
+];
+
+// ─── Sticky Pack Bar ───────────────────────────────────────────────────────────
+function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) {
+  const packOption = packSize ? PACK_OPTIONS.find(o => o.size === packSize) : null;
+  const isFull = packSize && selected.length >= packSize;
+
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0, left: 0, right: 0,
+      zIndex: 200,
+      background: 'linear-gradient(135deg, #4c1d95, #3730a3)',
+      color: 'white',
+      padding: '0.5rem 1rem',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '0.4rem',
+      flexWrap: 'nowrap',
+      overflowX: 'auto',
+      transform: visible ? 'translateY(0)' : 'translateY(-110%)',
+      transition: 'transform 0.25s ease',
+    }}>
+      {!packSize ? (
+        <>
+          <span style={{ fontSize: '0.8rem', opacity: 0.8, marginRight: '0.25rem', whiteSpace: 'nowrap' }}>
+            Choose a pack:
+          </span>
+          {PACK_OPTIONS.map(opt => (
+            <button
+              key={opt.size}
+              onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'sticky_bar'); onSelect(opt.size); }}
+              style={{
+                background: 'rgba(255,255,255,0.12)',
+                color: 'white',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '6px',
+                padding: '0.3rem 0.65rem',
+                cursor: 'pointer',
+                fontSize: '0.8rem',
+                fontWeight: '500',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {opt.size === 1 ? '1 image' : `${opt.size}-pack`} · ${opt.price}
+            </button>
+          ))}
+        </>
+      ) : (
+        <>
+          <span style={{ fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
+            {isFull ? `✓ All ${packSize} selected` : `${selected.length} of ${packSize} selected`}
+            {' · '}${packOption.price}
+          </span>
+          {!isFull && (
+            <span style={{ fontSize: '0.8rem', opacity: 0.75, whiteSpace: 'nowrap' }}>
+              — pick {packSize - selected.length} more below
+            </span>
+          )}
+          <button
+            onClick={onChangePack}
+            style={{
+              background: 'transparent',
+              color: 'rgba(255,255,255,0.65)',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderRadius: '6px',
+              padding: '0.25rem 0.6rem',
+              cursor: 'pointer',
+              fontSize: '0.75rem',
+              marginLeft: '0.25rem',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Change
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ─── Pack Picker ───────────────────────────────────────────────────────────────
+function PackPicker({ packSize, onSelect }) {
+  return (
+    <div style={{ marginBottom: '1.5rem' }}>
+      <div style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.75rem', opacity: 0.95 }}>
+        Choose your HD pack:
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
+        {PACK_OPTIONS.map(opt => {
+          const isSelected = packSize === opt.size;
+          return (
+            <button
+              key={opt.size}
+              onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'pack_picker'); onSelect(opt.size); }}
+              style={{
+                background: isSelected ? 'white' : 'rgba(255,255,255,0.15)',
+                color: isSelected ? '#4c1d95' : 'white',
+                border: isSelected ? '2px solid white' : '2px solid rgba(255,255,255,0.4)',
+                borderRadius: '8px',
+                padding: '0.5rem 0.9rem',
+                cursor: 'pointer',
+                fontWeight: isSelected ? '700' : '500',
+                fontSize: '0.85rem',
+                position: 'relative',
+                minWidth: '80px',
+              }}
+            >
+              <div>{opt.size === 1 ? '1 image' : `${opt.size} images`}</div>
+              <div style={{ fontSize: '1rem', fontWeight: 'bold' }}>${opt.price}</div>
+              <div style={{ fontSize: '0.65rem', opacity: 0.75, marginTop: '2px' }}>
+                ${(opt.price / opt.size).toFixed(2)}/img
+              </div>
+              {opt.savings && (
+                <div style={{
+                  position: 'absolute', top: '-8px', right: '-8px',
+                  background: '#10b981', color: 'white',
+                  fontSize: '0.6rem', fontWeight: 'bold',
+                  padding: '2px 4px', borderRadius: '4px',
+                  whiteSpace: 'nowrap',
+                }}>
+                  Save ${Math.round(SINGLE_PRICE * opt.size - opt.price)}
+                </div>
+              )}
+            </button>
+          );
+        })}
+      </div>
+      <div style={{ fontSize: '0.85rem', marginTop: '0.75rem', opacity: 0.85, minHeight: '1.2em' }}>
+        {packSize
+          ? `✓ ${packSize === 1 ? '1-image' : `${packSize}-image pack`} selected — pick ${packSize} image${packSize > 1 ? 's' : ''} below`
+          : 'Select a pack to get started'}
+      </div>
+    </div>
+  );
+}
+
+// ─── Checkout Bar ──────────────────────────────────────────────────────────────
+function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckout }) {
+  const packOption = PACK_OPTIONS.find(o => o.size === packSize);
+  const isFull = selected.length >= packSize;
+  const remaining = packSize - selected.length;
+
+  return (
+    <div style={{
+      position: 'fixed', bottom: '2rem', right: '2rem',
+      background: isFull ? '#2563eb' : '#1e293b',
+      color: 'white',
+      padding: '1.5rem 2rem',
+      borderRadius: '12px',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.35)',
+      zIndex: 100,
+      transition: 'background 0.2s',
+      minWidth: '200px',
+    }}>
+      <button
+        onClick={onClear}
+        aria-label="Clear selection"
+        style={{
+          position: 'absolute', top: '10px', right: '10px',
+          background: 'transparent', border: 'none',
+          color: 'white', cursor: 'pointer',
+          fontSize: '1.2rem', padding: '0.25rem',
+        }}
+      >×</button>
+      <div style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '0.2rem' }}>
+        {packSize}-image pack
+      </div>
+      <div style={{ marginBottom: '0.25rem', fontSize: '1rem', fontWeight: '500' }}>
+        {isFull
+          ? `✓ All ${packSize} selected`
+          : `${selected.length} of ${packSize} — pick ${remaining} more`}
+      </div>
+      <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+        ${packOption.price}
+      </div>
+      {isFull ? (
+        <button
+          onClick={onCheckout}
+          style={{
+            background: 'white', color: '#2563eb',
+            border: 'none', padding: '0.75rem 2rem',
+            borderRadius: '8px', fontWeight: 'bold',
+            cursor: 'pointer', width: '100%', fontSize: '1rem',
+          }}
+        >
+          {packSize === 1
+            ? `Buy HD for $${packOption.price}`
+            : packSize === 3
+            ? 'Unlock bundle savings'
+            : packSize >= 5
+            ? 'Checkout best value pack'
+            : 'Checkout →'}
+        </button>
+      ) : (
+        <div style={{
+          background: 'rgba(255,255,255,0.1)',
+          borderRadius: '8px', padding: '0.6rem',
+          textAlign: 'center', fontSize: '0.85rem', opacity: 0.8,
+        }}>
+          {remaining} more to checkout
+          {selected.length === 1 && (
+            <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '4px' }}>
+              Add 2 more to unlock better pricing
+            </div>
+          )}
+          {selected.length >= 2 && selected.length <= 4 && (
+            <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '4px' }}>
+              1 more unlocks better bundle price
+            </div>
+          )}
+        </div>
+      )}
+      <button
+        onClick={onChangePack}
+        style={{
+          background: 'transparent', color: 'rgba(255,255,255,0.6)',
+          border: 'none', padding: '0.5rem 0 0',
+          cursor: 'pointer', fontSize: '0.78rem', width: '100%',
+          textAlign: 'center', textDecoration: 'underline', display: 'block',
+        }}
+      >
+        Change pack
+      </button>
+    </div>
+  );
+}
+
 // ─── Subscription CTA ──────────────────────────────────────────────────────────
 function SubscriptionCTA({ onVerifyClick }) {
   const [loading, setLoading] = useState(false);
@@ -597,7 +831,7 @@ function VerifyEmailModal({ onClose, onVerified }) {
 // (State machine replaced with simple useState in main component)
 
 // ─── Focus Hero ────────────────────────────────────────────────────────────────
-function FocusHero({ product, hdOnly, buying, onBuy, onDismiss }) {
+function FocusHero({ product, hdOnly, buying, onBuy, onDismiss, onBundleUpsell }) {
   if (!product) return null;
   const thumb = `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
 
@@ -712,8 +946,29 @@ function FocusHero({ product, hdOnly, buying, onBuy, onDismiss }) {
                     width: '100%',
                   }}
                 >
-                  {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
+                  {buying ? 'Preparing checkout…' : `Buy HD for $${SINGLE_PRICE}`}
                 </button>
+                {onBundleUpsell && (
+                  <button
+                    onClick={onBundleUpsell}
+                    style={{
+                      background: 'rgba(255,255,255,0.08)',
+                      color: 'white',
+                      border: '1px solid rgba(255,255,255,0.25)',
+                      padding: '0.75rem 1.25rem',
+                      borderRadius: '10px',
+                      fontSize: '0.9rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      width: '100%',
+                      marginTop: '0.6rem',
+                      transition: 'background 0.15s ease',
+                    }}
+                  >
+                    Or get 3 HD images for $8.99{' '}
+                    <span style={{ opacity: 0.75, fontWeight: 400 }}>(save $6.00)</span>
+                  </button>
+                )}
                 <div style={{ fontSize: '0.8rem', opacity: 0.6, marginTop: '0.6rem', textAlign: 'center' }}>
                   Click Buy Now to continue to secure checkout
                 </div>
@@ -1013,6 +1268,8 @@ export default function Premium({ reviewsData }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [highlightMissError, setHighlightMissError] = useState(null);
+  const [packSize, setPackSize] = useState(null);
+  const [bundleSelected, setBundleSelected] = useState([]);
   const heroRef = useRef(null);
   const selectedProduct = useMemo(
     () => (selectedId ? products.find(p => p.id === selectedId) : null),
@@ -1126,18 +1383,19 @@ export default function Premium({ reviewsData }) {
       .catch(() => {});
   };
 
-  const handleBuy = async (productId) => {
-    const pid = productId || selectedId;
-    if (!pid) return;
+  const handleCheckout = async (productIds) => {
+    const ids = productIds
+      ?? (packSize ? bundleSelected : selectedId ? [selectedId] : []);
+    if (!ids || ids.length === 0) return;
     if (CHECKOUT_PAUSED) { alert(CHECKOUT_PAUSED_MSG); return; }
-    const product = products.find(p => p.id === pid);
-    trackAnalytics('hd_single_buy_clicked', pid, product?.category);
+    const product = products.find(p => p.id === ids[0]);
+    trackAnalytics('hd_checkout_initiated', ids.join(','), product?.category);
     setCheckingOut(true);
     try {
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId: SINGLE_PRICE_ID, productId: pid }),
+        body: JSON.stringify({ productIds: ids }),
       });
       const data = await res.json();
       if (!data.url) {
@@ -1151,12 +1409,32 @@ export default function Premium({ reviewsData }) {
     }
   };
 
-  const handleHdOnlyBuy = async (productId) => {
+  const handleHdOnlyBuy = (productId) => {
     setHdOnlyPreview(null);
-    await handleBuy(productId);
+    handleCheckout([productId]);
+  };
+
+  const handlePackSelect = (size) => {
+    setPackSize(size);
+    setBundleSelected([]);
+    trackAnalytics('hd_pack_selected', String(size), 'hero');
+  };
+
+  const handleChangePack = () => {
+    setPackSize(null);
+    setBundleSelected([]);
   };
 
   const handleCardClick = (id) => {
+    if (packSize) {
+      setBundleSelected(prev => {
+        if (prev.includes(id)) return prev.filter(x => x !== id);
+        if (prev.length >= packSize) return prev;
+        return [...prev, id];
+      });
+      trackAnalytics('hd_image_selected', id, 'bundle');
+      return;
+    }
     setSelectedId(id);
     trackAnalytics('hd_focus_entered', id, 'grid_click');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1191,15 +1469,43 @@ export default function Premium({ reviewsData }) {
         <HdFaqSchema />
       </Head>
 
-      {/* Focus Hero — shown when an image is selected */}
-      {!isSubscriber && selectedProduct && (
+      {/* Sticky pack bar — only for non-subscribers, hidden when focus hero is showing */}
+      {!isSubscriber && !selectedProduct && (
+        <StickyPackBar
+          packSize={packSize}
+          selected={bundleSelected}
+          onSelect={handlePackSelect}
+          onChangePack={handleChangePack}
+          visible={showStickyBar}
+        />
+      )}
+
+      {/* Bundle checkout bar — floats bottom-right when a pack is active */}
+      {!isSubscriber && packSize && (
+        <CheckoutBar
+          selected={bundleSelected}
+          packSize={packSize}
+          onClear={handleChangePack}
+          onChangePack={handleChangePack}
+          onCheckout={() => handleCheckout(bundleSelected)}
+        />
+      )}
+
+      {/* Focus Hero — shown when a single image is selected (not in bundle mode) */}
+      {!isSubscriber && selectedProduct && !packSize && (
         <FocusHero
           product={selectedProduct}
           hdOnly={isHdOnly(selectedProduct.id)}
           buying={checkingOut}
-          onBuy={() => handleBuy()}
+          onBuy={() => handleCheckout()}
           onDismiss={() => {
             trackAnalytics('hd_focus_dismissed', selectedProduct.id, selectedProduct.category);
+            setSelectedId(null);
+          }}
+          onBundleUpsell={() => {
+            trackAnalytics('hd_bundle_upsell', selectedProduct.id, selectedProduct.category);
+            setPackSize(3);
+            setBundleSelected([selectedProduct.id]);
             setSelectedId(null);
           }}
         />
@@ -1267,20 +1573,8 @@ export default function Premium({ reviewsData }) {
             )}
           </div>
         ) : (
-          /* ── Single-select prompt ── */
-          <div style={{
-            background: 'rgba(255,255,255,0.15)',
-            padding: '1.25rem 1.5rem', borderRadius: '12px',
-            display: 'inline-block', marginBottom: '1.5rem',
-            textAlign: 'center',
-          }}>
-            <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-              Select an image to purchase in HD
-            </div>
-            <div style={{ fontSize: '0.85rem', opacity: 0.85 }}>
-              Each image is purchased individually · ${SINGLE_PRICE} per image
-            </div>
-          </div>
+          /* ── Pack picker ── */
+          <PackPicker packSize={packSize} onSelect={handlePackSelect} />
         )}
 
         <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '2rem', color: 'white' }}>
@@ -1396,7 +1690,7 @@ export default function Premium({ reviewsData }) {
             <HdProductCard
               key={product.id}
               product={product}
-              isSelected={selectedId === product.id}
+              isSelected={packSize ? bundleSelected.includes(product.id) : selectedId === product.id}
               isHovered={hoveredProduct === product.id}
               isHighlighted={false}
               onToggle={handleCardClick}
@@ -1449,6 +1743,7 @@ export default function Premium({ reviewsData }) {
 }
 
 export async function getStaticProps() {
+  const { getReviewsData } = await import('../lib/reviews');
   const reviewsData = await getReviewsData();
   return { props: { reviewsData }, revalidate: 3600 };
 }
