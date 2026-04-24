@@ -153,6 +153,8 @@ function generatePin(item, idx, seenSeo, seenCtr) {
   return {
     slug: item.slug,
     category: item.category,
+    folder: item.folder,
+    image_webp: item.image_webp,
     tags: Array.isArray(item.tags) ? item.tags : [],
     seoTitle: finalSeo,
     ctrTitle: finalCtr,
