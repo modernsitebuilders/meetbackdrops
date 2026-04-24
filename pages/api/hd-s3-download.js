@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import AWS from 'aws-sdk';
 import { getProduct } from '../../lib/products';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_TEST || process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
