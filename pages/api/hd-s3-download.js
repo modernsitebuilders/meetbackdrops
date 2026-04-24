@@ -39,8 +39,14 @@ export default async function handler(req, res) {
       return res.status(403).json({ error: 'Payment not verified' });
     }
 
-    // Confirm this session authorises the requested product
-    if (session.metadata?.product_id !== productId) {
+    // Confirm this session authorises the requested product (supports single + bundle)
+    const authorized = new Set(
+      (session.metadata?.product_ids || session.metadata?.product_id || '')
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean)
+    );
+    if (!authorized.has(productId)) {
       return res.status(403).json({ error: 'Product not included in this purchase' });
     }
 
