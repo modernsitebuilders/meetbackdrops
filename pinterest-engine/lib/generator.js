@@ -1,13 +1,91 @@
 const ADJECTIVES = ['Professional', 'Elegant', 'Modern', 'Clean', 'Stylish'];
 const STYLES = ['Minimalist', 'Contemporary', 'Sleek', 'Executive', 'Refined'];
 const PLATFORMS = 'Zoom, Teams, and Google Meet';
-const SEO_KEYWORDS = ['Zoom background', 'virtual background', 'video calls'];
-
-const SEO_TEMPLATES = [
-  (ctx) => `${ctx.adjective} ${ctx.category} Zoom Background for Professional Calls`,
-  (ctx) => `Clean ${ctx.category} Virtual Background for Video Meetings`,
-  (ctx) => `${ctx.style} Workspace ${ctx.category} Zoom Background`,
+const SEO_KEYWORDS = [
+  'zoom',
+  'virtual',
+  'video',
+  'remote',
+  'background',
+  'work',
+  'meet',
+  'calls',
+  'professional',
 ];
+
+const CATEGORY_PHRASES = {
+  'Office Spaces': ['Office', 'Workspace', 'Home Office', 'Professional Office'],
+  'Bookshelves': ['Bookshelf', 'Library Wall', 'Reading Room', 'Book Nook'],
+  'Wall Shelves': ['Shelf Wall', 'Decor Shelves', 'Modern Shelving', 'Styled Shelves'],
+  'Libraries': ['Library', 'Study Room', 'Classic Library', 'Reading Space'],
+  'Home Office': ['Home Office', 'Workspace', 'Remote Workspace', 'Home Studio'],
+  'Art Galleries': ['Art Gallery', 'Gallery Space', 'Exhibition Space', 'Curated Gallery'],
+  'Coffee Shops': ['Coffee Shop', 'Cafe', 'Coffee House', 'Cozy Cafe'],
+  'Conference Rooms': ['Conference Room', 'Meeting Room', 'Boardroom', 'Executive Suite'],
+  'Living Rooms': ['Living Room', 'Lounge', 'Sitting Room', 'Cozy Living Space'],
+  'Kitchens': ['Kitchen', 'Modern Kitchen', 'Chef Kitchen', 'Culinary Space'],
+  'Gardens Patios': ['Garden', 'Patio', 'Outdoor Retreat', 'Garden Patio'],
+  'Urban Lofts': ['Urban Loft', 'City Loft', 'Industrial Loft', 'Modern Loft'],
+  'Historic Spaces': ['Historic Space', 'Heritage Room', 'Classic Interior', 'Period Setting'],
+  'Nature Landscapes': ['Nature Scene', 'Outdoor Landscape', 'Scenic View', 'Natural Backdrop'],
+  'Bokeh Backgrounds': ['Bokeh Scene', 'Soft Focus Backdrop', 'Blurred Lights', 'Dreamy Bokeh'],
+  'Christmas Backgrounds': ['Christmas Scene', 'Holiday Setting', 'Festive Decor', 'Cozy Christmas'],
+  'Easter Backgrounds': ['Easter Scene', 'Spring Setting', 'Pastel Decor', 'Easter Display'],
+  'Halloween Backgrounds': ['Halloween Scene', 'Spooky Setting', 'Autumn Decor', 'Moody Halloween'],
+  'Valentines Backgrounds': ['Valentine Scene', 'Romantic Setting', 'Love Theme', 'Pink Decor'],
+  'Spring Backgrounds': ['Spring Scene', 'Floral Setting', 'Blossom Decor', 'Fresh Spring'],
+};
+
+const DESCRIPTORS = [
+  'Clean',
+  'Minimal',
+  'Modern',
+  'Professional',
+  'Bright',
+  'Sleek',
+  'Cozy',
+  'Elegant',
+];
+
+const CONTEXTS = [
+  'for Zoom Meetings',
+  'for Remote Work',
+  'for Video Calls',
+  'for Professional Calls',
+  'for Zoom, Teams & Google Meet',
+  'for Work From Home Setup',
+];
+
+const CATEGORY_KEY_MAP = {
+  'office-spaces': 'Office Spaces',
+  'home-office': 'Home Office',
+  'home-offices': 'Home Office',
+  'minimalist-offices': 'Office Spaces',
+  'executive-offices': 'Office Spaces',
+  'bookshelves': 'Bookshelves',
+  'bookshelves-bright': 'Bookshelves',
+  'bookshelves-dark': 'Bookshelves',
+  'wall-shelves': 'Wall Shelves',
+  'wall-shelves-bright': 'Wall Shelves',
+  'wall-shelves-dark': 'Wall Shelves',
+  'libraries': 'Libraries',
+  'library-backgrounds': 'Libraries',
+  'art-galleries': 'Art Galleries',
+  'coffee-shops': 'Coffee Shops',
+  'conference-rooms': 'Conference Rooms',
+  'living-rooms': 'Living Rooms',
+  'kitchens': 'Kitchens',
+  'gardens-patios': 'Gardens Patios',
+  'urban-lofts': 'Urban Lofts',
+  'historic-spaces': 'Historic Spaces',
+  'nature-landscapes': 'Nature Landscapes',
+  'bokeh-backgrounds': 'Bokeh Backgrounds',
+  'christmas-backgrounds': 'Christmas Backgrounds',
+  'easter-backgrounds': 'Easter Backgrounds',
+  'halloween-backgrounds': 'Halloween Backgrounds',
+  'valentines-backgrounds': 'Valentines Backgrounds',
+  'spring-backgrounds': 'Spring Backgrounds',
+};
 
 const CTR_TEMPLATES = [
   (ctx) => `Upgrade your Zoom setup with this ${ctx.category} background`,
@@ -52,6 +130,148 @@ function displayCategory(category) {
   return CATEGORY_DISPLAY[category] || titleCase(category);
 }
 
+function getCategory(item) {
+  if (!item || !item.category) return '';
+  return CATEGORY_KEY_MAP[item.category] || displayCategory(item.category);
+}
+
+function cleanBase(file) {
+  if (!file) return '';
+  return String(file)
+    .replace('.webp', '')
+    .replace(/-\d+$/, '')
+    .replace(/-/g, ' ')
+    .trim();
+}
+
+function collapseSpaces(text) {
+  return text.replace(/\s+/g, ' ').trim();
+}
+
+function titleCasePhrase(phrase) {
+  return phrase
+    .split(' ')
+    .filter(Boolean)
+    .map((w) => w[0].toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
+}
+
+const GENERIC_STOPWORDS = new Set([
+  'background',
+  'backgrounds',
+  'backdrop',
+  'backdrops',
+  'bright',
+  'dark',
+  'the',
+  'a',
+  'an',
+  'and',
+  'with',
+]);
+
+function wordVariants(word) {
+  const lc = word.toLowerCase();
+  const variants = new Set([lc]);
+  if (lc.endsWith('s')) variants.add(lc.slice(0, -1));
+  else variants.add(lc + 's');
+  if (lc.endsWith('es')) variants.add(lc.slice(0, -2));
+  return variants;
+}
+
+function buildStopSet(phrases) {
+  const stop = new Set(GENERIC_STOPWORDS);
+  for (const phrase of phrases) {
+    if (!phrase) continue;
+    for (const w of String(phrase).toLowerCase().split(/\s+/)) {
+      if (!w) continue;
+      for (const v of wordVariants(w)) stop.add(v);
+    }
+  }
+  return stop;
+}
+
+function extractBasePhrase(base, stopSet) {
+  const words = base
+    .split(' ')
+    .map((w) => w.trim())
+    .filter((w) => w && !stopSet.has(w.toLowerCase()));
+  return titleCasePhrase(words.slice(0, 2).join(' '));
+}
+
+function wordOverlap(a, b) {
+  if (!a || !b) return false;
+  const aw = new Set(String(a).toLowerCase().split(/\s+/).filter(Boolean));
+  for (const w of String(b).toLowerCase().split(/\s+/)) {
+    if (!w) continue;
+    for (const v of wordVariants(w)) {
+      if (aw.has(v)) return true;
+    }
+  }
+  return false;
+}
+
+function pickNonOverlappingDescriptor(seed, noun) {
+  for (let i = 0; i < DESCRIPTORS.length; i++) {
+    const d = DESCRIPTORS[(seed + i) % DESCRIPTORS.length];
+    if (!wordOverlap(d, noun)) return d;
+  }
+  return DESCRIPTORS[seed % DESCRIPTORS.length];
+}
+
+function hash32(str) {
+  let h = 2166136261;
+  const s = String(str);
+  for (let i = 0; i < s.length; i++) {
+    h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+  }
+  h ^= h >>> 16;
+  h = Math.imul(h, 0x85ebca6b);
+  h ^= h >>> 13;
+  h = Math.imul(h, 0xc2b2ae35);
+  h ^= h >>> 16;
+  return h >>> 0;
+}
+
+function seedFor(item, index, salt) {
+  const key = `${salt}::${(item && item.slug) || ''}|${index}`;
+  return hash32(key);
+}
+
+function makeTitle(item, index) {
+  const category = getCategory(item);
+  const base = cleanBase(item && item.image_webp);
+  const catOptions = CATEGORY_PHRASES[category] || [category];
+
+  const sPattern = seedFor(item, index, 'p');
+  const sDescriptor = seedFor(item, index, 'd');
+  const sContext = seedFor(item, index, 'c');
+  const sNoun = seedFor(item, index, 'n');
+
+  const context = CONTEXTS[sContext % CONTEXTS.length];
+  const noun = catOptions[sNoun % catOptions.length];
+  const descriptor = pickNonOverlappingDescriptor(sDescriptor, noun);
+
+  const stopSet = buildStopSet([category, noun, ...catOptions]);
+  const basePhrase = extractBasePhrase(base, stopSet);
+  const safeBase = basePhrase && !wordOverlap(basePhrase, noun) ? basePhrase : '';
+
+  const patterns = [
+    `${descriptor} ${noun} Background ${context}`,
+    safeBase
+      ? `${descriptor} ${safeBase} ${noun} ${context}`
+      : `${descriptor} ${noun} ${context}`,
+    `${noun} Background ${context}`,
+    `${descriptor} ${noun} Setup ${context}`,
+    `${descriptor} ${noun} for Video Calls`,
+    safeBase
+      ? `${safeBase} ${noun} Background for Work`
+      : `${descriptor} ${noun} Background for Work`,
+  ];
+
+  return collapseSpaces(patterns[sPattern % patterns.length]);
+}
+
 function hasKeyword(title) {
   const lc = title.toLowerCase();
   return SEO_KEYWORDS.some((k) => lc.includes(k.toLowerCase()));
@@ -94,28 +314,37 @@ function buildAlt(item, seoTitle) {
   return clampText(`${seoTitle} — ${category} virtual background image`, 160);
 }
 
-function generateTitle(templates, ctx, idx) {
-  const tmpl = templates[idx % templates.length];
-  return tmpl(ctx);
-}
-
 function generateCandidates(item, idx) {
   const category = displayCategory(item.category);
   const adjective = ADJECTIVES[idx % ADJECTIVES.length];
   const style = STYLES[idx % STYLES.length];
   const ctx = { category, adjective, style };
-  const seoIdx = idx % SEO_TEMPLATES.length;
   const ctrIdx = idx % CTR_TEMPLATES.length;
   return {
-    seoIdx,
     ctrIdx,
     ctx,
-    seoTitle: SEO_TEMPLATES[seoIdx](ctx),
+    seoTitle: makeTitle(item, idx),
     ctrTitle: CTR_TEMPLATES[ctrIdx](ctx),
   };
 }
 
-function ensureUniqueTitle(title, seen, item, idx, kind) {
+function ensureUniqueSeoTitle(title, seen, item, idx) {
+  if (!seen.has(title)) {
+    seen.add(title);
+    return title;
+  }
+  for (let i = 1; i < 200; i++) {
+    const candidate = makeTitle(item, idx + i * 7);
+    if (!seen.has(candidate)) {
+      seen.add(candidate);
+      return candidate;
+    }
+  }
+  seen.add(title);
+  return title;
+}
+
+function ensureUniqueCtrTitle(title, seen, item, idx) {
   if (!seen.has(title)) {
     seen.add(title);
     return title;
@@ -124,16 +353,13 @@ function ensureUniqueTitle(title, seen, item, idx, kind) {
     const adj = ADJECTIVES[(idx + i) % ADJECTIVES.length];
     const sty = STYLES[(idx + i) % STYLES.length];
     const ctx = { category: displayCategory(item.category), adjective: adj, style: sty };
-    const templates = kind === 'seo' ? SEO_TEMPLATES : CTR_TEMPLATES;
-    const candidate = templates[idx % templates.length](ctx);
+    const candidate = CTR_TEMPLATES[idx % CTR_TEMPLATES.length](ctx);
     if (!seen.has(candidate)) {
       seen.add(candidate);
       return candidate;
     }
   }
-  const match = (item.slug || '').match(/(\d+)/);
-  const suffix = match ? ` #${match[1]}` : ` — ${item.slug}`;
-  let final = clampText(title + suffix, 95);
+  let final = title;
   let n = 2;
   while (seen.has(final)) {
     final = clampText(`${title} v${n}`, 95);
@@ -145,8 +371,8 @@ function ensureUniqueTitle(title, seen, item, idx, kind) {
 
 function generatePin(item, idx, seenSeo, seenCtr) {
   const { seoTitle, ctrTitle } = generateCandidates(item, idx);
-  const finalSeo = ensureUniqueTitle(seoTitle, seenSeo, item, idx, 'seo');
-  const finalCtr = ensureUniqueTitle(ctrTitle, seenCtr, item, idx, 'ctr');
+  const finalSeo = ensureUniqueSeoTitle(seoTitle, seenSeo, item, idx);
+  const finalCtr = ensureUniqueCtrTitle(ctrTitle, seenCtr, item, idx);
   if (!hasKeyword(finalSeo)) {
     throw new Error(`SEO title missing keyword for ${item.slug}: ${finalSeo}`);
   }
@@ -171,4 +397,4 @@ function generateAll(items) {
   return items.map((item, idx) => generatePin(item, idx, seenSeo, seenCtr));
 }
 
-module.exports = { generateAll, displayCategory };
+module.exports = { generateAll, displayCategory, makeTitle, cleanBase };

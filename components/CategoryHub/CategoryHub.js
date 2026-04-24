@@ -6,6 +6,7 @@ import HubHero from './HubHero';
 import SocialProofBand from './SocialProofBand';
 import HDConversionModule from './HDConversionModule';
 import HubRelatedCategories from './HubRelatedCategories';
+import { getFreeImages, getPremiumImages } from '../../lib/images-access';
 import styles from '../../styles/CategoryHub.module.css';
 
 const HD_MODULE_ID = 'hub-hd-module';
@@ -44,16 +45,18 @@ function scrollToHdModule() {
 
 export default function CategoryHub({
   slug,
-  images,
   featuredImages,
   scores = {},
   onImageClick,
 }) {
   const firedDepths = useRef(new Set());
 
+  const freeImages = getFreeImages(slug);
+  const premiumImages = getPremiumImages(slug);
+
   const heroImages = (featuredImages && featuredImages.length
     ? featuredImages
-    : images
+    : freeImages
   ).slice(0, 5);
 
   useEffect(() => {
@@ -91,12 +94,12 @@ export default function CategoryHub({
         onImageClick={onImageClick}
       />
 
-      <SocialProofBand slug={slug} images={images} />
+      <SocialProofBand slug={slug} images={freeImages} />
 
       <div id={HD_MODULE_ID}>
         <HDConversionModule
           slug={slug}
-          images={images}
+          premiumImages={premiumImages}
           scores={scores}
           onCompareClick={handleHdCompareClick}
         />

@@ -3,37 +3,30 @@
 import { useState } from 'react';
 import ComparisonWidget from '../ComparisonWidget';
 import PostCompareModal from '../PostCompareModal';
-import { HD_BASE_IDS } from '../../lib/hdImages';
 import { webpUrl } from '../../lib/cloudinaryUrl';
 import styles from '../../styles/CategoryHub.module.css';
 
-export default function HDConversionModule({ slug, images = [], scores = {}, onCompareClick }) {
+export default function HDConversionModule({ slug, premiumImages = [], scores = {}, onCompareClick }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [hdUrl, setHdUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [sliderUsed, setSliderUsed] = useState(false);
   const [postCompareOpen, setPostCompareOpen] = useState(false);
 
-  // office-spaces: always use the fixed comparison pair
+  // office-spaces: always use the fixed comparison pair.
+  // Other slugs: pick the highest-scoring premium image.
   let baseId, hdId, freeUrl;
   if (slug === 'office-spaces') {
-    const fixedFilename = 'office-spaces-36.webp';
-    const fixedImage = images.find((img) => img.filename === fixedFilename);
-    if (!fixedImage) {
-      console.warn('[HDConversionModule] office-spaces-36.webp not found in images array. Module hidden.');
-      return null;
-    }
     baseId = 'office-spaces-36';
     hdId = 'office-spaces-36-hd';
-    freeUrl = webpUrl(slug, fixedFilename);
+    freeUrl = webpUrl(slug, 'office-spaces-36.webp');
   } else {
-    const topImage = [...images]
-      .filter((img) => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
+    const topImage = [...premiumImages]
       .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
 
     if (!topImage) {
       if (typeof window !== 'undefined') {
-        console.warn(`[CategoryHub] HDConversionModule: no HD variants for slug="${slug}". Module hidden.`);
+        console.warn(`[CategoryHub] HDConversionModule: no premium images for slug="${slug}". Module hidden.`);
       }
       return null;
     }

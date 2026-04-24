@@ -82,7 +82,6 @@ function CategoryContent({ slug, scores = {}}) {
             <>
               <CategoryHub
                 slug={slug}
-                images={category.images}
                 scores={scores}
                 onImageClick={setPreviewImage}
                 onDownload={(image) => handleDownload(image, slug)}
