@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import ComparisonWidget from '../components/ComparisonWidget';
-import { loadStripe } from '@stripe/stripe-js';
 import cloudinaryUrls from '../cloudinary-urls.json';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import { isHdOnlyProductId as isHdOnly } from '../lib/hdOnly';
