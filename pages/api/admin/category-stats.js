@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import { isDownloadEvent } from '../../../lib/analyticsNormalize';
 
 export default async function handler(req, res) {
   try {
@@ -37,7 +38,7 @@ export default async function handler(req, res) {
 
       if (eventType === 'page_view') {
         catData[category].views++;
-      } else if (eventType === 'download') {
+      } else if (isDownloadEvent(eventType)) {
         catData[category].downloads++;
       }
     });

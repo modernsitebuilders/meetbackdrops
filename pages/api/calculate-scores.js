@@ -7,7 +7,7 @@
 
 import { google } from 'googleapis';
 import { getAll, resolveByAnyExtension } from '../../lib/manifest';
-import { normalizeAnalyticsCategory } from '../../lib/analyticsNormalize';
+import { normalizeAnalyticsCategory, isDownloadEvent } from '../../lib/analyticsNormalize';
 
 const RESET_DATE = new Date('2026-01-25');
 
@@ -135,7 +135,7 @@ export default async function handler(req, res) {
 
       if (eventDate < RESET_DATE) return;
 
-      if (eventType === 'download') {
+      if (isDownloadEvent(eventType)) {
         imageStats[matchedFilename].downloads += 1;
 
         if (!imageStats[matchedFilename].lastDownload || eventDate > imageStats[matchedFilename].lastDownload) {

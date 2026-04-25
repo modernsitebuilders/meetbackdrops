@@ -10,7 +10,7 @@
 import { google } from 'googleapis';
 import { calculateImageScore } from '../../../lib/imageScoring';
 import { resolveByAnyExtension, getAll } from '../../../lib/manifest';
-import { normalizeAnalyticsCategory } from '../../../lib/analyticsNormalize';
+import { normalizeAnalyticsCategory, isDownloadEvent } from '../../../lib/analyticsNormalize';
 
 const RESET_DATE = new Date('2026-01-25');
 
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
       const rawCategory = row[4];
 
       const cleanName = cleanFilename(filename);
-      if (!cleanName || eventType !== 'download') continue;
+      if (!cleanName || !isDownloadEvent(eventType)) continue;
 
       const eventDate = new Date(timestamp);
       if (eventDate < RESET_DATE) continue;

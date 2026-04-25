@@ -21,6 +21,14 @@ import BackToTop from '../../../components/BackToTop';
 import HDComparisonHero from '../../../components/HDComparisonHero';
 import CategoryHub from '../../../components/CategoryHub/CategoryHub';
 
+const OFFICE_HUB_FEATURED = [
+  { filename: 'office-spaces-69.webp', title: 'Office Space Background 69' },
+  { filename: 'office-spaces-71.webp', title: 'Office Space Background 71' },
+  { filename: 'office-spaces-36.webp', title: 'Office Space Background 36' },
+  { filename: 'office-spaces-05.webp', title: 'Office Space Background 5' },
+  { filename: 'office-spaces-21.webp', title: 'Office Space Background 21' },
+];
+
 function CategoryContent({ slug, scores = {}}) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
@@ -83,6 +91,7 @@ function CategoryContent({ slug, scores = {}}) {
               <CategoryHub
                 slug={slug}
                 scores={scores}
+                featuredImages={OFFICE_HUB_FEATURED}
                 onImageClick={setPreviewImage}
                 onDownload={(image) => handleDownload(image, slug)}
                 downloadingImage={downloadingImage}

@@ -9,7 +9,7 @@
 
 import { google } from 'googleapis';
 import { resolveByAnyExtension } from '../../../lib/manifest';
-import { normalizeAnalyticsCategory } from '../../../lib/analyticsNormalize';
+import { normalizeAnalyticsCategory, isDownloadEvent } from '../../../lib/analyticsNormalize';
 
 const SOURCES = ['bing', 'google', 'chatgpt', 'duckduckgo', 'yahoo', 'direct'];
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
@@ -133,7 +133,7 @@ export default async function handler(req, res) {
           sourceStats[src].views30++;
           if (sessionId) sourceStats[src].sessions30.add(sessionId);
         }
-      } else if (eventType === 'download') {
+      } else if (isDownloadEvent(eventType)) {
         totalDownloads++;
         sourceStats[src].downloads++;
         if (sessionId) {

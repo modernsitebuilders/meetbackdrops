@@ -1192,6 +1192,12 @@ const products = [
   { id: 'easter-background-93-hd', name: 'Easter #93', category: 'easter-backgrounds' },
   { id: 'easter-background-99-hd', name: 'Easter #99', category: 'easter-backgrounds' },
   { id: 'easter-background-101-hd', name: 'Easter #101', category: 'easter-backgrounds' },
+  { id: 'spring-background-01-hd', name: 'Spring #1', category: 'spring-backgrounds' },
+  { id: 'spring-background-36-hd', name: 'Spring #36', category: 'spring-backgrounds' },
+  { id: 'spring-background-55-hd', name: 'Spring #55', category: 'spring-backgrounds' },
+  { id: 'spring-background-63-hd', name: 'Spring #63', category: 'spring-backgrounds' },
+  { id: 'spring-background-73-hd', name: 'Spring #73', category: 'spring-backgrounds' },
+  { id: 'spring-background-74-hd', name: 'Spring #74', category: 'spring-backgrounds' },
 ];
 
 // Maps display filter keys to one or more product category values
@@ -1215,6 +1221,7 @@ const CATEGORY_LABELS = {
   'gardens-patios': 'Gardens & Patios',
   'christmas-backgrounds': 'Christmas',
   'easter-backgrounds': 'Easter',
+  'spring-backgrounds': 'Spring',
 };
 
 const CATEGORIES = ['all', ...Object.keys(CATEGORY_LABELS).filter(cat => {

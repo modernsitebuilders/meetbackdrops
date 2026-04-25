@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import { isDownloadEvent } from '../../../lib/analyticsNormalize';
 
 export default async function handler(req, res) {
   try {
@@ -32,7 +33,7 @@ export default async function handler(req, res) {
       if (category.toLowerCase().includes('christmas')) {
         if (eventType === 'page_view') {
           pageViews++;
-        } else if (eventType === 'download' && filename && filename.match(/\.(png|webp|jpg)$/i)) {
+        } else if (isDownloadEvent(eventType) && filename && filename.match(/\.(png|webp|jpg)$/i)) {
           imageDownloads[filename] = (imageDownloads[filename] || 0) + 1;
         }
       }
