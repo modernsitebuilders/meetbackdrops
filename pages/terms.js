@@ -120,7 +120,7 @@ export default function Terms() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: March 24, 2026
+                Last updated: April 25, 2026
               </p>
             </div>
 
@@ -140,7 +140,7 @@ export default function Terms() {
                 By accessing and using StreamBackdrops ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -148,12 +148,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 2. Description of Service
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 StreamBackdrops provides high-quality virtual background images for use in video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free downloads for personal use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -161,7 +161,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 3. Use License - Personal Use Only
-              </h3>
+              </h2>
               
               {/* Personal Use Section */}
               <div style={{
@@ -198,7 +198,7 @@ export default function Terms() {
               </div>
 
               {/* HD Premium Images Section */}
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -206,7 +206,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 4. HD Premium Images
-              </h3>
+              </h2>
 
               <div style={{
                 background: '#eff6ff',
@@ -241,9 +241,24 @@ export default function Terms() {
                   Prices are subject to change. The price displayed at the time of purchase is the price you will be charged.
                 </p>
 
+                <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Monthly Subscription</h3>
+                <p style={{ color: '#1e3a8a', marginBottom: '0.5rem' }}>
+                  As an alternative to one-time packs, HD images are also available through a monthly subscription:
+                </p>
+                <ul style={{ listStyle: 'disc', paddingLeft: '2rem', color: '#1e40af', marginBottom: '1rem' }}>
+                  <li>$9.00 USD per month</li>
+                  <li>10 HD image downloads per billing cycle</li>
+                  <li>Download allowance resets each billing cycle and does not roll over</li>
+                  <li>Subscription auto-renews monthly until cancelled</li>
+                  <li>You may cancel at any time; cancellation takes effect at the end of the current paid billing cycle, and you retain access through that period</li>
+                </ul>
+                <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
+                  Subscriptions are billed and managed through Stripe. Subscription pricing is subject to change with prior notice; you will be notified before any price increase takes effect on your account. Per the refund policy below, fees already paid are non-refundable.
+                </p>
+
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>License for Purchased HD Images</h3>
                 <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
-                  Purchased HD backgrounds are licensed for the same personal uses described in Section 3. Commercial use of purchased HD images requires a separate commercial license. Purchased images may not be redistributed, resold, or shared with others.
+                  HD backgrounds obtained through one-time packs or a subscription are licensed for the same personal uses described in Section 3. Commercial use of HD images requires a separate commercial license. HD images may not be redistributed, resold, or shared with others, and your subscription does not transfer ownership of any image.
                 </p>
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Delivery</h3>
@@ -257,7 +272,7 @@ export default function Terms() {
                 </p>
               </div>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -265,7 +280,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 5. Restrictions - Commercial Use Prohibited
-              </h3>
+              </h2>
               
               {/* Commercial Restrictions */}
               <div style={{
@@ -303,7 +318,7 @@ export default function Terms() {
                 </ul>
               </div>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -311,12 +326,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 6. Intellectual Property Rights
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 All virtual backgrounds, website content, and related materials are the original intellectual property of StreamBackdrops and are protected by applicable copyright and trademark law. We retain all rights, title, and interest in our virtual backgrounds.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -324,7 +339,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 7. Commercial Licensing Available
-              </h3>
+              </h2>
               
               {/* Commercial Licensing */}
               <div style={{
@@ -360,7 +375,7 @@ export default function Terms() {
                 </div>
               </div>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -368,12 +383,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 8. User Conduct
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 You agree not to use our backgrounds in any way that is unlawful, harmful, or could damage our reputation. You also agree not to claim ownership or authorship of our virtual backgrounds.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -381,12 +396,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 9. Disclaimer
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 The information and backgrounds on this website are provided on an "as is" basis. To the fullest extent permitted by law, StreamBackdrops excludes all representations, warranties, and conditions relating to our website and backgrounds.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -394,11 +409,11 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 10. Limitation of Liability
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 In no event shall StreamBackdrops, nor any of its officers, directors, and employees, be held liable for anything arising out of or in any way connected with your use of our virtual backgrounds, whether such liability is under contract, tort, or otherwise.
               </p>
-<h3 style={{
+<h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -406,11 +421,11 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 11. Refund Policy
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                All sales are final. Due to the digital nature of our products — including HD image packs — we do not offer refunds, exchanges, or credits once a purchase is completed and download access has been granted. By completing a purchase, you acknowledge and agree to this no-refund policy. If you experience a technical issue preventing download, please contact us within 7 days of purchase and we will work to resolve it.
+                All sales are final. Due to the digital nature of our products — including HD image packs and monthly subscription fees — we do not offer refunds, exchanges, or credits once a purchase is completed and download access has been granted. Cancelling a subscription stops future billing but does not refund the current billing cycle. By completing a purchase or starting a subscription, you acknowledge and agree to this no-refund policy. If you experience a technical issue preventing download, please contact us within 7 days of purchase and we will work to resolve it.
               </p>
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -418,12 +433,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 12. Privacy Policy
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the Service, to understand our practices.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -431,12 +446,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 13. Termination
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 We may terminate or suspend your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -444,12 +459,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 14. Changes to Terms
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -457,12 +472,12 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 15. Governing Law
-              </h3>
+              </h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 These Terms shall be interpreted and governed by the laws of the State of Pennsylvania, United States, without regard to its conflict of law provisions.
               </p>
 
-              <h3 style={{
+              <h2 style={{
                 fontSize: '1.8rem',
                 fontWeight: 'bold',
                 color: '#111827',
@@ -470,7 +485,7 @@ export default function Terms() {
                 marginBottom: '1rem'
               }}>
                 16. Contact Information
-              </h3>
+              </h2>
               <p style={{ marginBottom: '2rem' }}>
                 If you have any questions about these Terms of Service, please contact us through our website contact form or at the address provided on our Contact page.
               </p>
