@@ -1,0 +1,48 @@
+{
+  "startedAt": "2026-04-25T21:12:55.256Z",
+  "finishedAt": "2026-04-25T21:12:55.338Z",
+  "dryRun": true,
+  "total": 21,
+  "succeeded": 0,
+  "failed": 0,
+  "retryAttempted": false,
+  "retryCount": 0,
+  "byCategory": {
+    "office-spaces": {
+      "total": 3,
+      "succeeded": 3,
+      "failed": 0
+    },
+    "home-office": {
+      "total": 3,
+      "succeeded": 3,
+      "failed": 0
+    },
+    "coffee-shops": {
+      "total": 3,
+      "succeeded": 3,
+      "failed": 0
+    },
+    "bookshelves": {
+      "total": 3,
+      "succeeded": 3,
+      "failed": 0
+    },
+    "wall-shelves": {
+      "total": 3,
+      "succeeded": 3,
+      "failed": 0
+    },
+    "nature-landscapes": {
+      "total": 3,
+      "succeeded": 3,
+      "failed": 0
+    },
+    "living-rooms": {
+      "total": 3,
+      "succeeded": 3,
+      "failed": 0
+    }
+  },
+  "failures": []
+}

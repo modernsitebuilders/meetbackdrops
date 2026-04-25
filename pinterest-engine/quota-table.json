@@ -1,14 +1,67 @@
 {
   "categories": [
     {
-      "category": "easter-backgrounds",
-      "targetCount": 0,
-      "items": []
+      "category": "office-spaces",
+      "targetCount": 3,
+      "items": [
+        "office-spaces-01",
+        "office-spaces-02",
+        "office-spaces-03"
+      ]
     },
     {
-      "category": "spring-backgrounds",
-      "targetCount": 0,
-      "items": []
+      "category": "home-office",
+      "targetCount": 3,
+      "items": [
+        "home-offices-01",
+        "home-offices-02",
+        "home-offices-03"
+      ]
+    },
+    {
+      "category": "coffee-shops",
+      "targetCount": 3,
+      "items": [
+        "coffee-shop-01",
+        "coffee-shop-02",
+        "coffee-shop-03"
+      ]
+    },
+    {
+      "category": "bookshelves",
+      "targetCount": 3,
+      "items": [
+        "bookshelves-bright-01",
+        "bookshelves-bright-02",
+        "bookshelves-bright-03"
+      ]
+    },
+    {
+      "category": "wall-shelves",
+      "targetCount": 3,
+      "items": [
+        "wall-shelves-dark-64",
+        "wall-shelves-dark-67",
+        "wall-shelves-dark-68"
+      ]
+    },
+    {
+      "category": "nature-landscapes",
+      "targetCount": 3,
+      "items": [
+        "nature-landscape-1",
+        "nature-landscape-2",
+        "nature-landscape-3"
+      ]
+    },
+    {
+      "category": "living-rooms",
+      "targetCount": 3,
+      "items": [
+        "living-room-01",
+        "living-room-02",
+        "living-room-03"
+      ]
     }
   ]
 }

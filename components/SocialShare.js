@@ -1,8 +1,10 @@
 // components/SocialShare.js
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { getSessionData, getVisitorType } from '../lib/sessionTracking';
 
 export default function SocialShare({
+  image = null,
   title,
   size = "large",
   showLabels = false,
@@ -18,7 +20,47 @@ export default function SocialShare({
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 
+  const trackShare = (method) => {
+    const filename = image?.filename || 'page-share';
+    const category = image?.category || 'page';
+
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'share', {
+        method,
+        content_type: image ? 'image' : 'page',
+        item_id: filename,
+        category,
+        page_url: url,
+      });
+    }
+
+    const session = typeof window !== 'undefined' ? getSessionData() : null;
+    const originalSource = session
+      ? (session.originalUtmSource
+          ? [session.originalUtmSource, session.originalUtmMedium, session.originalUtmCampaign].filter(Boolean).join('/')
+          : (session.originalReferrer || 'direct'))
+      : 'direct';
+
+    fetch('/api/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventType: `social_share_${method.toLowerCase().replace(/\s+/g, '_')}`,
+        filename,
+        category,
+        originalSource,
+        sessionId: session?.id || '',
+        visitorId: session?.visitorId || 'unknown',
+        pageViewsInSession: session?.pageViews || 0,
+        downloadsInSession: session?.downloads || 0,
+        visitorType: typeof window !== 'undefined' ? getVisitorType() : 'new',
+        landingPage: session?.landingPage || '',
+      }),
+    }).catch(() => {});
+  };
+
   const handleCopy = async () => {
+    trackShare('Copy Link');
     try {
       await navigator.clipboard.writeText(url);
       setShowCopied(true);
@@ -138,7 +180,7 @@ export default function SocialShare({
             </button>
           ) : (
             // External share links
-            <a 
+            <a
               href={link.url}
               aria-label={`Share on ${link.name}`}
               target="_blank"
@@ -148,6 +190,7 @@ export default function SocialShare({
                 backgroundColor: hoveredLink === link.name ? link.hoverColor : 'rgba(255, 255, 255, 0.1)',
                 transform: hoveredLink === link.name ? 'scale(1.1)' : 'scale(1)'
               }}
+              onClick={() => trackShare(link.name)}
               onMouseEnter={() => setHoveredLink(link.name)}
               onMouseLeave={() => setHoveredLink(null)}
               onFocus={() => setHoveredLink(link.name)}

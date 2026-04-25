@@ -397,4 +397,75 @@ function generateAll(items) {
   return items.map((item, idx) => generatePin(item, idx, seenSeo, seenCtr));
 }
 
-module.exports = { generateAll, displayCategory, makeTitle, cleanBase };
+const OPENERS = [
+  'A clean',
+  'A balanced',
+  'A subtle',
+  'A well-composed',
+  'A refined',
+];
+
+const DETAILS = [
+  'The composition keeps the frame uncluttered while adding depth.',
+  'Balanced lighting helps maintain a polished on-screen presence.',
+  'The layout adds depth without distracting from the subject.',
+  'Clean lines and spacing create a focused visual environment.',
+  'The scene feels natural and easy to integrate into calls.',
+];
+
+const USE_CASES = [
+  'Works well for video calls and remote meetings.',
+  'Fits naturally into Zoom calls and virtual setups.',
+  'Useful for interviews and professional conversations.',
+  'Helps maintain a consistent and distraction-free presence.',
+  'Supports a clean and reliable on-camera appearance.',
+];
+
+const CTA = [
+  'Easy to use as part of a consistent setup.',
+  'A simple way to improve your on-screen environment.',
+  'Works across most setups without adjustment.',
+  'A reliable choice for everyday use.',
+  'Helps create a more intentional presentation.',
+];
+
+const CATEGORY_OFFSETS = {
+  'office-spaces': 1,
+  'coffee-shops': 2,
+  'wall-shelves-bright': 3,
+  'wall-shelves-dark': 3,
+  'nature-landscapes': 4,
+};
+
+function getCategoryOffset(category) {
+  return CATEGORY_OFFSETS[category] || 0;
+}
+
+function pickTag(tags, index) {
+  if (!Array.isArray(tags) || tags.length === 0) return 'clean';
+  return tags[index % tags.length];
+}
+
+function generateDescription(item) {
+  const index = typeof item.index === 'number' ? item.index : 0;
+  const offset = getCategoryOffset(item.category);
+  const opener = OPENERS[(index + offset) % 5];
+  const tag = pickTag(item.tags, index);
+  const detail = DETAILS[index % 5];
+  const use = USE_CASES[(index >> 2) % 5];
+  const cta = CTA[index % 5];
+  return `${opener} ${tag} setting that feels natural on camera. ${detail} ${use} ${cta}`;
+}
+
+function generateDescriptions(items) {
+  return items.map((item) => generateDescription(item));
+}
+
+module.exports = {
+  generateAll,
+  displayCategory,
+  makeTitle,
+  cleanBase,
+  generateDescription,
+  generateDescriptions,
+};
