@@ -23,6 +23,7 @@ const THUMBNAILS = {
   'nature-landscapes':    'nature-landscapes/nature-landscape-1.webp',
   'office-spaces':        'office-spaces/office-spaces-01.webp',
   'spring-backgrounds':   'spring-backgrounds/spring-background-01.webp',
+  'summer-backgrounds':   'summer-backgrounds/summer-background-01.webp',
   'urban-lofts':          'urban-lofts/urban-loft-01.webp',
   'wall-shelves':         'wall-shelves-bright/wall-shelves-bright-01.webp',
   'valentines-backgrounds':'valentines-backgrounds/valentines-background-01.webp',
@@ -48,7 +49,8 @@ const RELATED = {
   'halloween-backgrounds': ['christmas-backgrounds', 'historic-spaces',        'urban-lofts'],
   'valentines-backgrounds':['bokeh-backgrounds',     'gardens-patios',         'spring-backgrounds'],
   'easter-backgrounds':    ['spring-backgrounds',    'gardens-patios',         'nature-landscapes'],
-  'spring-backgrounds':    ['easter-backgrounds',    'gardens-patios',         'nature-landscapes'],
+  'spring-backgrounds':    ['easter-backgrounds',    'summer-backgrounds',     'gardens-patios'],
+  'summer-backgrounds':    ['spring-backgrounds',    'gardens-patios',         'nature-landscapes'],
   'bokeh-backgrounds':     ['art-galleries',         'valentines-backgrounds', 'nature-landscapes'],
 };
 

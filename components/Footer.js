@@ -98,6 +98,12 @@ export default function Footer() {
               <Link href="/category/easter-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Easter 🐣
               </Link>
+              <Link href="/category/spring-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Spring 🌸
+              </Link>
+              <Link href="/category/summer-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Summer ☀️
+              </Link>
             </div>
           </div>
           

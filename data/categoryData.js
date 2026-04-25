@@ -985,6 +985,48 @@ const IMAGES_SPRING_BACKGROUNDS = [
   { filename: 'spring-background-94.webp', title: 'Spring Background 94' },
 ];
 
+// summer-backgrounds: 38 images
+const IMAGES_SUMMER_BACKGROUNDS = [
+  { filename: 'summer-background-01.webp', title: 'Summer Background 1' },
+  { filename: 'summer-background-02.webp', title: 'Summer Background 2' },
+  { filename: 'summer-background-03.webp', title: 'Summer Background 3' },
+  { filename: 'summer-background-04.webp', title: 'Summer Background 4' },
+  { filename: 'summer-background-05.webp', title: 'Summer Background 5' },
+  { filename: 'summer-background-06.webp', title: 'Summer Background 6' },
+  { filename: 'summer-background-07.webp', title: 'Summer Background 7' },
+  { filename: 'summer-background-08.webp', title: 'Summer Background 8' },
+  { filename: 'summer-background-09.webp', title: 'Summer Background 9' },
+  { filename: 'summer-background-10.webp', title: 'Summer Background 10' },
+  { filename: 'summer-background-11.webp', title: 'Summer Background 11' },
+  { filename: 'summer-background-12.webp', title: 'Summer Background 12' },
+  { filename: 'summer-background-13.webp', title: 'Summer Background 13' },
+  { filename: 'summer-background-14.webp', title: 'Summer Background 14' },
+  { filename: 'summer-background-15.webp', title: 'Summer Background 15' },
+  { filename: 'summer-background-16.webp', title: 'Summer Background 16' },
+  { filename: 'summer-background-17.webp', title: 'Summer Background 17' },
+  { filename: 'summer-background-18.webp', title: 'Summer Background 18' },
+  { filename: 'summer-background-19.webp', title: 'Summer Background 19' },
+  { filename: 'summer-background-20.webp', title: 'Summer Background 20' },
+  { filename: 'summer-background-21.webp', title: 'Summer Background 21' },
+  { filename: 'summer-background-22.webp', title: 'Summer Background 22' },
+  { filename: 'summer-background-23.webp', title: 'Summer Background 23' },
+  { filename: 'summer-background-24.webp', title: 'Summer Background 24' },
+  { filename: 'summer-background-25.webp', title: 'Summer Background 25' },
+  { filename: 'summer-background-26.webp', title: 'Summer Background 26' },
+  { filename: 'summer-background-27.webp', title: 'Summer Background 27' },
+  { filename: 'summer-background-28.webp', title: 'Summer Background 28' },
+  { filename: 'summer-background-29.webp', title: 'Summer Background 29' },
+  { filename: 'summer-background-30.webp', title: 'Summer Background 30' },
+  { filename: 'summer-background-31.webp', title: 'Summer Background 31' },
+  { filename: 'summer-background-32.webp', title: 'Summer Background 32' },
+  { filename: 'summer-background-33.webp', title: 'Summer Background 33' },
+  { filename: 'summer-background-34.webp', title: 'Summer Background 34' },
+  { filename: 'summer-background-35.webp', title: 'Summer Background 35' },
+  { filename: 'summer-background-36.webp', title: 'Summer Background 36' },
+  { filename: 'summer-background-37.webp', title: 'Summer Background 37' },
+  { filename: 'summer-background-38.webp', title: 'Summer Background 38' },
+];
+
 // bokeh-backgrounds: 50 images
 const IMAGES_BOKEH_BACKGROUNDS = [
   { filename: 'bokeh-03.webp', title: 'Bokeh Background 3' },
@@ -1217,6 +1259,13 @@ export const categoryInfo = {
     images: IMAGES_SPRING_BACKGROUNDS
   },
 
+  'summer-backgrounds': {
+    name: 'Summer Backgrounds',
+    description: 'Bright summer backgrounds with sunlit offices, shaded patios, and warm seasonal scenery',
+    seoDescription: 'Download free summer virtual backgrounds for Zoom, Teams & Google Meet. Sunlit offices, shaded patios, beach verandas & warm seasonal scenes — no signup, instant download.',
+    images: IMAGES_SUMMER_BACKGROUNDS
+  },
+
   'bokeh-backgrounds': {
     name: 'Bokeh Backgrounds',
     description: 'Beautiful bokeh light backgrounds with soft, artistic blur effects for elegant video calls',
@@ -1246,5 +1295,6 @@ export const folderMap = {
   'valentines-backgrounds': 'valentines-backgrounds',
   'easter-backgrounds': 'easter-backgrounds',
   'spring-backgrounds': 'spring-backgrounds',
+  'summer-backgrounds': 'summer-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds',
 };

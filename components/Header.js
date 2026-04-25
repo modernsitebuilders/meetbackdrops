@@ -112,7 +112,8 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
     { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' },
     { name: 'Valentine\'s Day 💕', path: '/category/valentines-backgrounds' },
     { name: 'Easter 🐣', path: '/category/easter-backgrounds' },
-    { name: 'Spring 🌸', path: '/category/spring-backgrounds' }
+    { name: 'Spring 🌸', path: '/category/spring-backgrounds' },
+    { name: 'Summer ☀️', path: '/category/summer-backgrounds' }
   ];
 
   const moreCategories = [

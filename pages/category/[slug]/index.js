@@ -316,6 +316,7 @@ export async function getStaticPaths() {
     'valentines-backgrounds',
     'easter-backgrounds',
     'spring-backgrounds',
+    'summer-backgrounds',
     'eid-backgrounds',
     'bokeh-backgrounds'
   ].map((slug) => ({
