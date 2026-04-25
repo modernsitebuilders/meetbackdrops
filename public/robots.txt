@@ -1,7 +1,9 @@
 User-agent: *
-Allow: /_next/static/
-Allow: /_next/image
+Allow: /
 Disallow: /api/
 Disallow: /admin/
 
 Sitemap: https://streambackdrops.com/sitemap.xml
+Sitemap: https://streambackdrops.com/sitemap-pages.xml
+Sitemap: https://streambackdrops.com/sitemap-images.xml
+Sitemap: https://streambackdrops.com/sitemap-image-pages.xml

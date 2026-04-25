@@ -5,6 +5,34 @@ export default function Document() {
     <Html lang="en" data-scroll-behavior="smooth">
       <Head>
         <meta charSet="utf-8" />
+        {/* Google Consent Mode v2 — MUST run before any gtag/GTM script loads.
+            Defaults all cookie-setting categories to 'denied' until the user
+            accepts in the CookieYes banner. CookieYes (with its "Google Consent
+            Mode v2" toggle enabled in the CY dashboard) then calls
+            gtag('consent', 'update', {...}) based on the user's choice. */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              functionality_storage: 'granted',
+              security_storage: 'granted',
+              wait_for_update: 500
+            });
+          `
+        }} />
+        {/* CookieYes consent banner — loads async so it doesn't block render.
+            Must come after the consent-default script above so the dataLayer
+            is initialised when CookieYes posts its update. */}
+        <script
+          id="cookieyes"
+          src="https://cdn-cookieyes.com/client_data/8eb30da506758a4631261b2a/script.js"
+          async
+        />
         {/* Google Tag Manager */}
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -34,6 +62,8 @@ export default function Document() {
           `
         }} />
         
+        <link rel="preconnect" href="https://assets.streambackdrops.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://assets.streambackdrops.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         

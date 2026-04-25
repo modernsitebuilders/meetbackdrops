@@ -77,8 +77,11 @@ export default function Card({
             <img
               src={imageSrc}
               alt={imageAlt || title}
+              width={400}
+              height={225}
               loading={priority ? 'eager' : 'lazy'}
               fetchPriority={priority ? 'high' : 'auto'}
+              decoding="async"
               style={{
                 width: '100%',
                 height: '100%',

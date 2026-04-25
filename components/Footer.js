@@ -207,10 +207,14 @@ export default function Footer() {
     target="_blank" 
     rel="noopener noreferrer"
   >
-    <img 
-      src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" 
-      alt="StreamBackdrops badge" 
-      style={{ maxWidth: '150px' }} 
+    <img
+      src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+      alt="StreamBackdrops badge"
+      width={300}
+      height={100}
+      loading="lazy"
+      decoding="async"
+      style={{ maxWidth: '150px', height: 'auto' }}
     />
   </a>
 </div>
