@@ -1,16 +1,20 @@
 // components/SocialShare.js
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
-export default function SocialShare({ 
-  title, 
-  size = "large", 
-  showLabels = false, 
-  vertical = true 
+export default function SocialShare({
+  title,
+  size = "large",
+  showLabels = false,
+  vertical = true
 }) {
+  const router = useRouter();
   const [hoveredLink, setHoveredLink] = useState(null);
   const [showCopied, setShowCopied] = useState(false);
 
-  const url = typeof window !== 'undefined' ? window.location.href : '';
+  // Deterministic URL on both server and client to avoid hydration mismatch.
+  // Sharing should always use the canonical production URL anyway.
+  const url = `https://streambackdrops.com${router.asPath.split('?')[0]}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 

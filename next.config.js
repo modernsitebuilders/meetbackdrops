@@ -228,20 +228,7 @@ const nextConfig = {
     ];
   },
   
-  // Content Security Policy for Turnstile
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://www.googletagmanager.com https://cdn-cookieyes.com; frame-src 'self' https://challenges.cloudflare.com https://www.youtube.com;"
-          },
-        ],
-      },
-    ];
-  },
+  // CSP is consolidated in vercel.json so Vercel applies a single header.
 };
 
 module.exports = nextConfig;

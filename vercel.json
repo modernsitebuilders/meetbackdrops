@@ -33,7 +33,7 @@
     },
     {
       "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn-cookieyes.com https://stream-backdrops-videos.s3.amazonaws.com; style-src 'self' 'unsafe-inline' https://cdn-cookieyes.com; img-src 'self' data: https:; font-src 'self' data: https://cdn-cookieyes.com; connect-src 'self' https://assets.streambackdrops.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://cdn-cookieyes.com https://log.cookieyes.com https://api.cookieyes.com; media-src 'self' https://stream-backdrops-videos.s3.amazonaws.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn-cookieyes.com https://stream-backdrops-videos.s3.amazonaws.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn-cookieyes.com; img-src 'self' data: https:; font-src 'self' data: https://cdn-cookieyes.com; connect-src 'self' https://assets.streambackdrops.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://cdn-cookieyes.com https://log.cookieyes.com https://api.cookieyes.com; media-src 'self' https://stream-backdrops-videos.s3.amazonaws.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com;"
         }
       ]
     },

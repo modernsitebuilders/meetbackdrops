@@ -244,7 +244,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                 );
               })()}
 
-              {/* Hover Overlay */}
+              {/* Hover Overlay — only mount when hovered/downloading to keep DOM small */}
+              {(hoveredIndex === index || downloadingImage === image.filename) && (
               <div
                 style={{
                   position: 'absolute',
@@ -253,11 +254,11 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  opacity: (hoveredIndex === index || downloadingImage === image.filename) ? 1 : 0,
+                  opacity: 1,
                   transition: 'opacity 0.3s ease',
                   flexDirection: 'column',
                   gap: '1rem',
-                  pointerEvents: (hoveredIndex === index || downloadingImage === image.filename) ? 'auto' : 'none'
+                  pointerEvents: 'auto'
                 }}
               >
                 {hdOnly ? (
@@ -322,6 +323,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                   </>
                 )}
               </div>
+              )}
             </div>
           </div>
           );

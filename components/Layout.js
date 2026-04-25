@@ -1,11 +1,15 @@
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
-import Footer from './Footer';
+import { useWishlist } from '../lib/WishlistContext';
 import Header from './Header';
 import SpringBanner from './SpringBanner';
-import WishlistDrawer from './WishlistDrawer';
+
+// Below-the-fold / on-demand components: defer their JS off the critical path.
+const Footer = dynamic(() => import('./Footer'));
+const WishlistDrawer = dynamic(() => import('./WishlistDrawer'), { ssr: false });
 
 export default function Layout({
   children,
@@ -25,6 +29,7 @@ No signup required, no watermarks - just high-quality background images perfect 
   },
 }) {
   const router = useRouter();
+  const { drawerOpen } = useWishlist();
 
   const defaultStructuredData = {
     "@context": "https://schema.org",
@@ -57,13 +62,6 @@ No signup required, no watermarks - just high-quality background images perfect 
         <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-        {/* ✅ Google AdSense */}
-  <script 
-    async 
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8364914545820320"
-    crossOrigin="anonymous"
-  />
-        
         {/* ✅ SEO Meta Tags */}
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
@@ -104,22 +102,14 @@ No signup required, no watermarks - just high-quality background images perfect 
           }}
         />
 
-        {/* Add prefetching for popular categories on homepage */}
+        {/* Prefetch the few highest-traffic categories. Each prefetch downloads
+            an HTML page + its JS chunk, so keep this list small. */}
         {currentPage === 'home' && (
           <>
             <link rel="prefetch" href="/category/bookshelves" />
             <link rel="prefetch" href="/category/wall-shelves" />
             <link rel="prefetch" href="/category/office-spaces" />
             <link rel="prefetch" href="/category/living-rooms" />
-            <link rel="prefetch" href="/category/kitchens" />
-            <link rel="prefetch" href="/category/conference-rooms" />
-            <link rel="prefetch" href="/category/coffee-shops" />
-            <link rel="prefetch" href="/category/art-galleries" />
-            <link rel="prefetch" href="/category/urban-lofts" />
-            <link rel="prefetch" href="/category/gardens-patios" />
-            <link rel="prefetch" href="/category/historic-spaces" />
-            <link rel="prefetch" href="/category/nature-landscapes" />
-            <link rel="prefetch" href="/category/libraries" />
           </>
         )}
       </Head>
@@ -161,7 +151,7 @@ No signup required, no watermarks - just high-quality background images perfect 
         </a>
         <Header currentPage={currentPage} />
         {router.asPath !== '/category/spring-backgrounds' && <SpringBanner />}
-        <WishlistDrawer />
+        {drawerOpen && <WishlistDrawer />}
 
         {/* Main Content */}
         <main id="main-content" style={{ flex: 1 }}>

@@ -6,10 +6,12 @@ import TrustBadges from '../components/TrustBadges';
 import HeroCTA from '../components/HeroCTA';
 import HDBadge from '../components/HDBadge';
 import WhyDifferent from '../components/WhyDifferent';
-import YoutubeEmbed from '../components/YoutubeEmbed';
 import VideoObjectSchema from '../components/VideoObjectSchema';
 import SocialProof from '../components/SocialProof';
 import { useRouter } from 'next/router';
+
+// YT iframe API + tracking. Below the fold — defer the chunk + script load.
+const YoutubeEmbed = dynamic(() => import('../components/YoutubeEmbed'), { ssr: false });
 
 // Lazy load the category grid - only loads when scrolled into view
 const CategoryGrid = dynamic(
@@ -66,7 +68,6 @@ export default function Home() {
           contentUrl="https://www.youtube.com/watch?v=Vv1sMh3pG_I"
           duration="PT1M56S"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <style>{`
           @keyframes shimmer {
             0% { background-position: -200% 0; }
@@ -89,6 +90,8 @@ export default function Home() {
               key={i}
               src={img.src}
               alt={img.alt}
+              width={1456}
+              height={816}
               loading={i === 0 ? 'eager' : 'lazy'}
               fetchPriority={i === 0 ? 'high' : 'auto'}
               style={{ width: '100%', height: '200px', objectFit: 'cover' }}

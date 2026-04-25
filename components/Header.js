@@ -1,7 +1,10 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import MobileMenu from './MobileMenu';
+import dynamic from 'next/dynamic';
 import { useWishlist } from '../lib/WishlistContext';
+
+// Mobile menu only renders when the user opens it on a small viewport.
+const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false });
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -437,15 +440,17 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
         </div>
       </header>
 
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-        navigate={navigate}
-        currentPage={currentPage}
-        officesItems={officesItems}
-        collectionsItems={collectionsItems}
-        moreCategories={moreCategories}
-      />
+      {isMobileMenuOpen && (
+        <MobileMenu
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+          navigate={navigate}
+          currentPage={currentPage}
+          officesItems={officesItems}
+          collectionsItems={collectionsItems}
+          moreCategories={moreCategories}
+        />
+      )}
 
       {/* Mobile Styles */}
       <style jsx global>{`
