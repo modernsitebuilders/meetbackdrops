@@ -64,32 +64,44 @@ export default async function handler(req, res) {
   const session = event.data.object;
   const metadata = session?.metadata;
 
-  // 🛡️ Safety gate: only StreamBackdrops HD image purchases
-  if (
-    !metadata ||
-    metadata.product_type !== 'hd_image' ||
-    !metadata.product_ids
-  ) {
-    console.log('[stripe-webhook] Ignored — not an HD image purchase.', {
+  // 🛡️ Cross-site safety gate: ignore events from other sites on the shared Stripe account.
+  // Every StreamBackdrops checkout sets metadata.site = 'streambackdrops'.
+  if (!metadata || metadata.site !== 'streambackdrops') {
+    console.log('[stripe-webhook] Ignored — not a StreamBackdrops event.', {
       session_id: session.id,
-      product_type: metadata?.product_type ?? '(missing)',
-      product_ids: metadata?.product_ids ?? '(missing)',
+      site: metadata?.site ?? '(missing)',
     });
-
     return res.status(200).json({ received: true, ignored: true });
   }
 
-  // 🔓 Parse multi-image purchase payload
-  let productIds = [];
-
-  try {
-    productIds = JSON.parse(metadata.product_ids || '[]');
-  } catch (err) {
-    console.error('[stripe-webhook] Failed to parse product_ids:', err.message);
-
-    return res.status(400).json({
-      error: 'Invalid product_ids format',
+  // Subscription checkouts are acknowledged here; lifecycle handling lives elsewhere.
+  if (metadata.product_type === 'subscription') {
+    console.log('[stripe-webhook] Subscription checkout acknowledged:', {
+      session_id: session.id,
+      customer: session.customer,
     });
+    return res.status(200).json({ received: true });
+  }
+
+  // HD image purchase path
+  if (metadata.product_type !== 'hd_image' || !metadata.product_ids) {
+    console.log('[stripe-webhook] Ignored — unknown product_type for StreamBackdrops.', {
+      session_id: session.id,
+      product_type: metadata.product_type ?? '(missing)',
+      product_ids: metadata.product_ids ?? '(missing)',
+    });
+    return res.status(200).json({ received: true, ignored: true });
+  }
+
+  // product_ids is a comma-joined string set by create-checkout.js
+  const productIds = metadata.product_ids
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  if (productIds.length === 0) {
+    console.error('[stripe-webhook] Empty product_ids after parse:', metadata.product_ids);
+    return res.status(400).json({ error: 'Invalid product_ids format' });
   }
 
   console.log('[stripe-webhook] HD image purchase verified:', {

@@ -50,6 +50,8 @@ export default async function handler(req, res) {
       success_url: `${req.headers.origin}/hd-download?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,
       metadata: {
+        site: "streambackdrops",
+        product_type: "hd_image",
         product_ids: ids.join(","),
         // Keep product_id singular for single-item backwards compat
         ...(ids.length === 1 ? { product_id: ids[0] } : {}),

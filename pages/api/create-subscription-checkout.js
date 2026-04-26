@@ -19,6 +19,14 @@ export default async function handler(req, res) {
       ],
       subscription_data: {
         description: '10 HD background downloads per month. Downloads reset each billing cycle.',
+        metadata: {
+          site: 'streambackdrops',
+          product_type: 'subscription',
+        },
+      },
+      metadata: {
+        site: 'streambackdrops',
+        product_type: 'subscription',
       },
       success_url: `${req.headers.origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,
