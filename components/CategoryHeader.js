@@ -6,16 +6,22 @@ export default function CategoryHeader({ category, featuredImageUrl }) {
   const name = category?.name || 'Virtual';
   const shortDescription =
     category?.shortDescription ||
-    `Professional ${name.toLowerCase()} scenes for Zoom, Teams, and Google Meet. Instant download, no signup.`;
+    `Architected ${name.toLowerCase()} environments for executive video presence on Zoom, Teams, and Google Meet.`;
 
   return (
     <div className={styles.header}>
       <div className={styles.text}>
-        <h1 className={styles.title}>Free {name} Virtual Backgrounds</h1>
+        <div className={styles.eyebrow}>The Collection · {name}</div>
+        <h1 className={styles.title}>{name} Virtual Environments</h1>
         <p className={styles.description}>{shortDescription}</p>
-        <Link href="/hd" className={styles.hdLink}>
-          Need higher resolution? Explore HD backgrounds →
-        </Link>
+        <div className={styles.linkRow}>
+          <Link href="/hd" className={styles.hdLink}>
+            HD Editions for crisper compression →
+          </Link>
+          <Link href="/licensing" className={styles.licensingLink}>
+            Corporate &amp; Team Licensing →
+          </Link>
+        </div>
       </div>
       {featuredImageUrl && (
         <img

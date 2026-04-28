@@ -11,8 +11,8 @@ export default function About() {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="About StreamBackdrops | Free Virtual Backgrounds"
-      description="StreamBackdrops helps remote workers look professional on video calls. 1300+ free virtual backgrounds for Zoom, Teams & Google Meet. No signup required."
+      title="About StreamBackdrops | Virtual Set Design Studio"
+      description="StreamBackdrops is a virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Teams, and Google Meet."
       canonical="https://streambackdrops.com/about"
     >
 
@@ -36,25 +36,44 @@ export default function About() {
           }}>
             
             <div style={{
-              background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
+              background: '#111827',
               color: 'white',
-              padding: '2rem',
-              borderRadius: '1rem',
-              marginBottom: '2rem',
-              textAlign: 'center'
+              padding: '3.5rem 2rem',
+              marginBottom: '3rem',
+              textAlign: 'center',
+              borderTop: '1px solid #111827',
+              borderBottom: '2px solid #9a6a3a'
             }}>
+              <div style={{
+                fontSize: '0.75rem',
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: '#c79a6b',
+                fontWeight: 600,
+                marginBottom: '1.25rem'
+              }}>
+                Virtual Set Design Studio
+              </div>
               <h1 style={{
-                fontSize: '2.5rem',
-                fontWeight: 'bold',
+                fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+                fontWeight: 600,
+                letterSpacing: '-0.02em',
+                fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+                lineHeight: 1.1,
                 marginBottom: '1rem'
               }}>
                 About StreamBackdrops
               </h1>
               <h2 style={{
-                fontSize: '1.2rem',
-                opacity: 0.9
+                fontSize: '1.1rem',
+                fontWeight: 400,
+                color: '#e5e7eb',
+                maxWidth: '620px',
+                margin: '0 auto',
+                lineHeight: 1.6
               }}>
-Creating Professional Virtual Backgrounds for Modern Remote Workers              </h2>
+                High-Fidelity Virtual Environments for Corporate Video Presence
+              </h2>
             </div>
 
             <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
@@ -67,11 +86,11 @@ Creating Professional Virtual Backgrounds for Modern Remote Workers             
                 }}>
                   Our Mission
                 </h3>
-                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  Remote work is here to stay. Your video presence matters now more than ever. StreamBackdrops helps you look professional on every video call.
+                <p style={{color: '#374151', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: 1.75}}>
+                  On a video call, your environment speaks before you do. StreamBackdrops produces architected interiors — modern offices, libraries, galleries, and conference rooms — engineered to convey authority on Zoom, Teams, and Google Meet.
                 </p>
-                <p style={{color: '#6b7280'}}>
-                  We believe everyone deserves quality virtual backgrounds. You shouldn't have to pay for them. That's why all our backgrounds are free.
+                <p style={{color: '#374151', fontSize: '1.1rem', lineHeight: 1.75}}>
+                  Every environment is composed for camera, upscaled to 4K, and tested across the codecs that broadcast you to your colleagues, clients, and boards. We make samples freely available for individual professionals; teams and enterprises license the curated library through our <Link href="/licensing" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Corporate &amp; Team Licensing</Link> program.
                 </p>
               </section>
 

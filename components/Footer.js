@@ -135,15 +135,18 @@ export default function Footer() {
           
           <div>
             <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
-              StreamBackdrops
+              Company
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <Link href="/" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Home
               </Link>
-              <Link href="/hd" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
-      ⭐ HD Backgrounds
-    </Link>
+              <Link href="/licensing" style={{ color: '#c79a6b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                Corporate &amp; Team Licensing
+              </Link>
+              <Link href="/hd" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                HD Editions
+              </Link>
 <Link href="/faq" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 FAQ
               </Link>

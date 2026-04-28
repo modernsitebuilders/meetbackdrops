@@ -203,7 +203,7 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, off
             📝 Blog
           </button>
 
-          {/* HD Backgrounds */}
+          {/* HD Editions */}
           <button
             onClick={() => handleNav('/hd')}
             style={{
@@ -211,21 +211,49 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, off
               width: '100%',
               padding: '1rem',
               textAlign: 'left',
-              background: currentPage === 'hd' ? '#fef3c7' : 'transparent',
+              background: 'transparent',
               border: 'none',
               borderRadius: '0.5rem',
-              color: '#92400e',
+              color: '#111827',
               fontWeight: '600',
               fontSize: '0.95rem',
               cursor: 'pointer',
               fontFamily: 'inherit',
               transition: 'background 0.2s ease',
-              marginTop: '0.5rem'
+              marginTop: '0.5rem',
+              letterSpacing: '0.04em'
             }}
-            onMouseEnter={(e) => { if (currentPage !== 'hd') e.target.style.background = '#fef3c7'; }}
-            onMouseLeave={(e) => { if (currentPage !== 'hd') e.target.style.background = 'transparent'; }}
+            onMouseEnter={(e) => { e.target.style.background = '#f3f4f6'; }}
+            onMouseLeave={(e) => { e.target.style.background = 'transparent'; }}
           >
-            ⭐ HD Backgrounds
+            HD Editions
+          </button>
+
+          {/* Team Licensing — B2B CTA */}
+          <button
+            onClick={() => handleNav('/licensing')}
+            style={{
+              display: 'block',
+              width: '100%',
+              padding: '1rem',
+              textAlign: 'center',
+              background: '#111827',
+              border: '1px solid #111827',
+              borderRadius: '2px',
+              color: '#fff',
+              fontWeight: 600,
+              fontSize: '0.85rem',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              fontFamily: 'inherit',
+              transition: 'background 0.2s ease',
+              marginTop: '0.75rem'
+            }}
+            onMouseEnter={(e) => { e.target.style.background = '#000'; }}
+            onMouseLeave={(e) => { e.target.style.background = '#111827'; }}
+          >
+            Team Licensing
           </button>
         </div>
       </div>

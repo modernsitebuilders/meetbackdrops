@@ -5,20 +5,20 @@ export default function TrustBadges() {
   return (
     <div className={styles.container}>
       <div className={styles.badge}>
-        <span className={styles.icon}>✓</span>
-        <span>Free Downloads</span>
+        <span className={styles.icon}>✦</span>
+        <span>4K Architected</span>
       </div>
       <div className={styles.badge}>
-        <span className={styles.icon}>📹</span>
-        <span>Video-Optimized</span>
+        <span className={styles.icon}>✦</span>
+        <span>Composed for Camera</span>
       </div>
       <div className={styles.badge}>
-        <span className={styles.icon}>⚡</span>
-        <span>No Email Required</span>
+        <span className={styles.icon}>✦</span>
+        <span>Licensable for Teams</span>
       </div>
       <div className={styles.badge}>
-        <span className={styles.icon}>🎯</span>
-        <span>1456×816 Free · HD up to 2912×1632</span>
+        <span className={styles.icon}>✦</span>
+        <span>Used in 30+ Countries</span>
       </div>
     </div>
   );

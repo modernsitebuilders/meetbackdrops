@@ -17,7 +17,7 @@ function trackAnalytics(eventType, filename, category) {
   }).catch(() => {});
 }
 
-export default function ImageGrid({ images, slug, onImageClick, onDownload = [], scores = {}, downloadingImage }) {
+export default function ImageGrid({ images, slug, onImageClick, onDownload = [], scores = {}, metadata = {}, downloadingImage }) {
   const [sortedImages, setSortedImages] = useState(images);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const { toggleWishlist, isWishlisted } = useWishlist();
@@ -122,11 +122,14 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
   return (
     <>
       <div style={{
-        fontSize: '0.875rem',
+        fontSize: '0.72rem',
         color: '#6b7280',
-        marginBottom: '1rem',
+        marginBottom: '1.25rem',
+        letterSpacing: '0.16em',
+        textTransform: 'uppercase',
+        fontWeight: 600,
       }}>
-        {freeCount} free backgrounds
+        {freeCount} environments in this collection
       </div>
 
       <div style={{
@@ -165,8 +168,8 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
             }}>
               <img
                 src={webpUrl(image.folder || folderMap[slug] || slug, image.filename)}
-                alt={`${image.title} - Free virtual background for Zoom, Teams & Google Meet`}
-                title={`Download ${image.title} - Professional video call background`}
+                alt={metadata[image.filename]?.alt || `${image.title} — high-fidelity 4K virtual environment for Zoom, Teams, and Google Meet`}
+                title={metadata[image.filename]?.title || `${image.title} — StreamBackdrops Studio`}
                 loading={index < 4 ? 'eager' : 'lazy'}
                 decoding={index < 4 ? 'sync' : 'async'}
                 style={{
@@ -315,7 +318,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
 
                     <SocialShare
                       image={{...image, category: slug}}
-                      title={`${image.title} - Free Virtual Background`}
+                      title={metadata[image.filename]?.title || `${image.title} — StreamBackdrops Studio`}
                       size="small"
                       showLabels={false}
                       vertical={false}

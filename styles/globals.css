@@ -1,12 +1,35 @@
 /* globals.css - Clean CSS file for StreamBackdrops */
 
+:root {
+  /* Editorial brand tokens — Studio/Enterprise pivot */
+  --brand-graphite: #111827;
+  --brand-graphite-2: #1f2937;
+  --brand-ink: #0b0f17;
+  --brand-warm: #9a6a3a;
+  --brand-warm-soft: #c79a6b;
+  --brand-paper: #fafaf7;
+  --brand-rule: #e6e2dc;
+  --brand-muted: #6b7280;
+
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
+  color: var(--brand-graphite);
+}
+
+/* Editorial heading helper — apply where serif headings are wanted. */
+.heading-serif {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -32,7 +55,7 @@ button {
 /* Improved focus styles */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--brand-warm);
   outline-offset: 2px;
   border-radius: 4px;
 }

@@ -59,44 +59,57 @@ export default function FAQ() {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
   <Layout
-    title="Frequently Asked Questions - StreamBackdrops"
-    description="Get answers to common questions about using free virtual backgrounds for Zoom, Teams, and Google Meet."
+    title="Frequently Asked Questions | StreamBackdrops Studio"
+    description="Studio answers on virtual environment licensing, HD Editions, codec compression, and using virtual backgrounds on Zoom, Teams, and Google Meet."
     canonical="https://streambackdrops.com/faq"
   >
-    <div style={{ 
-      background: '#f8fafc', 
+    <div style={{
+      background: '#fff',
       minHeight: '100vh',
       paddingLeft: '2rem',
       paddingRight: '2rem'
     }}>
-      <div style={{ 
-        maxWidth: '800px', 
-        margin: '0 auto', 
-        padding: '2rem 0'
+      <div style={{
+        maxWidth: '820px',
+        margin: '0 auto',
+        padding: '4rem 0'
       }}>
         <div style={{
-          background: 'white',
-          borderRadius: '1rem',
-          padding: '3rem',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-          border: '1px solid #e5e7eb'
+          background: '#fff',
+          padding: '0',
         }}>
-          
-          {/* Header Section - ADD THIS */}
-          <div style={{textAlign: 'center', marginBottom: '3rem'}}>
+
+          {/* Editorial header */}
+          <div style={{textAlign: 'center', marginBottom: '4rem', paddingBottom: '3rem', borderBottom: '1px solid #e6e2dc'}}>
+            <div style={{
+              fontSize: '0.7rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: '#9a6a3a',
+              fontWeight: 600,
+              marginBottom: '1rem',
+            }}>
+              Studio Answers
+            </div>
             <h1 style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
+              fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+              fontWeight: 600,
+              letterSpacing: '-0.02em',
+              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               color: '#111827',
-              marginBottom: '1rem'
+              marginBottom: '1rem',
+              lineHeight: 1.1,
             }}>
               Frequently Asked Questions
             </h1>
             <p style={{
               color: '#6b7280',
-              fontSize: '1.1rem'
+              fontSize: '1.05rem',
+              lineHeight: 1.7,
+              maxWidth: '560px',
+              margin: '0 auto',
             }}>
-              Everything you need to know about StreamBackdrops
+              On the studio, the library, the HD Editions, and how teams license the collection.
             </p>
           </div>
 

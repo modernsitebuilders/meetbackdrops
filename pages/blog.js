@@ -208,8 +208,8 @@ export default function Blog() {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Virtual Background Blog - StreamBackdrops"
-      description="Expert guides, tips, and insights about virtual backgrounds, remote work, video calls, and professional online presence."
+      title="The Studio Journal | StreamBackdrops"
+      description="Studio guides on executive video presence, codec compression, virtual set design, and corporate video calls. Long-form essays from the StreamBackdrops studio."
       currentPage="blog"
       canonical="https://streambackdrops.com/blog"
     >
@@ -266,30 +266,59 @@ export default function Blog() {
   ]} />
       </Head>
 
-     <div style={{minHeight: '100vh', background: '#f9fafb'}}>
-        {/* Simple Blog Header */}
-        <div style={{background: 'white', borderBottom: '1px solid #e5e7eb', padding: '2rem 0', marginTop: '1rem'}}>
+     <div style={{minHeight: '100vh', background: '#fff'}}>
+        {/* Editorial blog header */}
+        <div style={{background: '#fff', borderBottom: '1px solid #e6e2dc', padding: '4rem 0 3rem', marginTop: '0'}}>
           <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
-            {/* Breadcrumbs */}
-            <nav style={{marginBottom: '1rem', fontSize: '0.875rem', color: '#6b7280'}}>
-              <Link 
-                href="/" 
-                style={{
-                  color: '#2563eb', 
-                  textDecoration: 'none',
-                  fontWeight: '500'
-                }}
-              >
+            {/* Breadcrumb */}
+            <nav style={{
+              marginBottom: '1.5rem',
+              fontSize: '0.72rem',
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: '#6b7280',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+            }}>
+              <Link href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>
                 Home
               </Link>
-              <span style={{margin: '0 0.5rem'}}>›</span>
-              <span>Blog</span>
+              <span style={{ color: '#d1d5db' }}>·</span>
+              <span style={{ color: '#111827', fontWeight: 600 }}>Journal</span>
             </nav>
-            <h1 style={{fontSize: '2.5rem', fontWeight: 'bold', color: '#111827', marginBottom: '0.5rem'}}>
-              StreamBackdrops Blog
+
+            <div style={{
+              fontSize: '0.7rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: '#9a6a3a',
+              fontWeight: 600,
+              marginBottom: '1rem',
+            }}>
+              The Studio Journal
+            </div>
+            <h1 style={{
+              fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+              fontWeight: 600,
+              letterSpacing: '-0.02em',
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              color: '#111827',
+              marginBottom: '1rem',
+              lineHeight: 1.05,
+              maxWidth: '780px',
+            }}>
+              Notes on executive video presence, codec compression, and virtual set design.
             </h1>
-            <p style={{fontSize: '1.125rem', color: '#6b7280'}}>
-              Expert tips, guides, and insights for professional video calls & work
+            <p style={{
+              fontSize: '1.05rem',
+              color: '#6b7280',
+              lineHeight: 1.7,
+              maxWidth: '640px',
+              margin: 0,
+            }}>
+              Long-form essays from the studio on the craft of looking authoritative on
+              Zoom, Teams, and Meet.
             </p>
           </div>
         </div>

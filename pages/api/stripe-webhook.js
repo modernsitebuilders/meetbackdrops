@@ -38,10 +38,18 @@ export default async function handler(req, res) {
   try {
     const rawBody = await getRawBody(req);
 
-    // 🧠 SAFE MODE SWITCH (TEST vs LIVE)
-    const webhookSecret =
-      process.env.STRIPE_WEBHOOK_SECRET_TEST ||
-      process.env.STRIPE_WEBHOOK_SECRET;
+    // 🧠 SAFE MODE SWITCH (TEST vs LIVE) — must match the Stripe key mode above.
+    const webhookSecret = isTest
+      ? process.env.STRIPE_WEBHOOK_SECRET_TEST
+      : process.env.STRIPE_WEBHOOK_SECRET;
+
+    if (!webhookSecret) {
+      console.error(
+        '[stripe-webhook] Missing webhook secret env var for mode:',
+        isTest ? 'test' : 'live'
+      );
+      return res.status(500).json({ error: 'Webhook secret not configured' });
+    }
 
     event = stripe.webhooks.constructEvent(
       rawBody,

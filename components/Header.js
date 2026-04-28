@@ -236,18 +236,35 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           {/* Logo */}
           <button
             onClick={() => navigate('/')}
+            aria-label="StreamBackdrops home"
             style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
+              fontSize: '1.4rem',
+              fontWeight: 600,
+              color: '#111827',
               background: 'none',
               border: 'none',
               cursor: 'pointer',
               padding: 0,
-              fontFamily: 'inherit'
+              fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+              letterSpacing: '-0.02em',
+              display: 'inline-flex',
+              alignItems: 'baseline',
+              gap: '0.4rem'
             }}
           >
             StreamBackdrops
+            <span style={{
+              fontFamily: 'inherit',
+              fontSize: '0.65rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#9a6a3a',
+              fontWeight: 600,
+              borderLeft: '1px solid #e6e2dc',
+              paddingLeft: '0.6rem'
+            }}>
+              Studio
+            </span>
           </button>
 
           {/* Mobile Menu Button */}
@@ -428,14 +445,38 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   onClick={() => { trackAnalytics('nav_hd_click', null, 'header'); navigate('/hd'); }}
   style={{
     ...navButtonStyle(currentPage === 'hd', hoveredNav === 'hd'),
-    background: hoveredNav === 'hd' ? '#fef3c7' : (currentPage === 'hd' ? '#fef3c7' : 'transparent'),
-    color: '#92400e',
-    fontWeight: '600'
+    color: '#111827',
+    fontWeight: '600',
+    letterSpacing: '0.04em'
   }}
   onMouseEnter={() => setHoveredNav('hd')}
   onMouseLeave={() => setHoveredNav(null)}
 >
-  ⭐ HD Backgrounds
+  HD Editions
+</button>
+
+{/* Team Licensing — B2B CTA */}
+<button
+  onClick={() => { trackAnalytics('nav_licensing_click', null, 'header'); navigate('/licensing'); }}
+  style={{
+    padding: '0.6rem 1.1rem',
+    borderRadius: '2px',
+    fontFamily: 'inherit',
+    fontSize: '0.8rem',
+    fontWeight: 600,
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    cursor: 'pointer',
+    background: hoveredNav === 'licensing' ? '#000' : '#111827',
+    color: '#fff',
+    border: '1px solid #111827',
+    transition: 'background 0.2s ease',
+    marginLeft: '0.5rem'
+  }}
+  onMouseEnter={() => setHoveredNav('licensing')}
+  onMouseLeave={() => setHoveredNav(null)}
+>
+  Team Licensing
 </button>
           </nav>
         </div>

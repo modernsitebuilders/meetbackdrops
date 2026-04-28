@@ -1,44 +1,52 @@
 // components/WhyDifferent.js
 import styles from '../styles/WhyDifferent.module.css';
-import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
 export default function WhyDifferent() {
-  const features = [
+  const rows = [
     {
-      icon: '📹',
-      title: 'Video-Call Optimized',
-      description: 'Every background features professional lighting and composition designed specifically for video calls—not repurposed stock photos'
+      label: 'Origin',
+      stock: 'Shot once, sold to thousands',
+      ours: 'AI-architected sets, composed for video',
     },
     {
-      icon: '⚡',
-      title: 'Instant Download',
-      description: 'No signup, no email, no forms. Browse, click, and download. It\'s that simple.'
+      label: 'Resolution',
+      stock: 'Optimized for print or web',
+      ours: '4K-upscaled (2912×1632), tuned for codec compression',
     },
     {
-      icon: '🎨',
-      title: `${TOTAL_IMAGES_FORMATTED} Professional Backgrounds`,
-      description: 'Office spaces, libraries, bookshelves, and more—all in perfect 16:9 ratio for video platforms'
+      label: 'Composition',
+      stock: 'Cropped from existing scenes',
+      ours: 'Frame-balanced for camera placement and depth of field',
     },
     {
-      icon: '💎',
-      title: 'No Watermarks Ever',
-      description: 'Every free background downloads clean — no logos, no watermarks. Need extra sharpness? HD versions at 2912×1632 are available from $4.99.'
-    }
+      label: 'Trust',
+      stock: "On five competitors' sites at the same time",
+      ours: 'Curated library, licensable exclusively for teams',
+    },
   ];
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.heading}>Why StreamBackdrops?</h2>
+      <div className={styles.eyebrow}>Why our tech</div>
+      <h2 className={styles.heading}>Engineered Sets, Not Stock Photos</h2>
       <p className={styles.subtitle}>
-        Unlike stock photo sites, our backgrounds are specifically designed for video calls
+        Generic stock libraries shoot once and license forever. We architect each
+        environment in 4K, then test it on the cameras and codecs that compress your
+        image in real time.
       </p>
-      
-      <div className={styles.grid}>
-        {features.map((feature, index) => (
-          <div key={index} className={styles.feature}>
-            <div className={styles.icon}>{feature.icon}</div>
-            <h3 className={styles.featureTitle}>{feature.title}</h3>
-            <p className={styles.featureDesc}>{feature.description}</p>
+
+      <div className={styles.compareWrap}>
+        <div className={styles.compareHeader}>
+          <div className={styles.colHead} aria-hidden="true"></div>
+          <div className={styles.colHead}>Generic stock</div>
+          <div className={`${styles.colHead} ${styles.colHeadOurs}`}>StreamBackdrops</div>
+        </div>
+
+        {rows.map((r) => (
+          <div key={r.label} className={styles.compareRow}>
+            <div className={styles.rowLabel}>{r.label}</div>
+            <div className={styles.cellStock}>{r.stock}</div>
+            <div className={styles.cellOurs}>{r.ours}</div>
           </div>
         ))}
       </div>

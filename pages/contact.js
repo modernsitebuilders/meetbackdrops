@@ -40,78 +40,155 @@ export default function Contact() {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-          title="Contact Us - StreamBackdrops"
-          description="Get in touch with StreamBackdrops for any inquiries or support."
+          title="Contact the Studio | StreamBackdrops"
+          description="Reach the StreamBackdrops studio for support, custom commissions, or licensing questions. Corporate teams: please use the dedicated licensing inquiry form."
           canonical="https://streambackdrops.com/contact"
         >
 
-      <div style={{ 
-        background: '#f8fafc', 
+      <div style={{
+        background: '#fff',
         minHeight: '100vh',
         paddingLeft: '2rem',
         paddingRight: '2rem'
       }}>
-        <div style={{ 
-          maxWidth: '800px', 
-          margin: '0 auto', 
-          padding: '2rem 0'
+        <div style={{
+          maxWidth: '820px',
+          margin: '0 auto',
+          padding: '4rem 0'
         }}>
           <div style={{
-            background: 'white',
-            borderRadius: '1rem',
-            padding: '3rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            border: '1px solid #e5e7eb'
+            background: '#fff',
+            padding: '0',
           }}>
-            
-            <div style={{textAlign: 'center', marginBottom: '3rem'}}>
+
+            <div style={{textAlign: 'center', marginBottom: '4rem', paddingBottom: '3rem', borderBottom: '1px solid #e6e2dc'}}>
+              <div style={{
+                fontSize: '0.7rem',
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: '#9a6a3a',
+                fontWeight: 600,
+                marginBottom: '1rem',
+              }}>
+                The Studio
+              </div>
               <h1 style={{
-                fontSize: '2.5rem',
-                fontWeight: 'bold',
+                fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+                fontWeight: 600,
+                letterSpacing: '-0.02em',
+                fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                 color: '#111827',
-                marginBottom: '1rem'
+                marginBottom: '1rem',
+                lineHeight: 1.1,
               }}>
-                Contact Us
+                Contact the studio
               </h1>
-              <h2 style={{
+              <p style={{
                 color: '#6b7280',
-                fontSize: '1.1rem'
+                fontSize: '1.05rem',
+                lineHeight: 1.7,
+                maxWidth: '560px',
+                margin: '0 auto',
               }}>
-We'd love to hear from you! Get in touch with questions or feedback.              </h2>
+                Support questions, custom commissions, press, and individual licensing.
+              </p>
             </div>
 
-            <div style={{fontSize: '1.1rem', lineHeight: '1.7', color: '#374151'}}>
-              
+            <div style={{fontSize: '1.05rem', lineHeight: '1.7', color: '#374151'}}>
+
+              {/* Corporate routing — top priority */}
               <div style={{
-                background: '#eff6ff',
-                padding: '2.5rem',
-                borderRadius: '1rem',
+                border: '1px solid #111827',
+                borderTop: '2px solid #9a6a3a',
+                padding: '2rem',
+                marginBottom: '2.5rem',
+                background: '#fafaf7',
+              }}>
+                <div style={{
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: '#9a6a3a',
+                  fontWeight: 600,
+                  marginBottom: '0.85rem',
+                }}>
+                  For corporate &amp; team buyers
+                </div>
+                <h2 style={{
+                  fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+                  fontWeight: 600,
+                  letterSpacing: '-0.01em',
+                  fontSize: '1.5rem',
+                  color: '#111827',
+                  margin: '0 0 0.75rem',
+                }}>
+                  Use the dedicated licensing inquiry form
+                </h2>
+                <p style={{ color: '#374151', margin: '0 0 1.25rem', fontSize: '1rem' }}>
+                  Buying for a team? The studio uses a tailored intake to scope team size,
+                  use case, and timeline — every qualified inquiry gets a direct reply within
+                  one business day.
+                </p>
+                <Link
+                  href="/licensing"
+                  style={{
+                    display: 'inline-block',
+                    padding: '0.85rem 1.5rem',
+                    background: '#111827',
+                    color: '#fff',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '2px',
+                    border: '1px solid #111827',
+                  }}
+                >
+                  Corporate &amp; Team Licensing →
+                </Link>
+              </div>
+
+              {/* Individual contact */}
+              <div style={{
+                border: '1px solid #e6e2dc',
+                padding: '2rem',
                 textAlign: 'center',
                 marginBottom: '3rem'
               }}>
-                <div style={{fontSize: '3rem', marginBottom: '1rem'}}>📧</div>
-                <h3 style={{
-                  fontSize: '1.5rem',
-                  fontWeight: 'bold',
-                  color: '#1e40af',
-                  marginBottom: '1rem'
+                <div style={{
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: '#9a6a3a',
+                  fontWeight: 600,
+                  marginBottom: '0.75rem',
                 }}>
-                  Get In Touch
-                </h3>
-                <p style={{color: '#1e40af', marginBottom: '1.5rem', fontSize: '1.1rem'}}>
-                  Questions, feedback, or suggestions? We'd love to hear from you.
+                  Everyone else
+                </div>
+                <h2 style={{
+                  fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+                  fontWeight: 600,
+                  letterSpacing: '-0.01em',
+                  fontSize: '1.5rem',
+                  color: '#111827',
+                  margin: '0 0 0.75rem',
+                }}>
+                  Email the studio directly
+                </h2>
+                <p style={{color: '#6b7280', marginBottom: '1.5rem', fontSize: '1rem'}}>
+                  Support, suggestions, press, and individual questions.
                 </p>
-                <a 
+                <a
                   href="mailto:dave@modernsitebuilders.com"
                   style={{
                     display: 'inline-block',
-                    background: '#2563eb',
-                    color: 'white',
-                    padding: '1rem 2rem',
-                    borderRadius: '0.5rem',
-                    textDecoration: 'none',
-                    fontWeight: '600',
-                    fontSize: '1.1rem'
+                    color: '#9a6a3a',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em',
+                    textDecoration: 'underline',
+                    textUnderlineOffset: '4px',
                   }}
                 >
                   dave@modernsitebuilders.com

@@ -194,9 +194,9 @@ export default function License() {
                   <li style={{ marginBottom: '0.75rem' }}>🎥 <strong>Video calls</strong> (Zoom, Teams, Google Meet, etc.)</li>
                   <li style={{ marginBottom: '0.75rem' }}>🏠 <strong>Remote work</strong> and online meetings</li>
                   <li style={{ marginBottom: '0.75rem' }}>🎓 <strong>Online learning</strong> and virtual classrooms</li>
-                  <li style={{ marginBottom: '0.75rem' }}>📱 <strong>Personal streaming</strong> and content creation</li>
+                  <li style={{ marginBottom: '0.75rem' }}>📡 <strong>Webinars, livestreams, and broadcast productions</strong></li>
                   <li style={{ marginBottom: '0.75rem' }}>👥 <strong>Video conferences</strong> with colleagues or clients</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🎮 <strong>Gaming streams</strong> and live broadcasts</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🎤 <strong>Podcasts and recorded interviews</strong></li>
                   <li style={{ marginBottom: '0.75rem' }}>💼 <strong>Freelance work</strong> and client presentations</li>
                 </ul>
                 <p style={{

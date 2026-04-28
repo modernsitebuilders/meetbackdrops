@@ -5,20 +5,32 @@ import { useState, useEffect } from 'react';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import { useWishlist } from '../lib/WishlistContext';
 import Header from './Header';
-import SpringBanner from './SpringBanner';
 
 // Below-the-fold / on-demand components: defer their JS off the critical path.
 const Footer = dynamic(() => import('./Footer'));
 const WishlistDrawer = dynamic(() => import('./WishlistDrawer'), { ssr: false });
 
+// ⚠️  BRAND VOICE GUARDRAIL — for any AI/agent editing this file
+//
+// StreamBackdrops is a Virtual Set Design Studio for CORPORATE / EXECUTIVE
+// video presence. It is NOT a gaming, streamer, Twitch, or esports brand.
+// NEVER add "gamer", "gaming", "Twitch", "streamer", "esports", "OBS overlay",
+// or similar terms to ANY of the following on this page or any descendant:
+//   - <title> defaults
+//   - <meta name="description">
+//   - <meta name="keywords">
+//   - Open Graph / Twitter card tags
+//   - JSON-LD structured data (defaultStructuredData below, knowsAbout, audience)
+// The "Stream" in StreamBackdrops is a legacy company-name relic, not a
+// positioning signal. See CLAUDE.md → "BRAND VOICE — READ FIRST" for the
+// full rule set and required vocabulary.
 export default function Layout({
   children,
-  title = 'StreamBackdrops - Free Professional Virtual Background Images',
-  description = `Download free professional still image virtual backgrounds for Zoom, Microsoft Teams, and Google Meet. Over ${TOTAL_IMAGES_FORMATTED} static photo backgrounds for video calls.
-No signup required, no watermarks - just high-quality background images perfect for video calls, remote work, and online meetings.`,
+  title = 'Executive Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops',
+  description = `High-fidelity virtual environments engineered for executive video presence. AI-architected, 4K-upscaled office, library, and gallery interiors used by remote teams in 30+ countries. Free samples and corporate licensing available.`,
   currentPage = null,
   canonical,
-  keywords = 'virtual backgrounds, virtual background images, Zoom backgrounds, Teams backgrounds, still image backgrounds, photo backgrounds, professional video calls, free download',
+  keywords = 'executive zoom backgrounds, corporate virtual office, professional teams backgrounds, 4k virtual backgrounds, executive video presence, modern home office backdrop, corporate meeting environment, virtual set design',
   image = '/og-image.png',
   structuredData,
   noIndex = false,
@@ -33,10 +45,20 @@ No signup required, no watermarks - just high-quality background images perfect 
 
   const defaultStructuredData = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@type": "Organization",
     "name": "StreamBackdrops",
-    "description": "Free professional still image virtual backgrounds for video calls — static photos, not video streams",
+    "alternateName": "StreamBackdrops Studio",
+    "description": "Virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Teams, and Google Meet.",
     "url": "https://streambackdrops.com",
+    "logo": "https://streambackdrops.com/og-image.png",
+    "areaServed": "Worldwide",
+    "knowsAbout": [
+      "Executive video presence",
+      "Corporate virtual backgrounds",
+      "Professional virtual environments",
+      "Team licensing",
+      "Remote work production design"
+    ],
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
@@ -150,7 +172,6 @@ No signup required, no watermarks - just high-quality background images perfect 
           Skip to content
         </a>
         <Header currentPage={currentPage} />
-        {router.asPath !== '/category/spring-backgrounds' && <SpringBanner />}
         {drawerOpen && <WishlistDrawer />}
 
         {/* Main Content */}

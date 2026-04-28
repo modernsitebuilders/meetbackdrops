@@ -29,7 +29,7 @@ const OFFICE_HUB_FEATURED = [
   { filename: 'office-spaces-21.webp', title: 'Office Space Background 21' },
 ];
 
-function CategoryContent({ slug, scores = {}}) {
+function CategoryContent({ slug, scores = {}, metadata = {} }) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
     handleDownload,
@@ -57,8 +57,8 @@ function CategoryContent({ slug, scores = {}}) {
   return (
     <>
       <div style={{
-        padding: '2rem',
-        background: '#f9fafb',
+        padding: '2.5rem 2rem 4rem',
+        background: '#fff',
         minHeight: '100vh'
       }}>
         <div style={{
@@ -68,20 +68,22 @@ function CategoryContent({ slug, scores = {}}) {
           <nav style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
+            gap: '0.6rem',
             marginBottom: '1.5rem',
-            fontSize: '0.9rem',
+            fontSize: '0.72rem',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
             color: '#6b7280'
           }}>
             <Link href="/" style={{
-              color: '#2563eb',
+              color: '#9a6a3a',
               textDecoration: 'none',
-              transition: 'color 0.2s'
+              fontWeight: 600
             }}>
               Home
             </Link>
-            <span>›</span>
-            <span style={{ color: '#111827', fontWeight: '500' }}>
+            <span style={{ color: '#d1d5db' }}>·</span>
+            <span style={{ color: '#111827', fontWeight: 600 }}>
               {category.name}
             </span>
           </nav>
@@ -100,26 +102,39 @@ function CategoryContent({ slug, scores = {}}) {
               <section
                 id="full-library"
                 style={{
-                  marginTop: '4rem',
-                  paddingTop: '2.5rem',
-                  borderTop: '1px solid #e5e7eb',
+                  marginTop: '5rem',
+                  paddingTop: '3rem',
+                  borderTop: '1px solid #e6e2dc',
                   textAlign: 'center',
                 }}
               >
-                <h2 style={{
-                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                  fontWeight: 700,
-                  color: '#111827',
-                  margin: '0 0 0.5rem',
+                <div style={{
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: '#9a6a3a',
+                  fontWeight: 600,
+                  marginBottom: '1rem',
                 }}>
-                  All Office Spaces
+                  The full collection
+                </div>
+                <h2 style={{
+                  fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+                  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  color: '#111827',
+                  margin: '0 0 0.75rem',
+                }}>
+                  Every Office Space environment
                 </h2>
                 <p style={{
-                  fontSize: '1rem',
+                  fontSize: '0.95rem',
                   color: '#6b7280',
-                  margin: '0 0 2rem',
+                  margin: '0 0 2.5rem',
+                  lineHeight: 1.6,
                 }}>
-                  Every available background in this category
+                  The complete category library, composed for camera and tuned for codec compression.
                 </p>
               </section>
 
@@ -127,6 +142,7 @@ function CategoryContent({ slug, scores = {}}) {
                 images={category.images}
                 scores={scores}
                 slug={slug}
+                metadata={metadata}
                 onImageClick={setPreviewImage}
                 onDownload={(image) => handleDownload(image, slug)}
                 cloudinaryUrls={cloudinaryUrls}
@@ -145,6 +161,7 @@ function CategoryContent({ slug, scores = {}}) {
                 images={category.images}
                 scores={scores}
                 slug={slug}
+                metadata={metadata}
                 onImageClick={setPreviewImage}
                 onDownload={(image) => handleDownload(image, slug)}
                 cloudinaryUrls={cloudinaryUrls}
@@ -214,15 +231,15 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
 
   const categoryName = String(category.name || 'Virtual');
   const pageTitle = currentSlug === 'christmas-backgrounds'
-  ? '150+ Free Christmas Backgrounds for Google Meet, Zoom & Teams'
+  ? 'Christmas Virtual Environments for Zoom, Teams & Meet | StreamBackdrops'
   : currentSlug === 'valentines-backgrounds'
-  ? 'Free Valentine\'s Day Backgrounds for Zoom, Teams & Google Meet'
-  : `Free ${categoryName} Virtual Backgrounds | StreamBackdrops`;
+  ? "Valentine's Day Virtual Environments for Zoom, Teams & Meet | StreamBackdrops"
+  : `${categoryName} Virtual Environments for Executive Video Calls | StreamBackdrops`;
   const pageDescription = currentSlug === 'christmas-backgrounds'
-  ? 'Download 150+ free Christmas virtual backgrounds for Google Meet, Zoom & Teams. Festive holiday scenes, Christmas trees & winter decorations. No signup required.'
+  ? 'Architected Christmas virtual environments for executive video presence on Zoom, Teams, and Google Meet. Composed sets — not stock photos. Free samples available.'
   : currentSlug === 'valentines-backgrounds'
-  ? 'Download free Valentine\'s Day virtual backgrounds for Zoom, Teams & Google Meet. Romantic hearts, flowers & Valentine scenes. Free instant download, no watermarks.'
-  : String(category.seoDescription || `Download free ${categoryName.toLowerCase()} virtual backgrounds for Zoom, Teams & Google Meet. No signup, no watermarks — instant download.`);
+  ? "Architected Valentine's Day virtual environments for video calls. Composed sets engineered for codec compression. Free samples and corporate licensing available."
+  : String(category.seoDescription || `Architected ${categoryName.toLowerCase()} virtual environments for executive video presence on Zoom, Teams, and Google Meet. Composed sets — not stock photos.`);
 
   const featuredImages = {
     'halloween-backgrounds': 'halloween-background-20.webp',
@@ -289,7 +306,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
           ))}
         </Head>
 
-<CategoryContent slug={currentSlug} scores={scores} />
+<CategoryContent slug={currentSlug} scores={scores} metadata={metadata} />
       </Layout>
     </>
   );

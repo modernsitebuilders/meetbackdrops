@@ -1,8 +1,37 @@
 # StreamBackdrops — Codebase Guide for Claude
 
+## ⚠️ BRAND VOICE — READ FIRST, DO NOT IGNORE
+
+**StreamBackdrops is a virtual set design studio for corporate / executive video presence. It is NOT, and has NEVER BEEN, a gaming, streamer, Twitch, esports, or livestreamer brand.** The literal word "Stream" in the brand name is a legacy relic of the company name only — it does **not** signal Twitch/livestream context. The audience is corporate professionals on Zoom, Microsoft Teams, and Google Meet.
+
+### Strict prohibitions for any copy, alt-text, schema, meta tags, JSON-LD, blog content, comments in code, image metadata, or any user-visible string:
+
+- ❌ **NEVER** use: `gamer`, `gamers`, `gaming`, `Twitch`, `streamer`, `streamers`, `livestreamer`, `esports`, `OBS overlay`, `stream overlay`, `gaming stream`, `Discord stream`, or any equivalent framing.
+- ❌ **NEVER** describe images, the studio, the audience, or the use case in terms of gamers, streamers, or live broadcasting as a primary use case. (A factual mention of OBS Studio or "livestreams" as one item among many in a *legal/license use-case list* is acceptable; framing the **brand** that way is not.)
+- ❌ **NEVER** add `gaming`, `streamer`, `twitch`, `esports`, etc. to JSON-LD `keywords`, schema `audience`, `knowsAbout`, OG tags, or `<meta name="keywords">`.
+
+### Required brand vocabulary (use these instead):
+
+| Use this | Not this |
+|---|---|
+| Virtual environments / virtual sets / architected interiors | "virtual backgrounds" (OK in legacy SEO contexts only) |
+| Executive video presence / corporate video calls | "streaming" / "for streamers" |
+| High-fidelity, 4K-upscaled, AI-architected, composed for camera | "stock photos", "free downloads" (avoid as headline framing) |
+| Studio / Virtual Set Design Studio / StreamBackdrops Studio | "background site", "image library" |
+| Zoom, Microsoft Teams, Google Meet, Webex | "Twitch", "OBS-first", "Discord" |
+| Webinars, livestreams, broadcast productions (in license use-case lists only) | "Gaming streams", "🎮 streaming" |
+
+### Why this matters
+
+The site went through a brand pivot in April 2026 from a generic free-virtual-background framing to a B2B Studio positioning targeting corporate buyers, executive teams, and licensing customers. Any AI-generated content that drifts back toward gamer/streamer language undoes that work and damages SEO, conversion, and brand authority. This file is your primary source — if a piece of legacy copy in the codebase still uses old framing, fix it; do not propagate it.
+
+If you're regenerating image manifests, alt-text, schema, meta tags, or any structured copy, run [image-pipeline/rewrite-manifest-copy.js](image-pipeline/rewrite-manifest-copy.js) — the templates there encode the approved voice.
+
+---
+
 ## What this site is
 
-StreamBackdrops is a Next.js site that offers free and premium (HD) virtual backgrounds for video calls. Users can browse by category, download free 1080p webp images, or purchase HD (2x resolution) versions.
+StreamBackdrops is a virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Microsoft Teams, and Google Meet. Free sample environments are available without signup; teams and enterprises license the curated library through `/licensing`. HD Editions (2912×1632) are sold individually or in bundles at `/hd`.
 
 ---
 

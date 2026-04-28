@@ -1,78 +1,68 @@
-/* styles/SocialProof.module.css */
+/* styles/SocialProof.module.css — editorial */
 .section {
-  max-width: 1000px;
-  margin: 4rem auto;
-  padding: 3rem 1.5rem;
+  max-width: 1100px;
+  margin: 5rem auto;
+  padding: 4rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
-  border-radius: 16px;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: transparent;
+  border-top: 1px solid var(--brand-rule);
+  border-bottom: 1px solid var(--brand-rule);
 }
 
-.heading {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  color: #111827;
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand-warm);
+  margin-bottom: 2.5rem;
+  font-weight: 600;
 }
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin: 2rem auto;
-  max-width: 600px;
+  margin: 0 auto;
+  max-width: 900px;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 1rem;
+}
+
+.stat + .stat {
+  border-left: 1px solid var(--brand-rule);
 }
 
 .statNumber {
-  font-size: 2.5rem;
-  display: block;
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--brand-graphite);
 }
 
 .statLabel {
-  color: #6b7280;
-  font-size: 0.95rem;
-}
-
-.testimonial {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border-left: 4px solid #3b82f6;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
-  font-style: italic;
-  text-align: left;
-}
-
-.quote {
-  color: #374151;
-  line-height: 1.7;
-  margin-bottom: 0.5rem;
-}
-
-.cite {
-  color: #6b7280;
-  font-size: 0.9rem;
-  font-style: normal;
+  color: var(--brand-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  max-width: 220px;
+  line-height: 1.5;
 }
 
 @media (max-width: 768px) {
-  .heading {
-    font-size: 1.75rem;
-  }
-  
   .stats {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 2rem;
+  }
+  .stat + .stat {
+    border-left: none;
+    border-top: 1px solid var(--brand-rule);
+    padding-top: 2rem;
   }
 }

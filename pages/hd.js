@@ -1458,17 +1458,17 @@ export default function Premium({ reviewsData }) {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Premium HD Virtual Backgrounds | 2912×1632 | StreamBackdrops"
-      description="Professional HD virtual backgrounds in stunning 2912×1632 resolution. Perfect for Zoom, Teams, and Google Meet. 2x sharper than standard backgrounds."
+      title="HD Editions — 4K Virtual Environments for Executive Video Calls | StreamBackdrops"
+      description="HD Editions: 2912×1632 architected virtual environments engineered for executive video presence. Survives Zoom and Teams compression where stock photos fall apart."
       canonical="https://streambackdrops.com/hd"
-      keywords="HD virtual backgrounds, high resolution backgrounds, premium zoom backgrounds, professional video call backgrounds, high definition virtual backgrounds"
+      keywords="HD virtual backgrounds, 4k virtual backgrounds, executive zoom backgrounds, premium corporate backgrounds, professional video call environments"
       image="https://assets.streambackdrops.com/webp/bookshelves-dark/bookshelves-dark-09.webp"
     >
       <Head>
         {router.query.category && <meta name="robots" content="noindex, follow" />}
         <BreadcrumbSchema items={[
           { name: "Home", url: "https://streambackdrops.com" },
-          { name: "Premium HD Backgrounds", url: "https://streambackdrops.com/hd" }
+          { name: "HD Editions", url: "https://streambackdrops.com/hd" }
         ]} />
         <ProductSchema products={products} reviewsData={reviewsData} />
         <ComparisonWidgetSchema />
@@ -1519,35 +1519,45 @@ export default function Premium({ reviewsData }) {
 
       {/* Hero */}
       <section ref={heroRef} style={{
-        padding: '2.5rem 2rem 3rem 2rem',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white', textAlign: 'center'
+        padding: '5rem 2rem 4rem',
+        background: '#111827',
+        color: 'white',
+        textAlign: 'center',
+        borderBottom: '2px solid #9a6a3a',
       }}>
         <div style={{
-          display: 'inline-block',
-          fontSize: '0.78rem',
+          fontSize: '0.7rem',
           fontWeight: 600,
-          letterSpacing: '0.12em',
+          letterSpacing: '0.22em',
           textTransform: 'uppercase',
-          background: 'rgba(255,255,255,0.14)',
-          padding: '0.3rem 0.85rem',
-          borderRadius: '999px',
-          marginBottom: '0.9rem',
+          color: '#c79a6b',
+          marginBottom: '1.25rem',
         }}>
-          2912 × 1632 · PNG
+          HD Editions · 2912 × 1632 · PNG
         </div>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.6rem', fontWeight: '700', lineHeight: 1.15 }}>
-          HD Virtual Backgrounds
+        <h1 style={{
+          fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+          fontWeight: 600,
+          letterSpacing: '-0.02em',
+          fontSize: 'clamp(2.25rem, 4.5vw, 3.5rem)',
+          marginBottom: '1.25rem',
+          lineHeight: 1.05,
+          maxWidth: '880px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}>
+          The HD Editions — engineered for the codecs that compress you.
         </h1>
         <p style={{
           fontSize: '1.1rem',
-          maxWidth: '640px',
-          margin: '0 auto 1.75rem',
-          lineHeight: 1.55,
-          opacity: 0.94,
+          maxWidth: '680px',
+          margin: '0 auto 2rem',
+          lineHeight: 1.65,
+          color: '#d1d5db',
         }}>
-          Razor-sharp detail and true color depth — roughly 3× the effective resolution of standard
-          webcam backgrounds. Built for 4K monitors, TVs, and projectors where quality shows.
+          Roughly 3× the effective resolution of standard webcam backgrounds. Architected
+          environments that survive Zoom and Teams compression where stock JPEGs fall apart —
+          and shine on the 4K monitors and projectors where presence shows.
         </p>
 
         {isSubscriber ? (

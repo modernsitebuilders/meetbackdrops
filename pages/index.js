@@ -54,8 +54,8 @@ export default function Home() {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Free Virtual Background Images for Zoom & Teams | StreamBackdrops"
-      description="Download 1300+ free still image virtual backgrounds for Zoom, Teams & Google Meet. Static photos — no video, no signup, no watermarks. Bookshelf, office, nature & more — instant download."
+      title="Executive Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops"
+      description="High-fidelity virtual environments engineered for executive video presence. AI-architected, 4K-upscaled office, library, and gallery interiors. Free samples and corporate licensing available."
       currentPage="home"
     >
       <Head>
@@ -76,13 +76,26 @@ export default function Home() {
         `}</style>
       </Head>
 
-      <section style={{ padding: '2rem' }}>
+      <section style={{ padding: '4rem 2rem 2rem' }}>
+        {/* Eyebrow */}
+        <div style={{
+          textAlign: 'center',
+          fontSize: '0.75rem',
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: '#9a6a3a',
+          fontWeight: 600,
+          marginBottom: '1.25rem'
+        }}>
+          Virtual Set Design Studio
+        </div>
+
         {/* Hero Image Collage */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '0.5rem',
-          maxWidth: '1000px',
+          gap: '0.25rem',
+          maxWidth: '1100px',
           margin: '0 auto'
         }}>
           {HERO_IMAGES.map((img, i) => {
@@ -92,31 +105,80 @@ export default function Home() {
                 key={i}
                 src={`${base}-700w.webp`}
                 srcSet={`${base}-400w.webp 400w, ${base}-700w.webp 700w, ${img.src} 1456w`}
-                sizes="(min-width: 1064px) 328px, calc((100vw - 80px) / 3)"
+                sizes="(min-width: 1064px) 360px, calc((100vw - 80px) / 3)"
                 alt={img.alt}
                 width={1456}
                 height={816}
                 loading={i === 0 ? 'eager' : 'lazy'}
                 fetchPriority={i === 0 ? 'high' : 'auto'}
                 decoding={i === 0 ? 'sync' : 'async'}
-                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                style={{ width: '100%', height: '220px', objectFit: 'cover' }}
               />
             );
           })}
         </div>
-        
-        <h1 style={{ textAlign: 'center' }}>Professional Virtual Backgrounds</h1>
-        <p style={{ textAlign: 'center' }}>Free backgrounds for video calls</p>
-        
-        <TrustBadges />
-<HeroCTA />
-<div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-  <HDBadge />
-</div>
-<WhyDifferent />
 
-        <div style={{ maxWidth: '640px', margin: '0 auto 2rem', padding: '0 1rem' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>See It in Action</h2>
+        <h1
+          style={{
+            textAlign: 'center',
+            fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+            fontWeight: 600,
+            letterSpacing: '-0.02em',
+            fontSize: 'clamp(2.25rem, 5vw, 3.75rem)',
+            lineHeight: 1.05,
+            margin: '3rem auto 1.25rem',
+            maxWidth: '900px',
+            color: '#111827'
+          }}
+        >
+          High-Fidelity Virtual Environments<br />for Executive Video Presence
+        </h1>
+
+        <p
+          style={{
+            textAlign: 'center',
+            fontSize: '1.15rem',
+            color: '#4b5563',
+            lineHeight: 1.65,
+            maxWidth: '720px',
+            margin: '0 auto 0.5rem'
+          }}
+        >
+          AI-architected, 4K-upscaled interiors — engineered for the way you appear on
+          Zoom, Teams, and Meet. Not stock photos. Composed sets.
+        </p>
+
+        <TrustBadges />
+        <HeroCTA />
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '1.5rem' }}>
+          <HDBadge />
+        </div>
+
+        {/* Free / samples — demoted */}
+        <p style={{
+          textAlign: 'center',
+          fontSize: '0.85rem',
+          color: '#6b7280',
+          marginTop: '1.25rem',
+          letterSpacing: '0.02em'
+        }}>
+          Individual sample environments are available without signup for personal use.
+        </p>
+
+        <WhyDifferent />
+
+        <div style={{ maxWidth: '720px', margin: '4rem auto 2rem', padding: '0 1rem' }}>
+          <h2 style={{
+            textAlign: 'center',
+            fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+            fontWeight: 600,
+            letterSpacing: '-0.02em',
+            fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
+            color: '#111827',
+            marginBottom: '1.5rem'
+          }}>
+            See It in Action
+          </h2>
           <YoutubeEmbed videoId="Vv1sMh3pG_I" title="StreamBackdrops Overview" />
         </div>
 
