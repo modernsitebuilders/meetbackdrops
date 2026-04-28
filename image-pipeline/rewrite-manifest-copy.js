@@ -14,9 +14,13 @@
  *   gamer / gamers / gaming / Twitch / streamer / streamers / livestreamer /
  *   esports / OBS overlay / stream overlay / gaming stream / gaming PC
  *
- * The approved vocabulary is: architected, high-fidelity, 4K-upscaled,
- * composed for camera, executive video presence, virtual environment,
+ * The approved vocabulary is: designed, studio-designed, high-fidelity,
+ * 4K-upscaled, composed for camera, virtual background, virtual set,
  * studio-composed, codec compression, corporate, boardroom, executive.
+ *
+ * Avoid "architected" as a default verb — it's business-speak. Use
+ * "designed" instead. "Engineered" is OK only when paired with a specific
+ * technical claim (e.g. "engineered for codec compression").
  *
  * See CLAUDE.md (project root) → "BRAND VOICE — READ FIRST" section for
  * the full rule set, prohibited terms, and required substitutions.
@@ -100,7 +104,7 @@ const CATEGORY_NOUNS = {
   'halloween-backgrounds':  ['autumn-styled interior', 'moody Halloween setting', 'October-styled composition'],
 };
 
-const FALLBACK_NOUNS = ['architected interior', 'composed video environment'];
+const FALLBACK_NOUNS = ['designed interior', 'composed video set'];
 
 // ─── Adjective normalization (shared with alt) ───────────────────────────────
 const ADJECTIVE_MAP = {
@@ -128,10 +132,10 @@ const ADJECTIVE_MAP = {
 
 // ─── Alt suffix rotation ─────────────────────────────────────────────────────
 const ALT_SUFFIXES = [
-  ' — high-fidelity 4K virtual environment, composed for camera',
-  ' — architected 4K virtual environment for executive video presence',
-  ' — high-fidelity virtual environment engineered for codec compression',
-  ' — 4K-upscaled virtual environment for Zoom, Teams, and Google Meet',
+  ' — studio-designed 4K virtual background, composed for camera',
+  ' — designed 4K virtual background for corporate video calls',
+  ' — high-fidelity virtual background engineered for codec compression',
+  ' — 4K-upscaled virtual background for Zoom, Teams, and Google Meet',
 ];
 
 // ─── Description templates ───────────────────────────────────────────────────
@@ -142,15 +146,15 @@ const ALT_SUFFIXES = [
 // chars. Templates below fit in 160 with the longest noun + adjective combo.
 const DESCRIPTION_TEMPLATES = [
   ({ adj, noun }) =>
-    `Upgrade your video presence with this architected 4K ${noun}. Studio-composed, high-fidelity environment for Zoom, Teams, and Google Meet.`,
+    `Upgrade your video calls with this studio-designed 4K ${noun}. Composed for camera, tuned for codec compression on Zoom, Teams, and Google Meet.`,
   ({ adj, noun }) =>
-    `Architected 4K ${noun} engineered for codec compression. A high-fidelity virtual environment for executive Zoom, Teams, and Meet calls.`,
+    `Designed 4K ${noun} engineered for codec compression. A high-fidelity virtual background for corporate Zoom, Teams, and Meet calls.`,
   ({ adj, noun }) =>
-    `A high-fidelity, AI-architected ${noun} composed for camera. Professional-grade 4K virtual environment for executive video calls.`,
+    `A high-fidelity, studio-designed ${noun} composed for camera. Professional-grade 4K virtual background for corporate video calls.`,
   ({ adj, noun }) =>
-    `${capitalize(adj || 'Architected')}, 4K-upscaled ${noun} from the StreamBackdrops Studio collection. High-fidelity environment for Zoom, Teams, and Meet.`,
+    `${capitalize(adj || 'Studio-designed')}, 4K-upscaled ${noun} from the StreamBackdrops Studio collection. A high-fidelity virtual background for Zoom, Teams, and Meet.`,
   ({ adj, noun }) =>
-    `Studio-composed ${noun}, upscaled to 4K and tuned for video codec compression. High-fidelity virtual environment for executive video calls.`,
+    `Studio-composed ${noun}, upscaled to 4K and tuned for video codec compression. A high-fidelity virtual background for corporate video calls.`,
 ];
 
 const DESCRIPTION_MAX = 160;
@@ -211,7 +215,7 @@ function buildAlt(entry) {
 
 function buildTitle(entry) {
   const display = CATEGORY_DISPLAY[entry.category] || prettifySlug(entry.category);
-  return `${display} Virtual Environments for Executive Video Calls | StreamBackdrops Studio`;
+  return `${display} Virtual Backgrounds, Designed as Sets | StreamBackdrops Studio`;
 }
 
 function buildDescription(entry) {

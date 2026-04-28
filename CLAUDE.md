@@ -14,12 +14,14 @@
 
 | Use this | Not this |
 |---|---|
-| Virtual environments / virtual sets / architected interiors | "virtual backgrounds" (OK in legacy SEO contexts only) |
-| Executive video presence / corporate video calls | "streaming" / "for streamers" |
-| High-fidelity, 4K-upscaled, AI-architected, composed for camera | "stock photos", "free downloads" (avoid as headline framing) |
+| Virtual backgrounds / virtual sets / designed interiors / virtual environments *(secondary)* | "virtual environments" as a primary product term — reads as VR/metaverse |
+| Corporate video calls / executive video calls / professional video calls | "streaming" / "for streamers" / "executive video presence" *(too jargony)* |
+| Studio-designed, 4K-upscaled, designed as sets, composed for camera, engineered for codec compression | "AI-architected" / "architected" *(business-speak — use "designed")*; "stock photos" or "free downloads" as headline framing |
 | Studio / Virtual Set Design Studio / StreamBackdrops Studio | "background site", "image library" |
 | Zoom, Microsoft Teams, Google Meet, Webex | "Twitch", "OBS-first", "Discord" |
-| Webinars, livestreams, broadcast productions (in license use-case lists only) | "Gaming streams", "🎮 streaming" |
+| Webinars, livestreams, broadcast productions *(in license use-case lists only)* | "Gaming streams", "🎮 streaming" |
+
+**Verb of choice**: `designed` (plain English, universally understood). Avoid `architected` as a default verb — it's business-speak. `engineered` is OK only when paired with a specific technical claim (e.g. "engineered for codec compression"). `composed` is OK in the phrase "composed for camera". `produced` is OK for studio-output framing.
 
 ### Why this matters
 

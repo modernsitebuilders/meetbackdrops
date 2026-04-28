@@ -54,8 +54,8 @@ export default function Home() {
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Executive Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops"
-      description="High-fidelity virtual environments engineered for executive video presence. AI-architected, 4K-upscaled office, library, and gallery interiors. Free samples and corporate licensing available."
+      title="Professional Zoom & Teams Backgrounds, Designed as Sets | StreamBackdrops"
+      description="Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples and corporate licensing available."
       currentPage="home"
     >
       <Head>
@@ -131,7 +131,7 @@ export default function Home() {
             color: '#111827'
           }}
         >
-          High-Fidelity Virtual Environments<br />for Executive Video Presence
+          Professional Zoom backgrounds,<br />designed as sets.
         </h1>
 
         <p
@@ -144,8 +144,8 @@ export default function Home() {
             margin: '0 auto 0.5rem'
           }}
         >
-          AI-architected, 4K-upscaled interiors — engineered for the way you appear on
-          Zoom, Teams, and Meet. Not stock photos. Composed sets.
+          Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet —
+          composed for camera, not pulled from stock.
         </p>
 
         <TrustBadges />

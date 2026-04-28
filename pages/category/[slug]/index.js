@@ -126,7 +126,7 @@ function CategoryContent({ slug, scores = {}, metadata = {} }) {
                   color: '#111827',
                   margin: '0 0 0.75rem',
                 }}>
-                  Every Office Space environment
+                  Every Office Space background
                 </h2>
                 <p style={{
                   fontSize: '0.95rem',
@@ -231,15 +231,15 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
 
   const categoryName = String(category.name || 'Virtual');
   const pageTitle = currentSlug === 'christmas-backgrounds'
-  ? 'Christmas Virtual Environments for Zoom, Teams & Meet | StreamBackdrops'
+  ? 'Christmas Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops'
   : currentSlug === 'valentines-backgrounds'
-  ? "Valentine's Day Virtual Environments for Zoom, Teams & Meet | StreamBackdrops"
-  : `${categoryName} Virtual Environments for Executive Video Calls | StreamBackdrops`;
+  ? "Valentine's Day Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops"
+  : `${categoryName} Virtual Backgrounds, Designed as Sets | StreamBackdrops`;
   const pageDescription = currentSlug === 'christmas-backgrounds'
-  ? 'Architected Christmas virtual environments for executive video presence on Zoom, Teams, and Google Meet. Composed sets — not stock photos. Free samples available.'
+  ? 'Studio-designed Christmas virtual backgrounds for Zoom, Teams, and Google Meet. Composed sets — not stock photos. Free samples available.'
   : currentSlug === 'valentines-backgrounds'
-  ? "Architected Valentine's Day virtual environments for video calls. Composed sets engineered for codec compression. Free samples and corporate licensing available."
-  : String(category.seoDescription || `Architected ${categoryName.toLowerCase()} virtual environments for executive video presence on Zoom, Teams, and Google Meet. Composed sets — not stock photos.`);
+  ? "Studio-designed Valentine's Day virtual backgrounds for video calls. Composed for camera, engineered for codec compression. Free samples and corporate licensing available."
+  : String(category.seoDescription || `Studio-designed ${categoryName.toLowerCase()} virtual backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock.`);
 
   const featuredImages = {
     'halloween-backgrounds': 'halloween-background-20.webp',

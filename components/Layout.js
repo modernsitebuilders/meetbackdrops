@@ -26,11 +26,11 @@ const WishlistDrawer = dynamic(() => import('./WishlistDrawer'), { ssr: false })
 // full rule set and required vocabulary.
 export default function Layout({
   children,
-  title = 'Executive Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops',
-  description = `High-fidelity virtual environments engineered for executive video presence. AI-architected, 4K-upscaled office, library, and gallery interiors used by remote teams in 30+ countries. Free samples and corporate licensing available.`,
+  title = 'Professional Zoom & Teams Backgrounds, Designed as Sets | StreamBackdrops',
+  description = `Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Used by remote teams in 30+ countries. Free samples and corporate licensing available.`,
   currentPage = null,
   canonical,
-  keywords = 'executive zoom backgrounds, corporate virtual office, professional teams backgrounds, 4k virtual backgrounds, executive video presence, modern home office backdrop, corporate meeting environment, virtual set design',
+  keywords = 'professional zoom backgrounds, corporate teams backgrounds, 4k virtual backgrounds, studio-designed backgrounds, modern home office backdrop, corporate meeting backgrounds, virtual set design, designed zoom backgrounds',
   image = '/og-image.png',
   structuredData,
   noIndex = false,
@@ -48,16 +48,16 @@ export default function Layout({
     "@type": "Organization",
     "name": "StreamBackdrops",
     "alternateName": "StreamBackdrops Studio",
-    "description": "Virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Teams, and Google Meet.",
+    "description": "Virtual set design studio producing studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet.",
     "url": "https://streambackdrops.com",
     "logo": "https://streambackdrops.com/og-image.png",
     "areaServed": "Worldwide",
     "knowsAbout": [
-      "Executive video presence",
-      "Corporate virtual backgrounds",
-      "Professional virtual environments",
+      "Professional Zoom backgrounds",
+      "Corporate Teams backgrounds",
+      "Studio-designed virtual backgrounds",
       "Team licensing",
-      "Remote work production design"
+      "Virtual set design for video calls"
     ],
     "potentialAction": {
       "@type": "SearchAction",
@@ -79,10 +79,12 @@ export default function Layout({
         <meta charSet="utf-8" />
         <title>{title}</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/web-app-manifest-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/web-app-manifest-512x512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
 
         {/* ✅ SEO Meta Tags */}
         <meta name="description" content={description} />

@@ -128,7 +128,7 @@ export default function Licensing() {
       setStatus('success');
     } catch (err) {
       setStatus('error');
-      setServerError(err.message || 'Submission failed. Please email dave@modernsitebuilders.com.');
+      setServerError(err.message || 'Submission failed. Please email info@streambackdrops.com.');
     }
   };
 
@@ -141,16 +141,16 @@ export default function Licensing() {
       name: 'StreamBackdrops',
       url: 'https://streambackdrops.com',
     },
-    serviceType: 'Corporate virtual environment licensing',
+    serviceType: 'Corporate virtual background licensing',
     areaServed: 'Worldwide',
     description:
-      'Licensed access to a curated library of AI-architected, 4K-upscaled virtual environments for corporate video presence on Zoom, Teams, and Google Meet.',
+      'Licensed access to a curated library of studio-designed, 4K-upscaled virtual backgrounds for corporate video calls on Zoom, Teams, and Google Meet.',
   };
 
   return (
     <Layout
       title="Corporate & Team Licensing | StreamBackdrops Studio"
-      description="License the full StreamBackdrops library for your team. AI-architected, 4K virtual environments for executive video presence on Zoom, Teams, and Google Meet. Talk to the studio."
+      description="License the full StreamBackdrops library for your team. Studio-designed, 4K virtual backgrounds for corporate video calls on Zoom, Teams, and Google Meet. Talk to the studio."
       canonical="https://streambackdrops.com/licensing"
       structuredData={structuredData}
     >
@@ -192,7 +192,7 @@ export default function Licensing() {
                 margin: '0 auto 2.5rem',
               }}
             >
-              StreamBackdrops produces AI-architected, 4K-upscaled environments engineered
+              StreamBackdrops designs 4K-upscaled virtual backgrounds engineered
               for codec compression on Zoom, Teams, and Google Meet. Equip your entire
               team with a curated, brand-consistent library of virtual sets.
             </p>
@@ -289,7 +289,7 @@ export default function Licensing() {
           >
             <ValuePillar
               title="Brand consistency at scale"
-              body="Equip every executive, sales rep, and recruiter with the same curated set of architected interiors — so your video presence is unified from the C-suite to the front line."
+              body="Equip every executive, sales rep, and recruiter with the same curated set of designed interiors — so your video presence is unified from the C-suite to the front line."
             />
             <ValuePillar
               title="Engineered for codec compression"
@@ -652,8 +652,8 @@ export default function Licensing() {
 
               <p style={{ color: MUTED, fontSize: '0.8rem', marginTop: '1.25rem', textAlign: 'center', lineHeight: 1.6 }}>
                 Or email the studio directly at{' '}
-                <a href="mailto:dave@modernsitebuilders.com" style={{ color: WARM, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-                  dave@modernsitebuilders.com
+                <a href="mailto:info@streambackdrops.com" style={{ color: WARM, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  info@streambackdrops.com
                 </a>
                 .
               </p>

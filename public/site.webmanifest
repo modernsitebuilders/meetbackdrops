@@ -1,6 +1,7 @@
 {
-  "name": "StreamBackdrops",
-  "short_name": "SB",
+  "name": "StreamBackdrops Studio",
+  "short_name": "StreamBackdrops",
+  "description": "Studio-designed virtual backgrounds for Zoom, Teams, and Google Meet.",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +16,8 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#111827",
+  "background_color": "#fafaf7",
+  "display": "standalone",
+  "start_url": "/"
 }

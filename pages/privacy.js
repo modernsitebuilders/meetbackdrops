@@ -330,7 +330,7 @@ export default function Privacy() {
                   border: '1px solid #e5e7eb'
                 }}>
                   <ul style={{listStyle: 'none', color: '#374151'}}>
-                    <li>📧 Email: dave@modernsitebuilders.com</li>
+                    <li>📧 Email: info@streambackdrops.com</li>
                     <li>📝 Contact Form: <Link href="/contact" style={{color: '#2563eb'}}>streambackdrops.com/contact</Link></li>
                   </ul>
                 </div>

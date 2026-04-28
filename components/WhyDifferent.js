@@ -6,7 +6,7 @@ export default function WhyDifferent() {
     {
       label: 'Origin',
       stock: 'Shot once, sold to thousands',
-      ours: 'AI-architected sets, composed for video',
+      ours: 'Studio-designed sets, composed for video',
     },
     {
       label: 'Resolution',
@@ -30,9 +30,9 @@ export default function WhyDifferent() {
       <div className={styles.eyebrow}>Why our tech</div>
       <h2 className={styles.heading}>Engineered Sets, Not Stock Photos</h2>
       <p className={styles.subtitle}>
-        Generic stock libraries shoot once and license forever. We architect each
-        environment in 4K, then test it on the cameras and codecs that compress your
-        image in real time.
+        Generic stock libraries shoot once and license forever. We design each
+        background as a 4K set, then test it on the cameras and codecs that compress
+        your image in real time.
       </p>
 
       <div className={styles.compareWrap}>

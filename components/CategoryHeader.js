@@ -6,13 +6,13 @@ export default function CategoryHeader({ category, featuredImageUrl }) {
   const name = category?.name || 'Virtual';
   const shortDescription =
     category?.shortDescription ||
-    `Architected ${name.toLowerCase()} environments for executive video presence on Zoom, Teams, and Google Meet.`;
+    `Studio-designed ${name.toLowerCase()} backgrounds for video calls on Zoom, Teams, and Google Meet.`;
 
   return (
     <div className={styles.header}>
       <div className={styles.text}>
         <div className={styles.eyebrow}>The Collection · {name}</div>
-        <h1 className={styles.title}>{name} Virtual Environments</h1>
+        <h1 className={styles.title}>{name} Virtual Backgrounds</h1>
         <p className={styles.description}>{shortDescription}</p>
         <div className={styles.linkRow}>
           <Link href="/hd" className={styles.hdLink}>

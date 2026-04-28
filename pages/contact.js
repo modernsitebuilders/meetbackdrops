@@ -180,7 +180,7 @@ export default function Contact() {
                   Support, suggestions, press, and individual questions.
                 </p>
                 <a
-                  href="mailto:dave@modernsitebuilders.com"
+                  href="mailto:info@streambackdrops.com"
                   style={{
                     display: 'inline-block',
                     color: '#9a6a3a',
@@ -191,7 +191,7 @@ export default function Contact() {
                     textUnderlineOffset: '4px',
                   }}
                 >
-                  dave@modernsitebuilders.com
+                  info@streambackdrops.com
                 </a>
               </div>
 

@@ -12,7 +12,7 @@ export default function About() {
   return (
     <Layout
       title="About StreamBackdrops | Virtual Set Design Studio"
-      description="StreamBackdrops is a virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Teams, and Google Meet."
+      description="StreamBackdrops is a virtual set design studio producing studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet."
       canonical="https://streambackdrops.com/about"
     >
 
@@ -72,7 +72,7 @@ export default function About() {
                 margin: '0 auto',
                 lineHeight: 1.6
               }}>
-                High-Fidelity Virtual Environments for Corporate Video Presence
+                Studio-Designed Backgrounds for Corporate Video Calls
               </h2>
             </div>
 
@@ -87,7 +87,7 @@ export default function About() {
                   Our Mission
                 </h3>
                 <p style={{color: '#374151', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: 1.75}}>
-                  On a video call, your environment speaks before you do. StreamBackdrops produces architected interiors — modern offices, libraries, galleries, and conference rooms — engineered to convey authority on Zoom, Teams, and Google Meet.
+                  On a video call, your background speaks before you do. StreamBackdrops designs interiors — modern offices, libraries, galleries, and conference rooms — engineered to convey authority on Zoom, Teams, and Google Meet.
                 </p>
                 <p style={{color: '#374151', fontSize: '1.1rem', lineHeight: 1.75}}>
                   Every environment is composed for camera, upscaled to 4K, and tested across the codecs that broadcast you to your colleagues, clients, and boards. We make samples freely available for individual professionals; teams and enterprises license the curated library through our <Link href="/licensing" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Corporate &amp; Team Licensing</Link> program.

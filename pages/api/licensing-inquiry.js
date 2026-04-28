@@ -1,15 +1,21 @@
 import { google } from 'googleapis';
 
-// Validates and stores B2B licensing inquiries.
+// Validates and stores B2B licensing inquiries, and sends an email
+// notification to the studio inbox.
 //
 // Storage: appends to a "Licensing Inquiries" sheet in the existing
 // GOOGLE_SHEET_ID workbook (mirrors save-email.js / submit-review.js).
 // The sheet must have headers: Timestamp | Name | Work Email | Company |
 // Role | Team Size | Timeline | Use Case | Notes | IP | User-Agent.
 //
-// If Google Sheets credentials are missing or the call fails, the lead is
-// still logged to the server console so it isn't lost — this lets us
-// deploy the page before the sheet is provisioned.
+// Email: sends via Resend's HTTP API (no SDK required). Requires:
+//   RESEND_API_KEY            — from https://resend.com (free tier covers 3K/mo)
+//   LICENSING_INBOX           — defaults to info@streambackdrops.com
+//   LICENSING_FROM            — defaults to "StreamBackdrops Studio <notifications@streambackdrops.com>"
+//                               The from-domain MUST be verified in Resend (DNS records).
+//
+// If any of these env vars are missing or the call fails, the lead is
+// still logged to the server console + Sheets so it isn't lost.
 
 const FREE_EMAIL_DOMAINS = new Set([
   'gmail.com',
@@ -29,6 +35,94 @@ function isValidEmail(email) {
 function clean(str, max = 2000) {
   if (typeof str !== 'string') return '';
   return str.trim().slice(0, max);
+}
+
+function escapeHtml(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.LICENSING_INBOX || 'info@streambackdrops.com';
+  const from = process.env.LICENSING_FROM || 'StreamBackdrops Studio <notifications@streambackdrops.com>';
+
+  if (!apiKey) {
+    return { ok: false, reason: 'no-api-key' };
+  }
+
+  const subject = `New licensing inquiry — ${lead.company || lead.name}`;
+  const lines = [
+    `Submitted: ${timestamp} ET`,
+    `Name:      ${lead.name}`,
+    `Email:     ${lead.workEmail}${isFreeDomain ? '  (free-domain)' : ''}`,
+    `Company:   ${lead.company}`,
+    `Role:      ${lead.role || '—'}`,
+    `Team size: ${lead.teamSize}`,
+    `Timeline:  ${lead.timeline || '—'}`,
+    `IP:        ${ip || '—'}`,
+    '',
+    'Use case:',
+    lead.useCase,
+    '',
+    'Notes:',
+    lead.notes || '—',
+  ];
+  const text = lines.join('\n');
+  const html = `
+<div style="font-family:Georgia,serif;color:#111827;max-width:640px;line-height:1.55">
+  <p style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#9a6a3a;font-weight:600;margin:0 0 .75rem">
+    StreamBackdrops Studio · New Licensing Inquiry
+  </p>
+  <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em;font-size:1.5rem;margin:0 0 1.25rem">
+    ${escapeHtml(lead.company || lead.name)}
+  </h2>
+  <table cellpadding="6" style="border-collapse:collapse;font-size:.95rem">
+    <tr><td style="color:#6b7280">Submitted</td><td>${escapeHtml(timestamp)} ET</td></tr>
+    <tr><td style="color:#6b7280">Name</td><td>${escapeHtml(lead.name)}</td></tr>
+    <tr><td style="color:#6b7280">Email</td><td><a href="mailto:${escapeHtml(lead.workEmail)}">${escapeHtml(lead.workEmail)}</a>${isFreeDomain ? ' <span style="color:#9a6a3a;font-size:.8rem">(free-domain)</span>' : ''}</td></tr>
+    <tr><td style="color:#6b7280">Company</td><td>${escapeHtml(lead.company)}</td></tr>
+    <tr><td style="color:#6b7280">Role</td><td>${escapeHtml(lead.role || '—')}</td></tr>
+    <tr><td style="color:#6b7280">Team size</td><td>${escapeHtml(lead.teamSize)}</td></tr>
+    <tr><td style="color:#6b7280">Timeline</td><td>${escapeHtml(lead.timeline || '—')}</td></tr>
+    <tr><td style="color:#6b7280;vertical-align:top">Use case</td><td style="white-space:pre-wrap">${escapeHtml(lead.useCase)}</td></tr>
+    <tr><td style="color:#6b7280;vertical-align:top">Notes</td><td style="white-space:pre-wrap">${escapeHtml(lead.notes || '—')}</td></tr>
+    <tr><td style="color:#6b7280">IP</td><td style="font-family:monospace;font-size:.85rem">${escapeHtml(ip || '—')}</td></tr>
+  </table>
+  <p style="margin-top:1.5rem;color:#6b7280;font-size:.85rem">
+    Reply directly to this email to respond to the prospect — the Reply-To header is set to their work email.
+  </p>
+</div>`.trim();
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        from,
+        to: [to],
+        reply_to: lead.workEmail,
+        subject,
+        text,
+        html,
+      }),
+    });
+    if (!res.ok) {
+      const body = await res.text().catch(() => '');
+      return { ok: false, reason: 'resend-error', status: res.status, body };
+    }
+    const data = await res.json().catch(() => ({}));
+    return { ok: true, id: data.id };
+  } catch (err) {
+    return { ok: false, reason: 'network-error', message: err.message };
+  }
 }
 
 export default async function handler(req, res) {
@@ -74,7 +168,8 @@ export default async function handler(req, res) {
     minute: '2-digit',
   });
 
-  // Always log server-side so the lead is captured even if Sheets is down.
+  // Always log server-side so the lead is captured even if both Sheets and
+  // email are down.
   console.log('[licensing-inquiry]', {
     timestamp,
     ...lead,
@@ -83,21 +178,44 @@ export default async function handler(req, res) {
     ip,
   });
 
+  // Fire email + sheets in parallel — neither blocks the other, and either
+  // one failing still leaves the lead captured in server logs.
+  const [emailResult, sheetsResult] = await Promise.allSettled([
+    sendStudioNotification({ lead, isFreeDomain, ip, timestamp }),
+    appendToSheet({ lead, ip, userAgent, timestamp }),
+  ]);
+
+  const emailStatus = emailResult.status === 'fulfilled' ? emailResult.value : { ok: false, reason: 'threw', message: String(emailResult.reason) };
+  const sheetsStatus = sheetsResult.status === 'fulfilled' ? sheetsResult.value : { ok: false, reason: 'threw', message: String(sheetsResult.reason) };
+
+  if (!emailStatus.ok) {
+    console.error('[licensing-inquiry] email notification failed:', emailStatus);
+  } else {
+    console.log('[licensing-inquiry] email sent, id:', emailStatus.id);
+  }
+  if (!sheetsStatus.ok) {
+    console.error('[licensing-inquiry] sheets append failed:', sheetsStatus.message || sheetsStatus.reason);
+  }
+
+  return res.status(200).json({
+    success: true,
+    persisted: {
+      email: emailStatus.ok ? 'sent' : `skipped:${emailStatus.reason}`,
+      sheets: sheetsStatus.ok ? 'sent' : `skipped:${sheetsStatus.reason}`,
+    },
+  });
+}
+
+async function appendToSheet({ lead, ip, userAgent, timestamp }) {
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
   const serviceEmail = process.env.GOOGLE_SERVICE_EMAIL;
   const rawKey = process.env.GOOGLE_PRIVATE_KEY;
-
   if (!spreadsheetId || !serviceEmail || !rawKey) {
-    // Sheet not provisioned — return success so the form completes; the lead
-    // is still in server logs and the user gets the success state.
-    return res.status(200).json({ success: true, persisted: 'log-only' });
+    return { ok: false, reason: 'no-credentials' };
   }
-
   try {
     let privateKey = rawKey;
-    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
-      privateKey = privateKey.slice(1, -1);
-    }
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) privateKey = privateKey.slice(1, -1);
     privateKey = privateKey.replace(/\\n/g, '\n');
 
     const auth = new google.auth.JWT({
@@ -105,38 +223,20 @@ export default async function handler(req, res) {
       key: privateKey,
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
-
     const sheets = google.sheets({ version: 'v4', auth });
-
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: 'Licensing Inquiries!A:K',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
-        values: [
-          [
-            timestamp,
-            lead.name,
-            lead.workEmail,
-            lead.company,
-            lead.role,
-            lead.teamSize,
-            lead.timeline,
-            lead.useCase,
-            lead.notes,
-            ip,
-            userAgent,
-          ],
-        ],
+        values: [[
+          timestamp, lead.name, lead.workEmail, lead.company, lead.role,
+          lead.teamSize, lead.timeline, lead.useCase, lead.notes, ip, userAgent,
+        ]],
       },
     });
-
-    return res.status(200).json({ success: true, persisted: 'sheets' });
-  } catch (error) {
-    // Sheet doesn't exist yet, or auth failed — still treat as success
-    // because we have the lead in console logs. The studio can scrape
-    // logs until the sheet tab is provisioned.
-    console.error('[licensing-inquiry] sheets append failed:', error.message);
-    return res.status(200).json({ success: true, persisted: 'log-fallback' });
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, reason: 'sheets-error', message: err.message };
   }
 }
