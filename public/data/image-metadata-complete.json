@@ -1378,7 +1378,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-bright-02.webp",
@@ -1397,7 +1397,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-bright-03.webp",
@@ -1524,7 +1524,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-bright-11.webp",
@@ -1579,7 +1579,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-bright-14.webp",
@@ -1675,7 +1675,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-bright-20.webp",
@@ -2780,7 +2780,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-dark-08.webp",
@@ -3047,7 +3047,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-dark-24.webp",
@@ -3086,7 +3086,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-dark-26.webp",
@@ -3125,7 +3125,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-dark-28.webp",
@@ -3297,7 +3297,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "bookshelves-dark-38.webp",
@@ -15408,7 +15408,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-bright-02.webp",
@@ -15426,7 +15426,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-bright-03.webp",
@@ -15444,7 +15444,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-bright-05.webp",
@@ -15615,7 +15615,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-bright-17.webp",
@@ -16012,7 +16012,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-bright-50.webp",
@@ -16191,7 +16191,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-dark-05.webp",
@@ -16226,7 +16226,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-dark-07.webp",
@@ -16448,7 +16448,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-dark-20.webp",
@@ -16568,7 +16568,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-dark-28.webp",
@@ -16688,7 +16688,7 @@
     ],
     "width": 1920,
     "height": 1080,
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "filename": "wall-shelves-dark-35.webp",

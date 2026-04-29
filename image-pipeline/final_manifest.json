@@ -1702,7 +1702,7 @@
       "workspace",
       "creative"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:2",
@@ -1725,7 +1725,7 @@
       "reading",
       "library"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:3",
@@ -1878,7 +1878,7 @@
       "library",
       "workspace"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:11",
@@ -1947,7 +1947,7 @@
       "library",
       "study"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:14",
@@ -2061,7 +2061,7 @@
       "library",
       "reading"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:20",
@@ -3276,7 +3276,7 @@
       "library",
       "workspace"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:8",
@@ -3570,7 +3570,7 @@
       "home office",
       "video calls"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:24",
@@ -3616,7 +3616,7 @@
       "books",
       "interior"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:26",
@@ -3662,7 +3662,7 @@
       "library",
       "workspace"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:28",
@@ -3865,7 +3865,7 @@
       "elegant",
       "professional"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:38",
@@ -19754,7 +19754,7 @@
       "shelf styling",
       "modern decor"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:2",
@@ -19777,7 +19777,7 @@
       "workspace",
       "digital backdrop"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:3",
@@ -19796,7 +19796,7 @@
       "home office",
       "interior design"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:5",
@@ -20006,7 +20006,7 @@
       "workspace",
       "background image"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:17",
@@ -20472,7 +20472,7 @@
       "home office",
       "stylish design"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:50",
@@ -20658,7 +20658,7 @@
       "sophisticated",
       "workspace"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:5",
@@ -20696,7 +20696,7 @@
       "video call",
       "office style"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:7",
@@ -20956,7 +20956,7 @@
       "home decor",
       "interior design"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:20",
@@ -21093,7 +21093,7 @@
       "home office",
       "video call"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:28",
@@ -21235,7 +21235,7 @@
       "shelf styling",
       "modern aesthetic"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:35",
