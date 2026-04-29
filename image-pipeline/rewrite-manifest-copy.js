@@ -139,25 +139,85 @@ const ALT_SUFFIXES = [
 ];
 
 // ─── Description templates ───────────────────────────────────────────────────
-// Each template is a function of {adj, noun} → string, ≤160 chars when filled.
-// The corpus rotates by slug hash so 117 bookshelves entries don't all read the same.
+// Each template takes {adj, noun, accent, num} and returns a string ≤160 chars.
+//   adj    — an adjective derived from the image's own tags (may be null)
+//   noun   — scene noun phrase (e.g. "executive office interior")
+//   accent — a short secondary phrase pulled from the image's tags
+//            (e.g. "with modern design", "with curated decor"); may be ''
+//   num    — the trailing number from the slug as a string (e.g. "23")
 //
-// Char-budget rule of thumb: noun phrases here run 12–32 chars, adjectives 6–14
-// chars. Templates below fit in 160 with the longest noun + adjective combo.
+// Templates pull from independent hash seeds so the four slots vary
+// independently per image. With ~10 templates × 3 nouns × ~10 adjectives ×
+// ~12 accents, every category has hundreds of distinct possible descriptions.
+// Most templates incorporate `num` (the slug edition number) so that two
+// otherwise-identical template/noun/adjective/accent picks still produce
+// distinct sentences. This is what keeps per-image descriptions unique even
+// in large categories (100+ office-spaces, 117 bookshelves) where tag-sets
+// overlap heavily.
 const DESCRIPTION_TEMPLATES = [
-  ({ adj, noun }) =>
-    `Upgrade your video calls with this studio-designed 4K ${noun}. Composed for camera, tuned for codec compression on Zoom, Teams, and Google Meet.`,
-  ({ adj, noun }) =>
-    `Designed 4K ${noun} engineered for codec compression. A high-fidelity virtual background for corporate Zoom, Teams, and Meet calls.`,
-  ({ adj, noun }) =>
-    `A high-fidelity, studio-designed ${noun} composed for camera. Professional-grade 4K virtual background for corporate video calls.`,
-  ({ adj, noun }) =>
-    `${capitalize(adj || 'Studio-designed')}, 4K-upscaled ${noun} from the StreamBackdrops Studio collection. A high-fidelity virtual background for Zoom, Teams, and Meet.`,
-  ({ adj, noun }) =>
-    `Studio-composed ${noun}, upscaled to 4K and tuned for video codec compression. A high-fidelity virtual background for corporate video calls.`,
+  ({ adj, noun, accent, num }) =>
+    `Upgrade your video calls with Edition ${num} of this studio-designed 4K ${noun}${accent}. Composed for camera, tuned for codec compression on Zoom, Teams, and Meet.`,
+  ({ adj, noun, accent, num }) =>
+    `Designed 4K ${noun}${accent} (Edition ${num}), engineered for codec compression. A high-fidelity virtual background for corporate Zoom, Teams, and Meet calls.`,
+  ({ adj, noun, accent, num }) =>
+    `A high-fidelity, studio-designed ${noun}${accent} — Edition ${num}, composed for camera. Professional-grade 4K virtual background for corporate video calls.`,
+  ({ adj, noun, accent, num }) =>
+    `${capitalize(adj || 'Studio-designed')}, 4K-upscaled ${noun}${accent} (Edition ${num}). A high-fidelity virtual background from the StreamBackdrops Studio collection.`,
+  ({ adj, noun, accent, num }) =>
+    `Studio-composed ${noun}${accent} — Edition ${num}, upscaled to 4K and tuned for video codec compression. A virtual background for corporate video calls.`,
+  ({ adj, noun, accent, num }) =>
+    `Edition ${num}: a studio-designed ${noun}${accent}, upscaled to 4K and engineered for codec compression on Zoom, Teams, and Google Meet.`,
+  ({ adj, noun, accent, num }) =>
+    `Composed for camera, this ${noun}${accent} (Edition ${num}) is a studio-designed 4K virtual background for executive Zoom, Teams, and Meet calls.`,
+  ({ adj, noun, accent, num }) =>
+    `From the StreamBackdrops Studio: Edition ${num}, a ${adj ? adj + ', ' : ''}4K-upscaled ${noun}${accent}. Designed for Zoom, Microsoft Teams, and Google Meet.`,
+  ({ adj, noun, accent, num }) =>
+    `A studio-designed ${noun}${accent} — Edition ${num}, produced as a virtual set and upscaled to 4K. Engineered for codec compression on corporate calls.`,
+  ({ adj, noun, accent, num }) =>
+    `Designed as a virtual set, Edition ${num} of this ${noun}${accent} is upscaled to 4K and composed for camera — a high-fidelity background for Zoom and Teams.`,
 ];
 
 const DESCRIPTION_MAX = 160;
+
+// ─── Title templates ─────────────────────────────────────────────────────────
+// Per-image titles. Each takes {adj, noun, num, brand} and must be ≤65 chars
+// before the " | StreamBackdrops" suffix added at the end (Google truncates
+// search-result titles around 60 chars, so keep visible portion tight).
+const TITLE_TEMPLATES = [
+  ({ adj, noun, num }) =>
+    `${titleCasePhrase(adj || 'Studio')} ${titleCasePhrase(noun)} ${num} — Zoom & Teams Background`,
+  ({ adj, noun, num }) =>
+    `${titleCasePhrase(noun)} ${num} — 4K Virtual Background for Video Calls`,
+  ({ adj, noun, num }) =>
+    `${titleCasePhrase(adj || 'Designed')} ${titleCasePhrase(noun)} ${num} — Virtual Set for Zoom & Meet`,
+  ({ adj, noun, num }) =>
+    `${titleCasePhrase(noun)} ${num} — Studio-Designed Background for Teams & Zoom`,
+];
+
+// Hard cap including the " | StreamBackdrops" suffix. Google truncates SERP
+// titles around 60 chars visually, but the full <title> still indexes — so
+// we let it run longer to keep the brand suffix intact.
+const TITLE_MAX = 110;
+
+// ─── Tag accents ─────────────────────────────────────────────────────────────
+// Short prepositional phrases derived from common tag vocabulary. The picker
+// scans the image's own tags and chooses the first matching accent (by hash
+// order) so per-image variation comes from real per-image signal.
+const TAG_ACCENTS = [
+  { match: ['modern design', 'modern', 'contemporary'],     phrase: ' with a contemporary feel' },
+  { match: ['curated decor', 'decor', 'editorial'],         phrase: ' with curated decor' },
+  { match: ['interior design', 'designer'],                 phrase: ' with editorial interior detail' },
+  { match: ['warm', 'warm-toned', 'cozy'],                  phrase: ' in warm tones' },
+  { match: ['bright', 'daylit', 'natural light', 'natural'], phrase: ' in natural light' },
+  { match: ['dark', 'moody'],                               phrase: ' in moody, low-key lighting' },
+  { match: ['minimalist', 'clean', 'sleek'],                phrase: ' with a minimalist composition' },
+  { match: ['classical', 'classic', 'traditional'],         phrase: ' in a classical style' },
+  { match: ['industrial'],                                  phrase: ' with industrial detailing' },
+  { match: ['rustic'],                                      phrase: ' with rustic finishes' },
+  { match: ['executive', 'corporate', 'boardroom'],         phrase: ' suited to executive video calls' },
+  { match: ['creative', 'creative space', 'creativity'],    phrase: ' suited to creative teams' },
+  { match: ['professional', 'business'],                    phrase: ' for professional video presence' },
+];
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function djb2(str) {
@@ -192,6 +252,23 @@ function capitalize(s) {
   return s ? s[0].toUpperCase() + s.slice(1) : s;
 }
 
+// Title-case a multi-word phrase: "editorial gallery interior" → "Editorial
+// Gallery Interior". Preserves hyphens and small connector words.
+function titleCasePhrase(s) {
+  if (!s) return s;
+  const small = new Set(['and', 'or', 'of', 'the', 'a', 'an', 'in', 'on', 'for']);
+  return String(s)
+    .split(' ')
+    .map((w, i) => {
+      if (i > 0 && small.has(w.toLowerCase())) return w.toLowerCase();
+      return w
+        .split('-')
+        .map((part) => (part ? part[0].toUpperCase() + part.slice(1) : part))
+        .join('-');
+    })
+    .join(' ');
+}
+
 function prettifySlug(s) {
   return String(s)
     .replace(/-/g, ' ')
@@ -213,9 +290,56 @@ function buildAlt(entry) {
   return alt;
 }
 
+// Pull the trailing number from a slug like "art-gallery-23" → "23".
+// Falls back to a 2-digit hash if no number is present (defensive — the
+// current corpus always has one).
+function extractSlugNumber(slug) {
+  const m = String(slug).match(/(\d+)\s*$/);
+  if (m) return m[1].padStart(2, '0');
+  return String(djb2(slug) % 100).padStart(2, '0');
+}
+
+// Pick a tag-derived accent phrase for an image, or '' if no tag matches.
+// Deterministic: rotates through TAG_ACCENTS starting at a slug-hash offset
+// so two images with the same tag-set still get different accents when
+// possible.
+function pickAccent(entry) {
+  const tagSet = new Set((entry.tags || []).map((t) => String(t).toLowerCase()));
+  if (tagSet.size === 0) return '';
+  const slug = entry.slug || entry.id || '';
+  const offset = djb2(slug + '::a') % TAG_ACCENTS.length;
+  for (let i = 0; i < TAG_ACCENTS.length; i++) {
+    const a = TAG_ACCENTS[(offset + i) % TAG_ACCENTS.length];
+    if (a.match.some((m) => tagSet.has(m))) return a.phrase;
+  }
+  return '';
+}
+
 function buildTitle(entry) {
+  const slug = entry.slug || entry.id || '';
   const display = CATEGORY_DISPLAY[entry.category] || prettifySlug(entry.category);
-  return `${display} Virtual Backgrounds, Designed as Sets | StreamBackdrops Studio`;
+  const nouns = CATEGORY_NOUNS[entry.category] || FALLBACK_NOUNS;
+  const noun = pickByHash(nouns, slug + '::tn');
+  const rawAdj = extractAdjective(entry);
+  const adj = adjectiveFitsNoun(rawAdj, noun) ? rawAdj : null;
+  const num = extractSlugNumber(slug);
+  const tmpl = pickByHash(TITLE_TEMPLATES, slug + '::tt');
+
+  let head = tmpl({ adj, noun, num });
+  // Defensive cleanup: collapse any double spaces that come from a null adj.
+  head = head.replace(/\s+/g, ' ').trim();
+
+  let out = `${head} | StreamBackdrops`;
+  if (out.length > TITLE_MAX) {
+    // Drop the brand suffix as a last resort rather than truncating mid-phrase.
+    out = head.length > TITLE_MAX ? head.slice(0, TITLE_MAX - 1).trimEnd() + '…' : head;
+  }
+  // Backstop so we never ship a truly category-only title even if templates
+  // somehow collapse to one.
+  if (!/\d/.test(out)) {
+    out = `${display} Virtual Backgrounds, Designed as Sets | StreamBackdrops Studio`;
+  }
+  return out;
 }
 
 function buildDescription(entry) {
@@ -224,8 +348,10 @@ function buildDescription(entry) {
   const noun = pickByHash(nouns, slug + '::n');
   const rawAdj = extractAdjective(entry);
   const adj = adjectiveFitsNoun(rawAdj, noun) ? rawAdj : null;
+  const accent = pickAccent(entry);
+  const num = extractSlugNumber(slug);
   const tmpl = pickByHash(DESCRIPTION_TEMPLATES, slug + '::d');
-  let out = tmpl({ adj, noun });
+  let out = tmpl({ adj, noun, accent, num });
 
   // Hard cap. Trim at last sentence boundary if possible, else hard-truncate.
   if (out.length > DESCRIPTION_MAX) {
