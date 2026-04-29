@@ -252,15 +252,17 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
     <div
       data-product-id={product.id}
       style={{
-        border: isSelected ? '3px solid #2563eb' : subscriberMode ? '3px solid #7c3aed' : '3px solid gold',
-        borderRadius: '8px',
+        border: '1px solid #e6e2dc',
+        borderBottom: isSelected ? '3px solid #9a6a3a' : '1px solid #e6e2dc',
+        borderRadius: '0',
         overflow: 'hidden',
         position: 'relative',
         cursor: subscriberMode ? 'default' : 'pointer',
         boxShadow: isHighlighted
-          ? '0 0 0 4px rgba(124, 58, 237, 0.9), 0 0 32px 6px rgba(124, 58, 237, 0.55)'
+          ? '0 0 0 2px #9a6a3a, 0 0 0 4px rgba(154, 106, 58, 0.2)'
           : 'none',
-        transition: 'box-shadow 0.35s ease',
+        transition: 'box-shadow 0.35s ease, border-color 0.2s ease',
+        background: '#fff',
       }}
       onClick={() => !subscriberMode && onToggle(product.id)}
       onMouseEnter={onMouseEnter}
@@ -279,11 +281,13 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
         <div style={{
           position: 'absolute',
           top: '10px', right: '10px',
-          background: '#2563eb', color: 'white',
-          width: '30px', height: '30px',
-          borderRadius: '50%',
+          background: '#111827', color: '#fff',
+          width: '28px', height: '28px',
+          borderRadius: '0',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontWeight: 'bold', zIndex: 3
+          fontWeight: 600, zIndex: 3,
+          fontSize: '0.85rem',
+          borderBottom: '2px solid #9a6a3a',
         }}>✓</div>
       )}
 
@@ -294,16 +298,17 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
           aria-label={wishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
           style={{
             position: 'absolute', top: '8px', right: '8px',
-            background: wishlisted ? 'rgba(37,99,235,0.9)' : 'rgba(0,0,0,0.45)',
-            border: 'none', borderRadius: '50%',
+            background: wishlisted ? 'rgba(154,106,58,0.95)' : 'rgba(17,24,39,0.6)',
+            border: 'none', borderRadius: '0',
             width: '28px', height: '28px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: 'pointer', zIndex: 3,
             fontSize: '0.85rem',
+            color: '#fff',
             opacity: isHovered || wishlisted ? 1 : 0,
             transition: 'opacity 0.2s, background 0.15s',
           }}
-        >{wishlisted ? '💙' : '🤍'}</button>
+        >{wishlisted ? '♥' : '♡'}</button>
       )}
 
       {/* Exclusive chip — no free version available */}
@@ -311,17 +316,17 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
         <div style={{
           position: 'absolute',
           top: '10px', left: '10px',
-          background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
-          color: 'white',
-          fontSize: '0.62rem',
-          fontWeight: '700',
-          padding: '3px 7px',
-          borderRadius: '4px',
-          letterSpacing: '0.05em',
+          background: '#111827',
+          color: '#fff',
+          fontSize: '0.6rem',
+          fontWeight: 600,
+          padding: '4px 9px',
+          borderRadius: '0',
+          letterSpacing: '0.18em',
           textTransform: 'uppercase',
           zIndex: 3,
           pointerEvents: 'none',
-          boxShadow: '0 2px 6px rgba(91,33,182,0.5)',
+          borderBottom: '2px solid #9a6a3a',
         }}>
           Exclusive
         </div>
@@ -386,18 +391,20 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
           top: subscriberMode ? '10px' : '50%',
           left: '50%',
           transform: subscriberMode ? 'translateX(-50%)' : 'translate(-50%, -50%)',
-          background: 'rgba(0,0,0,0.8)', color: 'white',
-          padding: '0.5rem 1.1rem',
-          border: 'none', borderRadius: '8px',
+          background: '#111827', color: '#fff',
+          padding: '0.6rem 1.25rem',
+          border: '1px solid #111827', borderRadius: '0',
           cursor: 'pointer',
           opacity: isHovered ? 1 : 0,
           transition: 'opacity 0.2s',
-          zIndex: 2, fontWeight: 'bold',
+          zIndex: 2, fontWeight: 600,
           whiteSpace: 'nowrap',
-          fontSize: '0.85rem',
+          fontSize: '0.72rem',
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
         }}
       >
-        👁️ Preview HD
+        Preview HD
       </button>
 
       {/* Subscriber download button */}
@@ -421,13 +428,14 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
         position: 'absolute',
         bottom: '8px',
         left: '8px',
-        background: 'rgba(17, 24, 39, 0.85)',
-        color: 'white',
-        fontSize: '0.68rem',
+        background: 'rgba(17, 24, 39, 0.9)',
+        color: '#fff',
+        fontSize: '0.62rem',
         fontWeight: 600,
-        padding: '3px 8px',
-        borderRadius: '4px',
-        letterSpacing: '0.02em',
+        padding: '4px 9px',
+        borderRadius: '0',
+        letterSpacing: '0.16em',
+        textTransform: 'uppercase',
         zIndex: 2,
         pointerEvents: 'none',
         fontFamily: 'system-ui, -apple-system, sans-serif',
@@ -458,10 +466,10 @@ function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) 
       position: 'fixed',
       top: 0, left: 0, right: 0,
       zIndex: 200,
-      background: 'linear-gradient(135deg, #4c1d95, #3730a3)',
-      color: 'white',
-      padding: '0.5rem 1rem',
-      boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
+      background: '#111827',
+      color: '#fff',
+      padding: '0.6rem 1rem',
+      boxShadow: '0 1px 0 #9a6a3a, 0 2px 12px rgba(0,0,0,0.3)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -473,23 +481,33 @@ function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) 
     }}>
       {!packSize ? (
         <>
-          <span style={{ fontSize: '0.8rem', opacity: 0.8, marginRight: '0.25rem', whiteSpace: 'nowrap' }}>
-            Choose a pack:
+          <span style={{
+            fontSize: '0.7rem',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#c79a6b',
+            fontWeight: 600,
+            marginRight: '0.4rem',
+            whiteSpace: 'nowrap',
+          }}>
+            Choose a pack
           </span>
           {PACK_OPTIONS.map(opt => (
             <button
               key={opt.size}
               onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'sticky_bar'); onSelect(opt.size); }}
               style={{
-                background: 'rgba(255,255,255,0.12)',
-                color: 'white',
-                border: '1px solid rgba(255,255,255,0.3)',
-                borderRadius: '6px',
-                padding: '0.3rem 0.65rem',
+                background: 'transparent',
+                color: '#fff',
+                border: '1px solid rgba(255,255,255,0.35)',
+                borderRadius: '0',
+                padding: '0.35rem 0.7rem',
                 cursor: 'pointer',
-                fontSize: '0.8rem',
-                fontWeight: '500',
+                fontSize: '0.78rem',
+                fontWeight: 500,
                 whiteSpace: 'nowrap',
+                letterSpacing: '0.04em',
+                fontFamily: 'inherit',
               }}
             >
               {opt.size === 1 ? '1 image' : `${opt.size}-pack`} · ${opt.price}
@@ -498,12 +516,22 @@ function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) 
         </>
       ) : (
         <>
-          <span style={{ fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
-            {isFull ? `✓ All ${packSize} selected` : `${selected.length} of ${packSize} selected`}
-            {' · '}${packOption.price}
+          <span style={{
+            fontSize: '0.7rem',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#c79a6b',
+            fontWeight: 600,
+            whiteSpace: 'nowrap',
+            marginRight: '0.4rem',
+          }}>
+            {isFull ? `All ${packSize} selected` : `${selected.length} of ${packSize}`}
+          </span>
+          <span style={{ fontSize: '0.85rem', fontWeight: 600, whiteSpace: 'nowrap', fontFamily: "'Fraunces', Georgia, serif" }}>
+            ${packOption.price}
           </span>
           {!isFull && (
-            <span style={{ fontSize: '0.8rem', opacity: 0.75, whiteSpace: 'nowrap' }}>
+            <span style={{ fontSize: '0.78rem', opacity: 0.7, whiteSpace: 'nowrap' }}>
               — pick {packSize - selected.length} more below
             </span>
           )}
@@ -511,14 +539,17 @@ function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) 
             onClick={onChangePack}
             style={{
               background: 'transparent',
-              color: 'rgba(255,255,255,0.65)',
+              color: 'rgba(255,255,255,0.7)',
               border: '1px solid rgba(255,255,255,0.3)',
-              borderRadius: '6px',
+              borderRadius: '0',
               padding: '0.25rem 0.6rem',
               cursor: 'pointer',
-              fontSize: '0.75rem',
-              marginLeft: '0.25rem',
+              fontSize: '0.7rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              marginLeft: '0.4rem',
               whiteSpace: 'nowrap',
+              fontFamily: 'inherit',
             }}
           >
             Change
@@ -533,8 +564,15 @@ function StickyPackBar({ packSize, selected, onSelect, onChangePack, visible }) 
 function PackPicker({ packSize, onSelect }) {
   return (
     <div style={{ marginBottom: '1.5rem' }}>
-      <div style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.75rem', opacity: 0.95 }}>
-        Choose your HD pack:
+      <div style={{
+        fontSize: '0.7rem',
+        fontWeight: 600,
+        letterSpacing: '0.22em',
+        textTransform: 'uppercase',
+        color: '#c79a6b',
+        marginBottom: '1rem',
+      }}>
+        Choose your HD pack
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
         {PACK_OPTIONS.map(opt => {
@@ -544,30 +582,39 @@ function PackPicker({ packSize, onSelect }) {
               key={opt.size}
               onClick={() => { trackAnalytics('hd_pack_selected', String(opt.size), 'pack_picker'); onSelect(opt.size); }}
               style={{
-                background: isSelected ? 'white' : 'rgba(255,255,255,0.15)',
-                color: isSelected ? '#4c1d95' : 'white',
-                border: isSelected ? '2px solid white' : '2px solid rgba(255,255,255,0.4)',
-                borderRadius: '8px',
-                padding: '0.5rem 0.9rem',
+                background: isSelected ? '#fff' : 'transparent',
+                color: isSelected ? '#111827' : '#fff',
+                border: isSelected ? '1px solid #fff' : '1px solid rgba(255,255,255,0.35)',
+                borderBottom: isSelected ? '2px solid #9a6a3a' : '1px solid rgba(255,255,255,0.35)',
+                borderRadius: '0',
+                padding: '0.65rem 0.95rem',
                 cursor: 'pointer',
-                fontWeight: isSelected ? '700' : '500',
+                fontWeight: isSelected ? 600 : 500,
                 fontSize: '0.85rem',
+                fontFamily: 'inherit',
                 position: 'relative',
-                minWidth: '80px',
+                minWidth: '88px',
+                transition: 'background 0.2s ease, color 0.2s ease',
               }}
             >
-              <div>{opt.size === 1 ? '1 image' : `${opt.size} images`}</div>
-              <div style={{ fontSize: '1rem', fontWeight: 'bold' }}>${opt.price}</div>
-              <div style={{ fontSize: '0.65rem', opacity: 0.75, marginTop: '2px' }}>
+              <div style={{ fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.85 }}>
+                {opt.size === 1 ? '1 image' : `${opt.size} images`}
+              </div>
+              <div style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: '1.15rem', fontWeight: 600, letterSpacing: '-0.01em', marginTop: '2px' }}>
+                ${opt.price}
+              </div>
+              <div style={{ fontSize: '0.62rem', opacity: 0.65, marginTop: '2px', letterSpacing: '0.04em' }}>
                 ${(opt.price / opt.size).toFixed(2)}/img
               </div>
               {opt.savings && (
                 <div style={{
                   position: 'absolute', top: '-8px', right: '-8px',
-                  background: '#10b981', color: 'white',
-                  fontSize: '0.6rem', fontWeight: 'bold',
-                  padding: '2px 4px', borderRadius: '4px',
+                  background: '#9a6a3a', color: '#fff',
+                  fontSize: '0.58rem', fontWeight: 600,
+                  padding: '3px 6px', borderRadius: '0',
                   whiteSpace: 'nowrap',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
                 }}>
                   Save ${Math.round(SINGLE_PRICE * opt.size - opt.price)}
                 </div>
@@ -576,9 +623,9 @@ function PackPicker({ packSize, onSelect }) {
           );
         })}
       </div>
-      <div style={{ fontSize: '0.85rem', marginTop: '0.75rem', opacity: 0.85, minHeight: '1.2em' }}>
+      <div style={{ fontSize: '0.85rem', marginTop: '1rem', opacity: 0.75, minHeight: '1.2em', textAlign: 'center' }}>
         {packSize
-          ? `✓ ${packSize === 1 ? '1-image' : `${packSize}-image pack`} selected — pick ${packSize} image${packSize > 1 ? 's' : ''} below`
+          ? `${packSize === 1 ? '1-image' : `${packSize}-image pack`} selected — pick ${packSize} image${packSize > 1 ? 's' : ''} below`
           : 'Select a pack to get started'}
       </div>
     </div>
@@ -594,14 +641,15 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckout }) 
   return (
     <div style={{
       position: 'fixed', bottom: '2rem', right: '2rem',
-      background: isFull ? '#2563eb' : '#1e293b',
-      color: 'white',
-      padding: '1.5rem 2rem',
-      borderRadius: '12px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.35)',
+      background: '#111827',
+      color: '#fff',
+      padding: '1.5rem 1.75rem',
+      borderRadius: '0',
+      borderBottom: isFull ? '3px solid #9a6a3a' : '1px solid #1f2937',
+      boxShadow: '0 12px 28px rgba(0,0,0,0.35)',
       zIndex: 100,
-      transition: 'background 0.2s',
-      minWidth: '200px',
+      transition: 'border-bottom 0.2s',
+      minWidth: '220px',
     }}>
       <button
         onClick={onClear}
@@ -609,53 +657,73 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckout }) 
         style={{
           position: 'absolute', top: '10px', right: '10px',
           background: 'transparent', border: 'none',
-          color: 'white', cursor: 'pointer',
-          fontSize: '1.2rem', padding: '0.25rem',
+          color: 'rgba(255,255,255,0.7)', cursor: 'pointer',
+          fontSize: '1.1rem', padding: '0.25rem',
+          fontFamily: 'inherit',
         }}
       >×</button>
-      <div style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '0.2rem' }}>
+      <div style={{
+        fontSize: '0.65rem',
+        letterSpacing: '0.22em',
+        textTransform: 'uppercase',
+        color: '#c79a6b',
+        fontWeight: 600,
+        marginBottom: '0.5rem',
+      }}>
         {packSize}-image pack
       </div>
-      <div style={{ marginBottom: '0.25rem', fontSize: '1rem', fontWeight: '500' }}>
+      <div style={{ marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 500, color: '#d1d5db' }}>
         {isFull
-          ? `✓ All ${packSize} selected`
+          ? `All ${packSize} selected`
           : `${selected.length} of ${packSize} — pick ${remaining} more`}
       </div>
-      <div style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+      <div style={{
+        fontFamily: "'Fraunces', Georgia, serif",
+        fontSize: '2rem',
+        fontWeight: 600,
+        letterSpacing: '-0.02em',
+        marginBottom: '1.25rem',
+        lineHeight: 1,
+      }}>
         ${packOption.price}
       </div>
       {isFull ? (
         <button
           onClick={onCheckout}
           style={{
-            background: 'white', color: '#2563eb',
-            border: 'none', padding: '0.75rem 2rem',
-            borderRadius: '8px', fontWeight: 'bold',
-            cursor: 'pointer', width: '100%', fontSize: '1rem',
+            background: '#fff', color: '#111827',
+            border: '1px solid #fff',
+            padding: '0.85rem 1.5rem',
+            borderRadius: '0', fontWeight: 600,
+            cursor: 'pointer', width: '100%',
+            fontSize: '0.78rem',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            fontFamily: 'inherit',
           }}
         >
           {packSize === 1
-            ? `Buy HD for $${packOption.price}`
+            ? `Buy HD — $${packOption.price}`
             : packSize === 3
             ? 'Unlock bundle savings'
             : packSize >= 5
-            ? 'Checkout best value pack'
+            ? 'Checkout best-value pack'
             : 'Checkout →'}
         </button>
       ) : (
         <div style={{
-          background: 'rgba(255,255,255,0.1)',
-          borderRadius: '8px', padding: '0.6rem',
-          textAlign: 'center', fontSize: '0.85rem', opacity: 0.8,
+          border: '1px solid rgba(255,255,255,0.15)',
+          borderRadius: '0', padding: '0.7rem',
+          textAlign: 'center', fontSize: '0.82rem', color: '#d1d5db',
         }}>
           {remaining} more to checkout
           {selected.length === 1 && (
-            <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '4px' }}>
+            <div style={{ fontSize: '0.72rem', opacity: 0.7, marginTop: '4px' }}>
               Add 2 more to unlock better pricing
             </div>
           )}
           {selected.length >= 2 && selected.length <= 4 && (
-            <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '4px' }}>
+            <div style={{ fontSize: '0.72rem', opacity: 0.7, marginTop: '4px' }}>
               1 more unlocks better bundle price
             </div>
           )}
@@ -664,10 +732,13 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckout }) 
       <button
         onClick={onChangePack}
         style={{
-          background: 'transparent', color: 'rgba(255,255,255,0.6)',
-          border: 'none', padding: '0.5rem 0 0',
-          cursor: 'pointer', fontSize: '0.78rem', width: '100%',
-          textAlign: 'center', textDecoration: 'underline', display: 'block',
+          background: 'transparent', color: 'rgba(255,255,255,0.55)',
+          border: 'none', padding: '0.65rem 0 0',
+          cursor: 'pointer', fontSize: '0.7rem', width: '100%',
+          textAlign: 'center',
+          letterSpacing: '0.16em', textTransform: 'uppercase',
+          fontFamily: 'inherit',
+          display: 'block',
         }}
       >
         Change pack
@@ -695,48 +766,76 @@ function SubscriptionCTA({ onVerifyClick }) {
 
   return (
     <div style={{
-      background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
-      color: 'white',
-      borderRadius: '12px',
-      padding: '1.5rem 2rem',
-      marginBottom: '2rem',
+      background: '#111827',
+      color: '#fff',
+      borderRadius: '0',
+      borderTop: '2px solid #9a6a3a',
+      padding: '2rem 2rem',
+      margin: '2.5rem 0',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       flexWrap: 'wrap',
-      gap: '1rem',
-      boxShadow: '0 4px 16px rgba(124,58,237,0.3)',
+      gap: '1.5rem',
     }}>
-      <div>
-        <div style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.25rem' }}>
-          💎 Subscribe for $9/month
+      <div style={{ flex: '1 1 320px' }}>
+        <div style={{
+          fontSize: '0.7rem',
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: '#c79a6b',
+          fontWeight: 600,
+          marginBottom: '0.5rem',
+        }}>
+          Unlimited monthly access
         </div>
-        <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>
-          10 HD downloads per month · Downloads reset each billing cycle · Cancel anytime
+        <div style={{
+          fontFamily: "'Fraunces', Georgia, serif",
+          fontSize: '1.6rem',
+          fontWeight: 600,
+          letterSpacing: '-0.01em',
+          marginBottom: '0.5rem',
+          lineHeight: 1.15,
+        }}>
+          Subscribe — $9 per month
+        </div>
+        <div style={{ fontSize: '0.92rem', color: '#d1d5db', lineHeight: 1.55 }}>
+          10 HD downloads per month · resets each billing cycle · cancel anytime.
         </div>
       </div>
-      <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'center', flexWrap: 'wrap' }}>
         <button
           onClick={handleSubscribe}
           disabled={loading}
           style={{
-            background: 'white', color: '#7c3aed',
-            border: 'none', padding: '0.7rem 1.75rem',
-            borderRadius: '8px', fontWeight: 'bold',
+            background: '#fff', color: '#111827',
+            border: '1px solid #fff',
+            padding: '0.85rem 1.75rem',
+            borderRadius: '0', fontWeight: 600,
             cursor: loading ? 'default' : 'pointer',
-            fontSize: '0.95rem', whiteSpace: 'nowrap',
+            fontSize: '0.78rem',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
+            fontFamily: 'inherit',
           }}
         >
-          {loading ? 'Loading...' : 'Subscribe Now'}
+          {loading ? 'Loading…' : 'Start Subscription'}
         </button>
         <button
           onClick={() => { trackAnalytics('hd_verify_sub_click', null, 'subscription'); onVerifyClick(); }}
           style={{
-            background: 'transparent', color: 'white',
-            border: '1px solid rgba(255,255,255,0.5)',
-            padding: '0.65rem 1.2rem',
-            borderRadius: '8px', cursor: 'pointer',
-            fontSize: '0.85rem', whiteSpace: 'nowrap',
+            background: 'transparent', color: '#fff',
+            border: '1px solid rgba(255,255,255,0.4)',
+            padding: '0.85rem 1.25rem',
+            borderRadius: '0',
+            cursor: 'pointer',
+            fontSize: '0.72rem',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+            whiteSpace: 'nowrap',
+            fontFamily: 'inherit',
           }}
         >
           Already subscribed?
@@ -836,17 +935,17 @@ function FocusHero({ product, hdOnly, buying, onBuy, onDismiss, onBundleUpsell }
 
   return (
     <section style={{
-      background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
-      color: 'white',
-      padding: '2rem 1.5rem 2.25rem',
-      borderBottom: '1px solid rgba(255,255,255,0.08)',
+      background: '#111827',
+      color: '#fff',
+      padding: '2.5rem 1.5rem 2.5rem',
+      borderBottom: '2px solid #9a6a3a',
     }}>
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto',
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1.6fr) minmax(280px, 1fr)',
-        gap: '2rem',
+        gap: '2.5rem',
         alignItems: 'start',
       }}
       className="hd-focus-hero-grid"
@@ -857,10 +956,12 @@ function FocusHero({ product, hdOnly, buying, onBuy, onDismiss, onBundleUpsell }
             aria-label="Back to browsing"
             style={{
               position: 'absolute', top: '0.6rem', right: '0.6rem', zIndex: 5,
-              background: 'rgba(0,0,0,0.65)', border: 'none', color: 'white',
-              width: '2rem', height: '2rem', borderRadius: '50%',
-              cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700,
+              background: 'rgba(17,24,39,0.85)', border: '1px solid rgba(255,255,255,0.2)',
+              color: '#fff',
+              width: '2rem', height: '2rem', borderRadius: '0',
+              cursor: 'pointer', fontSize: '1rem', fontWeight: 600,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: 'inherit',
             }}
           >×</button>
           <img
@@ -870,64 +971,76 @@ function FocusHero({ product, hdOnly, buying, onBuy, onDismiss, onBundleUpsell }
               width: '100%',
               aspectRatio: '16/9',
               objectFit: 'cover',
-              borderRadius: '14px',
-              border: '3px solid #7c3aed',
-              boxShadow: '0 24px 64px rgba(124,58,237,0.35), 0 8px 20px rgba(0,0,0,0.4)',
+              borderRadius: '0',
+              border: '1px solid #1f2937',
+              borderBottom: '3px solid #9a6a3a',
               display: 'block',
             }}
           />
           {hdOnly && (
             <div style={{
               position: 'absolute', top: '0.9rem', left: '0.9rem',
-              background: 'linear-gradient(135deg,#7c3aed,#5b21b6)',
-              color: 'white',
-              fontSize: '0.7rem', fontWeight: 700,
-              padding: '0.28rem 0.65rem', borderRadius: '4px',
-              letterSpacing: '0.06em', textTransform: 'uppercase',
-              boxShadow: '0 2px 6px rgba(91,33,182,0.5)',
+              background: '#111827',
+              color: '#fff',
+              fontSize: '0.62rem', fontWeight: 600,
+              padding: '4px 9px', borderRadius: '0',
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+              borderBottom: '2px solid #9a6a3a',
             }}>
               Exclusive
             </div>
           )}
           <div style={{
             position: 'absolute', bottom: '0.9rem', left: '0.9rem',
-            background: 'rgba(17, 24, 39, 0.85)',
-            color: 'white',
-            fontSize: '0.7rem', fontWeight: 600,
-            padding: '0.22rem 0.6rem', borderRadius: '4px',
-            letterSpacing: '0.02em',
+            background: 'rgba(17, 24, 39, 0.92)',
+            color: '#fff',
+            fontSize: '0.62rem', fontWeight: 600,
+            padding: '4px 9px', borderRadius: '0',
+            letterSpacing: '0.16em', textTransform: 'uppercase',
           }}>
             2912 × 1632 · PNG
           </div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-          <div style={{ fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', opacity: 0.65 }}>
+          <div style={{
+            fontSize: '0.7rem',
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: '#c79a6b',
+            fontWeight: 600,
+          }}>
             Selected
           </div>
-          <h2 style={{ fontSize: '1.55rem', fontWeight: 700, margin: 0, lineHeight: 1.2 }}>
+          <h2 style={{
+            fontFamily: "'Fraunces', Georgia, serif",
+            fontSize: 'clamp(1.5rem, 3vw, 1.85rem)',
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
+            margin: 0,
+            lineHeight: 1.15,
+          }}>
             {product.name}
           </h2>
-          <div style={{ fontSize: '0.85rem', opacity: 0.75 }}>
+          <div style={{ fontSize: '0.85rem', color: '#d1d5db' }}>
             Instant download · 2912 × 1632 PNG
           </div>
-          <div style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '0.25rem' }}>
+          <div style={{ fontSize: '0.85rem', color: '#9ca3af', marginTop: '0.25rem' }}>
             Each image is purchased individually in full resolution.
           </div>
 
-          <div style={{ marginTop: '0.85rem' }}>
+          <div style={{ marginTop: '1.25rem' }}>
             {CHECKOUT_PAUSED ? (
               <div style={{
-                background: 'rgba(255,255,255,0.08)',
                 border: '1px solid rgba(255,255,255,0.15)',
-                borderRadius: '10px',
+                borderRadius: '0',
                 padding: '1rem 1.25rem',
                 textAlign: 'center',
                 fontSize: '0.9rem',
-                color: 'rgba(255,255,255,0.85)',
+                color: '#d1d5db',
                 lineHeight: 1.5,
               }}>
-                🔧 {CHECKOUT_PAUSED_MSG}
+                {CHECKOUT_PAUSED_MSG}
               </div>
             ) : (
               <>
@@ -935,41 +1048,46 @@ function FocusHero({ product, hdOnly, buying, onBuy, onDismiss, onBundleUpsell }
                   onClick={onBuy}
                   disabled={buying}
                   style={{
-                    background: 'linear-gradient(135deg,#7c3aed,#6d28d9)',
-                    color: 'white', border: 'none',
-                    padding: '1rem 1.25rem', borderRadius: '10px',
-                    fontSize: '1.05rem', fontWeight: 700,
+                    background: '#fff',
+                    color: '#111827',
+                    border: '1px solid #fff',
+                    padding: '1rem 1.5rem',
+                    borderRadius: '0',
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
                     cursor: buying ? 'wait' : 'pointer',
-                    boxShadow: '0 10px 25px rgba(124,58,237,0.4)',
-                    transition: 'transform 0.12s ease',
                     width: '100%',
+                    fontFamily: 'inherit',
                   }}
                 >
-                  {buying ? 'Preparing checkout…' : `Buy HD for $${SINGLE_PRICE}`}
+                  {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
                 </button>
                 {onBundleUpsell && (
                   <button
                     onClick={onBundleUpsell}
                     style={{
-                      background: 'rgba(255,255,255,0.08)',
-                      color: 'white',
-                      border: '1px solid rgba(255,255,255,0.25)',
-                      padding: '0.75rem 1.25rem',
-                      borderRadius: '10px',
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
+                      background: 'transparent',
+                      color: '#fff',
+                      border: '1px solid rgba(255,255,255,0.35)',
+                      padding: '0.85rem 1.25rem',
+                      borderRadius: '0',
+                      fontSize: '0.78rem',
+                      fontWeight: 500,
+                      letterSpacing: '0.04em',
                       cursor: 'pointer',
                       width: '100%',
-                      marginTop: '0.6rem',
-                      transition: 'background 0.15s ease',
+                      marginTop: '0.7rem',
+                      fontFamily: 'inherit',
                     }}
                   >
                     Or get 3 HD images for $8.99{' '}
-                    <span style={{ opacity: 0.75, fontWeight: 400 }}>(save $6.00)</span>
+                    <span style={{ color: '#c79a6b', fontWeight: 600 }}>(save $6.00)</span>
                   </button>
                 )}
-                <div style={{ fontSize: '0.8rem', opacity: 0.6, marginTop: '0.6rem', textAlign: 'center' }}>
-                  Click Buy Now to continue to secure checkout
+                <div style={{ fontSize: '0.72rem', color: '#9ca3af', marginTop: '0.85rem', textAlign: 'center', letterSpacing: '0.04em' }}>
+                  Continue to secure Stripe checkout.
                 </div>
               </>
             )}
@@ -1459,7 +1577,7 @@ export default function Premium({ reviewsData }) {
   return (
     <Layout
       title="HD Editions — 4K Virtual Environments for Executive Video Calls | StreamBackdrops"
-      description="HD Editions: 2912×1632 architected virtual environments engineered for executive video presence. Survives Zoom and Teams compression where stock photos fall apart."
+      description="HD Editions: 2912×1632 studio-designed virtual backgrounds for executive video calls. Survives Zoom and Teams compression where stock photos fall apart."
       canonical="https://streambackdrops.com/hd"
       keywords="HD virtual backgrounds, 4k virtual backgrounds, executive zoom backgrounds, premium corporate backgrounds, professional video call environments"
       image="https://assets.streambackdrops.com/webp/bookshelves-dark/bookshelves-dark-09.webp"
@@ -1551,12 +1669,12 @@ export default function Premium({ reviewsData }) {
         <p style={{
           fontSize: '1.1rem',
           maxWidth: '680px',
-          margin: '0 auto 2rem',
+          margin: '0 auto 2.25rem',
           lineHeight: 1.65,
           color: '#d1d5db',
         }}>
-          Roughly 3× the effective resolution of standard webcam backgrounds. Architected
-          environments that survive Zoom and Teams compression where stock JPEGs fall apart —
+          Roughly 3× the effective resolution of standard webcam backgrounds. Studio-designed
+          backgrounds that survive Zoom and Teams compression where stock JPEGs fall apart —
           and shine on the 4K monitors and projectors where presence shows.
         </p>
 
@@ -1564,80 +1682,185 @@ export default function Premium({ reviewsData }) {
           /* ── Subscriber badge ── */
           <div style={{ display: 'inline-block', marginBottom: '1.5rem' }}>
             <div style={{
-              background: 'rgba(255,255,255,0.2)',
-              padding: '1rem 1.5rem', borderRadius: '8px',
+              border: '1px solid rgba(255,255,255,0.2)',
+              borderTop: '2px solid #9a6a3a',
+              padding: '1rem 1.75rem',
+              borderRadius: '0',
+              textAlign: 'left',
             }}>
-              <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-                💎 Subscriber — {subStatus.remaining} of 10 downloads remaining this month
+              <div style={{
+                fontSize: '0.7rem',
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: '#c79a6b',
+                fontWeight: 600,
+                marginBottom: '0.4rem',
+              }}>
+                Active Subscription
               </div>
-              <div style={{ fontSize: '0.9rem', marginTop: '0.4rem', opacity: 0.9 }}>
-                Hover over any image and click ⬇ Download HD · {subStatus.email}
+              <div style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontSize: '1.2rem',
+                fontWeight: 600,
+                letterSpacing: '-0.01em',
+              }}>
+                {subStatus.remaining} of 10 HD downloads remaining this month
+              </div>
+              <div style={{ fontSize: '0.85rem', marginTop: '0.4rem', color: '#d1d5db' }}>
+                Hover over any image and click Download HD · {subStatus.email}
               </div>
             </div>
             {limitMessage && (
               <div style={{
                 marginTop: '0.6rem',
-                background: 'rgba(251,146,60,0.92)',
-                color: 'white',
-                borderRadius: '8px',
+                border: '1px solid #c79a6b',
+                color: '#fde68a',
+                borderRadius: '0',
                 padding: '0.7rem 1.2rem',
-                fontSize: '0.95rem',
-                fontWeight: '500',
+                fontSize: '0.92rem',
+                fontWeight: 500,
               }}>
-                ⚠️ {limitMessage}
+                {limitMessage}
               </div>
             )}
           </div>
         ) : (
-          /* ── Pack picker ── */
-          <PackPicker packSize={packSize} onSelect={handlePackSelect} />
-        )}
+          <>
+            {/* ── Pack picker ── */}
+            <PackPicker packSize={packSize} onSelect={handlePackSelect} />
 
-        <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '2rem', color: 'white' }}>
-          Hover over images to preview HD quality with our comparison slider
-        </p>
+            {/* Inline subscription mention — preserves high-intent path without competing visually */}
+            <div style={{
+              marginTop: '0.5rem',
+              fontSize: '0.85rem',
+              color: '#9ca3af',
+              textAlign: 'center',
+            }}>
+              Or unlimited monthly access —{' '}
+              <a
+                href="#subscription"
+                onClick={(e) => {
+                  e.preventDefault();
+                  trackAnalytics('hd_inline_sub_link_click', null, 'hd_hero');
+                  document.getElementById('subscription')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{
+                  color: '#c79a6b',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '3px',
+                  fontWeight: 600,
+                }}
+              >
+                see plans below ↓
+              </a>
+            </div>
+
+            {/* Muted comparison link — reframed from "escape hatch" to "due diligence" */}
+            <div style={{
+              marginTop: '0.4rem',
+              fontSize: '0.8rem',
+              textAlign: 'center',
+            }}>
+              <a
+                href="/#categories"
+                onClick={() => trackAnalytics('hd_compare_free_clicked', null, 'hd')}
+                style={{
+                  color: '#9ca3af',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '3px',
+                  letterSpacing: '0.02em',
+                }}
+              >
+                Compare with free samples →
+              </a>
+            </div>
+          </>
+        )}
       </section>
 
-      {/* Free backgrounds link */}
-      <div style={{
-        background: 'linear-gradient(135deg, #10b981, #059669)',
-        color: 'white', padding: '1.25rem 2rem',
-        textAlign: 'center', margin: '0 auto',
-        maxWidth: '800px', borderRadius: '0.75rem',
-        marginTop: '-1.5rem', marginBottom: '2rem',
-        boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+      {/* Trust signals row — replaces the old "Hover over images" helper */}
+      <section style={{
+        background: '#111827',
+        borderTop: '1px solid #1f2937',
+        padding: '1.25rem 2rem',
       }}>
-        <p style={{ margin: 0, fontSize: '1.15rem', fontWeight: '500' }}>
-          Not ready for HD?{' '}
-          <a
-            href="/#categories"
-            onClick={() => trackAnalytics('hd_free_link_clicked', null, 'hd')}
-            style={{ color: 'white', fontWeight: 'bold', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-          >
-            Browse {TOTAL_IMAGES_FORMATTED} free backgrounds instead →
-          </a>
-        </p>
-      </div>
+        <div style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+          gap: '0.75rem',
+          textAlign: 'center',
+          fontSize: '0.7rem',
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: '#d1d5db',
+          fontWeight: 500,
+        }}>
+          <div><span style={{ color: '#9a6a3a', marginRight: '0.5rem' }}>✦</span>Instant Download</div>
+          <div><span style={{ color: '#9a6a3a', marginRight: '0.5rem' }}>✦</span>No Watermark</div>
+          <div><span style={{ color: '#9a6a3a', marginRight: '0.5rem' }}>✦</span>4K · 2912×1632</div>
+          <div><span style={{ color: '#9a6a3a', marginRight: '0.5rem' }}>✦</span>Lifetime Use</div>
+        </div>
+      </section>
 
-      <section style={{ padding: '2rem 2rem 4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Why 4K — funnel reinforcement between hero and grid */}
+      <section style={{
+        background: '#fafaf7',
+        borderBottom: '1px solid #e6e2dc',
+        padding: '4rem 2rem',
+      }}>
+        <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
+          <div style={{
+            fontSize: '0.7rem',
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: '#9a6a3a',
+            fontWeight: 600,
+            marginBottom: '1rem',
+          }}>
+            Why 4K, in plain English
+          </div>
+          <p style={{
+            fontFamily: "'Fraunces', Georgia, serif",
+            fontSize: 'clamp(1.15rem, 2vw, 1.4rem)',
+            fontWeight: 500,
+            lineHeight: 1.5,
+            color: '#111827',
+            margin: 0,
+            letterSpacing: '-0.01em',
+          }}>
+            Zoom and Teams compress your video stream in real time. Standard 1080p backgrounds
+            lose detail in the compression — fine grids turn to mud, edges shimmer. Our 4K source
+            files give the codec more pixels to throw away, so what reaches your colleague&rsquo;s
+            screen still looks composed.
+          </p>
+          <p style={{
+            fontSize: '0.85rem',
+            color: '#6b7280',
+            marginTop: '1.5rem',
+            letterSpacing: '0.02em',
+          }}>
+            Same reason cinematographers shoot 6K to deliver 4K.
+          </p>
+        </div>
+      </section>
 
-        {/* Subscription CTA — above the grid for non-subscribers */}
-        {!isSubscriber && (
-          <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
-        )}
+      <section style={{ padding: '3rem 2rem 4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
 
         {/* Highlight miss notice — shown when ?highlight= didn't match any HD product */}
         {highlightMissError && !selectedProduct && (
           <div
             role="status"
             style={{
-              margin: '0 0 1.25rem',
-              padding: '0.85rem 1.1rem',
-              background: '#fef3c7',
-              border: '1px solid #fbbf24',
-              borderRadius: '10px',
-              color: '#78350f',
-              fontSize: '0.92rem',
+              margin: '0 0 1.5rem',
+              padding: '0.85rem 1.25rem',
+              background: '#fafaf7',
+              border: '1px solid #e6e2dc',
+              borderTop: '2px solid #9a6a3a',
+              borderRadius: '0',
+              color: '#374151',
+              fontSize: '0.9rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -1652,14 +1875,17 @@ export default function Premium({ reviewsData }) {
               onClick={() => setHighlightMissError(null)}
               style={{
                 background: 'transparent',
-                border: '1px solid #b45309',
-                color: '#78350f',
-                borderRadius: '6px',
-                padding: '0.3rem 0.75rem',
+                border: '1px solid #111827',
+                color: '#111827',
+                borderRadius: '0',
+                padding: '0.4rem 0.85rem',
                 cursor: 'pointer',
-                fontSize: '0.82rem',
-                fontWeight: 500,
+                fontSize: '0.7rem',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
                 whiteSpace: 'nowrap',
+                fontFamily: 'inherit',
               }}
             >
               Dismiss
@@ -1669,29 +1895,36 @@ export default function Premium({ reviewsData }) {
 
         {/* Category filter buttons */}
         <div style={{
-          display: 'flex', flexWrap: 'wrap', gap: '0.5rem',
-          marginBottom: '2rem', justifyContent: 'center'
+          display: 'flex', flexWrap: 'wrap', gap: '0.4rem',
+          marginBottom: '2.5rem', justifyContent: 'center'
         }}>
-          {CATEGORIES.map(cat => (
-            <button
-              key={cat}
-              onClick={() => { trackAnalytics('hd_category_filter', cat, 'hd'); setActiveCategory(cat); }}
-              style={{
-                padding: '0.5rem 1.1rem',
-                borderRadius: '999px',
-                border: '2px solid',
-                borderColor: activeCategory === cat ? '#7c3aed' : '#e5e7eb',
-                background: activeCategory === cat ? '#7c3aed' : 'white',
-                color: activeCategory === cat ? 'white' : '#374151',
-                fontWeight: activeCategory === cat ? '600' : '400',
-                fontSize: '0.9rem',
-                cursor: 'pointer',
-                transition: 'all 0.15s'
-              }}
-            >
-              {cat === 'all' ? 'All' : CATEGORY_LABELS[cat]}
-            </button>
-          ))}
+          {CATEGORIES.map(cat => {
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => { trackAnalytics('hd_category_filter', cat, 'hd'); setActiveCategory(cat); }}
+                style={{
+                  padding: '0.55rem 1rem',
+                  borderRadius: '0',
+                  border: '1px solid',
+                  borderColor: isActive ? '#111827' : '#e6e2dc',
+                  borderBottom: isActive ? '2px solid #9a6a3a' : '1px solid #e6e2dc',
+                  background: isActive ? '#111827' : '#fff',
+                  color: isActive ? '#fff' : '#374151',
+                  fontWeight: isActive ? 600 : 500,
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s',
+                  fontFamily: 'inherit',
+                }}
+              >
+                {cat === 'all' ? 'All' : CATEGORY_LABELS[cat]}
+              </button>
+            );
+          })}
         </div>
 
         {/* Image grid */}
@@ -1722,6 +1955,13 @@ export default function Premium({ reviewsData }) {
             />
           ))}
         </div>
+
+        {/* Subscription CTA — below the grid for non-subscribers (visitors who scrolled have signaled intent) */}
+        {!isSubscriber && (
+          <div id="subscription" style={{ scrollMarginTop: '5rem' }}>
+            <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
+          </div>
+        )}
       </section>
 
       {/* Comparison widget — standard images */}
