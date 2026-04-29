@@ -8,11 +8,11 @@ import { google } from 'googleapis';
 // The sheet must have headers: Timestamp | Name | Work Email | Company |
 // Role | Team Size | Timeline | Use Case | Notes | IP | User-Agent.
 //
-// Email: sends via Resend's HTTP API (no SDK required). Requires:
-//   RESEND_API_KEY            — from https://resend.com (free tier covers 3K/mo)
+// Email: sends via MailerSend's HTTP API (no SDK required). Requires:
+//   MAILERSEND_API_KEY        — from https://mailersend.com (free tier 3K/mo, multi-domain)
 //   LICENSING_INBOX           — defaults to info@streambackdrops.com
 //   LICENSING_FROM            — defaults to "StreamBackdrops Studio <notifications@streambackdrops.com>"
-//                               The from-domain MUST be verified in Resend (DNS records).
+//                               The from-domain MUST be verified in MailerSend (DNS records).
 //
 // If any of these env vars are missing or the call fails, the lead is
 // still logged to the server console + Sheets so it isn't lost.
@@ -46,10 +46,19 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
+// Parse a "Name <email>" string into MailerSend's {name, email} object shape.
+// Falls back to {email: raw} if the input doesn't match.
+function parseSender(raw) {
+  const m = String(raw || '').match(/^\s*(.+?)\s*<\s*([^>]+)\s*>\s*$/);
+  if (m) return { name: m[1], email: m[2] };
+  return { email: String(raw || '').trim() };
+}
+
 async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.MAILERSEND_API_KEY;
   const to = process.env.LICENSING_INBOX || 'info@streambackdrops.com';
-  const from = process.env.LICENSING_FROM || 'StreamBackdrops Studio <notifications@streambackdrops.com>';
+  const fromRaw = process.env.LICENSING_FROM || 'StreamBackdrops Studio <notifications@streambackdrops.com>';
+  const from = parseSender(fromRaw);
 
   if (!apiKey) {
     return { ok: false, reason: 'no-api-key' };
@@ -99,16 +108,17 @@ async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
 </div>`.trim();
 
   try {
-    const res = await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.mailersend.com/v1/email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         from,
-        to: [to],
-        reply_to: lead.workEmail,
+        to: [{ email: to }],
+        reply_to: { email: lead.workEmail },
         subject,
         text,
         html,
@@ -116,10 +126,11 @@ async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
     });
     if (!res.ok) {
       const body = await res.text().catch(() => '');
-      return { ok: false, reason: 'resend-error', status: res.status, body };
+      return { ok: false, reason: 'mailersend-error', status: res.status, body };
     }
-    const data = await res.json().catch(() => ({}));
-    return { ok: true, id: data.id };
+    // MailerSend returns 202 Accepted with the message id in the X-Message-Id header.
+    const messageId = res.headers.get('x-message-id') || null;
+    return { ok: true, id: messageId };
   } catch (err) {
     return { ok: false, reason: 'network-error', message: err.message };
   }
