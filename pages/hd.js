@@ -1577,7 +1577,7 @@ export default function Premium({ reviewsData }) {
   return (
     <Layout
       title="HD Editions — 4K Virtual Environments for Executive Video Calls | StreamBackdrops"
-      description="HD Editions: 2912×1632 studio-designed virtual backgrounds for executive video calls. Survives Zoom and Teams compression where stock photos fall apart."
+      description="HD Editions: 2912×1632 studio-designed backgrounds that stay sharp on Zoom, Teams, and Google Meet — engineered to survive video codec compression where stock JPEGs fall apart."
       canonical="https://streambackdrops.com/hd"
       keywords="HD virtual backgrounds, 4k virtual backgrounds, executive zoom backgrounds, premium corporate backgrounds, professional video call environments"
       image="https://assets.streambackdrops.com/webp/bookshelves-dark/bookshelves-dark-09.webp"
@@ -1664,7 +1664,7 @@ export default function Premium({ reviewsData }) {
           marginLeft: 'auto',
           marginRight: 'auto',
         }}>
-          The HD Editions — engineered for the codecs that compress you.
+          The HD Editions — sharp on Zoom, Teams, and Meet.
         </h1>
         <p style={{
           fontSize: '1.1rem',
