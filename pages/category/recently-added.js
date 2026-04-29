@@ -106,7 +106,7 @@ export default function RecentlyAdded() {
         ) : images.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '3rem' }}>
             <p>No new backgrounds in the last 30 days.</p>
-            <Link href="/browse" style={{ color: '#2563eb', textDecoration: 'underline' }}>
+            <Link href="/browse" style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
               Browse all backgrounds →
             </Link>
           </div>
@@ -171,18 +171,22 @@ export default function RecentlyAdded() {
                     fontSize: '1rem',
                     fontWeight: '600',
                     color: 'white',
-                    background: loadingMore ? '#9ca3af' : '#2563eb',
-                    border: 'none',
-                    borderRadius: '0.5rem',
+                    background: loadingMore ? '#9ca3af' : '#111827',
+                    border: '1px solid #111827',
+                    borderBottom: '2px solid #9a6a3a',
+                    borderRadius: '0',
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    fontSize: '0.78rem',
                     cursor: loadingMore ? 'not-allowed' : 'pointer',
-                    transition: 'all 0.2s ease',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                    transition: 'background 0.2s ease',
+                    fontFamily: 'inherit',
                   }}
                   onMouseEnter={(e) => {
-                    if (!loadingMore) e.target.style.background = '#1d4ed8';
+                    if (!loadingMore) e.target.style.background = '#000';
                   }}
                   onMouseLeave={(e) => {
-                    if (!loadingMore) e.target.style.background = '#2563eb';
+                    if (!loadingMore) e.target.style.background = '#111827';
                   }}
                 >
                   {loadingMore ? 'Loading...' : `Load More (${total - images.length} remaining)`}

@@ -66,7 +66,7 @@ export default function License() {
             <Link href="/" style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
-              color: '#2563eb',
+              color: '#9a6a3a',
               textDecoration: 'none'
             }}>
               🎥 StreamBackdrops
@@ -430,7 +430,7 @@ export default function License() {
                 color: '#6b7280',
                 fontSize: '0.9rem'
               }}>
-                Last updated: August 7, 2025 • Questions? <Link href="/contact" style={{color: '#2563eb'}}>Contact us</Link>
+                Last updated: August 7, 2025 • Questions? <Link href="/contact" style={{color: '#9a6a3a'}}>Contact us</Link>
               </p>
             </div>
             

@@ -64,7 +64,7 @@ export default function Analytics() {
             background: '#f5f5f5',
             borderRadius: '8px'
           }}>
-            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#2563eb' }}>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#111827' }}>
               {data.totalDownloads.toLocaleString()}
             </div>
             <div style={{ color: '#666', marginTop: '5px' }}>Unique Downloads</div>
@@ -126,7 +126,7 @@ export default function Analytics() {
                   padding: '12px', 
                   textAlign: 'right',
                   fontWeight: '600',
-                  color: '#2563eb'
+                  color: '#111827'
                 }}>
                   {item.count.toLocaleString()}
                 </td>
@@ -149,7 +149,7 @@ export default function Analytics() {
             }}
             style={{
               padding: '10px 20px',
-              background: '#2563eb',
+              background: '#111827',
               color: 'white',
               border: 'none',
               borderRadius: '6px',

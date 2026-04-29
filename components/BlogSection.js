@@ -13,35 +13,46 @@ export default function BlogSection() {
         margin: '0 auto',
         padding: '0 2rem'
       }}>
-        <h2 style={{fontSize: '2rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
-          Expert Tips & Guides
+        <h2 style={{
+          fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+          fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
+          fontWeight: 600,
+          letterSpacing: '-0.02em',
+          color: '#111827',
+          marginBottom: '1rem'
+        }}>
+          The Studio Journal
         </h2>
-        <p style={{fontSize: '1.1rem', color: '#6b7280', marginBottom: '2rem'}}>
-          Learn professional video call techniques, setup guides, and industry best practices
+        <p style={{fontSize: '1.05rem', color: '#6b7280', marginBottom: '2rem', lineHeight: 1.65}}>
+          Notes on executive video presence, codec compression, and virtual set design.
         </p>
-        <Link 
-          href="/blog" 
+        <Link
+          href="/blog"
           style={{
-            background: '#2563eb',
-            color: 'white',
-            padding: '1rem 2rem',
-            borderRadius: '0.75rem',
+            background: '#111827',
+            color: '#fff',
+            padding: '0.95rem 1.75rem',
+            borderRadius: '0',
+            border: '1px solid #111827',
+            borderBottom: '2px solid #9a6a3a',
             textDecoration: 'none',
-            fontSize: '1.1rem',
-            fontWeight: '600',
+            fontSize: '0.78rem',
+            fontWeight: 600,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
             display: 'inline-block',
             transition: 'background-color 0.2s ease',
-            border: 'none',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            fontFamily: 'inherit',
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#1d4ed8';
+            e.target.style.backgroundColor = '#000';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = '#2563eb';
+            e.target.style.backgroundColor = '#111827';
           }}
         >
-          Read Our Blog →
+          Read the Journal →
         </Link>
       </div>
     </section>

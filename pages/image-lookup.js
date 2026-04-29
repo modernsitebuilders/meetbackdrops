@@ -111,7 +111,7 @@ export default function ImageLookup() {
               borderRadius: '8px',
               outline: 'none'
             }}
-            onFocus={(e) => e.target.style.borderColor = '#2563eb'}
+            onFocus={(e) => e.target.style.borderColor = '#111827'}
             onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
           />
           
@@ -123,17 +123,17 @@ export default function ImageLookup() {
               fontSize: '16px',
               fontWeight: '600',
               color: 'white',
-              backgroundColor: loading ? '#9ca3af' : '#2563eb',
+              backgroundColor: loading ? '#9ca3af' : '#111827',
               border: 'none',
               borderRadius: '8px',
               cursor: loading ? 'not-allowed' : 'pointer',
               transition: 'background-color 0.2s'
             }}
             onMouseEnter={(e) => {
-              if (!loading) e.target.style.backgroundColor = '#1d4ed8';
+              if (!loading) e.target.style.backgroundColor = '#000';
             }}
             onMouseLeave={(e) => {
-              if (!loading) e.target.style.backgroundColor = '#2563eb';
+              if (!loading) e.target.style.backgroundColor = '#111827';
             }}
           >
             {loading ? 'Looking...' : 'Lookup'}

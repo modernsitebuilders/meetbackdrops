@@ -256,7 +256,7 @@ export default function Contact() {
                       Can I use these backgrounds for commercial purposes?
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Our backgrounds are free for personal use, including professional video calls and remote work. For commercial licensing, please <Link href="/license" style={{color: '#2563eb'}}>review our license terms</Link> or contact us directly.
+                      Our backgrounds are free for personal use, including professional video calls and remote work. For commercial licensing, please <Link href="/license" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>review our license terms</Link> or contact us directly.
                     </p>
                   </div>
 
@@ -274,7 +274,7 @@ export default function Contact() {
                       My virtual background isn't working properly. What should I do?
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Check out our <Link href="/blog/virtual-background-guide" style={{color: '#2563eb'}}>complete technical guide</Link> for troubleshooting tips. If you're still having issues, email us with details about your setup and the specific problem you're experiencing.
+                      Check out our <Link href="/blog/virtual-background-guide" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>complete technical guide</Link> for troubleshooting tips. If you're still having issues, email us with details about your setup and the specific problem you're experiencing.
                     </p>
                   </div>
                 </div>

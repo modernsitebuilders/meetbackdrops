@@ -372,13 +372,16 @@ export default function Blog() {
                   {post.excerpt}
                 </p>
                 
-               <Link 
+               <Link
   href={`/blog/${post.slug}`}
   style={{
-    color: '#2563eb', 
-    fontWeight: '500', 
-    fontSize: '0.9rem',
-    textDecoration: 'none',
+    color: '#9a6a3a',
+    fontWeight: 600,
+    fontSize: '0.75rem',
+    letterSpacing: '0.16em',
+    textTransform: 'uppercase',
+    textDecoration: 'underline',
+    textUnderlineOffset: '4px',
     display: 'inline-block'
   }}
 >

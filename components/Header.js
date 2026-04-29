@@ -69,7 +69,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
     padding: '0.5rem 1rem',
     borderRadius: '0.5rem',
     textDecoration: 'none',
-    color: isActive ? '#2563eb' : '#374151',
+    color: isActive ? '#9a6a3a' : '#374151',
     fontWeight: '500',
     fontSize: '0.95rem',
     background: isHovered ? '#f3f4f6' : 'transparent',
@@ -422,7 +422,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
                background: 'none', border: 'none',
                cursor: 'pointer', padding: '0.5rem 0.6rem',
                borderRadius: '0.5rem',
-               color: wishlist.length > 0 ? '#2563eb' : '#6b7280',
+               color: wishlist.length > 0 ? '#9a6a3a' : '#6b7280',
                fontSize: '1.25rem', lineHeight: 1,
                transition: 'color 0.15s',
              }}
@@ -431,7 +431,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
              {wishlist.length > 0 && (
                <span style={{
                  position: 'absolute', top: '2px', right: '2px',
-                 background: '#2563eb', color: 'white',
+                 background: '#9a6a3a', color: 'white',
                  borderRadius: '99px', fontSize: '0.6rem',
                  fontWeight: 700, minWidth: '16px', height: '16px',
                  display: 'flex', alignItems: 'center', justifyContent: 'center',

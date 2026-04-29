@@ -9,7 +9,7 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, off
     background: isActive ? '#eff6ff' : 'transparent',
     border: 'none',
     borderRadius: '0.5rem',
-    color: isActive ? '#2563eb' : '#374151',
+    color: isActive ? '#9a6a3a' : '#374151',
     fontWeight: isActive ? '600' : '500',
     fontSize: '0.95rem',
     cursor: 'pointer',
@@ -71,7 +71,7 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, off
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
-          <span style={{ fontWeight: 'bold', color: '#2563eb' }}>Menu</span>
+          <span style={{ fontWeight: 'bold', color: '#9a6a3a' }}>Menu</span>
           <button
             onClick={onClose}
             aria-label="Close navigation menu"

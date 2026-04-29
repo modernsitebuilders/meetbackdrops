@@ -139,13 +139,13 @@ export default function PostCompareModal({
           style={{
             display: 'block',
             background: 'transparent',
-            color: '#1d4ed8',
+            color: '#9a6a3a',
             textDecoration: 'none',
             padding: '0.65rem 1rem',
             borderRadius: '0.5rem',
             fontWeight: 600,
             fontSize: '0.95rem',
-            border: '1.5px solid #2563eb',
+            border: '1.5px solid #111827',
             marginBottom: '1rem',
           }}
         >

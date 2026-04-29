@@ -53,7 +53,9 @@ export default function MostPopularPage() {
             color: '#6b7280'
           }}>
             <a href="/" style={{
-              color: '#2563eb',
+              color: '#9a6a3a',
+              fontWeight: 600,
+              letterSpacing: '0.04em',
               textDecoration: 'none',
               transition: 'color 0.2s'
             }}>

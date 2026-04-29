@@ -74,9 +74,11 @@ export default function BlogLayout({
             padding: '0 2rem'
           }}>
             <Link href="/" style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: '#2563eb',
+              fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+              fontSize: '1.4rem',
+              fontWeight: 600,
+              letterSpacing: '-0.02em',
+              color: '#111827',
               textDecoration: 'none'
             }}>
               StreamBackdrops
@@ -101,19 +103,23 @@ export default function BlogLayout({
               marginBottom: '1rem'
             }}>
               <Link href="/" style={{
-                color: '#2563eb',
+                color: '#9a6a3a',
                 textDecoration: 'none',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
                 transition: 'color 0.2s'
               }}>
                 Home
               </Link>
               <span>›</span>
               <Link href="/blog" style={{
-                color: '#2563eb',
+                color: '#9a6a3a',
                 textDecoration: 'none',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
                 transition: 'color 0.2s'
               }}>
-                Blog
+                Journal
               </Link>
               <span>›</span>
               <span style={{ color: '#111827', fontWeight: '500' }}>

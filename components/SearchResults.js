@@ -141,7 +141,7 @@ export default function SearchResults({
                   }}
                   disabled={downloadingImage === image.filename}
                   style={{
-                    background: downloadingImage === image.filename ? '#9ca3af' : '#2563eb',
+                    background: downloadingImage === image.filename ? '#9ca3af' : '#111827',
                     color: 'white',
                     padding: '0.75rem 1.5rem',
                     border: 'none',
@@ -186,7 +186,7 @@ export default function SearchResults({
             onClick={onLoadMore}
             style={{
               padding: '0.75rem 2rem',
-              backgroundColor: '#2563eb',
+              backgroundColor: '#111827',
               color: 'white',
               border: 'none',
               borderRadius: '0.5rem',
@@ -196,11 +196,11 @@ export default function SearchResults({
               transition: 'all 0.2s'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#1d4ed8';
+              e.target.style.backgroundColor = '#000';
               e.target.style.transform = 'translateY(-2px)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#2563eb';
+              e.target.style.backgroundColor = '#111827';
               e.target.style.transform = 'translateY(0)';
             }}
           >

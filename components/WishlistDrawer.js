@@ -107,7 +107,7 @@ export default function WishlistDrawer() {
             {wishlist.length > 0 && (
               <span style={{
                 marginLeft: '8px',
-                background: '#2563eb', color: 'white',
+                background: '#111827', color: 'white',
                 borderRadius: '99px', fontSize: '0.72rem',
                 fontWeight: 700, padding: '2px 8px',
               }}>{wishlist.length}</span>
@@ -143,7 +143,7 @@ export default function WishlistDrawer() {
                 onClick={closeDrawer}
                 style={{
                   marginTop: '0.5rem',
-                  background: '#2563eb', color: 'white',
+                  background: '#111827', color: 'white',
                   padding: '0.6rem 1.25rem', borderRadius: '8px',
                   textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem',
                 }}
@@ -182,7 +182,7 @@ export default function WishlistDrawer() {
                     {item.hdOnly && (
                       <span style={{
                         fontSize: '0.65rem', fontWeight: 700,
-                        color: '#7c3aed', letterSpacing: '0.04em',
+                        color: '#9a6a3a', letterSpacing: '0.04em',
                       }}>💎 HD ONLY</span>
                     )}
                   </div>
@@ -229,7 +229,7 @@ export default function WishlistDrawer() {
                 disabled={buying}
                 style={{
                   width: '100%',
-                  background: buying ? '#93c5fd' : '#2563eb',
+                  background: buying ? '#93c5fd' : '#111827',
                   color: 'white',
                   border: 'none', borderRadius: '10px',
                   padding: '0.85rem',

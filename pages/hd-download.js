@@ -113,7 +113,7 @@ export default function HDDownload() {
             <div style={{ display: 'grid', gap: '1.5rem' }}>
               {images.map(img => (
                 <div key={img.id} style={{
-                  border: '2px solid #2563eb',
+                  border: '2px solid #111827',
                   borderRadius: '12px',
                   padding: '1.5rem',
                   display: 'flex',
@@ -127,7 +127,7 @@ export default function HDDownload() {
                   <a href={img.url}
                     download
                     style={{
-                      background: '#2563eb',
+                      background: '#111827',
                       color: 'white',
                       padding: '0.75rem 1.5rem',
                       borderRadius: '8px',

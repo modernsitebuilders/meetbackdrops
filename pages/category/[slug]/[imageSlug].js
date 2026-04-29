@@ -92,9 +92,9 @@ export default function ImagePage({ image, related, categoryName }) {
               color: '#6b7280',
               flexWrap: 'wrap',
             }}>
-              <Link href="/" style={{ color: '#2563eb', textDecoration: 'none' }}>Home</Link>
+              <Link href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.04em' }}>Home</Link>
               <span>›</span>
-              <Link href={categoryUrl} style={{ color: '#2563eb', textDecoration: 'none' }}>{categoryName}</Link>
+              <Link href={categoryUrl} style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.04em' }}>{categoryName}</Link>
               <span>›</span>
               <span style={{ color: '#111827' }}>{image.title}</span>
             </nav>
@@ -134,7 +134,7 @@ export default function ImagePage({ image, related, categoryName }) {
                 onClick={() => handleDownload(downloadImage, image.category)}
                 disabled={isDownloading}
                 style={{
-                  background: isDownloading ? '#9ca3af' : '#2563eb',
+                  background: isDownloading ? '#9ca3af' : '#111827',
                   color: '#fff',
                   border: 'none',
                   padding: '0.875rem 2rem',
@@ -158,7 +158,7 @@ export default function ImagePage({ image, related, categoryName }) {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: '1rem',
-                background: 'linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 100%)',
+                background: '#111827',
                 borderRadius: '12px',
                 padding: '1.25rem 1.5rem',
                 marginBottom: '1.5rem',
@@ -250,7 +250,7 @@ export default function ImagePage({ image, related, categoryName }) {
                   ))}
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-                  <Link href={categoryUrl} style={{ color: '#2563eb', fontWeight: '600', textDecoration: 'none', fontSize: '0.95rem' }}>
+                  <Link href={categoryUrl} style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px', fontSize: '0.85rem', letterSpacing: '0.08em' }}>
                     View all {categoryName} backgrounds →
                   </Link>
                 </div>

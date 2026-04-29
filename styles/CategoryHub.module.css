@@ -54,7 +54,7 @@
 
 .heroCta {
   align-self: flex-start;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #111827, #000);
   color: white;
   border: none;
   padding: 1rem 1.75rem;
@@ -280,7 +280,7 @@
 }
 
 .useCaseDownload:hover:not(:disabled) {
-  background: #2563eb;
+  background: #111827;
 }
 
 .useCaseDownload:disabled {
@@ -295,8 +295,8 @@
 
 .useCaseCta {
   background: white;
-  color: #1d4ed8;
-  border: 1.5px solid #2563eb;
+  color: #000;
+  border: 1.5px solid #111827;
   padding: 0.7rem 1.25rem;
   border-radius: 0.5rem;
   font-weight: 700;
@@ -306,7 +306,7 @@
 }
 
 .useCaseCta:hover {
-  background: #2563eb;
+  background: #111827;
   color: white;
 }
 

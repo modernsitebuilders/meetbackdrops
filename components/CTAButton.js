@@ -28,19 +28,19 @@ export default function CTAButton({
 
   const variants = {
     primary: {
-      background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+      background: '#111827',
       color: 'white',
       boxShadow: '0 4px 6px rgba(37, 99, 235, 0.2)',
       ':hover': {
-        background: 'linear-gradient(135deg, #2563eb, #1d4ed8)'
+        background: '#000'
       }
     },
     secondary: {
       background: 'white',
-      color: '#2563eb',
-      border: '2px solid #2563eb',
+      color: '#111827',
+      border: '2px solid #111827',
       ':hover': {
-        background: '#2563eb',
+        background: '#111827',
         color: 'white'
       }
     },
@@ -61,7 +61,7 @@ export default function CTAButton({
       if (variant === 'secondary') {
         return {
           ...variantStyle,
-          background: '#2563eb',
+          background: '#111827',
           color: 'white'
         };
       }
@@ -69,7 +69,7 @@ export default function CTAButton({
       if (variant === 'primary') {
         return {
           ...variantStyle,
-          background: 'linear-gradient(135deg, #2563eb, #1d4ed8)'
+          background: '#000'
         };
       }
       if (variant === 'success') {

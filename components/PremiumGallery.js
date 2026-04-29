@@ -83,7 +83,7 @@ export default function PremiumGallery() {
               width: '32px',
               height: '32px',
               border: '3px solid #e5e7eb',
-              borderTop: '3px solid #2563eb',
+              borderTop: '3px solid #111827',
               borderRadius: '50%',
               animation: 'spin 1s linear infinite',
               margin: '0 auto'
@@ -105,7 +105,7 @@ export default function PremiumGallery() {
               We're preparing our ultra high-quality 4K backgrounds. Check back soon!
             </p>
             <a href="/" style={{
-              color: '#2563eb',
+              color: '#111827',
               textDecoration: 'none',
               fontWeight: '600'
             }}>

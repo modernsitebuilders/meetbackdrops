@@ -196,21 +196,22 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                   position: 'absolute',
                   top: '8px',
                   left: '8px',
-                  background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
-                  color: 'white',
-                  fontSize: '0.7rem',
-                  fontWeight: '700',
+                  background: '#111827',
+                  color: '#fff',
+                  fontSize: '0.62rem',
+                  fontWeight: 600,
                   padding: '4px 9px',
-                  borderRadius: '4px',
-                  letterSpacing: '0.03em',
+                  borderRadius: '0',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
                   zIndex: 2,
                   pointerEvents: 'none',
-                  boxShadow: '0 2px 6px rgba(91,33,182,0.4)',
+                  borderBottom: '2px solid #9a6a3a',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
                 }}>
-                  💎 HD Only · tap to view
+                  HD Only · tap to view
                 </div>
               )}
 
@@ -253,15 +254,16 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: hdOnly ? 'rgba(91, 33, 182, 0.78)' : 'rgba(0, 0, 0, 0.7)',
+                  background: 'rgba(17, 24, 39, 0.85)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   opacity: 1,
                   transition: 'opacity 0.3s ease',
                   flexDirection: 'column',
-                  gap: '1rem',
-                  pointerEvents: 'auto'
+                  gap: '0.6rem',
+                  pointerEvents: 'auto',
+                  padding: '0.75rem',
                 }}
               >
                 {hdOnly ? (
@@ -271,18 +273,22 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                       window.location.href = '/hd';
                     }}
                     style={{
-                      background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
-                      color: 'white',
-                      padding: '0.75rem 1.5rem',
-                      border: 'none',
-                      borderRadius: '0.5rem',
-                      fontSize: '1rem',
-                      fontWeight: '600',
+                      background: '#fff',
+                      color: '#111827',
+                      padding: '0.85rem 1.5rem',
+                      border: '1px solid #fff',
+                      borderBottom: '2px solid #9a6a3a',
+                      borderRadius: '0',
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
                       cursor: 'pointer',
-                      minWidth: '140px',
+                      minWidth: '160px',
+                      fontFamily: 'inherit',
                     }}
                   >
-                    💎 View HD
+                    View HD →
                   </button>
                 ) : (
                   <>
@@ -293,27 +299,52 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
                       }}
                       disabled={downloadingImage !== null}
                       style={{
-                        background: downloadingImage === image.filename ? '#10b981' : '#2563eb',
-                        color: 'white',
-                        padding: '0.75rem 1.5rem',
-                        border: 'none',
-                        borderRadius: '0.5rem',
-                        fontSize: '1rem',
-                        fontWeight: '600',
+                        background: downloadingImage === image.filename ? '#9a6a3a' : '#fff',
+                        color: '#111827',
+                        padding: '0.85rem 1.5rem',
+                        border: '1px solid #fff',
+                        borderBottom: '2px solid #9a6a3a',
+                        borderRadius: '0',
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
                         cursor: downloadingImage !== null ? 'not-allowed' : 'pointer',
-                        opacity: downloadingImage === image.filename ? 0.9 : 1,
-                        transition: 'background 0.1s',
-                        minWidth: '140px'
+                        minWidth: '170px',
+                        fontFamily: 'inherit',
                       }}
                     >
                       {downloadingImage === image.filename ? (
                         <>
                           <span style={{ display: 'inline-block', animation: 'spin 1s linear infinite', marginRight: '8px' }}>↻</span>
-                          Downloading...
+                          Downloading…
                         </>
                       ) : (
                         'Download Now'
                       )}
+                    </button>
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onImageClick(image);
+                      }}
+                      style={{
+                        background: 'transparent',
+                        color: '#fff',
+                        padding: '0.7rem 1.25rem',
+                        border: '1px solid rgba(255, 255, 255, 0.5)',
+                        borderRadius: '0',
+                        fontSize: '0.72rem',
+                        fontWeight: 500,
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        cursor: 'pointer',
+                        minWidth: '170px',
+                        fontFamily: 'inherit',
+                      }}
+                    >
+                      Preview
                     </button>
 
                     <SocialShare

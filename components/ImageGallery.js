@@ -93,7 +93,7 @@ export default function ImageGallery() {
               width: '32px',
               height: '32px',
               border: '3px solid #e5e7eb',
-              borderTop: '3px solid #2563eb',
+              borderTop: '3px solid #111827',
               borderRadius: '50%',
               animation: 'spin 1s linear infinite'
             }} />
@@ -205,7 +205,7 @@ export default function ImageGallery() {
                         handleDownload(image);
                       }}
                       style={{
-                        background: '#2563eb',
+                        background: '#111827',
                         color: 'white',
                         padding: '0.5rem',
                         border: 'none',
@@ -351,7 +351,7 @@ export default function ImageGallery() {
               <button
                 onClick={() => handleDownload(selectedImage)}
                 style={{
-                  backgroundColor: '#2563eb',
+                  backgroundColor: '#111827',
                   color: 'white',
                   border: 'none',
                   padding: '0.75rem 1.5rem',

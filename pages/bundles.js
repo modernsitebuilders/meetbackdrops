@@ -68,7 +68,7 @@ export default function Bundles() {
           
           {/* Header */}
           <div style={{
-            background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
+            background: '#111827',
             color: 'white',
             padding: '3rem',
             borderRadius: '1rem',
@@ -185,7 +185,7 @@ export default function Bundles() {
                     rel="noopener noreferrer"
                     onClick={() => trackBuyClick('office-spaces', 10)}
                     style={{
-                      background: '#2563eb',
+                      background: '#111827',
                       color: 'white',
                       padding: '1rem 2rem',
                       borderRadius: '0.5rem',
@@ -330,7 +330,7 @@ export default function Bundles() {
                     rel="noopener noreferrer"
                     onClick={() => trackBuyClick('christmas', 12)}
                     style={{
-                      background: '#2563eb',
+                      background: '#111827',
                       color: 'white',
                       padding: '1rem 2rem',
                       borderRadius: '0.5rem',
@@ -407,7 +407,7 @@ export default function Bundles() {
               Not ready to buy? All backgrounds are still available for free (5 downloads per day).
             </p>
             <Link href="/" style={{
-              color: '#2563eb',
+              color: '#111827',
               textDecoration: 'none',
               fontWeight: '600'
             }}>

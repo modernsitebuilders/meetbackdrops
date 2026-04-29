@@ -98,7 +98,7 @@ html {
 .blog-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
-  border-color: #2563eb;
+  border-color: #9a6a3a;
 }
 
 /* Dropdown styles */
@@ -133,7 +133,7 @@ html {
 
 .dropdown-item:hover {
   background: #f0f9ff;
-  color: #2563eb;
+  color: #9a6a3a;
 }
 
 /* Feature card base styles */

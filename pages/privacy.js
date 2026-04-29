@@ -52,7 +52,7 @@ export default function Privacy() {
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <Link href="/" style={{
-            color: '#2563eb',
+            color: '#9a6a3a',
             textDecoration: 'none',
             fontWeight: '600',
             fontSize: '1.1rem'
@@ -201,7 +201,7 @@ export default function Privacy() {
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
                   <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website (hosting, analytics, etc.)</li>
-                  <li><strong>Payment Processing (Stripe):</strong> When you purchase HD images, your payment is processed by Stripe, Inc. Stripe receives your payment details and billing information directly. StreamBackdrops does not store your card details. Stripe&apos;s privacy policy is available at <a href="https://stripe.com/privacy" style={{color: '#2563eb'}} target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
+                  <li><strong>Payment Processing (Stripe):</strong> When you purchase HD images, your payment is processed by Stripe, Inc. Stripe receives your payment details and billing information directly. StreamBackdrops does not store your card details. Stripe&apos;s privacy policy is available at <a href="https://stripe.com/privacy" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
                   <li><strong>Legal Requirements:</strong> We may disclose information when required by law or to protect our rights</li>
                   <li><strong>Business Transfers:</strong> In the event of a merger or acquisition, your information may be transferred</li>
                 </ul>
@@ -331,7 +331,7 @@ export default function Privacy() {
                 }}>
                   <ul style={{listStyle: 'none', color: '#374151'}}>
                     <li>📧 Email: info@streambackdrops.com</li>
-                    <li>📝 Contact Form: <Link href="/contact" style={{color: '#2563eb'}}>streambackdrops.com/contact</Link></li>
+                    <li>📝 Contact Form: <Link href="/contact" style={{color: '#9a6a3a'}}>streambackdrops.com/contact</Link></li>
                   </ul>
                 </div>
               </section>

@@ -274,8 +274,8 @@ export default function About() {
                     lineHeight: '2'
                   }}>
                     <li>📧 Email: info@streambackdrops.com</li>
-                    <li>💬 <Link href="/contact" style={{color: '#2563eb', textDecoration: 'none'}}>Contact Form</Link></li>
-                    <li>📚 <Link href="/blog" style={{color: '#2563eb', textDecoration: 'none'}}>Setup Guides & Tips</Link></li>
+                    <li>💬 <Link href="/contact" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Contact Form</Link></li>
+                    <li>📚 <Link href="/blog" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Setup Guides & Tips</Link></li>
                   </ul>
                 </div>
               </section>
@@ -286,7 +286,7 @@ export default function About() {
                 borderTop: '1px solid #e5e7eb'
               }}>
                 <Link href="/" style={{
-                  background: '#2563eb',
+                  background: '#111827',
                   color: 'white',
                   padding: '1rem 2rem',
                   borderRadius: '2rem',

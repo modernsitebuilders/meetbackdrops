@@ -115,7 +115,7 @@ export default function SubscriptionSuccess() {
               href="/hd"
               style={{
                 display: 'inline-block',
-                background: '#7c3aed',
+                background: '#111827',
                 color: 'white',
                 padding: '1rem 2.5rem',
                 borderRadius: '10px',

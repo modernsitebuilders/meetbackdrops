@@ -210,14 +210,18 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
               disabled={buying}
               style={{
                 width: '100%',
-                background: '#7c3aed',
-                border: 'none',
-                borderRadius: '6px',
-                color: 'white',
+                background: '#fff',
+                border: '1px solid #fff',
+                borderBottom: '2px solid #9a6a3a',
+                borderRadius: '0',
+                color: '#111827',
                 cursor: buying ? 'wait' : 'pointer',
-                padding: '10px',
-                fontWeight: 700,
-                fontSize: '0.95rem',
+                padding: '0.85rem',
+                fontWeight: 600,
+                fontSize: '0.78rem',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                fontFamily: 'inherit',
               }}
             >
               {buying ? 'Preparing checkout…' : `Buy HD — $${SINGLE_PRICE}`}
@@ -913,13 +917,22 @@ function VerifyEmailModal({ onClose, onVerified }) {
           onClick={handleVerify}
           disabled={loading}
           style={{
-            width: '100%', background: '#7c3aed', color: 'white',
-            border: 'none', padding: '0.75rem',
-            borderRadius: '8px', fontWeight: 'bold',
-            cursor: loading ? 'default' : 'pointer', fontSize: '1rem',
+            width: '100%',
+            background: '#111827',
+            color: '#fff',
+            border: '1px solid #111827',
+            borderBottom: '2px solid #9a6a3a',
+            padding: '0.95rem',
+            borderRadius: '0',
+            fontWeight: 600,
+            fontSize: '0.78rem',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            cursor: loading ? 'default' : 'pointer',
+            fontFamily: 'inherit',
           }}
         >
-          {loading ? 'Verifying...' : 'Verify Subscription'}
+          {loading ? 'Verifying…' : 'Verify Subscription'}
         </button>
       </div>
     </div>

@@ -115,7 +115,7 @@ export default function Layout({
         <meta property="twitter:image" content={`https://streambackdrops.com${image}`} />
         
         {/* ✅ Theme and additional meta */}
-        <meta name="theme-color" content="#2563eb" />
+        <meta name="theme-color" content="#111827" />
         <meta name="format-detection" content="telephone=no" />
         
         {/* ✅ Structured Data */}
@@ -158,7 +158,7 @@ export default function Layout({
             e.target.style.width = 'auto';
             e.target.style.height = 'auto';
             e.target.style.padding = '0.75rem 1.5rem';
-            e.target.style.background = '#2563eb';
+            e.target.style.background = '#111827';
             e.target.style.color = '#fff';
             e.target.style.zIndex = '9999';
             e.target.style.textDecoration = 'none';

@@ -83,7 +83,7 @@ export default function MostPopularGrid() {
           style={{
             marginTop: '1rem',
             padding: '0.5rem 1rem',
-            background: '#2563eb',
+            background: '#111827',
             color: 'white',
             border: 'none',
             borderRadius: '0.375rem',
@@ -160,7 +160,7 @@ export default function MostPopularGrid() {
                   }}
                   disabled={downloadingImage === image.filename}
                   style={{
-                    background: downloadingImage === image.filename ? '#10b981' : '#2563eb',
+                    background: downloadingImage === image.filename ? '#10b981' : '#111827',
                     color: 'white',
                     padding: '0.75rem 1.5rem',
                     border: 'none',

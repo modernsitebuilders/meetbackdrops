@@ -30,7 +30,7 @@ export default function SearchBar({ placeholder = "Search backgrounds..." }) {
             transition: 'border-color 0.2s',
             boxSizing: 'border-box'
           }}
-          onFocus={(e) => e.target.style.borderColor = '#2563eb'}
+          onFocus={(e) => e.target.style.borderColor = '#9a6a3a'}
           onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
         />
         <button

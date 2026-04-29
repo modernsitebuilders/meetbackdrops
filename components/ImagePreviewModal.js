@@ -203,20 +203,23 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
             }}
             style={{
               flexShrink: 0,
-              backgroundColor: '#2563eb',
+              backgroundColor: '#111827',
               color: '#ffffff',
-              padding: '10px 28px',
-              border: 'none',
-              borderRadius: '8px',
-              fontSize: '15px',
-              fontWeight: '600',
+              padding: '0.85rem 1.75rem',
+              border: '1px solid #111827',
+              borderBottom: '2px solid #9a6a3a',
+              borderRadius: '0',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
               cursor: 'pointer',
               transition: 'background-color 0.2s ease',
-              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.5)',
               whiteSpace: 'nowrap',
+              fontFamily: 'inherit',
             }}
-            onMouseEnter={(e) => { e.target.style.backgroundColor = '#1d4ed8'; }}
-            onMouseLeave={(e) => { e.target.style.backgroundColor = '#2563eb'; }}
+            onMouseEnter={(e) => { e.target.style.backgroundColor = '#000'; }}
+            onMouseLeave={(e) => { e.target.style.backgroundColor = '#111827'; }}
           >
             Download Free
           </button>

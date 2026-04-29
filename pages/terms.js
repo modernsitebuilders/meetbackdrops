@@ -35,7 +35,7 @@ export default function Terms() {
             <Link href="/" style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
-              color: '#2563eb',
+              color: '#9a6a3a',
               textDecoration: 'none'
             }}>
               🎥 StreamBackdrops
@@ -210,7 +210,7 @@ export default function Terms() {
 
               <div style={{
                 background: '#eff6ff',
-                border: '2px solid #2563eb',
+                border: '2px solid #111827',
                 borderRadius: '1rem',
                 padding: '2rem',
                 marginBottom: '2rem'
@@ -512,7 +512,7 @@ export default function Terms() {
                   If you have any questions about these terms or need clarification about usage rights, please don't hesitate to reach out.
                 </p>
                 <Link href="/contact" style={{
-                  background: '#2563eb',
+                  background: '#111827',
                   color: 'white',
                   padding: '0.75rem 1.5rem',
                   borderRadius: '1.5rem',

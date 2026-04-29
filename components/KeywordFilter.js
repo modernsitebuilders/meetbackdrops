@@ -63,7 +63,7 @@ export default function KeywordFilter({
               {activeFilters.map((keyword, index) => (
                 <span key={index} style={{
                   padding: '0.25rem 0.75rem',
-                  backgroundColor: '#2563eb',
+                  backgroundColor: '#111827',
                   color: 'white',
                   borderRadius: '9999px',
                   fontSize: '0.85rem',
@@ -78,8 +78,8 @@ export default function KeywordFilter({
               style={{
                 padding: '0.5rem 1rem',
                 backgroundColor: 'white',
-                color: '#2563eb',
-                border: '1px solid #2563eb',
+                color: '#111827',
+                border: '1px solid #111827',
                 borderRadius: '0.375rem',
                 fontSize: '0.85rem',
                 fontWeight: '600',
@@ -87,12 +87,12 @@ export default function KeywordFilter({
                 transition: 'all 0.2s'
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#2563eb';
+                e.target.style.backgroundColor = '#111827';
                 e.target.style.color = 'white';
               }}
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = 'white';
-                e.target.style.color = '#2563eb';
+                e.target.style.color = '#111827';
               }}
             >
               Clear All Filters
@@ -134,9 +134,9 @@ export default function KeywordFilter({
                       onClick={() => handleKeywordClick(category, keyword)}
                       style={{
                         padding: '0.5rem 1rem',
-                        backgroundColor: isSelected ? '#2563eb' : '#eff6ff',
-                        color: isSelected ? 'white' : '#2563eb',
-                        border: isSelected ? '1px solid #2563eb' : '1px solid #bfdbfe',
+                        backgroundColor: isSelected ? '#111827' : '#eff6ff',
+                        color: isSelected ? 'white' : '#111827',
+                        border: isSelected ? '1px solid #111827' : '1px solid #bfdbfe',
                         borderRadius: '9999px',
                         fontSize: '0.9rem',
                         cursor: 'pointer',

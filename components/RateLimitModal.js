@@ -191,7 +191,7 @@ export default function RateLimitModal({ onClose, errorMessage, onEmailBonus, em
             href="/hd"
             style={{
               padding: '0.55rem 1.1rem',
-              background: '#7c3aed',
+              background: '#111827',
               color: 'white',
               borderRadius: '0.5rem',
               fontSize: '0.875rem',

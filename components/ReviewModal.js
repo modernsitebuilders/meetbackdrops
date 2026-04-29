@@ -270,7 +270,7 @@ export default function ReviewModal({ onClose, downloadCount = 1 }) {
                     style={{
                       flex: 1,
                       padding: '0.65rem',
-                      backgroundColor: rating <= 2 ? '#dc2626' : '#2563eb',
+                      backgroundColor: rating <= 2 ? '#dc2626' : '#111827',
                       color: 'white',
                       border: 'none',
                       borderRadius: '0.5rem',

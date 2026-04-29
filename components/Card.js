@@ -42,13 +42,15 @@ export default function Card({
           position: 'absolute',
           top: '1rem',
           right: '1rem',
-          background: 'rgba(37, 99, 235, 0.95)',
-          color: 'white',
-          padding: '0.4rem 0.8rem',
-          borderRadius: '20px',
-          fontSize: '0.85rem',
-          fontWeight: 'bold',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          background: '#111827',
+          color: '#fff',
+          padding: '0.4rem 0.85rem',
+          borderRadius: '0',
+          borderBottom: '2px solid #9a6a3a',
+          fontSize: '0.7rem',
+          fontWeight: 600,
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
           zIndex: 10
         }}>
           {count} images

@@ -157,7 +157,7 @@ export default function FAQ() {
               Can't find the answer you're looking for? We'd love to hear from you.
             </p>
             <Link href="/contact" style={{
-              background: '#2563eb',
+              background: '#111827',
               color: 'white',
               padding: '0.75rem 1.5rem',
               borderRadius: '0.5rem',
