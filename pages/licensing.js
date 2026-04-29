@@ -192,9 +192,9 @@ export default function Licensing() {
                 margin: '0 auto 2.5rem',
               }}
             >
-              StreamBackdrops designs 4K-upscaled virtual backgrounds engineered
-              for codec compression on Zoom, Teams, and Google Meet. Equip your entire
-              team with a curated, brand-consistent library of virtual sets.
+              A curated library of studio-designed virtual sets, built to stay
+              sharp on Zoom, Teams, and Google Meet. Equip every executive, sales
+              rep, and recruiter with the same on-brand backdrop.
             </p>
             <a
               href="#inquiry"
@@ -253,8 +253,8 @@ export default function Licensing() {
           >
             <div>1,300+ Environments</div>
             <div>21 Curated Categories</div>
-            <div>4K-Upscaled · 2912×1632</div>
-            <div>SSO / SCIM Available on Request</div>
+            <div>4K Resolution</div>
+            <div>Enterprise Provisioning Ready</div>
           </div>
         </section>
 
@@ -276,7 +276,7 @@ export default function Licensing() {
                 marginRight: 'auto',
               }}
             >
-              Generic stock fragments your brand. The studio unifies it.
+              Stock photos look like stock. The studio looks like you.
             </h2>
           </div>
 
@@ -292,8 +292,8 @@ export default function Licensing() {
               body="Equip every executive, sales rep, and recruiter with the same curated set of designed interiors — so your video presence is unified from the C-suite to the front line."
             />
             <ValuePillar
-              title="Engineered for codec compression"
-              body="Each environment is upscaled to 4K and tested across the codecs that broadcast you in real time. Detail survives Zoom and Teams compression where stock JPEGs fall apart."
+              title="Built for video-call clarity"
+              body="Every environment is rendered at 4K and tuned for video conferencing — so detail holds up on Zoom and Teams, where compressed stock photos go soft and pixelated."
             />
             <ValuePillar
               title="Licensed, not shared"
@@ -304,8 +304,8 @@ export default function Licensing() {
               body="A studio-curated set of office, library, gallery, and conference room environments — not 50,000 indistinguishable stock thumbnails to wade through."
             />
             <ValuePillar
-              title="Procurement-friendly"
-              body="Annual term, single invoice, MSA-compatible. SSO/SCIM provisioning available on request. No per-seat surprise pricing."
+              title="Built for IT and procurement"
+              body="Annual term, single invoice, transparent seat pricing. Single sign-on, automated user provisioning (SCIM), custom MSAs, and security review available on request."
             />
             <ValuePillar
               title="Custom commissions"
@@ -356,7 +356,7 @@ export default function Licensing() {
                 {
                   n: '03',
                   t: 'Rollout',
-                  d: 'Curated zip delivery, branded internal landing page, or SSO-gated portal. Onboarding materials for IT and end users included.',
+                  d: 'A curated download package, a branded internal landing page, or a single sign-on portal — whichever fits your stack. Onboarding materials for IT and end users included.',
                 },
               ].map((s) => (
                 <li
@@ -418,9 +418,8 @@ export default function Licensing() {
               Tell us about your team.
             </h2>
             <p style={{ color: MUTED, lineHeight: 1.7, fontSize: '1rem', margin: 0 }}>
-              We respond to every qualified inquiry within one business day. No
-              automated funnels, no nurture sequences — just a direct reply from the
-              studio.
+              Every inquiry gets a direct reply from the studio within one
+              business day — not an auto-responder, not a sales sequence.
             </p>
           </div>
 
