@@ -8037,7 +8037,7 @@
       "zoom",
       "teleconference"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:4",
@@ -8060,7 +8060,7 @@
       "flowers",
       "festive"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:5",
@@ -8260,7 +8260,7 @@
       "decor",
       "colorful"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:22",
@@ -8463,7 +8463,7 @@
       "eggs",
       "flowers"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:35",
@@ -8767,7 +8767,7 @@
       "spring",
       "decor"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:51",
@@ -11752,7 +11752,7 @@
       "professional",
       "remote work"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:22",
@@ -12100,7 +12100,7 @@
       "productivity",
       "professionalism"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:50",
@@ -12281,7 +12281,7 @@
       "elegant",
       "interior design"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:62",
@@ -12422,7 +12422,7 @@
       "video calls",
       "modern design"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:71",
@@ -12508,7 +12508,7 @@
       "interior design",
       "productivity"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:75",
@@ -13406,7 +13406,7 @@
       "study",
       "workspace"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "library-:33",
@@ -13631,7 +13631,7 @@
       "home decor",
       "video calls"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:9",
@@ -13673,7 +13673,7 @@
       "video call",
       "online meetings"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:11",
@@ -13974,7 +13974,7 @@
       "interior design",
       "warm atmosphere"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:28",
@@ -14186,7 +14186,7 @@
       "furniture",
       "warm atmosphere"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:42",
@@ -14274,7 +14274,7 @@
       "decor",
       "warm"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:47",
@@ -15255,7 +15255,7 @@
       "business",
       "modern design"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:3",
@@ -15601,7 +15601,7 @@
       "home office",
       "professional setting"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:20",
@@ -15796,7 +15796,7 @@
       "zoom",
       "home office"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:30",
@@ -15886,7 +15886,7 @@
       "zoom background",
       "home office"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:34",
@@ -15930,7 +15930,7 @@
       "modern design",
       "remote work"
     ],
-    "hdOnly": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:36",
