@@ -1301,7 +1301,6 @@ const products = [
   { id: 'kitchen-06-hd', name: 'Kitchen #6', category: 'kitchens' },
   { id: 'kitchen-14-hd', name: 'Kitchen #14', category: 'kitchens' },
   { id: 'kitchen-15-hd', name: 'Kitchen #15', category: 'kitchens' },
-  { id: 'kitchen-16-hd', name: 'Kitchen #16', category: 'kitchens' },
   // Gardens & Patios
   { id: 'garden-patio-01-hd', name: 'Garden & Patio #1', category: 'gardens-patios' },
   { id: 'garden-patio-12-hd', name: 'Garden & Patio #12', category: 'gardens-patios' },

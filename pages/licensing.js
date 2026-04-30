@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 
 const SERIF = "'Fraunces', Georgia, 'Times New Roman', serif";
 const GRAPHITE = '#111827';
@@ -251,7 +252,7 @@ export default function Licensing() {
               fontWeight: 500,
             }}
           >
-            <div>1,300+ Environments</div>
+            <div>{TOTAL_IMAGES_FORMATTED} Environments</div>
             <div>21 Curated Categories</div>
             <div>4K Resolution</div>
             <div>Enterprise Provisioning Ready</div>
@@ -289,27 +290,27 @@ export default function Licensing() {
           >
             <ValuePillar
               title="Brand consistency at scale"
-              body="Equip every executive, sales rep, and recruiter with the same curated set of designed interiors — so your video presence is unified from the C-suite to the front line."
+              body="Your CEO on Bloomberg, your sales team on demos, your recruiters on Zoom interviews — all calling from the same studio-grade environments. One licensed library, every team, consistent on every call."
             />
             <ValuePillar
-              title="Built for video-call clarity"
-              body="Every environment is rendered at 4K and tuned for video conferencing — so detail holds up on Zoom and Teams, where compressed stock photos go soft and pixelated."
+              title="Engineered for codec compression"
+              body="Every environment is rendered at 4K and engineered for the codec compression Zoom and Teams put images through. Bookshelves stay sharp, details hold, edges don't smear — the way stock JPEGs do once the call platform is done with them."
             />
             <ValuePillar
-              title="Licensed, not shared"
-              body="Stock photos appear on a dozen of your competitors' calls. Licensed library access keeps your environment exclusive to your team."
+              title="Off the stock-photo grid"
+              body="Free stock libraries are where every brand defaults — and where every viewer has seen the photo before. Licensing puts your team on a small, curated set built for video, not the same Unsplash and Pexels grid every competitor pulls from."
             />
             <ValuePillar
               title="Curated, not catalog-dumped"
-              body="A studio-curated set of office, library, gallery, and conference room environments — not 50,000 indistinguishable stock thumbnails to wade through."
+              body={`${TOTAL_IMAGES_FORMATTED} environments — offices, libraries, galleries, conference rooms, lounges, restaurants — each one composed for camera. Not a 50,000-thumbnail catalog where every search returns the same five photos.`}
             />
             <ValuePillar
-              title="Built for IT and procurement"
-              body="Annual term, single invoice, transparent seat pricing. Single sign-on, automated user provisioning (SCIM), custom MSAs, and security review available on request."
+              title="Procurement-ready"
+              body="Annual term, single invoice, transparent seat pricing. SSO, SCIM provisioning, custom MSAs, and security review available on request — the boxes IT and legal need ticked before signature."
             />
             <ValuePillar
               title="Custom commissions"
-              body="Need a virtual set that mirrors your HQ or matches a campaign? The studio designs custom environments under license for enterprise clients."
+              body="Need a virtual set that mirrors your HQ or matches a campaign? The studio designs custom environments under license for enterprise clients — built to your brief, delivered under a custom license."
             />
           </div>
         </section>
