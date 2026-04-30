@@ -41,7 +41,7 @@ export default function Contact() {
   return (
     <Layout
           title="Contact the Studio | StreamBackdrops"
-          description="Reach the StreamBackdrops studio for support, custom commissions, or licensing questions. Corporate teams: please use the dedicated licensing inquiry form."
+          description="Reach the StreamBackdrops studio for support, custom commissions, or branded-backgrounds questions. Corporate teams: please use the dedicated branded inquiry form."
           canonical="https://streambackdrops.com/contact"
         >
 
@@ -122,15 +122,15 @@ export default function Contact() {
                   color: '#111827',
                   margin: '0 0 0.75rem',
                 }}>
-                  Use the dedicated licensing inquiry form
+                  Use the branded backgrounds inquiry form
                 </h2>
                 <p style={{ color: '#374151', margin: '0 0 1.25rem', fontSize: '1rem' }}>
-                  Buying for a team? The studio uses a tailored intake to scope team size,
-                  use case, and timeline — every qualified inquiry gets a direct reply within
-                  one business day.
+                  Want studio environments with your brand integrated into the scene? The studio
+                  scopes set size, brand surfaces, and timeline through a dedicated intake — every
+                  qualified inquiry gets a direct reply within one business day.
                 </p>
                 <Link
-                  href="/licensing"
+                  href="/branded-backgrounds"
                   style={{
                     display: 'inline-block',
                     padding: '0.85rem 1.5rem',
@@ -145,7 +145,7 @@ export default function Contact() {
                     border: '1px solid #111827',
                   }}
                 >
-                  Corporate &amp; Team Licensing →
+                  Branded Backgrounds →
                 </Link>
               </div>
 

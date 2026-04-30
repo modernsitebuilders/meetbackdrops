@@ -33,7 +33,7 @@ If you're regenerating image manifests, alt-text, schema, meta tags, or any stru
 
 ## What this site is
 
-StreamBackdrops is a virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Microsoft Teams, and Google Meet. Free sample environments are available without signup; teams and enterprises license the curated library through `/licensing`. HD Editions (2912×1632) are sold individually or in bundles at `/hd`.
+StreamBackdrops is a virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Microsoft Teams, and Google Meet. Free sample environments are available without signup; HD Editions (2912×1632) are sold individually or in bundles at `/hd`. Brands integrate their logo into studio environments through the Branded Backgrounds offer at `/branded-backgrounds` (per-customer composites — base library images stay in the catalog; only the logo placement is exclusive to the buyer).
 
 ---
 

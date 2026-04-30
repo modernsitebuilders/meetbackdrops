@@ -90,7 +90,7 @@ export default function About() {
                   On a video call, your background speaks before you do. StreamBackdrops designs interiors — modern offices, libraries, galleries, and conference rooms — engineered to convey authority on Zoom, Teams, and Google Meet.
                 </p>
                 <p style={{color: '#374151', fontSize: '1.1rem', lineHeight: 1.75}}>
-                  Every environment is composed for camera, upscaled to 4K, and tested across the codecs that broadcast you to your colleagues, clients, and boards. We make samples freely available for individual professionals; teams and enterprises license the curated library through our <Link href="/licensing" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Corporate &amp; Team Licensing</Link> program.
+                  Every environment is composed for camera, upscaled to 4K, and tested across the codecs that broadcast you to your colleagues, clients, and boards. Samples are freely available for individual professionals; brands integrate their logo into studio environments through our <Link href="/branded-backgrounds" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Branded Backgrounds</Link> program.
                 </p>
               </section>
 

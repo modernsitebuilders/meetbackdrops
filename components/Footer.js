@@ -141,8 +141,8 @@ export default function Footer() {
               <Link href="/" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Home
               </Link>
-              <Link href="/licensing" style={{ color: '#c79a6b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.04em' }}>
-                Corporate &amp; Team Licensing
+              <Link href="/branded-backgrounds" style={{ color: '#c79a6b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                Branded Backgrounds
               </Link>
               <Link href="/hd" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 HD Editions

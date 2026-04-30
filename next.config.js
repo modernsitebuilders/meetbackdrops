@@ -204,6 +204,12 @@ const nextConfig = {
         destination: '/most-popular',
         permanent: true,
       },
+      // Licensing offer pivoted to branded backgrounds
+      {
+        source: '/licensing',
+        destination: '/branded-backgrounds',
+        permanent: true,
+      },
       // Merged bookshelf/wall-shelf categories
       {
         source: '/category/bookshelves-bright',

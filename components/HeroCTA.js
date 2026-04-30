@@ -57,7 +57,7 @@ export default function HeroCTA() {
       </button>
 
       <Link
-        href="/licensing"
+        href="/branded-backgrounds"
         style={{
           ...baseBtn,
           background: 'transparent',
@@ -73,7 +73,7 @@ export default function HeroCTA() {
           e.currentTarget.style.color = '#111827';
         }}
       >
-        Corporate &amp; Team Licensing
+        Brand Your Backdrops
       </Link>
     </div>
   );

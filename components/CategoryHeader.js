@@ -18,8 +18,8 @@ export default function CategoryHeader({ category, featuredImageUrl }) {
           <Link href="/hd" className={styles.hdLink}>
             HD Editions for crisper compression →
           </Link>
-          <Link href="/licensing" className={styles.licensingLink}>
-            Corporate &amp; Team Licensing →
+          <Link href="/branded-backgrounds" className={styles.licensingLink}>
+            Branded Backgrounds for Brands →
           </Link>
         </div>
       </div>

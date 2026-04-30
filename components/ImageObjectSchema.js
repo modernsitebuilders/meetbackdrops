@@ -16,9 +16,9 @@ if (!imageMeta) {
   imageMeta = matchingKey ? metadata[matchingKey] : {};
 }
     
-    return { filename, score, meta: imageMeta };
+    return { filename, folder: image.folder, score, meta: imageMeta };
   });
-  
+
   const topImages = imagesWithScores
     .sort((a, b) => b.score - a.score)
     .slice(0, 15);
@@ -29,10 +29,10 @@ if (!imageMeta) {
     "itemListElement": topImages.map((image, index) => ({
       "@type": "ImageObject",
       "position": index + 1,
-      "contentUrl": `https://assets.streambackdrops.com/webp/${categorySlug}/${image.filename}`,
+      "contentUrl": `https://assets.streambackdrops.com/webp/${image.folder || categorySlug}/${image.filename}`,
       "name": image.meta?.title || `${category} virtual background ${index + 1}`,
       "description": image.meta?.alt || image.meta?.description || `Free ${category.toLowerCase()} virtual background`,
-      "thumbnail": `https://assets.streambackdrops.com/webp/${categorySlug}/${image.filename}`,
+      "thumbnail": `https://assets.streambackdrops.com/webp/${image.folder || categorySlug}/${image.filename}`,
       "encodingFormat": "image/webp",
       "width": image.meta?.width || 1920,
       "height": image.meta?.height || 1080,

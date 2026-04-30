@@ -1,21 +1,21 @@
 import { google } from 'googleapis';
 
-// Validates and stores B2B licensing inquiries, and sends an email
+// Validates and stores B2B branded-backgrounds inquiries, and sends an email
 // notification to the studio inbox.
 //
-// Storage: appends to a "Licensing Inquiries" sheet in the existing
-// GOOGLE_SHEET_ID workbook (mirrors save-email.js / submit-review.js).
-// The sheet must have headers: Timestamp | Name | Work Email | Company |
+// Storage: appends to a "Branded Inquiries" sheet in the existing
+// GOOGLE_SHEET_ID workbook. Headers: Timestamp | Name | Work Email | Company |
 // Role | Team Size | Timeline | Use Case | Notes | IP | User-Agent.
+// (If the sheet tab doesn't exist yet, create one named "Branded Inquiries"
+// with those headers, or rename the existing "Licensing Inquiries" tab.)
 //
-// Email: sends via MailerSend's HTTP API (no SDK required). Requires:
-//   MAILERSEND_API_KEY        — from https://mailersend.com (free tier 3K/mo, multi-domain)
+// Email: sends via MailerSend's HTTP API. Requires:
+//   MAILERSEND_API_KEY        — from https://mailersend.com (free tier 3K/mo)
 //   LICENSING_INBOX           — defaults to info@streambackdrops.com
 //   LICENSING_FROM            — defaults to "StreamBackdrops Studio <notifications@streambackdrops.com>"
-//                               The from-domain MUST be verified in MailerSend (DNS records).
 //
-// If any of these env vars are missing or the call fails, the lead is
-// still logged to the server console + Sheets so it isn't lost.
+// If env vars are missing or the call fails, the lead is still logged to the
+// server console + Sheets so it isn't lost.
 
 const FREE_EMAIL_DOMAINS = new Set([
   'gmail.com',
@@ -46,8 +46,6 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
-// Parse a "Name <email>" string into MailerSend's {name, email} object shape.
-// Falls back to {email: raw} if the input doesn't match.
 function parseSender(raw) {
   const m = String(raw || '').match(/^\s*(.+?)\s*<\s*([^>]+)\s*>\s*$/);
   if (m) return { name: m[1], email: m[2] };
@@ -64,18 +62,18 @@ async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
     return { ok: false, reason: 'no-api-key' };
   }
 
-  const subject = `New licensing inquiry — ${lead.company || lead.name}`;
+  const subject = `New branded backgrounds inquiry — ${lead.company || lead.name}`;
   const lines = [
     `Submitted: ${timestamp} ET`,
     `Name:      ${lead.name}`,
     `Email:     ${lead.workEmail}${isFreeDomain ? '  (free-domain)' : ''}`,
     `Company:   ${lead.company}`,
     `Role:      ${lead.role || '—'}`,
-    `Team size: ${lead.teamSize}`,
+    `Set size:  ${lead.teamSize}`,
     `Timeline:  ${lead.timeline || '—'}`,
     `IP:        ${ip || '—'}`,
     '',
-    'Use case:',
+    'Brand & set brief:',
     lead.useCase,
     '',
     'Notes:',
@@ -85,7 +83,7 @@ async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
   const html = `
 <div style="font-family:Georgia,serif;color:#111827;max-width:640px;line-height:1.55">
   <p style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#9a6a3a;font-weight:600;margin:0 0 .75rem">
-    StreamBackdrops Studio · New Licensing Inquiry
+    StreamBackdrops Studio · New Branded Backgrounds Inquiry
   </p>
   <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em;font-size:1.5rem;margin:0 0 1.25rem">
     ${escapeHtml(lead.company || lead.name)}
@@ -96,9 +94,9 @@ async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
     <tr><td style="color:#6b7280">Email</td><td><a href="mailto:${escapeHtml(lead.workEmail)}">${escapeHtml(lead.workEmail)}</a>${isFreeDomain ? ' <span style="color:#9a6a3a;font-size:.8rem">(free-domain)</span>' : ''}</td></tr>
     <tr><td style="color:#6b7280">Company</td><td>${escapeHtml(lead.company)}</td></tr>
     <tr><td style="color:#6b7280">Role</td><td>${escapeHtml(lead.role || '—')}</td></tr>
-    <tr><td style="color:#6b7280">Team size</td><td>${escapeHtml(lead.teamSize)}</td></tr>
+    <tr><td style="color:#6b7280">Set size</td><td>${escapeHtml(lead.teamSize)}</td></tr>
     <tr><td style="color:#6b7280">Timeline</td><td>${escapeHtml(lead.timeline || '—')}</td></tr>
-    <tr><td style="color:#6b7280;vertical-align:top">Use case</td><td style="white-space:pre-wrap">${escapeHtml(lead.useCase)}</td></tr>
+    <tr><td style="color:#6b7280;vertical-align:top">Brand &amp; set brief</td><td style="white-space:pre-wrap">${escapeHtml(lead.useCase)}</td></tr>
     <tr><td style="color:#6b7280;vertical-align:top">Notes</td><td style="white-space:pre-wrap">${escapeHtml(lead.notes || '—')}</td></tr>
     <tr><td style="color:#6b7280">IP</td><td style="font-family:monospace;font-size:.85rem">${escapeHtml(ip || '—')}</td></tr>
   </table>
@@ -128,7 +126,6 @@ async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
       const body = await res.text().catch(() => '');
       return { ok: false, reason: 'mailersend-error', status: res.status, body };
     }
-    // MailerSend returns 202 Accepted with the message id in the X-Message-Id header.
     const messageId = res.headers.get('x-message-id') || null;
     return { ok: true, id: messageId };
   } catch (err) {
@@ -158,8 +155,8 @@ export default async function handler(req, res) {
   if (!isValidEmail(lead.workEmail))
     return res.status(400).json({ error: 'Valid work email is required' });
   if (!lead.company) return res.status(400).json({ error: 'Company is required' });
-  if (!lead.teamSize) return res.status(400).json({ error: 'Team size is required' });
-  if (!lead.useCase) return res.status(400).json({ error: 'Use case is required' });
+  if (!lead.teamSize) return res.status(400).json({ error: 'Set size is required' });
+  if (!lead.useCase) return res.status(400).json({ error: 'Brand & set brief is required' });
 
   const domain = lead.workEmail.split('@')[1]?.toLowerCase() || '';
   const isFreeDomain = FREE_EMAIL_DOMAINS.has(domain);
@@ -179,9 +176,7 @@ export default async function handler(req, res) {
     minute: '2-digit',
   });
 
-  // Always log server-side so the lead is captured even if both Sheets and
-  // email are down.
-  console.log('[licensing-inquiry]', {
+  console.log('[branded-inquiry]', {
     timestamp,
     ...lead,
     isFreeDomain,
@@ -189,8 +184,6 @@ export default async function handler(req, res) {
     ip,
   });
 
-  // Fire email + sheets in parallel — neither blocks the other, and either
-  // one failing still leaves the lead captured in server logs.
   const [emailResult, sheetsResult] = await Promise.allSettled([
     sendStudioNotification({ lead, isFreeDomain, ip, timestamp }),
     appendToSheet({ lead, ip, userAgent, timestamp }),
@@ -200,12 +193,12 @@ export default async function handler(req, res) {
   const sheetsStatus = sheetsResult.status === 'fulfilled' ? sheetsResult.value : { ok: false, reason: 'threw', message: String(sheetsResult.reason) };
 
   if (!emailStatus.ok) {
-    console.error('[licensing-inquiry] email notification failed:', emailStatus);
+    console.error('[branded-inquiry] email notification failed:', emailStatus);
   } else {
-    console.log('[licensing-inquiry] email sent, id:', emailStatus.id);
+    console.log('[branded-inquiry] email sent, id:', emailStatus.id);
   }
   if (!sheetsStatus.ok) {
-    console.error('[licensing-inquiry] sheets append failed:', sheetsStatus.message || sheetsStatus.reason);
+    console.error('[branded-inquiry] sheets append failed:', sheetsStatus.message || sheetsStatus.reason);
   }
 
   return res.status(200).json({
@@ -237,7 +230,7 @@ async function appendToSheet({ lead, ip, userAgent, timestamp }) {
     const sheets = google.sheets({ version: 'v4', auth });
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Licensing Inquiries!A:K',
+      range: 'Branded Inquiries!A:K',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[

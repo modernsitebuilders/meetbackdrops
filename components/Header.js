@@ -455,9 +455,9 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   HD Editions
 </button>
 
-{/* Team Licensing — B2B CTA */}
+{/* Branded Backgrounds — B2B CTA */}
 <button
-  onClick={() => { trackAnalytics('nav_licensing_click', null, 'header'); navigate('/licensing'); }}
+  onClick={() => { trackAnalytics('nav_branded_click', null, 'header'); navigate('/branded-backgrounds'); }}
   style={{
     padding: '0.6rem 1.1rem',
     borderRadius: '2px',
@@ -467,16 +467,16 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
     cursor: 'pointer',
-    background: hoveredNav === 'licensing' ? '#000' : '#111827',
+    background: hoveredNav === 'branded' ? '#000' : '#111827',
     color: '#fff',
     border: '1px solid #111827',
     transition: 'background 0.2s ease',
     marginLeft: '0.5rem'
   }}
-  onMouseEnter={() => setHoveredNav('licensing')}
+  onMouseEnter={() => setHoveredNav('branded')}
   onMouseLeave={() => setHoveredNav(null)}
 >
-  Team Licensing
+  Branded Backgrounds
 </button>
           </nav>
         </div>

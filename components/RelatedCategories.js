@@ -18,7 +18,7 @@ const THUMBNAILS = {
   'historic-spaces':      'historic-spaces/historic-space-02.webp',
   'home-office':          'home-office/home-offices-01.webp',
   'kitchens':             'kitchens/kitchen-01.webp',
-  'libraries':            'libraries/libraries-19.webp',
+  'libraries':            'libraries/library-03.webp',
   'living-rooms':         'living-rooms/living-room-01.webp',
   'nature-landscapes':    'nature-landscapes/nature-landscape-1.webp',
   'office-spaces':        'office-spaces/office-spaces-01.webp',

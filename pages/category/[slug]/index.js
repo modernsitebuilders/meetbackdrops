@@ -265,7 +265,9 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     'bokeh-backgrounds': 'bokeh-01.webp',
   };
 
-  const featuredImage = featuredImages[currentSlug] || 'og-image.png';
+  const featuredFilename = featuredImages[currentSlug] || 'og-image.png';
+  const featuredImageObj = category.images.find(img => img.filename === featuredFilename);
+  const featuredFolder = featuredImageObj?.folder || currentSlug;
 
   // NOTE: pageTitle and pageDescription below are the COMPLETE values seen in search results.
   // Layout does not append "| StreamBackdrops" or any other suffix.
@@ -278,7 +280,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
         canonical={'https://streambackdrops.com/category/' + currentSlug}
         currentPage={currentSlug}
         keywords={categoryName.toLowerCase() + ' virtual backgrounds'}
-        image={`https://assets.streambackdrops.com/webp/${currentSlug}/${featuredImage}`}
+        image={`https://assets.streambackdrops.com/webp/${featuredFolder}/${featuredFilename}`}
       >
         <Head>
           <FAQSchema questions={getFAQs(currentSlug)} />
@@ -300,7 +302,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
               key={i}
               rel="preload"
               as="image"
-              href={`https://assets.streambackdrops.com/webp/${currentSlug}/${image.filename}`}
+              href={`https://assets.streambackdrops.com/webp/${image.folder || currentSlug}/${image.filename}`}
               media="(max-width: 768px)"
             />
           ))}

@@ -229,9 +229,9 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, off
             HD Editions
           </button>
 
-          {/* Team Licensing — B2B CTA */}
+          {/* Branded Backgrounds — B2B CTA */}
           <button
-            onClick={() => handleNav('/licensing')}
+            onClick={() => handleNav('/branded-backgrounds')}
             style={{
               display: 'block',
               width: '100%',
@@ -253,7 +253,7 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, off
             onMouseEnter={(e) => { e.target.style.background = '#000'; }}
             onMouseLeave={(e) => { e.target.style.background = '#111827'; }}
           >
-            Team Licensing
+            Branded Backgrounds
           </button>
         </div>
       </div>
