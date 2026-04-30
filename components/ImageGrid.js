@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { isHdOnlyFilename } from '../lib/hdOnly';
 import { useWishlist } from '../lib/WishlistContext';
 import { webpUrl } from '../lib/cloudinaryUrl';
+import { useShowFilenames } from '../lib/useShowFilenames';
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -21,6 +22,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
   const [sortedImages, setSortedImages] = useState(images);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const { toggleWishlist, isWishlisted } = useWishlist();
+  const showFilenames = useShowFilenames();
 
   useEffect(() => {
     const imagesWithScores = images.map(image => {
@@ -359,6 +361,25 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
               </div>
               )}
             </div>
+            {showFilenames && (
+              <div
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  padding: '0.4rem 0.6rem',
+                  background: '#111827',
+                  color: '#e5e7eb',
+                  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.02em',
+                  userSelect: 'all',
+                  cursor: 'text',
+                  lineHeight: 1.3,
+                  wordBreak: 'break-all',
+                }}
+              >
+                {imageSlug}
+              </div>
+            )}
           </div>
           );
         })}

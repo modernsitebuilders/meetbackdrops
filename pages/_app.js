@@ -18,8 +18,8 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
        <Analytics /> 
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-QMD6NEPFWR" strategy="lazyOnload" />
-      <Script id="google-analytics" strategy="lazyOnload">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QMD6NEPFWR');`}</Script>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-QMD6NEPFWR" strategy="afterInteractive" />
+      <Script id="google-analytics" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QMD6NEPFWR');`}</Script>
       <Component {...pageProps} />
     </WishlistProvider>
   );

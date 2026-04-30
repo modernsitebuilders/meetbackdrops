@@ -11,6 +11,7 @@ function trackAnalytics(eventType, filename, category) {
   }).catch(() => {});
 }
 import { useImageDownload } from '../lib/useImageDownload';
+import { useShowFilenames } from '../lib/useShowFilenames';
 import ReviewModal from './ReviewModal';
 import RateLimitModal from './RateLimitModal';
 import ImagePreviewModal from './ImagePreviewModal';
@@ -22,6 +23,7 @@ export default function MostPopularGrid() {
   const [cloudinaryUrls, setCloudinaryUrls] = useState({});
   const [selectedImage, setSelectedImage] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const showFilenames = useShowFilenames();
 
   const {
     handleDownload,
@@ -175,6 +177,25 @@ export default function MostPopularGrid() {
                 </button>
               </div>
             </div>
+            {showFilenames && (
+              <div
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  padding: '0.4rem 0.6rem',
+                  background: '#111827',
+                  color: '#e5e7eb',
+                  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.02em',
+                  userSelect: 'all',
+                  cursor: 'text',
+                  lineHeight: 1.3,
+                  wordBreak: 'break-all',
+                }}
+              >
+                {image.filename.replace(/\.webp$/i, '')}
+              </div>
+            )}
           </div>
         ))}
       </div>
