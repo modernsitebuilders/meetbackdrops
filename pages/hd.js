@@ -1167,6 +1167,8 @@ const products = [
   { id: 'bookshelves-bright-19-hd', name: 'Bright Bookshelf #19', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-20-hd', name: 'Bright Bookshelf #20', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-23-hd', name: 'Bright Bookshelf #23', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-24-hd', name: 'Bright Bookshelf #24', category: 'bookshelves-bright' },
+  { id: 'bookshelves-bright-29-hd', name: 'Bright Bookshelf #29', category: 'bookshelves-bright' },
   { id: 'bookshelves-bright-42-hd', name: 'Bright Bookshelf #42', category: 'bookshelves-bright' },
   // Bookshelves Dark
   { id: 'bookshelves-dark-02-hd', name: 'Dark Bookshelf #2', category: 'bookshelves-dark' },
@@ -1194,6 +1196,7 @@ const products = [
   { id: 'wall-shelves-bright-29-hd', name: 'Bright Wall Shelf #29', category: 'wall-shelves-bright' },
   { id: 'wall-shelves-bright-49-hd', name: 'Bright Wall Shelf #49', category: 'wall-shelves-bright' },
   { id: 'wall-shelves-bright-51-hd', name: 'Bright Wall Shelf #51', category: 'wall-shelves-bright' },
+  { id: 'wall-shelves-bright-55-hd', name: 'Bright Wall Shelf #55', category: 'wall-shelves-bright' },
   // Wall Shelves Dark
   { id: 'wall-shelves-dark-01-hd', name: 'Dark Wall Shelf #1', category: 'wall-shelves-dark' },
   { id: 'wall-shelves-dark-02-hd', name: 'Dark Wall Shelf #2', category: 'wall-shelves-dark' },
@@ -1243,7 +1246,10 @@ const products = [
   { id: 'office-spaces-63-hd', name: 'Office Space #63', category: 'office-spaces' },
   { id: 'office-spaces-66-hd', name: 'Office Space #66', category: 'office-spaces' },
   { id: 'office-spaces-69-hd', name: 'Office Space #69', category: 'office-spaces' },
+  { id: 'office-spaces-70-hd', name: 'Office Space #70', category: 'office-spaces' },
   { id: 'office-spaces-71-hd', name: 'Office Space #71', category: 'office-spaces' },
+  { id: 'office-spaces-77-hd', name: 'Office Space #77', category: 'office-spaces' },
+  { id: 'office-spaces-84-hd', name: 'Office Space #84', category: 'office-spaces' },
   // Home Offices
   { id: 'home-offices-01-hd', name: 'Home Office #1', category: 'home-office' },
   { id: 'home-offices-03-hd', name: 'Home Office #3', category: 'home-office' },
@@ -1262,6 +1268,8 @@ const products = [
   { id: 'home-offices-30-hd', name: 'Home Office #30', category: 'home-office' },
   { id: 'home-offices-31-hd', name: 'Home Office #31', category: 'home-office' },
   { id: 'home-offices-48-hd', name: 'Home Office #48', category: 'home-office' },
+  { id: 'home-offices-50-hd', name: 'Home Office #50', category: 'home-office' },
+  { id: 'home-offices-62-hd', name: 'Home Office #62', category: 'home-office' },
   { id: 'home-offices-61-hd', name: 'Home Office #61', category: 'home-office' },
   { id: 'home-offices-69-hd', name: 'Home Office #69', category: 'home-office' },
   { id: 'home-offices-74-hd', name: 'Home Office #74', category: 'home-office' },
