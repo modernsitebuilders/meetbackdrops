@@ -1401,6 +1401,130 @@ function findProductByHighlight(rawHighlight, productList) {
   return fuzzy || null;
 }
 
+// ─── Walkthrough Video (lazy-loaded — iframe only mounts on click) ───────────
+function HdVideoSection() {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <section style={{
+      background: '#fafaf7',
+      borderTop: '1px solid #e6e2dc',
+      borderBottom: '1px solid #e6e2dc',
+      padding: '4rem 2rem',
+    }}>
+      <div style={{ maxWidth: '880px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{
+          fontSize: '0.7rem',
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: '#9a6a3a',
+          fontWeight: 600,
+          marginBottom: '1rem',
+        }}>
+          Watch · 1:35
+        </div>
+        <h2 style={{
+          fontFamily: "'Fraunces', Georgia, serif",
+          fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+          fontWeight: 600,
+          letterSpacing: '-0.01em',
+          margin: '0 0 0.75rem',
+          color: '#111827',
+        }}>
+          A short walkthrough of the HD Editions
+        </h2>
+        <p style={{
+          fontSize: '0.95rem',
+          color: '#6b7280',
+          margin: '0 auto 2rem',
+          maxWidth: '560px',
+          lineHeight: 1.6,
+        }}>
+          See what 4K source files look like on a Zoom or Teams call — and where standard
+          backgrounds fall apart under codec compression.
+        </p>
+        <div style={{
+          position: 'relative',
+          paddingBottom: '56.25%',
+          height: 0,
+          overflow: 'hidden',
+          background: '#111827',
+          border: '1px solid #e6e2dc',
+        }}>
+          {playing ? (
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/gO89ooJbl20?autoplay=1&rel=0"
+              title="HD Editions walkthrough"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                setPlaying(true);
+                trackAnalytics('hd_video_play', 'gO89ooJbl20', 'hd');
+              }}
+              aria-label="Play HD Editions walkthrough (1 minute 35 seconds)"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                border: 0,
+                cursor: 'pointer',
+                padding: 0,
+                background: '#000',
+              }}
+            >
+              <img
+                src="https://img.youtube.com/vi/gO89ooJbl20/maxresdefault.jpg"
+                alt=""
+                loading="lazy"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  opacity: 0.9,
+                }}
+              />
+              <span style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '76px',
+                height: '76px',
+                borderRadius: '50%',
+                background: 'rgba(17, 24, 39, 0.85)',
+                border: '2px solid #c79a6b',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                pointerEvents: 'none',
+              }}>
+                <span style={{
+                  width: 0,
+                  height: 0,
+                  borderTop: '13px solid transparent',
+                  borderBottom: '13px solid transparent',
+                  borderLeft: '20px solid #c79a6b',
+                  marginLeft: '5px',
+                }} />
+              </span>
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Premium({ reviewsData }) {
   const router = useRouter();
@@ -1983,6 +2107,9 @@ export default function Premium({ reviewsData }) {
           </div>
         )}
       </section>
+
+      {/* Walkthrough video — bottom of page, lazy-loaded */}
+      <HdVideoSection />
 
       {/* Comparison widget — standard images */}
 
