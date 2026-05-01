@@ -11,36 +11,60 @@ const PAPER = '#fafaf7';
 const MUTED = '#6b7280';
 const INK = '#0b1220';
 
-// Configure the four example slots here.
-// `base` = an existing library webp (lives on R2 already).
-// `branded` = the path to your Canva-baked composite. Drop the file at
-// /public/branded-examples/<filename> and it will appear automatically.
-// Until the file exists, the slot shows a "your composite goes here" placeholder.
+// Three branded composites. Files live at /public/branded-examples/<filename>.
+// Captions describe the placement story shown in each composite.
 const EXAMPLES = [
   {
-    base: 'https://assets.streambackdrops.com/webp/art-galleries/art-gallery-01.webp',
-    branded: '/branded-examples/art-gallery-01-meridian.png',
-    placement: 'Wall print',
-    note: 'Logo integrated into a framed print on the gallery wall',
+    branded: '/branded-examples/branded-image-01.png',
+    placement: 'Office wall plaque',
+    note: 'Mark mounted on a wood-panel feature wall in a working office',
   },
   {
-    base: 'https://assets.streambackdrops.com/webp/art-galleries/art-gallery-26.webp',
-    branded: '/branded-examples/art-gallery-26-meridian.png',
-    placement: 'Wall plaque',
-    note: 'Subtle wordmark on a wall plaque or signage panel',
+    branded: '/branded-examples/branded-image-02.png',
+    placement: 'Branded gallery print',
+    note: 'Mark presented as a framed studio print on a curated shelf',
   },
   {
-    base: 'https://assets.streambackdrops.com/webp/art-galleries/art-gallery-28.webp',
-    branded: '/branded-examples/art-gallery-28-meridian.png',
-    placement: 'Featured artwork',
-    note: 'Brand mark applied to a hero piece in the room',
+    branded: '/branded-examples/branded-image-03.png',
+    placement: 'Executive boardroom',
+    note: 'Dimensional brand installation on a marble feature wall — premium C-suite setting',
+  },
+];
+
+const PILLARS = [
+  {
+    title: 'Brand consistency across distributed teams',
+    body: 'Your CEO on Bloomberg, your sales reps on customer demos, your recruiters on candidate interviews — every employee shows up in the same on-brand environment. One company presence across every meeting, regardless of where the call originates.',
   },
   {
-    base: 'https://assets.streambackdrops.com/webp/art-galleries/art-gallery-33.webp',
-    branded: '/branded-examples/art-gallery-33-meridian.png',
-    placement: 'Object detail',
-    note: 'Mark on a small surface — mug, monitor edge, book spine, etc.',
+    title: 'Engineered for video compression',
+    body: 'Every environment is rendered at 4K and engineered for the codec compression Zoom, Microsoft Teams, and Google Meet apply to live video. Logos stay sharp, edges hold, brand colors do not smear — the way stock JPEGs do once the call platform is done with them.',
   },
+  {
+    title: 'Not the same backdrop your competitor is on',
+    body: 'Free stock photography is where every brand defaults — and where every viewer has seen the same backdrop a dozen times. Branded environments put your team on a curated set built for video, not the same Unsplash and Pexels grid every competitor pulls from.',
+  },
+  {
+    title: 'Curated environments, not infinite catalogs',
+    body: 'A focused set of about 1,000 studio-built environments — offices, libraries, galleries, conference rooms, lounges, restaurants — each composed for camera. No 50,000-thumbnail asset dump to wade through and no two backdrops that look identical.',
+  },
+  {
+    title: 'Procurement-ready',
+    body: 'Annual term, single invoice, transparent seat pricing. SSO, SCIM provisioning, custom MSAs, and security review available on request — the boxes IT, legal, and procurement need ticked before signature.',
+  },
+  {
+    title: 'Custom branded environments',
+    body: 'For organizations that need a virtual set mirroring their headquarters, matching a product launch, or staying exclusive to their brand — the studio designs custom branded environments built to brief, available only to your team.',
+  },
+];
+
+const PLACEMENTS = [
+  { label: 'Wall art and framed prints', detail: 'The largest, most prominent surface in most environments — high-impact placement.' },
+  { label: 'Book spines and shelves', detail: 'Subtle, repeated brand presence across bookshelves and wall-shelf environments.' },
+  { label: 'Frosted glass and signage', detail: 'Office and conference-room sets with door panels, wall signage, and lobby plaques.' },
+  { label: 'Mugs, notebooks, monitor bezels', detail: 'Small object-level placements for understated, considered branding.' },
+  { label: 'Wall plaques and lobby panels', detail: 'Lobby and reception sets with surfaces engineered to carry institutional marks.' },
+  { label: 'Custom — talk to the studio', detail: 'Unusual surface, multiple placements per scene, or animated variants on request.' },
 ];
 
 function inputStyle(invalid) {
@@ -68,15 +92,6 @@ const labelStyle = {
   marginBottom: '0.5rem',
 };
 
-const PLACEMENTS = [
-  { label: 'Wall art & framed prints', detail: 'Largest, most prominent surface in most environments.' },
-  { label: 'Book spines & shelves', detail: 'Subtle, repeated brand presence — works on bookshelves and wall shelves.' },
-  { label: 'Frosted glass & signage', detail: 'Office and conference-room sets with door panels and wall signage.' },
-  { label: 'Mugs, notebooks, monitor bezels', detail: 'Small object-level placement for understated branding.' },
-  { label: 'Wall plaques & lobby panels', detail: 'Lobby and reception sets with naturally branded surfaces.' },
-  { label: 'Custom — talk to us', detail: 'Unusual surface, multiple placements per scene, animated variants on request.' },
-];
-
 function Eyebrow({ children, light = false }) {
   return (
     <div
@@ -94,168 +109,162 @@ function Eyebrow({ children, light = false }) {
   );
 }
 
-function ExamplePair({ base, branded, placement, note }) {
-  const [brandedFailed, setBrandedFailed] = useState(false);
-
+function PillarCard({ title, body }) {
   return (
     <div
       style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '1rem',
-        marginBottom: '2.5rem',
+        padding: '1.75rem',
+        background: '#fff',
+        border: `1px solid ${RULE}`,
+        borderRadius: '0.5rem',
       }}
     >
-      <figure style={{ margin: 0 }}>
-        <div style={{
-          aspectRatio: '16/9',
-          background: '#000',
-          borderRadius: '0.5rem',
-          overflow: 'hidden',
-          marginBottom: '0.5rem',
-        }}>
-          <img
-            src={base}
-            alt={`Library environment — ${placement} surface available for branding`}
-            loading="lazy"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </div>
-        <figcaption style={{
-          fontSize: '0.7rem',
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          color: MUTED,
+      <h3
+        style={{
+          fontFamily: SERIF,
+          fontSize: '1.2rem',
           fontWeight: 600,
-        }}>
-          From the library
-        </figcaption>
-      </figure>
-
-      <figure style={{ margin: 0 }}>
-        <div style={{
-          aspectRatio: '16/9',
-          borderRadius: '0.5rem',
-          overflow: 'hidden',
-          marginBottom: '0.5rem',
-          background: brandedFailed ? PAPER : '#000',
-          border: brandedFailed ? `1px dashed ${RULE}` : 'none',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          padding: brandedFailed ? '1.25rem' : 0,
-        }}>
-          {brandedFailed ? (
-            <div style={{ color: MUTED, fontSize: '0.78rem', lineHeight: 1.5 }}>
-              <div style={{
-                fontSize: '0.65rem',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: WARM,
-                fontWeight: 600,
-                marginBottom: '0.5rem',
-              }}>
-                {placement}
-              </div>
-              <div style={{ marginBottom: '0.4rem', color: GRAPHITE, fontWeight: 500 }}>
-                Branded composite goes here
-              </div>
-              <div style={{ fontSize: '0.7rem', color: MUTED }}>
-                {note}
-              </div>
-              <div style={{
-                fontSize: '0.65rem',
-                color: MUTED,
-                marginTop: '0.6rem',
-                fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-              }}>
-                {branded}
-              </div>
-            </div>
-          ) : (
-            <img
-              src={branded}
-              alt={`Branded composite — ${placement} with Meridian mark applied`}
-              loading="lazy"
-              onError={() => setBrandedFailed(true)}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
-          )}
-        </div>
-        <figcaption style={{
-          fontSize: '0.7rem',
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
           color: GRAPHITE,
-          fontWeight: 700,
-        }}>
-          With your brand · {placement}
-        </figcaption>
-      </figure>
-    </div>
-  );
-}
-
-function StepCard({ n, title, body }) {
-  return (
-    <div style={{
-      background: '#fff',
-      border: `1px solid ${RULE}`,
-      padding: '1.75rem',
-      borderRadius: '0.5rem',
-    }}>
-      <div style={{
-        fontSize: '0.65rem',
-        letterSpacing: '0.22em',
-        textTransform: 'uppercase',
-        color: WARM,
-        fontWeight: 700,
-        marginBottom: '0.6rem',
-      }}>
-        Step {n}
-      </div>
-      <h3 style={{
-        fontFamily: SERIF,
-        fontSize: '1.35rem',
-        fontWeight: 600,
-        color: GRAPHITE,
-        margin: '0 0 0.6rem',
-        letterSpacing: '-0.01em',
-      }}>
+          margin: '0 0 0.75rem',
+          letterSpacing: '-0.01em',
+          lineHeight: 1.25,
+        }}
+      >
         {title}
       </h3>
-      <p style={{
-        fontSize: '0.92rem',
-        color: MUTED,
-        margin: 0,
-        lineHeight: 1.55,
-      }}>
+      <p
+        style={{
+          fontSize: '0.92rem',
+          color: MUTED,
+          margin: 0,
+          lineHeight: 1.6,
+        }}
+      >
         {body}
       </p>
     </div>
   );
 }
 
+function BrandedExample({ branded, placement, note }) {
+  return (
+    <figure style={{ margin: 0 }}>
+      <div
+        style={{
+          aspectRatio: '16/9',
+          background: '#000',
+          borderRadius: '0.5rem',
+          overflow: 'hidden',
+          marginBottom: '0.85rem',
+        }}
+      >
+        <img
+          src={branded}
+          alt={`Branded environment — ${placement}`}
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        />
+      </div>
+      <figcaption>
+        <div
+          style={{
+            fontSize: '0.7rem',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: GRAPHITE,
+            fontWeight: 700,
+            marginBottom: '0.35rem',
+          }}
+        >
+          {placement}
+        </div>
+        <div style={{ fontSize: '0.85rem', color: MUTED, lineHeight: 1.5 }}>{note}</div>
+      </figcaption>
+    </figure>
+  );
+}
+
+function StepCard({ n, title, body }) {
+  return (
+    <div
+      style={{
+        background: '#fff',
+        border: `1px solid ${RULE}`,
+        padding: '1.75rem',
+        borderRadius: '0.5rem',
+      }}
+    >
+      <div
+        style={{
+          fontSize: '0.65rem',
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: WARM,
+          fontWeight: 700,
+          marginBottom: '0.6rem',
+        }}
+      >
+        Step {n}
+      </div>
+      <h3
+        style={{
+          fontFamily: SERIF,
+          fontSize: '1.35rem',
+          fontWeight: 600,
+          color: GRAPHITE,
+          margin: '0 0 0.6rem',
+          letterSpacing: '-0.01em',
+        }}
+      >
+        {title}
+      </h3>
+      <p style={{ fontSize: '0.92rem', color: MUTED, margin: 0, lineHeight: 1.55 }}>{body}</p>
+    </div>
+  );
+}
+
 function PlacementCard({ label, detail }) {
   return (
-    <div style={{
-      padding: '1.25rem 1.4rem',
-      background: '#fff',
-      border: `1px solid ${RULE}`,
-      borderRadius: '0.5rem',
-    }}>
-      <div style={{
-        fontSize: '0.95rem',
-        fontWeight: 600,
-        color: GRAPHITE,
-        marginBottom: '0.4rem',
-      }}>
+    <div
+      style={{
+        padding: '1.25rem 1.4rem',
+        background: '#fff',
+        border: `1px solid ${RULE}`,
+        borderRadius: '0.5rem',
+      }}
+    >
+      <div style={{ fontSize: '0.95rem', fontWeight: 600, color: GRAPHITE, marginBottom: '0.4rem' }}>
         {label}
       </div>
-      <div style={{ fontSize: '0.82rem', color: MUTED, lineHeight: 1.5 }}>
-        {detail}
-      </div>
+      <div style={{ fontSize: '0.82rem', color: MUTED, lineHeight: 1.5 }}>{detail}</div>
+    </div>
+  );
+}
+
+function CustomTierCard({ title, body }) {
+  return (
+    <div
+      style={{
+        padding: '2rem',
+        background: '#fff',
+        border: `1px solid ${RULE}`,
+        borderTop: `2px solid ${WARM}`,
+        borderRadius: '0.5rem',
+      }}
+    >
+      <h3
+        style={{
+          fontFamily: SERIF,
+          fontSize: '1.25rem',
+          fontWeight: 600,
+          color: GRAPHITE,
+          margin: '0 0 0.75rem',
+          letterSpacing: '-0.01em',
+        }}
+      >
+        {title}
+      </h3>
+      <p style={{ fontSize: '0.92rem', color: MUTED, margin: 0, lineHeight: 1.6 }}>{body}</p>
     </div>
   );
 }
@@ -317,10 +326,10 @@ export default function BrandedBackgroundsPage() {
   return (
     <>
       <Head>
-        <title>Branded Virtual Backgrounds — Custom Studio Sets for Your Brand | StreamBackdrops</title>
+        <title>Branded Virtual Backgrounds for Teams — Company Video Presence System | StreamBackdrops</title>
         <meta
           name="description"
-          content="Studio-designed virtual environments with your company logo integrated into the scene — wall prints, signage, book spines, objects. Custom-licensed sets for corporate teams."
+          content="Studio-built virtual environments with your company brand integrated for Zoom, Microsoft Teams, and Google Meet. Consistent video presence across executives, sales, and recruiters. Procurement-ready deployment for distributed teams."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex, nofollow" />
@@ -328,52 +337,118 @@ export default function BrandedBackgroundsPage() {
 
       <Layout>
         {/* HERO */}
-        <section style={{
-          background: INK,
-          color: '#fff',
-          padding: '6rem 2rem 5rem',
-          textAlign: 'center',
-        }}>
-          <div style={{ maxWidth: '880px', margin: '0 auto' }}>
-            <Eyebrow light>Branded virtual environments</Eyebrow>
-            <h1 style={{
-              fontFamily: SERIF,
-              fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
-              fontWeight: 600,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-            }}>
-              Your brand on every video call.
-            </h1>
-            <p style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.6,
-              color: '#cbd2dc',
-              maxWidth: '640px',
-              margin: '0 auto 2.5rem',
-            }}>
-              We take environments from our existing studio library and integrate your logo
-              into the scene — a wall print, a book spine, a frosted-glass sign, a mug on
-              the desk. Your team calls in from a backdrop that quietly carries your brand.
-            </p>
-            <Link
-              href="#request"
+        <section
+          style={{
+            background: INK,
+            color: '#fff',
+            padding: '6rem 2rem 5rem',
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <Eyebrow light>Brand presence infrastructure for video</Eyebrow>
+            <h1
               style={{
-                display: 'inline-block',
-                background: '#fff',
-                color: GRAPHITE,
-                padding: '1rem 2rem',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                borderBottom: `2px solid ${WARM}`,
+                fontFamily: SERIF,
+                fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
+                fontWeight: 600,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                margin: '0 0 1.5rem',
               }}
             >
-              Request a custom set →
-            </Link>
+              Branded Virtual Backgrounds for Teams
+            </h1>
+            <p
+              style={{
+                fontSize: '1.1rem',
+                lineHeight: 1.6,
+                color: '#cbd2dc',
+                maxWidth: '680px',
+                margin: '0 auto 2.5rem',
+              }}
+            >
+              Studio-built environments with your company brand integrated into the scene —
+              deployed across every executive, sales rep, and recruiter on Zoom, Microsoft
+              Teams, and Google Meet. One unified video presence for distributed teams,
+              consistent in every meeting your company shows up in.
+            </p>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '1rem',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Link
+                href="/"
+                style={{
+                  display: 'inline-block',
+                  background: '#fff',
+                  color: GRAPHITE,
+                  padding: '1rem 2rem',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  borderBottom: `2px solid ${WARM}`,
+                }}
+              >
+                Browse environments →
+              </Link>
+              <Link
+                href="#request"
+                style={{
+                  display: 'inline-block',
+                  background: 'transparent',
+                  color: '#fff',
+                  padding: '1rem 2rem',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  border: '1px solid rgba(255,255,255,0.4)',
+                }}
+              >
+                Enterprise inquiry
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* VALUE PILLARS */}
+        <section style={{ padding: '6rem 2rem', background: PAPER, borderBottom: `1px solid ${RULE}` }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+              <Eyebrow>Why teams deploy branded environments</Eyebrow>
+              <h2
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  color: GRAPHITE,
+                  margin: 0,
+                }}
+              >
+                Operational outcomes, not aesthetic upgrades.
+              </h2>
+            </div>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+                gap: '1.25rem',
+              }}
+            >
+              {PILLARS.map((p) => (
+                <PillarCard key={p.title} {...p} />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -382,113 +457,234 @@ export default function BrandedBackgroundsPage() {
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
               <Eyebrow>The transformation</Eyebrow>
-              <h2 style={{
-                fontFamily: SERIF,
-                fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
-                color: GRAPHITE,
-                margin: '0 0 1rem',
-              }}>
-                Same studio environment. Your brand woven in.
+              <h2
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  color: GRAPHITE,
+                  margin: '0 0 1rem',
+                }}
+              >
+                Studio environments, your brand integrated.
               </h2>
-              <p style={{
-                fontSize: '0.98rem',
-                color: MUTED,
-                maxWidth: '620px',
-                margin: '0 auto',
-                lineHeight: 1.6,
-              }}>
-                Each pair below shows a library environment on the left and the same scene
-                with a placeholder brand mark integrated on the right. Your composites
-                replace these once produced.
+              <p
+                style={{
+                  fontSize: '0.98rem',
+                  color: MUTED,
+                  maxWidth: '640px',
+                  margin: '0 auto',
+                  lineHeight: 1.6,
+                }}
+              >
+                A range of placement treatments — from operational office settings to
+                executive boardrooms — each showing how a brand can sit naturally inside
+                a studio-built environment.
               </p>
             </div>
 
-            {EXAMPLES.map((ex, i) => (
-              <ExamplePair key={i} {...ex} />
-            ))}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '2rem',
+              }}
+            >
+              {EXAMPLES.map((ex, i) => (
+                <BrandedExample key={i} {...ex} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* BRANDED VIDEO PRESENCE SYSTEM */}
+        <section
+          style={{
+            padding: '6rem 2rem',
+            background: INK,
+            color: '#fff',
+          }}
+        >
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <Eyebrow light>The video presence system</Eyebrow>
+              <h2
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  margin: 0,
+                }}
+              >
+                Every video call is a brand surface.
+              </h2>
+            </div>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                gap: '2rem',
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: '0.7rem',
+                    letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: '#c79a6b',
+                    fontWeight: 700,
+                    marginBottom: '0.75rem',
+                  }}
+                >
+                  01 · The reality
+                </div>
+                <p style={{ color: '#cbd2dc', lineHeight: 1.65, margin: 0, fontSize: '0.98rem' }}>
+                  On any given workday, your company shows up in hundreds of video calls —
+                  sales demos, customer support, candidate interviews, board updates. Most
+                  of those calls happen against unmanaged backdrops: cluttered home offices,
+                  generic stock photos, default platform blurs.
+                </p>
+              </div>
+
+              <div>
+                <div
+                  style={{
+                    fontSize: '0.7rem',
+                    letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: '#c79a6b',
+                    fontWeight: 700,
+                    marginBottom: '0.75rem',
+                  }}
+                >
+                  02 · The cost
+                </div>
+                <p style={{ color: '#cbd2dc', lineHeight: 1.65, margin: 0, fontSize: '0.98rem' }}>
+                  Every one of those calls is a brand impression. Inconsistent backdrops
+                  dilute the impression — a candidate sees a different company on every
+                  panelist screen, a customer sees a different company across two product
+                  demos run by the same team.
+                </p>
+              </div>
+
+              <div>
+                <div
+                  style={{
+                    fontSize: '0.7rem',
+                    letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: '#c79a6b',
+                    fontWeight: 700,
+                    marginBottom: '0.75rem',
+                  }}
+                >
+                  03 · The system
+                </div>
+                <p style={{ color: '#cbd2dc', lineHeight: 1.65, margin: 0, fontSize: '0.98rem' }}>
+                  A branded environment program treats the backdrop as a managed brand
+                  surface — the same way your email signature, deck template, and customer
+                  email are managed. Every employee, every call, the same on-brand context.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* HOW IT WORKS */}
-        <section style={{
-          padding: '5rem 2rem',
-          background: PAPER,
-          borderTop: `1px solid ${RULE}`,
-          borderBottom: `1px solid ${RULE}`,
-        }}>
+        <section
+          style={{
+            padding: '5rem 2rem',
+            background: PAPER,
+            borderTop: `1px solid ${RULE}`,
+            borderBottom: `1px solid ${RULE}`,
+          }}
+        >
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <Eyebrow>How it works</Eyebrow>
-              <h2 style={{
-                fontFamily: SERIF,
-                fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
-                color: GRAPHITE,
-                margin: 0,
-              }}>
-                Three steps, one custom-licensed set.
+              <h2
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  color: GRAPHITE,
+                  margin: 0,
+                }}
+              >
+                From kickoff to deployed brand presence.
               </h2>
             </div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1.5rem',
-            }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                gap: '1.5rem',
+              }}
+            >
               <StepCard
                 n="01"
                 title="Pick your environments"
-                body="Browse the library and flag the scenes that fit your brand — offices, libraries, galleries, conference rooms. We help you narrow the set."
+                body="Browse studio environments and flag the scenes that fit your brand — offices, libraries, galleries, conference rooms. The studio narrows the set with you and recommends placements per image."
               />
               <StepCard
                 n="02"
                 title="Send your brand assets"
-                body="Logo, brand colors, any specific guidelines. We confirm placement zones and turnaround per image before production."
+                body="Logo, brand colors, any guidelines. The studio confirms placement zones, surface treatments, and turnaround per image before production starts."
               />
               <StepCard
                 n="03"
-                title="Receive a licensed set"
-                body="Each composite is delivered as a high-resolution image with your brand integrated. Licensed for your team's use, with a clear set of terms."
+                title="Deploy across the team"
+                body="Each composite is delivered as a high-resolution image with your brand integrated, ready for company-wide distribution. Annual term, single invoice, IT-friendly delivery."
               />
             </div>
           </div>
         </section>
 
-        {/* WHERE THE BRAND CAN GO */}
+        {/* WHERE THE BRAND INTEGRATES */}
         <section style={{ padding: '6rem 2rem', background: '#fff' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <Eyebrow>Placement options</Eyebrow>
-              <h2 style={{
-                fontFamily: SERIF,
-                fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
-                color: GRAPHITE,
-                margin: '0 0 1rem',
-              }}>
-                Surfaces we integrate brands onto.
+              <h2
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  color: GRAPHITE,
+                  margin: '0 0 1rem',
+                }}
+              >
+                Surfaces that carry the brand without becoming a billboard.
               </h2>
-              <p style={{
-                fontSize: '0.98rem',
-                color: MUTED,
-                maxWidth: '620px',
-                margin: '0 auto',
-                lineHeight: 1.6,
-              }}>
-                The library is full of natural surfaces that can carry a logo without
-                turning the room into a billboard.
+              <p
+                style={{
+                  fontSize: '0.98rem',
+                  color: MUTED,
+                  maxWidth: '620px',
+                  margin: '0 auto',
+                  lineHeight: 1.6,
+                }}
+              >
+                Studio environments are full of natural surfaces — wall art, signage,
+                objects on a desk — that can carry a logo at the level of detail your
+                brand calls for.
               </p>
             </div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1.25rem',
-            }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                gap: '1.25rem',
+              }}
+            >
               {PLACEMENTS.map((p) => (
                 <PlacementCard key={p.label} {...p} />
               ))}
@@ -496,53 +692,128 @@ export default function BrandedBackgroundsPage() {
           </div>
         </section>
 
-        {/* LICENSE NOTE */}
-        <section style={{
-          padding: '5rem 2rem',
-          background: PAPER,
-          borderTop: `1px solid ${RULE}`,
-          borderBottom: `1px solid ${RULE}`,
-        }}>
+        {/* CUSTOM BRAND ENVIRONMENTS — premium tier */}
+        <section
+          style={{
+            padding: '6rem 2rem',
+            background: PAPER,
+            borderTop: `1px solid ${RULE}`,
+            borderBottom: `1px solid ${RULE}`,
+          }}
+        >
+          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <Eyebrow>The custom tier</Eyebrow>
+              <h2
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  color: GRAPHITE,
+                  margin: '0 0 1rem',
+                }}
+              >
+                Custom brand environments — built for you alone.
+              </h2>
+              <p
+                style={{
+                  fontSize: '0.98rem',
+                  color: MUTED,
+                  maxWidth: '640px',
+                  margin: '0 auto',
+                  lineHeight: 1.6,
+                }}
+              >
+                For organizations that need an environment fully exclusive to their brand.
+                These are built from scratch to your brief, never added to the public
+                catalog, and used only by your team.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '1.5rem',
+                marginBottom: '3rem',
+              }}
+            >
+              <CustomTierCard
+                title="HQ replication environments"
+                body="A virtual set that mirrors your actual headquarters, executive boardroom, or flagship office — so executives call in from a digital twin of the real space, fully under your brand."
+              />
+              <CustomTierCard
+                title="Campaign-specific sets"
+                body="A branded environment built around a specific moment — product launch, earnings cycle, partnership announcement, recruiting season. Yours for the campaign window, never re-used elsewhere."
+              />
+              <CustomTierCard
+                title="Fully bespoke environments"
+                body="An original environment designed end-to-end for your brand — composition, surfaces, lighting, brand integration. Exclusive to your team, never available to other organizations."
+              />
+            </div>
+
+            <div style={{ textAlign: 'center' }}>
+              <Link
+                href="#request"
+                style={{
+                  display: 'inline-block',
+                  background: GRAPHITE,
+                  color: '#fff',
+                  padding: '1rem 2rem',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  borderBottom: `2px solid ${WARM}`,
+                }}
+              >
+                Talk to the studio →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* OPERATIONAL TERMS */}
+        <section style={{ padding: '5rem 2rem', background: '#fff', borderBottom: `1px solid ${RULE}` }}>
           <div style={{ maxWidth: '780px', margin: '0 auto' }}>
-            <Eyebrow>Plain-English license terms</Eyebrow>
-            <h2 style={{
-              fontFamily: SERIF,
-              fontSize: 'clamp(1.7rem, 2.8vw, 2.2rem)',
-              fontWeight: 600,
-              letterSpacing: '-0.02em',
-              color: GRAPHITE,
-              margin: '0 0 1.5rem',
-            }}>
-              What's yours, what stays in the library.
+            <Eyebrow>Operational terms</Eyebrow>
+            <h2
+              style={{
+                fontFamily: SERIF,
+                fontSize: 'clamp(1.7rem, 2.8vw, 2.2rem)',
+                fontWeight: 600,
+                letterSpacing: '-0.02em',
+                color: GRAPHITE,
+                margin: '0 0 1.5rem',
+              }}
+            >
+              What's deployed to your team, what stays in the studio.
             </h2>
-            <ul style={{
-              listStyle: 'none',
-              padding: 0,
-              margin: 0,
-              display: 'grid',
-              gap: '1rem',
-            }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '1rem' }}>
               <li style={{ display: 'flex', gap: '0.85rem' }}>
                 <span style={{ color: WARM, fontWeight: 700 }}>·</span>
                 <span style={{ color: GRAPHITE, lineHeight: 1.55 }}>
-                  <strong>The branded composite is yours.</strong> The image of your specific
-                  logo applied to the scene is delivered under a custom license for your team's use.
+                  <strong>Branded composites are deployed to your team.</strong> Each
+                  environment with your brand integrated is delivered for organization-wide
+                  use across Zoom, Microsoft Teams, Google Meet, and other meeting platforms.
                 </span>
               </li>
               <li style={{ display: 'flex', gap: '0.85rem' }}>
                 <span style={{ color: WARM, fontWeight: 700 }}>·</span>
                 <span style={{ color: GRAPHITE, lineHeight: 1.55 }}>
-                  <strong>The base environment stays in the library.</strong> The underlying
-                  scene remains part of the StreamBackdrops catalog and may carry other
-                  brands for other customers in separate composites.
+                  <strong>Underlying environments remain part of the studio catalog.</strong>{' '}
+                  The base scenes — without your brand applied — stay in the studio's
+                  curated set and may carry other companies' brands in separate composites.
                 </span>
               </li>
               <li style={{ display: 'flex', gap: '0.85rem' }}>
                 <span style={{ color: WARM, fontWeight: 700 }}>·</span>
                 <span style={{ color: GRAPHITE, lineHeight: 1.55 }}>
-                  <strong>Need true exclusivity?</strong> A fully bespoke environment built
-                  for your brand and not added to the public library is available as a custom
-                  commission — talk to us.
+                  <strong>For full exclusivity, see the custom tier.</strong> Custom brand
+                  environments are built from scratch for one organization and never added
+                  to the public catalog — the only path to a fully exclusive set.
                 </span>
               </li>
             </ul>
@@ -560,26 +831,31 @@ export default function BrandedBackgroundsPage() {
         >
           <div style={{ maxWidth: '720px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <Eyebrow>Start a conversation</Eyebrow>
-              <h2 style={{
-                fontFamily: SERIF,
-                fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
-                color: GRAPHITE,
-                margin: '0 0 1.25rem',
-              }}>
+              <Eyebrow>Enterprise inquiry</Eyebrow>
+              <h2
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  color: GRAPHITE,
+                  margin: '0 0 1.25rem',
+                }}
+              >
                 Bring your brand into the studio.
               </h2>
-              <p style={{
-                fontSize: '1.05rem',
-                color: MUTED,
-                lineHeight: 1.6,
-                maxWidth: '560px',
-                margin: '0 auto',
-              }}>
-                Send your logo and the kind of set you have in mind. We'll come back with a
-                proposed image list, placement plan, and quote within two business days.
+              <p
+                style={{
+                  fontSize: '1.05rem',
+                  color: MUTED,
+                  lineHeight: 1.6,
+                  maxWidth: '560px',
+                  margin: '0 auto',
+                }}
+              >
+                Send your logo and the kind of set you have in mind. The studio comes back
+                with a proposed environment list, placement plan, and quote within two
+                business days.
               </p>
             </div>
 
@@ -605,13 +881,23 @@ export default function BrandedBackgroundsPage() {
                   Inquiry received.
                 </h3>
                 <p style={{ color: MUTED, margin: 0, lineHeight: 1.7 }}>
-                  Thank you, {form.name.split(' ')[0] || 'there'}. The studio will reply
-                  to {form.workEmail} within one business day. In the meantime, feel free
-                  to <Link href="/" style={{ color: WARM, textDecoration: 'underline', textUnderlineOffset: '3px' }}>browse the collection</Link>.
+                  Thank you, {form.name.split(' ')[0] || 'there'}. The studio will reply to{' '}
+                  {form.workEmail} within one business day. In the meantime, feel free to{' '}
+                  <Link
+                    href="/"
+                    style={{ color: WARM, textDecoration: 'underline', textUnderlineOffset: '3px' }}
+                  >
+                    browse the environments
+                  </Link>
+                  .
                 </p>
               </div>
             ) : (
-              <form onSubmit={onSubmit} noValidate style={{ background: '#fff', padding: '2.5rem', border: `1px solid ${RULE}` }}>
+              <form
+                onSubmit={onSubmit}
+                noValidate
+                style={{ background: '#fff', padding: '2.5rem', border: `1px solid ${RULE}` }}
+              >
                 <div
                   style={{
                     display: 'grid',
@@ -633,7 +919,9 @@ export default function BrandedBackgroundsPage() {
                       style={inputStyle(!!errors.name)}
                     />
                     {errors.name && (
-                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>{errors.name}</div>
+                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>
+                        {errors.name}
+                      </div>
                     )}
                   </div>
 
@@ -650,7 +938,9 @@ export default function BrandedBackgroundsPage() {
                       style={inputStyle(!!errors.workEmail)}
                     />
                     {errors.workEmail && (
-                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>{errors.workEmail}</div>
+                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>
+                        {errors.workEmail}
+                      </div>
                     )}
                   </div>
 
@@ -667,7 +957,9 @@ export default function BrandedBackgroundsPage() {
                       style={inputStyle(!!errors.company)}
                     />
                     {errors.company && (
-                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>{errors.company}</div>
+                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>
+                        {errors.company}
+                      </div>
                     )}
                   </div>
 
@@ -679,7 +971,7 @@ export default function BrandedBackgroundsPage() {
                       id="role"
                       type="text"
                       autoComplete="organization-title"
-                      placeholder="e.g. Head of Brand, Marketing Director"
+                      placeholder="e.g. Head of Brand, Marketing Director, IT Director"
                       value={form.role}
                       onChange={update('role')}
                       style={inputStyle(false)}
@@ -704,7 +996,9 @@ export default function BrandedBackgroundsPage() {
                       <option value="not-sure">Not sure yet</option>
                     </select>
                     {errors.teamSize && (
-                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>{errors.teamSize}</div>
+                      <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>
+                        {errors.teamSize}
+                      </div>
                     )}
                   </div>
 
@@ -740,13 +1034,15 @@ export default function BrandedBackgroundsPage() {
                     style={{ ...inputStyle(!!errors.useCase), resize: 'vertical', fontFamily: 'inherit' }}
                   />
                   {errors.useCase && (
-                    <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>{errors.useCase}</div>
+                    <div style={{ color: '#b00020', fontSize: '0.8rem', marginTop: '0.4rem' }}>
+                      {errors.useCase}
+                    </div>
                   )}
                 </div>
 
                 <div style={{ marginBottom: '2rem' }}>
                   <label htmlFor="notes" style={labelStyle}>
-                    Anything else? (Custom commission, exclusivity, brand guidelines…)
+                    Anything else? (Custom environment, exclusivity, IT/SSO, brand guidelines…)
                   </label>
                   <textarea
                     id="notes"
@@ -790,14 +1086,26 @@ export default function BrandedBackgroundsPage() {
                     transition: 'background 0.2s ease',
                   }}
                 >
-                  {status === 'submitting' ? 'Sending…' : 'Request a Custom Set'}
+                  {status === 'submitting' ? 'Sending…' : 'Submit Inquiry'}
                 </button>
 
-                <p style={{ color: MUTED, fontSize: '0.8rem', marginTop: '1.25rem', textAlign: 'center', lineHeight: 1.6 }}>
+                <p
+                  style={{
+                    color: MUTED,
+                    fontSize: '0.8rem',
+                    marginTop: '1.25rem',
+                    textAlign: 'center',
+                    lineHeight: 1.6,
+                  }}
+                >
                   Or email the studio directly at{' '}
-                  <a href="mailto:info@streambackdrops.com" style={{ color: WARM, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  <a
+                    href="mailto:info@streambackdrops.com"
+                    style={{ color: WARM, textDecoration: 'underline', textUnderlineOffset: '3px' }}
+                  >
                     info@streambackdrops.com
-                  </a>.
+                  </a>
+                  .
                 </p>
               </form>
             )}

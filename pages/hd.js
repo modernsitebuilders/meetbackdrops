@@ -1219,6 +1219,7 @@ const products = [
   { id: 'conference-room-04-hd', name: 'Conference Room #4', category: 'conference-rooms' },
   { id: 'conference-room-05-hd', name: 'Conference Room #5', category: 'conference-rooms' },
   { id: 'conference-room-06-hd', name: 'Conference Room #6', category: 'conference-rooms' },
+  { id: 'conference-room-21-hd', name: 'Conference Room #21', category: 'conference-rooms' },
   // Libraries
   { id: 'library-17-hd', name: 'Library #17', category: 'libraries' },
   { id: 'library-33-hd', name: 'Library #33', category: 'libraries' },
