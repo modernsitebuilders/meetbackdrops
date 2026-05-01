@@ -60,7 +60,7 @@ export default function FAQ() {
   return (
   <Layout
     title="Frequently Asked Questions | StreamBackdrops Studio"
-    description="Studio answers on virtual environment licensing, HD Editions, codec compression, and using virtual backgrounds on Zoom, Teams, and Google Meet."
+    description="Studio answers on branded backgrounds for teams, HD Editions, codec compression, and using virtual backgrounds on Zoom, Teams, and Google Meet."
     canonical="https://streambackdrops.com/faq"
   >
     <div style={{

@@ -90,7 +90,7 @@ export default function Contact() {
                 maxWidth: '560px',
                 margin: '0 auto',
               }}>
-                Support questions, custom commissions, press, and individual licensing.
+                Support questions, custom commissions, and press.
               </p>
             </div>
 
@@ -256,7 +256,7 @@ export default function Contact() {
                       Can I use these backgrounds for commercial purposes?
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Our backgrounds are free for personal use, including professional video calls and remote work. For commercial licensing, please <Link href="/license" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>review our license terms</Link> or contact us directly.
+                      Our backgrounds are free for personal use, including professional video calls and remote work. For team deployments with your brand integrated, see <Link href="/branded-backgrounds" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Branded Backgrounds</Link>. Full <Link href="/license" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>license terms</Link> apply.
                     </p>
                   </div>
 

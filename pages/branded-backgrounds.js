@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 
@@ -325,17 +324,11 @@ export default function BrandedBackgroundsPage() {
 
   return (
     <>
-      <Head>
-        <title>Branded Virtual Backgrounds for Teams — Company Video Presence System | StreamBackdrops</title>
-        <meta
-          name="description"
-          content="Studio-built virtual environments with your company brand integrated for Zoom, Microsoft Teams, and Google Meet. Consistent video presence across executives, sales, and recruiters. Procurement-ready deployment for distributed teams."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
-
-      <Layout>
+      <Layout
+        title="Branded Virtual Backgrounds for Teams — Company Video Presence System | StreamBackdrops"
+        description="Studio-built virtual environments with your company brand integrated for Zoom, Microsoft Teams, and Google Meet. Consistent video presence across executives, sales, and recruiters. Procurement-ready deployment for distributed teams."
+        canonical="https://streambackdrops.com/branded-backgrounds"
+      >
         {/* HERO */}
         <section
           style={{
@@ -377,17 +370,18 @@ export default function BrandedBackgroundsPage() {
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                gap: '1rem',
+                alignItems: 'center',
+                gap: '2rem',
                 flexWrap: 'wrap',
               }}
             >
               <Link
-                href="/"
+                href="#request"
                 style={{
                   display: 'inline-block',
                   background: '#fff',
                   color: GRAPHITE,
-                  padding: '1rem 2rem',
+                  padding: '1rem 2.25rem',
                   fontSize: '0.78rem',
                   fontWeight: 700,
                   letterSpacing: '0.16em',
@@ -396,24 +390,20 @@ export default function BrandedBackgroundsPage() {
                   borderBottom: `2px solid ${WARM}`,
                 }}
               >
-                Browse environments →
+                Request a proposal →
               </Link>
               <Link
-                href="#request"
+                href="/"
                 style={{
-                  display: 'inline-block',
-                  background: 'transparent',
-                  color: '#fff',
-                  padding: '1rem 2rem',
                   fontSize: '0.78rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.16em',
-                  textTransform: 'uppercase',
-                  textDecoration: 'none',
-                  border: '1px solid rgba(255,255,255,0.4)',
+                  fontWeight: 500,
+                  letterSpacing: '0.08em',
+                  color: '#9aa3b0',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '4px',
                 }}
               >
-                Enterprise inquiry
+                Browse the studio catalog
               </Link>
             </div>
           </div>

@@ -27,7 +27,7 @@ const WishlistDrawer = dynamic(() => import('./WishlistDrawer'), { ssr: false })
 export default function Layout({
   children,
   title = 'Professional Zoom & Teams Backgrounds, Designed as Sets | StreamBackdrops',
-  description = `Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Used by remote teams in 30+ countries. Free samples and corporate licensing available.`,
+  description = `Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Used by remote teams in 30+ countries. Free samples and branded sets for teams available.`,
   currentPage = null,
   canonical,
   keywords = 'professional zoom backgrounds, corporate teams backgrounds, 4k virtual backgrounds, studio-designed backgrounds, modern home office backdrop, corporate meeting backgrounds, virtual set design, designed zoom backgrounds',
@@ -56,7 +56,7 @@ export default function Layout({
       "Professional Zoom backgrounds",
       "Corporate Teams backgrounds",
       "Studio-designed virtual backgrounds",
-      "Team licensing",
+      "Branded backgrounds for teams",
       "Virtual set design for video calls"
     ],
     "potentialAction": {

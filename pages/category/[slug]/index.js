@@ -238,7 +238,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
   const pageDescription = currentSlug === 'christmas-backgrounds'
   ? 'Studio-designed Christmas virtual backgrounds for Zoom, Teams, and Google Meet. Composed sets — not stock photos. Free samples available.'
   : currentSlug === 'valentines-backgrounds'
-  ? "Studio-designed Valentine's Day virtual backgrounds for video calls. Composed for camera, engineered for codec compression. Free samples and corporate licensing available."
+  ? "Studio-designed Valentine's Day virtual backgrounds for video calls. Composed for camera, engineered for codec compression. Free samples and branded sets for teams available."
   : String(category.seoDescription || `Studio-designed ${categoryName.toLowerCase()} virtual backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock.`);
 
   const featuredImages = {

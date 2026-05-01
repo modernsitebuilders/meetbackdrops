@@ -338,39 +338,34 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                7. Commercial Licensing Available
+                7. Branded Backgrounds for Teams
               </h2>
-              
-              {/* Commercial Licensing */}
+
               <div style={{
-                background: '#fefbeb',
-                border: '2px solid #f59e0b',
-                borderRadius: '1rem',
+                background: '#fafaf7',
+                border: '1px solid #e6e2dc',
+                borderTop: '2px solid #9a6a3a',
+                borderRadius: '0.5rem',
                 padding: '2rem',
                 marginBottom: '2rem'
               }}>
-                <h3 style={{
-                  fontSize: '1.3rem',
-                  fontWeight: 'bold',
-                  color: '#92400e',
-                  marginBottom: '1rem'
-                }}>
-                  💼 Need Commercial Rights?
-                </h3>
-                <p style={{ color: '#92400e', marginBottom: '1rem' }}>
-                  If you need to use our backgrounds for commercial purposes, commercial licensing is available. Please contact us to discuss your specific needs and licensing options.
+                <p style={{ color: '#374151', marginBottom: '1.25rem', lineHeight: 1.6 }}>
+                  Organizations deploying virtual sets across distributed teams — with their own brand integrated into the environment — work with the studio directly through the Branded Backgrounds program. Annual term, single invoice, procurement-ready delivery.
                 </p>
                 <div style={{ textAlign: 'center' }}>
-                  <Link href="/contact" style={{
-                    background: '#f59e0b',
-                    color: 'white',
-                    padding: '0.75rem 1.5rem',
-                    borderRadius: '1.5rem',
+                  <Link href="/branded-backgrounds" style={{
+                    background: '#111827',
+                    color: '#fff',
+                    padding: '0.85rem 1.75rem',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
                     textDecoration: 'none',
-                    fontWeight: '600',
-                    display: 'inline-block'
+                    display: 'inline-block',
+                    borderBottom: '2px solid #9a6a3a'
                   }}>
-                    Contact for Commercial Licensing
+                    Branded Backgrounds →
                   </Link>
                 </div>
               </div>

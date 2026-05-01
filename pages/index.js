@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <Layout
       title="Professional Zoom & Teams Backgrounds, Designed as Sets | StreamBackdrops"
-      description="Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples and corporate licensing available."
+      description="Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples and branded sets for teams available."
       currentPage="home"
     >
       <Head>
