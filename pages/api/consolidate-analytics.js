@@ -1,15 +1,18 @@
 // consolidate-analytics.js
-// Manual archive endpoint. Call POST /api/consolidate-analytics to immediately
-// move old Analytics rows to Analytics_Archive, keeping the last KEEP_ROWS rows.
-// This runs automatically from track-download.js when rows exceed 18,000,
-// but can also be triggered manually at any time.
+// Archive endpoint. Moves old Analytics rows to Analytics_Archive,
+// keeping the last KEEP_ROWS rows. Runs weekly via Vercel cron
+// (Sundays 4am UTC, see vercel.json) and can also be triggered manually
+// from the admin panel via POST.
 
 import { google } from 'googleapis';
 
 const KEEP_ROWS = 10000;
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
+  const isVercelCron = req.headers['x-vercel-cron'] === '1';
+  const isAuthorized = req.headers.authorization === `Bearer ${process.env.CRON_SECRET}`;
+
+  if (req.method !== 'POST' && !isVercelCron && !isAuthorized) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
