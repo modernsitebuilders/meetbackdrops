@@ -92,6 +92,8 @@ export default function Layout({
         <meta name="author" content="MeetBackdrops" />
         {/* TrustPilot Verification */}
         <meta name="trustpilot-one-time-domain-verification-id" content="464ce567-7be5-4bea-a773-e336059256ad"/>
+        {/* Bing Webmaster Verification (meetbackdrops.com) */}
+        <meta name="msvalidate.01" content="FE9180B910F8D83B232E915510BB8017" />
 
         {/* ✅ Robots directive */}
         <meta name="robots" content={noIndex ? 'noindex' : 'index, follow, max-image-preview:large'} />
