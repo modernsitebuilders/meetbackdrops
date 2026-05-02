@@ -37,11 +37,11 @@ export default function Contact() {
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <Layout
           title="Contact the Studio | MeetBackdrops"
-          description="Reach the MeetBackdrops studio for support, custom commissions, or branded-backgrounds questions. Corporate teams: please use the dedicated branded inquiry form."
+          description="Reach the MeetBackdrops studio for support, custom commissions, or branded-backgrounds questions. Use the dedicated form for team inquiries."
           canonical="https://meetbackdrops.com/contact"
         >
 

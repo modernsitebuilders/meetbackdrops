@@ -38,8 +38,8 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy - MeetBackdrops</title>
-        <meta name="description" content="MeetBackdrops Privacy Policy - Learn how we protect your privacy and handle your data." />
+        <title>Privacy Policy | MeetBackdrops</title>
+        <meta name="description" content="MeetBackdrops privacy policy: how we collect, use, and protect your data when you download virtual backgrounds for Zoom, Teams, and Google Meet." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://meetbackdrops.com/privacy" />
       </Head>

@@ -174,6 +174,26 @@ Bookshelves and Wall Shelves are "merged" categories — they combine bright/dar
 
 ---
 
+## SEO meta budgets (enforced)
+
+Every page that ships to the index MUST have:
+- **Title** between 20 and 65 characters (Bing/Google truncate above ~65)
+- **Meta description** between 110 and 160 characters
+
+These are enforced by [scripts/check-seo-meta.js](scripts/check-seo-meta.js), which runs as part of `npm run prebuild` and can be invoked directly with `npm run check:seo`. The script covers:
+
+- Top-level pages in `pages/*.js` (the `<Layout title=... description=...>` props)
+- `pages/privacy.js`, `pages/license.js`, `pages/terms.js` (raw `<Head>`)
+- `components/Layout.js` default props (the fallback when a page omits a prop)
+- All categories in `data/categoryData.js` (rendered through the `[slug]` template — name + optional `seoDescription` override)
+- All blog posts in `data/blogPosts.js`
+
+When you add a new page, category, or blog post, the title/description will be validated automatically. If you add a new top-level page that uses `<Layout>`, also add its path to `LAYOUT_PAGES` in the script. If a page is intentionally `noindex` (utility/admin), add it to `SKIP_PAGES` or `NOINDEX_RAW_HEAD_PAGES` so the description isn't required.
+
+**Do not add commentary to source files claiming a string is "intentionally too short/long for SEO."** Either it's within budget (and the comment is noise) or it's not (and the comment is wrong). The script is the source of truth.
+
+---
+
 ## Common pitfalls
 
 1. **Don't add entries to `cloudinary-urls.json`** — it's legacy. R2 images use direct URL construction.

@@ -25,8 +25,8 @@ const WishlistDrawer = dynamic(() => import('./WishlistDrawer'), { ssr: false })
 // required vocabulary.
 export default function Layout({
   children,
-  title = 'Professional Zoom & Teams Backgrounds, Designed as Sets | MeetBackdrops',
-  description = `Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Used by remote teams in 30+ countries. Free samples and branded sets for teams available.`,
+  title = 'Studio-Designed Zoom & Teams Backgrounds | MeetBackdrops',
+  description = `Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples available.`,
   currentPage = null,
   canonical,
   keywords = 'professional zoom backgrounds, corporate teams backgrounds, 4k virtual backgrounds, studio-designed backgrounds, modern home office backdrop, corporate meeting backgrounds, virtual set design, designed zoom backgrounds',
@@ -73,8 +73,8 @@ export default function Layout({
       <Head>
         {/* NOTE: title values passed to Layout are the COMPLETE string shown in search results.
             There is no "| MeetBackdrops" suffix appended here — each page includes it in its
-            own title prop. Do not shorten titles just because they look long; they are
-            intentionally optimised to fit the 50-60 character SEO limit including the suffix. */}
+            own title prop. Length budgets enforced by scripts/check-seo-meta.js:
+            title ≤ 65 chars, description 110-160 chars. */}
         <meta charSet="utf-8" />
         <title>{title}</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />

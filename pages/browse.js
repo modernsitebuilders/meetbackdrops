@@ -56,11 +56,11 @@ export default function BrowsePage({ searchData = [] }) {
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <Layout
-      title="Browse Virtual Backgrounds - MeetBackdrops.com"
-      description={`Browse through ${TOTAL_IMAGES_FORMATTED} free virtual backgrounds by keyword - filter by style, lighting, and features`}
+      title="Browse Virtual Backgrounds | MeetBackdrops"
+      description={`Browse ${TOTAL_IMAGES_FORMATTED} free studio-designed virtual backgrounds for Zoom, Teams, and Google Meet. Filter by style, lighting, and features.`}
       currentPage="browse"
     >
 

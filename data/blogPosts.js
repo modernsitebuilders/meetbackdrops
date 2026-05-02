@@ -57,8 +57,8 @@ export const blogPosts = [
   },
   {
     slug: 'video-call-equipment-guide',
-    // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.
-    title: 'Complete Video Call Setup Guide: Equipment That Makes a Difference',
+    // Title length budget: ≤ 65 chars. Verified by scripts/check-seo-meta.js.
+    title: 'Video Call Setup Guide: Equipment That Makes a Difference',
     description: 'The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.',
     excerpt: 'The complete guide to video call equipment. Learn which camera, lighting, microphone, and green screen to buy for professional-looking video calls under $150.',
     headline: 'Complete Video Call Setup Guide: Equipment That Actually Makes a Difference',
@@ -218,7 +218,7 @@ export const blogPosts = [
   {
     slug: 'logo-virtual-background',
     title: 'How to Add Your Logo to a Virtual Background (Free)',
-    description: 'A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.',
+    description: 'Step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Tips for picking the best base.',
     excerpt: 'A step-by-step guide to adding your company logo to a virtual background using free tools like Canva and Adobe Express. Includes tips on which backgrounds work best for logo overlays.',
     headline: 'How to Add Your Logo to a Virtual Background (Free)',
     keywords: 'logo virtual background, branded virtual background, add logo to zoom background, company logo background, virtual background branding',

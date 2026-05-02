@@ -205,7 +205,7 @@ export default function Blog() {
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <Layout
       title="The Studio Journal | MeetBackdrops"

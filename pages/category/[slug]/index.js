@@ -230,16 +230,20 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
   }
 
   const categoryName = String(category.name || 'Virtual');
-  const pageTitle = currentSlug === 'christmas-backgrounds'
-  ? 'Christmas Virtual Backgrounds for Zoom, Teams & Meet | MeetBackdrops'
-  : currentSlug === 'valentines-backgrounds'
-  ? "Valentine's Day Virtual Backgrounds for Zoom, Teams & Meet | MeetBackdrops"
-  : `${categoryName} Virtual Backgrounds, Designed as Sets | MeetBackdrops`;
-  const pageDescription = currentSlug === 'christmas-backgrounds'
-  ? 'Studio-designed Christmas virtual backgrounds for Zoom, Teams, and Google Meet. Composed sets — not stock photos. Free samples available.'
-  : currentSlug === 'valentines-backgrounds'
-  ? "Studio-designed Valentine's Day virtual backgrounds for video calls. Composed for camera, engineered for codec compression. Free samples and branded sets for teams available."
-  : String(category.seoDescription || `Studio-designed ${categoryName.toLowerCase()} virtual backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock.`);
+  // Title template: if name already ends in "Backgrounds" (e.g. "Easter Backgrounds"),
+  // we must NOT repeat the word — instead append a Zoom/Teams/Meet qualifier.
+  // If the constructed title would exceed 65 chars (Bing limit), fall back to a shorter form.
+  const nameLower = categoryName.toLowerCase();
+  const longTitle = nameLower.endsWith('backgrounds')
+    ? `${categoryName} for Zoom, Teams & Meet | MeetBackdrops`
+    : `${categoryName} Virtual Backgrounds | MeetBackdrops`;
+  const pageTitle = longTitle.length <= 65
+    ? longTitle
+    : `${categoryName} | MeetBackdrops`;
+  const pageDescription = String(
+    category.seoDescription
+    || `Studio-designed ${nameLower} virtual backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples available.`
+  );
 
   const featuredImages = {
     'halloween-backgrounds': 'halloween-background-20.webp',
@@ -271,7 +275,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
 
   // NOTE: pageTitle and pageDescription below are the COMPLETE values seen in search results.
   // Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <>
       <Layout

@@ -51,11 +51,11 @@ export default function Home() {
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <Layout
-      title="Professional Zoom & Teams Backgrounds, Designed as Sets | MeetBackdrops"
-      description="Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples and branded sets for teams available."
+      title="Studio-Designed Zoom & Teams Backgrounds | MeetBackdrops"
+      description="Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples available."
       currentPage="home"
     >
       <Head>

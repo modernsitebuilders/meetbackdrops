@@ -66,11 +66,11 @@ export default function HDDownload() {
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <Layout
       title="Download Your HD Backgrounds | MeetBackdrops"
-      description="Download your premium HD virtual backgrounds"
+      description="Access your purchased HD Editions (2912×1632) for Zoom, Teams, and Google Meet. Crisp on camera and engineered for codec compression."
     >
       <div style={{ 
         minHeight: '80vh',

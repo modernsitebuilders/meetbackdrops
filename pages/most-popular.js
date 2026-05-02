@@ -6,11 +6,11 @@ import MostPopularGrid from '../components/MostPopularGrid';
 export default function MostPopularPage() {
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <Layout
-      title="Most Popular Virtual Backgrounds - MeetBackdrops"
-      description="Discover the most downloaded virtual backgrounds for Zoom, Teams, and Google Meet. See what's trending now."
+      title="Most Popular Virtual Backgrounds | MeetBackdrops"
+      description="Discover the most downloaded studio-designed virtual backgrounds for Zoom, Teams, and Google Meet. See what's trending across the catalog."
       canonical="https://meetbackdrops.com/most-popular"
       currentPage="most-popular"
       keywords="most popular virtual backgrounds, trending zoom backgrounds, top downloaded backgrounds"

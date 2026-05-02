@@ -1482,7 +1482,7 @@ function HdVideoSection() {
             >
               <img
                 src="https://img.youtube.com/vi/gO89ooJbl20/maxresdefault.jpg"
-                alt=""
+                alt="HD Editions walkthrough video thumbnail"
                 loading="lazy"
                 style={{
                   position: 'absolute',
@@ -1718,11 +1718,11 @@ export default function Premium({ reviewsData }) {
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
   // search results. Layout does not append "| MeetBackdrops" or any other suffix.
-  // Do not flag these as too short — they are intentionally optimised for SEO character limits.
+  // Length budgets enforced by scripts/check-seo-meta.js: title ≤ 65, description 110-160.
   return (
     <Layout
-      title="HD Editions — 4K Virtual Environments for Executive Video Calls | MeetBackdrops"
-      description="HD Editions: 2912×1632 studio-designed backgrounds that stay sharp on Zoom, Teams, and Google Meet — engineered to survive video codec compression where stock JPEGs fall apart."
+      title="4K HD Backgrounds for Zoom, Teams & Meet | MeetBackdrops"
+      description="HD Editions: 2912×1632 studio-designed backgrounds engineered for codec compression on Zoom, Teams, and Google Meet. Crisp where stock JPEGs fail."
       canonical="https://meetbackdrops.com/hd"
       keywords="HD virtual backgrounds, 4k virtual backgrounds, executive zoom backgrounds, premium corporate backgrounds, professional video call environments"
       image="https://assets.streambackdrops.com/webp/bookshelves-dark/bookshelves-dark-09.webp"

@@ -1263,14 +1263,14 @@ export const categoryInfo = {
   'spring-backgrounds': {
     name: 'Spring Backgrounds',
     description: 'Fresh spring backgrounds with blooming flowers, sunrooms, and outdoor seasonal scenery',
-    seoDescription: 'Download free spring virtual backgrounds for Zoom, Teams & Google Meet. Fresh flowers, sunrooms, greenhouses & seasonal outdoor scenes — no signup, instant download.',
+    seoDescription: 'Download free spring virtual backgrounds for Zoom, Teams & Google Meet. Fresh flowers, sunrooms, greenhouses & seasonal scenes — instant download.',
     images: IMAGES_SPRING_BACKGROUNDS
   },
 
   'summer-backgrounds': {
     name: 'Summer Backgrounds',
     description: 'Bright summer backgrounds with sunlit offices, shaded patios, and warm seasonal scenery',
-    seoDescription: 'Download free summer virtual backgrounds for Zoom, Teams & Google Meet. Sunlit offices, shaded patios, beach verandas & warm seasonal scenes — no signup, instant download.',
+    seoDescription: 'Download free summer virtual backgrounds for Zoom, Teams & Google Meet. Sunlit offices, shaded patios, beach verandas & warm scenes — instant download.',
     images: IMAGES_SUMMER_BACKGROUNDS
   },
 

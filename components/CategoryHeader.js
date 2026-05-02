@@ -26,8 +26,7 @@ export default function CategoryHeader({ category, featuredImageUrl }) {
       {featuredImageUrl && (
         <img
           src={featuredImageUrl}
-          alt=""
-          aria-hidden="true"
+          alt={`Featured ${name} virtual background`}
           className={styles.featured}
           loading="lazy"
         />
