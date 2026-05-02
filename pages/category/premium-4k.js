@@ -20,7 +20,7 @@ export default function Premium4KRedirect() {
   return (
     <>
       <Head>
-        <title>Premium 4K Backgrounds - StreamBackdrops</title>
+        <title>Premium 4K Backgrounds - MeetBackdrops</title>
         <meta httpEquiv="refresh" content="2; url=/premium" />
       </Head>
       <div style={{

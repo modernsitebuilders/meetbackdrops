@@ -96,7 +96,7 @@ export default function Blog() {
      {
     title: "Best Free Virtual Background Sites in 2026: Complete Comparison",
     slug: "best-virtual-background-sites-2026",
-    excerpt: "Comprehensive comparison of the best free virtual background sites in 2026. Find out why StreamBackdrops beats stock photo sites for professional video calls.",
+    excerpt: "Comprehensive comparison of the best free virtual background sites in 2026. Find out why MeetBackdrops beats stock photo sites for professional video calls.",
     date: "February 2026",
     readTime: "15 min read",
     category: "Platform Comparison"
@@ -204,14 +204,14 @@ export default function Blog() {
   ];
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="The Studio Journal | StreamBackdrops"
-      description="Studio guides on executive video presence, codec compression, virtual set design, and corporate video calls. Long-form essays from the StreamBackdrops studio."
+      title="The Studio Journal | MeetBackdrops"
+      description="Studio guides on executive video presence, codec compression, virtual set design, and corporate video calls. Long-form essays from the MeetBackdrops studio."
       currentPage="blog"
-      canonical="https://streambackdrops.com/blog"
+      canonical="https://meetbackdrops.com/blog"
     >
       <Head>
         {/* Blog/Collection Page structured data */}
@@ -219,41 +219,41 @@ export default function Blog() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            "name": "StreamBackdrops Blog",
+            "name": "MeetBackdrops Blog",
             "description": "Expert guides and tips about virtual backgrounds, remote work, and professional video calls",
-            "url": "https://streambackdrops.com/blog",
+            "url": "https://meetbackdrops.com/blog",
             "publisher": {
               "@type": "Organization",
-              "name": "StreamBackdrops",
-              "url": "https://streambackdrops.com",
+              "name": "MeetBackdrops",
+              "url": "https://meetbackdrops.com",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://streambackdrops.com/logo.png"
+                "url": "https://meetbackdrops.com/logo.png"
               }
             },
             "blogPost": Object.entries(blogMetadata).map(([slug, meta]) => ({
               "@type": "BlogPosting",
               "headline": meta.headline,
-              "url": `https://streambackdrops.com/blog/${slug}`,
+              "url": `https://meetbackdrops.com/blog/${slug}`,
               "description": meta.description,
               "datePublished": meta.datePublished,
               "dateModified": meta.dateModified,
               "image": {
                 "@type": "ImageObject",
-                "url": `https://streambackdrops.com${meta.image}`
+                "url": `https://meetbackdrops.com${meta.image}`
               },
               "author": {
                 "@type": "Organization",
-                "name": "StreamBackdrops",
-                "url": "https://streambackdrops.com"
+                "name": "MeetBackdrops",
+                "url": "https://meetbackdrops.com"
               },
               "publisher": {
                 "@type": "Organization",
-                "name": "StreamBackdrops",
-                "url": "https://streambackdrops.com",
+                "name": "MeetBackdrops",
+                "url": "https://meetbackdrops.com",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://streambackdrops.com/logo.png"
+                  "url": "https://meetbackdrops.com/logo.png"
                 }
               }
             }))
@@ -261,8 +261,8 @@ export default function Blog() {
         </script>
 
         <BreadcrumbSchema items={[
-    { name: "Home", url: "https://streambackdrops.com" },
-    { name: "Blog", url: "https://streambackdrops.com/blog" }
+    { name: "Home", url: "https://meetbackdrops.com" },
+    { name: "Blog", url: "https://meetbackdrops.com/blog" }
   ]} />
       </Head>
 

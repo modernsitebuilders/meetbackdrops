@@ -70,10 +70,10 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'www.streambackdrops.com',
+            value: 'www.meetbackdrops.com',
           },
         ],
-        destination: 'https://streambackdrops.com/:path*',
+        destination: 'https://meetbackdrops.com/:path*',
         permanent: true,
       },
       // Redirect http to https
@@ -82,7 +82,7 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'streambackdrops.com',
+            value: 'meetbackdrops.com',
           },
           {
             type: 'header',
@@ -90,7 +90,7 @@ const nextConfig = {
             value: 'http',
           },
         ],
-        destination: 'https://streambackdrops.com/:path*',
+        destination: 'https://meetbackdrops.com/:path*',
         permanent: true,
       },
 

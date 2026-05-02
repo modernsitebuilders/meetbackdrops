@@ -4,7 +4,7 @@
 const getFullImageUrl = (imagePath) => {
   if (!imagePath) return '';
   if (imagePath.startsWith('http')) return imagePath;
-  return `https://streambackdrops.com${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`;
+  return `https://meetbackdrops.com${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`;
 };
 
 export default function BlogPostSchema({ 
@@ -24,15 +24,15 @@ export default function BlogPostSchema({
     "image": fullImageUrl,
     "author": {
       "@type": "Organization",
-      "name": "StreamBackdrops"
+      "name": "MeetBackdrops"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "StreamBackdrops",
-      "url": "https://streambackdrops.com",
+      "name": "MeetBackdrops",
+      "url": "https://meetbackdrops.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://streambackdrops.com/logo.png"
+        "url": "https://meetbackdrops.com/logo.png"
       }
     },
     "datePublished": datePublished,

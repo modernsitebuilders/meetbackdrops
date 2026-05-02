@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * One-shot alt-text rewrite for the StreamBackdrops Studio brand pivot.
+ * One-shot alt-text rewrite for the MeetBackdrops Studio brand pivot.
  *
  * Reads image-pipeline/final_manifest.json, regenerates the `alt` field on
  * every entry using descriptive, architectural language (away from the old

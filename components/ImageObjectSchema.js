@@ -38,11 +38,11 @@ if (!imageMeta) {
       "height": image.meta?.height || 1080,
       "license": `${baseUrl}/license`,
       "acquireLicensePage": `${baseUrl}/license`,
-      "creditText": "StreamBackdrops",
-      "copyrightNotice": "© StreamBackdrops. Free for personal use only.",
+      "creditText": "MeetBackdrops",
+      "copyrightNotice": "© MeetBackdrops. Free for personal use only.",
       "creator": {
         "@type": "Organization",
-        "name": "StreamBackdrops",
+        "name": "MeetBackdrops",
         "url": baseUrl
       }
     }))

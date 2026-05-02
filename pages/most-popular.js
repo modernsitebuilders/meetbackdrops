@@ -5,18 +5,18 @@ import MostPopularGrid from '../components/MostPopularGrid';
 
 export default function MostPopularPage() {
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Most Popular Virtual Backgrounds - StreamBackdrops"
+      title="Most Popular Virtual Backgrounds - MeetBackdrops"
       description="Discover the most downloaded virtual backgrounds for Zoom, Teams, and Google Meet. See what's trending now."
-      canonical="https://streambackdrops.com/most-popular"
+      canonical="https://meetbackdrops.com/most-popular"
       currentPage="most-popular"
       keywords="most popular virtual backgrounds, trending zoom backgrounds, top downloaded backgrounds"
     >
       <Head>
-        <meta property="og:title" content="Most Popular Virtual Backgrounds - StreamBackdrops" />
+        <meta property="og:title" content="Most Popular Virtual Backgrounds - MeetBackdrops" />
         <meta property="og:description" content="Discover trending virtual backgrounds based on actual downloads." />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -24,7 +24,7 @@ export default function MostPopularPage() {
             "@type": "CollectionPage",
             "name": "Most Popular Virtual Backgrounds",
             "description": "A dynamically updated collection of the most popular virtual backgrounds based on download statistics.",
-            "url": "https://streambackdrops.com/most-popular",
+            "url": "https://meetbackdrops.com/most-popular",
             "mainEntity": {
               "@type": "ItemList",
               "numberOfItems": 25,

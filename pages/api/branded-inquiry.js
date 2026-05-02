@@ -12,7 +12,7 @@ import { google } from 'googleapis';
 // Email: sends via MailerSend's HTTP API. Requires:
 //   MAILERSEND_API_KEY        — from https://mailersend.com (free tier 3K/mo)
 //   LICENSING_INBOX           — defaults to info@streambackdrops.com
-//   LICENSING_FROM            — defaults to "StreamBackdrops Studio <notifications@streambackdrops.com>"
+//   LICENSING_FROM            — defaults to "MeetBackdrops Studio <notifications@streambackdrops.com>"
 //
 // If env vars are missing or the call fails, the lead is still logged to the
 // server console + Sheets so it isn't lost.
@@ -55,7 +55,7 @@ function parseSender(raw) {
 async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
   const apiKey = process.env.MAILERSEND_API_KEY;
   const to = process.env.LICENSING_INBOX || 'info@streambackdrops.com';
-  const fromRaw = process.env.LICENSING_FROM || 'StreamBackdrops Studio <notifications@streambackdrops.com>';
+  const fromRaw = process.env.LICENSING_FROM || 'MeetBackdrops Studio <notifications@streambackdrops.com>';
   const from = parseSender(fromRaw);
 
   if (!apiKey) {
@@ -83,7 +83,7 @@ async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
   const html = `
 <div style="font-family:Georgia,serif;color:#111827;max-width:640px;line-height:1.55">
   <p style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#9a6a3a;font-weight:600;margin:0 0 .75rem">
-    StreamBackdrops Studio · New Branded Backgrounds Inquiry
+    MeetBackdrops Studio · New Branded Backgrounds Inquiry
   </p>
   <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em;font-size:1.5rem;margin:0 0 1.25rem">
     ${escapeHtml(lead.company || lead.name)}

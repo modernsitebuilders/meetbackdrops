@@ -73,9 +73,9 @@ export default async function handler(req, res) {
   const metadata = session?.metadata;
 
   // 🛡️ Cross-site safety gate: ignore events from other sites on the shared Stripe account.
-  // Every StreamBackdrops checkout sets metadata.site = 'streambackdrops'.
+  // Every MeetBackdrops checkout sets metadata.site = 'streambackdrops'.
   if (!metadata || metadata.site !== 'streambackdrops') {
-    console.log('[stripe-webhook] Ignored — not a StreamBackdrops event.', {
+    console.log('[stripe-webhook] Ignored — not a MeetBackdrops event.', {
       session_id: session.id,
       site: metadata?.site ?? '(missing)',
     });
@@ -93,7 +93,7 @@ export default async function handler(req, res) {
 
   // HD image purchase path
   if (metadata.product_type !== 'hd_image' || !metadata.product_ids) {
-    console.log('[stripe-webhook] Ignored — unknown product_type for StreamBackdrops.', {
+    console.log('[stripe-webhook] Ignored — unknown product_type for MeetBackdrops.', {
       session_id: session.id,
       product_type: metadata.product_type ?? '(missing)',
       product_ids: metadata.product_ids ?? '(missing)',

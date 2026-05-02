@@ -10,14 +10,14 @@ const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-$
 
 // Active pages that should reflect the current month
 const activePages = [
-  'https://streambackdrops.com</loc>',
-  'https://streambackdrops.com/blog</loc>',
-  'https://streambackdrops.com/hd</loc>',
-  'https://streambackdrops.com/browse</loc>',
-  'https://streambackdrops.com/category/bookshelves-bright</loc>',
-  'https://streambackdrops.com/category/bookshelves-dark</loc>',
-  'https://streambackdrops.com/category/wall-shelves-bright</loc>',
-  'https://streambackdrops.com/category/wall-shelves-dark</loc>',
+  'https://meetbackdrops.com</loc>',
+  'https://meetbackdrops.com/blog</loc>',
+  'https://meetbackdrops.com/hd</loc>',
+  'https://meetbackdrops.com/browse</loc>',
+  'https://meetbackdrops.com/category/bookshelves-bright</loc>',
+  'https://meetbackdrops.com/category/bookshelves-dark</loc>',
+  'https://meetbackdrops.com/category/wall-shelves-bright</loc>',
+  'https://meetbackdrops.com/category/wall-shelves-dark</loc>',
 ];
 
 let pages = fs.readFileSync('public/sitemap-pages.xml', 'utf8');

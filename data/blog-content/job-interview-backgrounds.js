@@ -900,7 +900,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </h2>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Ready to upgrade your interview setup? StreamBackdrops offers hundreds of free, professional virtual backgrounds designed specifically for job interviews, remote work, and video calls.
+                Ready to upgrade your interview setup? MeetBackdrops offers hundreds of free, professional virtual backgrounds designed specifically for job interviews, remote work, and video calls.
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>

@@ -56,7 +56,7 @@ export const logoVirtualBackgroundContent = () => (
             }}>
               <strong style={{ color: '#1d4ed8', display: 'block', marginBottom: '0.4rem' }}>Quick answer</strong>
               <p style={{ margin: 0, color: '#1e40af', lineHeight: '1.6' }}>
-                Download a clean background from StreamBackdrops, open it in Canva or Adobe Express (both free),
+                Download a clean background from MeetBackdrops, open it in Canva or Adobe Express (both free),
                 upload your logo PNG, position it in a corner, and export. The whole process takes under five minutes.
               </p>
             </div>
@@ -85,7 +85,7 @@ export const logoVirtualBackgroundContent = () => (
               heavily detailed shelves make logos hard to read.
             </p>
             <p style={{ lineHeight: '1.8', color: '#374151', marginBottom: '1rem' }}>
-              These categories on StreamBackdrops tend to work well:
+              These categories on MeetBackdrops tend to work well:
             </p>
             <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem', lineHeight: '2.2', color: '#374151' }}>
               <li>
@@ -132,7 +132,7 @@ export const logoVirtualBackgroundContent = () => (
             </p>
             <ol style={{ paddingLeft: '1.5rem', marginBottom: '2rem', lineHeight: '2.4', color: '#374151' }}>
               <li>
-                <strong>Download your background</strong> from StreamBackdrops — pick one with a clean wall area
+                <strong>Download your background</strong> from MeetBackdrops — pick one with a clean wall area
                 from the categories above.
               </li>
               <li>
@@ -178,7 +178,7 @@ export const logoVirtualBackgroundContent = () => (
                 Click <strong>Create something → Custom size</strong> and enter <strong>1920 × 1080</strong>.
               </li>
               <li>
-                Use the <strong>Photo</strong> tool to upload your StreamBackdrops background image and set it
+                Use the <strong>Photo</strong> tool to upload your MeetBackdrops background image and set it
                 as the full canvas background.
               </li>
               <li>
@@ -274,7 +274,7 @@ export const logoVirtualBackgroundContent = () => (
               borderRadius: '0.5rem', padding: '1.25rem 1.5rem',
               marginBottom: '2.5rem'
             }}>
-              <strong style={{ color: '#374151', display: 'block', marginBottom: '0.75rem' }}>Best backgrounds for logo overlays on StreamBackdrops</strong>
+              <strong style={{ color: '#374151', display: 'block', marginBottom: '0.75rem' }}>Best backgrounds for logo overlays on MeetBackdrops</strong>
               <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: '2.2' }}>
                 <li><Link href="/category/art-galleries" style={{ color: '#1d4ed8', fontWeight: '500' }}>Art Galleries</Link> — clean neutral walls, best overall option</li>
                 <li><Link href="/category/conference-rooms" style={{ color: '#1d4ed8', fontWeight: '500' }}>Conference Rooms</Link> — built-in corporate credibility</li>

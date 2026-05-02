@@ -4,7 +4,7 @@ export default function handler(req, res) {
     status: 'ok',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
-    message: 'StreamBackdrops API is healthy'
+    message: 'MeetBackdrops API is healthy'
   };
   
   res.setHeader('Cache-Control', 'no-cache');

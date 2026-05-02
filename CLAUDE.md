@@ -1,8 +1,17 @@
-# StreamBackdrops — Codebase Guide for Claude
+# MeetBackdrops — Codebase Guide for Claude
 
 ## ⚠️ BRAND VOICE — READ FIRST, DO NOT IGNORE
 
-**StreamBackdrops is a virtual set design studio for corporate / executive video presence. It is NOT, and has NEVER BEEN, a gaming, streamer, Twitch, esports, or livestreamer brand.** The literal word "Stream" in the brand name is a legacy relic of the company name only — it does **not** signal Twitch/livestream context. The audience is corporate professionals on Zoom, Microsoft Teams, and Google Meet.
+**MeetBackdrops is a virtual set design studio for corporate / executive video presence. It is NOT, and has NEVER BEEN, a gaming, streamer, Twitch, esports, or livestreamer brand.** The audience is corporate professionals on Zoom, Microsoft Teams, and Google Meet.
+
+> **Brand history (read once, internalize):** This site was originally **StreamBackdrops**. It rebranded to **MeetBackdrops** in May 2026 to remove the misleading "Stream" prefix that suggested Twitch / livestreaming context and to align the domain with the actual buyer surface (Zoom, Teams, Google **Meet**). The brand pivot to B2B Studio positioning happened earlier, in April 2026 — the rename completed it.
+>
+> **Storage identifiers intentionally retain the old name** (do not rename them — they are not brand surfaces, and renaming breaks live URLs):
+> - `assets.streambackdrops.com` — Cloudflare R2 public CDN for image webps (~1,000 URLs in production)
+> - `streambackdrops-premium` — private S3 bucket for HD PNG downloads
+> - `stream-backdrops-videos` — S3 bucket for video assets (referenced in vercel.json CSP)
+>
+> If you encounter `StreamBackdrops` in commit history, old worktrees, manifest backup files, or `Header-BACKUP.js`, that is the prior brand — do not propagate it into any new content. If you find it in *current* user-facing copy, treat that as a rebrand miss and fix it.
 
 ### Strict prohibitions for any copy, alt-text, schema, meta tags, JSON-LD, blog content, comments in code, image metadata, or any user-visible string:
 
@@ -17,29 +26,35 @@
 | Virtual backgrounds / virtual sets / designed interiors / virtual environments *(secondary)* | "virtual environments" as a primary product term — reads as VR/metaverse |
 | Corporate video calls / executive video calls / professional video calls | "streaming" / "for streamers" / "executive video presence" *(too jargony)* |
 | Studio-designed, 4K-upscaled, designed as sets, composed for camera, engineered for codec compression | "AI-architected" / "architected" *(business-speak — use "designed")*; "stock photos" or "free downloads" as headline framing |
-| Studio / Virtual Set Design Studio / StreamBackdrops Studio | "background site", "image library" |
+| Studio / Virtual Set Design Studio / MeetBackdrops Studio | "background site", "image library" |
 | Zoom, Microsoft Teams, Google Meet, Webex | "Twitch", "OBS-first", "Discord" |
 | Webinars, livestreams, broadcast productions *(in license use-case lists only)* | "Gaming streams", "🎮 streaming" |
 
 **Verb of choice**: `designed` (plain English, universally understood). Avoid `architected` as a default verb — it's business-speak. `engineered` is OK only when paired with a specific technical claim (e.g. "engineered for codec compression"). `composed` is OK in the phrase "composed for camera". `produced` is OK for studio-output framing.
 
+**Brand identity colors (locked)**:
+- Wordmark dark: `#111827`
+- Gold accent (Studio tag, lockup): `#E0A82E`
+- Page neutral: `#F5F5F5`
+- Header copper-bronze accent (active nav, wishlist heart, wishlist badge): `#9a6a3a` — kept from the prior identity, not yet unified with the new gold; if a future task unifies the header palette, change those references too.
+
 ### Why this matters
 
-The site went through a brand pivot in April 2026 from a generic free-virtual-background framing to a B2B Studio positioning targeting corporate buyers, executive teams, and licensing customers. Any AI-generated content that drifts back toward gamer/streamer language undoes that work and damages SEO, conversion, and brand authority. This file is your primary source — if a piece of legacy copy in the codebase still uses old framing, fix it; do not propagate it.
+The April 2026 brand pivot moved the site from a generic free-virtual-background framing to a B2B Studio positioning targeting corporate buyers, executive teams, and licensing customers. The May 2026 domain rename to MeetBackdrops.com completed that pivot by removing the gamer-adjacent "Stream" prefix from the brand surface. Any AI-generated content that drifts back toward gamer/streamer language — or back toward the StreamBackdrops name in user-facing copy — undoes that work and damages SEO, conversion, and brand authority. This file is your primary source.
 
-If you're regenerating image manifests, alt-text, schema, meta tags, or any structured copy, run [image-pipeline/rewrite-manifest-copy.js](image-pipeline/rewrite-manifest-copy.js) — the templates there encode the approved voice.
+If you're regenerating image manifests, alt-text, schema, meta tags, or any structured copy, run [image-pipeline/rewrite-manifest-copy.js](image-pipeline/rewrite-manifest-copy.js) — the templates there encode the approved voice and the MeetBackdrops brand suffix.
 
 ---
 
 ## What this site is
 
-StreamBackdrops is a virtual set design studio producing AI-architected, 4K-upscaled environments for executive video presence on Zoom, Microsoft Teams, and Google Meet. Free sample environments are available without signup; HD Editions (2912×1632) are sold individually or in bundles at `/hd`. Brands integrate their logo into studio environments through the Branded Backgrounds offer at `/branded-backgrounds` (per-customer composites — base library images stay in the catalog; only the logo placement is exclusive to the buyer).
+MeetBackdrops is a virtual set design studio producing studio-designed, 4K-upscaled environments for executive video presence on Zoom, Microsoft Teams, and Google Meet. Free sample environments are available without signup; HD Editions (2912×1632) are sold individually or in bundles at `/hd`. Brands integrate their logo into studio environments through the Branded Backgrounds offer at `/branded-backgrounds` (per-customer composites — base library images stay in the catalog; only the logo placement is exclusive to the buyer).
 
 ---
 
 ## Image Storage — R2 (NOT Cloudinary)
 
-All images are stored on **Cloudflare R2**, served via `https://assets.streambackdrops.com`.
+All images are stored on **Cloudflare R2**, served via `https://assets.streambackdrops.com`. **This subdomain intentionally retains the pre-rebrand name** — see the brand history note above. Do not migrate it without a coordinated re-upload of all ~1,000 image URLs and an update of every reference in code.
 
 URL pattern for free webp thumbnails:
 ```
@@ -50,7 +65,7 @@ Example: `https://assets.streambackdrops.com/webp/easter-backgrounds/easter-back
 
 > **Note:** `cloudinary-urls.json` is a legacy file from a previous Cloudinary setup. It is still referenced in `pages/hd.js` as a lookup step but is effectively empty for newer categories (Easter, Spring, etc.). The fallback URL construction is what actually works. Do not add new Cloudinary logic.
 
-Premium HD PNG files (full resolution) are in a **separate private S3/R2 bucket** (`streambackdrops-premium`), accessed via signed URLs from `/api/hd-preview-url` and `/api/hd-s3-download`.
+Premium HD PNG files (full resolution) are in a **separate private S3 bucket** (`streambackdrops-premium`), accessed via signed URLs from `/api/hd-preview-url` and `/api/hd-s3-download`. Upload new HD PNGs with [scripts/upload-hd-to-s3.js](scripts/upload-hd-to-s3.js).
 
 ---
 
@@ -58,11 +73,11 @@ Premium HD PNG files (full resolution) are in a **separate private S3/R2 bucket*
 
 ```
 image-pipeline/final_manifest.json   ← PRIMARY (use this)
-data/categoryData.js                  ← UI layer (derived from manifest)
+data/categoryData.js                  ← UI layer (must align with manifest)
 public/data/image-metadata-complete.json  ← LEGACY (phase out)
 ```
 
-**`final_manifest.json`** — Array of ~991 image objects:
+**`final_manifest.json`** — Array of ~1,029 image objects:
 ```json
 {
   "id": "art-gallery-:1",
@@ -80,9 +95,22 @@ public/data/image-metadata-complete.json  ← LEGACY (phase out)
 
 > **`folder` field is the actual R2 path** — some merged categories (bookshelves, wall-shelves) split into bright/dark subfolders. Always use `folder` when constructing R2 URLs for those.
 
-**`data/categoryData.js`** — Frontend-optimized arrays per category. Powers the `/category/[slug]` pages and `ImageGrid`. If an image is in the manifest but not here, it won't appear on the category page. Keep these in sync.
+**`data/categoryData.js`** — Frontend-optimized arrays per category. Powers the `/category/[slug]` pages and `ImageGrid`. If an image is in the manifest but not here, it won't appear on the category page. Keep these in sync — both should report the same per-category counts and the same total (currently 1,029 entries in each).
 
 **`public/data/image-metadata-complete.json`** — Old system. Still used by `pages/hd.js` (`isHdOnly` function) to determine which images are HD-exclusive (no free version). Eventually should be replaced by an `isHD`/`hdOnly` field in the manifest.
+
+### Adding new images
+
+The pattern that works (see commit history around the May 2026 libraries import for a worked example):
+
+1. Place source PNG(s) in a per-category folder under `~/Desktop/new-pngs/{category}/`.
+2. Convert PNG → webp with `sharp` at quality 82, matching the existing 1456×816 dimensions.
+3. Upload webp to R2 at `webp/{category}/{filename}.webp` (CacheControl: `public, max-age=31536000, immutable`).
+4. Upload PNG to `streambackdrops-premium` S3 bucket using the existing `scripts/upload-hd-to-s3.js` pattern.
+5. Add an entry to `IMAGES_{CATEGORY}` in `data/categoryData.js`.
+6. Run `node image-pipeline/rewrite-manifest-copy.js` to regenerate titles/descriptions for the new slugs (idempotent — existing entries are unchanged).
+7. Update the per-category `count` in `lib/categories-config.js` and bump `TOTAL_IMAGES` to match the new manifest size.
+8. Verify with curl HEAD requests against the new R2 URLs and a browser smoke test of `/category/{slug}`.
 
 ---
 
@@ -117,7 +145,7 @@ The thumbnail webp must exist on R2 at that path. If the image doesn't exist in 
 - Individual image pages: `/category/{slug}/{imageSlug}`
 
 ### Key config
-- `lib/categories-config.js` — category slugs, names, SEO descriptions, counts. **Update counts here when adding images.**
+- `lib/categories-config.js` — category slugs, names, SEO descriptions, counts, and `TOTAL_IMAGES`. **Update counts here when adding images.**
 - `data/categoryData.js` — image arrays per category. Update this when adding images to a category.
 - `pages/category/[slug]/index.js` — dynamic category page template.
 
@@ -146,10 +174,12 @@ Bookshelves and Wall Shelves are "merged" categories — they combine bright/dar
 
 ---
 
-## Common pitfalls after the R2 migration
+## Common pitfalls
 
 1. **Don't add entries to `cloudinary-urls.json`** — it's legacy. R2 images use direct URL construction.
-2. **If an HD thumbnail is broken**, check if the webp exists in `final_manifest.json` AND `data/categoryData.js`. Missing from both = not on R2.
+2. **If an HD thumbnail is broken**, check if the webp exists in `final_manifest.json` AND `data/categoryData.js`. Missing from both = not on R2. Always confirm with a curl HEAD against `assets.streambackdrops.com/webp/{category}/{filename}.webp` before assuming the manifest is right — the manifest has been known to retain ghost entries pointing to deleted files.
 3. **HD product sync** — `products` in `hd.js` and `HD_BASE_IDS` in `hdImages.js` must match. If a product is in one but not the other, upsell chips will be inconsistent.
 4. **`folder` vs `category`** — For most images they're the same. For bookshelves/wall-shelves they differ (e.g. category=`bookshelves`, folder=`bookshelves-bright`). Always use `folder` for R2 paths on those categories.
 5. **`image-metadata-complete.json` is legacy** — still used for `hdOnly` detection in `hd.js`. Don't rely on it for anything new; add fields to `final_manifest.json` instead.
+6. **Manifest ↔ categoryData filename naming** — the two sources must use identical filenames. Past bugs: `nature-landscape-NN.webp` (singular, on R2) vs `nature-landscapes-NN.webp` (plural, in manifest). When adding a category or rewriting filenames, cross-check both sides with a Set diff.
+7. **Don't rename `assets.streambackdrops.com`, `streambackdrops-premium`, or `stream-backdrops-videos`** — they're storage identifiers retained from the prior brand. See the brand history note at the top.

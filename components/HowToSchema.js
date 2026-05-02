@@ -4,7 +4,7 @@
 const getFullImageUrl = (imagePath) => {
   if (!imagePath) return '';
   if (imagePath.startsWith('http')) return imagePath;
-  return `https://streambackdrops.com${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`;
+  return `https://meetbackdrops.com${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`;
 };
 
 export default function HowToSchema({ 
@@ -28,7 +28,7 @@ export default function HowToSchema({
       "position": index + 1,
       "name": step.name,
       "text": step.text,
-      "url": step.url || `https://streambackdrops.com/blog#step-${index + 1}`
+      "url": step.url || `https://meetbackdrops.com/blog#step-${index + 1}`
     }))
   };
 

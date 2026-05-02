@@ -189,7 +189,7 @@ export default function Footer() {
   
   {/* Copyright */}
   <p style={{ color: '#e5e7eb', margin: 0, textAlign: 'center', fontSize: '0.9rem' }}>
-    © 2025 StreamBackdrops. All rights reserved.
+    © 2026 MeetBackdrops. All rights reserved.
   </p>
   
   {/* Modern Site Builders Credit */}
@@ -218,7 +218,7 @@ export default function Footer() {
   >
     <img
       src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
-      alt="StreamBackdrops badge"
+      alt="MeetBackdrops badge"
       width={300}
       height={100}
       loading="lazy"

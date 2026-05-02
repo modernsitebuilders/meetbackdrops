@@ -26,10 +26,10 @@ export default function VideoObjectSchema({
     "embedUrl": embedUrl,
     "publisher": {
       "@type": "Organization",
-      "name": "StreamBackdrops",
+      "name": "MeetBackdrops",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://streambackdrops.com/logo.png"
+        "url": "https://meetbackdrops.com/logo.png"
       }
     }
   };

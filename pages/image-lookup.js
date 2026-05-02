@@ -58,11 +58,11 @@ export default function ImageLookup() {
   };
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Image Lookup Tool - StreamBackdrops"
+      title="Image Lookup Tool - MeetBackdrops"
       description="Look up any image by filename"
       currentPage="image-lookup"
     >

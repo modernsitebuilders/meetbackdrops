@@ -697,7 +697,7 @@ const IMAGES_NATURE_LANDSCAPES = [
   { filename: 'nature-landscape-97.webp', title: 'Nature Landscape Background 97' },
 ];
 
-// libraries: 10 images
+// libraries: 18 images
 const IMAGES_LIBRARIES = [
   { filename: 'library-03.webp', title: 'Libraries Background 12' },
   { filename: 'library-09.webp', title: 'Libraries Background 18' },
@@ -706,6 +706,14 @@ const IMAGES_LIBRARIES = [
   { filename: 'library-15.webp', title: 'Libraries Background 7' },
   { filename: 'library-16.webp', title: 'Libraries Background 8' },
   { filename: 'library-17.webp', title: 'Libraries Background 9' },
+  { filename: 'library-19.webp', title: 'Library Background 19' },
+  { filename: 'library-22.webp', title: 'Library Background 22' },
+  { filename: 'library-24.webp', title: 'Library Background 24' },
+  { filename: 'library-25.webp', title: 'Library Background 25' },
+  { filename: 'library-29.webp', title: 'Library Background 29' },
+  { filename: 'library-30.webp', title: 'Library Background 30' },
+  { filename: 'library-31.webp', title: 'Library Background 31' },
+  { filename: 'library-32.webp', title: 'Library Background 32' },
   { filename: 'library-33.webp', title: 'Library Background 33' },
   { filename: 'library-34.webp', title: 'Library Background 34' },
   { filename: 'library-35.webp', title: 'Library Background 35' },

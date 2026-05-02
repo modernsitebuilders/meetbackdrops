@@ -37,7 +37,7 @@ export default function IndexNowTest() {
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://streambackdrops.com/blog/your-post"
+          placeholder="https://meetbackdrops.com/blog/your-post"
           style={{
             width: '100%',
             padding: '10px',

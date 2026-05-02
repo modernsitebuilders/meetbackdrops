@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json({
       success: true,
-      site: 'StreamBackdrops.com',
+      site: 'MeetBackdrops.com',
       lastUpdated: new Date().toISOString().split('T')[0],
       stats: {
         totalImages: TOTAL_IMAGES,

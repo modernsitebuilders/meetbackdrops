@@ -4,7 +4,7 @@ export default function FeaturesSection() {
       <div className="container">
         <div style={{textAlign: 'center', marginBottom: '3rem'}}>
           <h2 style={{fontSize: '2rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
-            Why Choose StreamBackdrops?
+            Why Choose MeetBackdrops?
           </h2>
         </div>
         <div className="features-grid">

@@ -49,7 +49,7 @@ function makeImage(file) {
 function makeLink(file) {
   const category = getCategory(file);
   const slug = category.toLowerCase().replace(/\s+/g, "-");
-  return `https://streambackdrops.com/category/${slug}`;
+  return `https://meetbackdrops.com/category/${slug}`;
 }
 
 // 7. BUILD CSV

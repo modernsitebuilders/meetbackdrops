@@ -39,7 +39,7 @@ export default function Analytics() {
   return (
     <>
       <Head>
-        <title>Download Analytics - StreamBackdrops</title>
+        <title>Download Analytics - MeetBackdrops</title>
       </Head>
       
       <div style={{ 

@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       title: `${CATEGORIES[category].name} | Free Virtual Backgrounds`,
       description: SEO_DESCRIPTIONS[category] || CATEGORIES[category].description,
       keywords: CATEGORY_KEYWORDS[category] || [],
-      ogImage: images[0]?.filename ? `https://streambackdrops.com/backdrops/${images[0].filename}` : null
+      ogImage: images[0]?.filename ? `https://meetbackdrops.com/backdrops/${images[0].filename}` : null
     };
 
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');

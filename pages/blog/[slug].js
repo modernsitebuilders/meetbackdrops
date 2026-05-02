@@ -51,9 +51,9 @@ export default function BlogPost() {
     >
       <Head>
         <BreadcrumbSchema items={[
-          { name: 'Home', url: 'https://streambackdrops.com' },
-          { name: 'Blog', url: 'https://streambackdrops.com/blog' },
-          { name: blogPost.headline, url: `https://streambackdrops.com/blog/${slug}` }
+          { name: 'Home', url: 'https://meetbackdrops.com' },
+          { name: 'Blog', url: 'https://meetbackdrops.com/blog' },
+          { name: blogPost.headline, url: `https://meetbackdrops.com/blog/${slug}` }
         ]} />
       </Head>
 

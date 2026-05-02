@@ -2,12 +2,11 @@
 /**
  * ⚠️  BRAND VOICE GUARDRAIL — READ BEFORE EDITING TEMPLATES BELOW
  *
- * StreamBackdrops is a Virtual Set Design Studio for CORPORATE / EXECUTIVE
+ * MeetBackdrops is a Virtual Set Design Studio for CORPORATE / EXECUTIVE
  * video presence on Zoom, Teams, and Google Meet.
  *
  * It is NOT a gaming, streamer, Twitch, esports, or livestreamer brand —
- * and has never been one. The literal word "Stream" in the brand name is
- * a legacy company-name relic, NOT a positioning signal.
+ * and has never been one.
  *
  * When editing CATEGORY_NOUNS, DESCRIPTION_TEMPLATES, ADJECTIVE_MAP, or
  * ALT_SUFFIXES below, NEVER introduce any of:
@@ -28,7 +27,7 @@
  * ──────────────────────────────────────────────────────────────────────
  *
  * One-shot rewrite of `alt`, `title`, and `description` in
- * image-pipeline/final_manifest.json — for the StreamBackdrops Studio
+ * image-pipeline/final_manifest.json — for the MeetBackdrops Studio
  * brand pivot.
  *
  * Supersedes rewrite-alt-text.js. The alt-text logic from that script is
@@ -162,7 +161,7 @@ const DESCRIPTION_TEMPLATES = [
   ({ adj, noun, accent, num }) =>
     `A high-fidelity, studio-designed ${noun}${accent} — Edition ${num}, composed for camera. Professional-grade 4K virtual background for corporate video calls.`,
   ({ adj, noun, accent, num }) =>
-    `${capitalize(adj || 'Studio-designed')}, 4K-upscaled ${noun}${accent} (Edition ${num}). A high-fidelity virtual background from the StreamBackdrops Studio collection.`,
+    `${capitalize(adj || 'Studio-designed')}, 4K-upscaled ${noun}${accent} (Edition ${num}). A high-fidelity virtual background from the MeetBackdrops Studio collection.`,
   ({ adj, noun, accent, num }) =>
     `Studio-composed ${noun}${accent} — Edition ${num}, upscaled to 4K and tuned for video codec compression. A virtual background for corporate video calls.`,
   ({ adj, noun, accent, num }) =>
@@ -170,7 +169,7 @@ const DESCRIPTION_TEMPLATES = [
   ({ adj, noun, accent, num }) =>
     `Composed for camera, this ${noun}${accent} (Edition ${num}) is a studio-designed 4K virtual background for executive Zoom, Teams, and Meet calls.`,
   ({ adj, noun, accent, num }) =>
-    `From the StreamBackdrops Studio: Edition ${num}, a ${adj ? adj + ', ' : ''}4K-upscaled ${noun}${accent}. Designed for Zoom, Microsoft Teams, and Google Meet.`,
+    `From the MeetBackdrops Studio: Edition ${num}, a ${adj ? adj + ', ' : ''}4K-upscaled ${noun}${accent}. Designed for Zoom, Microsoft Teams, and Google Meet.`,
   ({ adj, noun, accent, num }) =>
     `A studio-designed ${noun}${accent} — Edition ${num}, produced as a virtual set and upscaled to 4K. Engineered for codec compression on corporate calls.`,
   ({ adj, noun, accent, num }) =>
@@ -181,7 +180,7 @@ const DESCRIPTION_MAX = 160;
 
 // ─── Title templates ─────────────────────────────────────────────────────────
 // Per-image titles. Each takes {adj, noun, num, brand} and must be ≤65 chars
-// before the " | StreamBackdrops" suffix added at the end (Google truncates
+// before the " | MeetBackdrops" suffix added at the end (Google truncates
 // search-result titles around 60 chars, so keep visible portion tight).
 const TITLE_TEMPLATES = [
   ({ adj, noun, num }) =>
@@ -194,7 +193,7 @@ const TITLE_TEMPLATES = [
     `${titleCasePhrase(noun)} ${num} — Studio-Designed Background for Teams & Zoom`,
 ];
 
-// Hard cap including the " | StreamBackdrops" suffix. Google truncates SERP
+// Hard cap including the " | MeetBackdrops" suffix. Google truncates SERP
 // titles around 60 chars visually, but the full <title> still indexes — so
 // we let it run longer to keep the brand suffix intact.
 const TITLE_MAX = 110;
@@ -329,7 +328,7 @@ function buildTitle(entry) {
   // Defensive cleanup: collapse any double spaces that come from a null adj.
   head = head.replace(/\s+/g, ' ').trim();
 
-  let out = `${head} | StreamBackdrops`;
+  let out = `${head} | MeetBackdrops`;
   if (out.length > TITLE_MAX) {
     // Drop the brand suffix as a last resort rather than truncating mid-phrase.
     out = head.length > TITLE_MAX ? head.slice(0, TITLE_MAX - 1).trimEnd() + '…' : head;
@@ -337,7 +336,7 @@ function buildTitle(entry) {
   // Backstop so we never ship a truly category-only title even if templates
   // somehow collapse to one.
   if (!/\d/.test(out)) {
-    out = `${display} Virtual Backgrounds, Designed as Sets | StreamBackdrops Studio`;
+    out = `${display} Virtual Backgrounds, Designed as Sets | MeetBackdrops Studio`;
   }
   return out;
 }

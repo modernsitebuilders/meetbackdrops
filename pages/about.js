@@ -7,13 +7,13 @@ import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 export default function About() {
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="About StreamBackdrops | Virtual Set Design Studio"
-      description="StreamBackdrops is a virtual set design studio producing studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet."
-      canonical="https://streambackdrops.com/about"
+      title="About MeetBackdrops | Virtual Set Design Studio"
+      description="MeetBackdrops is a virtual set design studio producing studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet."
+      canonical="https://meetbackdrops.com/about"
     >
 
       <div style={{ 
@@ -62,7 +62,7 @@ export default function About() {
                 lineHeight: 1.1,
                 marginBottom: '1rem'
               }}>
-                About StreamBackdrops
+                About MeetBackdrops
               </h1>
               <h2 style={{
                 fontSize: '1.1rem',
@@ -87,7 +87,7 @@ export default function About() {
                   Our Mission
                 </h3>
                 <p style={{color: '#374151', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: 1.75}}>
-                  On a video call, your background speaks before you do. StreamBackdrops designs interiors — modern offices, libraries, galleries, and conference rooms — engineered to convey authority on Zoom, Teams, and Google Meet.
+                  On a video call, your background speaks before you do. MeetBackdrops designs interiors — modern offices, libraries, galleries, and conference rooms — engineered to convey authority on Zoom, Teams, and Google Meet.
                 </p>
                 <p style={{color: '#374151', fontSize: '1.1rem', lineHeight: 1.75}}>
                   Every environment is composed for camera, upscaled to 4K, and tested across the codecs that broadcast you to your colleagues, clients, and boards. Samples are freely available for individual professionals; brands integrate their logo into studio environments through our <Link href="/branded-backgrounds" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Branded Backgrounds</Link> program.

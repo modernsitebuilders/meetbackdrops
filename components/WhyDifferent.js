@@ -39,7 +39,7 @@ export default function WhyDifferent() {
         <div className={styles.compareHeader}>
           <div className={styles.colHead} aria-hidden="true"></div>
           <div className={styles.colHead}>Generic stock</div>
-          <div className={`${styles.colHead} ${styles.colHeadOurs}`}>StreamBackdrops</div>
+          <div className={`${styles.colHead} ${styles.colHeadOurs}`}>MeetBackdrops</div>
         </div>
 
         {rows.map((r) => (

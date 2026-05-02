@@ -12,7 +12,7 @@ const WishlistDrawer = dynamic(() => import('./WishlistDrawer'), { ssr: false })
 
 // ⚠️  BRAND VOICE GUARDRAIL — for any AI/agent editing this file
 //
-// StreamBackdrops is a Virtual Set Design Studio for CORPORATE / EXECUTIVE
+// MeetBackdrops is a Virtual Set Design Studio for CORPORATE / EXECUTIVE
 // video presence. It is NOT a gaming, streamer, Twitch, or esports brand.
 // NEVER add "gamer", "gaming", "Twitch", "streamer", "esports", "OBS overlay",
 // or similar terms to ANY of the following on this page or any descendant:
@@ -21,17 +21,16 @@ const WishlistDrawer = dynamic(() => import('./WishlistDrawer'), { ssr: false })
 //   - <meta name="keywords">
 //   - Open Graph / Twitter card tags
 //   - JSON-LD structured data (defaultStructuredData below, knowsAbout, audience)
-// The "Stream" in StreamBackdrops is a legacy company-name relic, not a
-// positioning signal. See CLAUDE.md → "BRAND VOICE — READ FIRST" for the
-// full rule set and required vocabulary.
+// See CLAUDE.md → "BRAND VOICE — READ FIRST" for the full rule set and
+// required vocabulary.
 export default function Layout({
   children,
-  title = 'Professional Zoom & Teams Backgrounds, Designed as Sets | StreamBackdrops',
+  title = 'Professional Zoom & Teams Backgrounds, Designed as Sets | MeetBackdrops',
   description = `Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Used by remote teams in 30+ countries. Free samples and branded sets for teams available.`,
   currentPage = null,
   canonical,
   keywords = 'professional zoom backgrounds, corporate teams backgrounds, 4k virtual backgrounds, studio-designed backgrounds, modern home office backdrop, corporate meeting backgrounds, virtual set design, designed zoom backgrounds',
-  image = '/og-image.png',
+  image = '/meetbackdrops-og.png',
   structuredData,
   noIndex = false,
   h1 = null,
@@ -46,11 +45,11 @@ export default function Layout({
   const defaultStructuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "StreamBackdrops",
-    "alternateName": "StreamBackdrops Studio",
+    "name": "MeetBackdrops",
+    "alternateName": "MeetBackdrops Studio",
     "description": "Virtual set design studio producing studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet.",
-    "url": "https://streambackdrops.com",
-    "logo": "https://streambackdrops.com/og-image.png",
+    "url": "https://meetbackdrops.com",
+    "logo": "https://meetbackdrops.com/meetbackdrops-og.png",
     "areaServed": "Worldwide",
     "knowsAbout": [
       "Professional Zoom backgrounds",
@@ -63,7 +62,7 @@ export default function Layout({
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://streambackdrops.com/?q={search_term_string}"
+        "urlTemplate": "https://meetbackdrops.com/?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -73,7 +72,7 @@ export default function Layout({
     <>
       <Head>
         {/* NOTE: title values passed to Layout are the COMPLETE string shown in search results.
-            There is no "| StreamBackdrops" suffix appended here — each page includes it in its
+            There is no "| MeetBackdrops" suffix appended here — each page includes it in its
             own title prop. Do not shorten titles just because they look long; they are
             intentionally optimised to fit the 50-60 character SEO limit including the suffix. */}
         <meta charSet="utf-8" />
@@ -90,7 +89,7 @@ export default function Layout({
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="StreamBackdrops" />
+        <meta name="author" content="MeetBackdrops" />
         {/* TrustPilot Verification */}
         <meta name="trustpilot-one-time-domain-verification-id" content="464ce567-7be5-4bea-a773-e336059256ad"/>
 
@@ -98,21 +97,21 @@ export default function Layout({
         <meta name="robots" content={noIndex ? 'noindex' : 'index, follow, max-image-preview:large'} />
         
         {/* ✅ Canonical URL */}
-        <link rel="canonical" href={canonical || `https://streambackdrops.com${router.asPath.split('?')[0]}`} />
+        <link rel="canonical" href={canonical || `https://meetbackdrops.com${router.asPath.split('?')[0]}`} />
         
         {/* ✅ Open Graph for Social Sharing */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={`https://streambackdrops.com${image}`} />
+        <meta property="og:image" content={`https://meetbackdrops.com${image}`} />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="StreamBackdrops" />
+        <meta property="og:site_name" content="MeetBackdrops" />
         {canonical && <meta property="og:url" content={canonical} />}
         
         {/* ✅ Twitter Cards */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={`https://streambackdrops.com${image}`} />
+        <meta property="twitter:image" content={`https://meetbackdrops.com${image}`} />
         
         {/* ✅ Theme and additional meta */}
         <meta name="theme-color" content="#111827" />

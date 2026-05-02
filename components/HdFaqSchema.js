@@ -8,7 +8,7 @@ export default function HdFaqSchema() {
         "name": "What resolution are the HD virtual backgrounds?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "StreamBackdrops HD backgrounds are 2912×1632 pixels — exactly twice the resolution of standard backgrounds (1456×816). They render noticeably sharper on high-resolution displays, large monitors, and in recorded video."
+          "text": "MeetBackdrops HD backgrounds are 2912×1632 pixels — exactly twice the resolution of standard backgrounds (1456×816). They render noticeably sharper on high-resolution displays, large monitors, and in recorded video."
         }
       },
       {

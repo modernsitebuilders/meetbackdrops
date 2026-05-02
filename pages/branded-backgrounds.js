@@ -325,9 +325,9 @@ export default function BrandedBackgroundsPage() {
   return (
     <>
       <Layout
-        title="Branded Virtual Backgrounds for Teams — Company Video Presence System | StreamBackdrops"
+        title="Branded Virtual Backgrounds for Teams — Company Video Presence System | MeetBackdrops"
         description="Studio-built virtual environments with your company brand integrated for Zoom, Microsoft Teams, and Google Meet. Consistent video presence across executives, sales, and recruiters. Procurement-ready deployment for distributed teams."
-        canonical="https://streambackdrops.com/branded-backgrounds"
+        canonical="https://meetbackdrops.com/branded-backgrounds"
       >
         {/* HERO */}
         <section

@@ -17,7 +17,7 @@ export default function FAQ() {
     },
     {
       question: "Are these backgrounds free to use?",
-      answer: "Yes! All backgrounds on StreamBackdrops are completely free to download and use for personal purposes."
+      answer: "Yes! All backgrounds on MeetBackdrops are completely free to download and use for personal purposes."
     },
     {
       question: "Do I need to give credit or attribution?",
@@ -55,13 +55,13 @@ export default function FAQ() {
 
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
   <Layout
-    title="Frequently Asked Questions | StreamBackdrops Studio"
+    title="Frequently Asked Questions | MeetBackdrops Studio"
     description="Studio answers on branded backgrounds for teams, HD Editions, codec compression, and using virtual backgrounds on Zoom, Teams, and Google Meet."
-    canonical="https://streambackdrops.com/faq"
+    canonical="https://meetbackdrops.com/faq"
   >
     <div style={{
       background: '#fff',

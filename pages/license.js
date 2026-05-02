@@ -38,9 +38,9 @@ export default function License() {
   return (
     <>
       <Head>
-        <link rel="canonical" href="https://streambackdrops.com/license" />
-        <title>License & Usage Rights - StreamBackdrops</title>
-        <meta name="description" content="StreamBackdrops License - Learn about usage rights for our free virtual backgrounds. Personal use allowed, commercial licensing available." />
+        <link rel="canonical" href="https://meetbackdrops.com/license" />
+        <title>License & Usage Rights - MeetBackdrops</title>
+        <meta name="description" content="MeetBackdrops License - Learn about usage rights for our free virtual backgrounds. Personal use allowed, commercial licensing available." />
         <meta name="robots" content="index, follow" />
       </Head>
 
@@ -62,14 +62,14 @@ export default function License() {
             flexWrap: 'wrap',
             gap: '1rem'
           }}>
-            {/* StreamBackdrops Brand */}
+            {/* MeetBackdrops Brand */}
             <Link href="/" style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
               color: '#9a6a3a',
               textDecoration: 'none'
             }}>
-              🎥 StreamBackdrops
+              🎥 MeetBackdrops
             </Link>
             
             {/* Navigation Links */}
@@ -152,7 +152,7 @@ export default function License() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Clear guidelines for using StreamBackdrops virtual backgrounds
+                Clear guidelines for using MeetBackdrops virtual backgrounds
               </h2>
             </div>
 
@@ -412,7 +412,7 @@ export default function License() {
                   listStyle: 'disc',
                   paddingLeft: '1.5rem'
                 }}>
-                  <li><strong>Copyright:</strong> All backgrounds are original creations and remain the intellectual property of StreamBackdrops.</li>
+                  <li><strong>Copyright:</strong> All backgrounds are original creations and remain the intellectual property of MeetBackdrops.</li>
                   <li><strong>No Warranty:</strong> Backgrounds are provided "as is" without warranty of any kind.</li>
                   <li><strong>Modifications:</strong> You may edit or modify backgrounds for personal use only.</li>
                   <li><strong>Questions:</strong> If you're unsure whether your use case qualifies as personal or commercial, please contact us.</li>

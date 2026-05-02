@@ -4,7 +4,7 @@ export default function ComparisonWidgetSchema() {
     "@type": "WebApplication",
     "name": "HD vs Standard Background Comparison Tool",
     "description": "Interactive side-by-side comparison tool showing the difference between standard (1456×816) and premium HD (2912×1632) virtual backgrounds. Drag the slider to see 2x the resolution and detail.",
-    "url": "https://streambackdrops.com/hd",
+    "url": "https://meetbackdrops.com/hd",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Web",
     "offers": {
@@ -14,8 +14,8 @@ export default function ComparisonWidgetSchema() {
     },
     "provider": {
       "@type": "Organization",
-      "name": "StreamBackdrops",
-      "url": "https://streambackdrops.com"
+      "name": "MeetBackdrops",
+      "url": "https://meetbackdrops.com"
     }
   };
 

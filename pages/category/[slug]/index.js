@@ -216,10 +216,10 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
     return (
       <>
         <Head>
-          <title>Category Not Found - StreamBackdrops</title>
+          <title>Category Not Found - MeetBackdrops</title>
           <meta name="description" content="The category you're looking for doesn't exist." />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="canonical" href="https://streambackdrops.com" />
+          <link rel="canonical" href="https://meetbackdrops.com" />
         </Head>
         <div style={{ padding: '2rem', textAlign: 'center' }}>
           <h1>Category Not Found</h1>
@@ -231,10 +231,10 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
 
   const categoryName = String(category.name || 'Virtual');
   const pageTitle = currentSlug === 'christmas-backgrounds'
-  ? 'Christmas Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops'
+  ? 'Christmas Virtual Backgrounds for Zoom, Teams & Meet | MeetBackdrops'
   : currentSlug === 'valentines-backgrounds'
-  ? "Valentine's Day Virtual Backgrounds for Zoom, Teams & Meet | StreamBackdrops"
-  : `${categoryName} Virtual Backgrounds, Designed as Sets | StreamBackdrops`;
+  ? "Valentine's Day Virtual Backgrounds for Zoom, Teams & Meet | MeetBackdrops"
+  : `${categoryName} Virtual Backgrounds, Designed as Sets | MeetBackdrops`;
   const pageDescription = currentSlug === 'christmas-backgrounds'
   ? 'Studio-designed Christmas virtual backgrounds for Zoom, Teams, and Google Meet. Composed sets — not stock photos. Free samples available.'
   : currentSlug === 'valentines-backgrounds'
@@ -270,14 +270,14 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
   const featuredFolder = featuredImageObj?.folder || currentSlug;
 
   // NOTE: pageTitle and pageDescription below are the COMPLETE values seen in search results.
-  // Layout does not append "| StreamBackdrops" or any other suffix.
+  // Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <>
       <Layout
         title={pageTitle}
         description={pageDescription}
-        canonical={'https://streambackdrops.com/category/' + currentSlug}
+        canonical={'https://meetbackdrops.com/category/' + currentSlug}
         currentPage={currentSlug}
         keywords={categoryName.toLowerCase() + ' virtual backgrounds'}
         image={`https://assets.streambackdrops.com/webp/${featuredFolder}/${featuredFilename}`}
@@ -285,14 +285,14 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
         <Head>
           <FAQSchema questions={getFAQs(currentSlug)} />
           <BreadcrumbSchema items={[
-            { name: "Home", url: "https://streambackdrops.com" },
-            { name: categoryName, url: 'https://streambackdrops.com/category/' + currentSlug }
+            { name: "Home", url: "https://meetbackdrops.com" },
+            { name: categoryName, url: 'https://meetbackdrops.com/category/' + currentSlug }
           ]} />
           <ImageObjectSchema
   images={category.images}
   category={categoryName}
   categorySlug={currentSlug}
-  baseUrl="https://streambackdrops.com"
+  baseUrl="https://meetbackdrops.com"
   scores={scores}
   metadata={metadata}
 />
@@ -388,7 +388,7 @@ export async function getStaticProps({ params }) {
     let liveLoaded = false;
     try {
       const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ||
-        (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://streambackdrops.com');
+        (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://meetbackdrops.com');
       const response = await fetch(`${baseUrl}/api/calculate-scores`, { signal: AbortSignal.timeout(8000) });
 
       if (response.ok) {

@@ -53,7 +53,7 @@ export default function AdminHub() {
 
   return (
     <>
-      <Head><title>Admin Hub - StreamBackdrops</title></Head>
+      <Head><title>Admin Hub - MeetBackdrops</title></Head>
       <div style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
         <h1>🔧 Admin Hub</h1>
         

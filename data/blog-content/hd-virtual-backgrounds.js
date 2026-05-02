@@ -96,7 +96,7 @@ export const hdVirtualBackgroundsContent = () => (
                     <th style={{ padding: '0.75rem 1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#111827' }}>Resolution</th>
                     <th style={{ padding: '0.75rem 1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#111827' }}>Total pixels</th>
                     <th style={{ padding: '0.75rem 1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#111827' }}>After stream compression</th>
-                    <th style={{ padding: '0.75rem 1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#111827' }}>Available at StreamBackdrops</th>
+                    <th style={{ padding: '0.75rem 1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#111827' }}>Available at MeetBackdrops</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -131,7 +131,7 @@ export const hdVirtualBackgroundsContent = () => (
               background: '#faf5ff',
             }}>
               <p style={{ margin: '0 0 1rem', fontWeight: '700', color: '#4c1d95', fontSize: '1rem' }}>
-                ⭐ StreamBackdrops HD Backgrounds — 2912×1632
+                ⭐ MeetBackdrops HD Backgrounds — 2912×1632
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', marginBottom: '1rem' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -167,7 +167,7 @@ export const hdVirtualBackgroundsContent = () => (
               and the depth of field doesn't suggest a real space behind you.
             </p>
             <p style={{ lineHeight: '1.8', color: '#374151', marginBottom: '1.5rem' }}>
-              Every background on StreamBackdrops — free and HD — is composed specifically for
+              Every background on MeetBackdrops — free and HD — is composed specifically for
               video calls. The "camera" sits where your webcam sits. The depth is shallow enough
               to look realistic, but deep enough to show interesting detail. The lighting matches
               what you'd actually see in that kind of room.

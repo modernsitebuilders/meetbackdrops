@@ -5,7 +5,7 @@ export default function Custom404() {
   return (
     <>
       <Head>
-        <title>Page Not Found - StreamBackdrops</title>
+        <title>Page Not Found - MeetBackdrops</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">

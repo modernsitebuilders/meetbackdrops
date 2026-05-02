@@ -10,7 +10,7 @@ Allow: /
 Disallow: /api/track-page-view
 Disallow: /api/track-download
 
-Sitemap: https://streambackdrops.com/sitemap.xml
+Sitemap: https://meetbackdrops.com/sitemap.xml
 
 Crawl-delay: 1`;
 

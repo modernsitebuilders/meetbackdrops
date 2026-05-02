@@ -16,7 +16,7 @@ export default function SocialShare({
 
   // Deterministic URL on both server and client to avoid hydration mismatch.
   // Sharing should always use the canonical production URL anyway.
-  const url = `https://streambackdrops.com${router.asPath.split('?')[0]}`;
+  const url = `https://meetbackdrops.com${router.asPath.split('?')[0]}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 

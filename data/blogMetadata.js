@@ -44,7 +44,7 @@ export const blogMetadata = {
   },
   "best-virtual-background-sites-2026": {
     headline: "Best Free Virtual Background Sites in 2026: Complete Comparison",
-    description: "Compare the best free virtual background sites in 2026. Learn why StreamBackdrops beats stock photo sites for professional video calls.",
+    description: "Compare the best free virtual background sites in 2026. Learn why MeetBackdrops beats stock photo sites for professional video calls.",
     image: "https://assets.streambackdrops.com/webp/art-galleries/art-gallery-01.webp",
     datePublished: "2026-02-09",
     dateModified: "2026-02-09"

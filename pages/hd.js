@@ -176,7 +176,7 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
           style={{
             position: 'absolute', inset: 0,
             borderRadius: '8px',
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='150'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 150 75)' font-family='Arial,sans-serif' font-size='15' font-weight='bold' fill='rgba(255,255,255,0.22)' letter-spacing='2'%3EStreamBackdrops%3C/text%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='150'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 150 75)' font-family='Arial,sans-serif' font-size='15' font-weight='bold' fill='rgba(255,255,255,0.22)' letter-spacing='2'%3EMeetBackdrops%3C/text%3E%3C/svg%3E")`,
             backgroundSize: '300px 150px',
             pointerEvents: 'none',
           }}
@@ -1717,21 +1717,21 @@ export default function Premium({ reviewsData }) {
   });
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="HD Editions — 4K Virtual Environments for Executive Video Calls | StreamBackdrops"
+      title="HD Editions — 4K Virtual Environments for Executive Video Calls | MeetBackdrops"
       description="HD Editions: 2912×1632 studio-designed backgrounds that stay sharp on Zoom, Teams, and Google Meet — engineered to survive video codec compression where stock JPEGs fall apart."
-      canonical="https://streambackdrops.com/hd"
+      canonical="https://meetbackdrops.com/hd"
       keywords="HD virtual backgrounds, 4k virtual backgrounds, executive zoom backgrounds, premium corporate backgrounds, professional video call environments"
       image="https://assets.streambackdrops.com/webp/bookshelves-dark/bookshelves-dark-09.webp"
     >
       <Head>
         {router.query.category && <meta name="robots" content="noindex, follow" />}
         <BreadcrumbSchema items={[
-          { name: "Home", url: "https://streambackdrops.com" },
-          { name: "HD Editions", url: "https://streambackdrops.com/hd" }
+          { name: "Home", url: "https://meetbackdrops.com" },
+          { name: "HD Editions", url: "https://meetbackdrops.com/hd" }
         ]} />
         <ProductSchema products={products} reviewsData={reviewsData} />
         <ComparisonWidgetSchema />

@@ -72,19 +72,19 @@ export default function RecentlyAdded() {
   };
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Recently Added Virtual Backgrounds | StreamBackdrops"
+      title="Recently Added Virtual Backgrounds | MeetBackdrops"
       description="Browse our newest virtual backgrounds added in the last 30 days. Fresh professional backgrounds for Zoom, Teams & Google Meet."
-      canonical="https://streambackdrops.com/category/recently-added"
+      canonical="https://meetbackdrops.com/category/recently-added"
       currentPage="recently-added"
     >
       <Head>
         <BreadcrumbSchema items={[
-          { name: "Home", url: "https://streambackdrops.com" },
-          { name: "Recently Added", url: "https://streambackdrops.com/category/recently-added" }
+          { name: "Home", url: "https://meetbackdrops.com" },
+          { name: "Recently Added", url: "https://meetbackdrops.com/category/recently-added" }
         ]} />
       </Head>
 

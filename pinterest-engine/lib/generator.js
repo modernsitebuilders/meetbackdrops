@@ -289,7 +289,7 @@ function buildImageUrl(item) {
 }
 
 function buildLink(item) {
-  return `https://streambackdrops.com/category/${item.category}`;
+  return `https://meetbackdrops.com/category/${item.category}`;
 }
 
 function buildDescription(item) {

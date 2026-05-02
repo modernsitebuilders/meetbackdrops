@@ -42,7 +42,7 @@ export default function ProductSchema({ products, reviewsData }) {
           "priceCurrency": "USD",
           "priceValidUntil": "2027-12-31",
           "availability": "https://schema.org/InStock",
-          "url": "https://streambackdrops.com/hd",
+          "url": "https://meetbackdrops.com/hd",
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingRate": {
@@ -67,7 +67,7 @@ export default function ProductSchema({ products, reviewsData }) {
         },
         "brand": {
           "@type": "Brand",
-          "name": "StreamBackdrops"
+          "name": "MeetBackdrops"
         }
       }
     }))

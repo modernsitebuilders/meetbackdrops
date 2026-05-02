@@ -32,10 +32,10 @@ function calcScore(downloadCount, lastDownload) {
   return Math.max(0, score);
 }
 
-// Normalise filename: strip StreamBackdrops- prefix, return base without extension
+// Normalise filename: strip MeetBackdrops- prefix, return base without extension
 function baseName(raw) {
   if (!raw) return null;
-  let f = raw.trim().replace(/^StreamBackdrops-/i, '');
+  let f = raw.trim().replace(/^MeetBackdrops-/i, '');
   if (!/\.(webp|png|jpg|jpeg)$/i.test(f)) return null;
   if (f.includes('/')) return null;
   return f.replace(/\.(webp|png|jpg|jpeg)$/i, '');

@@ -6,7 +6,7 @@ const generateCollections = () => {
   return Object.entries(CATEGORIES).map(([slug, data]) => ({
     "@type": "Collection",
     "name": data.name,
-    "url": `https://streambackdrops.com/category/${slug}`,
+    "url": `https://meetbackdrops.com/category/${slug}`,
     "description": `${data.count} ${data.description.toLowerCase()}`
   }));
 };
@@ -18,23 +18,23 @@ export const generateHomepageSchema = (reviewData) => {
     "@graph": [
       {
         "@type": "WebSite",
-        "name": "StreamBackdrops",
+        "name": "MeetBackdrops",
         "description": "Free professional virtual backgrounds for video calls",
-        "url": "https://streambackdrops.com",
+        "url": "https://meetbackdrops.com",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://streambackdrops.com/?q={search_term_string}"
+            "urlTemplate": "https://meetbackdrops.com/?q={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }
       },
       {
         "@type": "Organization",
-        "name": "StreamBackdrops",
-        "url": "https://streambackdrops.com",
-        "logo": "https://streambackdrops.com/logo.png",
+        "name": "MeetBackdrops",
+        "url": "https://meetbackdrops.com",
+        "logo": "https://meetbackdrops.com/logo.png",
         "description": "Provider of free high quality virtual backgrounds for professional video calls",
         "address": {
           "@type": "PostalAddress",
@@ -49,15 +49,15 @@ export const generateHomepageSchema = (reviewData) => {
         "@type": "CollectionPage",
         "name": "Virtual Background Collections",
         "description": `Browse our collection of ${TOTAL_IMAGES_FORMATTED} free high quality virtual backgrounds`,
-        "url": "https://streambackdrops.com",
+        "url": "https://meetbackdrops.com",
         "hasPart": generateCollections()
       },
       {
         "@type": "SoftwareApplication",
-        "name": "StreamBackdrops Virtual Background Library",
+        "name": "MeetBackdrops Virtual Background Library",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Web Browser",
-        "url": "https://streambackdrops.com",
+        "url": "https://meetbackdrops.com",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -66,9 +66,9 @@ export const generateHomepageSchema = (reviewData) => {
       },
       {
         "@type": "LocalBusiness",
-        "name": "StreamBackdrops",
-        "image": "https://streambackdrops.com/logo.png",
-        "url": "https://streambackdrops.com",
+        "name": "MeetBackdrops",
+        "image": "https://meetbackdrops.com/logo.png",
+        "url": "https://meetbackdrops.com",
         "telephone": "+1-555-123-4567",
         "priceRange": "Free",
         "address": {

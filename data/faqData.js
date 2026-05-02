@@ -7,7 +7,7 @@ export const faqData = {
   homepage: [
     {
       question: "Are your virtual backgrounds really free?",
-      answer: `Yes, all ${TOTAL_IMAGES_FORMATTED} virtual backgrounds on StreamBackdrops are completely free to download and use for personal and commercial purposes. No signup required, no watermarks.`
+      answer: `Yes, all ${TOTAL_IMAGES_FORMATTED} virtual backgrounds on MeetBackdrops are completely free to download and use for personal and commercial purposes. No signup required, no watermarks.`
     },
     {
       question: "What video platforms work with these backgrounds?",
@@ -280,19 +280,19 @@ export const faqData = {
   "best-virtual-background-sites-2026": [
     {
       question: "What's the best site for free virtual backgrounds?",
-      answer: "StreamBackdrops offers 337+ free high quality virtual backgrounds specifically optimized for video calls, with no signup required and no watermarks. Unlike stock photo sites, all our backgrounds are curated for professional video conferencing."
+      answer: "MeetBackdrops offers 337+ free high quality virtual backgrounds specifically optimized for video calls, with no signup required and no watermarks. Unlike stock photo sites, all our backgrounds are curated for professional video conferencing."
     },
     {
       question: "Are stock photo sites good for virtual backgrounds?",
-      answer: "Stock photo sites like Unsplash and Pexels have photos, but they're not optimized for video calls. StreamBackdrops images are specifically selected and formatted for video conferencing platforms."
+      answer: "Stock photo sites like Unsplash and Pexels have photos, but they're not optimized for video calls. MeetBackdrops images are specifically selected and formatted for video conferencing platforms."
     },
     {
       question: "Do I need to pay for quality virtual backgrounds?",
-      answer: "No! StreamBackdrops provides professional-quality virtual backgrounds completely free. You don't need to pay for premium backgrounds when free, high-quality options are available."
+      answer: "No! MeetBackdrops provides professional-quality virtual backgrounds completely free. You don't need to pay for premium backgrounds when free, high-quality options are available."
     },
     {
-      question: "How do StreamBackdrops compare to other virtual background sites?",
-      answer: "StreamBackdrops focuses exclusively on video call backgrounds with curated collections, while competitors often mix in unrelated stock photos. Our backgrounds are professionally selected for video conferencing."
+      question: "How do MeetBackdrops compare to other virtual background sites?",
+      answer: "MeetBackdrops focuses exclusively on video call backgrounds with curated collections, while competitors often mix in unrelated stock photos. Our backgrounds are professionally selected for video conferencing."
     }
   ],
 
@@ -417,7 +417,7 @@ export const faqData = {
     },
     {
       question: "Can I use the same background image on all video platforms?",
-      answer: "Yes! Virtual background images work across all platforms. Download once from StreamBackdrops and upload to Zoom, Teams, Google Meet, or any other platform."
+      answer: "Yes! Virtual background images work across all platforms. Download once from MeetBackdrops and upload to Zoom, Teams, Google Meet, or any other platform."
     },
     {
       question: "Which platform has better virtual background quality?",
@@ -522,14 +522,14 @@ export const faqData = {
     },
     {
       question: "Are HD backgrounds optimised for Zoom, Teams, and Google Meet?",
-      answer: "Yes. Unlike stock photo sites that offer general-purpose images, every background on StreamBackdrops — including HD versions — is composed specifically for video calls: correct 16:9 framing, depth that reads as a real space, and lighting that matches typical webcam setups."
+      answer: "Yes. Unlike stock photo sites that offer general-purpose images, every background on MeetBackdrops — including HD versions — is composed specifically for video calls: correct 16:9 framing, depth that reads as a real space, and lighting that matches typical webcam setups."
     }
   ],
 
   'logo-virtual-background': [
     {
       question: "Can I add my company logo to a virtual background for free?",
-      answer: "Yes. Download a free background from StreamBackdrops, then use Canva or Adobe Express (both free) to overlay your logo PNG. Export the result as a PNG and upload it to Zoom, Teams, or Google Meet like any other virtual background."
+      answer: "Yes. Download a free background from MeetBackdrops, then use Canva or Adobe Express (both free) to overlay your logo PNG. Export the result as a PNG and upload it to Zoom, Teams, or Google Meet like any other virtual background."
     },
     {
       question: "What format should my logo be for a virtual background?",

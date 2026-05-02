@@ -33,7 +33,7 @@ export const howToData = {
     steps: [
       {
         name: "Download Your Virtual Background",
-        text: "Visit StreamBackdrops and browse the collection of free high quality virtual backgrounds. Click on any background you like and download it to your computer."
+        text: "Visit MeetBackdrops and browse the collection of free high quality virtual backgrounds. Click on any background you like and download it to your computer."
       },
       {
         name: "Open Your Video Conferencing App",
@@ -101,7 +101,7 @@ export const howToData = {
     steps: [
       {
         name: "Choose the Right Background",
-        text: "Select a professional virtual background from StreamBackdrops, such as a clean office space or well-lit bookshelf. Avoid distracting or overly casual backgrounds."
+        text: "Select a professional virtual background from MeetBackdrops, such as a clean office space or well-lit bookshelf. Avoid distracting or overly casual backgrounds."
       },
       {
         name: "Position Your Camera at Eye Level",
@@ -137,7 +137,7 @@ export const howToData = {
     steps: [
       {
         name: "Download Your Virtual Background",
-        text: "Choose and download a professional virtual background from StreamBackdrops in high quality."
+        text: "Choose and download a professional virtual background from MeetBackdrops in high quality."
       },
       {
         name: "Set Up Virtual Background in Zoom",

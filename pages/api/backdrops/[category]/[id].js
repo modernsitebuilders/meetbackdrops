@@ -53,8 +53,8 @@ export default async function handler(req, res) {
         aspectRatio: (imageData.width / imageData.height).toFixed(2),
         url: `/backdrop/${id}`,
         downloadUrl: `/api/download/${id}`,
-        thumbnailUrl: `https://streambackdrops.com/backdrops/${imageData.filename}`,
-        fullSizeUrl: `https://streambackdrops.com/backdrops/${imageData.filename}`
+        thumbnailUrl: `https://meetbackdrops.com/backdrops/${imageData.filename}`,
+        fullSizeUrl: `https://meetbackdrops.com/backdrops/${imageData.filename}`
       },
       related,
       categoryUrl: `/category/${imageData.category}`

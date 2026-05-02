@@ -236,7 +236,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           {/* Logo */}
           <button
             onClick={() => navigate('/')}
-            aria-label="StreamBackdrops home"
+            aria-label="MeetBackdrops home"
             style={{
               fontSize: '1.4rem',
               fontWeight: 600,
@@ -252,13 +252,13 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
               gap: '0.4rem'
             }}
           >
-            StreamBackdrops
+            MeetBackdrops
             <span style={{
               fontFamily: 'inherit',
               fontSize: '0.65rem',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#9a6a3a',
+              color: '#E0A82E',
               fontWeight: 600,
               borderLeft: '1px solid #e6e2dc',
               paddingLeft: '0.6rem'

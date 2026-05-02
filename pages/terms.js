@@ -7,9 +7,9 @@ export default function Terms() {
   return (
     <>
       <Head>
-        <link rel="canonical" href="https://streambackdrops.com/terms" />
-        <title>Terms of Service - StreamBackdrops</title>
-        <meta name="description" content="Terms of Service for StreamBackdrops - Professional virtual backgrounds for video calls. Learn about usage rights, restrictions, and service terms." />
+        <link rel="canonical" href="https://meetbackdrops.com/terms" />
+        <title>Terms of Service - MeetBackdrops</title>
+        <meta name="description" content="Terms of Service for MeetBackdrops - Professional virtual backgrounds for video calls. Learn about usage rights, restrictions, and service terms." />
         <meta name="robots" content="index, follow" />
       </Head>
 
@@ -31,14 +31,14 @@ export default function Terms() {
             flexWrap: 'wrap',
             gap: '1rem'
           }}>
-            {/* StreamBackdrops Brand */}
+            {/* MeetBackdrops Brand */}
             <Link href="/" style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
               color: '#9a6a3a',
               textDecoration: 'none'
             }}>
-              🎥 StreamBackdrops
+              🎥 MeetBackdrops
             </Link>
             
             {/* Navigation Links */}
@@ -137,7 +137,7 @@ export default function Terms() {
                 1. Acceptance of Terms
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                By accessing and using StreamBackdrops ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                By accessing and using MeetBackdrops ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
               </p>
 
               <h2 style={{
@@ -150,7 +150,7 @@ export default function Terms() {
                 2. Description of Service
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                StreamBackdrops provides high-quality virtual background images for use in video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free downloads for personal use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
+                MeetBackdrops provides high-quality virtual background images for use in video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free downloads for personal use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
               </p>
 
               <h2 style={{
@@ -180,7 +180,7 @@ export default function Terms() {
                   ✅ Allowed Personal Uses
                 </h3>
                 <p style={{ color: '#065f46', marginBottom: '1rem' }}>
-                  Free virtual backgrounds provided by StreamBackdrops are licensed for personal use only, including:
+                  Free virtual backgrounds provided by MeetBackdrops are licensed for personal use only, including:
                 </p>
                 <ul style={{
                   listStyle: 'disc',
@@ -224,7 +224,7 @@ export default function Terms() {
                   💎 HD Only Images
                 </h3>
                 <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
-                  Certain images on StreamBackdrops are designated as HD Only and are not available as free downloads. These images are exclusively accessible through a paid HD image pack.
+                  Certain images on MeetBackdrops are designated as HD Only and are not available as free downloads. These images are exclusively accessible through a paid HD image pack.
                 </p>
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Pricing</h3>
@@ -263,7 +263,7 @@ export default function Terms() {
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Delivery</h3>
                 <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
-                  Upon successful payment, HD images are made available for immediate download as high-resolution PNG files. It is your responsibility to download and save your purchased images. StreamBackdrops is not responsible for lost downloads due to browser issues or expired download links.
+                  Upon successful payment, HD images are made available for immediate download as high-resolution PNG files. It is your responsibility to download and save your purchased images. MeetBackdrops is not responsible for lost downloads due to browser issues or expired download links.
                 </p>
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Wishlist</h3>
@@ -328,7 +328,7 @@ export default function Terms() {
                 6. Intellectual Property Rights
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                All virtual backgrounds, website content, and related materials are the original intellectual property of StreamBackdrops and are protected by applicable copyright and trademark law. We retain all rights, title, and interest in our virtual backgrounds.
+                All virtual backgrounds, website content, and related materials are the original intellectual property of MeetBackdrops and are protected by applicable copyright and trademark law. We retain all rights, title, and interest in our virtual backgrounds.
               </p>
 
               <h2 style={{
@@ -393,7 +393,7 @@ export default function Terms() {
                 9. Disclaimer
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                The information and backgrounds on this website are provided on an "as is" basis. To the fullest extent permitted by law, StreamBackdrops excludes all representations, warranties, and conditions relating to our website and backgrounds.
+                The information and backgrounds on this website are provided on an "as is" basis. To the fullest extent permitted by law, MeetBackdrops excludes all representations, warranties, and conditions relating to our website and backgrounds.
               </p>
 
               <h2 style={{
@@ -406,7 +406,7 @@ export default function Terms() {
                 10. Limitation of Liability
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                In no event shall StreamBackdrops, nor any of its officers, directors, and employees, be held liable for anything arising out of or in any way connected with your use of our virtual backgrounds, whether such liability is under contract, tort, or otherwise.
+                In no event shall MeetBackdrops, nor any of its officers, directors, and employees, be held liable for anything arising out of or in any way connected with your use of our virtual backgrounds, whether such liability is under contract, tort, or otherwise.
               </p>
 <h2 style={{
                 fontSize: '1.8rem',

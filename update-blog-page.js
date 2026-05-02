@@ -38,17 +38,17 @@ content = content.replace(
   `              {
                 "@type": "BlogPosting",
                 "headline": "Best Free Virtual Background Sites in 2025: Complete Comparison",
-                "url": "https://streambackdrops.com/blog/best-virtual-background-sites-2025"
+                "url": "https://meetbackdrops.com/blog/best-virtual-background-sites-2025"
               },`,
   `              {
                 "@type": "BlogPosting",
                 "headline": "Free Bokeh Virtual Backgrounds for Video Calls 2025",
-                "url": "https://streambackdrops.com/blog/bokeh-backgrounds"
+                "url": "https://meetbackdrops.com/blog/bokeh-backgrounds"
               },
               {
                 "@type": "BlogPosting",
                 "headline": "Best Free Virtual Background Sites in 2025: Complete Comparison",
-                "url": "https://streambackdrops.com/blog/best-virtual-background-sites-2025"
+                "url": "https://meetbackdrops.com/blog/best-virtual-background-sites-2025"
               },`
 );
 

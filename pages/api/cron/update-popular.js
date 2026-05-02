@@ -18,8 +18,8 @@ function cleanFilename(filename) {
   if (!filename) return null;
 
   let clean = filename;
-  if (clean.startsWith('StreamBackdrops-')) {
-    clean = clean.replace('StreamBackdrops-', '');
+  if (clean.startsWith('MeetBackdrops-')) {
+    clean = clean.replace('MeetBackdrops-', '');
   }
 
   if (clean.startsWith('/') ||

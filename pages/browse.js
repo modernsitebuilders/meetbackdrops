@@ -55,19 +55,19 @@ export default function BrowsePage({ searchData = [] }) {
     : '';
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Browse Virtual Backgrounds - StreamBackdrops.com"
+      title="Browse Virtual Backgrounds - MeetBackdrops.com"
       description={`Browse through ${TOTAL_IMAGES_FORMATTED} free virtual backgrounds by keyword - filter by style, lighting, and features`}
       currentPage="browse"
     >
 
       <Head>
         <BreadcrumbSchema items={[
-          { name: "Home", url: "https://streambackdrops.com" },
-          { name: "Browse", url: "https://streambackdrops.com/browse" }
+          { name: "Home", url: "https://meetbackdrops.com" },
+          { name: "Browse", url: "https://meetbackdrops.com/browse" }
         ]} />
       </Head>
       <div style={{ 

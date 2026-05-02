@@ -323,7 +323,7 @@ export const videoCallEquipmentGuideContent = () => (
                 border: '1px solid #2563eb'
               }}>
                 <p style={{color: '#1e40af', fontWeight: '500', marginBottom: '0'}}>
-                  <strong>Setup tip:</strong> Position the green screen 2-3 feet behind you to avoid shadows falling on it. Make sure it's evenly lit (your ring light helps with this). In Zoom/Teams settings, enable "Virtual Background" and select your downloaded background from StreamBackdrops. The difference is night and day.
+                  <strong>Setup tip:</strong> Position the green screen 2-3 feet behind you to avoid shadows falling on it. Make sure it's evenly lit (your ring light helps with this). In Zoom/Teams settings, enable "Virtual Background" and select your downloaded background from MeetBackdrops. The difference is night and day.
                 </p>
               </div>
             </div>
@@ -464,7 +464,7 @@ export const videoCallEquipmentGuideContent = () => (
                     <li>Set webcam as video input</li>
                     <li>Set USB mic as audio input</li>
                     <li>Enable virtual background</li>
-                    <li>Select your background from StreamBackdrops</li>
+                    <li>Select your background from MeetBackdrops</li>
                     <li>Test everything before your call</li>
                   </ul>
                 </div>
@@ -589,7 +589,7 @@ export const videoCallEquipmentGuideContent = () => (
               </ul>
 
               <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                Combined with the free professional virtual backgrounds from StreamBackdrops, you'll have a complete setup that rivals what you'd find in a professional studio.
+                Combined with the free professional virtual backgrounds from MeetBackdrops, you'll have a complete setup that rivals what you'd find in a professional studio.
               </p>
 
               <p style={{color: '#6b7280', fontWeight: '500'}}>

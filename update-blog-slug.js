@@ -14,10 +14,10 @@ import { bokehBackgroundsContent } from '../../data/blog-content/bokeh-backgroun
 content = content.replace(
   `  'halloween-backgrounds': {
     content: halloweenBackgroundsContent,
-    title: "Halloween Virtual Backgrounds - StreamBackdrops",
+    title: "Halloween Virtual Backgrounds - MeetBackdrops",
     description: "Spook up your video calls with Halloween virtual backgrounds. Fun, professional Halloween themes for Zoom, Teams and Google Meet.",
     keywords: "halloween backgrounds, spooky backgrounds, holiday backgrounds, themed backgrounds, halloween zoom backgrounds",
-    canonical: "https://streambackdrops.com/blog/halloween-backgrounds",
+    canonical: "https://meetbackdrops.com/blog/halloween-backgrounds",
     headline: "Halloween Virtual Backgrounds",
     image: "/images/holiday/halloween-01.webp",
     datePublished: "2025-10-01",
@@ -26,10 +26,10 @@ content = content.replace(
   },`,
   `  'halloween-backgrounds': {
     content: halloweenBackgroundsContent,
-    title: "Halloween Virtual Backgrounds - StreamBackdrops",
+    title: "Halloween Virtual Backgrounds - MeetBackdrops",
     description: "Spook up your video calls with Halloween virtual backgrounds. Fun, professional Halloween themes for Zoom, Teams and Google Meet.",
     keywords: "halloween backgrounds, spooky backgrounds, holiday backgrounds, themed backgrounds, halloween zoom backgrounds",
-    canonical: "https://streambackdrops.com/blog/halloween-backgrounds",
+    canonical: "https://meetbackdrops.com/blog/halloween-backgrounds",
     headline: "Halloween Virtual Backgrounds",
     image: "/images/holiday/halloween-01.webp",
     datePublished: "2025-10-01",
@@ -38,10 +38,10 @@ content = content.replace(
   },
   'bokeh-backgrounds': {
     content: bokehBackgroundsContent,
-    title: "Free Bokeh Virtual Backgrounds for Video Calls 2025 - StreamBackdrops",
+    title: "Free Bokeh Virtual Backgrounds for Video Calls 2025 - MeetBackdrops",
     description: "Download 66 free bokeh virtual backgrounds for Zoom, Teams, and Google Meet. Elegant soft-focus light effects and artistic blur backgrounds for professional video calls.",
     keywords: "bokeh backgrounds, bokeh lights, soft focus backgrounds, artistic blur, light effects, elegant backgrounds, professional bokeh",
-    canonical: "https://streambackdrops.com/blog/bokeh-backgrounds",
+    canonical: "https://meetbackdrops.com/blog/bokeh-backgrounds",
     headline: "Free Bokeh Virtual Backgrounds for Video Calls 2025",
     image: "/images/bokeh-backgrounds/bokeh-1.webp",
     datePublished: "2025-11-06",

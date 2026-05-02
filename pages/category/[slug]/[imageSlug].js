@@ -39,10 +39,10 @@ export default function ImagePage({ image, related, categoryName }) {
   }, [showReviewModal]);
 
   const webpUrl = `${CDN}/webp/${image.category}/${image.image_webp}`;
-  const canonicalUrl = `https://streambackdrops.com/category/${image.category}/${image.slug}`;
+  const canonicalUrl = `https://meetbackdrops.com/category/${image.category}/${image.slug}`;
   const categoryUrl = `/category/${image.category}`;
 
-  const pageTitle = `${image.title} | Free Virtual Background | StreamBackdrops`;
+  const pageTitle = `${image.title} | Free Virtual Background | MeetBackdrops`;
   const pageDescription = image.description ||
     `Download this free ${categoryName.toLowerCase()} virtual background for Zoom, Teams & Google Meet. No signup, no watermarks.`;
 
@@ -59,8 +59,8 @@ export default function ImagePage({ image, related, categoryName }) {
       >
         <Head>
           <BreadcrumbSchema items={[
-            { name: 'Home', url: 'https://streambackdrops.com' },
-            { name: categoryName, url: `https://streambackdrops.com${categoryUrl}` },
+            { name: 'Home', url: 'https://meetbackdrops.com' },
+            { name: categoryName, url: `https://meetbackdrops.com${categoryUrl}` },
             { name: image.title, url: canonicalUrl },
           ]} />
           <script

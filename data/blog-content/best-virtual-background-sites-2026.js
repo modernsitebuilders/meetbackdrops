@@ -80,7 +80,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                   Quick Answer: Top 5 Free Virtual Background Sites in 2026
                 </h2>
                 <ol style={{listStyle: 'decimal', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
-                  <li><strong>StreamBackdrops</strong> - Purpose-built specifically for professional video calls</li>
+                  <li><strong>MeetBackdrops</strong> - Purpose-built specifically for professional video calls</li>
                   <li><strong>Unsplash</strong> - Massive collection but requires careful selection</li>
                   <li><strong>Pexels</strong> - Good variety with some video-optimized content</li>
                   <li><strong>Canva Free</strong> - New contender with editing tools built-in</li>
@@ -88,14 +88,14 @@ export const bestVirtualBackgroundSites2026Content = () => (
                 </ol>
 
 <h3 style={{fontSize: '1.8rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  StreamBackdrops vs The Competition: 2026 Analysis
+                  MeetBackdrops vs The Competition: 2026 Analysis
                 </h3>
 
                 <h3 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#111827', marginTop: '2rem', marginBottom: '1rem'}}>
-                  What Makes StreamBackdrops Different in 2026
+                  What Makes MeetBackdrops Different in 2026
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  While stock photo sites continue to grow, StreamBackdrops remains the only platform designed exclusively for virtual meetings. Key 2026 advantages:
+                  While stock photo sites continue to grow, MeetBackdrops remains the only platform designed exclusively for virtual meetings. Key 2026 advantages:
                 </p>
 
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
@@ -103,7 +103,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                 </p>
 
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  <strong>Video Compression Aware:</strong> Images are optimized for the heavy compression applied by video platforms. Regular stock photos often become blurry or pixelated. For the sharpest result, StreamBackdrops also offers <Link href="/hd" style={{color: '#2563eb'}}>HD backgrounds at 2912×1632</Link> — extra resolution that survives platform compression with detail to spare.
+                  <strong>Video Compression Aware:</strong> Images are optimized for the heavy compression applied by video platforms. Regular stock photos often become blurry or pixelated. For the sharpest result, MeetBackdrops also offers <Link href="/hd" style={{color: '#2563eb'}}>HD backgrounds at 2912×1632</Link> — extra resolution that survives platform compression with detail to spare.
                 </p>
 
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
@@ -116,7 +116,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
 
                 <div style={{background: '#f0f9ff', padding: '1.5rem', borderRadius: '0.5rem', marginBottom: '1.5rem', border: '1px solid #0ea5e9'}}>
                   <h4 style={{fontSize: '1.25rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem'}}>
-                    StreamBackdrops (2026 Update)
+                    MeetBackdrops (2026 Update)
                   </h4>
                   <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '0'}}>
                     <li><strong>Best For:</strong> Professional video calls, client meetings, remote work</li>
@@ -204,7 +204,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                   For Remote Professionals (2026 Update)
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '0.5rem'}}>
-                  <strong>Choose StreamBackdrops if:</strong>
+                  <strong>Choose MeetBackdrops if:</strong>
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1.5rem'}}>
                   <li>You have back-to-back meetings and need reliability</li>
@@ -231,7 +231,7 @@ export const bestVirtualBackgroundSites2026Content = () => (
                 </h3>
 
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  After testing across updated video platforms and new AI tools, <strong>StreamBackdrops remains the top choice for business professionals in 2026</strong>. While AI-generated options offer novelty and stock sites offer volume, neither matches the reliability and professional appearance of purpose-built virtual backgrounds.
+                  After testing across updated video platforms and new AI tools, <strong>MeetBackdrops remains the top choice for business professionals in 2026</strong>. While AI-generated options offer novelty and stock sites offer volume, neither matches the reliability and professional appearance of purpose-built virtual backgrounds.
                 </p>
 
                 <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>

@@ -68,7 +68,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
           // Last attempt failed, use direct download
           const link = document.createElement('a');
           link.href = webpUrl(image.folder || folderMap[slug] || slug, image.filename);
-          link.download = `StreamBackdrops-${image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '')}.png`;
+          link.download = `MeetBackdrops-${image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '')}.png`;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
@@ -79,7 +79,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    filename: `StreamBackdrops-${image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '')}.png`, // PNG filename
+    filename: `MeetBackdrops-${image.filename.replace(/\.(webp|png|jpg|jpeg)$/i, '')}.png`, // PNG filename
     originalFilename: image.filename, // Original WebP
     category: slug,
     fallback: true,
@@ -171,7 +171,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
               <img
                 src={webpUrl(image.folder || folderMap[slug] || slug, image.filename)}
                 alt={metadata[image.filename]?.alt || `${image.title} — high-fidelity 4K virtual environment for Zoom, Teams, and Google Meet`}
-                title={metadata[image.filename]?.title || `${image.title} — StreamBackdrops Studio`}
+                title={metadata[image.filename]?.title || `${image.title} — MeetBackdrops Studio`}
                 loading={index < 4 ? 'eager' : 'lazy'}
                 decoding={index < 4 ? 'sync' : 'async'}
                 style={{
@@ -351,7 +351,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
 
                     <SocialShare
                       image={{...image, category: slug}}
-                      title={metadata[image.filename]?.title || `${image.title} — StreamBackdrops Studio`}
+                      title={metadata[image.filename]?.title || `${image.title} — MeetBackdrops Studio`}
                       size="small"
                       showLabels={false}
                       vertical={false}

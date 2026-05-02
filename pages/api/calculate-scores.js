@@ -108,8 +108,8 @@ export default async function handler(req, res) {
 
       if (!filename) return;
 
-      if (filename.startsWith('StreamBackdrops-')) {
-        filename = filename.replace('StreamBackdrops-', '');
+      if (filename.startsWith('MeetBackdrops-')) {
+        filename = filename.replace('MeetBackdrops-', '');
       }
 
       if (filename.startsWith('/') ||

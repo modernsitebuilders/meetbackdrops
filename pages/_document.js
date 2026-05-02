@@ -67,8 +67,8 @@ export default function Document() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "StreamBackdrops",
-              "url": "https://streambackdrops.com"
+              "name": "MeetBackdrops",
+              "url": "https://meetbackdrops.com"
             })
           }}
         />

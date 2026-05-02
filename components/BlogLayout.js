@@ -10,7 +10,7 @@ import BreadcrumbSchema from './BreadcrumbSchema';
 const getFullImageUrl = (imagePath) => {
   if (!imagePath) return '';
   if (imagePath.startsWith('http')) return imagePath;
-  return `https://streambackdrops.com${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`;
+  return `https://meetbackdrops.com${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`;
 };
 
 export default function BlogLayout({ 
@@ -33,7 +33,7 @@ export default function BlogLayout({
       <Head>
         {/* NOTE: the `title` and `description` props are the COMPLETE strings shown in search
             results — BlogLayout does NOT append any suffix or template. Each post in
-            data/blogPosts.js owns its full title/description. Do not add "| StreamBackdrops"
+            data/blogPosts.js owns its full title/description. Do not add "| MeetBackdrops"
             or any other template here; it would break the carefully tuned SEO character limits. */}
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -52,8 +52,8 @@ export default function BlogLayout({
         
         <BreadcrumbSchema 
           items={[
-            { name: 'Home', url: 'https://streambackdrops.com' },
-            { name: 'Blog', url: 'https://streambackdrops.com/blog' },
+            { name: 'Home', url: 'https://meetbackdrops.com' },
+            { name: 'Blog', url: 'https://meetbackdrops.com/blog' },
             { name: headline, url: canonical }
           ]}
         />
@@ -81,7 +81,7 @@ export default function BlogLayout({
               color: '#111827',
               textDecoration: 'none'
             }}>
-              StreamBackdrops
+              MeetBackdrops
             </Link>
           </div>
         </header>

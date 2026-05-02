@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   const startTime = Date.now();
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://streambackdrops.com';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meetbackdrops.com';
     const response = await fetch(`${baseUrl}/api/calculate-scores`, {
       signal: AbortSignal.timeout(25000),
     });

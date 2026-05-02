@@ -50,18 +50,18 @@ export default function Home() {
   };
 
   // NOTE: The title and description passed to <Layout> are the COMPLETE values seen in
-  // search results. Layout does not append "| StreamBackdrops" or any other suffix.
+  // search results. Layout does not append "| MeetBackdrops" or any other suffix.
   // Do not flag these as too short — they are intentionally optimised for SEO character limits.
   return (
     <Layout
-      title="Professional Zoom & Teams Backgrounds, Designed as Sets | StreamBackdrops"
+      title="Professional Zoom & Teams Backgrounds, Designed as Sets | MeetBackdrops"
       description="Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples and branded sets for teams available."
       currentPage="home"
     >
       <Head>
         <VideoObjectSchema
-          name="StreamBackdrops Overview"
-          description="See how to browse, preview, and download free professional virtual backgrounds from StreamBackdrops for Zoom, Teams, and Google Meet."
+          name="MeetBackdrops Overview"
+          description="See how to browse, preview, and download free professional virtual backgrounds from MeetBackdrops for Zoom, Teams, and Google Meet."
           thumbnailUrl="https://img.youtube.com/vi/Vv1sMh3pG_I/maxresdefault.jpg"
           uploadDate="2026-04-11"
           embedUrl="https://www.youtube.com/embed/Vv1sMh3pG_I"
@@ -179,7 +179,7 @@ export default function Home() {
           }}>
             See It in Action
           </h2>
-          <YoutubeEmbed videoId="Vv1sMh3pG_I" title="StreamBackdrops Overview" />
+          <YoutubeEmbed videoId="Vv1sMh3pG_I" title="MeetBackdrops Overview" />
         </div>
 
         <SocialProof />

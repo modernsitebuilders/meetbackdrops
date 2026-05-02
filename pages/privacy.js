@@ -38,10 +38,10 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy - StreamBackdrops</title>
-        <meta name="description" content="StreamBackdrops Privacy Policy - Learn how we protect your privacy and handle your data." />
+        <title>Privacy Policy - MeetBackdrops</title>
+        <meta name="description" content="MeetBackdrops Privacy Policy - Learn how we protect your privacy and handle your data." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://streambackdrops.com/privacy" />
+        <link rel="canonical" href="https://meetbackdrops.com/privacy" />
       </Head>
 
       <header style={{
@@ -57,7 +57,7 @@ export default function Privacy() {
             fontWeight: '600',
             fontSize: '1.1rem'
           }}>
-            ← Back to StreamBackdrops
+            ← Back to MeetBackdrops
           </Link>
         </div>
       </header>
@@ -110,7 +110,7 @@ export default function Privacy() {
                   Introduction
                 </h2>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  StreamBackdrops is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website streambackdrops.com (the "Service").
+                  MeetBackdrops is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website streambackdrops.com (the "Service").
                 </p>
                 <p style={{color: '#6b7280'}}>
                   By using our Service, you agree to the collection and use of information in accordance with this policy.
@@ -201,7 +201,7 @@ export default function Privacy() {
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
                   <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website (hosting, analytics, etc.)</li>
-                  <li><strong>Payment Processing (Stripe):</strong> When you purchase HD images, your payment is processed by Stripe, Inc. Stripe receives your payment details and billing information directly. StreamBackdrops does not store your card details. Stripe&apos;s privacy policy is available at <a href="https://stripe.com/privacy" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
+                  <li><strong>Payment Processing (Stripe):</strong> When you purchase HD images, your payment is processed by Stripe, Inc. Stripe receives your payment details and billing information directly. MeetBackdrops does not store your card details. Stripe&apos;s privacy policy is available at <a href="https://stripe.com/privacy" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
                   <li><strong>Legal Requirements:</strong> We may disclose information when required by law or to protect our rights</li>
                   <li><strong>Business Transfers:</strong> In the event of a merger or acquisition, your information may be transferred</li>
                 </ul>
