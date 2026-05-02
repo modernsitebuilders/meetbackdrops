@@ -19,7 +19,7 @@ export default function Contact() {
       }
 
       const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
+      if (sessionReferrer && (referrer === 'direct' || referrer.includes('meetbackdrops.com'))) {
         referrer = sessionReferrer;
       }
 
@@ -180,7 +180,7 @@ export default function Contact() {
                   Support, suggestions, press, and individual questions.
                 </p>
                 <a
-                  href="mailto:info@streambackdrops.com"
+                  href="mailto:info@meetbackdrops.com"
                   style={{
                     display: 'inline-block',
                     color: '#9a6a3a',
@@ -191,7 +191,7 @@ export default function Contact() {
                     textUnderlineOffset: '4px',
                   }}
                 >
-                  info@streambackdrops.com
+                  info@meetbackdrops.com
                 </a>
               </div>
 

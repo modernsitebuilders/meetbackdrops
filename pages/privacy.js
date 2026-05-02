@@ -19,7 +19,7 @@ export default function Privacy() {
       }
       
       const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
+      if (sessionReferrer && (referrer === 'direct' || referrer.includes('meetbackdrops.com'))) {
         referrer = sessionReferrer;
       }
 
@@ -110,7 +110,7 @@ export default function Privacy() {
                   Introduction
                 </h2>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  MeetBackdrops is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website streambackdrops.com (the "Service").
+                  MeetBackdrops is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website meetbackdrops.com (the "Service").
                 </p>
                 <p style={{color: '#6b7280'}}>
                   By using our Service, you agree to the collection and use of information in accordance with this policy.
@@ -330,8 +330,8 @@ export default function Privacy() {
                   border: '1px solid #e5e7eb'
                 }}>
                   <ul style={{listStyle: 'none', color: '#374151'}}>
-                    <li>📧 Email: info@streambackdrops.com</li>
-                    <li>📝 Contact Form: <Link href="/contact" style={{color: '#9a6a3a'}}>streambackdrops.com/contact</Link></li>
+                    <li>📧 Email: info@meetbackdrops.com</li>
+                    <li>📝 Contact Form: <Link href="/contact" style={{color: '#9a6a3a'}}>meetbackdrops.com/contact</Link></li>
                   </ul>
                 </div>
               </section>

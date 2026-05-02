@@ -92,7 +92,7 @@ export default function HDDownload() {
             <h2 style={{ marginBottom: '1rem' }}>Verification Failed</h2>
             <p style={{ color: '#666', marginBottom: '2rem' }}>{error}</p>
             <p style={{ fontSize: '0.9rem', color: '#999' }}>
-              Contact info@streambackdrops.com with your order details
+              Contact info@meetbackdrops.com with your order details
             </p>
           </div>
         )}
@@ -148,7 +148,7 @@ export default function HDDownload() {
               fontSize: '0.9rem',
               color: '#999'
             }}>
-              Need help? Email info@streambackdrops.com
+              Need help? Email info@meetbackdrops.com
             </p>
           </div>
         )}

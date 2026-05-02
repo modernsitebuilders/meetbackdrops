@@ -273,7 +273,7 @@ export default function About() {
                     color: '#6b7280',
                     lineHeight: '2'
                   }}>
-                    <li>📧 Email: info@streambackdrops.com</li>
+                    <li>📧 Email: info@meetbackdrops.com</li>
                     <li>💬 <Link href="/contact" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Contact Form</Link></li>
                     <li>📚 <Link href="/blog" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Setup Guides & Tips</Link></li>
                   </ul>

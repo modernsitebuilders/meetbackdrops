@@ -245,7 +245,7 @@ export default async function handler(req, res) {
     res.status(200).json({
       success: true,
       updated: new Date().toISOString(),
-      domain: 'streambackdrops.com',
+      domain: 'meetbackdrops.com',
       recordsProcessed: scoredImages.length,
       topScore: topImages[0]?.score || 0,
       topImage: topImages[0]?.filename || 'None',
@@ -257,7 +257,7 @@ export default async function handler(req, res) {
     console.error('Error updating popular cache:', error);
     res.status(500).json({
       error: error.message,
-      domain: 'streambackdrops.com',
+      domain: 'meetbackdrops.com',
       timestamp: new Date().toISOString(),
       hint: 'Check Google Sheets API permissions and ensure "PopularCache" sheet exists'
     });

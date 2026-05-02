@@ -35,7 +35,7 @@ export default function SubscriptionSuccess() {
       })
       .catch(() => {
         setStatus('error');
-        setError('Something went wrong. Please contact info@streambackdrops.com');
+        setError('Something went wrong. Please contact info@meetbackdrops.com');
       });
   }, []);
 
@@ -67,7 +67,7 @@ export default function SubscriptionSuccess() {
             <h2 style={{ marginBottom: '1rem' }}>Activation Failed</h2>
             <p style={{ color: '#666', marginBottom: '2rem' }}>{error}</p>
             <p style={{ fontSize: '0.9rem', color: '#999' }}>
-              Contact info@streambackdrops.com with your order details
+              Contact info@meetbackdrops.com with your order details
             </p>
           </div>
         )}
@@ -128,7 +128,7 @@ export default function SubscriptionSuccess() {
             </Link>
 
             <p style={{ marginTop: '1.5rem', fontSize: '0.85rem', color: '#999' }}>
-              Need help? Email info@streambackdrops.com
+              Need help? Email info@meetbackdrops.com
             </p>
           </div>
         )}

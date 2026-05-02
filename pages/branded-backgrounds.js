@@ -318,7 +318,7 @@ export default function BrandedBackgroundsPage() {
       setStatus('success');
     } catch (err) {
       setStatus('error');
-      setServerError(err.message || 'Submission failed. Please email info@streambackdrops.com.');
+      setServerError(err.message || 'Submission failed. Please email info@meetbackdrops.com.');
     }
   };
 
@@ -1090,10 +1090,10 @@ export default function BrandedBackgroundsPage() {
                 >
                   Or email the studio directly at{' '}
                   <a
-                    href="mailto:info@streambackdrops.com"
+                    href="mailto:info@meetbackdrops.com"
                     style={{ color: WARM, textDecoration: 'underline', textUnderlineOffset: '3px' }}
                   >
-                    info@streambackdrops.com
+                    info@meetbackdrops.com
                   </a>
                   .
                 </p>

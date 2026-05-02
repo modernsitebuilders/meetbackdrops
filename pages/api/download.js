@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   const isLocalhost = req.headers.host?.includes('localhost');
   if ((!sessionId || sessionId === 'undefined') && !isLocalhost) {
     return res.status(403).json({ 
-      error: 'Session required. Please download from streambackdrops.com' 
+      error: 'Session required. Please download from meetbackdrops.com'
     });
   }
 

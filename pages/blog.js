@@ -20,7 +20,7 @@ export default function Blog() {
       }
       
       const sessionReferrer = sessionStorage.getItem('entry_referrer');
-      if (sessionReferrer && (referrer === 'direct' || referrer.includes('streambackdrops.com'))) {
+      if (sessionReferrer && (referrer === 'direct' || referrer.includes('meetbackdrops.com'))) {
         referrer = sessionReferrer;
       }
 

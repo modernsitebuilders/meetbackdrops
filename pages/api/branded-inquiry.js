@@ -11,8 +11,8 @@ import { google } from 'googleapis';
 //
 // Email: sends via MailerSend's HTTP API. Requires:
 //   MAILERSEND_API_KEY        — from https://mailersend.com (free tier 3K/mo)
-//   LICENSING_INBOX           — defaults to info@streambackdrops.com
-//   LICENSING_FROM            — defaults to "MeetBackdrops Studio <notifications@streambackdrops.com>"
+//   LICENSING_INBOX           — defaults to info@meetbackdrops.com
+//   LICENSING_FROM            — defaults to "MeetBackdrops Studio <notifications@meetbackdrops.com>"
 //
 // If env vars are missing or the call fails, the lead is still logged to the
 // server console + Sheets so it isn't lost.
@@ -54,8 +54,8 @@ function parseSender(raw) {
 
 async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
   const apiKey = process.env.MAILERSEND_API_KEY;
-  const to = process.env.LICENSING_INBOX || 'info@streambackdrops.com';
-  const fromRaw = process.env.LICENSING_FROM || 'MeetBackdrops Studio <notifications@streambackdrops.com>';
+  const to = process.env.LICENSING_INBOX || 'info@meetbackdrops.com';
+  const fromRaw = process.env.LICENSING_FROM || 'MeetBackdrops Studio <notifications@meetbackdrops.com>';
   const from = parseSender(fromRaw);
 
   if (!apiKey) {
