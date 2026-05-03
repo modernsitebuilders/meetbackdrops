@@ -150,7 +150,7 @@ export default function Terms() {
                 2. Description of Service
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                MeetBackdrops provides high-quality virtual background images for use in video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free downloads for personal use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
+                MeetBackdrops provides high-quality virtual background images for use in video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free PNG downloads for personal use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
               </p>
 
               <h2 style={{

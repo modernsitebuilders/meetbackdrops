@@ -63,7 +63,7 @@ export default function Home() {
           name="MeetBackdrops Overview"
           description="See how to browse, preview, and download free professional virtual backgrounds from MeetBackdrops for Zoom, Teams, and Google Meet."
           thumbnailUrl="https://img.youtube.com/vi/Vv1sMh3pG_I/maxresdefault.jpg"
-          uploadDate="2026-04-11"
+          uploadDate="2026-04-11T00:00:00+00:00"
           embedUrl="https://www.youtube.com/embed/Vv1sMh3pG_I"
           contentUrl="https://www.youtube.com/watch?v=Vv1sMh3pG_I"
           duration="PT1M56S"
