@@ -7,8 +7,6 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Link from 'next/link';
-import ComparisonWidget from '../components/ComparisonWidget';
-import cloudinaryUrls from '../cloudinary-urls.json';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import { isHdOnlyProductId as isHdOnly } from '../lib/hdOnly';
 import { useWishlist } from '../lib/WishlistContext';
@@ -95,8 +93,8 @@ function SubscriberDownloadButton({ product, token, onDownloadComplete, onLimitR
   );
 }
 
-// ─── HD-Only Lightbox ─────────────────────────────────────────────────────────
-function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
+// ─── HD Preview Lightbox ──────────────────────────────────────────────────────
+function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow, hdOnly }) {
   const [buying, setBuying] = useState(false);
 
   useEffect(() => {
@@ -166,7 +164,7 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
             overflow: 'hidden',
           }}
         >
-          <span style={{ color: '#facc15' }}>💎 HD Only</span>
+          <span style={{ color: '#facc15' }}>{hdOnly ? '💎 HD Only' : '💎 HD Preview'}</span>
           <span style={{ opacity: 0.6, margin: '0 6px' }}>·</span>
           <span style={{ flex: 1 }}>2912 × 1632 · PNG</span>
           <span style={{ opacity: 0.55, fontSize: '0.65rem' }}>preview only</span>
@@ -234,13 +232,7 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow }) {
 }
 
 // ─── HD Product Card ───────────────────────────────────────────────────────────
-// FIXED: 2026-04-08 16:30 UTC - Added multi-format lookup for cloudinaryUrls
-// REASON: cloudinary-urls.json uses different key formats (simple filename vs path-based).
-//         Previously only looked for simple filename (e.g., "bookshelves-bright-04"),
-//         but the JSON contains path-based keys (e.g., "webp/bookshelves-bright/bookshelves-bright-04").
-//         Now tries multiple formats before falling back to constructed URL.
-// DO NOT REMOVE or modify the multi-key lookup logic without testing all image types.
-function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle, onPreview, onHdOnlyPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
+function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle, onPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
   const { toggleWishlist, isWishlisted, openDrawer } = useWishlist();
   const wishlisted = isWishlisted(product.id);
   const thumb = `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
@@ -341,53 +333,16 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
         onClick={async (e) => {
           e.stopPropagation();
           trackAnalytics(hdOnly ? 'hd_exclusive_preview' : 'hd_preview_opened', product.id, product.category);
-          if (hdOnly) {
-            // HD-only: show single fullscreen lightbox with the HD image
-            try {
-              const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
-              const data = await res.json();
-              onHdOnlyPreview({ url: data.url, productId: product.id });
-            } catch {
-              // fallback to standard webp if HD url fetch fails
-              onHdOnlyPreview({ url: `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`, productId: product.id });
-            }
-          } else {
-            const baseFilename = product.id.replace('-hd', '');
-            
-            // FIX: Multi-format lookup for cloudinaryUrls (added 2026-04-08)
-            // The JSON file contains keys in multiple formats. Try each one.
-            let imageUrl = cloudinaryUrls[baseFilename];                           // Format 1: "bookshelves-bright-04"
-            
-            if (!imageUrl) {
-              // Format 2: "webp/bookshelves-bright/bookshelves-bright-04"
-              const pathKey = `webp/${product.category}/${baseFilename}`;
-              imageUrl = cloudinaryUrls[pathKey];
-            }
-            
-            if (!imageUrl) {
-              // Format 3: "bookshelves-bright-04.webp"
-              imageUrl = cloudinaryUrls[`${baseFilename}.webp`];
-            }
-            
-            if (!imageUrl) {
-              // Format 4: Direct construction as final fallback
-              imageUrl = `https://assets.streambackdrops.com/webp/${product.category}/${baseFilename}.webp`;
-            }
-            // END OF FIX - Do not modify the lookup logic above
-            
-            if (imageUrl) {
-              try {
-                const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
-                const data = await res.json();
-                onPreview({
-                  id: product.id,
-                  standard: imageUrl,
-                  hd: data.url
-                });
-              } catch (error) {
-                onPreview({ id: product.id, standard: imageUrl, hd: null });
-              }
-            }
+          try {
+            const res = await fetch(`/api/hd-preview-url?imageId=${product.id}`);
+            const data = await res.json();
+            onPreview({ url: data.url, productId: product.id, hdOnly });
+          } catch {
+            onPreview({
+              url: `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`,
+              productId: product.id,
+              hdOnly,
+            });
           }
         }}
         style={{
@@ -1531,7 +1486,6 @@ export default function Premium({ reviewsData }) {
   const router = useRouter();
   const [selectedId, setSelectedId] = useState(null);
   const [checkingOut, setCheckingOut] = useState(false);
-  const [previewImage, setPreviewImage] = useState(null);
   const [hdOnlyPreview, setHdOnlyPreview] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
@@ -2088,8 +2042,7 @@ export default function Premium({ reviewsData }) {
               isHovered={hoveredProduct === product.id}
               isHighlighted={false}
               onToggle={handleCardClick}
-              onPreview={setPreviewImage}
-              onHdOnlyPreview={setHdOnlyPreview}
+              onPreview={setHdOnlyPreview}
               hdOnly={isHdOnly(product.id)}
               onMouseEnter={() => setHoveredProduct(product.id)}
               onMouseLeave={() => setHoveredProduct(null)}
@@ -2112,21 +2065,12 @@ export default function Premium({ reviewsData }) {
       {/* Walkthrough video — bottom of page, lazy-loaded */}
       <HdVideoSection />
 
-      {/* Comparison widget — standard images */}
-
-      <ComparisonWidget
-        isOpen={!!previewImage}
-        onClose={() => setPreviewImage(null)}
-        standardImg={previewImage?.standard}
-        hdImg={previewImage?.hd}
-        imageId={previewImage?.id}
-      />
-
-      {/* Fullscreen lightbox — HD-only images */}
+      {/* Watermarked HD preview lightbox */}
       {hdOnlyPreview && (
         <HdOnlyLightbox
           imageUrl={hdOnlyPreview.url}
           productId={hdOnlyPreview.productId}
+          hdOnly={hdOnlyPreview.hdOnly}
           onClose={() => setHdOnlyPreview(null)}
           onBuyNow={handleHdOnlyBuy}
         />
