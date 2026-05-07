@@ -741,19 +741,36 @@ const IMAGES_NATURE_LANDSCAPES = [
   { filename: 'nature-landscape-97.webp', title: 'Nature Landscape Background 97' },
 ];
 
-// libraries: 18 images
+// libraries: 42 images
 const IMAGES_LIBRARIES = [
+  { filename: 'library-01.webp', title: 'Library Background 1' },
+  { filename: 'library-02.webp', title: 'Library Background 2' },
   { filename: 'library-03.webp', title: 'Libraries Background 12' },
+  { filename: 'library-04.webp', title: 'Library Background 4' },
+  { filename: 'library-05.webp', title: 'Library Background 5' },
+  { filename: 'library-06.webp', title: 'Library Background 6' },
+  { filename: 'library-07.webp', title: 'Library Background 7' },
+  { filename: 'library-08.webp', title: 'Library Background 8' },
   { filename: 'library-09.webp', title: 'Libraries Background 18' },
+  { filename: 'library-10.webp', title: 'Library Background 10' },
   { filename: 'library-11.webp', title: 'Libraries Background 3' },
+  { filename: 'library-12.webp', title: 'Library Background 12' },
+  { filename: 'library-13.webp', title: 'Library Background 13' },
   { filename: 'library-14.webp', title: 'Libraries Background 6' },
   { filename: 'library-15.webp', title: 'Libraries Background 7' },
   { filename: 'library-16.webp', title: 'Libraries Background 8' },
   { filename: 'library-17.webp', title: 'Libraries Background 9' },
+  { filename: 'library-18.webp', title: 'Library Background 18' },
   { filename: 'library-19.webp', title: 'Library Background 19' },
+  { filename: 'library-20.webp', title: 'Library Background 20' },
+  { filename: 'library-21.webp', title: 'Library Background 21' },
   { filename: 'library-22.webp', title: 'Library Background 22' },
+  { filename: 'library-23.webp', title: 'Library Background 23' },
   { filename: 'library-24.webp', title: 'Library Background 24' },
   { filename: 'library-25.webp', title: 'Library Background 25' },
+  { filename: 'library-26.webp', title: 'Library Background 26' },
+  { filename: 'library-27.webp', title: 'Library Background 27' },
+  { filename: 'library-28.webp', title: 'Library Background 28' },
   { filename: 'library-29.webp', title: 'Library Background 29' },
   { filename: 'library-30.webp', title: 'Library Background 30' },
   { filename: 'library-31.webp', title: 'Library Background 31' },
@@ -761,6 +778,13 @@ const IMAGES_LIBRARIES = [
   { filename: 'library-33.webp', title: 'Library Background 33' },
   { filename: 'library-34.webp', title: 'Library Background 34' },
   { filename: 'library-35.webp', title: 'Library Background 35' },
+  { filename: 'library-36.webp', title: 'Library Background 36' },
+  { filename: 'library-37.webp', title: 'Library Background 37' },
+  { filename: 'library-38.webp', title: 'Library Background 38' },
+  { filename: 'library-39.webp', title: 'Library Background 39' },
+  { filename: 'library-40.webp', title: 'Library Background 40' },
+  { filename: 'library-41.webp', title: 'Library Background 41' },
+  { filename: 'library-42.webp', title: 'Library Background 42' },
 ];
 
 // christmas-backgrounds: 93 images
