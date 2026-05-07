@@ -23,7 +23,7 @@ export default function HubHero({ slug, images = [], onCtaClick, onImageClick })
           onClick={onCtaClick}
           className={styles.heroCta}
         >
-          Download HD Backgrounds →
+          See HD Backgrounds ↓
         </button>
         <div className={styles.heroTrust}>
           <span>✓ Instant download</span>
