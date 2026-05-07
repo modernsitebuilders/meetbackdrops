@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { isAdmin } from '../../lib/adminAuth';
 
 export default function ChristmasStats() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem('streambackdrops_admin') !== 'true') {
+    if (!isAdmin()) {
       window.location.href = '/';
       return;
     }
-    setIsAdmin(true);
+    setIsAdminUser(true);
     loadStats();
   }, []);
 
@@ -20,7 +21,7 @@ export default function ChristmasStats() {
     setStats(data);
   };
 
-  if (!isAdmin || !stats) return <div style={{padding: '2rem'}}>Loading...</div>;
+  if (!isAdminUser || !stats) return <div style={{padding: '2rem'}}>Loading...</div>;
 
   return (
     <>

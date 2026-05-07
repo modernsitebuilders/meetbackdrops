@@ -4,12 +4,13 @@ import Layout from '../components/Layout';
 import { useEffect } from 'react';
 import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import { blogMetadata } from '../data/blogMetadata';
+import { isAdmin } from '../lib/adminAuth';
 
 export default function Blog() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
+      if (isAdmin()) {
         return;
       }
       

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { isAdmin } from '../../lib/adminAuth';
 
 export default function ScoresAdmin() {
   const [scores, setScores] = useState(null);
@@ -11,7 +12,7 @@ export default function ScoresAdmin() {
   const [summary, setSummary] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem('streambackdrops_admin') !== 'true') {
+    if (!isAdmin()) {
       window.location.href = '/';
       return;
     }

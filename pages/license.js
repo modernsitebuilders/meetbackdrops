@@ -3,12 +3,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import { isAdmin } from '../lib/adminAuth';
 
 export default function License() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // Skip tracking if admin
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
+      if (isAdmin()) {
         return;
       }
 

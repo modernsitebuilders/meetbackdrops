@@ -3,6 +3,7 @@ import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
 import { useEffect, useRef } from 'react';
 import { webpUrl } from '../lib/cloudinaryUrl';
+import { isAdmin } from '../lib/adminAuth';
 
 function trackAnalytics(eventType, filename, category) {
   fetch('/api/analytics', {
@@ -44,7 +45,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
     if (!image) return;
 
     const session = getSessionData();
-    const isAdmin = typeof window !== 'undefined' && localStorage.getItem('streambackdrops_admin') === 'true';
+    const adminUser = isAdmin();
     fetch('/api/track-preview', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -62,7 +63,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
         downloadsInSession: session?.downloads || 0,
         visitorId: getOrCreateVisitorId(),
         visitorType: isReturningVisitor() ? 'returning' : 'new',
-        isAdmin
+        isAdmin: adminUser
       })
     }).catch(() => {});
   }, [image, slug]);

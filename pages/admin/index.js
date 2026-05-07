@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { isAdmin } from '../../lib/adminAuth';
 
 export default function AdminHub() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const [revalidating, setRevalidating] = useState(false);
   const [revalidateResult, setRevalidateResult] = useState(null);
 
@@ -22,14 +23,14 @@ export default function AdminHub() {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem('streambackdrops_admin') !== 'true') {
+    if (!isAdmin()) {
       window.location.href = '/';
       return;
     }
-    setIsAdmin(true);
+    setIsAdminUser(true);
   }, []);
 
-  if (!isAdmin) return null;
+  if (!isAdminUser) return null;
 
   const adminLinks = [
     { href: '/admin/scores', title: '📊 Image Scores', desc: 'Performance rankings, removal candidates' },

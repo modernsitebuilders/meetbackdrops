@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { isAdmin } from '../../lib/adminAuth';
 
 export default function Traffic() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem('streambackdrops_admin') !== 'true') {
+    if (!isAdmin()) {
       window.location.href = '/';
       return;
     }

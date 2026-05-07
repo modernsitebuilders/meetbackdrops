@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { getOrCreateSession, updateSessionActivity, getOrCreateVisitorId, getVisitorType } from '../lib/sessionTracking';
+import { isAdmin } from '../lib/adminAuth';
 export default function Analytics() {
   const router = useRouter();
   const lastTrackedPath = useRef(null);
@@ -13,7 +14,7 @@ export default function Analytics() {
           window.location.hostname === 'localhost') {
         return;
       }
-      if (localStorage.getItem('streambackdrops_admin') === 'true') {
+      if (isAdmin()) {
         console.log('🔍 Analytics: Skipping - Admin mode enabled');
         return;
       }
