@@ -21,12 +21,12 @@ import BackToTop from '../../../components/BackToTop';
 import HDComparisonHero from '../../../components/HDComparisonHero';
 import CategoryHub from '../../../components/CategoryHub/CategoryHub';
 
-const OFFICE_HUB_FEATURED = [
-  { filename: 'office-spaces-69.webp', title: 'Office Space Background 69' },
-  { filename: 'office-spaces-71.webp', title: 'Office Space Background 71' },
-  { filename: 'office-spaces-36.webp', title: 'Office Space Background 36' },
-  { filename: 'office-spaces-05.webp', title: 'Office Space Background 5' },
-  { filename: 'office-spaces-21.webp', title: 'Office Space Background 21' },
+const WALL_SHELVES_HUB_FEATURED = [
+  { filename: 'wall-shelves-bright-51.webp', title: 'Wall Shelves Bright Background 51', folder: 'wall-shelves-bright' },
+  { filename: 'wall-shelves-bright-54.webp', title: 'Wall Shelves Bright Background 54', folder: 'wall-shelves-bright' },
+  { filename: 'wall-shelves-bright-55.webp', title: 'Wall Shelves Bright Background 55', folder: 'wall-shelves-bright' },
+  { filename: 'wall-shelves-bright-10.webp', title: 'Wall Shelves Bright Background 10', folder: 'wall-shelves-bright' },
+  { filename: 'wall-shelves-bright-01.webp', title: 'Wall Shelves Bright Background 1', folder: 'wall-shelves-bright' },
 ];
 
 function CategoryContent({ slug, scores = {}, metadata = {} }) {
@@ -88,12 +88,12 @@ function CategoryContent({ slug, scores = {}, metadata = {} }) {
             </span>
           </nav>
 
-          {slug === 'office-spaces' ? (
+          {slug === 'wall-shelves' ? (
             <>
               <CategoryHub
                 slug={slug}
                 scores={scores}
-                featuredImages={OFFICE_HUB_FEATURED}
+                featuredImages={WALL_SHELVES_HUB_FEATURED}
                 onImageClick={setPreviewImage}
                 onDownload={(image) => handleDownload(image, slug)}
                 downloadingImage={downloadingImage}
@@ -126,7 +126,7 @@ function CategoryContent({ slug, scores = {}, metadata = {} }) {
                   color: '#111827',
                   margin: '0 0 0.75rem',
                 }}>
-                  Every Office Space background
+                  Every Wall Shelf background
                 </h2>
                 <p style={{
                   fontSize: '0.95rem',

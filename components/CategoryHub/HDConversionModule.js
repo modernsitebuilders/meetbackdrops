@@ -4,6 +4,8 @@ import { useState } from 'react';
 import ComparisonWidget from '../ComparisonWidget';
 import PostCompareModal from '../PostCompareModal';
 import { webpUrl } from '../../lib/cloudinaryUrl';
+import { HD_BASE_IDS } from '../../lib/hdImages';
+import { getFreeImages } from '../../lib/images-access';
 import styles from '../../styles/CategoryHub.module.css';
 
 export default function HDConversionModule({ slug, premiumImages = [], scores = {}, onCompareClick }) {
@@ -13,28 +15,26 @@ export default function HDConversionModule({ slug, premiumImages = [], scores = 
   const [sliderUsed, setSliderUsed] = useState(false);
   const [postCompareOpen, setPostCompareOpen] = useState(false);
 
-  // office-spaces: always use the fixed comparison pair.
-  // Other slugs: pick the highest-scoring premium image.
-  let baseId, hdId, freeUrl;
-  if (slug === 'office-spaces') {
-    baseId = 'office-spaces-36';
-    hdId = 'office-spaces-36-hd';
-    freeUrl = webpUrl(slug, 'office-spaces-36.webp');
-  } else {
-    const topImage = [...premiumImages]
-      .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
+  // Pick a comparison pair: a free image that ALSO has an HD upgrade
+  // available (i.e. its base ID is in HD_BASE_IDS). Take the highest-scoring
+  // such image so the comparison leads with the strongest performer.
+  const candidates = getFreeImages(slug).filter((img) => {
+    const base = img.filename.replace(/\.\w+$/, '');
+    return HD_BASE_IDS.has(base);
+  });
+  const topImage = [...candidates]
+    .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
 
-    if (!topImage) {
-      if (typeof window !== 'undefined') {
-        console.warn(`[CategoryHub] HDConversionModule: no premium images for slug="${slug}". Module hidden.`);
-      }
-      return null;
+  if (!topImage) {
+    if (typeof window !== 'undefined') {
+      console.warn(`[CategoryHub] HDConversionModule: no comparison-pair images for slug="${slug}". Module hidden.`);
     }
-
-    baseId = topImage.filename.replace(/\.\w+$/, '');
-    hdId = `${baseId}-hd`;
-    freeUrl = webpUrl(slug, topImage.filename);
+    return null;
   }
+
+  const baseId = topImage.filename.replace(/\.\w+$/, '');
+  const hdId = `${baseId}-hd`;
+  const freeUrl = webpUrl(topImage.folder || slug, topImage.filename);
 
   const sessionFlagKey = `sb_post_compare_shown_${baseId}`;
 
@@ -104,7 +104,7 @@ export default function HDConversionModule({ slug, premiumImages = [], scores = 
             {loading ? 'Loading preview…' : 'See the difference side-by-side'}
           </button>
           <a href={`/hd?category=${slug}`} className={styles.hdShopBtn}>
-            See all office-space HD backgrounds →
+            See all wall-shelf HD backgrounds →
           </a>
         </div>
         <div className={styles.hdFootnote}>

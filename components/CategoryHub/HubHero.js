@@ -11,12 +11,12 @@ export default function HubHero({ slug, images = [], onCtaClick, onImageClick })
     <section className={styles.hero}>
       <div className={styles.heroCopy}>
         <h1 className={styles.heroTitle}>
-          Office Space Virtual Backgrounds
-          <span className={styles.heroTitleSub}>HD for Zoom &amp; Remote Work</span>
+          Wall Shelf Virtual Backgrounds
+          <span className={styles.heroTitleSub}>HD for Zoom, Teams &amp; Google Meet</span>
         </h1>
         <p className={styles.heroSubhead}>
-          Professional, clean, modern workspace backgrounds — designed for video calls,
-          not cropped from stock photos.
+          Studio-styled wall shelves — designed shelf by shelf for camera,
+          not lifted from a stock library.
         </p>
         <button
           type="button"
@@ -40,8 +40,8 @@ export default function HubHero({ slug, images = [], onCtaClick, onImageClick })
           aria-label={`Preview ${lead.title}`}
         >
           <img
-            src={webpUrl(slug, lead.filename)}
-            alt={`${lead.title} — featured office virtual background`}
+            src={webpUrl(lead.folder || slug, lead.filename)}
+            alt={`${lead.title} — featured wall-shelf virtual background`}
             loading="eager"
           />
         </button>
@@ -55,8 +55,8 @@ export default function HubHero({ slug, images = [], onCtaClick, onImageClick })
               aria-label={`Preview ${img.title}`}
             >
               <img
-                src={webpUrl(slug, img.filename)}
-                alt={`${img.title} — office background preview`}
+                src={webpUrl(img.folder || slug, img.filename)}
+                alt={`${img.title} — wall-shelf background preview`}
                 loading="lazy"
               />
             </button>

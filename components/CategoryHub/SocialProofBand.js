@@ -6,6 +6,7 @@ import styles from '../../styles/CategoryHub.module.css';
 
 const HD_PREFIX_BY_SLUG = {
   'office-spaces': 'office-spaces-',
+  'wall-shelves': 'wall-shelves-',
 };
 
 export default function SocialProofBand({ slug, images = [], lastUpdated = 'April 2026' }) {

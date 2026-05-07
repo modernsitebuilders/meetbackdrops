@@ -7,29 +7,29 @@ const CDN = 'https://assets.streambackdrops.com/webp';
 
 const RELATED = [
   {
-    slug: 'conference-rooms',
-    name: 'Conference Rooms',
-    tagline: 'Polished boardroom and meeting-room scenes',
-    thumb: 'conference-rooms/conference-room-01.webp',
-  },
-  {
-    slug: 'wall-shelves-bright',
-    name: 'Bright Wall Shelves',
-    tagline: 'Clean, styled shelves with natural light',
-    thumb: 'wall-shelves-bright/wall-shelves-bright-01.webp',
-  },
-  {
-    slug: 'bookshelves-bright',
-    name: 'Bright Bookshelves',
-    tagline: 'Credible, studious — great for interviews',
+    slug: 'bookshelves',
+    name: 'Bookshelves',
+    tagline: 'Books on the shelf — credible and studious',
     thumb: 'bookshelves-bright/bookshelves-bright-01.webp',
+  },
+  {
+    slug: 'home-office',
+    name: 'Home Offices',
+    tagline: 'Warm work-from-home setups — professional but personal',
+    thumb: 'home-office/home-offices-63.webp',
+  },
+  {
+    slug: 'urban-lofts',
+    name: 'Urban Lofts',
+    tagline: 'Industrial-modern spaces — exposed brick, clean edges',
+    thumb: 'urban-lofts/urban-loft-20.webp',
   },
 ];
 
 export default function HubRelatedCategories() {
   return (
     <section className={styles.related}>
-      <h2 className={styles.relatedHeading}>Also popular with office-space viewers</h2>
+      <h2 className={styles.relatedHeading}>Also popular with wall-shelf viewers</h2>
       <div className={styles.relatedGrid}>
         {RELATED.map((cat) => (
           <Link
