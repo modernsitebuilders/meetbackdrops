@@ -8,11 +8,19 @@ const {
   executeQuotaTable,
 } = require('./lib/scheduler');
 const { writeCsv, pinToRow } = require('./lib/csv-writer');
+const { publishPin } = require('./lib/publisher');
 
 const ROOT = path.resolve(__dirname, '..');
 const DEFAULT_MANIFEST = path.join(ROOT, 'image-pipeline', 'final_manifest.json');
 const OUTPUT_DIR = path.join(__dirname, 'output');
 const QUOTA_TABLE_PATH = path.join(__dirname, 'quota-table.json');
+const ENV_PATH = path.join(ROOT, '.env.local');
+
+try {
+  require('dotenv').config({ path: ENV_PATH });
+} catch (_err) {
+  // dotenv is optional for the generate path; publishOne will throw cleanly if env vars are missing.
+}
 
 function buildPins(manifestPath) {
   const items = parseManifest(manifestPath);
@@ -75,12 +83,91 @@ function printResult(label, result) {
   console.log(formatPreview(result.preview));
 }
 
-function main(prodMode) {
+function envKeyForCategory(category) {
+  const normalized = String(category)
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+  return `PINTEREST_BOARD_${normalized}`;
+}
+
+function getBoardId(category) {
+  const key = envKeyForCategory(category);
+  const id = process.env[key] || process.env.PINTEREST_DEFAULT_BOARD_ID;
+  if (!id) {
+    throw new Error(
+      `No board ID configured. Set ${key} or PINTEREST_DEFAULT_BOARD_ID in .env.local.`,
+    );
+  }
+  return { id, source: process.env[key] ? key : 'PINTEREST_DEFAULT_BOARD_ID' };
+}
+
+async function publishOne(slug, manifestPath) {
+  if (!slug) {
+    throw new Error('publish-one requires a slug. usage: node cli.js publish-one <slug>');
+  }
+  if (!process.env.PINTEREST_ACCESS_TOKEN) {
+    throw new Error(
+      'PINTEREST_ACCESS_TOKEN is missing. Run `node pinterest-engine/oauth-server.js` first.',
+    );
+  }
+
+  console.log(`[publish-one] manifest: ${manifestPath}`);
+  const pins = buildPins(manifestPath);
+  const pin = pins.find((p) => p.slug === slug);
+  if (!pin) {
+    throw new Error(`Slug not found in manifest: ${slug}`);
+  }
+
+  const { id: boardId, source: boardSource } = getBoardId(pin.category);
+  const payload = {
+    board_id: boardId,
+    title: pin.seoTitle,
+    description: pin.description,
+    link: pin.link,
+    image_url: pin.imageUrl,
+  };
+
+  console.log('[publish-one] === REQUEST ===');
+  console.log(`  endpoint:    POST https://api.pinterest.com/v5/pins`);
+  console.log(`  slug:        ${pin.slug}`);
+  console.log(`  category:    ${pin.category}`);
+  console.log(`  board_id:    ${boardId}  (from ${boardSource})`);
+  console.log(`  title:       ${payload.title}`);
+  console.log(`  description: ${payload.description.slice(0, 80)}…`);
+  console.log(`  image_url:   ${payload.image_url}`);
+  console.log(`  link:        ${payload.link}`);
+  console.log('');
+
+  const result = await publishPin(payload);
+
+  console.log('[publish-one] === RESPONSE ===');
+  if (result.success) {
+    console.log(`  status:  OK`);
+    console.log(`  pin_id:  ${result.pin_id}`);
+    console.log(`  view at: https://www.pinterest.com/pin/${result.pin_id}/`);
+    return 0;
+  }
+  console.log(`  status:  FAILED`);
+  console.log(`  error:   ${result.error}`);
+  return 1;
+}
+
+async function main(prodMode) {
   const argv = process.argv.slice(2).filter((a) => !a.startsWith('--'));
   const [cmd = 'all', sub = 'all', manifestArg] = argv;
   const manifestPath = manifestArg || DEFAULT_MANIFEST;
+
+  if (cmd === 'publish-one') {
+    const slug = sub === 'all' ? undefined : sub;
+    const code = await publishOne(slug, manifestPath);
+    process.exit(code);
+  }
+
   if (cmd !== 'generate') {
-    console.error('usage: node cli.js generate <master|ab|amplify|all> [manifest] [--prod]');
+    console.error(
+      'usage:\n  node cli.js generate <master|ab|amplify|all> [manifest] [--prod]\n  node cli.js publish-one <slug> [manifest]',
+    );
     process.exit(1);
   }
   const target = sub.toLowerCase();
@@ -104,15 +191,15 @@ function main(prodMode) {
 
 if (require.main === module) {
   const prodMode = process.argv.includes('--prod');
-  try {
-    main(prodMode);
-  } catch (err) {
-    const msg = err && err.message ? err.message : String(err);
-    const line = msg.indexOf('ERROR:') === 0 ? msg : `ERROR: FATAL | message=${msg}`;
-    console.error(line);
-    if (!prodMode && err && err.stack) console.error(err.stack);
-    process.exit(1);
-  }
+  Promise.resolve()
+    .then(() => main(prodMode))
+    .catch((err) => {
+      const msg = err && err.message ? err.message : String(err);
+      const line = msg.indexOf('ERROR:') === 0 ? msg : `ERROR: FATAL | message=${msg}`;
+      console.error(line);
+      if (!prodMode && err && err.stack) console.error(err.stack);
+      process.exit(1);
+    });
 }
 
-module.exports = { buildPins, genMaster, genAb, genAmplify };
+module.exports = { buildPins, genMaster, genAb, genAmplify, publishOne };
