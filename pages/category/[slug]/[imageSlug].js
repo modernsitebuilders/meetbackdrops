@@ -73,8 +73,17 @@ export default function ImagePage({ image, related, categoryName }) {
               contentUrl: webpUrl,
               url: canonicalUrl,
               encodingFormat: 'image/webp',
-              width: 1920,
-              height: 1080,
+              width: 1456,
+              height: 816,
+              creator: {
+                '@type': 'Organization',
+                name: 'MeetBackdrops Studio',
+                url: 'https://meetbackdrops.com',
+              },
+              creditText: 'MeetBackdrops Studio',
+              copyrightNotice: '© MeetBackdrops Studio. Free for personal and commercial use under the site license.',
+              license: 'https://meetbackdrops.com/license',
+              acquireLicensePage: 'https://meetbackdrops.com/license',
             }) }}
           />
         </Head>
@@ -109,7 +118,12 @@ export default function ImagePage({ image, related, categoryName }) {
               <img
                 src={webpUrl}
                 alt={image.alt || image.title}
-                style={{ width: '100%', display: 'block' }}
+                width={1456}
+                height={816}
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
 
