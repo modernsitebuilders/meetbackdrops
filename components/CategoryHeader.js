@@ -13,6 +13,7 @@ export default function CategoryHeader({ category, featuredImageUrl }) {
       <div className={styles.text}>
         <div className={styles.eyebrow}>The Collection · {name}</div>
         <h1 className={styles.title}>{name} Virtual Backgrounds</h1>
+        <div className={styles.priceChip}>Free downloads · HD editions from $4.99</div>
         <p className={styles.description}>{shortDescription}</p>
         <div className={styles.linkRow}>
           <Link href="/hd" className={styles.hdLink}>

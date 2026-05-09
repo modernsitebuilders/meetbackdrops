@@ -35,6 +35,18 @@
   line-height: 1.1;
 }
 
+.priceChip {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--brand-graphite);
+  background: #F5F5F5;
+  padding: 0.4rem 0.8rem;
+  margin: 0 0 1rem;
+  border: 1px solid var(--brand-rule);
+  font-weight: 500;
+}
+
 .description {
   color: var(--brand-muted);
   font-size: 1rem;

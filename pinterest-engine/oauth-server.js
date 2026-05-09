@@ -34,10 +34,14 @@ const CLIENT_ID = process.env.PINTEREST_CLIENT_ID;
 const CLIENT_SECRET = process.env.PINTEREST_CLIENT_SECRET;
 const REDIRECT_URI =
   process.env.PINTEREST_REDIRECT_URI || `http://localhost:${PORT}/auth/callback`;
-const SCOPE = 'boards:read,pins:read,pins:write,user_accounts:read';
+const SCOPE = 'boards:read,boards:write,pins:read,pins:write,user_accounts:read';
 
+// Trial apps must use the sandbox API base for token exchange + pin creation.
+// Override via env: PINTEREST_API_BASE=https://api.pinterest.com (after Pinterest grants production access)
+const PINTEREST_API_BASE =
+  process.env.PINTEREST_API_BASE || 'https://api-sandbox.pinterest.com';
 const PINTEREST_AUTHORIZE_URL = 'https://www.pinterest.com/oauth/';
-const PINTEREST_TOKEN_URL = 'https://api.pinterest.com/v5/oauth/token';
+const PINTEREST_TOKEN_URL = `${PINTEREST_API_BASE}/v5/oauth/token`;
 
 const sessionState = new Map();
 
@@ -277,10 +281,13 @@ function start() {
     });
   });
   server.listen(PORT, () => {
+    const isSandbox = PINTEREST_API_BASE.includes('sandbox');
     console.log('\n[oauth] Pinterest OAuth server running');
     console.log(`[oauth] open http://localhost:${PORT} in your browser`);
     console.log(`[oauth] redirect_uri: ${REDIRECT_URI}`);
-    console.log(`[oauth] scopes: ${SCOPE}\n`);
+    console.log(`[oauth] scopes: ${SCOPE}`);
+    console.log(`[oauth] token endpoint: ${PINTEREST_TOKEN_URL}`);
+    console.log(`[oauth] environment: ${isSandbox ? 'SANDBOX' : 'PRODUCTION'}\n`);
   });
 }
 

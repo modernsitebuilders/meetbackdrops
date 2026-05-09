@@ -195,58 +195,88 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
             />
           </div>
 
-          {/* Download button — single item, overlap impossible */}
-          <button
-            aria-label={`Download ${image.title}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              onDownload(image, 'modal_download');
-            }}
-            style={{
-              flexShrink: 0,
-              backgroundColor: '#111827',
-              color: '#ffffff',
-              padding: '0.85rem 1.75rem',
-              border: '1px solid #111827',
-              borderBottom: '2px solid #9a6a3a',
-              borderRadius: '0',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s ease',
-              whiteSpace: 'nowrap',
-              fontFamily: 'inherit',
-            }}
-            onMouseEnter={(e) => { e.target.style.backgroundColor = '#000'; }}
-            onMouseLeave={(e) => { e.target.style.backgroundColor = '#111827'; }}
-          >
-            Download Free
-          </button>
-
-          {/* HD upsell — text-only, secondary to Download */}
-          {hasHd && (
-            <Link
-              href={`/hd?highlight=${baseId}`}
+          {/* CTA stack — Free + HD at visual parity (intervention v4) */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            gap: '0.5rem',
+            width: 'min(360px, 100%)',
+          }}>
+            <button
+              aria-label={`Download ${image.title}`}
               onClick={(e) => {
                 e.stopPropagation();
-                trackAnalytics('preview_modal_hd_click', image.filename, slug);
+                onDownload(image, 'modal_download');
               }}
               style={{
-                color: 'rgba(255, 255, 255, 0.72)',
-                fontSize: '0.82rem',
-                textDecoration: 'none',
-                textAlign: 'center',
-                lineHeight: 1.4,
+                backgroundColor: '#111827',
+                color: '#ffffff',
+                padding: '0.85rem 1.75rem',
+                border: '1px solid #111827',
+                borderBottom: '2px solid #9a6a3a',
+                borderRadius: '0',
+                fontSize: '0.78rem',
+                fontWeight: 600,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s ease',
+                whiteSpace: 'nowrap',
+                fontFamily: 'inherit',
               }}
+              onMouseEnter={(e) => { e.target.style.backgroundColor = '#000'; }}
+              onMouseLeave={(e) => { e.target.style.backgroundColor = '#111827'; }}
             >
-              Want this in higher resolution?{' '}
-              <span style={{ color: '#c4b5fd', fontWeight: 500 }}>
-                Get the HD version →
-              </span>
-            </Link>
-          )}
+              Download Free Sample
+            </button>
+
+            {hasHd && (
+              <Link
+                href={`/hd?highlight=${baseId}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  trackAnalytics('preview_modal_hd_button_click', image.filename, slug);
+                }}
+                style={{
+                  backgroundColor: '#E0A82E',
+                  color: '#111827',
+                  padding: '0.85rem 1.75rem',
+                  border: '1px solid #E0A82E',
+                  borderBottom: '2px solid #9a6a3a',
+                  borderRadius: '0',
+                  fontSize: '0.78rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s ease',
+                  whiteSpace: 'nowrap',
+                  fontFamily: 'inherit',
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  display: 'inline-block',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#c89020'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#E0A82E'; }}
+              >
+                Get HD — $4.99
+              </Link>
+            )}
+
+            {hasHd && (
+              <div style={{
+                color: 'rgba(255, 255, 255, 0.78)',
+                fontSize: '0.78rem',
+                lineHeight: 1.5,
+                textAlign: 'center',
+                marginTop: '0.15rem',
+                letterSpacing: '0.02em',
+              }}>
+                HD = 2912×1632, 4× the resolution. Sharper through codec compression.
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,8 @@
-const PINTEREST_API_URL = 'https://api.pinterest.com/v5/pins';
+// Pinterest API base. Trial apps must use the sandbox; production access requires approval.
+// Override via env: PINTEREST_API_BASE=https://api.pinterest.com (after approval)
+const PINTEREST_API_BASE =
+  process.env.PINTEREST_API_BASE || 'https://api-sandbox.pinterest.com';
+const PINTEREST_API_URL = `${PINTEREST_API_BASE}/v5/pins`;
 const MAX_ATTEMPTS = 3;
 const RETRY_BASE_DELAY_MS = 1000;
 const DEFAULT_QUEUE_DELAY_MS = 500;

@@ -128,8 +128,12 @@ async function publishOne(slug, manifestPath) {
     image_url: pin.imageUrl,
   };
 
+  const apiBase = process.env.PINTEREST_API_BASE || 'https://api-sandbox.pinterest.com';
+  const isSandbox = apiBase.includes('sandbox');
+
   console.log('[publish-one] === REQUEST ===');
-  console.log(`  endpoint:    POST https://api.pinterest.com/v5/pins`);
+  console.log(`  endpoint:    POST ${apiBase}/v5/pins`);
+  console.log(`  environment: ${isSandbox ? 'SANDBOX (Trial app)' : 'PRODUCTION'}`);
   console.log(`  slug:        ${pin.slug}`);
   console.log(`  category:    ${pin.category}`);
   console.log(`  board_id:    ${boardId}  (from ${boardSource})`);
@@ -145,7 +149,12 @@ async function publishOne(slug, manifestPath) {
   if (result.success) {
     console.log(`  status:  OK`);
     console.log(`  pin_id:  ${result.pin_id}`);
-    console.log(`  view at: https://www.pinterest.com/pin/${result.pin_id}/`);
+    if (isSandbox) {
+      console.log(`  note:    Sandbox pins are visible only via the Pinterest API,`);
+      console.log(`           not on pinterest.com. Production access requires Pinterest approval.`);
+    } else {
+      console.log(`  view at: https://www.pinterest.com/pin/${result.pin_id}/`);
+    }
     return 0;
   }
   console.log(`  status:  FAILED`);

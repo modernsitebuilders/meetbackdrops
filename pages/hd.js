@@ -1772,9 +1772,7 @@ export default function Premium({ reviewsData }) {
           lineHeight: 1.65,
           color: '#d1d5db',
         }}>
-          Roughly 3× the effective resolution of standard webcam backgrounds. Studio-designed
-          backgrounds that survive Zoom and Teams compression where stock JPEGs fall apart —
-          and shine on the 4K monitors and projectors where presence shows.
+          2912×1632 PNG. 4× the resolution of the free sample. From $4.99.
         </p>
 
         {isSubscriber ? (
