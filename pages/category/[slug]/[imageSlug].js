@@ -99,8 +99,9 @@ export default function ImagePage({ image, related, categoryName }) {
               <span style={{ color: '#111827' }}>{image.title}</span>
             </nav>
 
-            {/* Main image */}
+            {/* Main image — wrapper is positioned so the download overlay can pin to the corner. */}
             <div style={{
+              position: 'relative',
               borderRadius: '12px',
               overflow: 'hidden',
               marginBottom: '2rem',
@@ -111,6 +112,16 @@ export default function ImagePage({ image, related, categoryName }) {
                 alt={image.alt || image.title}
                 style={{ width: '100%', display: 'block' }}
               />
+              <button
+                type="button"
+                onClick={() => handleDownload(downloadImage, image.category)}
+                disabled={isDownloading}
+                aria-label={isDownloading ? 'Downloading' : 'Download free PNG'}
+                className="mb-image-overlay-cta"
+              >
+                <span style={{ fontSize: '1.05rem', lineHeight: 1 }}>⬇</span>
+                <span>{isDownloading ? 'Downloading…' : 'Free PNG'}</span>
+              </button>
             </div>
 
             {/* Title + download */}
@@ -377,6 +388,44 @@ export default function ImagePage({ image, related, categoryName }) {
           }
           @media (max-width: 767px) {
             .mb-sticky-cta { display: flex; }
+          }
+          .mb-image-overlay-cta {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 0.95rem;
+            border: none;
+            border-radius: 999px;
+            background: rgba(17, 24, 39, 0.78);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            transition: background 0.18s ease, transform 0.18s ease;
+            -webkit-tap-highlight-color: transparent;
+          }
+          .mb-image-overlay-cta:hover:not(:disabled),
+          .mb-image-overlay-cta:focus-visible:not(:disabled) {
+            background: #111827;
+            transform: translateY(-1px);
+            outline: none;
+          }
+          .mb-image-overlay-cta:disabled {
+            background: rgba(156, 163, 175, 0.85);
+            cursor: not-allowed;
+          }
+          @media (max-width: 480px) {
+            .mb-image-overlay-cta {
+              top: 10px;
+              right: 10px;
+              padding: 0.55rem 0.85rem;
+              font-size: 0.85rem;
+            }
           }
         `}</style>
 
