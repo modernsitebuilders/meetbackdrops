@@ -9,7 +9,7 @@ import RateLimitModal from '../../../components/RateLimitModal';
 import PostCompareModal from '../../../components/PostCompareModal';
 import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
 import BackToTop from '../../../components/BackToTop';
-import { HD_BASE_IDS } from '../../../lib/hdImages';
+import { HD_BASE_IDS } from '../../../lib/hdProducts';
 
 const CDN = 'https://assets.streambackdrops.com';
 

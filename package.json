@@ -4,13 +4,14 @@
   "description": "Professional virtual backgrounds for video calls",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-sitemaps.js && node scripts/validate-dataset.js && node scripts/check-seo-meta.js",
+    "prebuild": "node scripts/generate-hd-products.js && node scripts/generate-sitemaps.js && node scripts/validate-dataset.js && node scripts/check-seo-meta.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "validate-dataset": "node scripts/validate-dataset.js",
     "check:seo": "node scripts/check-seo-meta.js",
     "generate:sitemaps": "node scripts/generate-sitemaps.js",
+    "generate:hd-products": "node scripts/generate-hd-products.js",
     "update-counts": "node generate-category-counts.js",
     "backdrop-inventory": "node scripts/backdrop-inventory.js"
   },

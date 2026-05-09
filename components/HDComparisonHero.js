@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ComparisonWidget from './ComparisonWidget';
 import PostCompareModal from './PostCompareModal';
 import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
-import { HD_BASE_IDS } from '../lib/hdImages';
+import { HD_BASE_IDS } from '../lib/hdProducts';
 import { webpUrl } from '../lib/cloudinaryUrl';
 
 export default function HDComparisonHero({ slug, images = [], scores = {} }) {

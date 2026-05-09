@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { HD_BASE_IDS } from '../../lib/hdImages';
+import { HD_BASE_IDS } from '../../lib/hdProducts';
 import styles from '../../styles/CategoryHub.module.css';
 
 const HD_PREFIX_BY_SLUG = {

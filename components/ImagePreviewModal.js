@@ -13,7 +13,7 @@ function trackAnalytics(eventType, filename, category) {
   }).catch(() => {});
 }
 import { getSessionData, getOrCreateVisitorId, isReturningVisitor } from '../lib/sessionTracking';
-import { HD_BASE_IDS } from '../lib/hdImages';
+import { HD_BASE_IDS } from '../lib/hdProducts';
 
 export default function ImagePreviewModal({ image, slug, onClose, onDownload, cloudinaryUrls }) {
   if (!image) return null;

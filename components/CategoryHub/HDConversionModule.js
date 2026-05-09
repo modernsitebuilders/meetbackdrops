@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ComparisonWidget from '../ComparisonWidget';
 import PostCompareModal from '../PostCompareModal';
 import { webpUrl } from '../../lib/cloudinaryUrl';
-import { HD_BASE_IDS } from '../../lib/hdImages';
+import { HD_BASE_IDS } from '../../lib/hdProducts';
 import { getFreeImages } from '../../lib/images-access';
 import styles from '../../styles/CategoryHub.module.css';
 

@@ -1702,8 +1702,7 @@
       "workspace",
       "creative"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:2",
@@ -1726,8 +1725,7 @@
       "reading",
       "library"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:3",
@@ -1773,8 +1771,7 @@
       "colorful",
       "shelves"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:5",
@@ -1816,8 +1813,7 @@
       "home office",
       "online meetings"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:7",
@@ -1836,8 +1832,7 @@
       "home office",
       "video call"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:9",
@@ -1883,8 +1878,7 @@
       "library",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:11",
@@ -1907,8 +1901,7 @@
       "workspace",
       "decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:12",
@@ -1931,8 +1924,7 @@
       "creative",
       "education"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:13",
@@ -1955,8 +1947,7 @@
       "library",
       "study"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:14",
@@ -2070,8 +2061,7 @@
       "library",
       "reading"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:20",
@@ -2094,8 +2084,7 @@
       "video calls",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:21",
@@ -2156,8 +2145,7 @@
       "video calls",
       "zoom background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:24",
@@ -2176,8 +2164,7 @@
       "home office",
       "video calls"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:25",
@@ -2290,8 +2277,7 @@
       "colorful",
       "library"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:30",
@@ -2580,8 +2566,7 @@
       "decor",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-bright-:43",
@@ -3202,8 +3187,7 @@
       "elegant design",
       "professional setting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:4",
@@ -3269,8 +3253,7 @@
       "shelves",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:7",
@@ -3293,8 +3276,7 @@
       "library",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:8",
@@ -3318,8 +3300,7 @@
       "study",
       "shelves"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:9",
@@ -3341,8 +3322,7 @@
       "interior design",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:10",
@@ -3590,8 +3570,7 @@
       "home office",
       "video calls"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:24",
@@ -3637,8 +3616,7 @@
       "books",
       "interior"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:26",
@@ -3684,8 +3662,7 @@
       "library",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:28",
@@ -3708,8 +3685,7 @@
       "library",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:29",
@@ -3889,8 +3865,7 @@
       "elegant",
       "professional"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "bookshelves-dark-:38",
@@ -5546,8 +5521,7 @@
       "festive",
       "decorations"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "christmas-background-:36",
@@ -6428,8 +6402,7 @@
       "home office",
       "productivity"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "coffee-shop-:4",
@@ -6453,8 +6426,7 @@
       "interior",
       "cafe"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "coffee-shop-:5",
@@ -6566,8 +6538,7 @@
       "warm",
       "atmosphere"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "coffee-shop-:11",
@@ -6609,8 +6580,7 @@
       "warm",
       "ambiance"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "coffee-shop-:15",
@@ -6723,8 +6693,7 @@
       "warmth",
       "atmosphere"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "coffee-shop-:21",
@@ -7237,8 +7206,7 @@
       "professional",
       "meeting space"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "conference-room-:2",
@@ -7257,8 +7225,7 @@
       "video call",
       "professional"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "conference-room-:4",
@@ -7277,8 +7244,7 @@
       "professional",
       "meeting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "conference-room-:5",
@@ -7300,8 +7266,7 @@
       "business",
       "video call"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "conference-room-:6",
@@ -7325,8 +7290,7 @@
       "workspace",
       "business"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "conference-room-:8",
@@ -7587,8 +7551,7 @@
       "meetings",
       "office"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "conference-room-:22",
@@ -8074,8 +8037,7 @@
       "zoom",
       "teleconference"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:4",
@@ -8098,8 +8060,7 @@
       "flowers",
       "festive"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:5",
@@ -8205,8 +8166,7 @@
       "video call",
       "holiday"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:102",
@@ -8520,8 +8480,7 @@
       "decor",
       "colorful"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:22",
@@ -8724,8 +8683,7 @@
       "eggs",
       "flowers"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:35",
@@ -8748,8 +8706,7 @@
       "eggs",
       "flowers"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:36",
@@ -8806,8 +8763,7 @@
       "holiday",
       "colorful"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:40",
@@ -8875,8 +8831,7 @@
       "eggs",
       "flowers"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:43",
@@ -9013,8 +8968,7 @@
       "zoom",
       "video call"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:49",
@@ -9033,8 +8987,7 @@
       "spring",
       "decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:51",
@@ -9126,8 +9079,7 @@
       "flowers",
       "colorful"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:57",
@@ -9150,8 +9102,7 @@
       "eggs",
       "flowers"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:58",
@@ -9196,8 +9147,7 @@
       "eggs",
       "flowers"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:64",
@@ -9243,8 +9193,7 @@
       "festive",
       "nature"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:67",
@@ -9382,8 +9331,7 @@
       "decorative",
       "celebration"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:74",
@@ -9406,8 +9354,7 @@
       "flowers",
       "celebration"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:75",
@@ -9430,8 +9377,7 @@
       "zoom",
       "meetings"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:76",
@@ -9631,8 +9577,7 @@
       "celebration",
       "decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:91",
@@ -9656,8 +9601,7 @@
       "zoom",
       "video call"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:92",
@@ -9680,8 +9624,7 @@
       "zoom",
       "meeting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:93",
@@ -9704,8 +9647,7 @@
       "zoom",
       "meeting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:95",
@@ -9819,8 +9761,7 @@
       "celebration",
       "festive"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "garden-patio-:1",
@@ -9843,8 +9784,7 @@
       "scenery",
       "peaceful"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "garden-patio-:2",
@@ -9960,8 +9900,7 @@
       "relaxing",
       "scenery"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "garden-patio-:14",
@@ -9984,8 +9923,7 @@
       "relaxing",
       "landscape"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "garden-patio-:16",
@@ -11452,8 +11390,7 @@
       "productivity",
       "digital backdrop"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:2",
@@ -11499,8 +11436,7 @@
       "zoom",
       "conference"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:4",
@@ -11522,8 +11458,7 @@
       "professional",
       "office decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:5",
@@ -11545,8 +11480,7 @@
       "modern",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:6",
@@ -11591,8 +11525,7 @@
       "professional",
       "telecommuting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:8",
@@ -11615,8 +11548,7 @@
       "modern",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:9",
@@ -11739,8 +11671,7 @@
       "interior",
       "professional"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:14",
@@ -11759,8 +11690,7 @@
       "remote work",
       "professional"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:15",
@@ -11824,8 +11754,7 @@
       "home decor",
       "telecommuting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:18",
@@ -11883,8 +11812,7 @@
       "professional",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:21",
@@ -11926,8 +11854,7 @@
       "modern",
       "decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:23",
@@ -11946,8 +11873,7 @@
       "video calls",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:24",
@@ -12051,8 +11977,7 @@
       "decor",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:29",
@@ -12071,8 +11996,7 @@
       "video calls",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:30",
@@ -12095,8 +12019,7 @@
       "modern",
       "design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:31",
@@ -12115,8 +12038,7 @@
       "workspace",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:32",
@@ -12458,8 +12380,7 @@
       "productivity",
       "professionalism"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:49",
@@ -12498,8 +12419,7 @@
       "workspace",
       "professional"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:51",
@@ -12721,8 +12641,7 @@
       "elegant",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:62",
@@ -12744,8 +12663,7 @@
       "professional setting",
       "digital background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:63",
@@ -12884,8 +12802,7 @@
       "video calls",
       "modern design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:70",
@@ -12991,8 +12908,7 @@
       "interior design",
       "productivity"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "home-offices-:75",
@@ -13551,8 +13467,7 @@
       "cozy",
       "home decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "kitchen-:5",
@@ -13575,8 +13490,7 @@
       "home office",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "kitchen-:6",
@@ -13599,8 +13513,7 @@
       "workspace",
       "stylish"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "kitchen-:7",
@@ -13729,8 +13642,7 @@
       "video calls",
       "decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "kitchen-:15",
@@ -13753,8 +13665,7 @@
       "decor",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "kitchen-:17",
@@ -14399,8 +14310,7 @@
       "study",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "library-:18",
@@ -14739,8 +14649,7 @@
       "workspace",
       "decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "library-:34",
@@ -14759,8 +14668,7 @@
       "books",
       "cozy"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "library-:35",
@@ -15083,8 +14991,7 @@
       "home decor",
       "video calls"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:9",
@@ -15126,8 +15033,7 @@
       "video call",
       "online meetings"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:11",
@@ -15146,8 +15052,7 @@
       "home decor",
       "video calls"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:12",
@@ -15216,8 +15121,7 @@
       "workspace",
       "zoom background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:15",
@@ -15278,8 +15182,7 @@
       "home office",
       "video calls"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:18",
@@ -15431,8 +15334,7 @@
       "interior design",
       "warm atmosphere"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:28",
@@ -15644,8 +15546,7 @@
       "furniture",
       "warm atmosphere"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:42",
@@ -15733,8 +15634,7 @@
       "decor",
       "warm"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "living-room-:47",
@@ -15803,8 +15703,7 @@
       "peaceful",
       "outdoors"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "nature-landscape-:12",
@@ -15906,8 +15805,7 @@
       "scenery",
       "outdoors"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "nature-landscape-:2",
@@ -15950,8 +15848,7 @@
       "environment",
       "nature lovers"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "nature-landscape-:22",
@@ -15974,8 +15871,7 @@
       "serene",
       "relaxation"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "nature-landscape-:23",
@@ -16362,8 +16258,7 @@
       "natural",
       "relaxing"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "nature-landscape-:47",
@@ -16698,8 +16593,7 @@
       "modern design",
       "professional setting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:2",
@@ -16721,8 +16615,7 @@
       "business",
       "modern design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:3",
@@ -16744,8 +16637,7 @@
       "workspace",
       "digital background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:4",
@@ -16790,8 +16682,7 @@
       "workspace",
       "zoom background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:6",
@@ -16837,8 +16728,7 @@
       "digital environments",
       "zoom backgrounds"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:9",
@@ -16880,8 +16770,7 @@
       "video call",
       "modern design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:100",
@@ -17181,8 +17070,7 @@
       "zoom backgrounds",
       "virtual meetings"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:120",
@@ -17334,8 +17222,7 @@
       "business",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:16",
@@ -17358,8 +17245,7 @@
       "design",
       "interior"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:17",
@@ -17420,8 +17306,7 @@
       "home office",
       "professional setting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:20",
@@ -17445,8 +17330,7 @@
       "digital",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:21",
@@ -17530,8 +17414,7 @@
       "home office",
       "digital backdrop"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:25",
@@ -17618,8 +17501,7 @@
       "zoom",
       "home office"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:30",
@@ -17709,8 +17591,7 @@
       "zoom background",
       "home office"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:34",
@@ -17754,8 +17635,7 @@
       "modern design",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:36",
@@ -17777,8 +17657,7 @@
       "professional",
       "home office"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:37",
@@ -17819,8 +17698,7 @@
       "remote work",
       "professional"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:39",
@@ -17908,8 +17786,7 @@
       "productivity",
       "interior"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:44",
@@ -18196,8 +18073,7 @@
       "remote work",
       "business"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:61",
@@ -18243,8 +18119,7 @@
       "modern design",
       "home office"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:63",
@@ -18267,8 +18142,7 @@
       "zoom background",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:64",
@@ -18337,8 +18211,7 @@
       "home office",
       "digital background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:69",
@@ -18357,8 +18230,7 @@
       "video calls",
       "professional setting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:70",
@@ -18380,8 +18252,7 @@
       "workspace",
       "business"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:71",
@@ -18400,8 +18271,7 @@
       "home office",
       "professional setting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:72",
@@ -18513,8 +18383,7 @@
       "business",
       "remote work"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:78",
@@ -18647,8 +18516,7 @@
       "business",
       "productivity"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "office-spaces-:85",
@@ -18904,8 +18772,7 @@
       "blossom",
       "seasonal"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "spring-background-:3",
@@ -19453,8 +19320,7 @@
       "meetings",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "spring-background-:37",
@@ -19659,8 +19525,7 @@
       "bright",
       "seasonal"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "spring-background-:56",
@@ -19799,8 +19664,7 @@
       "vibrant",
       "seasonal"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "spring-background-:65",
@@ -19916,8 +19780,7 @@
       "colorful",
       "photography"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "spring-background-:74",
@@ -19940,8 +19803,7 @@
       "zoom",
       "meetings"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "spring-background-:75",
@@ -21168,8 +21030,7 @@
       "trendy",
       "chic"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "urban-loft-:11",
@@ -21344,8 +21205,7 @@
       "workspace",
       "design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "urban-loft-:19",
@@ -21390,8 +21250,7 @@
       "home office",
       "stylish decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "urban-loft-:21",
@@ -21527,8 +21386,7 @@
       "office",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "urban-loft-:27",
@@ -21574,8 +21432,7 @@
       "chic",
       "design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "urban-loft-:29",
@@ -22433,8 +22290,7 @@
       "shelf styling",
       "modern decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:2",
@@ -22457,8 +22313,7 @@
       "workspace",
       "digital backdrop"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:3",
@@ -22477,8 +22332,7 @@
       "home office",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:5",
@@ -22497,8 +22351,7 @@
       "home decor",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:6",
@@ -22562,8 +22415,7 @@
       "shelves",
       "colorful"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:11",
@@ -22601,8 +22453,7 @@
       "home office",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:13",
@@ -22625,8 +22476,7 @@
       "interior design",
       "shelf styling"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:14",
@@ -22692,8 +22542,7 @@
       "workspace",
       "background image"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:17",
@@ -22712,8 +22561,7 @@
       "home office",
       "video calls"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:18",
@@ -22778,8 +22626,7 @@
       "workspace",
       "aesthetic"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:21",
@@ -22798,8 +22645,7 @@
       "home office",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:22",
@@ -22941,8 +22787,7 @@
       "home office",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:29",
@@ -22964,8 +22809,7 @@
       "workspace",
       "modern shelves"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:30",
@@ -23164,8 +23008,7 @@
       "home office",
       "stylish design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:50",
@@ -23205,8 +23048,7 @@
       "shelf styling",
       "modern decor"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:52",
@@ -23248,8 +23090,7 @@
       "home office",
       "online meetings"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-bright-:55",
@@ -23271,8 +23112,7 @@
       "modern shelves",
       "colorful background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:1",
@@ -23294,8 +23134,7 @@
       "modern style",
       "zoom background"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:2",
@@ -23314,8 +23153,7 @@
       "interior design",
       "shelves"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:3",
@@ -23356,8 +23194,7 @@
       "sophisticated",
       "workspace"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:5",
@@ -23395,8 +23232,7 @@
       "video call",
       "office style"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:7",
@@ -23618,8 +23454,7 @@
       "home office",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:18",
@@ -23657,8 +23492,7 @@
       "home decor",
       "interior design"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:20",
@@ -23776,8 +23610,7 @@
       "interior design",
       "home office"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:27",
@@ -23818,8 +23651,7 @@
       "modern",
       "elegant"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:29",
@@ -23842,8 +23674,7 @@
       "minimalist",
       "online meetings"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:30",
@@ -23940,8 +23771,7 @@
       "shelf styling",
       "modern aesthetic"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:35",
@@ -24112,8 +23942,7 @@
       "digital backdrop",
       "elegant"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "wall-shelves-dark-:45",
@@ -24591,8 +24420,7 @@
       "warm lighting",
       "barista counter"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "conference-room-:3",
@@ -24610,8 +24438,7 @@
       "executive table",
       "professional meeting"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:2",
@@ -24629,8 +24456,7 @@
       "pastel",
       "holiday"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:59",
@@ -24648,8 +24474,7 @@
       "pastel",
       "holiday"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:73",
@@ -24667,8 +24492,7 @@
       "pastel",
       "holiday"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:87",
@@ -24686,8 +24510,7 @@
       "pastel",
       "holiday"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "easter-background-:106",
@@ -24705,8 +24528,7 @@
       "pastel",
       "holiday"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "kitchen-:16",
@@ -24724,8 +24546,7 @@
       "warm",
       "natural light"
     ],
-    "hdOnly": false,
-    "hd": true
+    "hdOnly": false
   },
   {
     "id": "nature-landscape-:11",
@@ -24734,15 +24555,16 @@
     "folder": "nature-landscapes",
     "image_webp": "nature-landscape-11.webp",
     "download_png": "nature-landscape-11.png",
-    "title": "Cinematic Outdoor Landscape 11 — Studio-Designed Background for Teams & Zoom | MeetBackdrops",
-    "description": "Designed 4K natural landscape (Edition 11), engineered for codec compression. A high-fidelity virtual background for corporate Zoom, Teams, and Meet calls.",
-    "alt": "Natural landscape — high-fidelity virtual background engineered for codec compression.",
+    "title": "",
+    "description": "",
+    "alt": "",
     "tags": [
       "nature",
       "landscape",
       "outdoors",
       "scenic"
     ],
+    "hdOnly": true,
     "hd": true
   },
   {
@@ -24752,15 +24574,16 @@
     "folder": "nature-landscapes",
     "image_webp": "nature-landscape-14.webp",
     "download_png": "nature-landscape-14.png",
-    "title": "Designed Cinematic Outdoor Landscape 14 — Virtual Set for Zoom & Meet | MeetBackdrops",
-    "description": "A high-fidelity, studio-designed natural landscape — Edition 14, composed for camera. Professional-grade 4K virtual background for corporate video calls.",
-    "alt": "Natural landscape — designed 4K virtual background for corporate video calls.",
+    "title": "",
+    "description": "",
+    "alt": "",
     "tags": [
       "nature",
       "landscape",
       "outdoors",
       "scenic"
     ],
+    "hdOnly": true,
     "hd": true
   },
   {
@@ -24770,15 +24593,16 @@
     "folder": "nature-landscapes",
     "image_webp": "nature-landscape-19.webp",
     "download_png": "nature-landscape-19.png",
-    "title": "Cinematic Outdoor Landscape 19 — Studio-Designed Background for Teams & Zoom | MeetBackdrops",
-    "description": "From the MeetBackdrops Studio: Edition 19, a 4K-upscaled natural landscape. Designed for Zoom, Microsoft Teams, and Google Meet.",
-    "alt": "Open scenic landscape — high-fidelity virtual background engineered for codec compression.",
+    "title": "",
+    "description": "",
+    "alt": "",
     "tags": [
       "nature",
       "landscape",
       "outdoors",
       "scenic"
     ],
+    "hdOnly": true,
     "hd": true
   },
   {
@@ -24788,15 +24612,16 @@
     "folder": "nature-landscapes",
     "image_webp": "nature-landscape-20.webp",
     "download_png": "nature-landscape-20.png",
-    "title": "Cinematic Outdoor Landscape 20 — Studio-Designed Background for Teams & Zoom | MeetBackdrops",
-    "description": "Edition 20: a studio-designed natural landscape, upscaled to 4K and engineered for codec compression on Zoom, Teams, and Google Meet.",
-    "alt": "Open scenic landscape — high-fidelity virtual background engineered for codec compression.",
+    "title": "",
+    "description": "",
+    "alt": "",
     "tags": [
       "nature",
       "landscape",
       "outdoors",
       "scenic"
     ],
+    "hdOnly": true,
     "hd": true
   },
   {
@@ -24806,15 +24631,16 @@
     "folder": "nature-landscapes",
     "image_webp": "nature-landscape-30.webp",
     "download_png": "nature-landscape-30.png",
-    "title": "Studio Cinematic Outdoor Landscape 30 — Zoom & Teams Background | MeetBackdrops",
-    "description": "Composed for camera, this natural landscape (Edition 30) is a studio-designed 4K virtual background for executive Zoom, Teams, and Meet calls.",
-    "alt": "Open scenic landscape — 4K-upscaled virtual background for Zoom, Teams, and Google Meet.",
+    "title": "",
+    "description": "",
+    "alt": "",
     "tags": [
       "nature",
       "landscape",
       "outdoors",
       "scenic"
     ],
+    "hdOnly": true,
     "hd": true
   },
   {
@@ -24824,15 +24650,16 @@
     "folder": "nature-landscapes",
     "image_webp": "nature-landscape-98.webp",
     "download_png": "nature-landscape-98.png",
-    "title": "Designed Natural Landscape 98 — Virtual Set for Zoom & Meet | MeetBackdrops",
-    "description": "A studio-designed natural landscape — Edition 98, produced as a virtual set and upscaled to 4K. Engineered for codec compression on corporate calls.",
-    "alt": "Cinematic outdoor landscape — designed 4K virtual background for corporate video calls.",
+    "title": "",
+    "description": "",
+    "alt": "",
     "tags": [
       "nature",
       "landscape",
       "outdoors",
       "scenic"
     ],
+    "hdOnly": true,
     "hd": true
   },
   {
@@ -24842,15 +24669,16 @@
     "folder": "nature-landscapes",
     "image_webp": "nature-landscape-99.webp",
     "download_png": "nature-landscape-99.png",
-    "title": "Natural Landscape 99 — Studio-Designed Background for Teams & Zoom | MeetBackdrops",
-    "description": "Edition 99: a studio-designed natural landscape, upscaled to 4K and engineered for codec compression on Zoom, Teams, and Google Meet.",
-    "alt": "Open scenic landscape — high-fidelity virtual background engineered for codec compression.",
+    "title": "",
+    "description": "",
+    "alt": "",
     "tags": [
       "nature",
       "landscape",
       "outdoors",
       "scenic"
     ],
+    "hdOnly": true,
     "hd": true
   }
 ]
