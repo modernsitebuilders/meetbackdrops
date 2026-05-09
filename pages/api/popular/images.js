@@ -36,18 +36,22 @@ export default async function handler(req, res) {
     const averageScore = parseFloat(rows[3][1]) || 0;
     
     // 4. Extract images (skip header rows)
+    // Cached rows may carry the legacy "StreamBackdrops-" filename prefix from
+    // before the May 2026 rebrand; the actual R2 objects don't have it, so strip
+    // it from both filename and webPath to keep image src + download flows valid.
+    const stripLegacyPrefix = (s) => (s || '').replace(/StreamBackdrops-/gi, '');
     const images = [];
     for (let i = 6; i < rows.length; i++) {
       const row = rows[i];
       if (row.length >= 7 && row[1]) { // Has filename in column B
         images.push({
           rank: parseInt(row[0]) || i - 5,
-          filename: row[1] || '',
+          filename: stripLegacyPrefix(row[1]),
           category: row[2] || '',
           score: parseInt(row[3]) || 0,
           downloads: parseInt(row[4]) || 0,
           lastDownload: row[5] || null,
-          webPath: row[6] || ''
+          webPath: stripLegacyPrefix(row[6])
         });
       }
     }
@@ -85,7 +89,11 @@ export default async function handler(req, res) {
     
     // If we have JSON data, use it (it includes full metadata)
     if (jsonData && jsonData.topImages) {
-      responseData.images = jsonData.topImages;
+      responseData.images = jsonData.topImages.map((img) => ({
+        ...img,
+        filename: stripLegacyPrefix(img.filename),
+        webPath: stripLegacyPrefix(img.webPath),
+      }));
       responseData.topScore = jsonData.topScore;
       responseData.topImage = jsonData.topImage;
     }
