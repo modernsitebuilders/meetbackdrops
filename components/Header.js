@@ -103,7 +103,6 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
 
   const collectionsItems = [
     { name: 'Most Popular', path: '/category/most-popular' },
-    { name: 'Browse by Keywords', path: '/browse' },
     { name: 'Recently Added', path: '/category/recently-added' }
   ];
 

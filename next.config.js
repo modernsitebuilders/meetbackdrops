@@ -180,6 +180,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/browse',
+        destination: '/',
+        permanent: true,
+      },
+      {
       source: '/bundles',
       destination: '/hd',
       permanent: true, // 301 redirect

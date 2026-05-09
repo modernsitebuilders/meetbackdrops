@@ -72,7 +72,6 @@ export default async function handler(req, res) {
     if (first === 'hd-download') return 'hd_download';
     if (first === 'branded-backgrounds') return 'branded';
     if (first === 'bundles') return 'bundles';
-    if (first === 'browse') return 'browse';
     if (first === 'most-popular') return 'popular';
     if (first === 'contact') return 'contact';
     if (first === 'privacy' || first === 'terms' || first === 'license') return 'legal';

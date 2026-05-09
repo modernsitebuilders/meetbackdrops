@@ -106,7 +106,7 @@ export default function RecentlyAdded() {
         ) : images.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '3rem' }}>
             <p>No new backgrounds in the last 30 days.</p>
-            <Link href="/browse" style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+            <Link href="/" style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
               Browse all backgrounds →
             </Link>
           </div>
