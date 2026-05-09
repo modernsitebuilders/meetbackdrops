@@ -30,6 +30,7 @@ import { hdVirtualBackgroundsContent }         from './blog-content/hd-virtual-b
 import { logoVirtualBackgroundContent }        from './blog-content/logo-virtual-background';
 import { virtualBackgroundSetupByPlatformContent } from './blog-content/virtual-background-setup-by-platform';
 import { howToChangeZoomBackgroundPcContent }      from './blog-content/how-to-change-zoom-background-pc';
+import { whyZoomBackgroundBlurryContent }          from './blog-content/why-zoom-background-blurry';
 // ─── ↑ Add new content imports above this line ───────────────────────────────
 
 export const blogPosts = [
@@ -159,6 +160,26 @@ export const blogPosts = [
   },
 
   // ─── Regular posts ──────────────────────────────────────────────────────────
+  {
+    slug: 'why-zoom-background-blurry',
+    // Title length budget: ≤ 65 chars. Verified by scripts/check-seo-meta.js.
+    title: 'Why Does My Zoom Background Look Blurry? (And How to Fix It)',
+    description: 'Your Zoom background looks blurry because most free downloads are below 1080p — and your monitor is bigger than it used to be. Here\'s the fix.',
+    excerpt: 'Three reasons your virtual background looks soft on Zoom, Teams, and Google Meet — and the one almost no one mentions: your monitor got bigger.',
+    headline: 'Why Does My Zoom Background Look Blurry? (And How to Fix It)',
+    keywords: 'zoom background blurry, why is my zoom background blurry, blurry virtual background, fix zoom background quality, sharp zoom background, low resolution virtual background',
+    canonical: 'https://meetbackdrops.com/blog/why-zoom-background-blurry',
+    image: 'https://assets.streambackdrops.com/webp/office-spaces/office-spaces-01.webp',
+    category: 'Troubleshooting',
+    readTime: '6 min read',
+    date: 'May 2026',
+    datePublished: '2026-05-09',
+    dateModified: '2026-05-09',
+    featured: false,
+    sortOrder: 14,
+    live: true,
+    content: whyZoomBackgroundBlurryContent
+  },
   {
     slug: 'how-to-change-zoom-background-pc',
     // NOTE: title is intentionally ≤70 chars (Bing/SEO limit). Do NOT lengthen it.

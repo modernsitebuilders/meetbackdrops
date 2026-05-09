@@ -39,6 +39,14 @@ export default function Blog() {
 
   const blogPosts = [
     {
+    title: "Why Does My Zoom Background Look Blurry? (And How to Fix It)",
+    slug: "why-zoom-background-blurry",
+    excerpt: "Three reasons your virtual background looks soft on Zoom, Teams, and Google Meet — and the one almost no one mentions: your monitor got bigger.",
+    date: "May 2026",
+    readTime: "6 min read",
+    category: "Troubleshooting"
+  },
+    {
     title: "How to Change Your Zoom Background on a PC (2026 Tutorial)",
     slug: "how-to-change-zoom-background-pc",
     excerpt: "Step-by-step tutorial for changing your Zoom virtual background on a PC — watch the video or follow the written steps. Includes the fix if the option is greyed out.",

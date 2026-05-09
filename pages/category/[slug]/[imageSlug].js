@@ -151,47 +151,84 @@ export default function ImagePage({ image, related, categoryName }) {
               </button>
             </div>
 
-            {/* HD Upsell Card */}
-            {hasHd && (
-              <div style={{
+            {/* How to use — visible after the user has the file. Lightweight, no JS state. */}
+            <details style={{
+              marginBottom: '1.5rem',
+              background: '#fff',
+              border: '1px solid #e5e7eb',
+              borderRadius: '10px',
+              padding: '0.85rem 1.1rem',
+            }}>
+              <summary style={{
+                cursor: 'pointer',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                color: '#111827',
+                listStyle: 'none',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '1rem',
-                background: '#111827',
-                borderRadius: '12px',
-                padding: '1.25rem 1.5rem',
-                marginBottom: '1.5rem',
-                flexWrap: 'wrap',
+                gap: '0.5rem',
               }}>
-                <div style={{ color: '#fff' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 700, background: '#facc15', color: '#111', padding: '0.15rem 0.5rem', borderRadius: '4px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>HD</span>
-                    <span style={{ fontSize: '1rem', fontWeight: 700 }}>Upgrade to HD</span>
-                  </div>
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#bfdbfe', lineHeight: 1.4 }}>
-                    2912 × 1632 · Full resolution · Instant download
-                  </p>
+                <span style={{ fontSize: '1.1rem' }}>💡</span>
+                How to use this on Zoom, Teams, and Google Meet
+              </summary>
+              <div style={{ marginTop: '0.85rem', display: 'grid', gap: '0.85rem', fontSize: '0.9rem', color: '#374151', lineHeight: 1.55 }}>
+                <div>
+                  <strong style={{ color: '#111827' }}>Zoom:</strong> Settings → Backgrounds &amp; Effects → click <em>+</em> next to Virtual Backgrounds → Add Image → choose this PNG.
                 </div>
-                <Link
-                  href={hdHref}
-                  style={{
-                    display: 'inline-block',
-                    background: '#facc15',
-                    color: '#111827',
-                    textDecoration: 'none',
-                    padding: '0.7rem 1.5rem',
-                    borderRadius: '8px',
-                    fontWeight: 700,
-                    fontSize: '0.95rem',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0,
-                  }}
-                >
-                  Get HD — $4.99
-                </Link>
+                <div>
+                  <strong style={{ color: '#111827' }}>Microsoft Teams:</strong> Before joining a call, click <em>Background filters</em> → Add new → upload this PNG. Or in-call: <em>More</em> → <em>Apply background effects</em>.
+                </div>
+                <div>
+                  <strong style={{ color: '#111827' }}>Google Meet:</strong> Click the visual-effects icon (bottom-right of self-view) → <em>Backgrounds</em> tab → upload this PNG with the <em>+</em> button.
+                </div>
+                <div style={{ paddingTop: '0.4rem', borderTop: '1px solid #f3f4f6', color: '#6b7280', fontSize: '0.85rem' }}>
+                  Tip: 16:9 aspect ratio, designed for codec compression so it stays crisp on calls.
+                </div>
               </div>
-            )}
+            </details>
+
+            {/* HD Upsell Strip — always rendered. Copy + CTA differ when this specific image has an HD variant. */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 1fr) auto',
+              gap: '1.25rem',
+              alignItems: 'center',
+              background: '#111827',
+              borderRadius: '12px',
+              padding: '1.25rem 1.5rem',
+              marginBottom: '1.5rem',
+            }}>
+              <div style={{ color: '#fff' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 700, background: '#facc15', color: '#111', padding: '0.15rem 0.5rem', borderRadius: '4px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>HD</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 700 }}>
+                    {hasHd ? 'This image in HD — 2912 × 1632' : 'For 27"+ monitors, recordings, and Teams Premium'}
+                  </span>
+                </div>
+                <p style={{ margin: 0, fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                  Free version is <strong style={{ color: '#fff' }}>1456 × 816</strong> (1.18 MP — below 1080p). HD is <strong style={{ color: '#fff' }}>2912 × 1632</strong> (4.75 MP — covers QHD natively). On large monitors, executive cameras, and recorded calls, the free version softens; HD doesn't.
+                </p>
+              </div>
+              <Link
+                href={hdHref}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: '#facc15',
+                  color: '#111827',
+                  textDecoration: 'none',
+                  padding: '0.7rem 1.5rem',
+                  borderRadius: '8px',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {hasHd ? 'Get HD — $4.99' : 'Browse HD Editions →'}
+              </Link>
+            </div>
 
             {/* Tags */}
             {image.tags?.length > 0 && (
@@ -281,6 +318,68 @@ export default function ImagePage({ image, related, categoryName }) {
             onClose={() => setShowHdModal(false)}
           />
         )}
+
+        {/* Sticky mobile download CTA — keeps the action in reach while scrolling related images */}
+        <div className="mb-sticky-cta">
+          <button
+            onClick={() => handleDownload(downloadImage, image.category)}
+            disabled={isDownloading}
+            style={{
+              flex: 1,
+              background: isDownloading ? '#9ca3af' : '#111827',
+              color: '#fff',
+              border: 'none',
+              padding: '0.95rem 1rem',
+              borderRadius: '10px',
+              fontSize: '1rem',
+              fontWeight: 700,
+              cursor: isDownloading ? 'not-allowed' : 'pointer',
+              boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
+            }}
+          >
+            {isDownloading ? 'Downloading…' : '⬇ Free PNG Download'}
+          </button>
+          {hasHd && (
+            <Link
+              href={hdHref}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: '#facc15',
+                color: '#111827',
+                textDecoration: 'none',
+                padding: '0.95rem 1.1rem',
+                borderRadius: '10px',
+                fontWeight: 700,
+                fontSize: '0.95rem',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
+              }}
+            >
+              HD $4.99
+            </Link>
+          )}
+        </div>
+        <style jsx>{`
+          .mb-sticky-cta {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+            gap: 0.6rem;
+            padding: 0.7rem 0.9rem calc(0.7rem + env(safe-area-inset-bottom));
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid #e5e7eb;
+            z-index: 50;
+          }
+          @media (max-width: 767px) {
+            .mb-sticky-cta { display: flex; }
+          }
+        `}</style>
+
         <BackToTop />
       </Layout>
     </>

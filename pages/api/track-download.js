@@ -115,6 +115,8 @@ export default async function handler(req, res) {
       req.headers['user-agent'] || 'unknown',
       req.headers['referer'] || 'direct',
       hashedIP,
+      '', // Q: pageType (only filled by track-page-view)
+      '', // R: entrySource (only filled by track-page-view)
     ];
   };
 

@@ -46,6 +46,9 @@ export default async function handler(req, res) {
     now.toLocaleTimeString('en-US', { timeZone: 'America/New_York' }),
     req.headers['user-agent'] || 'unknown',
     `bundle:${bundle}:$${price}`,
+    '', // P: hashedIP (only filled by track-download)
+    '', // Q: pageType (only filled by track-page-view)
+    '', // R: entrySource (only filled by track-page-view)
   ];
 
   try {

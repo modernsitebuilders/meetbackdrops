@@ -138,6 +138,8 @@ function CategoryContent({ slug, scores = {}, metadata = {} }) {
                 </p>
               </section>
 
+              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
+
               <ImageGrid
                 images={category.images}
                 scores={scores}
@@ -149,7 +151,6 @@ function CategoryContent({ slug, scores = {}, metadata = {} }) {
                 downloadingImage={downloadingImage}
               />
 
-              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
               <RelatedCategories currentSlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
@@ -157,6 +158,8 @@ function CategoryContent({ slug, scores = {}, metadata = {} }) {
             <>
               <CategoryHeader category={category} />
 
+              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
+
               <ImageGrid
                 images={category.images}
                 scores={scores}
@@ -168,7 +171,6 @@ function CategoryContent({ slug, scores = {}, metadata = {} }) {
                 downloadingImage={downloadingImage}
               />
 
-              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
               <RelatedCategories currentSlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
