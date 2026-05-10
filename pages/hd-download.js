@@ -53,6 +53,30 @@ export default function HDDownload() {
             })
           }).catch(() => {});
 
+          // GA4 ecommerce purchase event. Guarded by sessionStorage so a
+          // refresh of /hd-download?session_id=... doesn't double-count
+          // toward Google Ads conversion data.
+          try {
+            const trackedKey = `hd_purchase_tracked_${sessionId}`;
+            const alreadyTracked = sessionStorage.getItem(trackedKey) === '1';
+            if (!alreadyTracked && typeof window !== 'undefined' && window.gtag && data.amount_total != null) {
+              const value = data.amount_total / 100;
+              const currency = (data.currency || 'usd').toUpperCase();
+              const items = ids.map((id, i) => ({
+                item_id: id,
+                item_name: prods[i]?.title || id,
+                quantity: 1,
+              }));
+              window.gtag('event', 'purchase', {
+                transaction_id: sessionId,
+                value,
+                currency,
+                items,
+              });
+              sessionStorage.setItem(trackedKey, '1');
+            }
+          } catch (_) {}
+
         } else {
           setStatus('error');
           setError(data.error || 'Could not verify purchase');

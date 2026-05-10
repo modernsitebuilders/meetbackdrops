@@ -45,6 +45,11 @@ export default async function handler(req, res) {
       // Backwards compat for single-item consumers
       product_id: ids[0],
       product: products[0],
+      // For GA4 purchase event: amount_total is in the smallest currency unit
+      // (cents for USD). Send these to the client so it can populate the
+      // gtag('event', 'purchase', { value, currency }) ecommerce hit.
+      amount_total: session.amount_total,
+      currency: session.currency,
     });
   } catch (error) {
     console.error('Stripe verification failed:', error);

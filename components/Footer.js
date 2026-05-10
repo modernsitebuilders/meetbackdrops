@@ -212,7 +212,7 @@ export default function Footer() {
   
   {/* SaaSHub Badge */}
   <a 
-    href="https://www.saashub.com/streambackdrops?utm_source=badge&utm_campaign=badge&utm_content=streambackdrops&badge_variant=color&badge_kind=approved" 
+    href="https://www.saashub.com/meetbackdrops?utm_source=badge&utm_campaign=badge&utm_content=meetbackdrops&badge_variant=color&badge_kind=approved"
     target="_blank" 
     rel="noopener noreferrer"
   >
