@@ -59,54 +59,6 @@ export default async function handler(req, res) {
     if (originalUtmCampaign) originalSource += `/${originalUtmCampaign}`;
   }
 
-  // pageType: derive from URL shape so the sheet can be filtered without parsing paths.
-  const pageType = (() => {
-    if (!page || page === '/') return 'home';
-    const segments = page.split('?')[0].split('#')[0].split('/').filter(Boolean);
-    const [first, second, third] = segments;
-    if (first === 'category' && second && third) return 'image_page';
-    if (first === 'category' && second) return 'category';
-    if (first === 'blog' && second) return 'blog_post';
-    if (first === 'blog') return 'blog_index';
-    if (first === 'hd') return 'hd';
-    if (first === 'hd-download') return 'hd_download';
-    if (first === 'branded-backgrounds') return 'branded';
-    if (first === 'bundles') return 'bundles';
-    if (first === 'most-popular') return 'popular';
-    if (first === 'contact') return 'contact';
-    if (first === 'privacy' || first === 'terms' || first === 'license') return 'legal';
-    return 'other';
-  })();
-
-  // entrySource: only meaningful on the landing hit of a session.
-  // Mid-session hits are tagged 'internal' so the sheet can isolate true entry points.
-  const entrySource = (() => {
-    const isLanding = (pageViewsInSession || 1) <= 1;
-    if (!isLanding) return 'internal';
-    const ref = (referrer || '').toLowerCase();
-    if (utm_source) return `utm:${utm_source}`;
-    if (ref.includes('google.')) return pageType === 'image_page' ? 'google_images' : 'google_search';
-    if (ref.includes('bing.')) return 'bing';
-    if (ref.includes('duckduckgo.')) return 'duckduckgo';
-    if (ref.includes('yahoo.')) return 'yahoo';
-    if (ref.includes('facebook.') || ref.includes('fb.com') || ref.includes('m.facebook.')) return 'social_facebook';
-    if (ref.includes('t.co') || ref.includes('twitter.') || ref.includes('x.com')) return 'social_twitter';
-    if (ref.includes('linkedin.')) return 'social_linkedin';
-    if (ref.includes('reddit.')) return 'social_reddit';
-    if (ref.includes('pinterest.')) return 'social_pinterest';
-    if (ref.includes('instagram.')) return 'social_instagram';
-    if (ref.includes('youtube.')) return 'social_youtube';
-    if (ref.includes('chatgpt.com') || ref.includes('openai.com')) return 'chatgpt';
-    if (ref.includes('perplexity.')) return 'perplexity';
-    if (ref.includes('claude.ai') || ref.includes('anthropic.')) return 'claude';
-    if (ref.includes('meetbackdrops.') || ref.includes('streambackdrops.')) return 'internal';
-    if (ref && ref !== 'direct') return `referral:${ref.replace(/^https?:\/\//, '').split('/')[0]}`;
-    // No referrer + new visitor + deep page = almost certainly stripped search referrer.
-    if (visitorType === 'new' && pageType === 'image_page') return 'google_images_inferred';
-    if (visitorType === 'new' && (pageType === 'category' || pageType === 'blog_post')) return 'organic_inferred';
-    return 'direct';
-  })();
-
   const now = new Date();
   const row = [
     now.toLocaleString('en-US', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
@@ -124,9 +76,6 @@ export default async function handler(req, res) {
     now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
     req.headers['user-agent'] || 'unknown',
     currentSource,
-    '',           // P: hashedIP (only filled by track-download)
-    pageType,     // Q
-    entrySource,  // R
   ];
 
   try {

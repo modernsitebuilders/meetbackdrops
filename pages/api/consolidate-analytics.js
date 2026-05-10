@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     // Read all Analytics data
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'Analytics!A:R'
+      range: 'Analytics!A:P'
     });
 
     const allRows = response.data.values || [];
@@ -81,7 +81,7 @@ export default async function handler(req, res) {
     // Append old rows to Archive FIRST (safe — Analytics untouched until this succeeds)
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Analytics_Archive!A:R',
+      range: 'Analytics_Archive!A:P',
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       resource: { values: rowsToArchive }
