@@ -1,23 +1,28 @@
 'use client';
 
+// PRESENTATIONAL ONLY. Receives h1, subhead, and image list as props. No
+// category-catalog lookup, no string concatenation, no fallback copy. The
+// h1 string must come from `resolveSEO()` via SEOBoundary.
+
 import { webpUrl } from '../../lib/cloudinaryUrl';
 import styles from '../../styles/CategoryHub.module.css';
 
-export default function HubHero({ slug, images = [], onCtaClick, onImageClick }) {
+export default function HubHero({ h1, subhead, slug, images = [], onCtaClick, onImageClick }) {
+  if (typeof h1 !== 'string' || h1.length === 0) {
+    throw new Error('HubHero: `h1` prop is required (must come from resolveSEO).');
+  }
+  if (typeof subhead !== 'string' || subhead.length === 0) {
+    throw new Error('HubHero: `subhead` prop is required.');
+  }
+
   const [lead, ...rest] = images;
   if (!lead) return null;
 
   return (
     <section className={styles.hero}>
       <div className={styles.heroCopy}>
-        <h1 className={styles.heroTitle}>
-          Wall Shelf Virtual Backgrounds
-          <span className={styles.heroTitleSub}>HD for Zoom, Teams &amp; Google Meet</span>
-        </h1>
-        <p className={styles.heroSubhead}>
-          Studio-styled wall shelves — designed shelf by shelf for camera,
-          not lifted from a stock library.
-        </p>
+        <h1 className={styles.heroTitle}>{h1}</h1>
+        <p className={styles.heroSubhead}>{subhead}</p>
         <button
           type="button"
           onClick={onCtaClick}
@@ -41,7 +46,7 @@ export default function HubHero({ slug, images = [], onCtaClick, onImageClick })
         >
           <img
             src={webpUrl(lead.folder || slug, lead.filename)}
-            alt={`${lead.title} — featured wall-shelf virtual background`}
+            alt={lead.title || ''}
             loading="eager"
           />
         </button>
@@ -56,7 +61,7 @@ export default function HubHero({ slug, images = [], onCtaClick, onImageClick })
             >
               <img
                 src={webpUrl(img.folder || slug, img.filename)}
-                alt={`${img.title} — wall-shelf background preview`}
+                alt={img.title || ''}
                 loading="lazy"
               />
             </button>

@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["**/lib/seo/!(seo)", "**/lib/seo/!(seo).js"],
+            "message": "Only lib/seo/seo is a legal SEO entry point. Import { seo } from '@/lib/seo/seo' (or relative path) and nothing else."
+          }
+        ]
+      }
+    ]
+  }
+}

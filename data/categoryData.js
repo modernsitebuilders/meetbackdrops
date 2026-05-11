@@ -1,4 +1,4 @@
-import { CATEGORIES } from '../lib/categories-config';
+import { CATEGORIES } from '../lib/categories-config.js';
 
 // bookshelves-bright: 66 images
 const IMAGES_BOOKSHELVES_BRIGHT = [

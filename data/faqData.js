@@ -1,6 +1,6 @@
 // data/faqData.js
 // Centralized FAQ data for all pages
-import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config.js';
 
 export const faqData = {
   // Homepage FAQs

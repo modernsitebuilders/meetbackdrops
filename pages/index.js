@@ -56,6 +56,7 @@ export default function Home() {
     <Layout
       title="Studio-Designed Zoom & Teams Backgrounds | MeetBackdrops"
       description="Studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet. Composed for camera, not pulled from stock. Free samples available."
+      canonical="https://meetbackdrops.com"
       currentPage="home"
     >
       <Head>

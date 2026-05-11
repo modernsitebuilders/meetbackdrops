@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
 import { useWishlist } from '../lib/WishlistContext';
@@ -39,7 +38,6 @@ export default function Layout({
     canonical: '/',
   },
 }) {
-  const router = useRouter();
   const { drawerOpen } = useWishlist();
 
   const defaultStructuredData = {
@@ -98,22 +96,27 @@ export default function Layout({
         {/* ✅ Robots directive */}
         <meta name="robots" content={noIndex ? 'noindex' : 'index, follow, max-image-preview:large'} />
         
-        {/* ✅ Canonical URL */}
-        <link rel="canonical" href={canonical || `https://meetbackdrops.com${router.asPath.split('?')[0]}`} />
+        {/* Canonical URL — pages MUST pass `canonical` explicitly. There is
+            no fallback derived from the current URL. Closure for the category
+            route is enforced by lib/seo/seo.js + check-seo-singularity. */}
+        {canonical && <link rel="canonical" href={canonical} />}
         
-        {/* ✅ Open Graph for Social Sharing */}
+        {/* ✅ Open Graph for Social Sharing.
+            `image` may be absolute (https://...) or a path on meetbackdrops.com.
+            Absolute URLs are passed through unchanged so the SEO contract can
+            point OG images at the assets.streambackdrops.com CDN. */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={`https://meetbackdrops.com${image}`} />
+        <meta property="og:image" content={/^https?:\/\//.test(image) ? image : `https://meetbackdrops.com${image}`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="MeetBackdrops" />
         {canonical && <meta property="og:url" content={canonical} />}
-        
+
         {/* ✅ Twitter Cards */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={`https://meetbackdrops.com${image}`} />
+        <meta property="twitter:image" content={/^https?:\/\//.test(image) ? image : `https://meetbackdrops.com${image}`} />
         
         {/* ✅ Theme and additional meta */}
         <meta name="theme-color" content="#111827" />

@@ -48,6 +48,8 @@ export default function CategoryHub({
   featuredImages,
   scores = {},
   onImageClick,
+  h1,
+  subhead,
 }) {
   const firedDepths = useRef(new Set());
 
@@ -89,6 +91,8 @@ export default function CategoryHub({
     <div className={styles.hub}>
       <HubHero
         slug={slug}
+        h1={h1}
+        subhead={subhead}
         images={heroImages}
         onCtaClick={handleHeroCta}
         onImageClick={onImageClick}
