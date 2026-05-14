@@ -989,6 +989,50 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 <li style={{ marginBottom: '0.5rem' }}>✓ Resume and notes positioned where you can glance without looking away</li>
               </ul>
 
+              {/* Editorial callout to sister brand WolfResume.com.
+                  Placed here because the Final Checklist just referenced
+                  "Resume and notes" — natural contextual handoff. */}
+              <aside style={{
+                marginTop: '2rem',
+                marginBottom: '2rem',
+                padding: '1.5rem 1.75rem',
+                background: '#fffbeb',
+                border: '1px solid #fde68a',
+                borderLeft: '4px solid #E0A82E',
+                borderRadius: '0.5rem',
+              }}>
+                <div style={{
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#92400e',
+                  marginBottom: '0.5rem',
+                }}>
+                  One more thing
+                </div>
+                <p style={{
+                  fontSize: '1.05rem',
+                  color: '#111827',
+                  margin: '0 0 0.85rem',
+                  lineHeight: 1.55,
+                }}>
+                  Your background is half the picture. The other half is the
+                  resume the hiring manager pulls up while you're talking.{' '}
+                  <a
+                    href="https://wolfresume.com"
+                    target="_blank"
+                    rel="noopener"
+                    style={{ color: '#92400e', fontWeight: 600, textDecoration: 'underline' }}
+                  >
+                    WolfResume
+                  </a>
+                  {' '}is our sister site — AI-built resumes tuned for the
+                  same automated screening systems that now evaluate your
+                  video interviews. Worth a look before your next call.
+                </p>
+              </aside>
+
               <h2 style={{
                 fontSize: '1.875rem',
                 fontWeight: 'bold',
@@ -1130,6 +1174,29 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                       Create a professional home office look with these tips
                     </div>
                   </Link>
+
+                  <a
+                    href="https://wolfresume.com"
+                    target="_blank"
+                    rel="noopener"
+                    style={{
+                      display: 'block',
+                      padding: '1.25rem',
+                      background: 'white',
+                      borderRadius: '0.5rem',
+                      border: '1px solid #e5e7eb',
+                      textDecoration: 'none',
+                      color: '#111827',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#92400e' }}>
+                      Sister site: WolfResume — AI Resumes ↗
+                    </div>
+                    <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+                      Build a resume tuned for the same AI screening that now evaluates your video interview
+                    </div>
+                  </a>
                 </div>
               </div>
 

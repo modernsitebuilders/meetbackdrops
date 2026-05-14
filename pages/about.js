@@ -254,6 +254,31 @@ export default function About() {
                   color: '#111827',
                   marginBottom: '1.5rem'
                 }}>
+                  Behind the Studio
+                </h3>
+                <p style={{color: '#374151', fontSize: '1.1rem', lineHeight: 1.75, marginBottom: '1rem'}}>
+                  MeetBackdrops is a Modern Site Builders production. We also build{' '}
+                  <a
+                    href="https://wolfresume.com"
+                    target="_blank"
+                    rel="noopener"
+                    style={{ color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+                  >
+                    WolfResume.com
+                  </a>
+                  {' '}— AI-built resumes tuned for the same automated screening that
+                  now evaluates the video calls these backgrounds appear in. Two
+                  halves of the same modern hiring picture.
+                </p>
+              </section>
+
+              <section style={{marginBottom: '3rem'}}>
+                <h3 style={{
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                  color: '#111827',
+                  marginBottom: '1.5rem'
+                }}>
                   Get in Touch
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
