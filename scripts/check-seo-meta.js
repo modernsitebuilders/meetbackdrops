@@ -60,6 +60,7 @@ const LAYOUT_PAGES = [
   'pages/bundles.js',
   'pages/contact.js',
   'pages/faq.js',
+  'pages/free-sample.js',
   'pages/hd.js',
   'pages/hd-download.js',
   'pages/image-lookup.js',

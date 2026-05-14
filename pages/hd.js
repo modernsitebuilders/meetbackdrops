@@ -1511,6 +1511,29 @@ export default function Premium({ reviewsData }) {
         <HdFaqSchema />
       </Head>
 
+      {/* Free-sample banner — slim, dismissible-feeling entry to /free-sample.
+          Hidden for subscribers (irrelevant) and when a focus hero is up. */}
+      {!isSubscriber && !selectedProduct && !packSize && (
+        <Link
+          href="/free-sample"
+          onClick={() => trackAnalytics('free_sample_banner_click', 'hd_top', 'banner')}
+          style={{
+            display: 'block',
+            background: '#fefce8',
+            borderBottom: '1px solid #fde68a',
+            padding: '0.7rem 1.25rem',
+            textAlign: 'center',
+            textDecoration: 'none',
+            color: '#78350f',
+            fontSize: '0.92rem',
+            lineHeight: 1.5,
+          }}
+        >
+          <strong style={{ fontWeight: 700 }}>Not sure about the quality?</strong>{' '}
+          Try a free 4K background on your next call →
+        </Link>
+      )}
+
       {/* Sticky pack bar — only for non-subscribers, hidden when focus hero is showing */}
       {!isSubscriber && !selectedProduct && (
         <StickyPackBar
