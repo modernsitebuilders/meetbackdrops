@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { wolfresumeUrl } from '../../lib/wolfresumeUrl';
 
 export const jobInterviewBackgroundsContent = (categoryInfo) => {
   // Get dynamic image counts from categoryData
@@ -1020,7 +1021,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   Your background is half the picture. The other half is the
                   resume the hiring manager pulls up while you're talking.{' '}
                   <a
-                    href="https://wolfresume.com"
+                    href={wolfresumeUrl('blog_interview_callout')}
                     target="_blank"
                     rel="noopener"
                     style={{ color: '#92400e', fontWeight: 600, textDecoration: 'underline' }}
@@ -1176,7 +1177,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   </Link>
 
                   <a
-                    href="https://wolfresume.com"
+                    href={wolfresumeUrl('blog_interview_related')}
                     target="_blank"
                     rel="noopener"
                     style={{

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import Layout from '../components/Layout';
 import { TOTAL_IMAGES_FORMATTED } from '../lib/categories-config';
+import { wolfresumeUrl } from '../lib/wolfresumeUrl';
 
 export default function About() {
 
@@ -259,7 +260,7 @@ export default function About() {
                 <p style={{color: '#374151', fontSize: '1.1rem', lineHeight: 1.75, marginBottom: '1rem'}}>
                   MeetBackdrops is a Modern Site Builders production. We also build{' '}
                   <a
-                    href="https://wolfresume.com"
+                    href={wolfresumeUrl('about_studio')}
                     target="_blank"
                     rel="noopener"
                     style={{ color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px' }}
