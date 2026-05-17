@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState } from 'react';
 
 export default function IndexNowTest() {
@@ -29,6 +30,9 @@ export default function IndexNowTest() {
 
   return (
     <div style={{ padding: '40px', maxWidth: '600px', margin: '0 auto' }}>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <h1>IndexNow Test Page</h1>
       
       <div style={{ marginTop: '20px' }}>

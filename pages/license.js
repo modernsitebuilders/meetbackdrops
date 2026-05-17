@@ -41,7 +41,7 @@ export default function License() {
       <Head>
         <link rel="canonical" href="https://meetbackdrops.com/license" />
         <title>License & Usage Rights - MeetBackdrops</title>
-        <meta name="description" content="MeetBackdrops License - Learn about usage rights for our free virtual backgrounds. Personal use allowed, commercial licensing available." />
+        <meta name="description" content="MeetBackdrops license terms — free for individual professional use on Zoom, Teams, and Meet. HD Editions and Subscription add resolution, not extra rights." />
         <meta name="robots" content="index, follow" />
       </Head>
 
@@ -104,16 +104,17 @@ export default function License() {
                 📚 Setup Guides
               </Link>
               
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
+              <Link href="/branded-backgrounds" style={{
+                color: '#374151',
+                textDecoration: 'none',
+                fontWeight: '500',
                 padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
+                borderRadius: '0.5rem',
+                background: '#f3f4f6',
+                transition: 'all 0.2s'
               }}>
-                ✨ 100% FREE
-              </div>
+                💼 Branded
+              </Link>
             </div>
           </nav>
         </div>
@@ -174,7 +175,7 @@ export default function License() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  ✅ Personal Use - FREE
+                  ✅ Free for Individual Professional Use
                 </h3>
                 <p style={{
                   color: '#065f46',
@@ -182,7 +183,7 @@ export default function License() {
                   marginBottom: '1.5rem',
                   fontWeight: '600'
                 }}>
-                  You are free to use our virtual backgrounds for:
+                  Any individual professional can use MeetBackdrops backgrounds for free, including on work calls for the company they work for. Permitted uses include:
                 </p>
                 <ul style={{
                   color: '#047857',
@@ -192,13 +193,14 @@ export default function License() {
                   padding: 0,
                   margin: 0
                 }}>
-                  <li style={{ marginBottom: '0.75rem' }}>🎥 <strong>Video calls</strong> (Zoom, Teams, Google Meet, etc.)</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🏠 <strong>Remote work</strong> and online meetings</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🎥 <strong>Video calls</strong> on Zoom, Microsoft Teams, Google Meet, Webex, and similar platforms</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🏠 <strong>Remote work</strong> and internal team meetings</li>
                   <li style={{ marginBottom: '0.75rem' }}>🎓 <strong>Online learning</strong> and virtual classrooms</li>
                   <li style={{ marginBottom: '0.75rem' }}>📡 <strong>Webinars, livestreams, and broadcast productions</strong></li>
-                  <li style={{ marginBottom: '0.75rem' }}>👥 <strong>Video conferences</strong> with colleagues or clients</li>
+                  <li style={{ marginBottom: '0.75rem' }}>👥 <strong>Client calls and sales conversations</strong></li>
                   <li style={{ marginBottom: '0.75rem' }}>🎤 <strong>Podcasts and recorded interviews</strong></li>
                   <li style={{ marginBottom: '0.75rem' }}>💼 <strong>Freelance work</strong> and client presentations</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🧑‍💼 <strong>Job interviews</strong></li>
                 </ul>
                 <p style={{
                   color: '#065f46',
@@ -206,12 +208,58 @@ export default function License() {
                   marginTop: '1rem',
                   fontStyle: 'italic'
                 }}>
-                  No attribution required • No signup needed • Use as many as you want
+                  No attribution required • No signup needed • Subject to the free-tier download limits below
                 </p>
               </div>
             </section>
 
-            {/* Commercial Use Restrictions */}
+            {/* HD Editions & Subscription */}
+            <section style={{ marginBottom: '3rem' }}>
+              <div style={{
+                background: '#fef9c3',
+                border: '2px solid #ca8a04',
+                borderRadius: '1rem',
+                padding: '2rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.8rem',
+                  fontWeight: 'bold',
+                  color: '#713f12',
+                  marginBottom: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  💎 HD Editions & Subscription
+                </h3>
+                <p style={{
+                  color: '#713f12',
+                  fontSize: '1.1rem',
+                  marginBottom: '1rem',
+                  fontWeight: '600'
+                }}>
+                  Same license, higher resolution.
+                </p>
+                <p style={{
+                  color: '#713f12',
+                  fontSize: '1rem',
+                  lineHeight: 1.7,
+                  marginBottom: '1rem'
+                }}>
+                  HD Editions (one-time purchase) and an active HD Subscription deliver the same image at <strong>2912×1632</strong> instead of the free-tier resolution. Permitted uses are identical to the Free section above — Zoom, Teams, Meet, Webex, webinars, podcasts, job interviews, individual professional video calls. Buying or subscribing does <strong>not</strong> grant additional team-deployment, redistribution, or branding rights.
+                </p>
+                <p style={{
+                  color: '#713f12',
+                  fontSize: '0.95rem',
+                  fontStyle: 'italic',
+                  margin: 0
+                }}>
+                  HD Editions and Subscription downloads are not counted against the free-tier daily/monthly limits below.
+                </p>
+              </div>
+            </section>
+
+            {/* Not Permitted */}
             <section style={{ marginBottom: '3rem' }}>
               <div style={{
                 background: '#fef2f2',
@@ -228,7 +276,7 @@ export default function License() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  ❌ Commercial Use - NOT ALLOWED
+                  ❌ Not Permitted (Free, HD, or Subscription)
                 </h3>
                 <p style={{
                   color: '#991b1b',
@@ -236,7 +284,7 @@ export default function License() {
                   marginBottom: '1.5rem',
                   fontWeight: '600'
                 }}>
-                  The following uses are strictly prohibited without a commercial license:
+                  Regardless of which tier you're on, the following uses are prohibited:
                 </p>
                 <ul style={{
                   color: '#dc2626',
@@ -246,18 +294,18 @@ export default function License() {
                   padding: 0,
                   margin: 0
                 }}>
-                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Reselling</strong> or redistributing the backgrounds</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Including in products</strong> or services you sell</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Stock photo websites</strong> or marketplaces</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Print materials</strong> for commercial purposes</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Website templates</strong> or themes for sale</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Apps or software</strong> that include our backgrounds</li>
-                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Corporate training materials</strong> sold to third parties</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Reselling or redistributing</strong> the backgrounds, in any resolution</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Including in products or services you sell</strong></li>
+                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Uploading to stock-photo sites or asset marketplaces</strong></li>
+                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Print materials</strong> sold or distributed commercially</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Website templates, apps, or themes</strong> for sale</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Training materials</strong> sold or licensed to third parties</li>
+                  <li style={{ marginBottom: '0.75rem' }}>🚫 <strong>Adding your company logo or wordmark</strong> directly into the image (Branded Backgrounds is the product for that — see below)</li>
                 </ul>
               </div>
             </section>
 
-            {/* Commercial Licensing Section */}
+            {/* Branded Backgrounds — for team deployment with brand integration */}
             <section style={{ marginBottom: '3rem' }}>
               <div style={{
                 background: '#fefbeb',
@@ -274,14 +322,15 @@ export default function License() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  💼 Need Commercial Rights?
+                  💼 Branded Backgrounds — For Teams With a Logo
                 </h3>
                 <p style={{
                   color: '#92400e',
                   fontSize: '1.1rem',
-                  marginBottom: '1.5rem'
+                  marginBottom: '1rem',
+                  lineHeight: 1.6
                 }}>
-                  If you need to use our backgrounds for commercial purposes, we offer commercial licensing options.
+                  If your team needs your company logo or wordmark integrated into a studio environment for company-wide use on video calls, that's a separate product: <strong>Branded Backgrounds</strong>.
                 </p>
                 <div style={{
                   background: 'white',
@@ -289,45 +338,33 @@ export default function License() {
                   borderRadius: '0.5rem',
                   border: '1px solid #fbbf24'
                 }}>
-                  <h3 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: '600',
-                    color: '#92400e',
-                    marginBottom: '1rem'
-                  }}>
-                    Commercial License Includes:
-                  </h3>
-                  <ul style={{
+                  <p style={{
                     color: '#78350f',
-                    lineHeight: '1.8',
                     fontSize: '1rem',
-                    listStyle: 'none',
-                    padding: 0,
+                    lineHeight: 1.7,
                     margin: 0
                   }}>
-                    <li style={{ marginBottom: '0.5rem' }}>✓ Use in commercial products and services</li>
-                    <li style={{ marginBottom: '0.5rem' }}>✓ Reseller and distribution rights</li>
-                    <li style={{ marginBottom: '0.5rem' }}>✓ Corporate training and educational materials</li>
-                    <li style={{ marginBottom: '0.5rem' }}>✓ Client work and agency projects</li>
-                    <li style={{ marginBottom: '0.5rem' }}>✓ Priority support and custom requests</li>
-                  </ul>
+                    The studio designs HD environments with your brand integrated — logo plaques, wall art, signage, framed prints — produced as per-customer composites for company-wide deployment on Zoom, Teams, and Meet. Base library images stay in the catalog; the logo placement is exclusive to the buyer.
+                  </p>
                 </div>
                 <div style={{
                   textAlign: 'center',
                   marginTop: '1.5rem'
                 }}>
-                  <Link href="/contact" style={{
-                    background: '#f59e0b',
+                  <Link href="/branded-backgrounds" style={{
+                    background: '#111827',
                     color: 'white',
                     padding: '1rem 2rem',
-                    borderRadius: '2rem',
+                    borderRadius: '2px',
                     textDecoration: 'none',
                     fontWeight: '600',
-                    fontSize: '1.1rem',
+                    fontSize: '0.9rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
                     display: 'inline-block',
                     transition: 'all 0.3s ease'
                   }}>
-                    📧 Contact for Commercial Licensing
+                    See Branded Backgrounds →
                   </Link>
                 </div>
               </div>
@@ -350,7 +387,7 @@ export default function License() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  ⬇️ Download Limits
+                  ⬇️ Free-Tier Download Limits
                 </h3>
                 <p style={{
                   color: '#1e40af',
@@ -358,7 +395,7 @@ export default function License() {
                   marginBottom: '1.5rem',
                   fontWeight: '600'
                 }}>
-                  To ensure fair access for everyone, we have the following limits:
+                  To keep the free tier sustainable for everyone, free downloads are capped:
                 </p>
                 <div style={{
                   background: 'white',
@@ -375,9 +412,9 @@ export default function License() {
                     padding: 0,
                     margin: 0
                   }}>
-                    <li style={{ marginBottom: '0.75rem' }}>📅 <strong>Daily Limit:</strong> 5 downloads per day</li>
-<li style={{ marginBottom: '0.75rem' }}>📊 <strong>Monthly Limit:</strong> 10 downloads per 30-day rolling period</li>
-<li style={{ marginBottom: '0.75rem' }}>⏳ <strong>Download Expiration:</strong> Downloads expire after 30 days, then you can download more</li>
+                    <li style={{ marginBottom: '0.75rem' }}>📅 <strong>Daily Limit:</strong> 5 free downloads per day</li>
+                    <li style={{ marginBottom: '0.75rem' }}>📊 <strong>Monthly Limit:</strong> 10 free downloads per rolling 30-day period</li>
+                    <li style={{ marginBottom: '0.75rem' }}>⏳ <strong>Rolling Quota:</strong> As your oldest downloads pass the 30-day mark, your quota refreshes automatically</li>
                   </ul>
                 </div>
                 <p style={{
@@ -385,7 +422,7 @@ export default function License() {
                   fontSize: '0.95rem',
                   fontStyle: 'italic'
                 }}>
-                  These limits help us keep the service free and available to everyone. Downloads work on a rolling 30-day window - after 30 days, your oldest downloads expire and you can download more. If you need unlimited downloads for business use, please contact us about commercial licensing options.
+                  These limits apply to free downloads only. <strong>HD Editions</strong> (one-time purchase) and an <strong>active HD Subscription</strong> are not subject to the free-tier daily or monthly limits.
                 </p>
               </div>
             </section>
@@ -415,8 +452,9 @@ export default function License() {
                 }}>
                   <li><strong>Copyright:</strong> All backgrounds are original creations and remain the intellectual property of MeetBackdrops.</li>
                   <li><strong>No Warranty:</strong> Backgrounds are provided "as is" without warranty of any kind.</li>
-                  <li><strong>Modifications:</strong> You may edit or modify backgrounds for personal use only.</li>
-                  <li><strong>Questions:</strong> If you're unsure whether your use case qualifies as personal or commercial, please contact us.</li>
+                  <li><strong>Modifications:</strong> You may crop or color-adjust a background for your own video-call use. You may not redistribute the modified file, sell it, or add your company logo to it (Branded Backgrounds covers the logo-integration case).</li>
+                  <li><strong>Subscription:</strong> The HD Subscription is billed monthly, renews automatically, and can be cancelled anytime. License rights granted by past downloads survive cancellation; ability to access new downloads ends with the subscription.</li>
+                  <li><strong>Questions:</strong> If you're unsure whether a specific use is permitted, contact us before using.</li>
                 </ul>
               </div>
             </section>
@@ -431,7 +469,7 @@ export default function License() {
                 color: '#6b7280',
                 fontSize: '0.9rem'
               }}>
-                Last updated: August 7, 2025 • Questions? <Link href="/contact" style={{color: '#9a6a3a'}}>Contact us</Link>
+                Last updated: May 16, 2026 • Questions? <Link href="/contact" style={{color: '#9a6a3a'}}>Contact us</Link>
               </p>
             </div>
             

@@ -209,6 +209,11 @@ const nextConfig = {
         destination: '/most-popular',
         permanent: true,
       },
+      {
+        source: '/category/premium-4k',
+        destination: '/hd',
+        permanent: true,
+      },
       // Licensing offer pivoted to branded backgrounds
       {
         source: '/licensing',

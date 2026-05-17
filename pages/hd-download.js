@@ -95,6 +95,7 @@ export default function HDDownload() {
     <Layout
       title="Download Your HD Backgrounds | MeetBackdrops"
       description="Access your purchased HD Editions (2912×1632) for Zoom, Teams, and Google Meet. Crisp on camera and engineered for codec compression."
+      noIndex={true}
     >
       <div style={{ 
         minHeight: '80vh',

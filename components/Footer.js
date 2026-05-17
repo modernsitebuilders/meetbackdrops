@@ -28,7 +28,7 @@ export default function Footer() {
               Background Categories
             </h3>
             <div style={{ marginBottom: '1rem' }}>
-              <Link href="/category/most-popular" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
+              <Link href="/most-popular" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
                 Most Popular
               </Link>
               <span style={{ color: '#9ca3af', margin: '0 0.5rem' }}>•</span>
@@ -141,6 +141,9 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <Link href="/" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Home
+              </Link>
+              <Link href="/free-sample" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600 }}>
+                Free HD Sample
               </Link>
               <Link href="/branded-backgrounds" style={{ color: '#c79a6b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.04em' }}>
                 Branded Backgrounds

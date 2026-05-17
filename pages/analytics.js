@@ -21,18 +21,28 @@ export default function Analytics() {
 
   if (loading) {
     return (
-      <div style={{ padding: '40px', fontFamily: 'system-ui' }}>
-        <h1>Loading analytics...</h1>
-      </div>
+      <>
+        <Head>
+          <meta name="robots" content="noindex, nofollow" />
+        </Head>
+        <div style={{ padding: '40px', fontFamily: 'system-ui' }}>
+          <h1>Loading analytics...</h1>
+        </div>
+      </>
     );
   }
 
   if (error) {
     return (
-      <div style={{ padding: '40px', fontFamily: 'system-ui' }}>
-        <h1>Error loading data</h1>
-        <p>{error}</p>
-      </div>
+      <>
+        <Head>
+          <meta name="robots" content="noindex, nofollow" />
+        </Head>
+        <div style={{ padding: '40px', fontFamily: 'system-ui' }}>
+          <h1>Error loading data</h1>
+          <p>{error}</p>
+        </div>
+      </>
     );
   }
 
@@ -40,6 +50,7 @@ export default function Analytics() {
     <>
       <Head>
         <title>Download Analytics - MeetBackdrops</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       
       <div style={{ 

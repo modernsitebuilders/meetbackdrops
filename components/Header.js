@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
@@ -102,7 +103,8 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   ];
 
   const collectionsItems = [
-    { name: 'Most Popular', path: '/category/most-popular' },
+    { name: 'Free HD Sample', path: '/free-sample' },
+    { name: 'Most Popular', path: '/most-popular' },
     { name: 'Recently Added', path: '/category/recently-added' }
   ];
 
@@ -163,19 +165,19 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
                   justifyContent: 'space-between',
                   alignItems: 'center'
                 }}
-                onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               >
                 {item.name}
                 <span style={{ marginLeft: '0.5rem' }}>‹</span>
               </button>
-              
+
               {openNestedDropdown === item.name && (
                 <div style={{
                   position: 'absolute',
-                  right: '100%',  // ← CHANGED FROM left to right
+                  right: '100%',
                   top: 0,
-                  marginRight: '0.25rem',  // ← CHANGED FROM marginLeft
+                  marginRight: '0.25rem',
                   background: 'white',
                   border: '1px solid #e5e7eb',
                   borderRadius: '0.5rem',
@@ -185,28 +187,28 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
                   zIndex: 1001
                 }}>
                   {item.items.map((subItem, subIndex) => (
-                    <button
+                    <Link
                       key={subIndex}
-                      onClick={() => navigate(subItem.path)}
+                      href={subItem.path}
                       style={dropdownItemStyle(false)}
-                      onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-                      onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                      onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                     >
                       {subItem.name}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
             </>
           ) : (
-            <button
-              onClick={() => navigate(item.path)}
+            <Link
+              href={item.path}
               style={dropdownItemStyle(false)}
-              onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
-              onMouseLeave={(e) => e.target.style.background = 'transparent'}
+              onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
             >
               {item.name}
-            </button>
+            </Link>
           )}
         </div>
       ))}
@@ -233,16 +235,14 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           height: '70px'
         }}>
           {/* Logo */}
-          <button
-            onClick={() => navigate('/')}
+          <Link
+            href="/"
             aria-label="MeetBackdrops home"
             style={{
               fontSize: '1.4rem',
               fontWeight: 600,
               color: '#111827',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
+              textDecoration: 'none',
               padding: 0,
               fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
               letterSpacing: '-0.02em',
@@ -264,7 +264,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
             }}>
               Studio
             </span>
-          </button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -295,24 +295,24 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           className="desktop-nav">
             
             {/* Bookshelves */}
-            <button
-              onClick={() => navigate('/category/bookshelves')}
+            <Link
+              href="/category/bookshelves"
               style={navButtonStyle(currentPage === 'bookshelves', hoveredNav === 'bookshelves')}
               onMouseEnter={() => setHoveredNav('bookshelves')}
               onMouseLeave={() => setHoveredNav(null)}
             >
               Bookshelves
-            </button>
+            </Link>
 
             {/* Wall Shelves */}
-            <button
-              onClick={() => navigate('/category/wall-shelves')}
+            <Link
+              href="/category/wall-shelves"
               style={navButtonStyle(currentPage === 'wall-shelves', hoveredNav === 'wall-shelves')}
               onMouseEnter={() => setHoveredNav('wall-shelves')}
               onMouseLeave={() => setHoveredNav(null)}
             >
               Wall Shelves
-            </button>
+            </Link>
 
             {/* Offices Dropdown */}
             <div style={{ position: 'relative' }}>
@@ -343,14 +343,14 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
             </div>
 
             {/* Living Rooms */}
-            <button 
-              onClick={() => navigate('/category/living-rooms')}
+            <Link
+              href="/category/living-rooms"
               style={navButtonStyle(currentPage === 'living-rooms', hoveredNav === 'living-rooms')}
               onMouseEnter={() => setHoveredNav('living-rooms')}
               onMouseLeave={() => setHoveredNav(null)}
             >
               Living Rooms
-            </button>
+            </Link>
 
             {/* More Categories Dropdown */}
             <div style={{ position: 'relative' }}>
@@ -403,14 +403,14 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
             </div>
 
             {/* Blog */}
-            <button 
-              onClick={() => navigate('/blog')}
+            <Link
+              href="/blog"
               style={navButtonStyle(currentPage === 'blog', hoveredNav === 'blog')}
               onMouseEnter={() => setHoveredNav('blog')}
               onMouseLeave={() => setHoveredNav(null)}
             >
               Blog
-            </button>
+            </Link>
 
            {/* Wishlist */}
            <button
@@ -440,8 +440,9 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
            </button>
 
            {/* HD Backgrounds */}
-<button
-  onClick={() => { trackAnalytics('nav_hd_click', null, 'header'); navigate('/hd'); }}
+<Link
+  href="/hd"
+  onClick={() => trackAnalytics('nav_hd_click', null, 'header')}
   style={{
     ...navButtonStyle(currentPage === 'hd', hoveredNav === 'hd'),
     color: '#111827',
@@ -452,11 +453,12 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   onMouseLeave={() => setHoveredNav(null)}
 >
   HD Editions
-</button>
+</Link>
 
 {/* Branded Backgrounds — B2B CTA */}
-<button
-  onClick={() => { trackAnalytics('nav_branded_click', null, 'header'); navigate('/branded-backgrounds'); }}
+<Link
+  href="/branded-backgrounds"
+  onClick={() => trackAnalytics('nav_branded_click', null, 'header')}
   style={{
     padding: '0.6rem 1.1rem',
     borderRadius: '2px',
@@ -465,6 +467,8 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
     fontWeight: 600,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
+    textDecoration: 'none',
+    display: 'inline-block',
     cursor: 'pointer',
     background: hoveredNav === 'branded' ? '#000' : '#111827',
     color: '#fff',
@@ -476,7 +480,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   onMouseLeave={() => setHoveredNav(null)}
 >
   Branded Backgrounds
-</button>
+</Link>
           </nav>
         </div>
       </header>

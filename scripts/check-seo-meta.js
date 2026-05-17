@@ -57,7 +57,6 @@ const LAYOUT_PAGES = [
   'pages/about.js',
   'pages/blog.js',
   'pages/branded-backgrounds.js',
-  'pages/bundles.js',
   'pages/contact.js',
   'pages/faq.js',
   'pages/free-sample.js',
@@ -82,7 +81,6 @@ const NOINDEX_RAW_HEAD_PAGES = [
 // Pages that intentionally don't expose SEO meta (noindex utility pages, redirects)
 const SKIP_PAGES = new Set([
   'pages/410.js',
-  'pages/category/premium-4k.js',
   'pages/admin',
   'pages/api',
   'pages/_app.js',

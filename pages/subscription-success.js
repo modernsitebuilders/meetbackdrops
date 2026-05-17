@@ -46,6 +46,7 @@ export default function SubscriptionSuccess() {
     <Layout
       title="Subscription Activated | MeetBackdrops"
       description="Your HD Backgrounds subscription is active"
+      noIndex={true}
     >
       <div style={{
         minHeight: '80vh',
