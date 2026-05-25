@@ -95,28 +95,67 @@ const nextConfig = {
       },
 
       // =================================
-      // 410 REDIRECTS FOR OLD STREAMBACKDROPS URLS
+      // LEGACY URL REDIRECTS
       // =================================
-      
-      // Blog posts
+
+      // Legacy hyphenated blog URLs → slash form (current canonical).
+      // The slash form is what's in sitemaps and what data/blogPosts.js
+      // generates routes for. Any external backlink to a hyphen form
+      // hits these and transfers authority to the live page.
       {
         source: '/blog-virtual-background-guide',
-        destination: '/410',
+        destination: '/blog/virtual-background-guide',
         permanent: true,
       },
       {
         source: '/blog/best-virtual-background-sites-2025',
         destination: '/blog/best-virtual-background-sites-2026',
-        permanent: true, 
+        permanent: true,
+      },
+      {
+        source: '/blog-best-virtual-background-sites-2025',
+        destination: '/blog/best-virtual-background-sites-2026',
+        permanent: true,
       },
       {
         source: '/blog-background-mistakes',
-        destination: '/410',
+        destination: '/blog/background-mistakes',
         permanent: true,
       },
       {
         source: '/blog-job-interview-backgrounds',
-        destination: '/410',
+        destination: '/blog/job-interview-backgrounds',
+        permanent: true,
+      },
+      {
+        source: '/blog-easter-backgrounds',
+        destination: '/blog/easter-backgrounds',
+        permanent: true,
+      },
+      {
+        source: '/blog-christmas-backgrounds',
+        destination: '/blog/christmas-backgrounds',
+        permanent: true,
+      },
+      {
+        source: '/blog-halloween-backgrounds',
+        destination: '/blog/halloween-backgrounds',
+        permanent: true,
+      },
+      {
+        source: '/blog-spring-backgrounds',
+        destination: '/blog/spring-backgrounds',
+        permanent: true,
+      },
+      {
+        source: '/blog-lighting-tips',
+        destination: '/blog/lighting-tips',
+        permanent: true,
+      },
+      // No valentines blog post exists — route to the category page.
+      {
+        source: '/blog-valentines-backgrounds',
+        destination: '/category/valentines-backgrounds',
         permanent: true,
       },
       

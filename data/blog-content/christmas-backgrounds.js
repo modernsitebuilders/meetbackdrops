@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CATEGORIES } from '../../lib/categories-config';
+import BlogHDUpsellCard from '../../components/BlogHDUpsellCard';
 
 export const christmasBackgroundsContent = () => {
   const count = CATEGORIES['christmas-backgrounds'].count;
@@ -270,6 +271,14 @@ export const christmasBackgroundsContent = () => {
             }}>
               <strong>All backgrounds are top quality</strong> and work perfectly with Zoom, Microsoft Teams, Google Meet, and any video platform that supports custom backgrounds.
             </p>
+
+            <BlogHDUpsellCard
+              productId="christmas-background-35-hd"
+              category="christmas-backgrounds"
+              headline="Want one in true HD for the all-hands?"
+              sub="A 2912×1632 HD edition tuned for camera and codec compression — looks crisp on every platform, even when bandwidth dips."
+              utmCampaign="christmas_blog_inline"
+            />
           </section>
 
           {/* How to Use Section */}

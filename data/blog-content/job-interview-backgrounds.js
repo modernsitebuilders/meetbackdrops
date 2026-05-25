@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { wolfresumeUrl } from '../../lib/wolfresumeUrl';
+import BlogHDUpsellCard from '../../components/BlogHDUpsellCard';
 
 export const jobInterviewBackgroundsContent = (categoryInfo) => {
   // Get dynamic image counts from categoryData
@@ -264,9 +265,13 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </p>
 
               {/* HD_BLOCK_CTA_1 */}
-              <p style={{ marginBottom: '1.25rem' }}>
-                For optimal results, high-performing candidates often pair these setups with HD virtual backgrounds designed specifically for AI interview clarity and professional video presentation.
-              </p>
+              <BlogHDUpsellCard
+                productId="office-spaces-01-hd"
+                category="office-spaces"
+                headline="An interview-ready office set, designed for AI screening clarity"
+                sub="Studio-composed at 2912×1632 — sharper rendering on HireVue, Sapia.ai and other automated platforms than free virtual backgrounds."
+                utmCampaign="job_interview_block_1"
+              />
 
               <h2 style={{
                 fontSize: '1.875rem',
@@ -445,9 +450,13 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </p>
 
               {/* HD_BLOCK_CTA_2 */}
-              <p style={{ marginBottom: '1.25rem' }}>
-                For optimal results, high-performing candidates often pair these setups with HD virtual backgrounds designed specifically for AI interview clarity and professional video presentation.
-              </p>
+              <BlogHDUpsellCard
+                productId="bookshelves-bright-01-hd"
+                category="bookshelves-bright"
+                headline="When your real background isn't an option"
+                sub="A clean, bright bookshelf set composed for camera — reads as authentic on Zoom, Teams, and Google Meet without the giveaway sharpness of stock images."
+                utmCampaign="job_interview_block_2"
+              />
 
               <h3 style={{
                 fontSize: '1.5rem',
@@ -472,9 +481,13 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </p>
 
               {/* HD_BLOCK_CTA_3 */}
-              <p style={{ marginBottom: '1.25rem' }}>
-                For optimal results, high-performing candidates often pair these setups with HD virtual backgrounds designed specifically for AI interview clarity and professional video presentation.
-              </p>
+              <BlogHDUpsellCard
+                productId="home-offices-01-hd"
+                category="home-office"
+                headline="A home-office set that holds up under codec compression"
+                sub="Engineered for the 1080p+ clarity recruiters and AI systems actually parse — $4.99 for a single HD edition."
+                utmCampaign="job_interview_block_3"
+              />
 
               <h3 style={{
                 fontSize: '1.5rem',

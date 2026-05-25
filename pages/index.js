@@ -155,15 +155,14 @@ export default function Home() {
           <HDBadge />
         </div>
 
-        {/* Free / samples — demoted */}
         <p style={{
           textAlign: 'center',
-          fontSize: '0.85rem',
-          color: '#6b7280',
+          fontSize: '0.9rem',
+          color: '#4b5563',
           marginTop: '1.25rem',
-          letterSpacing: '0.02em'
+          letterSpacing: '0.01em'
         }}>
-          Individual sample environments are available without signup for personal use.
+          Free samples — no signup. HD editions from $4.99.
         </p>
 
         <WhyDifferent />

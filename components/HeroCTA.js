@@ -53,7 +53,7 @@ export default function HeroCTA() {
           e.currentTarget.style.borderColor = '#111827';
         }}
       >
-        Explore the Collection
+        Browse the Library
       </button>
 
       <Link

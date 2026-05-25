@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import BlogHDUpsellCard from '../../components/BlogHDUpsellCard';
 
 export const easterBackgroundsContent = (categoryInfo) => {
   const count = categoryInfo?.['easter-backgrounds']?.images?.length || 55;
@@ -275,6 +276,14 @@ export const easterBackgroundsContent = (categoryInfo) => {
               }}>
                 <strong>All backgrounds are high quality</strong> and work with Zoom, Microsoft Teams, Google Meet, and any video platform that supports custom backgrounds.
               </p>
+
+              <BlogHDUpsellCard
+                productId="easter-background-03-hd"
+                category="easter-backgrounds"
+                headline="Want an Easter set in true HD?"
+                sub="A 2912×1632 edition composed for camera — crisp, codec-friendly, and ready for the executive holiday all-hands. $4.99."
+                utmCampaign="easter_blog_inline"
+              />
             </section>
 
             {/* How to Use */}
