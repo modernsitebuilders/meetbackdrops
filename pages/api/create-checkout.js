@@ -49,6 +49,21 @@ export default async function handler(req, res) {
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${req.headers.origin}/hd-download?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,
+      // Generate a hosted Stripe invoice with PDF and email it to the buyer.
+      invoice_creation: {
+        enabled: true,
+        invoice_data: {
+          description: ids.length === 1
+            ? "MeetBackdrops HD background download"
+            : `MeetBackdrops HD background bundle (${ids.length} downloads)`,
+          metadata: {
+            site: "streambackdrops",
+            product_type: "hd_image",
+            product_ids: ids.join(","),
+          },
+          footer: "Thanks for your purchase. Questions? info@meetbackdrops.com",
+        },
+      },
       metadata: {
         site: "streambackdrops",
         product_type: "hd_image",

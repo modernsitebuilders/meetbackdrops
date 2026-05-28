@@ -35,45 +35,59 @@ export default function HDDownload() {
           setImages(downloads);
           setStatus('success');
 
-          const session = getSessionData();
-          fetch('/api/analytics', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              eventType: 'hd_purchase',
-              filename: ids.join(','),
-              category: 'hd',
-              originalSource: session?.originalReferrer || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
-              sessionId: session?.id || '',
-              visitorId: session?.visitorId || '',
-              pageViewsInSession: session?.pageViews || 0,
-              downloadsInSession: session?.downloads || 0,
-              visitorType: getVisitorType(),
-              landingPage: session?.landingPage || ''
-            })
-          }).catch(() => {});
-
-          // GA4 ecommerce purchase event. Guarded by sessionStorage so a
-          // refresh of /hd-download?session_id=... doesn't double-count
-          // toward Google Ads conversion data.
+          // Single idempotency guard for both the internal analytics row
+          // (writes to Google Sheets) AND the GA4 purchase event. Keyed by
+          // the Stripe session ID and stored in localStorage so reopening
+          // /hd-download?session_id=... in a new tab/window — which gives the
+          // visitor a fresh session cookie — still won't double-record.
+          // See pages/api/analytics.js for the sheet row shape: `filename`
+          // is the comma-joined image IDs, so item count = ids.length and
+          // which images were purchased = ids themselves.
           try {
             const trackedKey = `hd_purchase_tracked_${sessionId}`;
-            const alreadyTracked = sessionStorage.getItem(trackedKey) === '1';
-            if (!alreadyTracked && typeof window !== 'undefined' && window.gtag && data.amount_total != null) {
-              const value = data.amount_total / 100;
-              const currency = (data.currency || 'usd').toUpperCase();
-              const items = ids.map((id, i) => ({
-                item_id: id,
-                item_name: prods[i]?.title || id,
-                quantity: 1,
-              }));
-              window.gtag('event', 'purchase', {
-                transaction_id: sessionId,
-                value,
-                currency,
-                items,
-              });
-              sessionStorage.setItem(trackedKey, '1');
+            const alreadyTracked =
+              typeof window !== 'undefined' &&
+              window.localStorage &&
+              window.localStorage.getItem(trackedKey) === '1';
+
+            if (!alreadyTracked) {
+              const session = getSessionData();
+              fetch('/api/analytics', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  eventType: 'hd_purchase',
+                  filename: ids.join(','),
+                  category: 'hd',
+                  originalSource: session?.originalReferrer || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
+                  sessionId: session?.id || '',
+                  visitorId: session?.visitorId || '',
+                  pageViewsInSession: session?.pageViews || 0,
+                  downloadsInSession: session?.downloads || 0,
+                  visitorType: getVisitorType(),
+                  landingPage: session?.landingPage || ''
+                })
+              }).catch(() => {});
+
+              if (typeof window !== 'undefined' && window.gtag && data.amount_total != null) {
+                const value = data.amount_total / 100;
+                const currency = (data.currency || 'usd').toUpperCase();
+                const items = ids.map((id, i) => ({
+                  item_id: id,
+                  item_name: prods[i]?.title || id,
+                  quantity: 1,
+                }));
+                window.gtag('event', 'purchase', {
+                  transaction_id: sessionId,
+                  value,
+                  currency,
+                  items,
+                });
+              }
+
+              if (typeof window !== 'undefined' && window.localStorage) {
+                window.localStorage.setItem(trackedKey, '1');
+              }
             }
           } catch (_) {}
 

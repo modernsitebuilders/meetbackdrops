@@ -2755,7 +2755,8 @@
       "library",
       "study"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "bookshelves-bright-:52",
@@ -3957,7 +3958,8 @@
       "library",
       "study"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "bookshelves-dark-:41",
@@ -3980,7 +3982,8 @@
       "sophisticated",
       "elegant"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "bookshelves-dark-:42",
@@ -6927,7 +6930,8 @@
       "workspace",
       "relaxing"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "coffee-shop-:30",
@@ -7607,7 +7611,8 @@
       "professional",
       "workspace"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "conference-room-:23",
@@ -12764,7 +12769,8 @@
       "video calls",
       "remote work"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "home-offices-:64",
@@ -15827,7 +15833,8 @@
       "greenery",
       "peaceful"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "nature-landscape-:13",
@@ -17732,7 +17739,8 @@
       "remote work",
       "home office"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "office-spaces-:35",
@@ -18712,7 +18720,8 @@
       "professional",
       "remote work"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "office-spaces-:90",
@@ -19568,7 +19577,8 @@
       "bright",
       "vibrant"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "spring-background-:45",
@@ -21298,7 +21308,8 @@
       "chic",
       "workspace"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "urban-loft-:17",
@@ -21939,7 +21950,8 @@
       "chic",
       "workspace"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "urban-loft-:46",
@@ -24070,7 +24082,8 @@
       "home office",
       "video call"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "wall-shelves-dark-:43",
@@ -24216,7 +24229,8 @@
       "modern",
       "decorative"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true
   },
   {
     "id": "wall-shelves-dark-:53",
