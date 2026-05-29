@@ -63,11 +63,11 @@ export default function Home() {
         <VideoObjectSchema
           name="MeetBackdrops Overview"
           description="See how to browse, preview, and download free professional virtual backgrounds from MeetBackdrops for Zoom, Teams, and Google Meet."
-          thumbnailUrl="https://img.youtube.com/vi/Vv1sMh3pG_I/maxresdefault.jpg"
-          uploadDate="2026-04-11T00:00:00+00:00"
-          embedUrl="https://www.youtube.com/embed/Vv1sMh3pG_I"
-          contentUrl="https://www.youtube.com/watch?v=Vv1sMh3pG_I"
-          duration="PT1M56S"
+          thumbnailUrl="https://img.youtube.com/vi/CFx0FH6Y-cc/maxresdefault.jpg"
+          uploadDate="2026-05-29T00:00:00+00:00"
+          embedUrl="https://www.youtube.com/embed/CFx0FH6Y-cc"
+          contentUrl="https://www.youtube.com/watch?v=CFx0FH6Y-cc"
+          duration="PT1M35S"
         />
         <style>{`
           @keyframes shimmer {
@@ -179,7 +179,7 @@ export default function Home() {
           }}>
             See It in Action
           </h2>
-          <YoutubeEmbed videoId="Vv1sMh3pG_I" title="MeetBackdrops Overview" />
+          <YoutubeEmbed videoId="CFx0FH6Y-cc" title="MeetBackdrops Overview" />
         </div>
 
         <SocialProof />
