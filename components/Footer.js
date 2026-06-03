@@ -198,7 +198,9 @@ export default function Footer() {
   
   {/* Modern Site Builders Credit */}
   <p style={{ color: '#e5e7eb', margin: '0.5rem 0 0 0', textAlign: 'center', fontSize: '0.85rem' }}>
-    A Modern Site Builders Production
+    <a href="https://modernsitebuilders.com" target="_blank" rel="noopener" style={{ color: '#e5e7eb', textDecoration: 'underline' }}>
+      A Modern Site Builders Production
+    </a>
   </p>
 
   {/* Trust Badges Section */}
