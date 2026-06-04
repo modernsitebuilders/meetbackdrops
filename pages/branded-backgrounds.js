@@ -240,6 +240,137 @@ function PlacementCard({ label, detail }) {
   );
 }
 
+function trackAnalytics(eventType, filename, category) {
+  if (typeof window === 'undefined' || !window.gtag) return;
+  window.gtag('event', eventType, { event_category: category, event_label: filename });
+}
+
+function BrandedVideoSection() {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <section
+      style={{
+        background: '#fff',
+        borderBottom: `1px solid ${RULE}`,
+        padding: '5rem 2rem',
+      }}
+    >
+      <div style={{ maxWidth: '880px', margin: '0 auto', textAlign: 'center' }}>
+        <Eyebrow>Watch · 1:45</Eyebrow>
+        <h2
+          style={{
+            fontFamily: SERIF,
+            fontSize: 'clamp(1.7rem, 2.8vw, 2.2rem)',
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
+            margin: '0 0 0.85rem',
+            color: GRAPHITE,
+          }}
+        >
+          A short look at the branded environment program.
+        </h2>
+        <p
+          style={{
+            fontSize: '0.98rem',
+            color: MUTED,
+            margin: '0 auto 2.25rem',
+            maxWidth: '580px',
+            lineHeight: 1.6,
+          }}
+        >
+          How a logo integrates into a studio-built environment — and how a branded set
+          deploys across an executive team on Zoom, Microsoft Teams, and Google Meet.
+        </p>
+        <div
+          style={{
+            position: 'relative',
+            paddingBottom: '56.25%',
+            height: 0,
+            overflow: 'hidden',
+            background: INK,
+            border: `1px solid ${RULE}`,
+            borderRadius: '0.5rem',
+          }}
+        >
+          {playing ? (
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/IzMSe7iaWbo?autoplay=1&rel=0"
+              title="Branded environments walkthrough"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                setPlaying(true);
+                trackAnalytics('branded_video_play', 'IzMSe7iaWbo', 'branded_backgrounds');
+              }}
+              aria-label="Play branded environments walkthrough (1 minute 45 seconds)"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                border: 0,
+                cursor: 'pointer',
+                padding: 0,
+                background: '#000',
+              }}
+            >
+              <img
+                src="https://img.youtube.com/vi/IzMSe7iaWbo/maxresdefault.jpg"
+                alt="Branded environments walkthrough video thumbnail"
+                loading="lazy"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  opacity: 0.9,
+                }}
+              />
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '76px',
+                  height: '76px',
+                  borderRadius: '50%',
+                  background: 'rgba(17, 24, 39, 0.85)',
+                  border: `2px solid ${WARM}`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  pointerEvents: 'none',
+                }}
+              >
+                <span
+                  style={{
+                    width: 0,
+                    height: 0,
+                    borderTop: '13px solid transparent',
+                    borderBottom: '13px solid transparent',
+                    borderLeft: `20px solid ${WARM}`,
+                    marginLeft: '5px',
+                  }}
+                />
+              </span>
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CustomTierCard({ title, body }) {
   return (
     <div
@@ -408,6 +539,9 @@ export default function BrandedBackgroundsPage() {
             </div>
           </div>
         </section>
+
+        {/* WALKTHROUGH VIDEO */}
+        <BrandedVideoSection />
 
         {/* VALUE PILLARS */}
         <section style={{ padding: '6rem 2rem', background: PAPER, borderBottom: `1px solid ${RULE}` }}>
