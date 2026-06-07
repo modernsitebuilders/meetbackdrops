@@ -12,3 +12,16 @@ WEEKLY-UPDATE.txt
 public/images/**/*-hd.png
 !public/images/bookshelves-dark/bookshelves-dark-09-hd.png
 .claude/worktrees/
+
+# Pipeline safety backups + logs + intermediate pilot outputs (kept locally only)
+image-pipeline/*.backup.*.json
+image-pipeline/*.delete-easter-backup.*
+image-pipeline/*.merge-vision-backup.*.json
+image-pipeline/*.recategorize-backup.*
+image-pipeline/*.copy-rewrite-backup.*.json
+image-pipeline/*.alt-rewrite-backup.*.json
+image-pipeline/vision-full.log
+image-pipeline/vision-pilot-output*.json
+data/categoryData.js.*-backup.*
+lib/categories-config.js.*-backup.*
+public/data/image-metadata-complete.json.*-backup.*

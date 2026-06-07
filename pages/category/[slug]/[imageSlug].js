@@ -406,7 +406,12 @@ export async function getStaticPaths() {
     paths: getAllImages().map(img => ({
       params: { slug: img.category, imageSlug: img.slug },
     })),
-    fallback: false,
+    // 'blocking' instead of false: unknown paths reach getStaticProps, where
+    // we can detect a slug whose canonical category has changed (because we
+    // recategorized it) and serve a 301 redirect to the new URL — preserving
+    // SEO equity from previously-indexed paths. True 404s still happen there
+    // for slugs that aren't in the manifest at all.
+    fallback: 'blocking',
   };
 }
 
@@ -415,7 +420,18 @@ export async function getStaticProps({ params }) {
   const { CATEGORIES } = require('../../../lib/categories-config');
 
   const image = getImageBySlug(params.imageSlug);
-  if (!image || image.category !== params.slug) return { notFound: true };
+  if (!image) return { notFound: true };
+
+  // Slug exists but its canonical category has changed (recategorization).
+  // 301 to the new canonical URL so Google transfers ranking from the old.
+  if (image.category !== params.slug) {
+    return {
+      redirect: {
+        destination: `/category/${image.category}/${image.slug}`,
+        permanent: true,
+      },
+    };
+  }
 
   const siblings = getImagesByCategory(image.category);
   const currentIdx = siblings.findIndex(s => s.slug === image.slug);
