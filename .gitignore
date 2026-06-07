@@ -20,8 +20,16 @@ image-pipeline/*.merge-vision-backup.*.json
 image-pipeline/*.recategorize-backup.*
 image-pipeline/*.copy-rewrite-backup.*.json
 image-pipeline/*.alt-rewrite-backup.*.json
+image-pipeline/*.wave2-backup.*
+image-pipeline/wave2-*.log
 image-pipeline/vision-full.log
 image-pipeline/vision-pilot-output*.json
 data/categoryData.js.*-backup.*
+data/blogMetadata.js.wave2-backup.*
 lib/categories-config.js.*-backup.*
+lib/products.js.wave2-backup.*
+lib/seo/seo.js.wave2-sweep-backup.*
+pages/category/**/index.js.wave2-sweep-backup.*
+scripts/generate-hd-products.js.wave2-backup.*
 public/data/image-metadata-complete.json.*-backup.*
+public/data/image-scores-static.json.wave2-backup.*

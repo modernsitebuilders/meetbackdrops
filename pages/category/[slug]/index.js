@@ -25,11 +25,11 @@ import CategoryHub from '../../../components/CategoryHub/CategoryHub';
 import { seo } from '../../../lib/seo/seo.js';
 
 const WALL_SHELVES_HUB_FEATURED = [
-  { filename: 'wall-shelves-bright-51.webp', title: 'Wall Shelves Bright Background 51', folder: 'wall-shelves-bright' },
-  { filename: 'wall-shelves-bright-54.webp', title: 'Wall Shelves Bright Background 54', folder: 'wall-shelves-bright' },
-  { filename: 'wall-shelves-bright-55.webp', title: 'Wall Shelves Bright Background 55', folder: 'wall-shelves-bright' },
-  { filename: 'wall-shelves-bright-10.webp', title: 'Wall Shelves Bright Background 10', folder: 'wall-shelves-bright' },
-  { filename: 'wall-shelves-bright-01.webp', title: 'Wall Shelves Bright Background 1' , folder: 'wall-shelves-bright' },
+  { filename: 'minimalist-interior-wooden-shelf-holding-books-potted-plant-47fe79fc.webp', title: 'Wall Shelves Bright Background 51', folder: 'wall-shelves-bright' },
+  { filename: 'minimalist-shelving-books-dried-plants-neutral-tones-softly-6536c05c.webp', title: 'Wall Shelves Bright Background 54', folder: 'wall-shelves-bright' },
+  { filename: 'minimalist-shelf-various-vases-neutral-tones-soft-greenery-e6eddef7.webp', title: 'Wall Shelves Bright Background 55', folder: 'wall-shelves-bright' },
+  { filename: 'bright-modern-interior-white-wall-shelves-holding-books-35facfd9.webp', title: 'Wall Shelves Bright Background 10', folder: 'wall-shelves-bright' },
+  { filename: 'two-wooden-shelves-against-white-wall-one-books-plant-other-d50bd43b.webp', title: 'Wall Shelves Bright Background 1' , folder: 'wall-shelves-bright' },
 ];
 
 const HUB_SUBHEAD =

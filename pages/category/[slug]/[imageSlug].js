@@ -418,9 +418,25 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { getImageBySlug, getImagesByCategory } = require('../../../lib/manifest');
   const { CATEGORIES } = require('../../../lib/categories-config');
+  const migration = require('../../../image-pipeline/slug-migration-map.json');
 
-  const image = getImageBySlug(params.imageSlug);
-  if (!image) return { notFound: true };
+  let image = getImageBySlug(params.imageSlug);
+
+  // Wave 2 rename: if the slug doesn't resolve, it may be a pre-rename
+  // {category}-NN slug. Look it up in the migration map and 301 to the
+  // new descriptive-slug URL so Google transfers ranking.
+  if (!image) {
+    const migrated = migration.entries?.[params.imageSlug];
+    if (migrated) {
+      return {
+        redirect: {
+          destination: `/category/${migrated.category}/${migrated.newSlug}`,
+          permanent: true,
+        },
+      };
+    }
+    return { notFound: true };
+  }
 
   // Slug exists but its canonical category has changed (recategorization).
   // 301 to the new canonical URL so Google transfers ranking from the old.

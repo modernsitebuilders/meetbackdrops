@@ -68,7 +68,7 @@ function trailingNumber(slug) {
 function buildEntry(manifestEntry) {
   const slug = manifestEntry.slug;
   const folder = manifestEntry.folder || manifestEntry.category;
-  const n = trailingNumber(slug);
+  const n = (manifestEntry.index != null) ? manifestEntry.index : trailingNumber(slug);
   if (n == null) {
     throw new Error(`[generate-hd-products] Cannot derive trailing number from slug "${slug}"`);
   }
