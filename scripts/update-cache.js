@@ -104,6 +104,7 @@ async function updateCache() {
     
     const webFilename = item.filename
         .replace('MeetBackdrops-', '')
+        .replace('StreamBackdrops-', '')
         .replace('.png', '.webp');
     const extracted = item.category.replace(/\.webp$/i, '').replace(/\.png$/i, '').replace(/-\d+$/, '');
     const category = folderMap[extracted] || extracted;
