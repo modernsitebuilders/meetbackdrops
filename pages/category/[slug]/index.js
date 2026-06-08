@@ -22,6 +22,7 @@ import { useImageDownload } from '../../../lib/useImageDownload';
 import BackToTop from '../../../components/BackToTop';
 import HDComparisonHero from '../../../components/HDComparisonHero';
 import CategoryHub from '../../../components/CategoryHub/CategoryHub';
+import CollectionsForCategory from '../../../components/CollectionsForCategory';
 import { seo } from '../../../lib/seo/seo.js';
 
 const WALL_SHELVES_HUB_FEATURED = [
@@ -35,7 +36,7 @@ const WALL_SHELVES_HUB_FEATURED = [
 const HUB_SUBHEAD =
   'Studio-styled wall shelves — designed shelf by shelf for camera, not lifted from a stock library.';
 
-function CategoryContent({ slug, scores = {}, metadata = {}, seoData }) {
+function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collections = [] }) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
     handleDownload,
@@ -133,6 +134,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData }) {
                 downloadingImage={downloadingImage}
               />
 
+              <CollectionsForCategory collections={collections} />
               <RelatedCategories currentSlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
@@ -157,6 +159,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData }) {
                 downloadingImage={downloadingImage}
               />
 
+              <CollectionsForCategory collections={collections} />
               <RelatedCategories currentSlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
@@ -195,7 +198,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData }) {
   );
 }
 
-export default function CategoryPage({ slug, scores, metadata = {} }) {
+export default function CategoryPage({ slug, scores, metadata = {}, collections = [] }) {
   // `slug` is supplied by getStaticProps (fallback:false + notFound:true on
   // missing). seo() throws on invalid input — there is no fallback branch,
   // no router-derived inference, no defensive "if (!seo)".
@@ -223,7 +226,7 @@ export default function CategoryPage({ slug, scores, metadata = {} }) {
         ))}
       </Head>
 
-      <CategoryContent slug={slug} scores={scores} metadata={metadata} seoData={s} />
+      <CategoryContent slug={slug} scores={scores} metadata={metadata} seoData={s} collections={collections} />
     </Layout>
   );
 }
@@ -265,6 +268,16 @@ export async function getStaticProps({ params }) {
   const category = categoryInfo[params.slug];
   if (!category) {
     return { notFound: true };
+  }
+
+  // Persona collections that draw from this category — powers the
+  // "popular with these professions" strip. Deterministic, manifest-driven.
+  let collections = [];
+  try {
+    const { getCollectionsForCategory } = require('../../../lib/collections/engine');
+    collections = getCollectionsForCategory(params.slug);
+  } catch (e) {
+    console.error('Collections-for-category lookup failed:', e.message);
   }
 
   try {
@@ -332,6 +345,7 @@ export async function getStaticProps({ params }) {
       slug: params.slug,
       scores,
       metadata: imageMetadata,
+      collections,
     },
     revalidate: 3600,
   };
