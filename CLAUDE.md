@@ -110,19 +110,51 @@ Both webp and PNG live on R2, at different paths:
 
 R2 credentials live in `image-pipeline/.env` (`R2_ACCESS_KEY`, `R2_SECRET_KEY`, `R2_ENDPOINT`, `R2_BUCKET`). The HD/4K PNG pipeline (uploads to `streambackdrops-premium` S3) is separate and only runs when you're producing HD editions — skip it for normal free-tier additions.
 
+#### Filename format — critical, read first
+
+**All image filenames use the descriptive-slug + 8-char SHA-256 hash format:**
+
+```
+{descriptive-words}-{8hexchars}.webp / .png
+```
+
+Examples: `bright-coastal-patio-umbrella-ocean-view-a1b2c3d4.webp`, `shaded-stone-5128a46e.webp`
+
+The hash is the first 8 hex characters of the SHA-256 of the **1456×816 q82 WebP bytes**. The descriptive part comes from the image's alt text (stop-word filtered, max ~60 chars) — see `image-pipeline/build-slug-migration-map.js` for the exact recipe.
+
+**This format was fully migrated in Wave 2 (June 2026). The old `{category}-NN` sequential format (e.g. `summer-background-39.png`) was purged from R2 and all data files. Never use it again.**
+
+Raw Midjourney output filenames (e.g. `streambackdrops_Architectural_photography_of_a_..._{uuid}_0.png`) must be renamed to this format before or immediately after upload. They must never be used as R2 keys.
+
 #### Workflow
 
-The pattern that works (worked example: home-office +44 batch on 2026-05-06):
+1. **Identify source files precisely.** When sourcing from Downloads, identify the exact files for this batch by modification date or explicit list. Never run an upload script against the entire Downloads folder — it will sweep up unrelated files. Filter by exact filenames or a tight mtime window.
 
-1. **Allocate slug numbers.** Cross-reference existing entries in `data/categoryData.js` to find freed-up "gap" numbers from prior replacements. For each gap candidate, HEAD-check `assets.streambackdrops.com/webp/{folder}/{slug}.webp` AND `assets.streambackdrops.com/{slug}.png` — only reuse a number if BOTH return 404. Allocate remaining new images to numbers above the current max.
-2. **Stage source PNGs.** Place renamed PNGs (`{category}-NN.png`, zero-padded) in `~/Desktop/new-pngs/{category}/`. Source files should already be 1456×816 — if not, resize with sharp/Pillow LANCZOS.
-3. **Convert PNG → webp** at quality 82, 1456×816, using sharp or Pillow.
-4. **Upload to R2.** Push webp to `webp/{folder}/` and PNG to root, both with `CacheControl: public, max-age=31536000, immutable`. Run from `image-pipeline/` so dotenv finds the R2 creds.
-5. **Update [data/categoryData.js](data/categoryData.js).** Add entries to `IMAGES_{CATEGORY}`, sorted by slug.
-6. **Add stub entries to [image-pipeline/final_manifest.json](image-pipeline/final_manifest.json)** with `id`, `slug`, `category`, `folder`, `image_webp`, `download_png`, an empty `title`/`description`/`alt`, a small generic `tags` array, and `hdOnly: false`.
-7. **Run [image-pipeline/rewrite-manifest-copy.js](image-pipeline/rewrite-manifest-copy.js).** This fills in title/description/alt deterministically from category+slug+tags. Idempotent — re-running produces identical output for already-processed entries, so you can safely run it on the whole manifest every time.
+2. **Generate correct slugs.** For each source PNG:
+   - Convert to WebP at 1456×816, quality 82
+   - Compute `SHA-256` of the WebP bytes, take first 8 hex chars → `hash8`
+   - Build descriptive part from the image's content (alt text or Midjourney prompt description), stop-word filtered, max ~60 chars, lowercase hyphenated
+   - Final slug: `{descriptive}-{hash8}`
+
+3. **Upload to R2** (both files per image = 2 R2 objects per slug):
+   - PNG (original, untouched) → R2 root key: `{slug}.png`
+   - WebP (1456×816 q82) → R2 key: `webp/{folder}/{slug}.webp`
+   - Both with `CacheControl: public, max-age=31536000, immutable`
+   - Run scripts from `image-pipeline/` so dotenv finds `.env` creds
+
+4. **Rename source files** in their original location (Downloads or staging) to the final slug name (`{slug}.png`). This is how you trace a file back to its live image later.
+
+5. **Update [data/categoryData.js](data/categoryData.js).** Add `{ filename: '{slug}.webp', title: '...' }` entries to `IMAGES_{CATEGORY}`. Update the count comment at the top of the array.
+
+6. **Add stub entries to [image-pipeline/final_manifest.json](image-pipeline/final_manifest.json)** — one per image with `id`, `slug`, `category`, `folder`, `image_webp: '{slug}.webp'`, `download_png: '{slug}.png'`, empty `title`/`description`/`alt`, a `tags` array, and `hdOnly: false`.
+
+7. **Run [image-pipeline/rewrite-manifest-copy.js](image-pipeline/rewrite-manifest-copy.js)** to fill in SEO copy (title/description/alt) from category+slug+tags. Idempotent.
+
 8. **Update [lib/categories-config.js](lib/categories-config.js)** — bump the per-category `count` and `TOTAL_IMAGES`.
-9. **Verify** with curl HEAD against the new R2 URLs and a browser smoke test of `/category/{slug}`.
+
+9. **Verify R2** with `curl -I` against both the PNG root URL and WebP URL for a sample of the new slugs. Expect `200`.
+
+10. **Commit ALL changed files** before deploying: `data/categoryData.js`, `lib/categories-config.js`, `image-pipeline/final_manifest.json`. The site renders from committed code — uncommitted changes are invisible to Vercel. Run `git status` to confirm nothing is left unstaged before pushing.
 
 #### Sitemaps regenerate automatically
 
