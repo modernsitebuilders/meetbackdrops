@@ -635,7 +635,7 @@ const IMAGES_KITCHENS = [
   { filename: 'bright-kitchen-light-gray-cabinets-white-countertop-window-aac396ac.webp', title: 'Spring Background 56' },
 ];
 
-// coffee-shops: 38 images
+// coffee-shops: 55 images
 const IMAGES_COFFEE_SHOPS = [
   { filename: 'coffee-shop-counter-wooden-wall-espresso-machine-warm-03587c30.webp', title: 'Coffee Shops Background 1' },
   { filename: 'modern-coffee-bar-geometric-white-counter-wooden-accents-3a39135d.webp', title: 'Coffee Shops Background 2' },
@@ -676,9 +676,25 @@ const IMAGES_COFFEE_SHOPS = [
   { filename: 'minimalist-coffee-shop-interior-wooden-counter-shelves-58d43e62.webp', title: 'Coffee Shop Background 41' },
   { filename: 'bright-coffee-shop-interior-wooden-shelves-ceramic-cups-5e194359.webp', title: 'Coffee Shop Background 43' },
   { filename: 'interior-coffee-shop-wooden-furniture-warm-lighting-vintage-923d1f8e.webp', title: 'Coffee Shop Background 44' },
+  { filename: 'japanese-kissaten-style-coffee-house-interi-4f93c325.webp', title: 'Coffee Shop Background 45' },
+  { filename: 'midcentury-modern-cafe-interior-74ca2b87.webp', title: 'Coffee Shop Background 46' },
+  { filename: 'scandinavian-inspired-minimalist-cafe-inte-a6831bdf.webp', title: 'Coffee Shop Background 47' },
+  { filename: 'bookshop-cafe-hybrid-distinct-standa-d7a80a39.webp', title: 'Coffee Shop Background 48' },
+  { filename: 'bright-mediterranean-cafe-interior-feature-e1fc7729.webp', title: 'Coffee Shop Background 49' },
+  { filename: 'bright-airy-space-built-sustainable-ma-bddf78d7.webp', title: 'Coffee Shop Background 50' },
+  { filename: 'lush-plant-filled-conservatory-cafe-interio-c0edbf0d.webp', title: 'Coffee Shop Background 51' },
+  { filename: 'quiet-after-hours-cafe-interior-ambient-pe-fedffab2.webp', title: 'Coffee Shop Background 52' },
+  { filename: 'space-rich-colorful-geometric-zellige-099b6c3c.webp', title: 'Coffee Shop Background 53' },
+  { filename: 'stark-ultra-modern-minimalist-interior-feat-7ed3b279.webp', title: 'Coffee Shop Background 54' },
+  { filename: 'tailored-formality-luxury-cafe-closer-c29f3135.webp', title: 'Coffee Shop Background 55' },
+  { filename: 'warm-wood-heavy-interior-viewed-seat-00afa8e5.webp', title: 'Coffee Shop Background 56' },
+  { filename: 'architectural-photograph-seated-per-b38ad0a3.webp', title: 'Coffee Shop Background 57' },
+  { filename: 'interior-focusing-natural-imperfection-062ab8fd.webp', title: 'Coffee Shop Background 58' },
+  { filename: 'intimate-parisian-bistro-interior-foregro-c3c5aebe.webp', title: 'Coffee Shop Background 59' },
+  { filename: 'interior-perspective-seated-viewpoint-9fe75439.webp', title: 'Coffee Shop Background 60' },
 ];
 
-// art-galleries: 28 images
+// art-galleries: 29 images
 const IMAGES_ART_GALLERIES = [
   { filename: 'three-framed-empty-canvases-textured-brown-wall-polished-d776d887.webp', title: 'Art Galleries Background 1' },
   { filename: 'long-empty-concrete-hallway-illuminated-panels-framed-spaces-6f3076f1.webp', title: 'Art Galleries Background 10' },
@@ -708,6 +724,7 @@ const IMAGES_ART_GALLERIES = [
   { filename: 'spacious-art-gallery-large-abstract-painting-vibrant-colors-802c74dd.webp', title: 'Art Gallery Background 36' },
   { filename: 'interior-modern-art-gallery-black-walls-large-monochrome-992e6bdb.webp', title: 'Art Gallery Background 40' },
   { filename: 'art-gallery-interior-ornate-frames-wooden-display-cases-warm-b03b16a1.webp', title: 'Art Gallery Background 43' },
+  { filename: 'minimalist-white-walled-gallery-space-featu-ee1c42c2.webp', title: 'Art Gallery Background 44' },
 ];
 
 // urban-lofts: 56 images
@@ -768,7 +785,7 @@ const IMAGES_URBAN_LOFTS = [
   { filename: 'urban-loft-16.webp', title: 'Urban Loft Background 16' },
 ];
 
-// gardens-patios: 31 images
+// gardens-patios: 32 images
 const IMAGES_GARDENS_PATIOS = [
   { filename: 'serene-corner-blue-white-walls-terracotta-pots-vibrant-1959e32a.webp', title: 'Gardens Patios Background 1' },
   { filename: 'bright-white-courtyard-blue-windows-vibrant-bougainvillea-baa81a7e.webp', title: 'Gardens Patios Background 2' },
@@ -801,9 +818,10 @@ const IMAGES_GARDENS_PATIOS = [
   { filename: 'sunlit-courtyard-arched-doorways-potted-plants-vibrant-b72c2a8f.webp', title: 'Gardens Patios Background 39' },
   { filename: 'terrace-stone-columns-cypress-trees-potted-plants-bathed-46962fa7.webp', title: 'Gardens Patios Background 42' },
   { filename: 'picturesque-garden-view-lush-trees-colorful-flowers-4bee50b3.webp', title: 'Gardens Patios Background 43' },
+  { filename: 'outdoor-cafe-patio-seated-table-per-997caa5d.webp', title: 'Gardens Patios Background 44' },
 ];
 
-// historic-spaces: 22 images
+// historic-spaces: 24 images
 const IMAGES_HISTORIC_SPACES = [
   { filename: 'spacious-grand-hall-arched-windows-soft-lighting-wooden-5d78268c.webp', title: 'Historic Spaces Background 2' },
   { filename: 'grand-hallway-tall-yellow-columns-intricate-architectural-d5239de5.webp', title: 'Historic Spaces Background 3' },
@@ -827,6 +845,8 @@ const IMAGES_HISTORIC_SPACES = [
   { filename: 'grand-library-tall-bookshelves-warm-lighting-elegant-4b51a8e6.webp', title: 'Historic Spaces Background 33' },
   { filename: 'ornate-boardroom-light-blue-gold-patterned-walls-elegant-93479b4c.webp', title: 'Historic Spaces Background 34' },
   { filename: 'classic-boardroom-ornate-wall-details-warm-lighting-polished-5ffe9e91.webp', title: 'Historic Spaces Background 37' },
+  { filename: 'interior-distinct-old-world-feel-d-1f921d5b.webp', title: 'Historic Spaces Background 38' },
+  { filename: 'opulent-art-deco-interior-geomet-37ab4b7d.webp', title: 'Historic Spaces Background 39' },
 ];
 
 // nature-landscapes: 40 images
