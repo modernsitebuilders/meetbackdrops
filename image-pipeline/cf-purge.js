@@ -10,21 +10,21 @@
 //   CLOUDFLARE_ZONE_ID     - Zone ID for meetbackdrops.com
 //
 // What gets purged:
-//   - Old image page URLs       (https://meetbackdrops.com/category/{cat}/{oldSlug})
 //   - Old R2 asset URLs         (https://assets.streambackdrops.com/webp/{folder}/{oldWebp})
 //   - Old R2 root PNG URLs      (https://assets.streambackdrops.com/{oldPng})
-//   - Sitemap XMLs              (so new URLs propagate)
-//   - Home + each category page (so the grid links update)
 //
-// New objects do NOT need purging — R2 cache headers are `immutable` and
-// edges populate on first request.
+// NOT purged here:
+//   - meetbackdrops.com pages, sitemaps, category indexes — that domain is
+//     served by Vercel, not Cloudflare. Vercel invalidates HTML on redeploy
+//     and per the `revalidate: 86400` ISR settings; nothing for us to purge.
+//   - New asset URLs — R2 cache headers are `immutable` and edges populate
+//     on first request.
 //
 // Cloudflare API accepts up to 30 URLs per purge_cache call (single-file mode).
 //
 // Usage:
 //   node image-pipeline/cf-purge.js --dry-run    # print URL list, don't call CF
 //   node image-pipeline/cf-purge.js              # execute
-//   node image-pipeline/cf-purge.js --kind pages-only   # subset for staged purge
 // ============================================================================
 
 const path = require('path');
@@ -38,17 +38,12 @@ const MAP_PATH = path.join(ROOT, 'image-pipeline', 'slug-migration-map.json');
 const TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 const ZONE_ID = process.env.CLOUDFLARE_ZONE_ID;
 
-const SITE = 'https://meetbackdrops.com';
 const ASSET = 'https://assets.streambackdrops.com';
 const BATCH = 30;
 const REQUEST_PAUSE_MS = 250; // be polite to the CF API
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
-const KIND = (() => {
-  const i = args.indexOf('--kind');
-  return i >= 0 ? args[i + 1] : 'all';
-})();
 
 if (!DRY_RUN && (!TOKEN || !ZONE_ID)) {
   console.error('[cf-purge] Missing CLOUDFLARE_API_TOKEN or CLOUDFLARE_ZONE_ID.');
@@ -66,35 +61,14 @@ const map = JSON.parse(fs.readFileSync(MAP_PATH, 'utf8'));
 const entries = Object.values(map.entries);
 
 // ─── Build URL set ──────────────────────────────────────────────────────────
+// Scoped to the streambackdrops.com Cloudflare zone only — that's the zone
+// that fronts assets.streambackdrops.com (the R2 asset CDN).
 function collectUrls() {
   const urls = new Set();
-  const categories = new Set();
-
   for (const e of entries) {
-    categories.add(e.category);
-    if (KIND === 'all' || KIND === 'pages-only' || KIND === 'pages') {
-      urls.add(`${SITE}/category/${e.category}/${e.oldSlug}`);
-    }
-    if (KIND === 'all' || KIND === 'assets-only' || KIND === 'assets') {
-      urls.add(`${ASSET}/webp/${e.folder}/${e.oldWebp}`);
-      urls.add(`${ASSET}/${e.oldPng}`);
-    }
+    urls.add(`${ASSET}/webp/${e.folder}/${e.oldWebp}`);
+    urls.add(`${ASSET}/${e.oldPng}`);
   }
-
-  if (KIND === 'all' || KIND === 'meta-only' || KIND === 'meta') {
-    urls.add(`${SITE}/`);
-    urls.add(`${SITE}/sitemap.xml`);
-    urls.add(`${SITE}/sitemap-pages.xml`);
-    urls.add(`${SITE}/sitemap-images.xml`);
-    urls.add(`${SITE}/sitemap-image-pages.xml`);
-    urls.add(`${SITE}/robots.txt`);
-    urls.add(`${SITE}/hd`);
-    urls.add(`${SITE}/most-popular`);
-    for (const cat of categories) {
-      urls.add(`${SITE}/category/${cat}`);
-    }
-  }
-
   return Array.from(urls);
 }
 
@@ -124,7 +98,7 @@ async function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 // ─── Main ───────────────────────────────────────────────────────────────────
 async function main() {
   const urls = collectUrls();
-  console.log(`[cf-purge] kind=${KIND}  ${DRY_RUN ? 'DRY-RUN' : 'EXECUTE'}  total=${urls.length}  batches=${Math.ceil(urls.length / BATCH)}`);
+  console.log(`[cf-purge] zone=streambackdrops.com  ${DRY_RUN ? 'DRY-RUN' : 'EXECUTE'}  total=${urls.length}  batches=${Math.ceil(urls.length / BATCH)}`);
 
   if (DRY_RUN) {
     console.log('\n[cf-purge] Sample URLs (first 10):');

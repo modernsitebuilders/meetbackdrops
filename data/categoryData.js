@@ -506,6 +506,10 @@ const IMAGES_HOME_OFFICE = [
   { filename: 'luxurious-boardroom-dark-walls-large-mirror-elegant-4570f8ee.webp', title: 'Home Office Background 96' },
   { filename: 'modern-interior-glass-staircase-smooth-white-walls-tranquil-6289bdef.webp', title: 'Home Office Background 98' },
   { filename: 'mediterranean-living-room-terracotta-tiles-wooden-furniture-1495045d.webp', title: 'Home Office Background 99' },
+  { filename: 'home-offices-07.webp', title: 'Home Office Background 7' },
+  { filename: 'home-offices-22.webp', title: 'Home Office Background 22' },
+  { filename: 'home-offices-23.webp', title: 'Home Office Background 23' },
+  { filename: 'home-offices-29.webp', title: 'Home Office Background 29' },
 ];
 
 // living-rooms: 39 images
@@ -720,6 +724,7 @@ const IMAGES_URBAN_LOFTS = [
   { filename: 'rooftop-terrace-modern-seating-city-skyline-view-soft-b2785ad1.webp', title: 'Urban Loft Background 56' },
   { filename: 'bright-industrial-loft-large-windows-rustic-wooden-floors-e73943cd.webp', title: 'Home Office Background 91' },
   { filename: 'industrial-loft-interior-large-windows-green-plant-gray-sofa-e1ec8d63.webp', title: 'Home Office Background 97' },
+  { filename: 'urban-loft-16.webp', title: 'Urban Loft Background 16' },
 ];
 
 // gardens-patios: 31 images
@@ -819,6 +824,9 @@ const IMAGES_NATURE_LANDSCAPES = [
   { filename: 'wooden-deck-railing-view-mountains-forest-under-clear-blue-4304e9eb.webp', title: 'Nature Landscape Background 98' },
   { filename: 'wooden-deck-railing-overlooking-green-mountains-under-warm-e7178e7e.webp', title: 'Nature Landscape Background 99' },
   { filename: 'modern-office-setup-wooden-desk-white-chair-computer-large-2a9b77e1.webp', title: 'Summer Background 8' },
+  { filename: 'nature-landscape-14.webp', title: 'Nature Landscape Background 14' },
+  { filename: 'nature-landscape-21.webp', title: 'Nature Landscape Background 21' },
+  { filename: 'nature-landscape-22.webp', title: 'Nature Landscape Background 22' },
 ];
 
 // libraries: 42 images
@@ -1058,6 +1066,9 @@ const IMAGES_EASTER_BACKGROUNDS = [
   { filename: 'home-office-light-blue-walls-white-shelving-units-filled-65849ecd.webp', title: 'Easter Background 107' },
   { filename: 'well-lit-shelf-floral-arrangement-clock-decorative-items-90928016.webp', title: 'Easter Background 109' },
   { filename: 'two-white-shelves-decorative-items-window-center-green-walls-c6d18e25.webp', title: 'Easter Background 110' },
+  { filename: 'easter-background-49.webp', title: 'Easter Background 49' },
+  { filename: 'easter-background-73.webp', title: 'Easter Background 73' },
+  { filename: 'easter-background-88.webp', title: 'Easter Background 88' },
 ];
 
 // spring-backgrounds: 54 images
@@ -1098,6 +1109,10 @@ const IMAGES_SPRING_BACKGROUNDS = [
   { filename: 'lush-green-meadow-dotted-colorful-wildflowers-under-soft-26108367.webp', title: 'Spring Background 83' },
   { filename: 'interior-greenhouse-rows-plants-benches-large-windows-a8ebbfdc.webp', title: 'Spring Background 87' },
   { filename: 'modern-boardroom-large-glass-windows-showcasing-lush-d66fbf2c.webp', title: 'Spring Background 94' },
+  { filename: 'spring-background-01.webp', title: 'Spring Background 1' },
+  { filename: 'spring-background-36.webp', title: 'Spring Background 36' },
+  { filename: 'spring-background-43.webp', title: 'Spring Background 43' },
+  { filename: 'spring-background-73.webp', title: 'Spring Background 73' },
 ];
 
 // summer-backgrounds: 38 images
