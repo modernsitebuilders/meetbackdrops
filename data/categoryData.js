@@ -1156,7 +1156,7 @@ const IMAGES_SPRING_BACKGROUNDS = [
   { filename: 'spring-background-73.webp', title: 'Spring Background 73' },
 ];
 
-// summer-backgrounds: 38 images
+// summer-backgrounds: 66 images
 const IMAGES_SUMMER_BACKGROUNDS = [
   { filename: 'serene-courtyard-chaise-lounge-vibrant-bougainvillea-soft-08dba43c.webp', title: 'Summer Background 1' },
   { filename: 'wooden-executive-desk-lamp-books-glasses-illuminated-soft-fed8e4f4.webp', title: 'Summer Background 2' },
@@ -1196,6 +1196,34 @@ const IMAGES_SUMMER_BACKGROUNDS = [
   { filename: 'elegant-white-railings-overlook-sandy-beach-blue-ocean-under-6f56b3a2.webp', title: 'Nature Landscapes Background 34' },
   { filename: 'tranquil-tropical-beach-white-sand-palm-trees-clear-blue-sky-56231be7.webp', title: 'Nature Landscape Background 93' },
   { filename: 'coastal-retreat-woven-chairs-light-curtains-view-turquoise-d9e8471a.webp', title: 'Nature Landscapes Background 14' },
+  { filename: 'bright-corpora-9a0f874d.webp', title: 'Summer Background 39' },
+  { filename: 'composed-camera-sophisticated-upper-732f6caf.webp', title: 'Summer Background 40' },
+  { filename: 'shaded-stone-5128a46e.webp', title: 'Summer Background 41' },
+  { filename: 'composed-camera-contemporary-luxury-ria-15d8ad0e.webp', title: 'Summer Background 42' },
+  { filename: 'executive-video-presence-modern-cedar-c0f51da4.webp', title: 'Summer Background 43' },
+  { filename: 'bright-cliffsi-37750ea3.webp', title: 'Summer Background 44' },
+  { filename: 'composed-camera-inside-grand-historic-d1b9f47b.webp', title: 'Summer Background 45' },
+  { filename: 'historic-itali-21e19664.webp', title: 'Summer Background 46' },
+  { filename: 'secluded-luxur-ee3c2ea0.webp', title: 'Summer Background 47' },
+  { filename: 'composed-camera-high-end-wellness-resor-6bf747fd.webp', title: 'Summer Background 48' },
+  { filename: 'executive-video-presence-mid-century-modern-d2dda180.webp', title: 'Summer Background 49' },
+  { filename: 'luxurious-adob-24dca430.webp', title: 'Summer Background 50' },
+  { filename: 'composed-camera-sleek-pale-wood-deck-d625848c.webp', title: 'Summer Background 51' },
+  { filename: 'minimalist-sca-b6b961a5.webp', title: 'Summer Background 52' },
+  { filename: 'composed-camera-modern-japanese-engawa-ae4eb8ad.webp', title: 'Summer Background 53' },
+  { filename: 'minimalist-jap-02f48f17.webp', title: 'Summer Background 54' },
+  { filename: 'interior-brigh-a7dab6d0.webp', title: 'Summer Background 55' },
+  { filename: 'composed-camera-bright-sunroom-bla-0adf7b3b.webp', title: 'Summer Background 56' },
+  { filename: 'all-glass-sol-f2a65cf0.webp', title: 'Summer Background 57' },
+  { filename: 'photorealistic-interior-luxury-tropical-0e3b4386.webp', title: 'Summer Background 58' },
+  { filename: 'executive-video-presence-interior-open-ccee95d0.webp', title: 'Summer Background 59' },
+  { filename: 'composed-camera-high-end-lakeside-cabin-63a25917.webp', title: 'Summer Background 60' },
+  { filename: 'modern-timber-085ad1da.webp', title: 'Summer Background 61' },
+  { filename: 'contemporary-rooftop-lounge-crisp-0a1e8d3c.webp', title: 'Summer Background 62' },
+  { filename: 'modern-rooftop-terrace-sleek-wooden-pe-a07d3b5a.webp', title: 'Summer Background 63' },
+  { filename: 'quiet-european-1ebf3749.webp', title: 'Summer Background 64' },
+  { filename: 'composed-camera-sun-drenched-stone-vera-0283fadb.webp', title: 'Summer Background 65' },
+  { filename: 'stone-villa-te-65e50cf9.webp', title: 'Summer Background 66' },
 ];
 
 // bokeh-backgrounds: 50 images
