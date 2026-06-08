@@ -25,6 +25,8 @@ import json
 import os
 import re
 import sys
+from datetime import datetime
+from glob import glob
 from io import BytesIO
 from pathlib import Path
 
@@ -50,31 +52,116 @@ DESC_MAX     = 60
 
 DRY_RUN = "--dry-run" in sys.argv
 
-# ── Source files (absolute paths) ─────────────────────────────────────────────
+DOWNLOADS = Path("/Users/davidmiles/Downloads")
 
-SOURCE_FILES = [
-    # (path, category)
-    ("/Users/davidmiles/Downloads/streambackdrops_A_Japanese_Kissaten-style_coffee_house_interi_52ddd74c-829c-46cd-b939-49d2f617b5b8_2.png",       "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_Midcentury_Modern_cafe_interior_featuring_a_3104c851-c7e9-41ed-a11e-dbf9a5a43d34_1.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_Scandinavian-inspired_minimalist_cafe._Inte_8c67022c-4a88-4759-8667-648938d57a54_0.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_bookshop_cafe_hybrid_distinct_from_a_standa_93d87fb4-3c20-4e39-ae79-13dd6cbd5244_1.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_bright_Mediterranean_cafe_interior._Feature_a297641f-2c72-4362-86f7-32e66d227acf_2.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_bright_airy_space_built_with_sustainable_ma_2bde8289-2a61-4d79-b14e-74b703055427_2.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_lush_plant-filled_conservatory_cafe_interio_ecdd402d-a4db-45eb-896b-4f33281fb780_2.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_minimalist_white-walled_gallery_space_featu_ebe12e8e-ccac-4e81-8fd0-4abe81d5c8c9_1.png",     "art-galleries"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_quiet_after-hours_cafe_interior._Ambient_pe_093b7b50-9eeb-4d6e-8891-c91f92f6aa70_3.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_space_rich_with_colorful_geometric_zellige__faf9dad0-cb0e-45b2-99ce-d2291c863ebd_3.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_stark_ultra-modern_minimalist_interior_feat_931138b1-55cb-428f-89d1-bd7818bdbb21_0.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_tailored_formality_luxury_cafe_closer_to_a__90509d02-ea0b-4b71-9661-033e6d9326b7_1.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_A_warm_wood-heavy_interior_viewed_from_a_seat_cd115b85-b068-4125-908b-f812b6aa73e3_2.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_An_architectural_photograph_from_a_seated_per_cfeb89c4-0a8a-4a6b-a0d9-10a8efc4bc16_2.png",     "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_An_interior_focusing_on_natural_imperfection._5c77114c-4e5b-480e-b8ef-730ad9de409f_2.png",      "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_An_interior_with_a_distinct_old-world_feel._D_930de8e3-abbd-4794-94d0-def3f8afb677_1.png",      "historic-spaces"),
-    ("/Users/davidmiles/Downloads/streambackdrops_An_intimate_Parisian_bistro_interior._Foregro_14ea81c6-5fca-49c5-b4a6-739f0b3cec37_3.png",     "coffee-shops"),
-    ("/Users/davidmiles/Downloads/streambackdrops_An_opulent_Art_Deco_interior_featuring_geomet_023edf11-802f-44bc-b2a3-98d59dd4940a_0.png",     "historic-spaces"),
-    ("/Users/davidmiles/Downloads/streambackdrops_An_outdoor_cafe_patio_from_a_seated_table_per_1c535bcd-bea0-43ff-9aa7-8b3a166304e4_0.png",      "gardens-patios"),
-    ("/Users/davidmiles/Downloads/streambackdrops_Interior_perspective_from_a_seated_viewpoint__62ef7d54-ed04-4161-b1ad-16b1366df190_2.png",      "coffee-shops"),
-]
+# Only files from this batch (downloaded 2026-06-08, 16:50 onward). A uuid can
+# also match older un-renamed variants of the same Midjourney job sitting in
+# Downloads, so we constrain by modification time to this batch's window.
+BATCH_START_MTIME = datetime(2026, 6, 8, 16, 50, 0).timestamp()
+
+# ── Source batch: 2026-06-08 16:50 expansion batch ────────────────────────────
+# Files are matched by their Midjourney job-id (uuid prefix) so we never have to
+# transcribe the full prompt-laden filenames. Category is the INITIAL bucket;
+# the vision + recategorize pass refines later. Plain-wall images go to the new
+# neutral-backgrounds category. Categories were assigned after viewing the
+# ambiguous wall/minimalist/empty images.
+
+UUID_CATEGORY = {
+    # neutral / plain walls (NEW category — "Neutral & Plain Walls")
+    "00eb831e": "neutral-backgrounds",  # plain warm-cream plaster wall
+    "046e4bed": "neutral-backgrounds",  # blank white wall, single minimal table
+    "3e0c267e": "neutral-backgrounds",  # charcoal matte wall, two spotlights
+    "43fbff9c": "neutral-backgrounds",  # soft sage plaster wall
+    "6b36b9b4": "neutral-backgrounds",  # empty room, blank white wall dominant
+    "7b59fa8c": "neutral-backgrounds",  # white textured plaster, full frame
+    "812abcb5": "neutral-backgrounds",  # light greige concrete wall
+    "88822c80": "neutral-backgrounds",  # ribbed white minimal wall
+    "d2c9f816": "neutral-backgrounds",  # blue seamless wall
+    "d7873ac8": "neutral-backgrounds",  # warm-white wall, bare desk to side
+    "daa3bb16": "neutral-backgrounds",  # empty cream-walled minimalist room
+    # wall-shelves (has floating wood shelves → bright subfolder)
+    "11ca5842": "wall-shelves",
+    # home-office (therapy / counseling / telehealth / wellness / home studies)
+    "0ad457a8": "home-office",  # art deco home office
+    "0facadbd": "home-office",  # minimalist home office, furnished desk
+    "21e661d4": "home-office",  # contemporary executive home office
+    "2f2b640f": "home-office",  # calming online consultation
+    "33ef428c": "home-office",  # calming therapy office
+    "42ded55f": "home-office",  # DSLR modern home office
+    "468eda8d": "home-office",  # contemporary executive home office
+    "56588ab4": "home-office",  # telehealth, mental-health pro
+    "5e90b0c8": "home-office",  # therapist private office
+    "72058675": "home-office",  # professional home office, clean desk
+    "7b1b1d04": "home-office",  # Mediterranean villa home office
+    "a09f45c8": "home-office",  # serene telehealth, soft focus
+    "b926b6a8": "home-office",  # architect private studio
+    "b9e61640": "home-office",  # professional counselors office
+    "e2d497fe": "home-office",  # serene counseling office
+    "f8c0d774": "home-office",  # wellness practitioner private office (2 variants)
+    "f96d8880": "home-office",  # real home office, single warm
+    # office-spaces (corporate / medical / executive / conference / lobby / open office)
+    "01056bd1": "office-spaces",  # lean modern open office
+    "0a6e6175": "office-spaces",  # modern clean tech-company office
+    "0be7d783": "office-spaces",  # international executive office
+    "16722c21": "office-spaces",  # modern tech-company conference room
+    "16b1f0a8": "office-spaces",  # bright luxury corporate meeting room
+    "226d2511": "office-spaces",  # lean modern open office
+    "3596e74c": "office-spaces",  # modern glass conference room
+    "36df5811": "office-spaces",  # empty minimalist executive boardroom
+    "4e495534": "office-spaces",  # real glass lobby
+    "52802bec": "office-spaces",  # modern corporate office backdrop
+    "5f84a872": "office-spaces",  # professional medical office
+    "7cc6d22e": "office-spaces",  # law firm lobby, reception
+    "84e2ac18": "office-spaces",  # modern dental / medical clinic
+    "901b9fd7": "office-spaces",  # modern engineering office
+    "94715fff": "office-spaces",  # high-end clinical telemedicine
+    "9a98d19d": "office-spaces",  # university lobby, information desk
+    "9b4f972a": "office-spaces",  # corporate executive office, wooden
+    "9fc3044f": "office-spaces",  # real conference room
+    "a744d789": "office-spaces",  # architectural empty open office, cubicles
+    "a8408b71": "office-spaces",  # financial executive office, marble
+    "b1ab0ca7": "office-spaces",  # upscale real estate office
+    "c2bb59aa": "office-spaces",  # aspirational corporate office
+    "cadac7f0": "office-spaces",  # sleek corporate meeting space
+    "ce17feb7": "office-spaces",  # executive interview backdrop
+    "d24690f8": "office-spaces",  # media company open workspace (2 variants)
+    "dea0e9bd": "office-spaces",  # high-end executive corner office
+    "e4455d89": "office-spaces",  # tech startup conference room
+    "e7cf8287": "office-spaces",  # medical executive office
+    "ea35bd79": "office-spaces",  # modern open office workspace
+    "f2ad0478": "office-spaces",  # bright airy professional office
+}
+
+# Per-uuid R2 folder override. Merged categories (wall-shelves) store webps in
+# *-bright/-dark subfolders, not under the bare category name.
+FOLDER_OVERRIDE = {
+    "11ca5842": "wall-shelves-bright",
+}
+
+
+def build_source_files():
+    """(path, category, folder) tuples, matched from Downloads by uuid prefix.
+
+    Only un-renamed Midjourney files (streambackdrops_*) are matched, so files
+    already renamed by a prior run are skipped.
+    """
+    out, seen = [], set()
+    for uuid, category in UUID_CATEGORY.items():
+        matches = sorted(glob(str(DOWNLOADS / f"streambackdrops_*{uuid}*.png")))
+        if not matches:
+            print(f"  ⚠ no source file for uuid {uuid} ({category})")
+            continue
+        for mpath in matches:
+            if mpath in seen:
+                continue
+            if os.path.getmtime(mpath) < BATCH_START_MTIME:
+                continue  # older variant of same job, not this batch
+            seen.add(mpath)
+            out.append((mpath, category, FOLDER_OVERRIDE.get(uuid, category)))
+    return out
+
+
+SOURCE_FILES = build_source_files()
 
 STOP_WORDS = {
     "a","an","the","and","or","but","of","in","on","at","by","with","to","for",
@@ -154,6 +241,8 @@ def main():
     if DRY_RUN:
         print("=== DRY RUN — no uploads, no renames ===\n")
 
+    print(f"Source batch: {len(SOURCE_FILES)} files\n")
+
     r2 = boto3.client(
         "s3",
         endpoint_url=R2_ENDPOINT,
@@ -165,7 +254,7 @@ def main():
     results = []
     errors  = []
 
-    for src_path, category in SOURCE_FILES:
+    for src_path, category, folder in SOURCE_FILES:
         p = Path(src_path)
         if not p.exists():
             errors.append(f"MISSING: {src_path}")
@@ -188,14 +277,12 @@ def main():
             webp_filename = f"{slug}.webp"
             png_filename  = f"{slug}.png"
 
-            # folder = category (straight mapping for all categories here)
-            folder = category
-
             r2_webp_key = f"webp/{folder}/{webp_filename}"
             r2_png_key  = png_filename
 
             print(f"  slug:     {slug}")
             print(f"  category: {category}")
+            print(f"  folder:   {folder}")
             print(f"  R2 webp:  {r2_webp_key}")
             print(f"  R2 png:   {r2_png_key}")
 
@@ -235,6 +322,13 @@ def main():
         json.dump(results, f, indent=2)
     print(f"\n\n=== Done. {len(results)} processed, {len(errors)} errors ===")
     print(f"Output written to: {output_path}")
+
+    # Per-category tally
+    by_cat = {}
+    for r in results:
+        by_cat[r["category"]] = by_cat.get(r["category"], 0) + 1
+    print("By category:", json.dumps(by_cat))
+
     if errors:
         print("\nErrors:")
         for e in errors:

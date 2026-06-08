@@ -1,3 +1,6 @@
 image-pipeline/.env
 .env
 *.env
+
+# local manifest backups from batch merges
+final_manifest.json.merge-*-backup.*

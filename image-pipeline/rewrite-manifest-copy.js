@@ -57,6 +57,7 @@ const MANIFEST_PATH = path.join(__dirname, 'final_manifest.json');
 const CATEGORY_DISPLAY = {
   'office-spaces':          'Office Spaces',
   'home-office':            'Home Office',
+  'neutral-backgrounds':    'Neutral & Plain Walls',
   'bookshelves':            'Bookshelves',
   'wall-shelves':           'Wall Shelves',
   'conference-rooms':       'Conference Rooms',
@@ -82,6 +83,7 @@ const CATEGORY_DISPLAY = {
 const CATEGORY_NOUNS = {
   'office-spaces':          ['executive office interior', 'corporate office', 'modern corporate office'],
   'home-office':            ['executive home office', 'home office study', 'work-from-home executive study'],
+  'neutral-backgrounds':    ['plain neutral wall', 'minimalist wall backdrop', 'neutral wall backdrop'],
   'bookshelves':            ['curated bookshelf wall', 'library-style bookshelf wall', 'floor-to-ceiling bookshelves'],
   'wall-shelves':           ['minimalist wall shelving', 'floating shelf composition', 'curated wall shelving'],
   'conference-rooms':       ['corporate conference room', 'executive boardroom', 'modern conference room'],

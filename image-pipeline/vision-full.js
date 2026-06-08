@@ -69,6 +69,13 @@ const limitIdx = args.indexOf('--limit');
 const LIMIT = limitIdx >= 0 ? parseInt(args[limitIdx + 1], 10) : null;
 const slugIdx = args.indexOf('--slug');
 const SLUG_FILTER = slugIdx >= 0 ? args[slugIdx + 1] : null;
+const catIdx = args.indexOf('--category');
+const CAT_FILTER = catIdx >= 0 ? args[catIdx + 1] : null;
+const slugsFileIdx = args.indexOf('--slugs-file');
+const SLUGS_FILE = slugsFileIdx >= 0 ? args[slugsFileIdx + 1] : null;
+const SLUGS_SET = SLUGS_FILE
+  ? new Set(fs.readFileSync(SLUGS_FILE, 'utf8').split('\n').map((s) => s.trim()).filter(Boolean))
+  : null;
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -227,6 +234,8 @@ async function main() {
 
   let entries = manifest;
   if (SLUG_FILTER) entries = entries.filter(e => e.slug === SLUG_FILTER);
+  if (CAT_FILTER) entries = entries.filter(e => e.category === CAT_FILTER);
+  if (SLUGS_SET) entries = entries.filter(e => SLUGS_SET.has(e.slug));
   if (LIMIT) entries = entries.slice(0, LIMIT);
 
   // Filter to entries needing processing

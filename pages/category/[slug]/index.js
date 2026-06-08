@@ -237,6 +237,7 @@ export async function getStaticPaths() {
     'wall-shelves',
     'office-spaces',
     'home-office',
+    'neutral-backgrounds',
     'living-rooms',
     'kitchens',
     'coffee-shops',

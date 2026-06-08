@@ -51,6 +51,9 @@ export default function Footer() {
               <Link href="/category/home-office" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Home Offices
               </Link>
+              <Link href="/category/neutral-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Neutral & Plain Walls
+              </Link>
               <Link href="/category/wall-shelves" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Wall Shelves
               </Link>

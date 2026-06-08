@@ -24,6 +24,7 @@ const REPORT_PATH = path.join(__dirname, 'category-audit-report.json');
 const FINGERPRINTS = {
   'office-spaces':        ['office', 'desk', 'workspace', 'workstation', 'cubicle', 'open office', 'office space'],
   'home-office':          ['home office', 'home-office', 'study', 'workspace', 'desk', 'home study'],
+  'neutral-backgrounds':  ['plain wall', 'blank wall', 'bare wall', 'neutral wall', 'minimalist wall', 'empty wall', 'plaster wall', 'limewash', 'seamless backdrop', 'off-white wall', 'smooth wall', 'solid wall'],
   'bookshelves':          ['bookshelf', 'bookshelves', 'bookcase', 'book stack', 'books'],
   'wall-shelves':         ['wall shelf', 'wall shelves', 'floating shelf', 'display shelf', 'shelving'],
   'conference-rooms':     ['boardroom', 'conference', 'conference room', 'meeting room', 'meeting table'],

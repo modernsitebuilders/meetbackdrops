@@ -200,6 +200,7 @@ const IMAGES_WALL_SHELVES_BRIGHT = [
   { filename: 'minimalist-shelf-displaying-potted-plants-candles-against-47951d25.webp', title: 'Wall Shelves Bright Background 52' },
   { filename: 'minimalist-shelving-books-dried-plants-neutral-tones-softly-6536c05c.webp', title: 'Wall Shelves Bright Background 54' },
   { filename: 'minimalist-shelf-various-vases-neutral-tones-soft-greenery-e6eddef7.webp', title: 'Wall Shelves Bright Background 55' },
+  { filename: 'minimalist-scandinavian-home-office-wall-14077133.webp', title: 'Wall Shelves Bright Background 40' },
 ];
 
 // wall-shelves-dark: 64 images
@@ -465,6 +466,37 @@ const IMAGES_OFFICE_SPACES = [
   { filename: 'spacious-boardroom-large-wooden-table-leather-chairs-large-30803fff.webp', title: 'Conference Room Background 46' },
   { filename: 'luxurious-boardroom-long-wooden-table-leather-chairs-warm-edd6be7f.webp', title: 'Conference Room Background 47' },
   { filename: 'sophisticated-boardroom-long-wooden-table-leather-chairs-f1f9ad78.webp', title: 'Conference Room Background 48' },
+  { filename: 'lean-modern-open-office-simple-desks-position-2c05888a.webp', title: 'Office Space Background 195' },
+  { filename: 'modern-clean-tech-company-office-background-cf69cf91.webp', title: 'Office Space Background 196' },
+  { filename: 'international-executive-office-global-de-159148db.webp', title: 'Office Space Background 197' },
+  { filename: 'modern-tech-company-conference-room-sleek-5ab030e9.webp', title: 'Office Space Background 198' },
+  { filename: 'bright-luxury-corporate-meeting-room-lar-d9f84c13.webp', title: 'Office Space Background 199' },
+  { filename: 'lean-modern-open-office-simple-desks-position-3639ef9f.webp', title: 'Office Space Background 200' },
+  { filename: 'modern-glass-conference-room-large-oval-9fb29c16.webp', title: 'Office Space Background 201' },
+  { filename: 'empty-minimalist-executive-boardroom-sin-e85c7187.webp', title: 'Office Space Background 202' },
+  { filename: 'real-glass-lobby-photograph-single-moder-083b4186.webp', title: 'Office Space Background 203' },
+  { filename: 'modern-corporate-office-backdrop-elegan-f3ad4d2f.webp', title: 'Office Space Background 204' },
+  { filename: 'professional-medical-office-clean-white-251559ff.webp', title: 'Office Space Background 205' },
+  { filename: 'law-firm-lobby-traditional-reception-e816bf54.webp', title: 'Office Space Background 206' },
+  { filename: 'modern-dental-medical-clinic-backdrop-9a9db500.webp', title: 'Office Space Background 207' },
+  { filename: 'realistic-modern-engineering-office-tech-391ed5b3.webp', title: 'Office Space Background 208' },
+  { filename: 'high-end-clinical-telemedicine-backdrop-aa7c6e16.webp', title: 'Office Space Background 209' },
+  { filename: 'university-lobby-information-desk-lef-f9627ec6.webp', title: 'Office Space Background 210' },
+  { filename: 'corporate-executive-office-large-wooden-8ca3f095.webp', title: 'Office Space Background 211' },
+  { filename: 'real-conference-room-photograph-single-g-8a2e5886.webp', title: 'Office Space Background 212' },
+  { filename: 'architectural-interior-photography-empty-m-8640e0d5.webp', title: 'Office Space Background 213' },
+  { filename: 'active-financial-executive-office-marble-c118d53b.webp', title: 'Office Space Background 214' },
+  { filename: 'realistic-upscale-real-estate-office-pro-9315ba84.webp', title: 'Office Space Background 215' },
+  { filename: 'aspirational-corporate-office-background-f-62352511.webp', title: 'Office Space Background 216' },
+  { filename: 'sleek-contemporary-corporate-meeting-space-3e232331.webp', title: 'Office Space Background 217' },
+  { filename: 'executive-interview-backdrop-beautifull-c357bc10.webp', title: 'Office Space Background 218' },
+  { filename: 'media-company-open-workspace-editing-sta-8c7b59e4.webp', title: 'Office Space Background 219' },
+  { filename: 'media-company-open-workspace-editing-sta-ba7c530c.webp', title: 'Office Space Background 220' },
+  { filename: 'high-end-executive-corner-office-background-7bd41289.webp', title: 'Office Space Background 221' },
+  { filename: 'tech-startup-conference-room-collaborati-4e70ae7b.webp', title: 'Office Space Background 222' },
+  { filename: 'medical-executive-office-professional-de-10d0b8dd.webp', title: 'Office Space Background 223' },
+  { filename: 'modern-open-office-workspace-desks-posit-034a1a29.webp', title: 'Office Space Background 224' },
+  { filename: 'bright-airy-professional-office-setting-0cebec44.webp', title: 'Office Space Background 225' },
 ];
 
 // home-office: 100 images
@@ -551,6 +583,24 @@ const IMAGES_HOME_OFFICE = [
   { filename: 'home-offices-22.webp', title: 'Home Office Background 22' },
   { filename: 'home-offices-23.webp', title: 'Home Office Background 23' },
   { filename: 'home-offices-29.webp', title: 'Home Office Background 29' },
+  { filename: 'art-deco-home-office-geometric-patterns-0ad457a8-2dc2-4a64-b27460b0.webp', title: 'Home Office Background 83' },
+  { filename: 'modern-minimalist-home-office-clean-whit-e0d96066.webp', title: 'Home Office Background 84' },
+  { filename: 'contemporary-executive-home-office-sleek-59343f5b.webp', title: 'Home Office Background 85' },
+  { filename: 'calming-online-consultation-background-c-9cd754e4.webp', title: 'Home Office Background 86' },
+  { filename: 'calming-therapy-office-virtual-background-c7794f51.webp', title: 'Home Office Background 87' },
+  { filename: 'dslr-photograph-modern-home-office-simple-3b2a6aba.webp', title: 'Home Office Background 88' },
+  { filename: 'contemporary-executive-home-office-sleek-468eda8d-a5a6-473e-42a134b0.webp', title: 'Home Office Background 89' },
+  { filename: 'telehealth-backdrop-mental-health-pro-ab91e143.webp', title: 'Home Office Background 90' },
+  { filename: 'therapist-private-office-consultation-de-d4976e6c.webp', title: 'Home Office Background 91' },
+  { filename: 'professional-home-office-clean-white-des-d0975b43.webp', title: 'Home Office Background 92' },
+  { filename: 'mediterranean-villa-home-office-terracot-bd550ea5.webp', title: 'Home Office Background 93' },
+  { filename: 'serene-telehealth-background-soft-focus-500a838c.webp', title: 'Home Office Background 94' },
+  { filename: 'architect-private-studio-drafting-table-4980a0dc.webp', title: 'Home Office Background 95' },
+  { filename: 'professional-counselors-office-backdrop-so-89b55e27.webp', title: 'Home Office Background 96' },
+  { filename: 'serene-counseling-office-backdrop-clean-5f4585ce.webp', title: 'Home Office Background 97' },
+  { filename: 'wellness-practitioner-private-office-tre-35ed360d.webp', title: 'Home Office Background 98' },
+  { filename: 'wellness-practitioner-private-office-tre-456572bd.webp', title: 'Home Office Background 99' },
+  { filename: 'real-home-office-photograph-single-warm-66305c46.webp', title: 'Home Office Background 100' },
 ];
 
 // living-rooms: 39 images
@@ -1300,6 +1350,21 @@ const IMAGES_BOKEH_BACKGROUNDS = [
   { filename: 'blurred-water-surface-soft-blue-hues-bright-reflections-61c658cc.webp', title: 'Bokeh Background 66' },
 ];
 
+// neutral-backgrounds: 11 images — plain/neutral walls (off-white, greige, gray, sage)
+const IMAGES_NEUTRAL_BACKGROUNDS = [
+  { filename: 'modern-corporate-backdrop-plain-light-57c8397f.webp', title: 'Neutral & Plain Walls Background 1' },
+  { filename: 'ultra-minimalist-modern-workspace-designed-fo-ba61a369.webp', title: 'Neutral & Plain Walls Background 2' },
+  { filename: 'high-end-zoom-backdrop-premium-matte-c-5db34340.webp', title: 'Neutral & Plain Walls Background 3' },
+  { filename: 'professional-virtual-backdrop-c-bc46b971.webp', title: 'Neutral & Plain Walls Background 4' },
+  { filename: 'empty-minimalist-room-single-long-table-6ee15f55.webp', title: 'Neutral & Plain Walls Background 5' },
+  { filename: 'minimalist-corporate-video-background-6c0c9439.webp', title: 'Neutral & Plain Walls Background 6' },
+  { filename: 'corporate-background-light-grei-37194ab7.webp', title: 'Neutral & Plain Walls Background 7' },
+  { filename: 'minimalist-corporate-office-wall-soft-70590a9f.webp', title: 'Neutral & Plain Walls Background 8' },
+  { filename: 'seamless-video-call-background-d4a783bf.webp', title: 'Neutral & Plain Walls Background 9' },
+  { filename: 'empty-minimalist-japandi-home-office-sin-2d1a60a0.webp', title: 'Neutral & Plain Walls Background 10' },
+  { filename: 'high-end-minimalist-office-background-fl-b1c3f800.webp', title: 'Neutral & Plain Walls Background 11' },
+];
+
 
 // data/categoryData.js
 export const categoryInfo = {
@@ -1329,6 +1394,13 @@ export const categoryInfo = {
     description: 'Warm, personal home office backgrounds for work-from-home video calls',
     seoDescription: 'Download free home office virtual backgrounds for Zoom, Teams & Google Meet. Cozy, professional settings for remote workers — no signup, instant download.',
     images: IMAGES_HOME_OFFICE
+  },
+
+  'neutral-backgrounds': {
+    name: 'Neutral & Plain Walls',
+    description: 'Minimalist neutral and plain wall backgrounds — off-white, greige, and soft gray — for clean, distraction-free video calls',
+    seoDescription: 'Free neutral and plain wall virtual backgrounds for Zoom, Teams & Google Meet. Minimalist off-white, greige and soft-gray walls — no signup, instant download.',
+    images: IMAGES_NEUTRAL_BACKGROUNDS
   },
 
   'living-rooms': {
@@ -1450,6 +1522,7 @@ export const folderMap = {
   'wall-shelves': 'wall-shelves-bright',
   'office-spaces': 'office-spaces',
   'home-office': 'home-office',
+  'neutral-backgrounds': 'neutral-backgrounds',
   'living-rooms': 'living-rooms',
   'kitchens': 'kitchens',
   'coffee-shops': 'coffee-shops',

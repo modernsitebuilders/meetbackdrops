@@ -72,6 +72,8 @@ export default function Analytics() {
             category: currentPath === '/' ? 'homepage' : 
                      currentPath.startsWith('/blog/') ? currentPath.replace('/blog/', '') :
                      currentPath.startsWith('/category/') ? currentPath.replace('/category/', '') :
+                     currentPath === '/collections' ? 'collections-hub' :
+                     currentPath.startsWith('/collections/') ? 'collection:' + currentPath.replace('/collections/', '') :
                      currentPath.includes('/gallery') ? 'gallery' :
                      currentPath.includes('/about') ? 'about' :
                      currentPath.includes('/contact') ? 'contact' :

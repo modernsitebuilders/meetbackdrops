@@ -99,7 +99,8 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   // Navigation data structures
   const officesItems = [
     { name: 'Office Spaces', path: '/category/office-spaces' },
-    { name: 'Home Offices', path: '/category/home-office' }
+    { name: 'Home Offices', path: '/category/home-office' },
+    { name: 'Neutral & Plain Walls', path: '/category/neutral-backgrounds' }
   ];
 
   const collectionsItems = [

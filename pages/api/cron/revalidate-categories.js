@@ -15,6 +15,7 @@ const CATEGORY_SLUGS = [
   'wall-shelves-dark',
   'office-spaces',
   'home-office',
+  'neutral-backgrounds',
   'living-rooms',
   'kitchens',
   'coffee-shops',

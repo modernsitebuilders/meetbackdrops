@@ -150,11 +150,19 @@ Raw Midjourney output filenames (e.g. `streambackdrops_Architectural_photography
 
 7. **Run [image-pipeline/rewrite-manifest-copy.js](image-pipeline/rewrite-manifest-copy.js)** to fill in SEO copy (title/description/alt) from category+slug+tags. Idempotent.
 
-8. **Update [lib/categories-config.js](lib/categories-config.js)** — bump the per-category `count` and `TOTAL_IMAGES`.
+8. **Vision-tag the new images — REQUIRED, part of initial integration (do NOT skip).** Stubs are created with **empty `tags`**, and `rewrite-manifest-copy.js` does NOT generate tags — it only writes title/description/alt. Tags are what drive the persona/industry **collection** facets ([lib/collections/facets.js](lib/collections/facets.js)): an untagged image gets only a coarse *category-level* facet, so it will not surface correctly in the collection/persona pages. After the webps are on R2 (step 3) and the stubs exist (step 6), generate tags + image-grounded copy for the new slugs and merge them in:
+   ```bash
+   # write the batch's new slugs to a file (e.g. from image-pipeline/process_new_images_output.json)
+   node image-pipeline/vision-full.js --slugs-file <slugs.txt>     # OpenAI vision → tags + grounded title/desc/alt
+   node image-pipeline/merge-vision-targeted.js <slugs.txt>        # merge ONLY those slugs into final_manifest.json
+   ```
+   `vision-full.js` fetches each webp from R2, so it MUST run after upload. `merge-vision-targeted.js` is scoped to the slug list so it never overwrites copy for unrelated entries (important — the catalog-wide `merge-vision-into-manifest.js` would clobber entries whose vision keys are stale from past slug migrations). This supersedes the template copy from step 7 for the new images; running step 7 first is still fine as a fallback if the vision pass is skipped/fails. Requires `OPENAI_API_KEY` in `image-pipeline/.env` (~$0.001/image, gpt-4o-mini low-detail).
 
-9. **Verify R2** with `curl -I` against both the PNG root URL and WebP URL for a sample of the new slugs. Expect `200`.
+9. **Update [lib/categories-config.js](lib/categories-config.js)** — bump the per-category `count` and `TOTAL_IMAGES`.
 
-10. **Commit ALL changed files** before deploying: `data/categoryData.js`, `lib/categories-config.js`, `image-pipeline/final_manifest.json`. The site renders from committed code — uncommitted changes are invisible to Vercel. Run `git status` to confirm nothing is left unstaged before pushing.
+10. **Verify R2** with `curl -I` against both the PNG root URL and WebP URL for a sample of the new slugs. Expect `200`.
+
+11. **Commit ALL changed files** before deploying: `data/categoryData.js`, `lib/categories-config.js`, `image-pipeline/final_manifest.json`. The site renders from committed code — uncommitted changes are invisible to Vercel. Run `git status` to confirm nothing is left unstaged before pushing.
 
 #### Sitemaps regenerate automatically
 
@@ -259,3 +267,5 @@ When you add a new page, category, or blog post, the title/description will be v
 5. **`image-metadata-complete.json` is legacy** — still used for `hdOnly` detection in `hd.js`. Don't rely on it for anything new; add fields to `final_manifest.json` instead.
 6. **Manifest ↔ categoryData filename naming** — the two sources must use identical filenames. Past bugs: `nature-landscape-NN.webp` (singular, on R2) vs `nature-landscapes-NN.webp` (plural, in manifest). When adding a category or rewriting filenames, cross-check both sides with a Set diff.
 7. **Don't rename `assets.streambackdrops.com`, `streambackdrops-premium`, or `stream-backdrops-videos`** — they're storage identifiers retained from the prior brand. See the brand history note at the top.
+8. **New images ship with empty `tags` unless you vision-tag them.** `rewrite-manifest-copy.js` writes title/description/alt but NOT tags. Untagged images won't surface correctly in persona/industry **collections** (facets in [lib/collections/facets.js](lib/collections/facets.js) are tag-driven). Always run the vision-tag step (step 8 of "Adding new images") as part of initial integration. Quick check after a batch: `node -e 'const fm=require("./image-pipeline/final_manifest.json");console.log(fm.filter(e=>!e.tags||!e.tags.length).length+" entries with empty tags")'`.
+9. **New category not tracked in analytics rollups** — when you add a category, add its slug to `CANONICAL_CATEGORIES` in [lib/analyticsNormalize.js](lib/analyticsNormalize.js), or its page views normalize to `null` and drop out of category rollups. Collection/persona pages are tracked separately via the `collection:<slug>` category key set in [components/Analytics.js](components/Analytics.js).
