@@ -243,7 +243,6 @@ export async function getStaticPaths() {
     'historic-spaces',
     'nature-landscapes',
     'libraries',
-    'conference-rooms',
     'christmas-backgrounds',
     'halloween-backgrounds',
     'valentines-backgrounds',

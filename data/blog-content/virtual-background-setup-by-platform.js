@@ -334,7 +334,7 @@ export const virtualBackgroundSetupByPlatformContent = () => (
               <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: '2.2' }}>
                 <li><Link href="/category/office-spaces" style={{ color: '#1d4ed8', fontWeight: '500' }}>Office Spaces</Link> — professional look for corporate calls</li>
                 <li><Link href="/category/bookshelves-bright" style={{ color: '#1d4ed8', fontWeight: '500' }}>Bright Bookshelves</Link> — warm, credible, works in any meeting context</li>
-                <li><Link href="/category/conference-rooms" style={{ color: '#1d4ed8', fontWeight: '500' }}>Conference Rooms</Link> — built-in authority without looking staged</li>
+                <li><Link href="/category/office-spaces" style={{ color: '#1d4ed8', fontWeight: '500' }}>Conference Rooms</Link> — built-in authority without looking staged</li>
                 <li><Link href="/category/home-office" style={{ color: '#1d4ed8', fontWeight: '500' }}>Home Offices</Link> — relaxed professional for remote-first teams</li>
                 <li><Link href="/category/art-galleries" style={{ color: '#1d4ed8', fontWeight: '500' }}>Art Galleries</Link> — clean walls, good for branded backgrounds</li>
               </ul>

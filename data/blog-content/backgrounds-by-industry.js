@@ -152,7 +152,7 @@ export const backgroundsByIndustryContent = () => (
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#065f46'}}>
                       <li><Link href="/category/office-spaces" style={{color: '#065f46'}}>Executive office spaces</Link></li>
                       <li><Link href="/category/bookshelves-dark" style={{color: '#065f46'}}>Wood-paneled bookshelf backgrounds</Link></li>
-                      <li><Link href="/category/conference-rooms" style={{color: '#065f46'}}>Modern conference rooms</Link></li>
+                      <li><Link href="/category/office-spaces" style={{color: '#065f46'}}>Modern conference rooms</Link></li>
                     </ul>
                   </div>
                   <div>
@@ -192,7 +192,7 @@ export const backgroundsByIndustryContent = () => (
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#581c87'}}>
                       <li><Link href="/category/libraries" style={{color: '#581c87'}}>Law libraries</Link></li>
                       <li><Link href="/category/office-spaces" style={{color: '#581c87'}}>Formal office spaces</Link></li>
-                      <li><Link href="/category/conference-rooms" style={{color: '#581c87'}}>Conference rooms</Link></li>
+                      <li><Link href="/category/office-spaces" style={{color: '#581c87'}}>Conference rooms</Link></li>
                     </ul>
                   </div>
                   <div>

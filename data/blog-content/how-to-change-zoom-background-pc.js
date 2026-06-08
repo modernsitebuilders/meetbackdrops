@@ -165,7 +165,7 @@ export const howToChangeZoomBackgroundPcContent = () => (
               <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: '2.2' }}>
                 <li><Link href="/category/office-spaces" style={{ color: '#1d4ed8', fontWeight: '500' }}>Office Spaces</Link> — clean, professional, works in any meeting context</li>
                 <li><Link href="/category/bookshelves-bright" style={{ color: '#1d4ed8', fontWeight: '500' }}>Bright Bookshelves</Link> — warm and credible for client-facing calls</li>
-                <li><Link href="/category/conference-rooms" style={{ color: '#1d4ed8', fontWeight: '500' }}>Conference Rooms</Link> — built-in authority for corporate meetings</li>
+                <li><Link href="/category/office-spaces" style={{ color: '#1d4ed8', fontWeight: '500' }}>Conference Rooms</Link> — built-in authority for corporate meetings</li>
                 <li><Link href="/category/home-office" style={{ color: '#1d4ed8', fontWeight: '500' }}>Home Offices</Link> — relaxed professional for remote teams</li>
               </ul>
             </div>

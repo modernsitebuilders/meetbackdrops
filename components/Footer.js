@@ -60,8 +60,8 @@ export default function Footer() {
               <Link href="/category/kitchens" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Kitchens
               </Link>
-              <Link href="/category/conference-rooms" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Conference Rooms
+              <Link href="/category/office-spaces" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Office Spaces
               </Link>
               <Link href="/category/coffee-shops" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Coffee Shops

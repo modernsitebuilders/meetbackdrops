@@ -93,7 +93,7 @@ export const logoVirtualBackgroundContent = () => (
                 {' '}— clean white or neutral walls with plenty of empty space
               </li>
               <li>
-                <strong><Link href="/category/conference-rooms" style={{ color: '#1d4ed8' }}>Conference Rooms</Link></strong>
+                <strong><Link href="/category/office-spaces" style={{ color: '#1d4ed8' }}>Conference Rooms</Link></strong>
                 {' '}— large blank walls behind the table, corporate feel already built in
               </li>
               <li>
@@ -277,7 +277,7 @@ export const logoVirtualBackgroundContent = () => (
               <strong style={{ color: '#374151', display: 'block', marginBottom: '0.75rem' }}>Best backgrounds for logo overlays on MeetBackdrops</strong>
               <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: '2.2' }}>
                 <li><Link href="/category/art-galleries" style={{ color: '#1d4ed8', fontWeight: '500' }}>Art Galleries</Link> — clean neutral walls, best overall option</li>
-                <li><Link href="/category/conference-rooms" style={{ color: '#1d4ed8', fontWeight: '500' }}>Conference Rooms</Link> — built-in corporate credibility</li>
+                <li><Link href="/category/office-spaces" style={{ color: '#1d4ed8', fontWeight: '500' }}>Conference Rooms</Link> — built-in corporate credibility</li>
                 <li><Link href="/category/office-spaces" style={{ color: '#1d4ed8', fontWeight: '500' }}>Office Spaces</Link> — professional, lots of plain wall variety</li>
                 <li><Link href="/category/home-office" style={{ color: '#1d4ed8', fontWeight: '500' }}>Home Offices</Link> — warmer look for coaches, consultants, and freelancers</li>
               </ul>

@@ -22,7 +22,7 @@
     'bookshelves', 'wall-shelves', 'office-spaces', 'home-office',
     'living-rooms', 'kitchens', 'coffee-shops', 'art-galleries',
     'urban-lofts', 'gardens-patios', 'historic-spaces', 'nature-landscapes',
-    'libraries', 'conference-rooms', 'christmas-backgrounds',
+    'libraries', 'christmas-backgrounds',
     'halloween-backgrounds', 'valentines-backgrounds', 'easter-backgrounds',
     'spring-backgrounds', 'summer-backgrounds', 'bokeh-backgrounds',
   ];

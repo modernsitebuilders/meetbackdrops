@@ -268,7 +268,7 @@ const IMAGES_WALL_SHELVES = [
   ...IMAGES_WALL_SHELVES_DARK.map(img => ({ ...img, folder: 'wall-shelves-dark' })),
 ];
 
-// office-spaces: 100 images
+// office-spaces: 194 images (includes former conference-rooms, images remain in conference-rooms R2 folder)
 const IMAGES_OFFICE_SPACES = [
   { filename: 'boardroom-wooden-table-chairs-bookshelves-illuminated-45b44bc0.webp', title: 'Office Space Background 1' },
   { filename: 'bright-boardroom-light-wood-table-white-walls-large-blank-ca82f1db.webp', title: 'Office Space Background 2' },
@@ -424,6 +424,47 @@ const IMAGES_OFFICE_SPACES = [
   { filename: 'contemporary-office-interior-large-desk-black-chair-tall-fc1ca79e.webp', title: 'Urban Lofts Background 30' },
   { filename: 'rustic-office-wooden-floors-large-windows-sliding-barn-door-9e8da622.webp', title: 'Urban Loft Background 47' },
   { filename: 'minimalist-office-space-light-colored-wall-black-shelves-b25c17ac.webp', title: 'Wall Shelves Bright Background 5' },
+  // --- former conference-rooms (R2 folder: conference-rooms) ---
+  { filename: 'modern-boardroom-geometric-wall-designs-warm-lighting-large-0832df1f.webp', title: 'Conference Room Background 1' },
+  { filename: 'spacious-boardroom-large-wooden-table-surrounded-gray-chairs-ae0bacd2.webp', title: 'Conference Room Background 2' },
+  { filename: 'boardroom-large-wooden-table-black-chairs-green-wall-plants-533d7286.webp', title: 'Conference Room Background 3' },
+  { filename: 'bright-dining-room-wooden-table-woven-chairs-large-windows-3b0e2057.webp', title: 'Conference Room Background 4' },
+  { filename: 'spacious-boardroom-light-blue-wall-wooden-table-woven-chairs-c4287666.webp', title: 'Conference Room Background 5' },
+  { filename: 'modern-boardroom-long-wooden-table-surrounded-leather-chairs-bcc87adf.webp', title: 'Conference Room Background 6' },
+  { filename: 'spacious-boardroom-long-wooden-table-surrounded-clear-chairs-a2e54135.webp', title: 'Conference Room Background 8' },
+  { filename: 'rustic-boardroom-long-wooden-table-leather-chairs-exposed-9e90e8d1.webp', title: 'Conference Room Background 9' },
+  { filename: 'long-wooden-table-surrounded-metal-chairs-rustic-boardroom-4fc85bed.webp', title: 'Conference Room Background 11' },
+  { filename: 'wooden-dining-table-dark-chairs-hanging-light-fixture-small-26b06334.webp', title: 'Conference Room Background 12' },
+  { filename: 'minimalist-boardroom-wooden-table-six-chairs-large-paper-39baf1f2.webp', title: 'Conference Room Background 13' },
+  { filename: 'rustic-boardroom-long-wooden-table-surrounded-wrought-iron-0ec42249.webp', title: 'Conference Room Background 14' },
+  { filename: 'spacious-boardroom-long-wooden-table-arched-windows-warm-562caab7.webp', title: 'Conference Room Background 15' },
+  { filename: 'rustic-dining-room-wooden-table-chandelier-large-windows-6924782b.webp', title: 'Conference Room Background 16' },
+  { filename: 'boardroom-large-wooden-table-brown-chairs-potted-plant-warm-0d22d314.webp', title: 'Conference Room Background 17' },
+  { filename: 'wooden-boardroom-large-table-teal-chairs-palm-plant-711c681c.webp', title: 'Conference Room Background 18' },
+  { filename: 'boardroom-marble-table-beige-chairs-large-windows-showcasing-07038f7d.webp', title: 'Conference Room Background 19' },
+  { filename: 'bright-boardroom-marble-wall-large-windows-city-skyline-view-90923d4f.webp', title: 'Conference Room Background 21' },
+  { filename: 'bright-boardroom-large-marble-table-leather-chairs-large-19e98ba3.webp', title: 'Conference Room Background 22' },
+  { filename: 'spacious-boardroom-large-wooden-table-five-chairs-potted-c1626976.webp', title: 'Conference Room Background 23' },
+  { filename: 'spacious-boardroom-long-wooden-table-white-chairs-large-9e4eabdc.webp', title: 'Conference Room Background 24' },
+  { filename: 'boardroom-long-wooden-table-white-leather-chairs-large-1681c791.webp', title: 'Conference Room Background 26' },
+  { filename: 'modern-boardroom-leather-chairs-wooden-table-illuminated-9114065a.webp', title: 'Conference Room Background 27' },
+  { filename: 'boardroom-long-wooden-table-leather-chairs-large-windows-88926885.webp', title: 'Conference Room Background 28' },
+  { filename: 'modern-boardroom-large-wooden-table-black-leather-chairs-f20e3efe.webp', title: 'Conference Room Background 29' },
+  { filename: 'spacious-boardroom-long-white-table-modern-chairs-large-623f27ec.webp', title: 'Conference Room Background 30' },
+  { filename: 'modern-boardroom-white-chairs-table-large-windows-showing-630d8855.webp', title: 'Conference Room Background 31' },
+  { filename: 'modern-boardroom-large-dark-table-white-chairs-city-skyline-2baef17b.webp', title: 'Conference Room Background 32' },
+  { filename: 'boardroom-large-black-table-white-chairs-floor-ceiling-44c25e2c.webp', title: 'Conference Room Background 33' },
+  { filename: 'boardroom-glass-table-white-chairs-large-windows-showcasing-3f7eaea2.webp', title: 'Conference Room Background 34' },
+  { filename: 'boardroom-long-rustic-table-metal-chairs-hanging-lights-98672611.webp', title: 'Conference Room Background 35' },
+  { filename: 'rustic-boardroom-large-wooden-table-metal-chairs-warm-e583d868.webp', title: 'Conference Room Background 36' },
+  { filename: 'modern-boardroom-large-wooden-table-soft-lighting-hanging-2e3b469e.webp', title: 'Conference Room Background 37' },
+  { filename: 'spacious-boardroom-long-wooden-table-fur-covered-chairs-69241701.webp', title: 'Conference Room Background 38' },
+  { filename: 'bright-dining-room-wooden-walls-fluffy-pendant-light-wooden-14abc19c.webp', title: 'Conference Room Background 39' },
+  { filename: 'boardroom-large-wooden-table-colorful-chairs-natural-light-b057c858.webp', title: 'Conference Room Background 44' },
+  { filename: 'spacious-boardroom-long-wooden-table-surrounded-black-87de9e11.webp', title: 'Conference Room Background 45' },
+  { filename: 'spacious-boardroom-large-wooden-table-leather-chairs-large-30803fff.webp', title: 'Conference Room Background 46' },
+  { filename: 'luxurious-boardroom-long-wooden-table-leather-chairs-warm-edd6be7f.webp', title: 'Conference Room Background 47' },
+  { filename: 'sophisticated-boardroom-long-wooden-table-leather-chairs-f1f9ad78.webp', title: 'Conference Room Background 48' },
 ];
 
 // home-office: 100 images
@@ -1211,49 +1252,6 @@ const IMAGES_BOKEH_BACKGROUNDS = [
   { filename: 'blurred-water-surface-soft-blue-hues-bright-reflections-61c658cc.webp', title: 'Bokeh Background 66' },
 ];
 
-// conference-rooms: 39 images (removed 03,07,10,20,25,40,41,42,43)
-const IMAGES_CONFERENCE_ROOMS = [
-  { filename: 'modern-boardroom-geometric-wall-designs-warm-lighting-large-0832df1f.webp', title: 'Conference Room Background 1' },
-  { filename: 'spacious-boardroom-large-wooden-table-surrounded-gray-chairs-ae0bacd2.webp', title: 'Conference Room Background 2' },
-  { filename: 'boardroom-large-wooden-table-black-chairs-green-wall-plants-533d7286.webp', title: 'Conference Room Background 3' },
-  { filename: 'bright-dining-room-wooden-table-woven-chairs-large-windows-3b0e2057.webp', title: 'Conference Room Background 4' },
-  { filename: 'spacious-boardroom-light-blue-wall-wooden-table-woven-chairs-c4287666.webp', title: 'Conference Room Background 5' },
-  { filename: 'modern-boardroom-long-wooden-table-surrounded-leather-chairs-bcc87adf.webp', title: 'Conference Room Background 6' },
-  { filename: 'spacious-boardroom-long-wooden-table-surrounded-clear-chairs-a2e54135.webp', title: 'Conference Room Background 8' },
-  { filename: 'rustic-boardroom-long-wooden-table-leather-chairs-exposed-9e90e8d1.webp', title: 'Conference Room Background 9' },
-  { filename: 'long-wooden-table-surrounded-metal-chairs-rustic-boardroom-4fc85bed.webp', title: 'Conference Room Background 11' },
-  { filename: 'wooden-dining-table-dark-chairs-hanging-light-fixture-small-26b06334.webp', title: 'Conference Room Background 12' },
-  { filename: 'minimalist-boardroom-wooden-table-six-chairs-large-paper-39baf1f2.webp', title: 'Conference Room Background 13' },
-  { filename: 'rustic-boardroom-long-wooden-table-surrounded-wrought-iron-0ec42249.webp', title: 'Conference Room Background 14' },
-  { filename: 'spacious-boardroom-long-wooden-table-arched-windows-warm-562caab7.webp', title: 'Conference Room Background 15' },
-  { filename: 'rustic-dining-room-wooden-table-chandelier-large-windows-6924782b.webp', title: 'Conference Room Background 16' },
-  { filename: 'boardroom-large-wooden-table-brown-chairs-potted-plant-warm-0d22d314.webp', title: 'Conference Room Background 17' },
-  { filename: 'wooden-boardroom-large-table-teal-chairs-palm-plant-711c681c.webp', title: 'Conference Room Background 18' },
-  { filename: 'boardroom-marble-table-beige-chairs-large-windows-showcasing-07038f7d.webp', title: 'Conference Room Background 19' },
-  { filename: 'bright-boardroom-marble-wall-large-windows-city-skyline-view-90923d4f.webp', title: 'Conference Room Background 21' },
-  { filename: 'bright-boardroom-large-marble-table-leather-chairs-large-19e98ba3.webp', title: 'Conference Room Background 22' },
-  { filename: 'spacious-boardroom-large-wooden-table-five-chairs-potted-c1626976.webp', title: 'Conference Room Background 23' },
-  { filename: 'spacious-boardroom-long-wooden-table-white-chairs-large-9e4eabdc.webp', title: 'Conference Room Background 24' },
-  { filename: 'boardroom-long-wooden-table-white-leather-chairs-large-1681c791.webp', title: 'Conference Room Background 26' },
-  { filename: 'modern-boardroom-leather-chairs-wooden-table-illuminated-9114065a.webp', title: 'Conference Room Background 27' },
-  { filename: 'boardroom-long-wooden-table-leather-chairs-large-windows-88926885.webp', title: 'Conference Room Background 28' },
-  { filename: 'modern-boardroom-large-wooden-table-black-leather-chairs-f20e3efe.webp', title: 'Conference Room Background 29' },
-  { filename: 'spacious-boardroom-long-white-table-modern-chairs-large-623f27ec.webp', title: 'Conference Room Background 30' },
-  { filename: 'modern-boardroom-white-chairs-table-large-windows-showing-630d8855.webp', title: 'Conference Room Background 31' },
-  { filename: 'modern-boardroom-large-dark-table-white-chairs-city-skyline-2baef17b.webp', title: 'Conference Room Background 32' },
-  { filename: 'boardroom-large-black-table-white-chairs-floor-ceiling-44c25e2c.webp', title: 'Conference Room Background 33' },
-  { filename: 'boardroom-glass-table-white-chairs-large-windows-showcasing-3f7eaea2.webp', title: 'Conference Room Background 34' },
-  { filename: 'boardroom-long-rustic-table-metal-chairs-hanging-lights-98672611.webp', title: 'Conference Room Background 35' },
-  { filename: 'rustic-boardroom-large-wooden-table-metal-chairs-warm-e583d868.webp', title: 'Conference Room Background 36' },
-  { filename: 'modern-boardroom-large-wooden-table-soft-lighting-hanging-2e3b469e.webp', title: 'Conference Room Background 37' },
-  { filename: 'spacious-boardroom-long-wooden-table-fur-covered-chairs-69241701.webp', title: 'Conference Room Background 38' },
-  { filename: 'bright-dining-room-wooden-walls-fluffy-pendant-light-wooden-14abc19c.webp', title: 'Conference Room Background 39' },
-  { filename: 'boardroom-large-wooden-table-colorful-chairs-natural-light-b057c858.webp', title: 'Conference Room Background 44' },
-  { filename: 'spacious-boardroom-long-wooden-table-surrounded-black-87de9e11.webp', title: 'Conference Room Background 45' },
-  { filename: 'spacious-boardroom-large-wooden-table-leather-chairs-large-30803fff.webp', title: 'Conference Room Background 46' },
-  { filename: 'luxurious-boardroom-long-wooden-table-leather-chairs-warm-edd6be7f.webp', title: 'Conference Room Background 47' },
-  { filename: 'sophisticated-boardroom-long-wooden-table-leather-chairs-f1f9ad78.webp', title: 'Conference Room Background 48' },
-];
 
 // data/categoryData.js
 export const categoryInfo = {
@@ -1348,13 +1346,6 @@ export const categoryInfo = {
     images: IMAGES_LIBRARIES
   },
 
-  'conference-rooms': {
-    name: 'Conference Rooms',
-    description: 'Professional conference room backgrounds for team meetings and presentations',
-    seoDescription: 'Download free conference room virtual backgrounds for Zoom, Teams & Google Meet. Modern meeting spaces for professional calls — no signup, instant download.',
-    images: IMAGES_CONFERENCE_ROOMS
-  },
-
   'christmas-backgrounds': {
     name: 'Christmas Backgrounds',
     description: 'Festive Christmas backgrounds with holiday decorations for seasonal video calls',
@@ -1420,7 +1411,6 @@ export const folderMap = {
   'historic-spaces': 'historic-spaces',
   'nature-landscapes': 'nature-landscapes',
   'libraries': 'libraries',
-  'conference-rooms': 'conference-rooms',
   'christmas-backgrounds': 'christmas-backgrounds',
   'halloween-backgrounds': 'halloween-backgrounds',
   'valentines-backgrounds': 'valentines-backgrounds',

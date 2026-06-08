@@ -72,7 +72,6 @@ const CATEGORY_KEY_MAP = {
   'library-backgrounds': 'Libraries',
   'art-galleries': 'Art Galleries',
   'coffee-shops': 'Coffee Shops',
-  'conference-rooms': 'Conference Rooms',
   'living-rooms': 'Living Rooms',
   'kitchens': 'Kitchens',
   'gardens-patios': 'Gardens Patios',

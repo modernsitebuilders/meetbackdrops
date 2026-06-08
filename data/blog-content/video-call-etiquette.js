@@ -345,7 +345,7 @@ export const videoCallEtiquetteContent = () => {
                   }}>
                     Browse Office Backgrounds →
                   </Link>
-                  <Link href="/category/conference-rooms" style={{
+                  <Link href="/category/office-spaces" style={{
                     background: 'white',
                     color: '#2563eb',
                     border: '2px solid #2563eb',

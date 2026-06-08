@@ -1125,7 +1125,6 @@ const CATEGORY_LABELS = {
   'office-spaces': 'Office Spaces',
   'home-office': 'Home Offices',
   'coffee-shops': 'Coffee Shops',
-  'conference-rooms': 'Conference Rooms',
   'libraries': 'Libraries',
   'urban-lofts': 'Urban Lofts',
   'nature-landscapes': 'Nature',

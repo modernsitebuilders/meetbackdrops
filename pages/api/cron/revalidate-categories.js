@@ -24,7 +24,6 @@ const CATEGORY_SLUGS = [
   'historic-spaces',
   'nature-landscapes',
   'libraries',
-  'conference-rooms',
   'christmas-backgrounds',
   'halloween-backgrounds',
   'valentines-backgrounds',

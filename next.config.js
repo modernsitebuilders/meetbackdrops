@@ -159,6 +159,18 @@ const nextConfig = {
         permanent: true,
       },
       
+      // Conference Rooms merged into Office Spaces (May 2026)
+      {
+        source: '/category/conference-rooms/:path*',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+      {
+        source: '/category/conference-rooms',
+        destination: '/category/office-spaces',
+        permanent: true,
+      },
+
       // Old categories - ALL redirect to 410
       {
         source: '/category/lobbies',

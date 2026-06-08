@@ -69,7 +69,7 @@ export default async function handler(req, res) {
           'library': 'libraries',
           'kitchen': 'kitchens',
           'garden': 'gardens-patios',
-          'conference-room': 'conference-rooms',
+          'conference-room': 'office-spaces',
           'coffee-shop': 'coffee-shops',
           'historic-space': 'historic-spaces',
           'urban-loft': 'urban-lofts',

@@ -52,7 +52,6 @@ HD backgrounds are delivered via secure download link after purchase.
 ### Office & Workspace Backgrounds
 - [Office Spaces](https://meetbackdrops.com/category/office-spaces) — ${CATEGORIES['office-spaces'].count} images. Corporate environments for formal business meetings.
 - [Home Offices](https://meetbackdrops.com/category/home-office) — ${CATEGORIES['home-office'].count} images. Work-from-home settings that look polished on camera.
-- [Conference Rooms](https://meetbackdrops.com/category/conference-rooms) — ${CATEGORIES['conference-rooms'].count} images. Meeting rooms and boardrooms for team presentations.
 
 ### Home & Lifestyle Backgrounds
 - [Living Rooms](https://meetbackdrops.com/category/living-rooms) — ${CATEGORIES['living-rooms'].count} images. Comfortable home settings for casual meetings.

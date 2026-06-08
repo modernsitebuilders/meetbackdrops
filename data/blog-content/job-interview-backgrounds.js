@@ -6,7 +6,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
   // Get dynamic image counts from categoryData
   const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
   const homeOfficesCount = categoryInfo['home-office']?.images?.length || 0;
-  const conferenceRoomsCount = categoryInfo['conference-rooms']?.images?.length || 0;
+  const conferenceRoomsCount = categoryInfo['office-spaces']?.images?.length || 0;
   const brightBookshelvesCount = categoryInfo['bookshelves-bright']?.images?.length || 0;
   const darkBookshelvesCount = categoryInfo['bookshelves-dark']?.images?.length || 0;
   const livingRoomsCount = categoryInfo['living-rooms']?.images?.length || 0;
@@ -943,7 +943,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   </Link>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <Link href="/category/conference-rooms" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                  <Link href="/category/office-spaces" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
                     Conference Rooms ({conferenceRoomsCount} backgrounds)
                   </Link>
                 </li>
