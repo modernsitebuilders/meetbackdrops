@@ -12,4 +12,8 @@
     <loc>https://meetbackdrops.com/sitemap-image-pages.xml</loc>
     <lastmod>2026-06-08</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://meetbackdrops.com/sitemap-collections.xml</loc>
+    <lastmod>2026-06-08</lastmod>
+  </sitemap>
 </sitemapindex>

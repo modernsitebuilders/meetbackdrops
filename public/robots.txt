@@ -7,3 +7,4 @@ Sitemap: https://meetbackdrops.com/sitemap.xml
 Sitemap: https://meetbackdrops.com/sitemap-pages.xml
 Sitemap: https://meetbackdrops.com/sitemap-images.xml
 Sitemap: https://meetbackdrops.com/sitemap-image-pages.xml
+Sitemap: https://meetbackdrops.com/sitemap-collections.xml

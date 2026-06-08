@@ -142,7 +142,11 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
         {sortedImages.map((image, index) => {
           const hdOnly = isHdOnlyFilename(image.filename);
           const imageSlug = image.filename.replace(/\.webp$/i, '');
-          const imagePage = `/category/${slug}/${imageSlug}`;
+          // Collections pass cross-category images each carrying their own
+          // `category`; canonical image page lives under the real category,
+          // not the collection slug. Category pages omit `image.category`,
+          // so this falls back to `slug` and behaves exactly as before.
+          const imagePage = `/category/${image.category || slug}/${imageSlug}`;
           return (
           <div
             key={image.filename}

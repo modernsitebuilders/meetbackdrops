@@ -64,7 +64,7 @@ function groupByCategory(manifest) {
 
 // ─── sitemap.xml (index) ─────────────────────────────────────────────────────
 function buildIndex() {
-  const children = ['sitemap-pages.xml', 'sitemap-images.xml', 'sitemap-image-pages.xml'];
+  const children = ['sitemap-pages.xml', 'sitemap-images.xml', 'sitemap-image-pages.xml', 'sitemap-collections.xml'];
   const lines = ['<?xml version="1.0" encoding="UTF-8"?>'];
   lines.push('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
   for (const child of children) {
@@ -130,6 +130,38 @@ function buildImagePagesSitemap(grouped) {
   return lines.join('\n');
 }
 
+// ─── sitemap-collections.xml ─────────────────────────────────────────────────
+// The persona/industry collection hub and each PUBLISHED collection page.
+// Driven by the same minCount publish gate as the routes (lib/collections/
+// engine.js), so a thin collection never appears here either.
+function buildCollectionsSitemap() {
+  const { getPublishedCollections } = require('../lib/collections/engine');
+  const published = getPublishedCollections();
+
+  const lines = ['<?xml version="1.0" encoding="UTF-8"?>'];
+  lines.push('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+
+  lines.push('  <url>');
+  lines.push(`    <loc>${SITE_ORIGIN}/collections</loc>`);
+  lines.push(`    <lastmod>${TODAY}</lastmod>`);
+  lines.push('    <changefreq>weekly</changefreq>');
+  lines.push('    <priority>0.8</priority>');
+  lines.push('  </url>');
+
+  for (const def of published) {
+    lines.push('  <url>');
+    lines.push(`    <loc>${SITE_ORIGIN}/collections/${def.slug}</loc>`);
+    lines.push(`    <lastmod>${TODAY}</lastmod>`);
+    lines.push('    <changefreq>weekly</changefreq>');
+    lines.push('    <priority>0.7</priority>');
+    lines.push('  </url>');
+  }
+
+  lines.push('</urlset>');
+  lines.push('');
+  return lines.join('\n');
+}
+
 function writeIfChanged(filePath, content) {
   const existing = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : null;
   if (existing === content) return false;
@@ -146,6 +178,7 @@ function main() {
     ['sitemap.xml', buildIndex()],
     ['sitemap-images.xml', buildImagesSitemap(grouped)],
     ['sitemap-image-pages.xml', buildImagePagesSitemap(grouped)],
+    ['sitemap-collections.xml', buildCollectionsSitemap()],
   ];
 
   let changed = 0;
