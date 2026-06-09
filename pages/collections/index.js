@@ -142,20 +142,31 @@ export async function getStaticProps() {
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    url: `${BASE_URL}/collections`,
-    name: 'Virtual Backgrounds by Profession',
-    description: SEO.description,
-    isPartOf: { '@type': 'WebSite', name: 'MeetBackdrops', url: BASE_URL },
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: cards.map((c, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        url: `${BASE_URL}/collections/${c.slug}`,
-        name: c.h1,
-      })),
-    },
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        url: `${BASE_URL}/collections`,
+        name: 'Virtual Backgrounds by Profession',
+        description: SEO.description,
+        isPartOf: { '@type': 'WebSite', name: 'MeetBackdrops', url: BASE_URL },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: cards.map((c, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: `${BASE_URL}/collections/${c.slug}`,
+            name: c.h1,
+          })),
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Collections', item: `${BASE_URL}/collections` },
+        ],
+      },
+    ],
   };
 
   return { props: { cards, schema }, revalidate: 86400 };

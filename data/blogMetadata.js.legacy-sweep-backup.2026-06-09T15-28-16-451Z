@@ -122,7 +122,7 @@ export const blogMetadata = {
   "easter-backgrounds": {
     headline: "Free Easter Virtual Backgrounds for Zoom, Teams & Google Meet",
     description: "Download 55 free Easter virtual backgrounds for Zoom, Teams, and Google Meet. Spring pastel scenes with Easter eggs, bunnies and seasonal decor. No signup required.",
-    image: "https://assets.streambackdrops.com/webp/easter-backgrounds/three-shelves-display-pastel-vases-tulips-white-bunny-basket-f7f6f9bc.webp",
+    image: "https://assets.streambackdrops.com/webp/easter-backgrounds/easter-background-01.webp",
     datePublished: "2026-03-01",
     dateModified: "2026-03-01"
   },

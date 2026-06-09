@@ -15,6 +15,7 @@ import { useState } from 'react';
 import Layout from '../../components/Layout';
 import ImageGrid from '../../components/ImageGrid';
 import ImagePreviewModal from '../../components/ImagePreviewModal';
+import FaqAccordion from '../../components/FaqAccordion';
 import ReviewModal from '../../components/ReviewModal';
 import RateLimitModal from '../../components/RateLimitModal';
 import BackToTop from '../../components/BackToTop';
@@ -27,8 +28,9 @@ import {
   rankedImages,
   collectionSeo,
 } from '../../lib/collections/engine';
+import { getFAQs } from '../../data/faqData';
 
-export default function CollectionPage({ def, images, scores, metadata, seoData, others, sourceCategories }) {
+export default function CollectionPage({ def, images, scores, metadata, seoData, others, sourceCategories, faqs = [] }) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
     handleDownload,
@@ -152,6 +154,12 @@ export default function CollectionPage({ def, images, scores, metadata, seoData,
             </section>
           )}
 
+          {/* FAQs — rendered visibly so Google's content/schema cross-check matches */}
+          <FaqAccordion
+            faqs={faqs}
+            heading={`Questions from ${def.persona.toLowerCase()}`}
+          />
+
           {/* Cross-links to sibling collections — crawl depth + discovery */}
           {others.length > 0 && (
             <section style={{ marginTop: '4rem', paddingTop: '2.5rem', borderTop: '1px solid #e6e2dc' }}>
@@ -244,7 +252,8 @@ export async function getStaticProps({ params }) {
     if (m) metadata[img.filename] = { alt: m.alt, title: m.title };
   });
 
-  const seoData = collectionSeo(def, images);
+  const faqs = getFAQs(def.slug);
+  const seoData = collectionSeo(def, images, faqs);
 
   const others = getPublishedCollections()
     .filter((c) => c.slug !== def.slug)
@@ -259,7 +268,7 @@ export async function getStaticProps({ params }) {
     .filter(Boolean);
 
   return {
-    props: { def, images, scores, metadata, seoData, others, sourceCategories },
+    props: { def, images, scores, metadata, seoData, others, sourceCategories, faqs },
     revalidate: 86400,
   };
 }

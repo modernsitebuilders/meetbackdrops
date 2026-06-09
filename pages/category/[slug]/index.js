@@ -23,7 +23,9 @@ import BackToTop from '../../../components/BackToTop';
 import HDComparisonHero from '../../../components/HDComparisonHero';
 import CategoryHub from '../../../components/CategoryHub/CategoryHub';
 import CollectionsForCategory from '../../../components/CollectionsForCategory';
+import FaqAccordion from '../../../components/FaqAccordion';
 import { seo } from '../../../lib/seo/seo.js';
+import { getFAQs } from '../../../data/faqData.js';
 
 const WALL_SHELVES_HUB_FEATURED = [
   { filename: 'minimalist-interior-wooden-shelf-holding-books-potted-plant-47fe79fc.webp', title: 'Wall Shelves Bright Background 51', folder: 'wall-shelves-bright' },
@@ -36,7 +38,7 @@ const WALL_SHELVES_HUB_FEATURED = [
 const HUB_SUBHEAD =
   'Studio-styled wall shelves — designed shelf by shelf for camera, not lifted from a stock library.';
 
-function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collections = [] }) {
+function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collections = [], faqs = [] }) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
     handleDownload,
@@ -135,6 +137,10 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
               />
 
               <CollectionsForCategory collections={collections} />
+              <FaqAccordion
+                faqs={faqs}
+                heading={`${category.name} backgrounds — frequently asked`}
+              />
               <RelatedCategories currentSlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
@@ -160,6 +166,10 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
               />
 
               <CollectionsForCategory collections={collections} />
+              <FaqAccordion
+                faqs={faqs}
+                heading={`${category.name} backgrounds — frequently asked`}
+              />
               <RelatedCategories currentSlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
@@ -198,7 +208,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
   );
 }
 
-export default function CategoryPage({ slug, scores, metadata = {}, collections = [] }) {
+export default function CategoryPage({ slug, scores, metadata = {}, collections = [], faqs = [] }) {
   // `slug` is supplied by getStaticProps (fallback:false + notFound:true on
   // missing). seo() throws on invalid input — there is no fallback branch,
   // no router-derived inference, no defensive "if (!seo)".
@@ -226,7 +236,7 @@ export default function CategoryPage({ slug, scores, metadata = {}, collections 
         ))}
       </Head>
 
-      <CategoryContent slug={slug} scores={scores} metadata={metadata} seoData={s} collections={collections} />
+      <CategoryContent slug={slug} scores={scores} metadata={metadata} seoData={s} collections={collections} faqs={faqs} />
     </Layout>
   );
 }
@@ -341,12 +351,17 @@ export async function getStaticProps({ params }) {
     });
   }
 
+  // FAQs for this category — rendered visibly via FaqAccordion AND emitted
+  // as FAQPage schema by lib/seo/seo.js. The two read from the same source.
+  const faqs = getFAQs(params.slug);
+
   return {
     props: {
       slug: params.slug,
       scores,
       metadata: imageMetadata,
       collections,
+      faqs,
     },
     revalidate: 3600,
   };

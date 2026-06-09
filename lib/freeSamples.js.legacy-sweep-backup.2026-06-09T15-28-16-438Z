@@ -10,13 +10,13 @@
 // array length at 3 unless you also update the page layout.
 export const FREE_SAMPLES = [
   {
-    id: 'light-green-room-bookshelf-framed-art-wall-cozy-seating-area-a5bf616e',
+    id: 'bookshelves-bright-07',
     folder: 'bookshelves-bright',
     label: 'Warm & credible',
     blurb: 'Bookshelves with a doorway sightline. Reads as a real room, not a flat backdrop.',
   },
   {
-    id: 'bright-office-space-wooden-accent-wall-desk-computer-large-a06e723f',
+    id: 'office-spaces-28',
     folder: 'office-spaces',
     label: 'Modern & polished',
     blurb: 'Reclaimed-wood office with natural light. Clean, professional, executive-ready.',

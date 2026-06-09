@@ -77,7 +77,7 @@ export default function FreeSamplePage() {
       description="Pick one of three studio-designed 4K virtual backgrounds. See the quality on your own Zoom, Teams, or Google Meet call before you buy any HD Editions."
       canonical="https://meetbackdrops.com/free-sample"
       keywords="free 4k virtual background, free hd zoom background, sample virtual background, free professional zoom background, studio backdrop sample"
-      image="https://assets.streambackdrops.com/webp/bookshelves-bright/light-green-room-bookshelf-framed-art-wall-cozy-seating-area-a5bf616e.webp"
+      image="https://assets.streambackdrops.com/webp/bookshelves-bright/bookshelves-bright-07.webp"
     >
       <section style={{
         background: '#111827',

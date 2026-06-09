@@ -265,7 +265,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
 
               {/* HD_BLOCK_CTA_1 */}
               <BlogHDUpsellCard
-                productId="office-spaces-01-hd"
+                productId="boardroom-wooden-table-chairs-bookshelves-illuminated-45b44bc0-hd"
                 category="office-spaces"
                 headline="An interview-ready office set, designed for AI screening clarity"
                 sub="Studio-composed at 2912×1632 — sharper rendering on HireVue, Sapia.ai and other automated platforms than free virtual backgrounds."
@@ -450,7 +450,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
 
               {/* HD_BLOCK_CTA_2 */}
               <BlogHDUpsellCard
-                productId="bookshelves-bright-01-hd"
+                productId="well-lit-modern-boardroom-wooden-floor-framed-artwork-wall-cadb4573-hd"
                 category="bookshelves-bright"
                 headline="When your real background isn't an option"
                 sub="A clean, bright bookshelf set composed for camera — reads as authentic on Zoom, Teams, and Google Meet without the giveaway sharpness of stock images."
@@ -481,7 +481,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
 
               {/* HD_BLOCK_CTA_3 */}
               <BlogHDUpsellCard
-                productId="home-offices-01-hd"
+                productId="cozy-home-office-wooden-desk-computer-displaying-landscape-d79a8759-hd"
                 category="home-office"
                 headline="A home-office set that holds up under codec compression"
                 sub="Engineered for the 1080p+ clarity recruiters and AI systems actually parse — $4.99 for a single HD edition."

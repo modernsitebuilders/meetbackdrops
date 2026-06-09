@@ -18,14 +18,14 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   // office-spaces: always use the fixed comparison pair
   let baseId, hdId, imageFolder, freeUrl;
   if (slug === 'office-spaces') {
-    const fixedFilename = 'bright-boardroom-large-oval-table-white-chairs-glass-walls-6c61e55f.webp';
+    const fixedFilename = 'office-spaces-36.webp';
     const fixedImage = images.find(img => img.filename === fixedFilename);
     if (!fixedImage) {
-      console.warn('[HDComparisonHero] bright-boardroom-large-oval-table-white-chairs-glass-walls-6c61e55f.webp not found in images array. Promo hidden.');
+      console.warn('[HDComparisonHero] office-spaces-36.webp not found in images array. Promo hidden.');
       return null;
     }
-    baseId = 'bright-boardroom-large-oval-table-white-chairs-glass-walls-6c61e55f';
-    hdId = 'bright-boardroom-large-oval-table-white-chairs-glass-walls-6c61e55f-hd';
+    baseId = 'office-spaces-36';
+    hdId = 'office-spaces-36-hd';
     imageFolder = fixedImage.folder || slug;
     freeUrl = webpUrl(imageFolder, fixedFilename);
   } else {

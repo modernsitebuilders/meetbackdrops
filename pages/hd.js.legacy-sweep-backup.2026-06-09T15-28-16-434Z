@@ -1497,7 +1497,7 @@ export default function Premium({ reviewsData }) {
       description="HD Editions: 2912×1632 studio-designed backgrounds engineered for codec compression on Zoom, Teams, and Google Meet. Crisp where stock JPEGs fail."
       canonical="https://meetbackdrops.com/hd"
       keywords="HD virtual backgrounds, 4k virtual backgrounds, executive zoom backgrounds, premium corporate backgrounds, professional video call environments"
-      image="https://assets.streambackdrops.com/webp/bookshelves-dark/cozy-living-space-brick-wall-large-window-plants-bookshelf-3a9441d7.webp"
+      image="https://assets.streambackdrops.com/webp/bookshelves-dark/bookshelves-dark-09.webp"
     >
       <Head>
         {router.query.category && <meta name="robots" content="noindex, follow" />}

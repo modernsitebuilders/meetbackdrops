@@ -6,7 +6,7 @@ const SINGLE_PRICE = 4.99;
 // headline, and a Buy HD CTA that deep-links into /hd via ?highlight=<id>.
 //
 // Props:
-//   productId  e.g. 'boardroom-wooden-table-chairs-bookshelves-illuminated-45b44bc0-hd' (the trailing '-hd' is optional)
+//   productId  e.g. 'office-spaces-01-hd' or 'office-spaces-01' (suffix optional)
 //   category   e.g. 'office-spaces' — used to build the R2 webp URL
 //   headline   short editorial line, varies per placement
 //   sub        optional 1-line supporting copy

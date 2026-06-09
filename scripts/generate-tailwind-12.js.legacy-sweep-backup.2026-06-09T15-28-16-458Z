@@ -3,18 +3,18 @@ const path = require("path");
 
 // 1. YOUR SELECTED IMAGES (EDIT THIS LIST)
 const images = [
-  "bright-office-corner-wooden-shelves-blue-books-computer-6c6d4cb2.webp",
-  "modern-executive-office-dark-wood-desk-leather-chair-marble-5ce9300b.webp",
-  "warm-wood-paneling-two-shelves-holding-books-potted-plants-7838ced1.webp",
-  "well-lit-modern-boardroom-wooden-floor-framed-artwork-wall-cadb4573.webp",
-  "bright-room-modern-white-bookshelf-filled-books-fiddle-leaf-630c248d.webp",
-  "black-bookshelves-filled-books-warm-light-hanging-ceiling-45195d0f.webp",
-  "light-colored-minimalist-shelves-books-small-plants-softly-a8eadbc7.webp",
-  "bright-room-wooden-shelves-displaying-potted-plants-books-73bc1e72.webp",
-  "minimalist-shelving-books-dried-plants-neutral-tones-softly-6536c05c.webp",
+  "office-spaces-19.webp",
+  "office-spaces-69.webp",
+  "office-spaces-35.webp",
+  "bookshelves-bright-01.webp",
+  "bookshelves-bright-42.webp",
+  "bookshelves-dark-27.webp",
+  "wall-shelves-bright-16.webp",
+  "wall-shelves-bright-02.webp",
+  "wall-shelves-bright-54.webp",
   "library-17.webp",
-  "modern-bookshelf-wooden-shelves-filled-books-decor-beside-7ae6b429.webp",
-  "bright-boardroom-light-wood-table-white-walls-large-blank-ca82f1db.webp"
+  "bookshelves-bright-20.webp",
+  "office-spaces-02.webp"
 ];
 
 // 2. CATEGORY MAP (based on filename prefix)

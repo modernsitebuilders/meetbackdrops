@@ -273,7 +273,7 @@ export const christmasBackgroundsContent = () => {
             </p>
 
             <BlogHDUpsellCard
-              productId="christmas-background-35-hd"
+              productId="rustic-living-room-brown-sofa-plaid-pillows-christmas-tree-0bfafc09-hd"
               category="christmas-backgrounds"
               headline="Want one in true HD for the all-hands?"
               sub="A 2912×1632 HD edition tuned for camera and codec compression — looks crisp on every platform, even when bandwidth dips."

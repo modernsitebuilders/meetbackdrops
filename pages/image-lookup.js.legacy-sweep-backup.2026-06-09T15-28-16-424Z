@@ -102,7 +102,7 @@ export default function ImageLookup() {
             value={filename}
             onChange={(e) => setFilename(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="e.g., three-black-floating-shelves-against-textured-gray-wall-c68df379"
+            placeholder="e.g., wall-shelves-dark-04"
             style={{
               flex: 1,
               padding: '12px 16px',

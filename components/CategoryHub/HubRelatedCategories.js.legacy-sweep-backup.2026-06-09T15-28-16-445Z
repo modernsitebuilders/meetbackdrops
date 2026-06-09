@@ -10,19 +10,19 @@ const RELATED = [
     slug: 'bookshelves',
     name: 'Bookshelves',
     tagline: 'Books on the shelf — credible and studious',
-    thumb: 'bookshelves-bright/well-lit-modern-boardroom-wooden-floor-framed-artwork-wall-cadb4573.webp',
+    thumb: 'bookshelves-bright/bookshelves-bright-01.webp',
   },
   {
     slug: 'home-office',
     name: 'Home Offices',
     tagline: 'Warm work-from-home setups — professional but personal',
-    thumb: 'home-office/bright-home-office-white-desk-chair-large-windows-sheer-48445820.webp',
+    thumb: 'home-office/home-offices-63.webp',
   },
   {
     slug: 'urban-lofts',
     name: 'Urban Lofts',
     tagline: 'Industrial-modern spaces — exposed brick, clean edges',
-    thumb: 'urban-lofts/industrial-interior-green-accent-wall-large-windows-potted-60c0bbc9.webp',
+    thumb: 'urban-lofts/urban-loft-20.webp',
   },
 ];
 
