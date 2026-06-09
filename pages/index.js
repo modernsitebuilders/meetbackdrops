@@ -100,24 +100,19 @@ export default function Home() {
           maxWidth: '1100px',
           margin: '0 auto'
         }}>
-          {HERO_IMAGES.map((img, i) => {
-            const base = img.src.replace(/\.webp$/, '');
-            return (
-              <img
-                key={i}
-                src={`${base}-700w.webp`}
-                srcSet={`${base}-400w.webp 400w, ${base}-700w.webp 700w, ${img.src} 1456w`}
-                sizes="(min-width: 1064px) 360px, calc((100vw - 80px) / 3)"
-                alt={img.alt}
-                width={1456}
-                height={816}
-                loading={i === 0 ? 'eager' : 'lazy'}
-                fetchPriority={i === 0 ? 'high' : 'auto'}
-                decoding={i === 0 ? 'sync' : 'async'}
-                style={{ width: '100%', height: '220px', objectFit: 'cover' }}
-              />
-            );
-          })}
+          {HERO_IMAGES.map((img, i) => (
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              width={1456}
+              height={816}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'auto'}
+              decoding={i === 0 ? 'sync' : 'async'}
+              style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+            />
+          ))}
         </div>
 
         <h1

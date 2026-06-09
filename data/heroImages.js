@@ -1,31 +1,33 @@
+const CDN = 'https://assets.streambackdrops.com/webp';
+
 export const HERO_IMAGES = [
   {
-    src: '/images/hero/modern-executive-office-dark-wood-desk-leather-chair-marble-5ce9300b.webp',
+    src: `${CDN}/office-spaces/modern-executive-office-dark-wood-desk-leather-chair-marble-5ce9300b.webp`,
     alt: 'Professional office background',
     priority: true
   },
   {
-    src: '/images/hero/bright-room-modern-white-bookshelf-filled-books-fiddle-leaf-630c248d.webp',
+    src: `${CDN}/bookshelves-bright/bright-room-modern-white-bookshelf-filled-books-fiddle-leaf-630c248d.webp`,
     alt: 'Bright bookshelves background',
     priority: false
   },
   {
-    src: '/images/hero/minimalist-shelving-books-dried-plants-neutral-tones-softly-6536c05c.webp',
+    src: `${CDN}/wall-shelves-bright/minimalist-shelving-books-dried-plants-neutral-tones-softly-6536c05c.webp`,
     alt: 'Bright wall shelf background',
     priority: false
   },
   {
-    src: '/images/hero/bright-boardroom-large-oval-table-white-chairs-glass-walls-6c61e55f.webp',
+    src: `${CDN}/office-spaces/bright-boardroom-large-oval-table-white-chairs-glass-walls-6c61e55f.webp`,
     alt: 'Office space background',
     priority: false
   },
   {
-    src: '/images/hero/well-lit-modern-boardroom-wooden-floor-framed-artwork-wall-cadb4573.webp',
-    alt: 'Bookshelves background',
+    src: `${CDN}/bookshelves-bright/well-lit-modern-boardroom-wooden-floor-framed-artwork-wall-cadb4573.webp`,
+    alt: 'Boardroom background',
     priority: false
   },
   {
-    src: '/images/hero/four-wooden-shelves-mounted-concrete-wall-books-small-plants-41490ffa.webp',
+    src: `${CDN}/wall-shelves-dark/four-wooden-shelves-mounted-concrete-wall-books-small-plants-41490ffa.webp`,
     alt: 'Dark wall shelf background',
     priority: false
   }

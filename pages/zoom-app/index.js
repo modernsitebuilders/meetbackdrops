@@ -62,11 +62,19 @@ export default function ZoomApp() {
         return;
       }
       setApplying(item.id);
+      setError(null);
       try {
-        await sdk.setVirtualBackground({ fileUrl: item.fileUrl });
+        const timeout = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Timed out after 20s — SDK never resolved')), 20000)
+        );
+        const call = sdk.setVirtualBackground({ fileUrl: item.fileUrl });
+        const result = await Promise.race([call, timeout]);
+        console.log('[mb] setVirtualBackground OK', { fileUrl: item.fileUrl, result });
         setApplying(null);
       } catch (e) {
-        setError(e.message || 'Failed to set virtual background');
+        console.error('[mb] setVirtualBackground FAIL', { fileUrl: item.fileUrl, error: e });
+        const detail = e?.message || e?.reason || JSON.stringify(e);
+        setError(`Apply failed: ${detail}`);
         setApplying(null);
       }
     },

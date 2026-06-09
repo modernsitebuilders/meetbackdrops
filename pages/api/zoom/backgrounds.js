@@ -30,8 +30,9 @@ export default function handler(req, res) {
     title: m.title.split('—')[0].trim(),
     category: m.category,
     // The Zoom Apps SDK setVirtualBackground needs a downloadable image file.
-    // PNGs live at the R2 root; webp thumbs live under /webp/{folder}/.
-    fileUrl: `${R2_BASE}/${m.download_png}`,
+    // PNGs live at the R2 root keyed by slug; the manifest's `download_png`
+    // is stale pre-Wave-2 data pointing at filenames purged from R2.
+    fileUrl: `${R2_BASE}/${m.slug}.png`,
     thumbUrl: `${R2_BASE}/webp/${m.folder}/${m.image_webp}`,
   }));
 
