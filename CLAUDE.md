@@ -126,43 +126,30 @@ The hash is the first 8 hex characters of the SHA-256 of the **1456×816 q82 Web
 
 Raw Midjourney output filenames (e.g. `streambackdrops_Architectural_photography_of_a_..._{uuid}_0.png`) must be renamed to this format before or immediately after upload. They must never be used as R2 keys.
 
-#### Workflow
+#### Workflow — the standard routine (deterministic; the pipeline decides)
 
-1. **Identify source files precisely.** When sourcing from Downloads, identify the exact files for this batch by modification date or explicit list. Never run an upload script against the entire Downloads folder — it will sweep up unrelated files. Filter by exact filenames or a tight mtime window.
+**The pipeline determines category, metadata, and filename from each image. Do NOT hand-assign categories or write copy — that decision belongs to the model, from the image content.** Drop the raw Midjourney PNGs in `~/Downloads`, then run ONE command:
 
-2. **Generate correct slugs.** For each source PNG:
-   - Convert to WebP at 1456×816, quality 82
-   - Compute `SHA-256` of the WebP bytes, take first 8 hex chars → `hash8`
-   - Build descriptive part from the image's content (alt text or Midjourney prompt description), stop-word filtered, max ~60 chars, lowercase hyphenated
-   - Final slug: `{descriptive}-{hash8}`
+```bash
+npm run add-images                                    # process today's batch
+# or:  ./image-pipeline/run-batch.sh --date 2026-06-09   # a specific day's batch
+```
 
-3. **Upload to R2** (both files per image = 2 R2 objects per slug):
-   - PNG (original, untouched) → R2 root key: `{slug}.png`
-   - WebP (1456×816 q82) → R2 key: `webp/{folder}/{slug}.webp`
-   - Both with `CacheControl: public, max-age=31536000, immutable`
-   - Run scripts from `image-pipeline/` so dotenv finds `.env` creds
+That is [image-pipeline/run-batch.sh](image-pipeline/run-batch.sh), which chains these deterministic steps (each re-runnable; nothing requires editing a script per batch):
 
-4. **Rename source files** in their original location (Downloads or staging) to the final slug name (`{slug}.png`). This is how you trace a file back to its live image later.
+1. **Number** — `process_new_images.py --number` renames the batch's raw `streambackdrops_*.png` (selected by mtime = the batch date) to `mj-<date>-NNN.png`, stripping the Midjourney prompt text so it can't bias the category or the final name.
+2. **Pipeline** — `process_new_images.py` for each numbered file: WebP-converts (1456×816 q82) + computes `hash8`; calls OpenAI vision (gpt-4o-mini, temp 0, seed 42) which **chooses the category** from the canonical list AND writes title/description/alt/tags (brand-voice validated, retried on violation); derives `slug = {descriptive-from-alt}-{hash8}`; uploads `webp/{folder}/{slug}.webp` + `{slug}.png` to R2; renames the numbered file to `{slug}.png`. Writes complete manifest entries → `process_new_images_output.json`.
+3. **Merge** — `merge-batch.js` routes each entry into its category's `IMAGES_*` array in `data/categoryData.js` and appends the full manifest entry (category + copy + tags) to `final_manifest.json`. Covers every category, incl. the merged bookshelves/wall-shelves bright/dark folders.
+4. **Counts** — `sync-counts.js` recomputes every `CATEGORIES[*].count` and `TOTAL_IMAGES` in `lib/categories-config.js` from the manifest (authoritative — never bump counts by hand).
+5. **Sitemaps** — `npm run generate:sitemaps` rebuilds the image sitemaps from the manifest.
+6. **Build** — full `npm run build` (all validators) as the gate.
 
-5. **Update [data/categoryData.js](data/categoryData.js).** Add `{ filename: '{slug}.webp', title: '...' }` entries to `IMAGES_{CATEGORY}`. Update the count comment at the top of the array.
+When it passes: review `git diff --stat` and the run's "By category" split, then commit + push (Vercel auto-deploys `main`). **If a category call looks wrong, raise it with the human — the model's classification is the source of truth; do not silently re-bucket it.**
 
-6. **Add stub entries to [image-pipeline/final_manifest.json](image-pipeline/final_manifest.json)** — one per image with `id`, `slug`, `category`, `folder`, `image_webp: '{slug}.webp'`, `download_png: '{slug}.png'`, empty `title`/`description`/`alt`, a `tags` array, and `hdOnly: false`.
-
-7. **Run [image-pipeline/rewrite-manifest-copy.js](image-pipeline/rewrite-manifest-copy.js)** to fill in SEO copy (title/description/alt) from category+slug+tags. Idempotent.
-
-8. **Vision-tag the new images — REQUIRED, part of initial integration (do NOT skip).** Stubs are created with **empty `tags`**, and `rewrite-manifest-copy.js` does NOT generate tags — it only writes title/description/alt. Tags are what drive the persona/industry **collection** facets ([lib/collections/facets.js](lib/collections/facets.js)): an untagged image gets only a coarse *category-level* facet, so it will not surface correctly in the collection/persona pages. After the webps are on R2 (step 3) and the stubs exist (step 6), generate tags + image-grounded copy for the new slugs and merge them in:
-   ```bash
-   # write the batch's new slugs to a file (e.g. from image-pipeline/process_new_images_output.json)
-   node image-pipeline/vision-full.js --slugs-file <slugs.txt>     # OpenAI vision → tags + grounded title/desc/alt
-   node image-pipeline/merge-vision-targeted.js <slugs.txt>        # merge ONLY those slugs into final_manifest.json
-   ```
-   `vision-full.js` fetches each webp from R2, so it MUST run after upload. `merge-vision-targeted.js` is scoped to the slug list so it never overwrites copy for unrelated entries (important — the catalog-wide `merge-vision-into-manifest.js` would clobber entries whose vision keys are stale from past slug migrations). This supersedes the template copy from step 7 for the new images; running step 7 first is still fine as a fallback if the vision pass is skipped/fails. Requires `OPENAI_API_KEY` in `image-pipeline/.env` (~$0.001/image, gpt-4o-mini low-detail).
-
-9. **Update [lib/categories-config.js](lib/categories-config.js)** — bump the per-category `count` and `TOTAL_IMAGES`.
-
-10. **Verify R2** with `curl -I` against both the PNG root URL and WebP URL for a sample of the new slugs. Expect `200`.
-
-11. **Commit ALL changed files** before deploying: `data/categoryData.js`, `lib/categories-config.js`, `image-pipeline/final_manifest.json`. The site renders from committed code — uncommitted changes are invisible to Vercel. Run `git status` to confirm nothing is left unstaged before pushing.
+Notes:
+- `OPENAI_API_KEY` must be in `image-pipeline/.env` (~$0.001/image).
+- The mtime window keeps older un-renamed Downloads files out of the batch automatically — you never run against the whole folder.
+- The pipeline can only classify into **existing** categories (the canonical list lives in `CATEGORY_GUIDE` in `process_new_images.py`). Creating a NEW category (new `IMAGES_*` array + `categoryInfo`/`folderMap` in categoryData, config entry, `getStaticPaths`, homepage/nav/footer/related, `analyticsNormalize` `CANONICAL_CATEGORIES`, sitemap-pages) is a separate manual scaffolding task; afterward, add the new slug + a one-line description to `CATEGORY_GUIDE` so the pipeline can route to it.
 
 #### Sitemaps regenerate automatically
 
@@ -267,5 +254,5 @@ When you add a new page, category, or blog post, the title/description will be v
 5. **`image-metadata-complete.json` is legacy** — still used for `hdOnly` detection in `hd.js`. Don't rely on it for anything new; add fields to `final_manifest.json` instead.
 6. **Manifest ↔ categoryData filename naming** — the two sources must use identical filenames. Past bugs: `nature-landscape-NN.webp` (singular, on R2) vs `nature-landscapes-NN.webp` (plural, in manifest). When adding a category or rewriting filenames, cross-check both sides with a Set diff.
 7. **Don't rename `assets.streambackdrops.com`, `streambackdrops-premium`, or `stream-backdrops-videos`** — they're storage identifiers retained from the prior brand. See the brand history note at the top.
-8. **New images ship with empty `tags` unless you vision-tag them.** `rewrite-manifest-copy.js` writes title/description/alt but NOT tags. Untagged images won't surface correctly in persona/industry **collections** (facets in [lib/collections/facets.js](lib/collections/facets.js) are tag-driven). Always run the vision-tag step (step 8 of "Adding new images") as part of initial integration. Quick check after a batch: `node -e 'const fm=require("./image-pipeline/final_manifest.json");console.log(fm.filter(e=>!e.tags||!e.tags.length).length+" entries with empty tags")'`.
+8. **Tags drive collection facets — the routine generates them; don't bypass it.** The standard `npm run add-images` routine writes tags as part of the vision step, so new images surface correctly in persona/industry **collections** (facets in [lib/collections/facets.js](lib/collections/facets.js) are tag-driven). If you ever sidestep the routine and add stubs manually, they ship with **empty `tags`** (`rewrite-manifest-copy.js` does NOT write tags) and must be back-filled with `vision-full.js --slugs-file` + `merge-vision-targeted.js`. Quick check after a batch: `node -e 'const fm=require("./image-pipeline/final_manifest.json");console.log(fm.filter(e=>!e.tags||!e.tags.length).length+" entries with empty tags")'`.
 9. **New category not tracked in analytics rollups** — when you add a category, add its slug to `CANONICAL_CATEGORIES` in [lib/analyticsNormalize.js](lib/analyticsNormalize.js), or its page views normalize to `null` and drop out of category rollups. Collection/persona pages are tracked separately via the `collection:<slug>` category key set in [components/Analytics.js](components/Analytics.js).

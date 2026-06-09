@@ -70,11 +70,19 @@ TagMIN, TagMAX = 8, 12
 DOWNLOADS = Path("/Users/davidmiles/Downloads")
 
 # ── Batch identity ────────────────────────────────────────────────────────────
-# Phase 1 finds raw Midjourney files in this mtime window and renumbers them to
-# BATCH_PREFIX-NNN.png. Phase 2 then operates on the numbered files only.
-BATCH_DATE = "2026-06-09"
+# A "batch" is every raw Midjourney file in Downloads modified on BATCH_DATE
+# (defaults to today; override with `--date YYYY-MM-DD`). Phase 1 renumbers them
+# to BATCH_PREFIX-NNN.png; phase 2 operates on the numbered files only. The
+# mtime window keeps older un-renamed files out of the batch automatically.
+def _batch_date():
+    for i, a in enumerate(sys.argv):
+        if a == "--date" and i + 1 < len(sys.argv):
+            return sys.argv[i + 1]
+    return datetime.now().strftime("%Y-%m-%d")
+
+BATCH_DATE = _batch_date()
 BATCH_PREFIX = f"mj-{BATCH_DATE}"
-BATCH_START_MTIME = datetime(2026, 6, 9, 0, 0, 0).timestamp()
+BATCH_START_MTIME = datetime.strptime(BATCH_DATE, "%Y-%m-%d").timestamp()
 
 # ── Canonical categories the model may choose from ────────────────────────────
 # The model picks exactly one slug. Descriptions are the only steering — no
