@@ -68,22 +68,6 @@ export default function ZoomApp() {
       setApplying(item.id);
       setError(null);
       try {
-        // Sanity check 1: can the in-Zoom iframe even reach the PNG? If this
-        // fails, the Zoom client's domain allow list is still blocking us.
-        const probe = await fetch(item.fileUrl, { method: 'HEAD' }).catch((e) => ({ ok: false, error: e.message }));
-        console.log('[mb] fileUrl probe', { fileUrl: item.fileUrl, ok: probe?.ok, status: probe?.status, error: probe?.error });
-        if (!probe?.ok) {
-          throw new Error(`Image fetch blocked from iframe (${probe?.status || probe?.error || 'unknown'}) — domain allow list likely not active yet`);
-        }
-
-        // Sanity check 2: was setVirtualBackground actually granted? config()
-        // strips unsupported capabilities silently — calling a missing one
-        // hangs forever.
-        const grantedCaps = granted?.capabilities || granted?.grantedCapabilities || [];
-        if (Array.isArray(grantedCaps) && grantedCaps.length && !grantedCaps.includes('setVirtualBackground')) {
-          throw new Error(`setVirtualBackground not in granted capabilities: ${JSON.stringify(grantedCaps)}`);
-        }
-
         const timeout = new Promise((_, reject) =>
           setTimeout(() => reject(new Error('Timed out after 20s — SDK never resolved')), 20000)
         );

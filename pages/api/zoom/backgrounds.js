@@ -14,6 +14,9 @@ function loadManifest() {
 export default function handler(req, res) {
   const { category, limit } = req.query;
   const cap = Math.min(Number(limit) || 24, 60);
+  const proto = (req.headers['x-forwarded-proto'] || 'https').split(',')[0];
+  const host = req.headers['x-forwarded-host'] || req.headers.host;
+  const origin = `${proto}://${host}`;
 
   const manifest = loadManifest();
   const filtered = (category
@@ -29,10 +32,11 @@ export default function handler(req, res) {
     id: m.slug,
     title: m.title.split('—')[0].trim(),
     category: m.category,
-    // The Zoom Apps SDK setVirtualBackground needs a downloadable image file.
-    // PNGs live at the R2 root keyed by slug; the manifest's `download_png`
-    // is stale pre-Wave-2 data pointing at filenames purged from R2.
-    fileUrl: `${R2_BASE}/${m.slug}.png`,
+    // fileUrl must be on the Home URL domain — Zoom's Apps SDK image
+    // downloader is gated on the Domain Allow List, and adding extra
+    // domains there triggers a review that isn't active in dev mode.
+    // Same-origin proxy at /api/zoom/img/[slug] streams the R2 bytes.
+    fileUrl: `${origin}/api/zoom/img/${m.slug}.png`,
     thumbUrl: `${R2_BASE}/webp/${m.folder}/${m.image_webp}`,
   }));
 
