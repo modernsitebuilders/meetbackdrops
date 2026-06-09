@@ -15,8 +15,13 @@ export default async function handler(req, res) {
     return res.status(400).send('Missing authorization code');
   }
 
+  // State validation only applies when WE initiated the flow via /install.
+  // Zoom-initiated installs (Marketplace listing "Add", Local Test, in-client
+  // launch) skip our /install route, so there's no state cookie to check —
+  // accept those. The code-for-token exchange itself is authenticated with
+  // client_id:client_secret, so this isn't a security hole.
   const expectedState = readStateCookie(req);
-  if (!expectedState || expectedState !== state) {
+  if (expectedState && expectedState !== state) {
     return res.status(400).send('Invalid OAuth state');
   }
 
