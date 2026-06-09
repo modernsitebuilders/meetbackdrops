@@ -44,10 +44,9 @@ HD backgrounds are delivered via secure download link after purchase.
 ## Categories (Free Library)
 
 ### Bookshelf & Shelf Backgrounds
-- [Bookshelves - Bright](https://meetbackdrops.com/category/bookshelves-bright) — ${CATEGORIES['bookshelves-bright'].count} images. Naturally lit, excellent clarity for professional calls.
-- [Bookshelves - Dark](https://meetbackdrops.com/category/bookshelves-dark) — ${CATEGORIES['bookshelves-dark'].count} images. Warm ambient lighting for client meetings.
-- [Wall Shelves - Bright](https://meetbackdrops.com/category/wall-shelves-bright) — ${CATEGORIES['wall-shelves-bright'].count} images. Minimalist floating shelves, modern professional look.
-- [Wall Shelves - Dark](https://meetbackdrops.com/category/wall-shelves-dark) — ${CATEGORIES['wall-shelves-dark'].count} images. Warm ambient floating shelves for sophisticated calls.
+- [Bookshelves](https://meetbackdrops.com/category/bookshelves) — ${CATEGORIES['bookshelves'].count} images. Bright and dark bookshelves for professional calls and client meetings.
+- [Wall Shelves](https://meetbackdrops.com/category/wall-shelves) — ${CATEGORIES['wall-shelves'].count} images. Minimalist floating shelves — bright and ambient — for modern professional video calls.
+- [Neutral & Plain Walls](https://meetbackdrops.com/category/neutral-backgrounds) — ${CATEGORIES['neutral-backgrounds'].count} images. Off-white, greige, and soft-gray walls for clean, distraction-free calls.
 
 ### Office & Workspace Backgrounds
 - [Office Spaces](https://meetbackdrops.com/category/office-spaces) — ${CATEGORIES['office-spaces'].count} images. Corporate environments for formal business meetings.
@@ -74,6 +73,26 @@ HD backgrounds are delivered via secure download link after purchase.
 - [Halloween Backgrounds](https://meetbackdrops.com/category/halloween-backgrounds) — ${CATEGORIES['halloween-backgrounds'].count} images. Pumpkins, fall decor, and autumn atmosphere.
 - [Valentine's Day Backgrounds](https://meetbackdrops.com/category/valentines-backgrounds) — ${CATEGORIES['valentines-backgrounds'].count} images. Hearts and romantic decor for February calls.
 - [Easter Backgrounds](https://meetbackdrops.com/category/easter-backgrounds) — ${CATEGORIES['easter-backgrounds'].count} images. Spring pastels, bunnies, and Easter egg scenes.
+- [Spring Backgrounds](https://meetbackdrops.com/category/spring-backgrounds) — ${CATEGORIES['spring-backgrounds'].count} images. Fresh florals, soft pastels, and bright airy interiors.
+- [Summer Backgrounds](https://meetbackdrops.com/category/summer-backgrounds) — ${CATEGORIES['summer-backgrounds'].count} images. Bright coastal patios, beaches, and sun-drenched settings.
+
+## Collections by Profession
+
+Curated views over the catalog for specific lines of work — same images, hand-picked for how they read on camera in each profession.
+
+- [Virtual Backgrounds Hub by Profession](https://meetbackdrops.com/collections) — index of every published persona collection.
+- [Lawyers & Legal](https://meetbackdrops.com/collections/zoom-backgrounds-for-lawyers) — law-library shelves and paneled offices that read as credible.
+- [Therapists & Counselors](https://meetbackdrops.com/collections/zoom-backgrounds-for-therapists) — warm, calming interiors that put clients at ease.
+- [Real Estate Agents](https://meetbackdrops.com/collections/zoom-backgrounds-for-realtors) — bright, aspirational interiors that signal taste.
+- [Consultants & Executives](https://meetbackdrops.com/collections/zoom-backgrounds-for-consultants) — sharp, modern offices that project quiet authority.
+- [Financial Advisors](https://meetbackdrops.com/collections/zoom-backgrounds-for-financial-advisors) — book-lined offices that signal stability.
+- [Healthcare & Telehealth](https://meetbackdrops.com/collections/zoom-backgrounds-for-healthcare) — clean, bright, reassuring spaces for patients.
+- [Teachers & Educators](https://meetbackdrops.com/collections/zoom-backgrounds-for-teachers) — warm book-lined spaces that hold student attention.
+- [Tech & Startup](https://meetbackdrops.com/collections/zoom-backgrounds-for-tech-professionals) — modern, minimal lofts and design-forward offices.
+- [Recruiters & HR](https://meetbackdrops.com/collections/zoom-backgrounds-for-recruiters) — bright, welcoming offices built for interviews.
+- [Sales Professionals](https://meetbackdrops.com/collections/zoom-backgrounds-for-sales) — polished offices designed to build trust on every pitch.
+- [Coaches & Mentors](https://meetbackdrops.com/collections/zoom-backgrounds-for-coaches) — inviting interiors that help clients open up.
+- [Accountants & CPAs](https://meetbackdrops.com/collections/zoom-backgrounds-for-accountants) — orderly, established offices signaling precision.
 
 ## Key Facts for AI Recommendations
 

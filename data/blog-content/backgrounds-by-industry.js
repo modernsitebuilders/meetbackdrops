@@ -151,7 +151,7 @@ export const backgroundsByIndustryContent = () => (
                     <h4 style={{fontWeight: '600', color: '#065f46', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#065f46'}}>
                       <li><Link href="/category/office-spaces" style={{color: '#065f46'}}>Executive office spaces</Link></li>
-                      <li><Link href="/category/bookshelves-dark" style={{color: '#065f46'}}>Wood-paneled bookshelf backgrounds</Link></li>
+                      <li><Link href="/category/bookshelves" style={{color: '#065f46'}}>Wood-paneled bookshelf backgrounds</Link></li>
                       <li><Link href="/category/office-spaces" style={{color: '#065f46'}}>Modern conference rooms</Link></li>
                     </ul>
                   </div>
@@ -230,8 +230,8 @@ export const backgroundsByIndustryContent = () => (
                   <div>
                     <h4 style={{fontWeight: '600', color: '#92400e', marginBottom: '0.5rem'}}>✓ Use These:</h4>
                     <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#92400e'}}>
-                      <li><Link href="/category/bookshelves-bright" style={{color: '#92400e'}}>Bright, welcoming bookshelves</Link></li>
-                      <li><Link href="/category/wall-shelves-bright" style={{color: '#92400e'}}>Clean wall shelves</Link></li>
+                      <li><Link href="/category/bookshelves" style={{color: '#92400e'}}>Bright, welcoming bookshelves</Link></li>
+                      <li><Link href="/category/wall-shelves" style={{color: '#92400e'}}>Clean wall shelves</Link></li>
                       <li><Link href="/category/home-office" style={{color: '#92400e'}}>Clean home offices</Link></li>
                     </ul>
                   </div>
@@ -353,7 +353,7 @@ export const backgroundsByIndustryContent = () => (
                 <li>Keep it simple and clean</li>
                 <li><Link href="/blog/lighting-tips" style={{color: '#2563eb', textDecoration: 'underline'}}>Good lighting</Link> always matters — it affects how any background looks</li>
                 <li>Test before important calls</li>
-                <li>When in doubt, go professional — <Link href="/category/office-spaces" style={{color: '#2563eb', textDecoration: 'underline'}}>office spaces</Link> and <Link href="/category/bookshelves-bright" style={{color: '#2563eb', textDecoration: 'underline'}}>bookshelves</Link> work for almost any industry</li>
+                <li>When in doubt, go professional — <Link href="/category/office-spaces" style={{color: '#2563eb', textDecoration: 'underline'}}>office spaces</Link> and <Link href="/category/bookshelves" style={{color: '#2563eb', textDecoration: 'underline'}}>bookshelves</Link> work for almost any industry</li>
                 <li>Your background should support you, not distract</li>
               </ul>
             </div>

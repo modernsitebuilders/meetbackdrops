@@ -294,7 +294,7 @@ export const zoomTeamsGoogleContent = () => {
                   }}>
                     Browse Office Backgrounds →
                   </Link>
-                  <Link href="/category/bookshelves-bright" style={{
+                  <Link href="/category/bookshelves" style={{
                     background: 'white',
                     color: '#2563eb',
                     border: '2px solid #2563eb',

@@ -7,8 +7,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
   const officeSpacesCount = categoryInfo['office-spaces']?.images?.length || 0;
   const homeOfficesCount = categoryInfo['home-office']?.images?.length || 0;
   const conferenceRoomsCount = categoryInfo['office-spaces']?.images?.length || 0;
-  const brightBookshelvesCount = categoryInfo['bookshelves-bright']?.images?.length || 0;
-  const darkBookshelvesCount = categoryInfo['bookshelves-dark']?.images?.length || 0;
+  const bookshelvesCount = categoryInfo['bookshelves']?.images?.length || 0;
   const livingRoomsCount = categoryInfo['living-rooms']?.images?.length || 0;
   
   return (
@@ -928,13 +927,8 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                   </Link>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <Link href="/category/bookshelves-bright" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
-                    Bright Bookshelves ({brightBookshelvesCount} backgrounds)
-                  </Link>
-                </li>
-                <li style={{ marginBottom: '0.5rem' }}>
-                  <Link href="/category/bookshelves-dark" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
-                    Dark Bookshelves ({darkBookshelvesCount} backgrounds)
+                  <Link href="/category/bookshelves" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                    Bookshelves — bright & dark ({bookshelvesCount} backgrounds)
                   </Link>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>

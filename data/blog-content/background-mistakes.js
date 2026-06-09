@@ -284,7 +284,7 @@ export const backgroundMistakesContent = () => (
                   }}>
                     Browse Office Backgrounds →
                   </Link>
-                  <Link href="/category/bookshelves-bright" style={{
+                  <Link href="/category/bookshelves" style={{
                     background: 'white',
                     color: '#10b981',
                     border: '2px solid #10b981',

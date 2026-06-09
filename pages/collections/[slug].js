@@ -28,7 +28,7 @@ import {
   collectionSeo,
 } from '../../lib/collections/engine';
 
-export default function CollectionPage({ def, images, scores, metadata, seoData, others }) {
+export default function CollectionPage({ def, images, scores, metadata, seoData, others, sourceCategories }) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
     handleDownload,
@@ -113,6 +113,44 @@ export default function CollectionPage({ def, images, scores, metadata, seoData,
             cloudinaryUrls={cloudinaryUrls}
             downloadingImage={downloadingImage}
           />
+
+          {/* Source categories — closes the loop from collection → category */}
+          {sourceCategories.length > 0 && (
+            <section style={{ marginTop: '4rem', paddingTop: '2.5rem', borderTop: '1px solid #e6e2dc' }}>
+              <div style={{
+                fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase',
+                color: '#9a6a3a', fontWeight: 600, marginBottom: '0.9rem',
+              }}>
+                Browse the full categories
+              </div>
+              <h2 style={{
+                fontFamily: "'Fraunces', Georgia, serif", fontSize: '1.4rem', fontWeight: 600,
+                color: '#111827', margin: '0 0 0.6rem',
+              }}>
+                Source categories for this collection
+              </h2>
+              <p style={{ fontSize: '0.95rem', color: '#6b7280', margin: '0 0 1.5rem', lineHeight: 1.6, maxWidth: '640px' }}>
+                These backgrounds are drawn from the categories below. Browse each one in full to see every option.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+                {sourceCategories.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={`/category/${c.slug}`}
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
+                      padding: '0.6rem 1.1rem', borderRadius: '999px',
+                      border: '1px solid #e5e7eb', background: '#fafafa', color: '#374151',
+                      fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none',
+                    }}
+                  >
+                    {c.name}
+                    <span style={{ color: '#9a6a3a' }} aria-hidden="true">→</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Cross-links to sibling collections — crawl depth + discovery */}
           {others.length > 0 && (
@@ -212,8 +250,16 @@ export async function getStaticProps({ params }) {
     .filter((c) => c.slug !== def.slug)
     .map((c) => ({ slug: c.slug, persona: c.persona }));
 
+  // Source categories powering this persona, mapped to display names. Only
+  // includes categories with a config entry, so a typo in personas.js does not
+  // crash the build — it just drops silently from the strip.
+  const { CATEGORIES } = require('../../lib/categories-config');
+  const sourceCategories = (def.rule?.categoriesAny || [])
+    .map((slug) => CATEGORIES[slug] ? { slug, name: CATEGORIES[slug].name } : null)
+    .filter(Boolean);
+
   return {
-    props: { def, images, scores, metadata, seoData, others },
+    props: { def, images, scores, metadata, seoData, others, sourceCategories },
     revalidate: 86400,
   };
 }

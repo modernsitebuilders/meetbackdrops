@@ -13,7 +13,7 @@ import { HD_BASE_IDS } from '../../../lib/hdProducts';
 
 const CDN = 'https://assets.streambackdrops.com';
 
-export default function ImagePage({ image, related, categoryName }) {
+export default function ImagePage({ image, related, categoryName, personaCollections = [] }) {
   const {
     handleDownload,
     showReviewModal,
@@ -264,6 +264,45 @@ export default function ImagePage({ image, related, categoryName }) {
               </div>
             )}
 
+            {/* Persona collections — which professions surface this image */}
+            {personaCollections.length > 0 && (
+              <section style={{
+                marginBottom: '3rem',
+                paddingTop: '1.5rem',
+                borderTop: '1px solid #e5e7eb',
+              }}>
+                <div style={{
+                  fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase',
+                  color: '#9a6a3a', fontWeight: 600, marginBottom: '0.7rem',
+                }}>
+                  Curated for
+                </div>
+                <h2 style={{
+                  fontSize: '1.05rem', fontWeight: 600, color: '#111827',
+                  margin: '0 0 0.9rem',
+                }}>
+                  This background appears in these profession collections
+                </h2>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  {personaCollections.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/collections/${c.slug}`}
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                        padding: '0.5rem 0.95rem', borderRadius: '999px',
+                        border: '1px solid #e5e7eb', background: '#fafafa', color: '#374151',
+                        fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none',
+                      }}
+                    >
+                      {c.persona}
+                      <span style={{ color: '#9a6a3a' }} aria-hidden="true">→</span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* Related images */}
             {related.length > 0 && (
               <div>
@@ -462,8 +501,20 @@ export async function getStaticProps({ params }) {
   const categoryName = categoryConfig?.name ||
     image.category.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
 
+  // Persona collections this specific image surfaces in — chips link from
+  // every leaf image page back into the relevant /collections/{slug}.
+  let personaCollections = [];
+  try {
+    const { matches, getPublishedCollections } = require('../../../lib/collections/engine');
+    personaCollections = getPublishedCollections()
+      .filter((def) => matches(image, def))
+      .map((def) => ({ slug: def.slug, persona: def.persona }));
+  } catch (e) {
+    console.error('Persona collections lookup failed:', e.message);
+  }
+
   return {
-    props: { image, related, categoryName },
+    props: { image, related, categoryName, personaCollections },
     revalidate: 86400,
   };
 }

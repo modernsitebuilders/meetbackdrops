@@ -113,6 +113,53 @@ export default function Footer() {
           
           <div>
             <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
+              By Profession
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link href="/collections" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600 }}>
+                All Collections →
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-lawyers" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Lawyers & Legal
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-therapists" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Therapists
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-realtors" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Realtors
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-consultants" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Consultants
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-financial-advisors" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Financial Advisors
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-healthcare" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Healthcare
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-teachers" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Teachers
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-tech-professionals" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Tech Professionals
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-recruiters" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Recruiters
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-sales" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Sales
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-coaches" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Coaches
+              </Link>
+              <Link href="/collections/zoom-backgrounds-for-accountants" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                For Accountants
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', color: '#f3f4f6' }}>
               Helpful Guides
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

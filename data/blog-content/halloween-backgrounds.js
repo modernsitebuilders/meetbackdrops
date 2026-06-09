@@ -466,7 +466,7 @@ export const halloweenBackgroundsContent = () => (
               }}>
                 Office Space Backgrounds →
               </Link>
-              <Link href="/category/bookshelves-bright" style={{
+              <Link href="/category/bookshelves" style={{
                 padding: '1rem',
                 background: '#f3f4f6',
                 borderRadius: '0.5rem',

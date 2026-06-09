@@ -8,6 +8,7 @@ import HDBadge from '../components/HDBadge';
 import WhyDifferent from '../components/WhyDifferent';
 import VideoObjectSchema from '../components/VideoObjectSchema';
 import SocialProof from '../components/SocialProof';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 // YT iframe API + tracking. Below the fold — defer the chunk + script load.
@@ -183,7 +184,68 @@ export default function Home() {
         </div>
 
         <SocialProof />
-        
+
+        {/* Curated by profession — links into /collections persona hub */}
+        <section style={{ maxWidth: '1100px', margin: '4rem auto 1rem', padding: '0 1rem', textAlign: 'center' }}>
+          <div style={{
+            fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: '#9a6a3a', fontWeight: 600, marginBottom: '0.9rem',
+          }}>
+            Curated by Profession
+          </div>
+          <h2 style={{
+            fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+            fontWeight: 600, letterSpacing: '-0.02em',
+            fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
+            color: '#111827', margin: '0 0 0.75rem',
+          }}>
+            Or browse by what you do
+          </h2>
+          <p style={{ color: '#4b5563', maxWidth: '640px', margin: '0 auto 1.75rem', lineHeight: 1.6 }}>
+            Hand-picked sets for how they read on camera in your line of work — designed for Zoom, Teams, and Google Meet.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+            {[
+              { slug: 'zoom-backgrounds-for-lawyers', persona: 'Lawyers' },
+              { slug: 'zoom-backgrounds-for-therapists', persona: 'Therapists' },
+              { slug: 'zoom-backgrounds-for-realtors', persona: 'Realtors' },
+              { slug: 'zoom-backgrounds-for-consultants', persona: 'Consultants' },
+              { slug: 'zoom-backgrounds-for-financial-advisors', persona: 'Financial Advisors' },
+              { slug: 'zoom-backgrounds-for-healthcare', persona: 'Healthcare' },
+              { slug: 'zoom-backgrounds-for-teachers', persona: 'Teachers' },
+              { slug: 'zoom-backgrounds-for-tech-professionals', persona: 'Tech & Startup' },
+              { slug: 'zoom-backgrounds-for-recruiters', persona: 'Recruiters' },
+              { slug: 'zoom-backgrounds-for-sales', persona: 'Sales' },
+              { slug: 'zoom-backgrounds-for-coaches', persona: 'Coaches' },
+              { slug: 'zoom-backgrounds-for-accountants', persona: 'Accountants' },
+            ].map((c) => (
+              <Link
+                key={c.slug}
+                href={`/collections/${c.slug}`}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                  padding: '0.55rem 1.05rem', borderRadius: '999px',
+                  border: '1px solid #e5e7eb', background: '#fafafa', color: '#374151',
+                  fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none',
+                }}
+              >
+                {c.persona}
+                <span style={{ color: '#9a6a3a' }} aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </div>
+          <Link
+            href="/collections"
+            style={{
+              display: 'inline-block', color: '#9a6a3a', fontWeight: 600,
+              textDecoration: 'underline', textUnderlineOffset: '3px',
+              fontSize: '0.9rem', letterSpacing: '0.04em',
+            }}
+          >
+            See all profession collections →
+          </Link>
+        </section>
+
         {/* Category Grid - Lazy loaded */}
         <CategoryGrid navigate={navigate} />
       </section>
