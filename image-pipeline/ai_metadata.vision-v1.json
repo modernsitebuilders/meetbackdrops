@@ -25871,5 +25871,127 @@
       "minimalist",
       "team standups"
     ]
+  },
+  "textured-orange-wall-subtle-variations-creating-warm-93752fdd": {
+    "_prompt_version": "vision-v1",
+    "_slug": "textured-orange-wall-subtle-variations-creating-warm-93752fdd",
+    "_category": "neutral-backgrounds",
+    "_useCasePhrase": "professional video calls",
+    "_attempts": [],
+    "title": "Textured Orange Wall with Warm Lighting | MeetBackdrops",
+    "description": "Richly textured orange wall illuminated by warm light, ideal for professional video calls that convey a vibrant and inviting atmosphere.",
+    "alt": "Textured orange wall with a warm hue, featuring a rough surface and subtle variations in color and light.",
+    "tags": [
+      "environment",
+      "texture",
+      "warm lighting",
+      "color palette",
+      "vibrant",
+      "composition",
+      "inviting",
+      "professional video calls"
+    ]
+  },
+  "textured-wall-soft-yellow-pink-hues-providing-warm-inviting-1dbd70d1": {
+    "_prompt_version": "vision-v1",
+    "_slug": "textured-wall-soft-yellow-pink-hues-providing-warm-inviting-1dbd70d1",
+    "_category": "neutral-backgrounds",
+    "_useCasePhrase": "professional video calls",
+    "_attempts": [],
+    "title": "Textured Yellow and Pink Wall with Soft Lighting | MeetBackdrops",
+    "description": "A warm palette of yellow and pink hues creates a welcoming atmosphere for professional video calls, enhanced by soft, diffused lighting.",
+    "alt": "Textured wall featuring a blend of yellow and pink colors with a soft, warm light creating a cozy ambiance.",
+    "tags": [
+      "textured",
+      "yellow",
+      "pink",
+      "soft lighting",
+      "warm palette",
+      "cozy",
+      "environment",
+      "professional video calls"
+    ]
+  },
+  "textured-wall-natural-light-streaming-through-large-windows-4092e324": {
+    "_prompt_version": "vision-v1",
+    "_slug": "textured-wall-natural-light-streaming-through-large-windows-4092e324",
+    "_category": "office-spaces",
+    "_useCasePhrase": "executive video calls",
+    "_attempts": [],
+    "title": "Modern Boardroom With Natural Light | MeetBackdrops",
+    "description": "Bright, textured walls and warm wooden flooring create an inviting space for executive video calls, enhanced by soft natural light streaming in.",
+    "alt": "A spacious boardroom with textured beige walls, wooden flooring, and large windows allowing natural light to illuminate the room.",
+    "tags": [
+      "boardroom",
+      "natural light",
+      "textured walls",
+      "warm tones",
+      "spacious",
+      "modern design",
+      "executive video calls",
+      "inviting atmosphere"
+    ]
+  },
+  "executive-boardroom-modern-furniture-large-windows-showing-bd4334cd": {
+    "_prompt_version": "vision-v1",
+    "_slug": "executive-boardroom-modern-furniture-large-windows-showing-bd4334cd",
+    "_category": "office-spaces",
+    "_useCasePhrase": "remote work",
+    "_attempts": [],
+    "title": "Modern Boardroom with Natural Light and Warm Accents | MeetBackdrops",
+    "description": "Brightly lit boardroom featuring sleek furniture and a calming palette, ideal for remote work settings that inspire professionalism.",
+    "alt": "A modern boardroom with orange and white chairs, a large wooden table, and floor-to-ceiling windows showcasing a city view.",
+    "tags": [
+      "boardroom",
+      "modern",
+      "natural light",
+      "warm accents",
+      "professional",
+      "calming palette",
+      "remote work",
+      "interior design"
+    ]
+  },
+  "textured-blue-wall-soft-lighting-minimalist-design-creating-5321396e": {
+    "_prompt_version": "vision-v1",
+    "_slug": "textured-blue-wall-soft-lighting-minimalist-design-creating-5321396e",
+    "_category": "neutral-backgrounds",
+    "_useCasePhrase": "remote work",
+    "_attempts": [],
+    "title": "Minimalist Blue Room With Soft Lighting | MeetBackdrops",
+    "description": "Soft blue tones and smooth textures create a calming space, ideal for remote work and professional video calls.",
+    "alt": "A minimalist room with smooth blue walls and benches, softly lit to create a serene atmosphere.",
+    "tags": [
+      "minimalist",
+      "blue tones",
+      "soft lighting",
+      "calm atmosphere",
+      "interior design",
+      "remote work",
+      "textured walls",
+      "professional"
+    ]
+  },
+  "spacious-modern-office-interior-large-windows-overlooking-46f87f49": {
+    "_prompt_version": "vision-v1",
+    "_slug": "spacious-modern-office-interior-large-windows-overlooking-46f87f49",
+    "_category": "office-spaces",
+    "_useCasePhrase": "virtual meetings",
+    "_attempts": [
+      "attempt 1: forbidden word: stunning"
+    ],
+    "title": "Modern Boardroom With City View and Soft Lighting | MeetBackdrops",
+    "description": "Bright, spacious boardroom featuring large windows, soft pastel tones, and natural light, ideal for virtual meetings with a professional atmosphere.",
+    "alt": "Spacious boardroom with large windows showcasing a city skyline, soft pastel colors, and natural light creating a calm atmosphere.",
+    "tags": [
+      "boardroom",
+      "city view",
+      "soft lighting",
+      "modern design",
+      "pastel colors",
+      "spacious",
+      "professional",
+      "virtual meetings"
+    ]
   }
 }

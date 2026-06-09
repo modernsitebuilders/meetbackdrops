@@ -1,30 +1,43 @@
 #!/usr/bin/env python3
 """
-process_new_images.py
----------------------
-One-shot processor for a batch of new Midjourney PNG files.
+process_new_images.py — deterministic, vision-driven batch processor.
+=====================================================================
 
-Steps per image:
-  1. Convert PNG → WebP (1456×816, quality 82)
-  2. SHA-256 the WebP bytes → take first 8 hex chars (hash8)
-  3. Build descriptive slug from Midjourney prompt text in filename
-  4. Upload PNG  → R2 root key: {slug}.png
-  5. Upload WebP → R2 key:      webp/{folder}/{slug}.webp
-  6. Rename source PNG in-place to {slug}.png
-  7. Write manifest stubs to process_new_images_output.json
+The operator does NOT choose categories or filenames. Given a folder of raw
+Midjourney PNGs, the pipeline decides everything from the image content:
 
-Run from image-pipeline/:
-  cd image-pipeline && python3 process_new_images.py
+  Phase 1 (--number):  rename the batch's raw `streambackdrops_*.png` files to
+                       neutral sequential numbers (mj-<date>-NNN.png). This
+                       strips the Midjourney prompt text so nothing about it can
+                       leak into the category or the final filename.
 
-Or dry-run (no uploads, no renames):
-  cd image-pipeline && python3 process_new_images.py --dry-run
+  Phase 2 (default):   for each numbered file —
+     1. convert PNG → WebP (1456x816, q82); SHA-256 → hash8 (fully deterministic)
+     2. OpenAI vision (gpt-4o-mini, temp 0, seed 42) on the local WebP bytes →
+        {category, title, description, alt, tags}. The CATEGORY is chosen by the
+        model from the fixed canonical list — not by the operator.
+     3. slug = descriptive-words-from-ALT (stop-word filtered, <=60c) + hash8
+     4. upload WebP → webp/{folder}/{slug}.webp ; PNG → {slug}.png  (R2)
+     5. rename numbered source → {slug}.png
+     6. emit a COMPLETE manifest entry (category + folder + slug + copy + tags)
+
+  Output: process_new_images_output.json — full manifest entries, ready for
+  merge-batch.js (which routes each into its category's array + syncs counts).
+
+Usage (from image-pipeline/):
+  python3 process_new_images.py --number          # phase 1: neutralize names
+  python3 process_new_images.py --classify-only   # phase 2 vision only, no upload
+  python3 process_new_images.py                    # phase 2: full (uploads + renames)
 """
 
+import base64
 import hashlib
 import json
 import os
 import re
 import sys
+import time
+import urllib.request
 from datetime import datetime
 from glob import glob
 from io import BytesIO
@@ -39,129 +52,62 @@ from PIL import Image
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
-R2_ACCESS_KEY    = os.environ["R2_ACCESS_KEY"]
-R2_SECRET_KEY    = os.environ["R2_SECRET_KEY"]
-R2_ENDPOINT      = os.environ["R2_ENDPOINT"]
-R2_BUCKET        = os.environ["R2_BUCKET"]
+R2_ACCESS_KEY  = os.environ["R2_ACCESS_KEY"]
+R2_SECRET_KEY  = os.environ["R2_SECRET_KEY"]
+R2_ENDPOINT    = os.environ["R2_ENDPOINT"]
+R2_BUCKET      = os.environ["R2_BUCKET"]
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
-WEBP_WIDTH   = 1456
-WEBP_HEIGHT  = 816
-WEBP_QUALITY = 82
-HASH_LEN     = 8
-DESC_MAX     = 60
+WEBP_WIDTH, WEBP_HEIGHT, WEBP_QUALITY = 1456, 816, 82
+HASH_LEN, DESC_MAX = 8, 60
 
-DRY_RUN = "--dry-run" in sys.argv
+MODEL = "gpt-4o-mini"
+DScMIN, DScMAX = 110, 160      # description
+TtlMIN, TtlMAX = 30, 95        # title (incl " | MeetBackdrops")
+AltMIN, AltMAX = 50, 180       # alt
+TagMIN, TagMAX = 8, 12
 
 DOWNLOADS = Path("/Users/davidmiles/Downloads")
 
-# Only files from this batch (downloaded 2026-06-08, 16:50 onward). A uuid can
-# also match older un-renamed variants of the same Midjourney job sitting in
-# Downloads, so we constrain by modification time to this batch's window.
-BATCH_START_MTIME = datetime(2026, 6, 8, 16, 50, 0).timestamp()
+# ── Batch identity ────────────────────────────────────────────────────────────
+# Phase 1 finds raw Midjourney files in this mtime window and renumbers them to
+# BATCH_PREFIX-NNN.png. Phase 2 then operates on the numbered files only.
+BATCH_DATE = "2026-06-09"
+BATCH_PREFIX = f"mj-{BATCH_DATE}"
+BATCH_START_MTIME = datetime(2026, 6, 9, 0, 0, 0).timestamp()
 
-# ── Source batch: 2026-06-08 16:50 expansion batch ────────────────────────────
-# Files are matched by their Midjourney job-id (uuid prefix) so we never have to
-# transcribe the full prompt-laden filenames. Category is the INITIAL bucket;
-# the vision + recategorize pass refines later. Plain-wall images go to the new
-# neutral-backgrounds category. Categories were assigned after viewing the
-# ambiguous wall/minimalist/empty images.
-
-UUID_CATEGORY = {
-    # neutral / plain walls (NEW category — "Neutral & Plain Walls")
-    "00eb831e": "neutral-backgrounds",  # plain warm-cream plaster wall
-    "046e4bed": "neutral-backgrounds",  # blank white wall, single minimal table
-    "3e0c267e": "neutral-backgrounds",  # charcoal matte wall, two spotlights
-    "43fbff9c": "neutral-backgrounds",  # soft sage plaster wall
-    "6b36b9b4": "neutral-backgrounds",  # empty room, blank white wall dominant
-    "7b59fa8c": "neutral-backgrounds",  # white textured plaster, full frame
-    "812abcb5": "neutral-backgrounds",  # light greige concrete wall
-    "88822c80": "neutral-backgrounds",  # ribbed white minimal wall
-    "d2c9f816": "neutral-backgrounds",  # blue seamless wall
-    "d7873ac8": "neutral-backgrounds",  # warm-white wall, bare desk to side
-    "daa3bb16": "neutral-backgrounds",  # empty cream-walled minimalist room
-    # wall-shelves (has floating wood shelves → bright subfolder)
-    "11ca5842": "wall-shelves",
-    # home-office (therapy / counseling / telehealth / wellness / home studies)
-    "0ad457a8": "home-office",  # art deco home office
-    "0facadbd": "home-office",  # minimalist home office, furnished desk
-    "21e661d4": "home-office",  # contemporary executive home office
-    "2f2b640f": "home-office",  # calming online consultation
-    "33ef428c": "home-office",  # calming therapy office
-    "42ded55f": "home-office",  # DSLR modern home office
-    "468eda8d": "home-office",  # contemporary executive home office
-    "56588ab4": "home-office",  # telehealth, mental-health pro
-    "5e90b0c8": "home-office",  # therapist private office
-    "72058675": "home-office",  # professional home office, clean desk
-    "7b1b1d04": "home-office",  # Mediterranean villa home office
-    "a09f45c8": "home-office",  # serene telehealth, soft focus
-    "b926b6a8": "home-office",  # architect private studio
-    "b9e61640": "home-office",  # professional counselors office
-    "e2d497fe": "home-office",  # serene counseling office
-    "f8c0d774": "home-office",  # wellness practitioner private office (2 variants)
-    "f96d8880": "home-office",  # real home office, single warm
-    # office-spaces (corporate / medical / executive / conference / lobby / open office)
-    "01056bd1": "office-spaces",  # lean modern open office
-    "0a6e6175": "office-spaces",  # modern clean tech-company office
-    "0be7d783": "office-spaces",  # international executive office
-    "16722c21": "office-spaces",  # modern tech-company conference room
-    "16b1f0a8": "office-spaces",  # bright luxury corporate meeting room
-    "226d2511": "office-spaces",  # lean modern open office
-    "3596e74c": "office-spaces",  # modern glass conference room
-    "36df5811": "office-spaces",  # empty minimalist executive boardroom
-    "4e495534": "office-spaces",  # real glass lobby
-    "52802bec": "office-spaces",  # modern corporate office backdrop
-    "5f84a872": "office-spaces",  # professional medical office
-    "7cc6d22e": "office-spaces",  # law firm lobby, reception
-    "84e2ac18": "office-spaces",  # modern dental / medical clinic
-    "901b9fd7": "office-spaces",  # modern engineering office
-    "94715fff": "office-spaces",  # high-end clinical telemedicine
-    "9a98d19d": "office-spaces",  # university lobby, information desk
-    "9b4f972a": "office-spaces",  # corporate executive office, wooden
-    "9fc3044f": "office-spaces",  # real conference room
-    "a744d789": "office-spaces",  # architectural empty open office, cubicles
-    "a8408b71": "office-spaces",  # financial executive office, marble
-    "b1ab0ca7": "office-spaces",  # upscale real estate office
-    "c2bb59aa": "office-spaces",  # aspirational corporate office
-    "cadac7f0": "office-spaces",  # sleek corporate meeting space
-    "ce17feb7": "office-spaces",  # executive interview backdrop
-    "d24690f8": "office-spaces",  # media company open workspace (2 variants)
-    "dea0e9bd": "office-spaces",  # high-end executive corner office
-    "e4455d89": "office-spaces",  # tech startup conference room
-    "e7cf8287": "office-spaces",  # medical executive office
-    "ea35bd79": "office-spaces",  # modern open office workspace
-    "f2ad0478": "office-spaces",  # bright airy professional office
+# ── Canonical categories the model may choose from ────────────────────────────
+# The model picks exactly one slug. Descriptions are the only steering — no
+# operator override. Merged categories store webps in a *-bright subfolder.
+CATEGORY_GUIDE = {
+    "neutral-backgrounds": "A plain, seamless, or subtly-textured WALL is the entire subject — solid color or plaster/limewash/matte/panelled, essentially no furniture and no room features. Off-white, greige, gray, taupe, sage, etc. The wall itself is the product.",
+    "office-spaces":       "Corporate/business interiors: executive or corporate offices, boardrooms, conference/meeting rooms, medical or clinical/dental offices, open-plan workspaces, glass lobbies, reception areas.",
+    "home-office":         "A home work setting: a desk or study at home, work-from-home room, cozy home office, or a therapy/counseling/telehealth home consulting room.",
+    "living-rooms":        "Residential living rooms or lounges — sofas, armchairs, coffee tables, soft home seating.",
+    "kitchens":            "Kitchens — counters, cabinets, islands, cooking spaces.",
+    "coffee-shops":        "Cafes / coffee shops — counters, espresso machines, casual cafe seating.",
+    "art-galleries":       "Gallery or museum interiors — framed art / artwork on clean exhibition walls.",
+    "urban-lofts":         "Industrial loft spaces — exposed brick, raw concrete, large factory-style windows.",
+    "gardens-patios":      "Outdoor gardens, patios, terraces, or courtyards with greenery and outdoor seating.",
+    "historic-spaces":     "Grand historic or period interiors — ballrooms, columns, vaulted ceilings, Art Deco, ornate architecture.",
+    "nature-landscapes":   "Outdoor natural scenery — mountains, forests, water, fields, open horizons.",
+    "libraries":           "Library reading rooms with floor-to-ceiling shelves of books.",
+    "bookshelves":         "A bookshelf or bookcase filled with books is the dominant feature behind the speaker.",
+    "wall-shelves":        "Floating wall shelves or display shelves holding a few styled objects (not full packed bookcases).",
+    "bokeh-backgrounds":   "Abstract soft-focus blurred lights / bokeh, not a real room.",
+    "christmas-backgrounds": "Christmas decor — trees, wreaths, garlands, ornaments, stockings.",
+    "halloween-backgrounds": "Halloween decor — pumpkins, jack-o-lanterns, spooky autumn.",
+    "valentines-backgrounds": "Valentine's decor — hearts, roses, romantic pinks/reds.",
+    "easter-backgrounds":  "Easter / spring pastel decor — eggs, bunnies, tulips, lilies.",
+    "spring-backgrounds":  "Spring scenes — fresh blooms, cherry blossom, daffodils, sunrooms.",
+    "summer-backgrounds":  "Summer scenes — beach, poolside, tropical, coastal, sun-drenched patios.",
 }
+ALLOWED = set(CATEGORY_GUIDE)
+CATEGORY_FOLDER = {"bookshelves": "bookshelves-bright", "wall-shelves": "wall-shelves-bright"}
 
-# Per-uuid R2 folder override. Merged categories (wall-shelves) store webps in
-# *-bright/-dark subfolders, not under the bare category name.
-FOLDER_OVERRIDE = {
-    "11ca5842": "wall-shelves-bright",
-}
-
-
-def build_source_files():
-    """(path, category, folder) tuples, matched from Downloads by uuid prefix.
-
-    Only un-renamed Midjourney files (streambackdrops_*) are matched, so files
-    already renamed by a prior run are skipped.
-    """
-    out, seen = [], set()
-    for uuid, category in UUID_CATEGORY.items():
-        matches = sorted(glob(str(DOWNLOADS / f"streambackdrops_*{uuid}*.png")))
-        if not matches:
-            print(f"  ⚠ no source file for uuid {uuid} ({category})")
-            continue
-        for mpath in matches:
-            if mpath in seen:
-                continue
-            if os.path.getmtime(mpath) < BATCH_START_MTIME:
-                continue  # older variant of same job, not this batch
-            seen.add(mpath)
-            out.append((mpath, category, FOLDER_OVERRIDE.get(uuid, category)))
-    return out
-
-
-SOURCE_FILES = build_source_files()
+USE_CASES = ["professional video calls", "executive video calls", "remote work",
+             "online presentations", "team standups", "virtual meetings"]
+FORBIDDEN_RE = re.compile(r"\b(gamer|gamers|gaming|twitch|streamer|streamers|livestreamer|esports|obs|stunning|amazing|premium|ultimate|stock)\b", re.I)
 
 STOP_WORDS = {
     "a","an","the","and","or","but","of","in","on","at","by","with","to","for",
@@ -170,54 +116,54 @@ STOP_WORDS = {
     "could","should","may","might","must","also","featuring","ideal","perfect",
 }
 
+DRY = "--classify-only" in sys.argv
+NUMBER_ONLY = "--number" in sys.argv
+
+
+# ── Phase 1: neutralize filenames to numbers ──────────────────────────────────
+
+def phase_number():
+    raw = sorted(
+        p for p in DOWNLOADS.glob("streambackdrops_*.png")
+        if p.stat().st_mtime >= BATCH_START_MTIME
+    )
+    if not raw:
+        print("No raw streambackdrops_*.png in the batch window — already numbered?")
+        return
+    print(f"Phase 1: numbering {len(raw)} raw files → {BATCH_PREFIX}-NNN.png\n")
+    for i, p in enumerate(raw, 1):
+        dst = DOWNLOADS / f"{BATCH_PREFIX}-{i:03d}.png"
+        print(f"  {p.name[:60]}…  →  {dst.name}")
+        p.rename(dst)
+    print(f"\n✓ numbered {len(raw)} files. Now run the pipeline (no args / --classify-only).")
+
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def extract_prompt(filename: str) -> str:
-    """Extract the prompt text portion from a Midjourney filename."""
-    name = Path(filename).stem  # drop .png
-    # Format: streambackdrops_{PROMPT}_{UUID}_{VARIANT}
-    # UUID looks like 8hex-4hex-4hex-4hex-12hex
-    uuid_re = r'_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}_\d+$'
-    name = re.sub(uuid_re, '', name)
-    name = re.sub(r'^streambackdrops_', '', name)
-    return name
-
-
-def build_descriptive(prompt_text: str) -> str:
-    """Tokenize, stop-word filter, lowercase hyphenate, max DESC_MAX chars."""
-    text = prompt_text.lower()
-    text = re.sub(r'[^a-z0-9\s]+', ' ', text)
+def build_descriptive(text: str) -> str:
+    text = re.sub(r"[^a-z0-9\s]+", " ", (text or "").lower())
     tokens = [t for t in text.split() if t and t not in STOP_WORDS]
     picked, length = [], 0
     for tok in tokens:
-        next_len = len(tok) if not picked else length + 1 + len(tok)
-        if next_len > DESC_MAX:
+        nxt = len(tok) if not picked else length + 1 + len(tok)
+        if nxt > DESC_MAX:
             break
-        picked.append(tok)
-        length = next_len
-    return '-'.join(picked) if picked else 'image'
+        picked.append(tok); length = nxt
+    return "-".join(picked) if picked else "image"
 
 
 def convert_to_webp(src_path: str) -> bytes:
-    """Open PNG, resize to 1456×816 (crop-fill to preserve aspect), save as WebP q82."""
     img = Image.open(src_path).convert("RGB")
-    target_ratio = WEBP_WIDTH / WEBP_HEIGHT
-    src_ratio = img.width / img.height
-
-    if src_ratio > target_ratio:
-        # wider than target — crop sides
-        new_w = int(img.height * target_ratio)
-        left = (img.width - new_w) // 2
-        img = img.crop((left, 0, left + new_w, img.height))
-    elif src_ratio < target_ratio:
-        # taller than target — crop top/bottom
-        new_h = int(img.width / target_ratio)
-        top = (img.height - new_h) // 2
-        img = img.crop((0, top, img.width, top + new_h))
-
+    tr = WEBP_WIDTH / WEBP_HEIGHT
+    sr = img.width / img.height
+    if sr > tr:
+        nw = int(img.height * tr); left = (img.width - nw) // 2
+        img = img.crop((left, 0, left + nw, img.height))
+    elif sr < tr:
+        nh = int(img.width / tr); top = (img.height - nh) // 2
+        img = img.crop((0, top, img.width, top + nh))
     img = img.resize((WEBP_WIDTH, WEBP_HEIGHT), Image.LANCZOS)
-    buf = BytesIO()
-    img.save(buf, format="WEBP", quality=WEBP_QUALITY, method=6)
+    buf = BytesIO(); img.save(buf, format="WEBP", quality=WEBP_QUALITY, method=6)
     return buf.getvalue()
 
 
@@ -225,114 +171,153 @@ def hash8(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()[:HASH_LEN]
 
 
-def upload_to_r2(client, bucket, key, data: bytes, content_type: str):
-    client.put_object(
-        Bucket=bucket,
-        Key=key,
-        Body=data,
-        ContentType=content_type,
-        CacheControl="public, max-age=31536000, immutable",
+def pick_use_case(seed_str: str) -> str:
+    h = 5381
+    for ch in seed_str:
+        h = ((h << 5) + h + ord(ch)) & 0xFFFFFFFF
+    return USE_CASES[h % len(USE_CASES)]
+
+
+def build_vision_prompt(use_case: str, retry_hint: str = "") -> str:
+    cats = "\n".join(f"- {slug}: {desc}" for slug, desc in CATEGORY_GUIDE.items())
+    return f"""You are classifying and writing SEO metadata for ONE image sold as a virtual background for corporate / executive video calls on Zoom, Microsoft Teams, and Google Meet. No people are in the image.
+
+BRAND: MeetBackdrops — a virtual set design studio for corporate / executive professionals. NOT gaming/streaming/Twitch. NEVER use: gamer, gaming, Twitch, streamer, OBS, esports, livestream, stunning, amazing, perfect, premium, ultimate, stock. Approved: designed, studio-designed, 4K-upscaled, composed for camera, virtual background, virtual set, high-fidelity, corporate, executive, boardroom.
+
+STEP 1 — CATEGORY. Look at the image and choose EXACTLY ONE category slug from this list whose description best matches what is actually shown:
+{cats}
+
+STEP 2 — metadata. Then output strict JSON with EXACTLY these keys: category, title, description, alt, tags.
+
+=== category === one slug from the list above, verbatim.
+=== title ({TtlMIN}-{TtlMAX} chars incl " | MeetBackdrops") === concrete image-grounded subject; Title Case; ends with " | MeetBackdrops"; no "background"/"backdrop"/"wallpaper"; no emojis.
+=== description ({DScMIN}-{DScMAX} chars — HARD) === visual specifics unique to THIS image; weave the phrase "{use_case}" mid-sentence; don't start with A/An/This/The; count characters.
+=== alt ({AltMIN}-{AltMAX} chars) === factual visual description for screen readers; don't start with "Image of"/"A picture of"; don't mention Zoom/virtual/background/MeetBackdrops.
+=== tags ({TagMIN}-{TagMAX} lowercase strings) === span >=5 of environment/object/mood/lighting/style/color/composition/use-case; include exactly ONE use-case tag "{use_case}"; 1-3 words each; no punctuation.
+
+{retry_hint}OUTPUT: strict JSON only. No markdown, no code fences."""
+
+
+def vision_call(webp_bytes: bytes, use_case: str, retry_hint: str = "") -> dict:
+    data_url = "data:image/webp;base64," + base64.b64encode(webp_bytes).decode()
+    body = json.dumps({
+        "model": MODEL, "temperature": 0, "seed": 42,
+        "response_format": {"type": "json_object"},
+        "messages": [{"role": "user", "content": [
+            {"type": "text", "text": build_vision_prompt(use_case, retry_hint)},
+            {"type": "image_url", "image_url": {"url": data_url, "detail": "low"}},
+        ]}],
+    }).encode()
+    req = urllib.request.Request(
+        "https://api.openai.com/v1/chat/completions", data=body,
+        headers={"Authorization": f"Bearer {OPENAI_API_KEY}", "Content-Type": "application/json"},
     )
+    with urllib.request.urlopen(req, timeout=90) as resp:
+        payload = json.loads(resp.read())
+    return json.loads(payload["choices"][0]["message"]["content"])
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+def validate(m: dict) -> list:
+    issues = []
+    c = m.get("category")
+    if c not in ALLOWED:
+        issues.append(f"category '{c}' not in allowed list")
+    for k, lo, hi in (("title", TtlMIN, TtlMAX), ("description", DScMIN, DScMAX), ("alt", AltMIN, AltMAX)):
+        v = m.get(k)
+        if not isinstance(v, str):
+            issues.append(f"{k} missing")
+        elif not (lo <= len(v) <= hi):
+            issues.append(f"{k} {len(v)}c out of {lo}-{hi}")
+    if "| MeetBackdrops" not in (m.get("title") or ""):
+        issues.append("title missing brand suffix")
+    tags = m.get("tags")
+    if not isinstance(tags, list) or not (TagMIN <= len(tags) <= TagMAX):
+        issues.append("tags count out of range")
+    fw = FORBIDDEN_RE.search(" ".join(str(m.get(k, "")) for k in ("title", "description", "alt")))
+    if fw:
+        issues.append(f'contains forbidden word "{fw.group(0)}" — rewrite that sentence without it and without "perfect for" boilerplate')
+    return issues
+
+
+def classify(webp_bytes: bytes, handle: str) -> dict:
+    use_case = pick_use_case(hash8(webp_bytes))
+    hint = ""
+    for attempt in range(3):
+        try:
+            m = vision_call(webp_bytes, use_case, hint)
+            issues = validate(m)
+            if not issues:
+                return m
+            hint = "RETRY — fix: " + "; ".join(issues) + ".\n\n"
+            if attempt == 2:
+                return m  # accept best-effort with warnings
+        except Exception as e:
+            if attempt == 2:
+                raise
+            time.sleep(1.5 * (attempt + 1))
+    return m
+
+
+# ── Phase 2: vision-driven processing ─────────────────────────────────────────
 
 def main():
-    if DRY_RUN:
-        print("=== DRY RUN — no uploads, no renames ===\n")
+    if NUMBER_ONLY:
+        phase_number()
+        return
 
-    print(f"Source batch: {len(SOURCE_FILES)} files\n")
+    files = sorted(DOWNLOADS.glob(f"{BATCH_PREFIX}-*.png"))
+    if not files:
+        print(f"No {BATCH_PREFIX}-*.png found. Run `--number` first to neutralize the raw files.")
+        return
 
-    r2 = boto3.client(
-        "s3",
-        endpoint_url=R2_ENDPOINT,
-        aws_access_key_id=R2_ACCESS_KEY,
-        aws_secret_access_key=R2_SECRET_KEY,
-        region_name="auto",
-    ) if not DRY_RUN else None
+    print(("=== CLASSIFY-ONLY (no upload/rename) ===\n" if DRY else "") + f"Batch: {len(files)} numbered files\n")
 
-    results = []
-    errors  = []
+    r2 = None if DRY else boto3.client(
+        "s3", endpoint_url=R2_ENDPOINT, aws_access_key_id=R2_ACCESS_KEY,
+        aws_secret_access_key=R2_SECRET_KEY, region_name="auto")
 
-    for src_path, category, folder in SOURCE_FILES:
-        p = Path(src_path)
-        if not p.exists():
-            errors.append(f"MISSING: {src_path}")
-            print(f"  ✗ MISSING: {p.name}")
-            continue
-
-        print(f"\n→ {p.name}")
-
+    results, errors = [], []
+    for p in files:
         try:
-            # 1. Convert to WebP
-            webp_bytes = convert_to_webp(src_path)
+            webp = convert_to_webp(str(p))
+            h8 = hash8(webp)
+            m = classify(webp, p.name)
+            category = m["category"] if m.get("category") in ALLOWED else "office-spaces"
+            folder = CATEGORY_FOLDER.get(category, category)
+            slug = f"{build_descriptive(m.get('alt', ''))}-{h8}"
+            webp_name, png_name = f"{slug}.webp", f"{slug}.png"
+            webp_key, png_key = f"webp/{folder}/{webp_name}", png_name
 
-            # 2. Hash
-            h8 = hash8(webp_bytes)
+            warn = validate(m)
+            print(f"→ {p.name}  →  [{category}]  {slug}" + (f"  ⚠ {warn}" if warn else ""))
 
-            # 3. Slug
-            prompt = extract_prompt(str(p))
-            desc   = build_descriptive(prompt)
-            slug   = f"{desc}-{h8}"
-            webp_filename = f"{slug}.webp"
-            png_filename  = f"{slug}.png"
-
-            r2_webp_key = f"webp/{folder}/{webp_filename}"
-            r2_png_key  = png_filename
-
-            print(f"  slug:     {slug}")
-            print(f"  category: {category}")
-            print(f"  folder:   {folder}")
-            print(f"  R2 webp:  {r2_webp_key}")
-            print(f"  R2 png:   {r2_png_key}")
-
-            if not DRY_RUN:
-                # 4. Upload WebP
-                upload_to_r2(r2, R2_BUCKET, r2_webp_key, webp_bytes, "image/webp")
-                print(f"  ✓ uploaded webp")
-
-                # 5. Upload original PNG
-                png_bytes = p.read_bytes()
-                upload_to_r2(r2, R2_BUCKET, r2_png_key, png_bytes, "image/png")
-                print(f"  ✓ uploaded png")
-
-                # 6. Rename source file
-                new_path = p.parent / png_filename
-                p.rename(new_path)
-                print(f"  ✓ renamed → {png_filename}")
+            if not DRY:
+                r2.put_object(Bucket=R2_BUCKET, Key=webp_key, Body=webp,
+                              ContentType="image/webp", CacheControl="public, max-age=31536000, immutable")
+                r2.put_object(Bucket=R2_BUCKET, Key=png_key, Body=p.read_bytes(),
+                              ContentType="image/png", CacheControl="public, max-age=31536000, immutable")
+                p.rename(p.parent / png_name)
 
             results.append({
-                "slug":          slug,
-                "category":      category,
-                "folder":        folder,
-                "image_webp":    webp_filename,
-                "download_png":  png_filename,
-                "r2_webp_key":   r2_webp_key,
-                "r2_png_key":    r2_png_key,
-                "source_prompt": prompt,
+                "id": f"{category}:{slug}", "slug": slug, "category": category, "folder": folder,
+                "image_webp": webp_name, "download_png": png_name,
+                "title": m.get("title", ""), "description": m.get("description", ""),
+                "alt": m.get("alt", ""), "tags": m.get("tags", []), "hdOnly": False,
             })
-
         except Exception as e:
             errors.append(f"{p.name}: {e}")
-            print(f"  ✗ ERROR: {e}")
+            print(f"  ✗ ERROR {p.name}: {e}")
 
-    # Write output JSON
-    output_path = BASE_DIR / "process_new_images_output.json"
-    with open(output_path, "w") as f:
-        json.dump(results, f, indent=2)
-    print(f"\n\n=== Done. {len(results)} processed, {len(errors)} errors ===")
-    print(f"Output written to: {output_path}")
-
-    # Per-category tally
+    out = BASE_DIR / "process_new_images_output.json"
+    out.write_text(json.dumps(results, indent=2))
     by_cat = {}
     for r in results:
         by_cat[r["category"]] = by_cat.get(r["category"], 0) + 1
-    print("By category:", json.dumps(by_cat))
-
-    if errors:
-        print("\nErrors:")
-        for e in errors:
-            print(f"  {e}")
+    print(f"\n=== {'classified' if DRY else 'processed'} {len(results)}, {len(errors)} errors ===")
+    print("By category (decided by the pipeline):", json.dumps(by_cat, indent=0))
+    print(f"Output: {out}")
+    for e in errors:
+        print("  " + e)
 
 
 if __name__ == "__main__":

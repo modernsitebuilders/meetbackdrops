@@ -497,6 +497,13 @@ const IMAGES_OFFICE_SPACES = [
   { filename: 'medical-executive-office-professional-de-10d0b8dd.webp', title: 'Office Space Background 223' },
   { filename: 'modern-open-office-workspace-desks-posit-034a1a29.webp', title: 'Office Space Background 224' },
   { filename: 'bright-airy-professional-office-setting-0cebec44.webp', title: 'Office Space Background 225' },
+  { filename: 'curved-wood-paneling-modern-corporate-office-space-0c98e98a.webp', title: 'Office Space Background 226' },
+  { filename: 'corporate-lobby-textured-concrete-walls-wooden-paneling-265f5e64.webp', title: 'Office Space Background 227' },
+  { filename: 'spacious-modern-office-interior-wood-paneling-large-windows-d8aaa817.webp', title: 'Office Space Background 228' },
+  { filename: 'bright-office-space-textured-wall-large-windows-allowing-1f3c553b.webp', title: 'Office Space Background 229' },
+  { filename: 'textured-wall-natural-light-streaming-through-large-windows-4092e324.webp', title: 'Office Space Background 230' },
+  { filename: 'executive-boardroom-modern-furniture-large-windows-showing-bd4334cd.webp', title: 'Office Space Background 231' },
+  { filename: 'spacious-modern-office-interior-large-windows-overlooking-46f87f49.webp', title: 'Office Space Background 232' },
 ];
 
 // home-office: 100 images
@@ -1363,6 +1370,25 @@ const IMAGES_NEUTRAL_BACKGROUNDS = [
   { filename: 'seamless-video-call-background-d4a783bf.webp', title: 'Neutral & Plain Walls Background 9' },
   { filename: 'empty-minimalist-japandi-home-office-sin-2d1a60a0.webp', title: 'Neutral & Plain Walls Background 10' },
   { filename: 'high-end-minimalist-office-background-fl-b1c3f800.webp', title: 'Neutral & Plain Walls Background 11' },
+  { filename: 'seamless-soft-green-wall-subtle-texture-providing-clean-4a43e10c.webp', title: 'Neutral & Plain Walls Background 12' },
+  { filename: 'textured-green-wall-cozy-rug-large-window-allowing-natural-1d379781.webp', title: 'Neutral & Plain Walls Background 13' },
+  { filename: 'composition-soft-green-walls-wooden-slats-natural-light-796cd087.webp', title: 'Neutral & Plain Walls Background 14' },
+  { filename: 'minimalist-wall-soft-lighting-textured-panel-designed-clean-ea7b2015.webp', title: 'Neutral & Plain Walls Background 15' },
+  { filename: 'textured-beige-wall-subtle-patterns-providing-warm-neutral-46256fad.webp', title: 'Neutral & Plain Walls Background 16' },
+  { filename: 'textured-wall-warm-earthy-tones-providing-neutral-backdrop-e458b0a8.webp', title: 'Neutral & Plain Walls Background 17' },
+  { filename: 'textured-wall-earthy-tones-subtle-grooves-patterns-4f280319.webp', title: 'Neutral & Plain Walls Background 18' },
+  { filename: 'textured-wall-warm-tones-circular-platform-designed-b69b46c0.webp', title: 'Neutral & Plain Walls Background 19' },
+  { filename: 'textured-concrete-wall-vertical-wooden-slats-providing-ed5c30e2.webp', title: 'Neutral & Plain Walls Background 20' },
+  { filename: 'textured-orange-wall-subtle-variations-creating-warm-93752fdd.webp', title: 'Neutral & Plain Walls Background 21' },
+  { filename: 'textured-wall-earthy-tones-subtle-grooves-designed-08310f34.webp', title: 'Neutral & Plain Walls Background 22' },
+  { filename: 'textured-wall-subtle-patterns-neutral-tones-corporate-3cb6112d.webp', title: 'Neutral & Plain Walls Background 23' },
+  { filename: 'textured-wall-soft-yellow-pink-hues-providing-warm-inviting-1dbd70d1.webp', title: 'Neutral & Plain Walls Background 24' },
+  { filename: 'vibrant-magenta-wall-shelf-displaying-two-vases-creating-c3a29f67.webp', title: 'Neutral & Plain Walls Background 25' },
+  { filename: 'textured-wall-floral-patterns-shadows-cast-hanging-plants-8f513ab0.webp', title: 'Neutral & Plain Walls Background 26' },
+  { filename: 'dark-blue-wall-wooden-trim-smooth-floor-designed-60e5333e.webp', title: 'Neutral & Plain Walls Background 27' },
+  { filename: 'textured-blue-wall-soft-lighting-minimalist-design-creating-5321396e.webp', title: 'Neutral & Plain Walls Background 28' },
+  { filename: 'textured-wall-soft-shadows-cast-light-creating-warm-inviting-489245cd.webp', title: 'Neutral & Plain Walls Background 29' },
+  { filename: 'textured-wall-soft-shadows-creating-serene-professional-4400a2c9.webp', title: 'Neutral & Plain Walls Background 30' },
 ];
 
 

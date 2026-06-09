@@ -26,13 +26,35 @@ const FM_PATH = path.join(__dirname, 'final_manifest.json');
 const CD_PATH = path.join(ROOT, 'data/categoryData.js');
 const TS = new Date().toISOString().replace(/[:.]/g, '-');
 
-// category (+folder for merged) → { array, label }
+// category (+folder for merged) → { array, label }. Covers every canonical
+// category, so whatever the pipeline classifies into routes to the right array.
 function target(entry) {
   const map = {
-    'neutral-backgrounds': { array: 'IMAGES_NEUTRAL_BACKGROUNDS', label: 'Neutral & Plain Walls' },
-    'home-office':         { array: 'IMAGES_HOME_OFFICE',         label: 'Home Office' },
-    'office-spaces':       { array: 'IMAGES_OFFICE_SPACES',       label: 'Office Space' },
+    'office-spaces':          { array: 'IMAGES_OFFICE_SPACES',          label: 'Office Space' },
+    'home-office':            { array: 'IMAGES_HOME_OFFICE',            label: 'Home Office' },
+    'neutral-backgrounds':    { array: 'IMAGES_NEUTRAL_BACKGROUNDS',    label: 'Neutral & Plain Walls' },
+    'living-rooms':           { array: 'IMAGES_LIVING_ROOMS',           label: 'Living Room' },
+    'kitchens':               { array: 'IMAGES_KITCHENS',               label: 'Kitchen' },
+    'coffee-shops':           { array: 'IMAGES_COFFEE_SHOPS',           label: 'Coffee Shop' },
+    'art-galleries':          { array: 'IMAGES_ART_GALLERIES',          label: 'Art Gallery' },
+    'urban-lofts':            { array: 'IMAGES_URBAN_LOFTS',            label: 'Urban Loft' },
+    'gardens-patios':         { array: 'IMAGES_GARDENS_PATIOS',         label: 'Garden Patio' },
+    'historic-spaces':        { array: 'IMAGES_HISTORIC_SPACES',        label: 'Historic Space' },
+    'nature-landscapes':      { array: 'IMAGES_NATURE_LANDSCAPES',      label: 'Nature Landscape' },
+    'libraries':              { array: 'IMAGES_LIBRARIES',              label: 'Library' },
+    'bokeh-backgrounds':      { array: 'IMAGES_BOKEH_BACKGROUNDS',      label: 'Bokeh' },
+    'christmas-backgrounds':  { array: 'IMAGES_CHRISTMAS_BACKGROUNDS',  label: 'Christmas' },
+    'halloween-backgrounds':  { array: 'IMAGES_HALLOWEEN_BACKGROUNDS',  label: 'Halloween' },
+    'valentines-backgrounds': { array: 'IMAGES_VALENTINES_BACKGROUNDS', label: 'Valentines' },
+    'easter-backgrounds':     { array: 'IMAGES_EASTER_BACKGROUNDS',     label: 'Easter' },
+    'spring-backgrounds':     { array: 'IMAGES_SPRING_BACKGROUNDS',     label: 'Spring' },
+    'summer-backgrounds':     { array: 'IMAGES_SUMMER_BACKGROUNDS',     label: 'Summer' },
   };
+  if (entry.category === 'bookshelves') {
+    return entry.folder === 'bookshelves-dark'
+      ? { array: 'IMAGES_BOOKSHELVES_DARK', label: 'Bookshelves Dark' }
+      : { array: 'IMAGES_BOOKSHELVES_BRIGHT', label: 'Bookshelves Bright' };
+  }
   if (entry.category === 'wall-shelves') {
     return entry.folder === 'wall-shelves-dark'
       ? { array: 'IMAGES_WALL_SHELVES_DARK', label: 'Wall Shelves Dark' }
@@ -50,17 +72,19 @@ let added = 0;
 const newStubs = [];
 for (const e of batch) {
   if (haveSlug.has(e.slug)) continue;
+  // The vision-driven pipeline already produced full copy + tags, so carry them
+  // through. (Falls back to empty if an older stub-only output is used.)
   newStubs.push({
-    id: `${e.category}:${e.slug}`,
+    id: e.id || `${e.category}:${e.slug}`,
     slug: e.slug,
     category: e.category,
     folder: e.folder,
     image_webp: e.image_webp,
     download_png: e.download_png,
-    title: '',
-    description: '',
-    alt: '',
-    tags: [],
+    title: e.title || '',
+    description: e.description || '',
+    alt: e.alt || '',
+    tags: Array.isArray(e.tags) ? e.tags : [],
     hdOnly: false,
   });
   haveSlug.add(e.slug);
