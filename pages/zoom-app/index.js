@@ -111,6 +111,20 @@ export default function ZoomApp() {
         await Promise.race([call, timeout]);
         setAppliedId(item.id);
         setApplying(null);
+
+        // Track a successful apply as a usage signal — the in-Zoom equivalent
+        // of a download. Counts toward popularity (zoom_apply is in
+        // DOWNLOAD_EVENTS). item.id is the manifest slug, so the logged
+        // filename resolves in scoring. Fire-and-forget: never block the UI.
+        fetch('/api/analytics', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventType: 'zoom_apply',
+            filename: `MeetBackdrops-${item.id}.png`,
+            category: item.category,
+          }),
+        }).catch(() => {});
       } catch (e) {
         console.error('[mb] setVirtualBackground FAIL', { fileUrl: item.fileUrl, error: e });
         const detail = e?.message || e?.reason || JSON.stringify(e);
