@@ -47,7 +47,6 @@ export default function AdminHub() {
 
   const adminActions = [
     { action: () => window.open('/api/consolidate-analytics', '_blank'), title: '🔄 Consolidate Analytics', desc: 'Compress old analytics data' },
-    { action: () => window.open('/api/cache-popular', '_blank'), title: '⚡ Cache Popular Images', desc: 'Refresh popular images cache' },
     { action: async () => { const r = await fetch('/api/admin/rebuild-dashboard', { method: 'POST' }); const d = await r.json(); alert(d.success ? `✅ Dashboard rebuilt! ${d.stats.totalDownloads} downloads, ${d.stats.categoriesTracked} categories` : `❌ Error: ${d.error}`); }, title: '📊 Rebuild Dashboard Tab', desc: 'Recompute all Dashboard stats from Analytics data' }
   ];
 

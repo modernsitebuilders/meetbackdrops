@@ -1,16 +1,17 @@
 // pages/api/cron/update-popular.js
 //
 // Aggregates download events from Google Sheets and writes the top 25
-// to the PopularCache tab. Category for each image is resolved from
-// the canonical manifest via filename — never from filename parsing.
-// Legacy category strings in the Sheets "category" column (pre-rename
-// names like 'ambient-lighting') are normalized via the analytics
-// normalizer as a fallback when the filename doesn't resolve.
+// to the PopularCache tab. Only downloads whose filename resolves in the
+// canonical manifest are counted; category and R2 folder come from that
+// manifest entry, never from filename parsing. Because the Wave 2
+// migration renamed every file to the slug+hash format, this naturally
+// excludes all pre-migration activity (old {category}-NN filenames no
+// longer resolve) — the popular page reflects the current catalog only.
 
 import { google } from 'googleapis';
 import { calculateImageScore } from '../../../lib/imageScoring';
 import { resolveByAnyExtension, getAll } from '../../../lib/manifest';
-import { normalizeAnalyticsCategory, isDownloadEvent } from '../../../lib/analyticsNormalize';
+import { isDownloadEvent } from '../../../lib/analyticsNormalize';
 
 const RESET_DATE = new Date('2026-01-25');
 
@@ -83,7 +84,6 @@ export default async function handler(req, res) {
       const timestamp = row[0];
       const eventType = row[1];
       const filename = row[3];
-      const rawCategory = row[4];
 
       const cleanName = cleanFilename(filename);
       if (!cleanName || !isDownloadEvent(eventType)) continue;
@@ -91,20 +91,20 @@ export default async function handler(req, res) {
       const eventDate = new Date(timestamp);
       if (eventDate < RESET_DATE) continue;
 
-      // Canonical category: manifest first, analytics normalizer as a
-      // fallback for rows whose filename doesn't appear in the manifest.
+      // Only count downloads that resolve to a CURRENT catalog image.
+      // Pre-migration rows (old {category}-NN filenames) no longer resolve
+      // and are dropped. Category and R2 folder always come from the
+      // manifest entry — never inferred from filename parsing.
       const manifestEntry = resolveByAnyExtension(cleanName);
-      const category = manifestEntry
-        ? manifestEntry.category
-        : normalizeAnalyticsCategory(rawCategory);
-      if (!category) continue;
+      if (!manifestEntry) continue;
 
-      const key = manifestEntry ? manifestEntry.filename : cleanName;
+      const key = manifestEntry.filename;
 
       if (!imageStats[key]) {
         imageStats[key] = {
           filename: key,
-          category,
+          category: manifestEntry.category,
+          folder: manifestEntry.folder || manifestEntry.category,
           downloads: 0,
           lastDownload: null,
         };
@@ -129,8 +129,6 @@ export default async function handler(req, res) {
 
       const score = calculateImageScore(imageData, now);
       const webFilename = toWebpFilename(item.filename);
-      const manifestEntry = resolveByAnyExtension(webFilename);
-      const pathFolder = manifestEntry?.folder || item.category;
 
       return {
         filename: webFilename,
@@ -139,7 +137,7 @@ export default async function handler(req, res) {
         downloadCount: item.downloads,
         score,
         lastDownload: item.lastDownload,
-        webPath: `https://assets.streambackdrops.com/webp/${pathFolder}/${webFilename}`
+        webPath: `https://assets.streambackdrops.com/webp/${item.folder}/${webFilename}`
       };
     });
 

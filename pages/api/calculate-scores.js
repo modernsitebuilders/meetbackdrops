@@ -92,6 +92,7 @@ export default async function handler(req, res) {
       imageStats[image.filename] = {
         category: categoryDisplayName,
         categorySlug: category,
+        folder: image.folder || category,
         downloads: 0,
         firstSeen: now,
         lastDownload: null,
