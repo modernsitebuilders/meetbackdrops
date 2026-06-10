@@ -43,9 +43,15 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'invalid_signature' });
   }
 
-  // Event handlers go here. For v0 we just log — wire real handlers as the
-  // marketplace integration expands (app_deauthorized, user.deleted, etc.).
   console.log('[zoom-webhook]', event.event, event.payload?.account_id || '');
+
+  // Zoom requires this event to be handled for marketplace approval.
+  // MeetBackdrops stores no PII — the only user-side state is a session cookie
+  // that lives in the user's browser and expires naturally. Nothing to delete
+  // server-side; we acknowledge immediately to satisfy the requirement.
+  if (event.event === 'app_deauthorized') {
+    return res.status(200).json({ ok: true });
+  }
 
   return res.status(200).json({ ok: true });
 }

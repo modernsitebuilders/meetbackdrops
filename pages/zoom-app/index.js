@@ -2,12 +2,20 @@ import { useEffect, useState, useCallback } from 'react';
 import Head from 'next/head';
 
 const SDK_CAPABILITIES = ['setVirtualBackground'];
+const PAGE = 24;
+const SKELETON_COUNT = 12;
 
 export default function ZoomApp() {
   const [items, setItems] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [status, setStatus] = useState('loading');
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const [total, setTotal] = useState(0);
   const [error, setError] = useState(null);
   const [applying, setApplying] = useState(null);
+  const [appliedId, setAppliedId] = useState(null);
   const [sdk, setSdk] = useState(null);
   const [runningInZoom, setRunningInZoom] = useState(false);
   const [granted, setGranted] = useState(null);
@@ -33,31 +41,59 @@ export default function ZoomApp() {
         setRunningInZoom(false);
       }
     })();
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch('/api/zoom/backgrounds?limit=24');
-        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
-        const data = await res.json();
-        if (cancelled) return;
-        setItems(data.items);
-        setStatus('ready');
-      } catch (e) {
-        if (cancelled) return;
-        setError(e.message);
-        setStatus('error');
+  const fetchBackgrounds = useCallback(async (category) => {
+    setStatus('loading');
+    setError(null);
+    try {
+      const qs = new URLSearchParams({ limit: PAGE });
+      if (category) qs.set('category', category);
+      const res = await fetch(`/api/zoom/backgrounds?${qs}`);
+      if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+      const data = await res.json();
+      setItems(data.items);
+      setTotal(data.total);
+      setHasMore(data.items.length < data.total);
+      if (data.categories?.length && categories.length === 0) {
+        setCategories(data.categories);
       }
-    })();
-    return () => {
-      cancelled = true;
-    };
+      setStatus('ready');
+    } catch (e) {
+      setError(e.message);
+      setStatus('error');
+    }
+  }, [categories.length]);
+
+  const loadMore = useCallback(async () => {
+    setLoadingMore(true);
+    setError(null);
+    try {
+      const qs = new URLSearchParams({ limit: PAGE, offset: items.length });
+      if (activeCategory) qs.set('category', activeCategory);
+      const res = await fetch(`/api/zoom/backgrounds?${qs}`);
+      if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+      const data = await res.json();
+      const next = [...items, ...data.items];
+      setItems(next);
+      setHasMore(next.length < data.total);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoadingMore(false);
+    }
+  }, [items, activeCategory]);
+
+  useEffect(() => {
+    fetchBackgrounds(null);
   }, []);
+
+  const handleCategoryClick = useCallback((slug) => {
+    const next = slug === activeCategory ? null : slug;
+    setActiveCategory(next);
+    fetchBackgrounds(next);
+  }, [activeCategory, fetchBackgrounds]);
 
   const applyBackground = useCallback(
     async (item) => {
@@ -72,8 +108,8 @@ export default function ZoomApp() {
           setTimeout(() => reject(new Error('Timed out after 20s — SDK never resolved')), 20000)
         );
         const call = sdk.setVirtualBackground({ fileUrl: item.fileUrl });
-        const result = await Promise.race([call, timeout]);
-        console.log('[mb] setVirtualBackground OK', { fileUrl: item.fileUrl, result });
+        await Promise.race([call, timeout]);
+        setAppliedId(item.id);
         setApplying(null);
       } catch (e) {
         console.error('[mb] setVirtualBackground FAIL', { fileUrl: item.fileUrl, error: e });
@@ -90,6 +126,12 @@ export default function ZoomApp() {
       <Head>
         <title>MeetBackdrops for Zoom</title>
         <meta name="robots" content="noindex" />
+        <style>{`
+          @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+          }
+        `}</style>
       </Head>
       <main style={styles.page}>
         <header style={styles.header}>
@@ -103,28 +145,100 @@ export default function ZoomApp() {
           </div>
         </header>
 
-        {error && <div style={styles.error}>{error}</div>}
-
-        {status === 'loading' && <div style={styles.muted}>Loading backgrounds…</div>}
-
-        {status === 'ready' && (
-          <div style={styles.grid}>
-            {items.map((item) => (
+        {categories.length > 0 && (
+          <div style={styles.filterBar}>
+            <button
+              type="button"
+              style={{ ...styles.pill, ...(activeCategory === null ? styles.pillActive : {}) }}
+              onClick={() => handleCategoryClick(null)}
+            >
+              All
+            </button>
+            {categories.map((cat) => (
               <button
-                key={item.id}
+                key={cat.slug}
                 type="button"
-                style={styles.card}
-                onClick={() => applyBackground(item)}
-                disabled={applying === item.id}
+                style={{ ...styles.pill, ...(activeCategory === cat.slug ? styles.pillActive : {}) }}
+                onClick={() => handleCategoryClick(cat.slug)}
               >
-                <img src={item.thumbUrl} alt={item.title} style={styles.thumb} loading="lazy" />
-                <span style={styles.cardTitle}>{item.title}</span>
-                <span style={styles.cta}>
-                  {applying === item.id ? 'Applying…' : 'Apply to Zoom'}
-                </span>
+                {cat.label}
               </button>
             ))}
           </div>
+        )}
+
+        {error && <div style={styles.error}>{error}</div>}
+
+        {status === 'loading' && (
+          <div style={styles.grid}>
+            {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+              <div key={i} style={styles.skeleton}>
+                <div style={styles.skeletonThumb} />
+                <div style={styles.skeletonLine} />
+                <div style={{ ...styles.skeletonLine, width: '50%', marginBottom: 10 }} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {status === 'ready' && (
+          <>
+            <div style={styles.grid}>
+              {items.map((item) => {
+                const isApplied = appliedId === item.id;
+                const isApplying = applying === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    style={{
+                      ...styles.card,
+                      ...(isApplied ? styles.cardApplied : {}),
+                    }}
+                    onClick={() => applyBackground(item)}
+                    disabled={isApplying}
+                  >
+                    <div style={styles.thumbWrap}>
+                      <img src={item.thumbUrl} alt={item.title} style={styles.thumb} loading="lazy" />
+                      {isApplied && (
+                        <div style={styles.appliedOverlay}>
+                          <span style={styles.checkmark}>✓</span>
+                          <span style={styles.appliedLabel}>Applied</span>
+                        </div>
+                      )}
+                      {item.isHd && !isApplied && (
+                        <a
+                          href="/hd"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={styles.hdBadge}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          HD Edition →
+                        </a>
+                      )}
+                    </div>
+                    <span style={styles.cardTitle}>{item.title}</span>
+                    <span style={{ ...styles.cta, ...(isApplied ? styles.ctaApplied : {}) }}>
+                      {isApplying ? 'Applying…' : isApplied ? 'Active background' : 'Apply to Zoom'}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            {hasMore && (
+              <div style={styles.loadMoreRow}>
+                <button
+                  type="button"
+                  style={styles.loadMoreBtn}
+                  onClick={loadMore}
+                  disabled={loadingMore}
+                >
+                  {loadingMore ? 'Loading…' : `Load more (${items.length} of ${total})`}
+                </button>
+              </div>
+            )}
+          </>
         )}
       </main>
     </>
@@ -143,7 +257,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 12,
   },
   brand: { fontSize: 18, fontWeight: 700, letterSpacing: -0.2 },
   gold: { color: '#E0A82E' },
@@ -154,6 +268,29 @@ const styles = {
     background: '#fff',
     border: '1px solid #e5e7eb',
     color: '#6b7280',
+  },
+  filterBar: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginBottom: 14,
+  },
+  pill: {
+    fontSize: 12,
+    fontWeight: 500,
+    padding: '5px 12px',
+    borderRadius: 999,
+    border: '1px solid #d1d5db',
+    background: '#fff',
+    color: '#374151',
+    cursor: 'pointer',
+    whiteSpace: 'nowrap',
+    lineHeight: 1.4,
+  },
+  pillActive: {
+    background: '#111827',
+    borderColor: '#111827',
+    color: '#fff',
   },
   muted: { color: '#6b7280', fontSize: 14 },
   error: {
@@ -170,6 +307,28 @@ const styles = {
     gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
     gap: 12,
   },
+  skeleton: {
+    background: '#fff',
+    borderRadius: 10,
+    overflow: 'hidden',
+    border: '1px solid #e5e7eb',
+  },
+  skeletonThumb: {
+    width: '100%',
+    aspectRatio: '16/9',
+    background: 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+    backgroundSize: '200% 100%',
+    animation: 'shimmer 1.4s infinite',
+  },
+  skeletonLine: {
+    height: 10,
+    borderRadius: 4,
+    background: 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+    backgroundSize: '200% 100%',
+    animation: 'shimmer 1.4s infinite',
+    margin: '8px 10px 4px',
+    width: '75%',
+  },
   card: {
     display: 'flex',
     flexDirection: 'column',
@@ -180,8 +339,50 @@ const styles = {
     cursor: 'pointer',
     padding: 0,
     textAlign: 'left',
+    transition: 'border-color 0.15s',
   },
+  cardApplied: {
+    border: '2px solid #16a34a',
+  },
+  thumbWrap: { position: 'relative' },
   thumb: { width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' },
+  appliedOverlay: {
+    position: 'absolute',
+    inset: 0,
+    background: 'rgba(22, 163, 74, 0.55)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+  },
+  checkmark: {
+    fontSize: 28,
+    color: '#fff',
+    fontWeight: 700,
+    lineHeight: 1,
+  },
+  appliedLabel: {
+    fontSize: 11,
+    fontWeight: 700,
+    color: '#fff',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+  },
+  hdBadge: {
+    position: 'absolute',
+    bottom: 6,
+    right: 6,
+    fontSize: 10,
+    fontWeight: 700,
+    padding: '3px 7px',
+    borderRadius: 4,
+    background: '#E0A82E',
+    color: '#111827',
+    textDecoration: 'none',
+    lineHeight: 1.4,
+    letterSpacing: 0.2,
+  },
   cardTitle: {
     fontSize: 12,
     fontWeight: 600,
@@ -197,5 +398,23 @@ const styles = {
     padding: '4px 10px 10px',
     color: '#E0A82E',
     fontWeight: 600,
+  },
+  ctaApplied: {
+    color: '#16a34a',
+  },
+  loadMoreRow: {
+    marginTop: 16,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  loadMoreBtn: {
+    fontSize: 13,
+    fontWeight: 600,
+    padding: '10px 24px',
+    borderRadius: 8,
+    border: '1px solid #d1d5db',
+    background: '#fff',
+    color: '#111827',
+    cursor: 'pointer',
   },
 };
