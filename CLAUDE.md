@@ -163,6 +163,22 @@ You don't need to touch these when adding images. To regenerate locally without 
 
 The fourth, **`public/sitemap-pages.xml`**, is hand-maintained — it holds priorities and lastmods for top-level pages, blog posts, category landing pages, and utility pages. Edit it directly when adding a new category, blog post, or top-level page. When adding new images to an existing category, optionally bump that category's `<lastmod>` to today.
 
+### IndexNow — ping Bing about new pages (automated)
+
+Sitemaps let Bing *eventually* find new pages; **IndexNow tells it immediately.** Bing Webmaster Tools flags "recently published pages were not submitted via IndexNow" if you skip this.
+
+**This is automated via GitHub Actions** — [.github/workflows/submit-indexnow.yml](.github/workflows/submit-indexnow.yml) runs daily (`0 5 * * *`) and submits every page URL to IndexNow. Pages added by an `add-images` batch are picked up automatically within ~24h of being pushed — no manual step. IndexNow/Bing dedupe, so a full daily sweep is safe. (GitHub Actions, not Vercel cron — the site is on the Vercel **Hobby** plan, which caps cron jobs; don't add this to `vercel.json` `crons`.)
+
+The workflow just runs the dependency-free CLI, which reads the **committed** sitemaps in `public/` (= what's deployed on `main`). To submit **immediately** instead of waiting for the daily run, either click **Run workflow** on the Action, or run it locally after a deploy:
+
+```bash
+npm run submit:indexnow            # sweeps all four leaf sitemaps, submits every page URL
+```
+
+This is [scripts/submit-indexnow.js](scripts/submit-indexnow.js). To submit just specific pages: `--urls-file new-pages.txt` (newline-delimited absolute URLs) or `--urls a,b,c`. Use `--dry-run` to preview, `--limit N` to cap.
+
+> **Only submit pages that are live.** The CLI reads the committed sitemaps, so the scheduled run is always in sync with `main` (= deployed). If you run it locally, do so *after* pushing, not before. The IndexNow key file lives at `public/c558eb0813634eceb45913b9e7934dba.txt` — its filename and one-line body are both the key; never rename or edit it. There's also a manual one-URL endpoint (`/api/indexnow`) + test page (`/indexnow-test`) for spot submissions.
+
 ---
 
 ## HD System

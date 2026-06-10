@@ -1,0 +1,37 @@
+name: Submit URLs to IndexNow
+
+# Pings IndexNow (Bing et al.) daily with every page URL so newly published
+# pages get crawled fast — clears Bing Webmaster Tools' "recently published
+# pages were not submitted via IndexNow" warning, hands-free.
+#
+# Runs the dependency-free CLI (scripts/submit-indexnow.js), which reads the
+# committed sitemaps in public/ — i.e. exactly what's deployed on the default
+# branch. No npm install, no Vercel cron (works on the Hobby plan), no secrets.
+#
+# Scheduled workflows only fire from the default branch. Use the "Run workflow"
+# button (workflow_dispatch) to trigger a submission on demand.
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # daily at 05:00 UTC
+  workflow_dispatch: {}
+
+# Don't pile up overlapping runs.
+concurrency:
+  group: submit-indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Submit page URLs to IndexNow
+        run: node scripts/submit-indexnow.js

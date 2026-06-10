@@ -13,6 +13,7 @@
     "check:seo:invariance": "node scripts/verify-seo-invariance.js",
     "check:seo:singularity": "node scripts/check-seo-singularity.js",
     "generate:sitemaps": "node scripts/generate-sitemaps.js",
+    "submit:indexnow": "node scripts/submit-indexnow.js",
     "generate:hd-products": "node scripts/generate-hd-products.js",
     "update-counts": "node generate-category-counts.js",
     "backdrop-inventory": "node scripts/backdrop-inventory.js",
