@@ -8,29 +8,18 @@
  * Also called by update-popular so both crons fire together.
  */
 
-const CATEGORY_SLUGS = [
-  'bookshelves-bright',
-  'bookshelves-dark',
-  'wall-shelves-bright',
-  'wall-shelves-dark',
-  'office-spaces',
-  'home-office',
-  'neutral-backgrounds',
-  'living-rooms',
-  'kitchens',
-  'coffee-shops',
-  'art-galleries',
-  'urban-lofts',
-  'gardens-patios',
-  'historic-spaces',
-  'nature-landscapes',
-  'libraries',
-  'christmas-backgrounds',
-  'halloween-backgrounds',
-  'valentines-backgrounds',
-  'easter-backgrounds',
-  'bokeh-backgrounds',
-];
+import { CATEGORY_ORDER } from '../../../lib/categories-config';
+
+// Canonical category routes, derived from categories-config so this list
+// always matches the real /category/[slug] pages (the same set as
+// getStaticPaths). It was previously hardcoded and had drifted after the
+// bright/dark merge: it listed sub-folders that aren't routes
+// (bookshelves-bright/dark, wall-shelves-bright/dark) — whose revalidate
+// calls failed every night — while omitting the actual merged pages
+// (bookshelves, wall-shelves) and the spring/summer categories, so those
+// were never force-reordered. Deriving it keeps new categories
+// (e.g. neutral-backgrounds) covered automatically.
+const CATEGORY_SLUGS = CATEGORY_ORDER;
 
 export default async function handler(req, res) {
   // Allow Vercel cron (no auth header) OR authorized manual calls
