@@ -12,13 +12,24 @@ export default async function handler(req, res) {
   }
 
   const userAgent = req.headers['user-agent'] || '';
+  const ua = userAgent.toLowerCase();
 
-  if (!userAgent ||
-      userAgent.includes('bot') ||
-      userAgent.includes('Bot') ||
-      userAgent.includes('crawler') ||
-      userAgent.includes('spider') ||
-      userAgent.includes('Prerender')) {
+  // Keep automated traffic out of the analytics sheet: missing UA, known
+  // crawlers, headless browsers, and HTTP libraries / scrapers. Many datacenter
+  // scrapers spoof a real browser UA and still slip through (GA4-side bot
+  // filtering catches some of those) — this just stops the obvious ones.
+  // Matching is lowercased, so 'bot' covers Googlebot/bingbot/GPTBot/etc.
+  const BOT_UA_TOKENS = [
+    'bot', 'crawler', 'spider', 'crawl', 'slurp', 'prerender',
+    'headless', 'phantomjs', 'puppeteer', 'playwright', 'selenium',
+    'lighthouse', 'pagespeed', 'gtmetrix', 'pingdom', 'uptimerobot',
+    'python-requests', 'python-urllib', 'urllib', 'aiohttp', 'httpx',
+    'go-http-client', 'java/', 'okhttp', 'curl/', 'wget', 'libwww',
+    'scrapy', 'axios', 'node-fetch', 'undici', 'guzzle', 'httpclient',
+    'dataprovider', 'embedly',
+  ];
+
+  if (!userAgent || BOT_UA_TOKENS.some(token => ua.includes(token))) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 

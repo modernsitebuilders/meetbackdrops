@@ -1362,8 +1362,20 @@ export default function Premium({ reviewsData }) {
       if (typeof console !== 'undefined') {
         console.warn('[hd] highlight did not match any product:', raw);
       }
+      // Always show the graceful notice (helps the rare human on a stale link).
       setHighlightMissError(String(raw));
-      trackAnalytics('hd_highlight_miss', String(raw), 'hd');
+      // Only log a miss for current-format IDs (descriptive-slug + 8-hex hash).
+      // A legacy `{category}-NN` value is a dead pre-migration URL — almost
+      // always a bot/scraper following a stale indexed link, not a product-sync
+      // bug — so logging it just floods the analytics sheet with noise. A
+      // current-format miss, by contrast, means products[]/HD_BASE_IDS drifted
+      // and is worth seeing.
+      const looksCurrent = /-[0-9a-f]{8}$/i.test(
+        String(raw).trim().replace(/\.(webp|png|jpe?g)$/i, '').replace(/-hd$/i, '')
+      );
+      if (looksCurrent) {
+        trackAnalytics('hd_highlight_miss', String(raw), 'hd');
+      }
       return;
     }
 
