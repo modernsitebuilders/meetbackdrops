@@ -55,14 +55,10 @@ export default function Document() {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {/* Preload critical Fraunces font weights to reduce rendering delay */}
-        <link
-          rel="preload"
-          as="font"
-          href="https://fonts.gstatic.com/s/fraunces/v48/KFO7CnqEu92mj-oCHxksbO9H5JchU6Hc.woff2"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* Fraunces (hero/headings). Do NOT hardcode a gstatic woff2 preload here —
+            Google rotates the hashed file URLs, so any pinned URL eventually 404s
+            (wasted request + a Best Practices console error). The stylesheet below
+            requests the current woff2 with display=swap. */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"

@@ -1,5 +1,6 @@
 // components/Card.js
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Card({ 
@@ -76,17 +77,14 @@ export default function Card({
         
         {imageSrc && (
           <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
-            <img
+            <Image
               src={imageSrc}
               alt={imageAlt || title}
-              width={400}
-              height={225}
+              fill
+              priority={priority}
               loading={priority ? 'eager' : 'lazy'}
-              fetchPriority={priority ? 'high' : 'auto'}
-              decoding="async"
+              sizes="(max-width: 600px) 90vw, (max-width: 1100px) 45vw, 380px"
               style={{
-                width: '100%',
-                height: '100%',
                 objectFit: 'cover',
                 transform: isHovered ? 'scale(1.05)' : 'scale(1)',
                 transition: 'transform 0.3s ease'

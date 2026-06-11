@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { event } from '../lib/gtag';
 import { getOrCreateSession, getOrCreateVisitorId, getVisitorType } from '../lib/sessionTracking';
 
@@ -30,11 +30,17 @@ function loadYouTubeAPI(callback) {
 }
 
 export default function YoutubeEmbed({ videoId, title }) {
+  // Facade: nothing from youtube.com loads until the user clicks play. This keeps
+  // the ~780 KiB iframe API, its main-thread cost, the i.ytimg preconnect, and the
+  // third-party cookies off the initial page load. Tracking still fires once the
+  // real player is mounted (video_start on PLAYING, etc.).
+  const [activated, setActivated] = useState(false);
   const playerRef = useRef(null);
   const hasStartedRef = useRef(false);
   const iframeId = `yt-player-${videoId}`;
 
   useEffect(() => {
+    if (!activated) return;
     let isMounted = true;
 
     loadYouTubeAPI(() => {
@@ -91,7 +97,7 @@ export default function YoutubeEmbed({ videoId, title }) {
         playerRef.current.destroy();
       }
     };
-  }, [videoId, title, iframeId]);
+  }, [activated, videoId, title, iframeId]);
 
   return (
     <div style={{
@@ -102,20 +108,74 @@ export default function YoutubeEmbed({ videoId, title }) {
       borderRadius: '0.5rem',
       boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
     }}>
-      <iframe
-        id={iframeId}
-        style={{
-          position: 'absolute',
-          top: 0, left: 0,
-          width: '100%', height: '100%',
-          border: 0,
-        }}
-        src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
-        title={title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      />
+      {activated ? (
+        <iframe
+          id={iframeId}
+          style={{
+            position: 'absolute',
+            top: 0, left: 0,
+            width: '100%', height: '100%',
+            border: 0,
+          }}
+          src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setActivated(true)}
+          aria-label={`Play video: ${title}`}
+          style={{
+            position: 'absolute',
+            top: 0, left: 0,
+            width: '100%', height: '100%',
+            padding: 0,
+            border: 0,
+            cursor: 'pointer',
+            background: '#000',
+          }}
+        >
+          <img
+            src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+            alt={title}
+            loading="lazy"
+            decoding="async"
+            onError={(e) => { e.currentTarget.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`; }}
+            style={{
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+          {/* Play button overlay */}
+          <span
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '68px', height: '48px',
+              borderRadius: '12px',
+              background: 'rgba(17, 24, 39, 0.78)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <span style={{
+              display: 'block',
+              width: 0, height: 0,
+              marginLeft: '4px',
+              borderTop: '11px solid transparent',
+              borderBottom: '11px solid transparent',
+              borderLeft: '18px solid #fff',
+            }} />
+          </span>
+        </button>
+      )}
     </div>
   );
 }
