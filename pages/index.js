@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { HERO_IMAGES } from '../data/heroImages';
 import Layout from '../components/Layout';
 import TrustBadges from '../components/TrustBadges';
@@ -101,17 +102,16 @@ export default function Home() {
           margin: '0 auto'
         }}>
           {HERO_IMAGES.map((img, i) => (
-            <img
-              key={i}
-              src={img.src}
-              alt={img.alt}
-              width={1456}
-              height={816}
-              loading={i === 0 ? 'eager' : 'lazy'}
-              fetchPriority={i === 0 ? 'high' : 'auto'}
-              decoding={i === 0 ? 'sync' : 'async'}
-              style={{ width: '100%', height: '220px', objectFit: 'cover' }}
-            />
+            <div key={i} style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden' }}>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                priority={i === 0}
+                sizes="(max-width: 640px) 30vw, (max-width: 1024px) 32vw, 360px"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
           ))}
         </div>
 

@@ -7,7 +7,7 @@ const nextConfig = {
     ],
   },
   images: {
-    unoptimized: true,
+    // Enable Vercel Image Optimization for R2 remote images via the remotePatterns
     remotePatterns: [
       {
         protocol: 'https',
