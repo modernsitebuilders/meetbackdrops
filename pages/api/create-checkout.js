@@ -45,7 +45,9 @@ export default async function handler(req, res) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      payment_method_types: ["card"],
+      // No payment_method_types: let Stripe Checkout show every method enabled in
+      // the Dashboard (cards, wallets like Apple/Google Pay & Link, plus Cash App
+      // Pay, Klarna, Affirm, Amazon Pay, etc.), optimized per customer/locale/device.
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${req.headers.origin}/hd-download?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,

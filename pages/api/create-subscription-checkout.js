@@ -10,7 +10,9 @@ export default async function handler(req, res) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
-      payment_method_types: ['card'],
+      // No payment_method_types: Stripe Checkout shows the Dashboard-enabled methods
+      // that support recurring billing (cards, Link, ACH, SEPA, etc.), optimized per
+      // customer. Methods that can't do subscriptions are filtered out automatically.
       line_items: [
         {
           price: process.env.STRIPE_SUB_PRICE_ID,
