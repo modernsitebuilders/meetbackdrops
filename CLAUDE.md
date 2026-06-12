@@ -272,3 +272,23 @@ When you add a new page, category, or blog post, the title/description will be v
 7. **Don't rename `assets.streambackdrops.com`, `streambackdrops-premium`, or `stream-backdrops-videos`** — they're storage identifiers retained from the prior brand. See the brand history note at the top.
 8. **Tags drive collection facets — the routine generates them; don't bypass it.** The standard `npm run add-images` routine writes tags as part of the vision step, so new images surface correctly in persona/industry **collections** (facets in [lib/collections/facets.js](lib/collections/facets.js) are tag-driven). If you ever sidestep the routine and add stubs manually, they ship with **empty `tags`** (`rewrite-manifest-copy.js` does NOT write tags) and must be back-filled with `vision-full.js --slugs-file` + `merge-vision-targeted.js`. Quick check after a batch: `node -e 'const fm=require("./image-pipeline/final_manifest.json");console.log(fm.filter(e=>!e.tags||!e.tags.length).length+" entries with empty tags")'`.
 9. **New category not tracked in analytics rollups** — when you add a category, add its slug to `CANONICAL_CATEGORIES` in [lib/analyticsNormalize.js](lib/analyticsNormalize.js), or its page views normalize to `null` and drop out of category rollups. Collection/persona pages are tracked separately via the `collection:<slug>` category key set in [components/Analytics.js](components/Analytics.js).
+
+---
+
+## Platform apps — Zoom App & Google Meet Add-on
+
+Two video-call integrations (both on-brand: Zoom / Google Meet). **Do not surface either on the marketing site until it is approved/published** — links to unpublished/unapproved apps mislead users.
+
+**Current state (as of 2026-06-12):**
+- **Zoom App** — `pages/zoom-app/`, `lib/zoom/*`, `/api/zoom/*`. Uses Zoom OAuth; **can** apply backgrounds in-client via `setVirtualBackground`. On-site promotion = the single **"Use in Zoom"** OAuth-install button in [components/ImagePreviewModal.js](components/ImagePreviewModal.js). **Submitted to the Zoom Marketplace — awaiting approval.**
+- **Google Meet Add-on** — [pages/meet-addon/index.js](pages/meet-addon/index.js), HTTP deployment `meetbackdrops-prod` (GCP project number `151425915185`), CSP framing override in `vercel.json` (`/meet-addon` block). Reuses `/api/zoom/backgrounds` + `/api/zoom/img`. **Browse + download only — Meet's SDK has NO API to set the camera background** (and custom-bg upload is Chrome-hwaccel + Workspace-admin gated). **Not yet published** to the Google Workspace Marketplace.
+
+**Publishing the Meet add-on (requires Google review for public listing):** Google Cloud Console → **Google Workspace Marketplace SDK** (same project) → **Store Listing** (fill out) + **App Configuration** visibility, then submit the **Meet add-on Review Request form**. Public listing → Google team reviews first. Private/internal listing (your own Workspace org only) → **no review**, appears under "Internal Apps." Store Listing **requires a privacy-policy URL that covers the add-on** — so the privacy.js update below is a *pre-submission* prerequisite, not post-approval.
+
+**Pre-submission TODO (do before submitting for review):**
+- `pages/privacy.js` — add an **"App Integrations"** section: Zoom App stores Zoom OAuth access/refresh tokens in an encrypted http-only cookie ([lib/zoom/session.js](lib/zoom/session.js)), accesses no meetings/contacts; Meet Add-on accesses no Google account data, only loads the catalog + logs anonymous `meet_download` events. (`license.js` already covers Zoom/Teams/Meet generically — no change needed.)
+
+**Post-approval TODO (only after each app is live; parity for both):**
+1. **Preview modal** — add a **"Use in Google Meet"** CTA next to "Use in Zoom" in `ImagePreviewModal.js`, linking to the published Workspace Marketplace listing (NOT `/meet-addon` — that's the in-Meet iframe). Frame it as "browse in Meet"; **do not imply one-click apply parity** with Zoom (Meet can't apply the background).
+2. **Apps & Integrations page** — build one promoting *both* apps (neither is linked from the main site today) + a footer/nav link.
+3. **Blog mentions** — add the apps as a tip in `data/blog-content/virtual-background-setup-by-platform.js`, `zoom-teams-google.js`, `how-to-change-zoom-background-pc.js` (and job-interview / etiquette posts where it fits). Brand voice still applies; analytics `meet_download` would need adding to `DOWNLOAD_EVENTS` to count toward popularity scoring.
