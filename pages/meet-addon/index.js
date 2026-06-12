@@ -19,6 +19,7 @@ export default function MeetAddon() {
   const [error, setError] = useState(null);
   const [downloading, setDownloading] = useState(null);
   const [downloadedIds, setDownloadedIds] = useState(() => new Set());
+  const [lastDownloaded, setLastDownloaded] = useState(null);
   const [runningInMeet, setRunningInMeet] = useState(false);
 
   // Register the side-panel session so Meet treats this iframe as a valid
@@ -127,6 +128,7 @@ export default function MeetAddon() {
       setTimeout(() => { a.remove(); URL.revokeObjectURL(blobUrl); }, 1000);
 
       setDownloadedIds((prev) => new Set(prev).add(item.id));
+      setLastDownloaded({ title: item.title, filename: `MeetBackdrops-${item.id}.png` });
 
       // Usage signal, fire-and-forget. Mirrors the Zoom app's zoom_apply ping.
       fetch('/api/analytics', {
@@ -168,13 +170,32 @@ export default function MeetAddon() {
           </div>
         </header>
 
-        <div style={styles.howto}>
-          <strong style={styles.howtoTitle}>How to apply in Meet</strong>
-          <span style={styles.howtoSteps}>
-            Download a backdrop, then in Meet open <b>⋮ More options → Apply visual
-            effects</b>, click <b>+ (Add a background)</b> and pick the file.
-          </span>
-        </div>
+        {lastDownloaded ? (
+          <div style={styles.applyCallout}>
+            <strong style={styles.applyTitle}>
+              ✓ Downloaded “{lastDownloaded.title}” — now apply it in Meet:
+            </strong>
+            <ol style={styles.applySteps}>
+              <li>Bottom bar → <b>⋮ More options</b></li>
+              <li>Click <b>Apply visual effects</b></li>
+              <li>Under <b>Backgrounds</b>, click the <b>＋ Add</b> tile (it’s the first one)</li>
+              <li>Pick <span style={styles.fileName}>{lastDownloaded.filename}</span> from your downloads</li>
+            </ol>
+            <span style={styles.applyTrouble}>
+              No <b>＋</b> to add your own image? Turn on Chrome hardware acceleration
+              (Settings → System → restart Chrome). If it’s still missing, your
+              Workspace admin has likely disabled custom backgrounds.
+            </span>
+          </div>
+        ) : (
+          <div style={styles.howto}>
+            <strong style={styles.howtoTitle}>How to apply in Meet</strong>
+            <span style={styles.howtoSteps}>
+              Download a backdrop, then open <b>⋮ More options → Apply visual
+              effects</b>, click <b>＋ (Add a background)</b> and pick the file.
+            </span>
+          </div>
+        )}
 
         {categories.length > 0 && (
           <div style={styles.filterBar}>
@@ -314,6 +335,28 @@ const styles = {
   },
   howtoTitle: { display: 'block', color: '#111827', marginBottom: 2 },
   howtoSteps: {},
+  applyCallout: {
+    background: '#f0fdf4',
+    border: '1px solid #bbf7d0',
+    borderLeft: '4px solid #16a34a',
+    borderRadius: 8,
+    padding: '10px 14px',
+    marginBottom: 14,
+    fontSize: 12.5,
+    lineHeight: 1.5,
+    color: '#14532d',
+  },
+  applyTitle: { display: 'block', color: '#166534', marginBottom: 6, fontSize: 13 },
+  applySteps: { margin: '0 0 6px', paddingLeft: 18, display: 'grid', gap: 2 },
+  fileName: {
+    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+    fontSize: 11,
+    wordBreak: 'break-all',
+    background: '#dcfce7',
+    padding: '0 4px',
+    borderRadius: 3,
+  },
+  applyTrouble: { display: 'block', marginTop: 4, fontSize: 11, color: '#15803d' },
   filterBar: {
     display: 'flex',
     flexWrap: 'wrap',
