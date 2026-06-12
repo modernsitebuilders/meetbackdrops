@@ -215,6 +215,44 @@ export default function Privacy() {
                   color: '#111827',
                   marginBottom: '1rem'
                 }}>
+                  App Integrations (Zoom App &amp; Google Meet Add-on)
+                </h2>
+                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
+                  MeetBackdrops offers optional integrations for video-calling platforms. These apply only if you choose to install or open them.
+                </p>
+
+                <h3 style={{
+                  fontSize: '1.2rem',
+                  fontWeight: '600',
+                  color: '#111827',
+                  marginBottom: '0.5rem'
+                }}>
+                  MeetBackdrops Zoom App
+                </h3>
+                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
+                  If you connect our Zoom App, we use Zoom&apos;s OAuth sign-in so you can apply backgrounds inside your Zoom client. Your Zoom access and refresh tokens are stored only in an encrypted, http-only cookie on your own device to keep you signed in — they are not stored on our servers. We do not access your Zoom meetings, recordings, chat, contacts, or any meeting content. You can disconnect at any time by clearing the cookie or removing the app from your Zoom account.
+                </p>
+
+                <h3 style={{
+                  fontSize: '1.2rem',
+                  fontWeight: '600',
+                  color: '#111827',
+                  marginBottom: '0.5rem'
+                }}>
+                  MeetBackdrops Google Meet Add-on
+                </h3>
+                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
+                  Our Google Meet add-on runs in the Meet side panel and requests no Google account permissions. It does not access your Google account, profile, contacts, calendar, or any meeting content. It loads our background catalog and records anonymous usage events (the image name and category when you download one) used only for popularity ranking. Applying a downloaded image as your background happens entirely within Google Meet&apos;s own visual-effects settings — the add-on cannot change your camera background for you.
+                </p>
+              </section>
+
+              <section style={{marginBottom: '2rem'}}>
+                <h2 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                  color: '#111827',
+                  marginBottom: '1rem'
+                }}>
                   Cookies and Tracking
                 </h2>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
