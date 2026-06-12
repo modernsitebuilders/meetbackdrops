@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1030.0",
+    "@googleworkspace/meet-addons": "^1.2.0",
     "@stripe/stripe-js": "^8.6.1",
     "@upstash/redis": "^1.36.3",
     "@zoom/appssdk": "^0.16.38",
