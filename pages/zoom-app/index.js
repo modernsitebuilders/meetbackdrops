@@ -85,8 +85,17 @@ export default function ZoomApp() {
     }
   }, [items, activeCategory]);
 
+  // Deep-link support: /zoom-app?category=<slug> opens the picker pre-filtered,
+  // and &applied=<slug> marks a background as the active one. Lets us share a
+  // direct link to a category or a specific background. Falls back to the full
+  // round-robin view when no params are present.
   useEffect(() => {
-    fetchBackgrounds(null);
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('category');
+    const applied = params.get('applied');
+    if (applied) setAppliedId(applied);
+    if (cat) setActiveCategory(cat);
+    fetchBackgrounds(cat || null);
   }, []);
 
   const handleCategoryClick = useCallback((slug) => {
