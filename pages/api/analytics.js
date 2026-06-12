@@ -1,5 +1,6 @@
 // analytics.js - queues events to Redis for batch flush to Sheets
 import { Redis } from '@upstash/redis';
+import { isBotUserAgent } from '../../lib/botFilter';
 
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL,
@@ -11,25 +12,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
+  // Keep automated traffic out of the analytics sheet (shared list with
+  // /api/track-page-view — see lib/botFilter.js).
   const userAgent = req.headers['user-agent'] || '';
-  const ua = userAgent.toLowerCase();
-
-  // Keep automated traffic out of the analytics sheet: missing UA, known
-  // crawlers, headless browsers, and HTTP libraries / scrapers. Many datacenter
-  // scrapers spoof a real browser UA and still slip through (GA4-side bot
-  // filtering catches some of those) — this just stops the obvious ones.
-  // Matching is lowercased, so 'bot' covers Googlebot/bingbot/GPTBot/etc.
-  const BOT_UA_TOKENS = [
-    'bot', 'crawler', 'spider', 'crawl', 'slurp', 'prerender',
-    'headless', 'phantomjs', 'puppeteer', 'playwright', 'selenium',
-    'lighthouse', 'pagespeed', 'gtmetrix', 'pingdom', 'uptimerobot',
-    'python-requests', 'python-urllib', 'urllib', 'aiohttp', 'httpx',
-    'go-http-client', 'java/', 'okhttp', 'curl/', 'wget', 'libwww',
-    'scrapy', 'axios', 'node-fetch', 'undici', 'guzzle', 'httpclient',
-    'dataprovider', 'embedly',
-  ];
-
-  if (!userAgent || BOT_UA_TOKENS.some(token => ua.includes(token))) {
+  if (isBotUserAgent(userAgent)) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 

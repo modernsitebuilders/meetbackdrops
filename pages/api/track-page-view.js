@@ -1,4 +1,5 @@
 import { Redis } from '@upstash/redis';
+import { isBotUserAgent } from '../../lib/botFilter';
 
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL,
@@ -10,17 +11,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  // Block bots
+  // Block bots, headless browsers, synthetic monitoring, and HTTP-lib scrapers
+  // (shared list with /api/analytics — see lib/botFilter.js).
   const userAgent = req.headers['user-agent'] || '';
-  if (!userAgent ||
-      userAgent.includes('bot') ||
-      userAgent.includes('Bot') ||
-      userAgent.includes('crawler') ||
-      userAgent.includes('spider') ||
-      userAgent.includes('Spider') ||
-      userAgent.includes('Prerender') ||
-      userAgent.includes('HeadlessChrome') ||
-      userAgent.includes('YisouSpider')) {
+  if (isBotUserAgent(userAgent)) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 
