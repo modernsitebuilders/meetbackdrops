@@ -57,6 +57,7 @@ const LAYOUT_PAGES = [
   'pages/about.js',
   'pages/blog.js',
   'pages/branded-backgrounds.js',
+  'pages/commercial-license.js',
   'pages/contact.js',
   'pages/faq.js',
   'pages/free-sample.js',

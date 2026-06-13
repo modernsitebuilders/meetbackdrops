@@ -315,6 +315,26 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
                 HD = 2912×1632, 4× the resolution. Sharper through codec compression.
               </div>
             )}
+
+            {hasHd && (
+              <Link
+                href={`/commercial-license?image=${baseId}-hd`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  trackAnalytics('commercial_license_click', image.filename, slug);
+                }}
+                style={{
+                  color: 'rgba(255, 255, 255, 0.6)',
+                  fontSize: '0.72rem',
+                  textAlign: 'center',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '2px',
+                  letterSpacing: '0.02em',
+                }}
+              >
+                Using it in something you sell? Commercial license →
+              </Link>
+            )}
           </div>
         </div>
       </div>

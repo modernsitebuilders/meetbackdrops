@@ -232,6 +232,10 @@ export default function Footer() {
       License & Usage
     </Link>
     <span style={{ color: '#e5e7eb' }}>•</span>
+    <Link href="/commercial-license" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+      Commercial License
+    </Link>
+    <span style={{ color: '#e5e7eb' }}>•</span>
     <Link href="/privacy" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
       Privacy Policy
     </Link>

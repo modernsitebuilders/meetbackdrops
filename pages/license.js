@@ -305,6 +305,50 @@ export default function License() {
               </div>
             </section>
 
+            {/* Commercial & Extended License — unlocks the prohibited "inside a product" uses */}
+            <section style={{ marginBottom: '3rem' }}>
+              <div style={{
+                background: '#faf5ff',
+                border: '2px solid #a855f7',
+                borderRadius: '1rem',
+                padding: '2rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.8rem',
+                  fontWeight: 'bold',
+                  color: '#6b21a8',
+                  marginBottom: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  📄 Commercial & Extended License
+                </h3>
+                <p style={{ color: '#581c87', fontSize: '1.1rem', marginBottom: '1rem', lineHeight: 1.6 }}>
+                  The "Not Permitted" uses above all share one thing: the image goes <em>inside</em> something you sell or distribute. Those uses <strong>are</strong> available — under a paid commercial license.
+                </p>
+                <p style={{ color: '#581c87', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                  An <strong>Extended License ($49/image)</strong> lets you embed one image in a product, course, or client deliverable you sell, and includes the HD file. A <strong>Commercial Library License ($299/year)</strong> grants those rights across the entire catalog for one company. Both are non-exclusive and come with a license certificate and invoice.
+                </p>
+                <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                  <Link href="/commercial-license" style={{
+                    background: '#6b21a8',
+                    color: 'white',
+                    padding: '1rem 2rem',
+                    borderRadius: '2px',
+                    textDecoration: 'none',
+                    fontWeight: '600',
+                    fontSize: '0.9rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    display: 'inline-block'
+                  }}>
+                    See Commercial Licensing →
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             {/* Branded Backgrounds — for team deployment with brand integration */}
             <section style={{ marginBottom: '3rem' }}>
               <div style={{
@@ -450,7 +494,7 @@ export default function License() {
                   listStyle: 'disc',
                   paddingLeft: '1.5rem'
                 }}>
-                  <li><strong>Copyright:</strong> All backgrounds are original creations and remain the intellectual property of MeetBackdrops.</li>
+                  <li><strong>Rights:</strong> Each background is produced by MeetBackdrops through its own studio process. Your use is governed by these license terms; access and use are conditioned on agreeing to them.</li>
                   <li><strong>No Warranty:</strong> Backgrounds are provided "as is" without warranty of any kind.</li>
                   <li><strong>Modifications:</strong> You may crop or color-adjust a background for your own video-call use. You may not redistribute the modified file, sell it, or add your company logo to it (Branded Backgrounds covers the logo-integration case).</li>
                   <li><strong>Subscription:</strong> The HD Subscription is billed monthly, renews automatically, and can be cancelled anytime. License rights granted by past downloads survive cancellation; ability to access new downloads ends with the subscription.</li>
