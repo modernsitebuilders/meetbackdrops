@@ -1,12 +1,17 @@
 // consolidate-analytics.js
-// Archive endpoint. Moves old Analytics rows to Analytics_Archive,
-// keeping the last KEEP_ROWS rows. Runs weekly via Vercel cron
-// (Sundays 4am UTC, see vercel.json) and can also be triggered manually
-// from the admin panel via POST.
+// Archive endpoint. Lets the Analytics sheet grow to ARCHIVE_THRESHOLD data
+// rows, then moves the oldest rows to Analytics_Archive, keeping the most
+// recent KEEP_ROWS. Runs weekly via Vercel cron (Sundays 4am UTC, see
+// vercel.json) and can also be triggered manually from the admin panel via POST.
 
 import { google } from 'googleapis';
 
-const KEEP_ROWS = 10000;
+// Let the sheet fill to ARCHIVE_THRESHOLD before doing anything, then trim back
+// down to KEEP_ROWS. These MUST stay distinct — using one value for both makes
+// the sheet archive every time it exceeds the floor (the old 10k bug) instead of
+// only when it reaches the high-water mark.
+const ARCHIVE_THRESHOLD = 20000; // archive only once data rows reach this
+const KEEP_ROWS = 10000;         // most-recent rows retained after an archive
 
 export default async function handler(req, res) {
   const isVercelCron = req.headers['x-vercel-cron'] === '1';
@@ -40,10 +45,13 @@ export default async function handler(req, res) {
 
     const allRows = response.data.values || [];
 
-    if (allRows.length <= KEEP_ROWS + 1) {
+    // allRows includes the header row, so data rows = allRows.length - 1.
+    const dataRowCount = allRows.length - 1;
+    if (dataRowCount < ARCHIVE_THRESHOLD) {
       return res.status(200).json({
         message: 'No archive needed',
-        currentRows: allRows.length,
+        currentDataRows: Math.max(0, dataRowCount),
+        archiveThreshold: ARCHIVE_THRESHOLD,
         keepRows: KEEP_ROWS
       });
     }
