@@ -167,17 +167,21 @@ The fourth, **`public/sitemap-pages.xml`**, is hand-maintained — it holds prio
 
 Sitemaps let Bing *eventually* find new pages; **IndexNow tells it immediately.** Bing Webmaster Tools flags "recently published pages were not submitted via IndexNow" if you skip this.
 
-**This is automated via GitHub Actions** — [.github/workflows/submit-indexnow.yml](.github/workflows/submit-indexnow.yml) runs daily (`0 5 * * *`) and submits every page URL to IndexNow. Pages added by an `add-images` batch are picked up automatically within ~24h of being pushed — no manual step. IndexNow/Bing dedupe, so a full daily sweep is safe. (GitHub Actions, not Vercel cron — the site is on the Vercel **Hobby** plan, which caps cron jobs; don't add this to `vercel.json` `crons`.)
+**Submit only NEW/changed pages — never re-sweep the whole site.** IndexNow is for announcing changes; bulk-resubmitting all ~1,000 pages repeatedly is the anti-pattern Bing Webmaster Tools flags as *"Avoid IndexNow Batch Mode … excessive server load and potential indexing delays."* (There was previously a daily cron that swept every page URL — removed June 2026 for exactly this reason. Don't reinstate it.)
 
-The workflow just runs the dependency-free CLI, which reads the **committed** sitemaps in `public/` (= what's deployed on `main`). To submit **immediately** instead of waiting for the daily run, either click **Run workflow** on the Action, or run it locally after a deploy:
+**This is automated per batch via GitHub Actions** — [.github/workflows/submit-indexnow.yml](.github/workflows/submit-indexnow.yml) fires on `push` to `main` when `image-pipeline/last-batch-urls.txt` changes, and submits only that file's URLs. The `add-images` routine writes that file in step 7 ([image-pipeline/build-batch-urls.js](image-pipeline/build-batch-urls.js)): the batch's new image pages (`/category/{category}/{slug}`) plus their updated category landing pages. So pushing a batch auto-submits exactly its pages — no manual step, no daily sweep. (GitHub Actions, not Vercel cron — the site is on the Vercel **Hobby** plan, which caps cron jobs; don't add this to `vercel.json` `crons`.)
+
+For pages that **aren't** part of an image batch (a new blog post, a new top-level page, a manually scaffolded category), submit them yourself — either click **Run workflow** on the Action (does a full sitemap sweep) or run the CLI locally after deploy:
 
 ```bash
-npm run submit:indexnow            # sweeps all four leaf sitemaps, submits every page URL
+npm run submit:indexnow:batch      # this batch's pages (--urls-file last-batch-urls.txt) — what the Action runs
+npm run submit:indexnow            # full sweep of all four leaf sitemaps (use sparingly, for non-batch pages)
+npm run submit:indexnow -- --urls https://meetbackdrops.com/blog/my-post   # one or a few specific pages
 ```
 
-This is [scripts/submit-indexnow.js](scripts/submit-indexnow.js). To submit just specific pages: `--urls-file new-pages.txt` (newline-delimited absolute URLs) or `--urls a,b,c`. Use `--dry-run` to preview, `--limit N` to cap.
+This is [scripts/submit-indexnow.js](scripts/submit-indexnow.js). Targeted forms: `--urls-file new-pages.txt` (newline-delimited absolute URLs) or `--urls a,b,c`. Use `--dry-run` to preview, `--limit N` to cap.
 
-> **Only submit pages that are live.** The CLI reads the committed sitemaps, so the scheduled run is always in sync with `main` (= deployed). If you run it locally, do so *after* pushing, not before. The IndexNow key file lives at `public/c558eb0813634eceb45913b9e7934dba.txt` — its filename and one-line body are both the key; never rename or edit it. There's also a manual one-URL endpoint (`/api/indexnow`) + test page (`/indexnow-test`) for spot submissions.
+> **Only submit pages that are live.** Submit *after* pushing, not before — the page must exist before Bing crawls it. The push-triggered Action is safe (it fires on the commit that ships the batch). `last-batch-urls.txt` MUST stay committed — the Action reads it from the pushed commit; it's overwritten each batch (if you stack multiple batches before one push, submit the earlier ones manually). The IndexNow key file lives at `public/c558eb0813634eceb45913b9e7934dba.txt` — its filename and one-line body are both the key; never rename or edit it. There's also a manual one-URL endpoint (`/api/indexnow`) + test page (`/indexnow-test`) for spot submissions.
 
 ---
 

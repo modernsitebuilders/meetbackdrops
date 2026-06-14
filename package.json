@@ -14,6 +14,7 @@
     "check:seo:singularity": "node scripts/check-seo-singularity.js",
     "generate:sitemaps": "node scripts/generate-sitemaps.js",
     "submit:indexnow": "node scripts/submit-indexnow.js",
+    "submit:indexnow:batch": "node scripts/submit-indexnow.js --urls-file image-pipeline/last-batch-urls.txt",
     "generate:hd-products": "node scripts/generate-hd-products.js",
     "update-counts": "node generate-category-counts.js",
     "backdrop-inventory": "node scripts/backdrop-inventory.js",

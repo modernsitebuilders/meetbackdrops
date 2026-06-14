@@ -1,19 +1,27 @@
 name: Submit URLs to IndexNow
 
-# Pings IndexNow (Bing et al.) daily with every page URL so newly published
-# pages get crawled fast — clears Bing Webmaster Tools' "recently published
-# pages were not submitted via IndexNow" warning, hands-free.
+# IndexNow is for announcing *new/changed* URLs — not bulk-resubmitting the whole
+# site every day. Bing Webmaster Tools flags the latter as "IndexNow Batch Mode …
+# excessive server load and potential indexing delays". So instead of a daily
+# full sweep, we submit only the pages an add-images batch published:
 #
-# Runs the dependency-free CLI (scripts/submit-indexnow.js), which reads the
-# committed sitemaps in public/ — i.e. exactly what's deployed on the default
-# branch. No npm install, no Vercel cron (works on the Hobby plan), no secrets.
+#   - run-batch.sh writes image-pipeline/last-batch-urls.txt (this batch's pages)
+#   - the push that ships the batch changes that file → this workflow fires and
+#     submits exactly those URLs via `submit-indexnow.js --urls-file`.
 #
-# Scheduled workflows only fire from the default branch. Use the "Run workflow"
-# button (workflow_dispatch) to trigger a submission on demand.
+# Manual "Run workflow" (workflow_dispatch) does a full sitemap sweep — use it
+# after adding a page that isn't part of an image batch (blog post, new
+# top-level page, a manually scaffolded category).
+#
+# Runs the dependency-free CLI (scripts/submit-indexnow.js) against what's
+# committed on main (= deployed). No npm install, no Vercel cron (Hobby plan),
+# no secrets.
 
 on:
-  schedule:
-    - cron: '0 5 * * *' # daily at 05:00 UTC
+  push:
+    branches: [main]
+    paths:
+      - 'image-pipeline/last-batch-urls.txt'
   workflow_dispatch: {}
 
 # Don't pile up overlapping runs.
@@ -33,5 +41,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Submit page URLs to IndexNow
+      # Push that shipped a batch → submit just that batch's pages.
+      - name: Submit batch URLs to IndexNow
+        if: github.event_name == 'push'
+        run: node scripts/submit-indexnow.js --urls-file image-pipeline/last-batch-urls.txt
+
+      # Manual trigger → full sitemap sweep (for non-batch pages).
+      - name: Full sitemap sweep to IndexNow (manual)
+        if: github.event_name == 'workflow_dispatch'
         run: node scripts/submit-indexnow.js
