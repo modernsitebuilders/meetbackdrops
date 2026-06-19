@@ -214,7 +214,7 @@ export default function Home() {
               { slug: 'zoom-backgrounds-for-coaches', persona: 'Coaches' },
               { slug: 'zoom-backgrounds-for-accountants', persona: 'Accountants' },
             ].map((c) => (
-              <Link
+              <Link prefetch={false}
                 key={c.slug}
                 href={`/collections/${c.slug}`}
                 style={{
@@ -229,7 +229,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <Link
+          <Link prefetch={false}
             href="/collections"
             style={{
               display: 'inline-block', color: '#9a6a3a', fontWeight: 600,

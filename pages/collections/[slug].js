@@ -73,9 +73,9 @@ export default function CollectionPage({ def, images, scores, metadata, seoData,
             display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem',
             fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#6b7280',
           }}>
-            <Link href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
+            <Link prefetch={false} href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
             <span style={{ color: '#d1d5db' }}>·</span>
-            <Link href="/collections" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>Collections</Link>
+            <Link prefetch={false} href="/collections" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>Collections</Link>
             <span style={{ color: '#d1d5db' }}>·</span>
             <span style={{ color: '#111827', fontWeight: 600 }}>{def.persona}</span>
           </nav>
@@ -136,7 +136,7 @@ export default function CollectionPage({ def, images, scores, metadata, seoData,
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                 {sourceCategories.map((c) => (
-                  <Link
+                  <Link prefetch={false}
                     key={c.slug}
                     href={`/category/${c.slug}`}
                     style={{
@@ -207,7 +207,7 @@ export default function CollectionPage({ def, images, scores, metadata, seoData,
               </h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                 {others.map((o) => (
-                  <Link
+                  <Link prefetch={false}
                     key={o.slug}
                     href={`/collections/${o.slug}`}
                     style={{

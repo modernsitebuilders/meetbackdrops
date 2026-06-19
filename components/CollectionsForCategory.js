@@ -36,7 +36,7 @@ export default function CollectionsForCategory({ collections = [], max = 6 }) {
       </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
         {shown.map((c) => (
-          <Link
+          <Link prefetch={false}
             key={c.slug}
             href={`/collections/${c.slug}`}
             style={{

@@ -188,7 +188,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
                   zIndex: 1001
                 }}>
                   {item.items.map((subItem, subIndex) => (
-                    <Link
+                    <Link prefetch={false}
                       key={subIndex}
                       href={subItem.path}
                       style={dropdownItemStyle(false)}
@@ -202,7 +202,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
               )}
             </>
           ) : (
-            <Link
+            <Link prefetch={false}
               href={item.path}
               style={dropdownItemStyle(false)}
               onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'}
@@ -236,7 +236,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           height: '70px'
         }}>
           {/* Logo */}
-          <Link
+          <Link prefetch={false}
             href="/"
             aria-label="MeetBackdrops home"
             style={{
@@ -296,7 +296,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           className="desktop-nav">
             
             {/* Bookshelves */}
-            <Link
+            <Link prefetch={false}
               href="/category/bookshelves"
               style={navButtonStyle(currentPage === 'bookshelves', hoveredNav === 'bookshelves')}
               onMouseEnter={() => setHoveredNav('bookshelves')}
@@ -306,7 +306,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
             </Link>
 
             {/* Wall Shelves */}
-            <Link
+            <Link prefetch={false}
               href="/category/wall-shelves"
               style={navButtonStyle(currentPage === 'wall-shelves', hoveredNav === 'wall-shelves')}
               onMouseEnter={() => setHoveredNav('wall-shelves')}
@@ -344,7 +344,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
             </div>
 
             {/* Living Rooms */}
-            <Link
+            <Link prefetch={false}
               href="/category/living-rooms"
               style={navButtonStyle(currentPage === 'living-rooms', hoveredNav === 'living-rooms')}
               onMouseEnter={() => setHoveredNav('living-rooms')}
@@ -404,7 +404,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
             </div>
 
             {/* Blog */}
-            <Link
+            <Link prefetch={false}
               href="/blog"
               style={navButtonStyle(currentPage === 'blog', hoveredNav === 'blog')}
               onMouseEnter={() => setHoveredNav('blog')}
@@ -441,7 +441,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
            </button>
 
            {/* HD Backgrounds */}
-<Link
+<Link prefetch={false}
   href="/hd"
   onClick={() => trackAnalytics('nav_hd_click', null, 'header')}
   style={{
@@ -457,7 +457,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
 </Link>
 
 {/* Branded Backgrounds — B2B CTA */}
-<Link
+<Link prefetch={false}
   href="/branded-backgrounds"
   onClick={() => trackAnalytics('nav_branded_click', null, 'header')}
   style={{

@@ -67,7 +67,7 @@ export default function RelatedCategories({ currentSlug }) {
           const thumb = THUMBNAILS[slug];
           if (!cat || !thumb) return null;
           return (
-            <Link key={slug} href={`/category/${slug}`} className={styles.card}>
+            <Link key={slug} prefetch={false} href={`/category/${slug}`} className={styles.card}>
               <div className={styles.imageContainer}>
                 <img
                   src={`${CDN}/${thumb}`}

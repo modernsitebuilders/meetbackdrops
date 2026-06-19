@@ -71,7 +71,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
             textTransform: 'uppercase',
             color: '#6b7280',
           }}>
-            <Link href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>
+            <Link prefetch={false} href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>
               Home
             </Link>
             <span style={{ color: '#d1d5db' }}>·</span>

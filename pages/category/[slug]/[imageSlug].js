@@ -101,9 +101,9 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               color: '#6b7280',
               flexWrap: 'wrap',
             }}>
-              <Link href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.04em' }}>Home</Link>
+              <Link prefetch={false} href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.04em' }}>Home</Link>
               <span>›</span>
-              <Link href={categoryUrl} style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.04em' }}>{categoryName}</Link>
+              <Link prefetch={false} href={categoryUrl} style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.04em' }}>{categoryName}</Link>
               <span>›</span>
               <span style={{ color: '#111827' }}>{image.title}</span>
             </nav>
@@ -224,7 +224,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                   Free version is <strong style={{ color: '#fff' }}>1456 × 816</strong> (1.18 MP — below 1080p). HD is <strong style={{ color: '#fff' }}>2912 × 1632</strong> (4.75 MP — covers QHD natively). On large monitors, executive cameras, and recorded calls, the free version softens; HD doesn't.
                 </p>
               </div>
-              <Link
+              <Link prefetch={false}
                 href={hdHref}
                 style={{
                   display: 'inline-flex',
@@ -285,7 +285,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                 </h2>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {personaCollections.map((c) => (
-                    <Link
+                    <Link prefetch={false}
                       key={c.slug}
                       href={`/collections/${c.slug}`}
                       style={{
@@ -315,7 +315,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                   gap: '1rem',
                 }}>
                   {related.map(rel => (
-                    <Link
+                    <Link prefetch={false}
                       key={rel.slug}
                       href={`/category/${rel.category}/${rel.slug}`}
                       style={{ textDecoration: 'none', color: 'inherit' }}
@@ -340,7 +340,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                   ))}
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-                  <Link href={categoryUrl} style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px', fontSize: '0.85rem', letterSpacing: '0.08em' }}>
+                  <Link prefetch={false} href={categoryUrl} style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px', fontSize: '0.85rem', letterSpacing: '0.08em' }}>
                     View all {categoryName} backgrounds →
                   </Link>
                 </div>
@@ -393,7 +393,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
             {isDownloading ? 'Downloading…' : '⬇ Free PNG Download'}
           </button>
           {hasHd && (
-            <Link
+            <Link prefetch={false}
               href={hdHref}
               style={{
                 display: 'flex',

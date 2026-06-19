@@ -35,7 +35,7 @@ export default function CollectionsHub({ cards, schema }) {
             display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem',
             fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#6b7280',
           }}>
-            <Link href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
+            <Link prefetch={false} href="/" style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
             <span style={{ color: '#d1d5db' }}>·</span>
             <span style={{ color: '#111827', fontWeight: 600 }}>Collections</span>
           </nav>
@@ -66,7 +66,7 @@ export default function CollectionsHub({ cards, schema }) {
             gap: '1.5rem',
           }}>
             {cards.map((c) => (
-              <Link
+              <Link prefetch={false}
                 key={c.slug}
                 href={`/collections/${c.slug}`}
                 style={{ textDecoration: 'none', color: 'inherit' }}

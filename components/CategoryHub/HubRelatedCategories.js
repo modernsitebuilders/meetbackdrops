@@ -32,7 +32,7 @@ export default function HubRelatedCategories() {
       <h2 className={styles.relatedHeading}>Also popular with wall-shelf viewers</h2>
       <div className={styles.relatedGrid}>
         {RELATED.map((cat) => (
-          <Link
+          <Link prefetch={false}
             key={cat.slug}
             href={`/category/${cat.slug}`}
             className={styles.relatedCard}
