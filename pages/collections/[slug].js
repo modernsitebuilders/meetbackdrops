@@ -30,7 +30,7 @@ import {
 } from '../../lib/collections/engine';
 import { getFAQs } from '../../data/faqData';
 
-export default function CollectionPage({ def, images, scores, metadata, seoData, others, sourceCategories, faqs = [] }) {
+export default function CollectionPage({ def, images, scores, metadata, seoData, others, sourceCategories, faqs = [], promptLink = null }) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
     handleDownload,
@@ -160,6 +160,42 @@ export default function CollectionPage({ def, images, scores, metadata, seoData,
             heading={`Questions from ${def.persona.toLowerCase()}`}
           />
 
+          {/* Cross-site resource — matching occupation prompt library on the
+              sister site PromptDynamos. Editorial, followed, below the grid and
+              out of the conversion path. Only renders for personas with a real
+              1:1 match (data/collections/promptLinks.js). */}
+          {promptLink && (
+            <section style={{ marginTop: '4rem', paddingTop: '2.5rem', borderTop: '1px solid #e6e2dc' }}>
+              <div style={{
+                fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase',
+                color: '#9a6a3a', fontWeight: 600, marginBottom: '0.9rem',
+              }}>
+                Beyond the background
+              </div>
+              <a
+                href={promptLink.url}
+                target="_blank"
+                rel="noopener"
+                style={{
+                  display: 'block', maxWidth: '640px', textDecoration: 'none',
+                  border: '1px solid #e5e7eb', borderRadius: '14px',
+                  background: '#fafafa', padding: '1.5rem 1.75rem',
+                }}
+              >
+                <h2 style={{
+                  fontFamily: "'Fraunces', Georgia, serif", fontSize: '1.25rem', fontWeight: 600,
+                  color: '#111827', margin: '0 0 0.5rem',
+                }}>
+                  {promptLink.anchor}
+                  <span style={{ color: '#9a6a3a', marginLeft: '0.5rem' }} aria-hidden="true">↗</span>
+                </h2>
+                <p style={{ fontSize: '0.95rem', color: '#4b5563', lineHeight: 1.6, margin: 0 }}>
+                  {promptLink.blurb} On PromptDynamos, our sister site.
+                </p>
+              </a>
+            </section>
+          )}
+
           {/* Cross-links to sibling collections — crawl depth + discovery */}
           {others.length > 0 && (
             <section style={{ marginTop: '4rem', paddingTop: '2.5rem', borderTop: '1px solid #e6e2dc' }}>
@@ -267,8 +303,11 @@ export async function getStaticProps({ params }) {
     .map((slug) => CATEGORIES[slug] ? { slug, name: CATEGORIES[slug].name } : null)
     .filter(Boolean);
 
+  const { getPromptLink } = require('../../data/collections/promptLinks');
+  const promptLink = getPromptLink(def.slug);
+
   return {
-    props: { def, images, scores, metadata, seoData, others, sourceCategories, faqs },
+    props: { def, images, scores, metadata, seoData, others, sourceCategories, faqs, promptLink },
     revalidate: 86400,
   };
 }
