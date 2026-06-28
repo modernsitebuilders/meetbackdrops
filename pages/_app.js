@@ -16,6 +16,22 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        {/* Author entity — ties this site to David Miles at the Modern Site Builders
+            hub. The @id is identical across all properties so Google resolves one
+            operator behind the network (EEAT). Profile: /author/david-miles */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              '@id': 'https://modernsitebuilders.com/#david-miles',
+              name: 'David Miles',
+              url: 'https://modernsitebuilders.com/author/david-miles',
+              sameAs: ['https://www.linkedin.com/in/dave-miles-webdev/'],
+            }),
+          }}
+        />
       </Head>
        <Analytics /> 
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-QMD6NEPFWR" strategy="afterInteractive" />

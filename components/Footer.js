@@ -255,6 +255,10 @@ export default function Footer() {
     <a href="https://modernsitebuilders.com" target="_blank" rel="noopener" style={{ color: '#e5e7eb', textDecoration: 'underline' }}>
       A Modern Site Builders Production
     </a>
+    {' · Built by '}
+    <a href="https://modernsitebuilders.com/author/david-miles" target="_blank" rel="noopener author" style={{ color: '#e5e7eb', textDecoration: 'underline' }}>
+      David Miles
+    </a>
   </p>
 
   {/* Trust Badges Section */}
