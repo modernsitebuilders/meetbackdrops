@@ -4,7 +4,7 @@
   "description": "Professional virtual backgrounds for video calls",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-hd-products.js && node scripts/generate-sitemaps.js && node scripts/validate-dataset.js && node scripts/check-seo-meta.js && node scripts/check-seo-singularity.js && node scripts/verify-seo-invariance.js",
+    "prebuild": "node scripts/generate-hd-products.js && node scripts/generate-sitemaps.js && node scripts/generate-search-index.js && node scripts/validate-dataset.js && node scripts/check-seo-meta.js && node scripts/check-seo-singularity.js && node scripts/verify-seo-invariance.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,6 +13,7 @@
     "check:seo:invariance": "node scripts/verify-seo-invariance.js",
     "check:seo:singularity": "node scripts/check-seo-singularity.js",
     "generate:sitemaps": "node scripts/generate-sitemaps.js",
+    "generate:search-index": "node scripts/generate-search-index.js",
     "submit:indexnow": "node scripts/submit-indexnow.js",
     "submit:indexnow:batch": "node scripts/submit-indexnow.js --urls-file image-pipeline/last-batch-urls.txt",
     "generate:hd-products": "node scripts/generate-hd-products.js",

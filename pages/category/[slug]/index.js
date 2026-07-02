@@ -23,6 +23,7 @@ import BackToTop from '../../../components/BackToTop';
 import HDComparisonHero from '../../../components/HDComparisonHero';
 import CategoryHub from '../../../components/CategoryHub/CategoryHub';
 import CollectionsForCategory from '../../../components/CollectionsForCategory';
+import CategoryPlatformLinks from '../../../components/CategoryPlatformLinks';
 import FaqAccordion from '../../../components/FaqAccordion';
 import { seo } from '../../../lib/seo/seo.js';
 import { getFAQs } from '../../../data/faqData.js';
@@ -142,6 +143,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
                 heading={`${category.name} backgrounds — frequently asked`}
               />
               <RelatedCategories currentSlug={slug} />
+              <CategoryPlatformLinks categoryName={category.name} categorySlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
           ) : (
@@ -171,6 +173,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
                 heading={`${category.name} backgrounds — frequently asked`}
               />
               <RelatedCategories currentSlug={slug} />
+              <CategoryPlatformLinks categoryName={category.name} categorySlug={slug} />
               <CategorySEOContent category={category} slug={slug} />
             </>
           )}

@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /search
 
 Sitemap: https://meetbackdrops.com/sitemap.xml
 Sitemap: https://meetbackdrops.com/sitemap-pages.xml

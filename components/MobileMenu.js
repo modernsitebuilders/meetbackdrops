@@ -88,6 +88,18 @@ export default function MobileMenu({ isOpen, onClose, navigate, currentPage, off
         </div>
 
         <div style={{ padding: '0.5rem' }}>
+          {/* Search */}
+          <div style={sectionStyle}>
+            <button
+              onClick={() => handleNav('/search')}
+              style={menuButtonStyle(currentPage === 'search')}
+              onMouseEnter={(e) => e.target.style.background = '#f3f4f6'}
+              onMouseLeave={(e) => e.target.style.background = 'transparent'}
+            >
+              ⌕ Search backgrounds
+            </button>
+          </div>
+
           {/* Bookshelves */}
           <div style={sectionStyle}>
             <button

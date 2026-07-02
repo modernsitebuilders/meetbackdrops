@@ -163,6 +163,80 @@ export default function Home() {
 
         <WhyDifferent />
 
+        {/* Browse by platform — links into the platform landing hubs */}
+        <section style={{ maxWidth: '1100px', margin: '3.5rem auto 1rem', padding: '0 1rem', textAlign: 'center' }}>
+          <div style={{
+            fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: '#9a6a3a', fontWeight: 600, marginBottom: '0.9rem',
+          }}>
+            Works on every platform
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.6rem' }}>
+            {[
+              { slug: 'zoom-backgrounds', label: 'Zoom' },
+              { slug: 'google-meet-backgrounds', label: 'Google Meet' },
+              { slug: 'microsoft-teams-backgrounds', label: 'Microsoft Teams' },
+              { slug: 'webex-backgrounds', label: 'Webex' },
+            ].map((p) => (
+              <Link prefetch={false}
+                key={p.slug}
+                href={`/${p.slug}`}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                  padding: '0.55rem 1.05rem', borderRadius: '999px',
+                  border: '1px solid #e5e7eb', background: '#fafafa', color: '#374151',
+                  fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none',
+                }}
+              >
+                {p.label} Backgrounds
+                <span style={{ color: '#9a6a3a' }} aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Browse by style — links into the theme collection hub */}
+        <section style={{ maxWidth: '1100px', margin: '2.5rem auto 1rem', padding: '0 1rem', textAlign: 'center' }}>
+          <div style={{
+            fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: '#9a6a3a', fontWeight: 600, marginBottom: '0.9rem',
+          }}>
+            Browse by style
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.6rem' }}>
+            {[
+              { slug: 'office', label: 'Office' },
+              { slug: 'bookshelf', label: 'Bookshelf' },
+              { slug: 'home-office', label: 'Home Office' },
+              { slug: 'minimalist', label: 'Minimalist' },
+              { slug: 'executive', label: 'Executive' },
+              { slug: 'cozy', label: 'Cozy' },
+            ].map((t) => (
+              <Link prefetch={false}
+                key={t.slug}
+                href={`/backgrounds/${t.slug}`}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                  padding: '0.55rem 1.05rem', borderRadius: '999px',
+                  border: '1px solid #e5e7eb', background: '#fafafa', color: '#374151',
+                  fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none',
+                }}
+              >
+                {t.label}
+                <span style={{ color: '#9a6a3a' }} aria-hidden="true">→</span>
+              </Link>
+            ))}
+            <Link prefetch={false} href="/backgrounds" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+              padding: '0.55rem 1.05rem', borderRadius: '999px',
+              border: '1px solid #9a6a3a', background: '#fff', color: '#9a6a3a',
+              fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none',
+            }}>
+              All styles →
+            </Link>
+          </div>
+        </section>
+
         <div style={{ maxWidth: '720px', margin: '4rem auto 2rem', padding: '0 1rem' }}>
           <h2 style={{
             textAlign: 'center',

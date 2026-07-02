@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useWishlist } from '../lib/WishlistContext';
+import SearchBox from './SearchBox';
 
 // Mobile menu only renders when the user opens it on a small viewport.
 const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false });
@@ -105,6 +106,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
 
   const collectionsItems = [
     { name: 'By Profession', path: '/collections' },
+    { name: 'By Style', path: '/backgrounds' },
     { name: 'Free HD Sample', path: '/free-sample' },
     { name: 'Most Popular', path: '/most-popular' },
     { name: 'Recently Added', path: '/category/recently-added' }
@@ -294,7 +296,10 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
             alignItems: 'center'
           }}
           className="desktop-nav">
-            
+
+            {/* Site search */}
+            <SearchBox />
+
             {/* Bookshelves */}
             <Link prefetch={false}
               href="/category/bookshelves"

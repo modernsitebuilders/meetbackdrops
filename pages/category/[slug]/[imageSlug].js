@@ -9,11 +9,12 @@ import RateLimitModal from '../../../components/RateLimitModal';
 import PostCompareModal from '../../../components/PostCompareModal';
 import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
 import BackToTop from '../../../components/BackToTop';
+import ImageDiscovery from '../../../components/ImageDiscovery';
 import { HD_BASE_IDS } from '../../../lib/hdProducts';
 
 const CDN = 'https://assets.streambackdrops.com';
 
-export default function ImagePage({ image, related, categoryName, personaCollections = [] }) {
+export default function ImagePage({ image, related, categoryName, personaCollections = [], discovery = null }) {
   const {
     handleDownload,
     showReviewModal,
@@ -264,6 +265,16 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               </div>
             )}
 
+            {/* Discovery block — style + platform edges, metadata-driven use-cases.
+                Turns the image into a connected node instead of a dead end. */}
+            {discovery && (
+              <ImageDiscovery
+                themes={discovery.themes}
+                platforms={discovery.platforms}
+                useCases={discovery.useCases}
+              />
+            )}
+
             {/* Persona collections — which professions surface this image */}
             {personaCollections.length > 0 && (
               <section style={{
@@ -488,13 +499,31 @@ export async function getStaticProps({ params }) {
     };
   }
 
+  // Related = similarity-ranked (tag overlap → popularity), replacing the old
+  // next-6-in-category selection. Deterministic; degrades to sequential when an
+  // image has no tags, so it never returns fewer than before.
+  const { getSimilarImages, getImageDiscovery } = require('../../../lib/discovery/imageDiscovery');
   const siblings = getImagesByCategory(image.category);
-  const currentIdx = siblings.findIndex(s => s.slug === image.slug);
-  const related = [];
-  for (let i = 1; related.length < 6; i++) {
-    const candidate = siblings[(currentIdx + i) % siblings.length];
-    if (!candidate || candidate.slug === image.slug) break;
-    related.push(candidate);
+
+  let scoreMap = {};
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const p = path.join(process.cwd(), 'public', 'data', 'image-scores-static.json');
+    scoreMap = JSON.parse(fs.readFileSync(p, 'utf8')).scores || {};
+  } catch (e) {
+    // Scores are optional — related still ranks by tag overlap without them.
+  }
+
+  const related = getSimilarImages(image, siblings, scoreMap, 6);
+
+  // Discovery edges (themes, platform×theme deep links, metadata use-cases),
+  // derived purely from category + tags → reused theme engine. Pipeline-safe.
+  let discovery = null;
+  try {
+    discovery = getImageDiscovery(image);
+  } catch (e) {
+    console.error('Image discovery lookup failed:', e.message);
   }
 
   const categoryConfig = CATEGORIES[image.category];
@@ -514,7 +543,7 @@ export async function getStaticProps({ params }) {
   }
 
   return {
-    props: { image, related, categoryName, personaCollections },
+    props: { image, related, categoryName, personaCollections, discovery },
     revalidate: 86400,
   };
 }

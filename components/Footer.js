@@ -36,11 +36,28 @@ export default function Footer() {
                 Recently Added
               </Link>
             </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <Link prefetch={false} href="/zoom-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Zoom Backgrounds
+              </Link>
+              <span style={{ color: '#9ca3af', margin: '0 0.5rem' }}>•</span>
+              <Link prefetch={false} href="/google-meet-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Google Meet
+              </Link>
+              <span style={{ color: '#9ca3af', margin: '0 0.5rem' }}>•</span>
+              <Link prefetch={false} href="/microsoft-teams-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Microsoft Teams
+              </Link>
+              <span style={{ color: '#9ca3af', margin: '0 0.5rem' }}>•</span>
+              <Link prefetch={false} href="/webex-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Webex
+              </Link>
+            </div>
             <div style={{ borderBottom: '1px solid #374151', marginBottom: '1rem' }}></div>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1fr', 
-              gap: '0.5rem 2rem' 
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '0.5rem 2rem'
             }}>
               <Link prefetch={false} href="/category/bookshelves" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Bookshelves
@@ -118,6 +135,9 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <Link prefetch={false} href="/collections" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600 }}>
                 All Collections →
+              </Link>
+              <Link prefetch={false} href="/backgrounds" style={{ color: '#fbbf24', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600 }}>
+                Browse by Style →
               </Link>
               <Link prefetch={false} href="/collections/zoom-backgrounds-for-lawyers" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 For Lawyers & Legal
