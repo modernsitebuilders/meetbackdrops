@@ -69,6 +69,7 @@ export default function handler(req, res) {
     'halloween-backgrounds': 'Halloween',
     'spring-backgrounds': 'Spring',
     'summer-backgrounds': 'Summer',
+    'fall-backgrounds': 'Fall',
     'valentines-backgrounds': 'Valentine\'s',
   };
   const categories = [...catCounts.entries()]

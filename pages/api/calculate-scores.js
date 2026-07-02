@@ -79,6 +79,7 @@ export default async function handler(req, res) {
       'easter-backgrounds': 'Easter Backgrounds',
       'spring-backgrounds': 'Spring Backgrounds',
       'summer-backgrounds': 'Summer Backgrounds',
+      'fall-backgrounds': 'Fall & Thanksgiving Backgrounds',
       'bokeh-backgrounds': 'Bokeh Backgrounds'
     };
 

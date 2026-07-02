@@ -104,6 +104,7 @@ const IMAGES_BOOKSHELVES_BRIGHT = [
   { filename: 'deep-blue-wall-modern-bookshelf-displaying-books-decorative-a4839816.webp', title: 'Wall Shelves Background 69' },
   { filename: 'wooden-shelves-filled-books-potted-plants-illuminated-warm-8a7d4aea.webp', title: 'Wall Shelves Background 75' },
   { filename: 'modern-bookshelf-books-decorative-items-soft-color-palette-b6c085af.webp', title: 'Easter Background 73' },
+  { filename: 'stylish-bookshelf-neatly-arranged-books-shades-red-orange-cfc93d30.webp', title: 'Bookshelves Bright Background 103' },
 ];
 
 // bookshelves-dark: 51 images
@@ -201,6 +202,8 @@ const IMAGES_WALL_SHELVES_BRIGHT = [
   { filename: 'minimalist-shelving-books-dried-plants-neutral-tones-softly-6536c05c.webp', title: 'Wall Shelves Bright Background 54' },
   { filename: 'minimalist-shelf-various-vases-neutral-tones-soft-greenery-e6eddef7.webp', title: 'Wall Shelves Bright Background 55' },
   { filename: 'minimalist-scandinavian-home-office-wall-14077133.webp', title: 'Wall Shelves Bright Background 40' },
+  { filename: 'wooden-wall-shelves-books-decorative-vases-small-plant-a403adff.webp', title: 'Wall Shelves Bright Background 41' },
+  { filename: 'wooden-wall-shelves-modern-design-various-compartments-small-07d3e39f.webp', title: 'Wall Shelves Bright Background 42' },
 ];
 
 // wall-shelves-dark: 64 images
@@ -504,6 +507,49 @@ const IMAGES_OFFICE_SPACES = [
   { filename: 'textured-wall-natural-light-streaming-through-large-windows-4092e324.webp', title: 'Office Space Background 230' },
   { filename: 'executive-boardroom-modern-furniture-large-windows-showing-bd4334cd.webp', title: 'Office Space Background 231' },
   { filename: 'spacious-modern-office-interior-large-windows-overlooking-46f87f49.webp', title: 'Office Space Background 232' },
+  { filename: 'executive-boardroom-large-wooden-table-ergonomic-chairs-fd37fb5e.webp', title: 'Office Space Background 233' },
+  { filename: 'boardroom-long-wooden-table-leather-chairs-large-windows-7737698a.webp', title: 'Office Space Background 234' },
+  { filename: 'modern-boardroom-round-table-stylish-chairs-textured-wall-a2417a02.webp', title: 'Office Space Background 235' },
+  { filename: 'boardroom-wooden-paneling-large-table-ergonomic-chairs-26a33322.webp', title: 'Office Space Background 236' },
+  { filename: 'bright-boardroom-large-windows-wooden-furniture-plants-21147b4e.webp', title: 'Office Space Background 237' },
+  { filename: 'bright-executive-office-modern-desk-ergonomic-chair-large-f33fcdcc.webp', title: 'Office Space Background 238' },
+  { filename: 'modern-executive-office-large-wooden-desk-comfortable-chair-93a4fcef.webp', title: 'Office Space Background 239' },
+  { filename: 'bright-executive-office-wooden-desk-ergonomic-chair-large-45bb33ba.webp', title: 'Office Space Background 240' },
+  { filename: 'bright-office-space-cozy-chair-wooden-table-bookshelves-cfde244b.webp', title: 'Office Space Background 241' },
+  { filename: 'modern-office-space-geometric-walls-warm-orange-cool-blue-2dc3b720.webp', title: 'Office Space Background 242' },
+  { filename: 'bright-office-space-large-triangular-window-showcasing-1b4a8670.webp', title: 'Office Space Background 243' },
+  { filename: 'bright-office-space-wooden-desk-plants-large-windows-667b0b7d.webp', title: 'Office Space Background 244' },
+  { filename: 'bright-office-space-wooden-desk-bookshelves-plants-designed-56c78f8b.webp', title: 'Office Space Background 245' },
+  { filename: 'bright-office-space-wooden-shelves-decorative-items-cozy-0971ce9a.webp', title: 'Office Space Background 246' },
+  { filename: 'contemporary-executive-office-large-windows-leather-seating-cff94da0.webp', title: 'Office Space Background 247' },
+  { filename: 'contemporary-lounge-area-gray-armchairs-black-coffee-table-b27a0aa6.webp', title: 'Office Space Background 248' },
+  { filename: 'spacious-modern-office-large-windows-sleek-desks-bookshelf-bca98059.webp', title: 'Office Space Background 249' },
+  { filename: 'contemporary-office-interior-large-windows-modern-furniture-1ea6f91f.webp', title: 'Office Space Background 250' },
+  { filename: 'cozy-executive-lounge-two-green-armchairs-wooden-side-tables-e45d9110.webp', title: 'Office Space Background 251' },
+  { filename: 'modern-executive-office-space-warm-wood-accents-cozy-seating-80db37f1.webp', title: 'Office Space Background 252' },
+  { filename: 'geometric-panel-wall-mix-wood-textures-colors-creating-8fc766af.webp', title: 'Office Space Background 253' },
+  { filename: 'boardroom-large-wooden-table-leather-chairs-floor-ceiling-296ade78.webp', title: 'Office Space Background 254' },
+  { filename: 'modern-executive-office-desk-chair-decorative-elements-83d94120.webp', title: 'Office Space Background 255' },
+  { filename: 'modern-executive-office-large-desk-stylish-shelving-large-50d05dfb.webp', title: 'Office Space Background 256' },
+  { filename: 'contemporary-office-interior-wooden-furniture-large-windows-b9815dc1.webp', title: 'Office Space Background 257' },
+  { filename: 'modern-office-space-wooden-accents-pendant-light-green-plant-ef2c1601.webp', title: 'Office Space Background 258' },
+  { filename: 'modern-executive-office-wooden-beams-large-table-stylish-3e92c842.webp', title: 'Office Space Background 259' },
+  { filename: 'modern-executive-office-wooden-panels-stone-wall-desk-4d5edb7a.webp', title: 'Office Space Background 260' },
+  { filename: 'modern-office-space-two-light-green-chairs-round-table-7dadedbb.webp', title: 'Office Space Background 261' },
+  { filename: 'textured-marble-wall-modern-office-space-minimalist-sofa-8f9cf0ae.webp', title: 'Office Space Background 262' },
+  { filename: 'modern-executive-office-stone-wall-large-windows-stylish-5ac70ac3.webp', title: 'Office Space Background 263' },
+  { filename: 'warm-wood-paneled-lounge-soft-seating-shelves-designed-5a385a67.webp', title: 'Office Space Background 264' },
+  { filename: 'sophisticated-executive-lounge-rich-wood-paneling-stylish-82c56088.webp', title: 'Office Space Background 265' },
+  { filename: 'contemporary-office-interior-large-windows-gray-furniture-948db983.webp', title: 'Office Space Background 266' },
+  { filename: 'sophisticated-executive-office-wooden-desk-leather-chair-b1b9c27c.webp', title: 'Office Space Background 267' },
+  { filename: 'sophisticated-office-space-textured-wall-panels-cozy-seating-b0c23369.webp', title: 'Office Space Background 268' },
+  { filename: 'bright-boardroom-large-blank-wall-wooden-accents-plant-610c063e.webp', title: 'Office Space Background 269' },
+  { filename: 'spacious-boardroom-wooden-furniture-large-windows-greenery-f46357df.webp', title: 'Office Space Background 270' },
+  { filename: 'corporate-lobby-large-windows-potted-plants-gray-rug-88d4d890.webp', title: 'Office Space Background 271' },
+  { filename: 'spacious-executive-office-wood-furniture-large-windows-10d27293.webp', title: 'Office Space Background 272' },
+  { filename: 'bright-executive-office-space-wooden-cabinet-abstract-art-ea39fd41.webp', title: 'Office Space Background 273' },
+  { filename: 'lounge-area-leather-sofas-stone-accent-wall-large-windows-802eb722.webp', title: 'Office Space Background 274' },
+  { filename: 'warm-wood-paneled-office-space-leather-armchair-bookshelves-b2ea1b9c.webp', title: 'Office Space Background 275' },
 ];
 
 // home-office: 100 images
@@ -604,6 +650,25 @@ const IMAGES_HOME_OFFICE = [
   { filename: 'wellness-practitioner-private-office-tre-35ed360d.webp', title: 'Home Office Background 98' },
   { filename: 'wellness-practitioner-private-office-tre-456572bd.webp', title: 'Home Office Background 99' },
   { filename: 'real-home-office-photograph-single-warm-66305c46.webp', title: 'Home Office Background 100' },
+  { filename: 'bright-home-office-corner-wooden-shelf-potted-plants-large-2df31bd7.webp', title: 'Home Office Background 97' },
+  { filename: 'bright-home-office-wooden-desk-chair-shelves-filled-decor-d52ce6c1.webp', title: 'Home Office Background 98' },
+  { filename: 'bright-wooden-home-office-large-windows-plants-desk-setup-5abe6bcc.webp', title: 'Home Office Background 99' },
+  { filename: 'cozy-home-office-comfortable-chair-wooden-shelves-decor-view-b2ee442a.webp', title: 'Home Office Background 100' },
+  { filename: 'cozy-home-office-modern-sofa-wooden-accents-soft-lighting-4b4fa17d.webp', title: 'Home Office Background 101' },
+  { filename: 'cozy-home-office-modern-seating-arrangement-wooden-shelves-fb5256bf.webp', title: 'Home Office Background 102' },
+  { filename: 'modern-home-office-nook-wooden-shelving-soft-cushions-potted-7d36b8f5.webp', title: 'Home Office Background 103' },
+  { filename: 'cozy-home-office-stone-fireplace-comfortable-seating-wooden-d5c1d440.webp', title: 'Home Office Background 104' },
+  { filename: 'cozy-home-office-textured-wall-white-sofa-cushions-wooden-81e32a44.webp', title: 'Home Office Background 105' },
+  { filename: 'warm-toned-home-office-seating-area-modern-couch-decorative-11b5c1ae.webp', title: 'Home Office Background 106' },
+  { filename: 'stylish-shelving-plants-cushions-cozy-home-office-setting-e0d6587b.webp', title: 'Home Office Background 107' },
+  { filename: 'cozy-home-office-nook-warm-wood-paneling-decorative-vases-a2c44e3d.webp', title: 'Home Office Background 108' },
+  { filename: 'modern-home-office-unique-artistic-wall-design-desk-chair-0495847f.webp', title: 'Home Office Background 109' },
+  { filename: 'cozy-home-office-wooden-shelves-desk-decorative-plants-chair-78017620.webp', title: 'Home Office Background 110' },
+  { filename: 'modern-home-office-stylish-desk-ergonomic-chair-decorative-f1a35f62.webp', title: 'Home Office Background 111' },
+  { filename: 'modern-home-office-wooden-desk-chair-large-window-view-a0b95120.webp', title: 'Home Office Background 112' },
+  { filename: 'cozy-home-office-leather-chair-wooden-desk-large-windows-01ddce82.webp', title: 'Home Office Background 113' },
+  { filename: 'rustic-home-office-wooden-table-pendant-light-shelf-decor-93249faa.webp', title: 'Home Office Background 114' },
+  { filename: 'stylish-home-office-stone-wall-large-bookshelf-wooden-desk-246ceb06.webp', title: 'Home Office Background 115' },
 ];
 
 // living-rooms: 39 images
@@ -653,6 +718,11 @@ const IMAGES_LIVING_ROOMS = [
   { filename: 'rustic-living-room-wooden-shelves-filled-books-comfortable-9ebeda4a.webp', title: 'Library Background 5' },
   { filename: 'minimalist-lounge-area-gray-sofa-cushions-wooden-shelves-bc4e6506.webp', title: 'Spring Background 53' },
   { filename: 'stylish-lounge-teal-tufted-sofa-three-guitars-white-brick-b300ec9a.webp', title: 'Urban Loft Background 6' },
+  { filename: 'bright-living-room-large-windows-rustic-wooden-beams-cozy-5876c58c.webp', title: 'Living Room Background 46' },
+  { filename: 'bright-living-room-large-sectional-sofa-wooden-bookshelves-711bc26b.webp', title: 'Living Room Background 47' },
+  { filename: 'cozy-living-room-gray-sofa-wooden-beams-large-woven-pendant-c4caee0d.webp', title: 'Living Room Background 48' },
+  { filename: 'cozy-living-room-large-windows-showcasing-scenic-view-warm-6b729d5a.webp', title: 'Living Room Background 49' },
+  { filename: 'spacious-living-room-large-sectional-sofa-colorful-cushions-a2de3768.webp', title: 'Living Room Background 50' },
 ];
 
 // kitchens: 26 images
@@ -686,6 +756,7 @@ const IMAGES_KITCHENS = [
   { filename: 'rustic-kitchen-counter-greenery-plaid-solid-textiles-warm-69f5b180.webp', title: 'Christmas Background 42' },
   { filename: 'bright-kitchen-counter-light-wood-cabinetry-white-subway-79fe4c7d.webp', title: 'Spring Background 6' },
   { filename: 'bright-kitchen-light-gray-cabinets-white-countertop-window-aac396ac.webp', title: 'Spring Background 56' },
+  { filename: 'contemporary-kitchen-wooden-furniture-neutral-color-palette-0d71be92.webp', title: 'Kitchen Background 30' },
 ];
 
 // coffee-shops: 55 images
@@ -1288,6 +1359,20 @@ const IMAGES_SUMMER_BACKGROUNDS = [
   { filename: 'stone-villa-te-65e50cf9.webp', title: 'Summer Background 66' },
 ];
 
+// fall-backgrounds: populated by merge-batch.js
+const IMAGES_FALL_BACKGROUNDS = [
+  { filename: 'cozy-home-office-desk-chair-large-windows-overlooking-lake-c144465f.webp', title: 'Fall Background 1' },
+  { filename: 'cozy-home-office-stylish-chair-desk-large-window-showcasing-31498468.webp', title: 'Fall Background 2' },
+  { filename: 'warm-toned-home-office-bookshelves-desk-autumn-decorations-88007687.webp', title: 'Fall Background 3' },
+  { filename: 'cozy-home-office-wooden-desk-chair-large-windows-showcasing-527b30dd.webp', title: 'Fall Background 4' },
+  { filename: 'large-windows-showcase-vibrant-autumn-trees-creating-cozy-6b0f1ac9.webp', title: 'Fall Background 5' },
+  { filename: 'modern-executive-office-wooden-desk-chair-large-windows-cb789655.webp', title: 'Fall Background 6' },
+  { filename: 'modern-executive-office-wooden-textures-warm-autumn-decor-21326377.webp', title: 'Fall Background 7' },
+  { filename: 'modern-home-office-large-windows-showcasing-autumn-landscape-3e8bd1dd.webp', title: 'Fall Background 8' },
+  { filename: 'cozy-home-office-bookshelf-modern-chair-large-windows-aad39a90.webp', title: 'Fall Background 9' },
+  { filename: 'wooden-shelf-displays-pumpkin-candle-soft-natural-light-a34ccab0.webp', title: 'Fall Background 10' },
+];
+
 // bokeh-backgrounds: 50 images
 const IMAGES_BOKEH_BACKGROUNDS = [
   { filename: 'blurred-composition-soft-white-bokeh-circles-against-subtle-d2b7eaf6.webp', title: 'Bokeh Background 3' },
@@ -1374,6 +1459,45 @@ const IMAGES_NEUTRAL_BACKGROUNDS = [
   { filename: 'textured-blue-wall-soft-lighting-minimalist-design-creating-5321396e.webp', title: 'Neutral & Plain Walls Background 28' },
   { filename: 'textured-wall-soft-shadows-cast-light-creating-warm-inviting-489245cd.webp', title: 'Neutral & Plain Walls Background 29' },
   { filename: 'textured-wall-soft-shadows-creating-serene-professional-4400a2c9.webp', title: 'Neutral & Plain Walls Background 30' },
+  { filename: 'textured-white-wall-vertical-planks-providing-clean-e0315042.webp', title: 'Neutral & Plain Walls Background 31' },
+  { filename: 'light-gray-wall-subtle-texture-soft-shadow-providing-neutral-bc32151a.webp', title: 'Neutral & Plain Walls Background 32' },
+  { filename: 'light-neutral-wall-subtle-texture-providing-clean-2220806a.webp', title: 'Neutral & Plain Walls Background 33' },
+  { filename: 'light-neutral-wall-subtle-texture-providing-clean-33ffcb99.webp', title: 'Neutral & Plain Walls Background 34' },
+  { filename: 'light-neutral-wall-subtle-texture-soft-shadows-providing-0b30182a.webp', title: 'Neutral & Plain Walls Background 35' },
+  { filename: 'light-neutral-wall-subtle-textured-surface-suitable-bc888215.webp', title: 'Neutral & Plain Walls Background 36' },
+  { filename: 'soft-beige-wall-subtle-texture-providing-neutral-warm-eff42ab9.webp', title: 'Neutral & Plain Walls Background 37' },
+  { filename: 'softly-textured-wall-neutral-tones-providing-clean-a94f402b.webp', title: 'Neutral & Plain Walls Background 38' },
+  { filename: 'soft-blue-wall-corner-warm-wooden-flooring-natural-light-9fef186a.webp', title: 'Neutral & Plain Walls Background 39' },
+  { filename: 'softly-textured-wall-gradient-light-colors-creating-serene-65fe0ee0.webp', title: 'Neutral & Plain Walls Background 40' },
+  { filename: 'textured-beige-wall-soft-directional-lighting-creating-warm-59dd2983.webp', title: 'Neutral & Plain Walls Background 41' },
+  { filename: 'textured-beige-wall-soft-gradient-shadow-suitable-12d1b133.webp', title: 'Neutral & Plain Walls Background 42' },
+  { filename: 'textured-beige-wall-soft-warm-tones-providing-neutral-60ac2505.webp', title: 'Neutral & Plain Walls Background 43' },
+  { filename: 'textured-beige-wall-surface-subtle-variations-suitable-155f4df0.webp', title: 'Neutral & Plain Walls Background 44' },
+  { filename: 'textured-beige-wall-soft-gradient-providing-warm-neutral-8caa166d.webp', title: 'Neutral & Plain Walls Background 45' },
+  { filename: 'soft-beige-wall-subtle-texture-providing-neutral-warm-7eda5227.webp', title: 'Neutral & Plain Walls Background 46' },
+  { filename: 'textured-blue-wall-surface-woven-appearance-providing-66bc73f8.webp', title: 'Neutral & Plain Walls Background 47' },
+  { filename: 'textured-gray-wall-soft-gradients-providing-neutral-f6396048.webp', title: 'Neutral & Plain Walls Background 48' },
+  { filename: 'textured-gray-wall-surface-subtle-variations-providing-b3069ce0.webp', title: 'Neutral & Plain Walls Background 49' },
+  { filename: 'textured-gray-wall-surface-subtle-variations-providing-00b80b72.webp', title: 'Neutral & Plain Walls Background 50' },
+  { filename: 'light-gray-wall-subtle-texture-providing-neutral-calming-1dfc68f7.webp', title: 'Neutral & Plain Walls Background 51' },
+  { filename: 'textured-neutral-wall-surface-subtle-variations-color-tone-98cdc9c9.webp', title: 'Neutral & Plain Walls Background 52' },
+  { filename: 'textured-wall-surface-warm-neutral-tones-subtle-variations-13da34cc.webp', title: 'Neutral & Plain Walls Background 53' },
+  { filename: 'textured-neutral-wall-surface-soft-warm-tone-providing-030d668d.webp', title: 'Neutral & Plain Walls Background 54' },
+  { filename: 'textured-vertical-stripes-soft-beige-tones-providing-neutral-cb952a62.webp', title: 'Neutral & Plain Walls Background 55' },
+  { filename: 'textured-wall-surface-soft-gradient-shadow-creating-neutral-c012904c.webp', title: 'Neutral & Plain Walls Background 56' },
+  { filename: 'textured-wall-soft-gradient-shadow-creating-calm-54f01472.webp', title: 'Neutral & Plain Walls Background 57' },
+  { filename: 'textured-wall-soft-triangular-shadow-creating-warm-inviting-4dcd072f.webp', title: 'Neutral & Plain Walls Background 58' },
+  { filename: 'textured-wall-soft-shadows-potted-plant-corner-illuminated-cf42e1a6.webp', title: 'Neutral & Plain Walls Background 59' },
+  { filename: 'textured-wall-warm-tones-soft-shadow-creating-cozy-fbef9379.webp', title: 'Neutral & Plain Walls Background 60' },
+  { filename: 'textured-wall-surface-mix-light-dark-tones-suitable-cb6668ab.webp', title: 'Neutral & Plain Walls Background 61' },
+  { filename: 'textured-wall-surface-soft-directional-shadows-creating-calm-23ec9ffa.webp', title: 'Neutral & Plain Walls Background 62' },
+  { filename: 'textured-wall-soft-shadow-gradient-creating-neutral-calming-0c38973c.webp', title: 'Neutral & Plain Walls Background 63' },
+  { filename: 'textured-wall-soft-shadow-gradient-providing-neutral-calming-416e60bc.webp', title: 'Neutral & Plain Walls Background 64' },
+  { filename: 'textured-white-wall-rough-surface-providing-clean-neutral-1cbb7bd2.webp', title: 'Neutral & Plain Walls Background 65' },
+  { filename: 'textured-white-wall-surface-fine-linen-like-appearance-46851f30.webp', title: 'Neutral & Plain Walls Background 66' },
+  { filename: 'textured-white-wall-surface-subtle-pattern-providing-clean-1e384f1c.webp', title: 'Neutral & Plain Walls Background 67' },
+  { filename: 'neutral-textured-wall-surface-subtle-variations-providing-612687f3.webp', title: 'Neutral & Plain Walls Background 68' },
+  { filename: 'warm-toned-textured-wall-soft-shadows-wooden-floor-fe6391a5.webp', title: 'Neutral & Plain Walls Background 69' },
 ];
 
 
@@ -1409,8 +1533,8 @@ export const categoryInfo = {
 
   'neutral-backgrounds': {
     name: 'Neutral & Plain Walls',
-    description: 'Minimalist neutral and plain wall backgrounds — off-white, greige, and soft gray — for clean, distraction-free video calls',
-    seoDescription: 'Free neutral and plain wall virtual backgrounds for Zoom, Teams & Google Meet. Minimalist off-white, greige and soft-gray walls — no signup, instant download.',
+    description: 'Plain, distraction-free wall backgrounds in a full spectrum of solid colors — from off-white and greige to clay, sage, blue-gray, and charcoal',
+    seoDescription: 'Free plain wall virtual backgrounds for Zoom, Teams & Google Meet. Solid minimalist walls from off-white to charcoal — no signup, instant download.',
     images: IMAGES_NEUTRAL_BACKGROUNDS
   },
 
@@ -1486,8 +1610,8 @@ export const categoryInfo = {
 
   'halloween-backgrounds': {
     name: 'Halloween Backgrounds',
-    description: 'Festive Halloween backgrounds with pumpkins, fall decor, and seasonal atmosphere',
-    seoDescription: 'Download free Halloween virtual backgrounds for Zoom, Teams & Google Meet. Spooky pumpkins, autumn decor & seasonal scenes — no signup, instant download.',
+    description: 'Festive Halloween backgrounds with jack-o\'-lanterns, spooky decor, and eerie seasonal atmosphere',
+    seoDescription: 'Download free Halloween virtual backgrounds for Zoom, Teams & Google Meet. Spooky jack-o\'-lanterns, cobwebs & eerie scenes — no signup, instant download.',
     images: IMAGES_HALLOWEEN_BACKGROUNDS
   },
 
@@ -1517,6 +1641,13 @@ export const categoryInfo = {
     description: 'Bright summer backgrounds with sunlit offices, shaded patios, and warm seasonal scenery',
     seoDescription: 'Download free summer virtual backgrounds for Zoom, Teams & Google Meet. Sunlit offices, shaded patios, beach verandas & warm scenes — instant download.',
     images: IMAGES_SUMMER_BACKGROUNDS
+  },
+
+  'fall-backgrounds': {
+    name: 'Fall & Thanksgiving Backgrounds',
+    description: 'Warm autumn and Thanksgiving backgrounds with rust, amber, and ochre tones, fall foliage, and cozy harvest styling',
+    seoDescription: 'Download free fall & Thanksgiving virtual backgrounds for Zoom, Teams & Google Meet. Warm autumn foliage, amber tones & cozy harvest scenes — instant download.',
+    images: IMAGES_FALL_BACKGROUNDS
   },
 
   'bokeh-backgrounds': {
@@ -1549,5 +1680,6 @@ export const folderMap = {
   'easter-backgrounds': 'easter-backgrounds',
   'spring-backgrounds': 'spring-backgrounds',
   'summer-backgrounds': 'summer-backgrounds',
+  'fall-backgrounds': 'fall-backgrounds',
   'bokeh-backgrounds': 'bokeh-backgrounds',
 };

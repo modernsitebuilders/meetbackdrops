@@ -125,6 +125,9 @@ export default function Footer() {
               <Link prefetch={false} href="/category/summer-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Summer ☀️
               </Link>
+              <Link prefetch={false} href="/category/fall-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Fall 🍂
+              </Link>
             </div>
           </div>
           

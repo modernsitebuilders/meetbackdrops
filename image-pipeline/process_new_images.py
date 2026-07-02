@@ -88,7 +88,7 @@ BATCH_START_MTIME = datetime.strptime(BATCH_DATE, "%Y-%m-%d").timestamp()
 # The model picks exactly one slug. Descriptions are the only steering — no
 # operator override. Merged categories store webps in a *-bright subfolder.
 CATEGORY_GUIDE = {
-    "neutral-backgrounds": "A plain, seamless, or subtly-textured WALL is the entire subject — solid color or plaster/limewash/matte/panelled, essentially no furniture and no room features. Off-white, greige, gray, taupe, sage, etc. The wall itself is the product.",
+    "neutral-backgrounds": "A plain WALL is essentially the entire subject — no shelves, furniture, or room features, just the wall surface filling the frame. ANY wall color is valid, across the full spectrum: light neutrals (off-white, greige, gray, taupe, sage) through warmer and deeper tones (clay, sand, olive, blue-gray, mushroom, charcoal) and any other solid hue. Solid or subtly-textured (plaster, limewash, matte paint, fine linen, panelling). A soft directional shadow gradient falls across many but is not required. The wall itself is the product.",
     "office-spaces":       "Corporate/business interiors: executive or corporate offices, boardrooms, conference/meeting rooms, medical or clinical/dental offices, open-plan workspaces, glass lobbies, reception areas.",
     "home-office":         "A home work setting: a desk or study at home, work-from-home room, cozy home office, or a therapy/counseling/telehealth home consulting room.",
     "living-rooms":        "Residential living rooms or lounges — sofas, armchairs, coffee tables, soft home seating.",
@@ -104,11 +104,12 @@ CATEGORY_GUIDE = {
     "wall-shelves":        "Floating wall shelves or display shelves holding a few styled objects (not full packed bookcases).",
     "bokeh-backgrounds":   "Abstract soft-focus blurred lights / bokeh, not a real room.",
     "christmas-backgrounds": "Christmas decor — trees, wreaths, garlands, ornaments, stockings.",
-    "halloween-backgrounds": "Halloween decor — pumpkins, jack-o-lanterns, spooky autumn.",
+    "halloween-backgrounds": "Halloween decor — jack-o-lanterns, cobwebs, bats, gothic/eerie night styling. Spooky specifically; warm non-spooky autumn/harvest belongs in fall-backgrounds.",
     "valentines-backgrounds": "Valentine's decor — hearts, roses, romantic pinks/reds.",
     "easter-backgrounds":  "Easter / spring pastel decor — eggs, bunnies, tulips, lilies.",
     "spring-backgrounds":  "Spring scenes — fresh blooms, cherry blossom, daffodils, sunrooms.",
     "summer-backgrounds":  "Summer scenes — beach, poolside, tropical, coastal, sun-drenched patios.",
+    "fall-backgrounds":    "Fall / autumn & Thanksgiving — warm rust/amber/ochre palette, autumn foliage, cozy harvest styling (subtle pumpkins/gourds/wheat), fireside warmth. Warm seasonal offices, home offices, or cozy cabins. Not spooky (that's halloween-backgrounds).",
 }
 ALLOWED = set(CATEGORY_GUIDE)
 CATEGORY_FOLDER = {"bookshelves": "bookshelves-bright", "wall-shelves": "wall-shelves-bright"}

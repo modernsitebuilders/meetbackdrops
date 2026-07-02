@@ -49,6 +49,7 @@ function target(entry) {
     'easter-backgrounds':     { array: 'IMAGES_EASTER_BACKGROUNDS',     label: 'Easter' },
     'spring-backgrounds':     { array: 'IMAGES_SPRING_BACKGROUNDS',     label: 'Spring' },
     'summer-backgrounds':     { array: 'IMAGES_SUMMER_BACKGROUNDS',     label: 'Summer' },
+    'fall-backgrounds':       { array: 'IMAGES_FALL_BACKGROUNDS',       label: 'Fall' },
   };
   if (entry.category === 'bookshelves') {
     return entry.folder === 'bookshelves-dark'

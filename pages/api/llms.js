@@ -75,6 +75,7 @@ HD backgrounds are delivered via secure download link after purchase.
 - [Easter Backgrounds](https://meetbackdrops.com/category/easter-backgrounds) — ${CATEGORIES['easter-backgrounds'].count} images. Spring pastels, bunnies, and Easter egg scenes.
 - [Spring Backgrounds](https://meetbackdrops.com/category/spring-backgrounds) — ${CATEGORIES['spring-backgrounds'].count} images. Fresh florals, soft pastels, and bright airy interiors.
 - [Summer Backgrounds](https://meetbackdrops.com/category/summer-backgrounds) — ${CATEGORIES['summer-backgrounds'].count} images. Bright coastal patios, beaches, and sun-drenched settings.
+- [Fall & Thanksgiving Backgrounds](https://meetbackdrops.com/category/fall-backgrounds) — ${CATEGORIES['fall-backgrounds'].count} images. Warm autumn foliage, amber tones, and cozy harvest scenes.
 
 ## Collections by Profession
 
