@@ -302,7 +302,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           className="desktop-nav">
 
             {/* Site search */}
-            <div style={{ width: '112px', flexShrink: 0 }}>
+            <div style={{ width: '200px', flexShrink: 0 }}>
               <SearchBox compact />
             </div>
 
@@ -373,7 +373,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
                 onMouseEnter={() => setHoveredNav('more')}
                 onMouseLeave={() => setHoveredNav(null)}
               >
-                More Categories
+                More
                 <span aria-hidden="true" style={{ fontSize: '0.7rem', marginLeft: '0.25rem' }}>▼</span>
               </button>
               {openDropdown === 'more' && renderDropdown(moreCategories, 'more')}
