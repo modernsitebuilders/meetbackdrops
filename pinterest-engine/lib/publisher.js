@@ -3,6 +3,7 @@
 const PINTEREST_API_BASE =
   process.env.PINTEREST_API_BASE || 'https://api-sandbox.pinterest.com';
 const PINTEREST_API_URL = `${PINTEREST_API_BASE}/v5/pins`;
+const pinUrl = (id) => `${PINTEREST_API_URL}/${encodeURIComponent(id)}`;
 const MAX_ATTEMPTS = 3;
 const RETRY_BASE_DELAY_MS = 1000;
 const DEFAULT_QUEUE_DELAY_MS = 500;
@@ -165,6 +166,49 @@ async function publishPin(pin) {
   };
 }
 
+// Reads a pin back from the v5 GET /pins/{id} endpoint. Used to show the reviewer
+// that the just-created pin actually exists and is retrievable through the API —
+// the sandbox equivalent of "displaying the newly created pin on Pinterest".
+async function getPin(pinId) {
+  let token;
+  try {
+    if (!pinId) throw new Error('getPin requires a pin id');
+    token = getAccessToken();
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+
+  try {
+    const response = await fetch(pinUrl(pinId), {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    });
+
+    let payload = null;
+    const text = await response.text();
+    if (text) {
+      try {
+        payload = JSON.parse(text);
+      } catch (_err) {
+        payload = { raw: text };
+      }
+    }
+
+    if (response.ok && payload) {
+      return { success: true, pin: payload };
+    }
+    return {
+      success: false,
+      error: `Pinterest API error (status ${response.status}): ${extractErrorMessage(payload, response.status)}`,
+    };
+  } catch (err) {
+    return { success: false, error: err && err.message ? err.message : String(err) };
+  }
+}
+
 async function publishQueue(pins, options = {}) {
   if (!Array.isArray(pins)) {
     const error = 'publishQueue expects an array of pins';
@@ -213,4 +257,5 @@ async function publishQueue(pins, options = {}) {
 module.exports = {
   publishPin,
   publishQueue,
+  getPin,
 };

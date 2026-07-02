@@ -3,7 +3,25 @@
 Script + shot list for the app-review video. Goal: get **Standard access** so the
 engine can publish pins automatically.
 
-## Why v1 was rejected (the real reason)
+## Why v2 was rejected (app 1565047, Jun 29 2026)
+
+> "Although you show the OAuth process, you also need to show the full API
+> Integration, process and results... show how you created it and **also display
+> the newly created Pin**."
+
+This round, OAuth *was* shown — progress over v1. What was still missing: the
+**result** of the API call. The old `publish-one` POSTed the pin and printed a
+single `pin_id`, nothing else. To a reviewer that reads as "request went out,
+unclear what came back."
+
+**Fix shipped (Jun 30 2026):** `publish-one` now does a second call —
+`GET /v5/pins/{id}` — and prints the pin retrieved back from Pinterest (id,
+board_id, title, link, created_at). That is the sandbox-legal way to satisfy
+"display the newly created Pin": you can't show it on pinterest.com from sandbox,
+but you can show Pinterest's own API returning the pin you just created. The video
+MUST show this `=== VERIFY (GET …) ===` block on screen, full and legible.
+
+## Why v1 was rejected (the original reason)
 
 Pinterest's reviewer needs to SEE two specific things on screen:
 
@@ -41,8 +59,9 @@ like "This is the auth server" ×3 are already cut out). ~2:19 total.
 | 7 | 1:34–1:43 | "Each pin is generated deterministically from this manifest of images that I own." | `final_manifest.json` open — **fine as-is** |
 | 8 | 1:43–1:46 | "Now I'll publish one pin to Pinterest." | **NEW:** terminal, about to run the publish command |
 | 9 | 1:46–1:57 | "This CLI prints the full request payload first — board ID, title, description, image URL, and destination link — then calls the v5 pins endpoint." | **NEW:** terminal showing the `=== REQUEST ===` block printed by `cli.js publish-one` |
-| 10 | 1:57–2:04 | *(see note)* "The v5 pins endpoint returns the new pin's ID, confirming the pin was created." | **NEW:** terminal showing the `=== RESPONSE === status: OK / pin_id: …` block |
-| 11 | 2:04–2:08 | "The integration is working end-to-end: auth, token exchange, and the v5 pins API." | terminal response still up — **fine** |
+| 10 | 1:57–2:04 | *(see note)* "The v5 pins endpoint returns the new pin's ID, confirming the pin was created." | **NEW:** terminal showing the `=== RESPONSE (POST /v5/pins) === status: OK / pin_id: …` block |
+| 10b | 2:04–2:12 | **(re-record, see note)** "The tool then reads the pin back with a GET to the v5 pins endpoint — Pinterest returns the pin's ID, board, title and link, confirming it was created." | **NEW & CRITICAL:** terminal showing the `=== VERIFY (GET …/v5/pins/{id}) === status: OK (200)` block with the returned pin fields. **This is the clip the v2 rejection was about — hold it on screen ~4 s.** |
+| 11 | 2:12–2:16 | "The integration is working end-to-end: auth, token exchange, and the v5 pins API." | terminal response still up — **fine** |
 | 12 | 2:08–2:19 | "That's the full flow: OAuth 2.0 authorization-code grant, token exchange, and a verified call to the v5 pins endpoint. The tool only publishes my own original content. Thanks." | Recap card / editor. **Note: video currently goes black here — clip 10 ends at 2:03 but audio runs to 2:19. Fill this 16 s.** |
 
 ### One line to re-record (line 10)
@@ -69,8 +88,23 @@ tokens, board IDs), so this just runs. Record ONE clean screen capture of:
      revoke access at pinterest.com → Settings → Apps, then re-run. That guarantees a
      clean consent screen for the reviewer.
 4. **Success page:** the "Authorization successful / token written" page.
-5. **Terminal:** `node pinterest-engine/cli.js publish-one <slug>` → shows the
-   `=== REQUEST ===` payload, then `=== RESPONSE === status: OK / pin_id: …`.
+5. **Terminal:** `node pinterest-engine/cli.js publish-one <slug>` → shows, in one
+   run and all on screen:
+   - `=== REQUEST ===` payload (board, title, description, image_url, link)
+   - `=== RESPONSE (POST /v5/pins) === status: OK / pin_id: …`
+   - `=== VERIFY (GET …/v5/pins/{id}) === status: OK (200)` with the pin read back
+     (id, board_id, title, link). **Do not cut this block — it is the fix for v2.**
 
-That's it. Drop those clips over narration lines 4–6 and 8–10, keep your existing
-code B-roll for the rest, fill the 16 s tail, and it's an approvable cut.
+That's it. Drop those clips over narration lines 4–6 and 8–10b, keep your existing
+code B-roll for the rest, fill the tail, and it's an approvable cut.
+
+### Reviewer-proofing checklist (read before re-submitting)
+
+- [ ] The **Pinterest consent screen** with scopes is on screen (not just narrated).
+- [ ] The terminal `publish-one` run is **real footage**, large enough to read — not
+      VS Code B-roll. v1 was rejected precisely because the API call was only narrated.
+- [ ] Both the **POST response** (`pin_id`) **and** the **GET verify** block are visible.
+- [ ] In the resubmission note to Pinterest, say plainly: *"Recorded in the sandbox
+      per your guidance. Sandbox pins are not rendered on pinterest.com, so the demo
+      displays the created pin by reading it back via GET /v5/pins/{id} — shown at
+      \<timestamp\>."* This pre-empts a third "display the pin" rejection.

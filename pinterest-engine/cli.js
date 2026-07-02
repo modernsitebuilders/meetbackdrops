@@ -8,7 +8,7 @@ const {
   executeQuotaTable,
 } = require('./lib/scheduler');
 const { writeCsv, pinToRow } = require('./lib/csv-writer');
-const { publishPin } = require('./lib/publisher');
+const { publishPin, getPin } = require('./lib/publisher');
 
 const ROOT = path.resolve(__dirname, '..');
 const DEFAULT_MANIFEST = path.join(ROOT, 'image-pipeline', 'final_manifest.json');
@@ -145,21 +145,39 @@ async function publishOne(slug, manifestPath) {
 
   const result = await publishPin(payload);
 
-  console.log('[publish-one] === RESPONSE ===');
-  if (result.success) {
-    console.log(`  status:  OK`);
-    console.log(`  pin_id:  ${result.pin_id}`);
-    if (isSandbox) {
-      console.log(`  note:    Sandbox pins are visible only via the Pinterest API,`);
-      console.log(`           not on pinterest.com. Production access requires Pinterest approval.`);
-    } else {
-      console.log(`  view at: https://www.pinterest.com/pin/${result.pin_id}/`);
-    }
-    return 0;
+  console.log('[publish-one] === RESPONSE (POST /v5/pins) ===');
+  if (!result.success) {
+    console.log(`  status:  FAILED`);
+    console.log(`  error:   ${result.error}`);
+    return 1;
   }
-  console.log(`  status:  FAILED`);
-  console.log(`  error:   ${result.error}`);
-  return 1;
+  console.log(`  status:  OK (201 Created)`);
+  console.log(`  pin_id:  ${result.pin_id}`);
+  console.log('');
+
+  // Read the pin back from the API to prove it was created. In sandbox the pin
+  // is not visible on pinterest.com, so this GET is how we "display" it.
+  console.log(`[publish-one] === VERIFY (GET ${apiBase}/v5/pins/${result.pin_id}) ===`);
+  const readBack = await getPin(result.pin_id);
+  if (readBack.success) {
+    const p = readBack.pin;
+    console.log(`  status:      OK (200) — pin retrieved from Pinterest`);
+    console.log(`  id:          ${p.id}`);
+    console.log(`  board_id:    ${p.board_id}`);
+    console.log(`  title:       ${p.title}`);
+    console.log(`  link:        ${p.link}`);
+    if (p.created_at) console.log(`  created_at:  ${p.created_at}`);
+    if (isSandbox) {
+      console.log(`  note:        Sandbox pins are retrievable via the API but not shown on`);
+      console.log(`               pinterest.com. Production access requires Pinterest approval.`);
+    } else {
+      console.log(`  view at:     https://www.pinterest.com/pin/${p.id}/`);
+    }
+  } else {
+    console.log(`  status:      WARN — pin created (id ${result.pin_id}) but read-back failed`);
+    console.log(`  error:       ${readBack.error}`);
+  }
+  return 0;
 }
 
 async function main(prodMode) {
