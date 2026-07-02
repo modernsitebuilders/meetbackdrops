@@ -68,12 +68,14 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   };
 
   const navButtonStyle = (isActive = false, isHovered = false) => ({
-    padding: '0.5rem 1rem',
+    padding: '0.5rem 0.55rem',
     borderRadius: '0.5rem',
     textDecoration: 'none',
     color: isActive ? '#9a6a3a' : '#374151',
     fontWeight: '500',
     fontSize: '0.95rem',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
     background: isHovered ? '#f3f4f6' : 'transparent',
     border: 'none',
     transition: 'all 0.2s ease',
@@ -123,6 +125,7 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   ];
 
   const moreCategories = [
+    { name: 'Living Rooms', path: '/category/living-rooms' },
     { name: 'Kitchens', path: '/category/kitchens' },
     { name: 'Coffee Shops', path: '/category/coffee-shops' },
     { 
@@ -293,13 +296,15 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           {/* Desktop Navigation */}
           <nav style={{
             display: 'flex',
-            gap: '0.5rem',
+            gap: '0.25rem',
             alignItems: 'center'
           }}
           className="desktop-nav">
 
             {/* Site search */}
-            <SearchBox />
+            <div style={{ width: '112px', flexShrink: 0 }}>
+              <SearchBox compact />
+            </div>
 
             {/* Bookshelves */}
             <Link prefetch={false}
@@ -348,16 +353,6 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
               </button>
               {openDropdown === 'offices' && renderDropdown(officesItems, 'offices')}
             </div>
-
-            {/* Living Rooms */}
-            <Link prefetch={false}
-              href="/category/living-rooms"
-              style={navButtonStyle(currentPage === 'living-rooms', hoveredNav === 'living-rooms')}
-              onMouseEnter={() => setHoveredNav('living-rooms')}
-              onMouseLeave={() => setHoveredNav(null)}
-            >
-              Living Rooms
-            </Link>
 
             {/* More Categories Dropdown */}
             <div style={{ position: 'relative' }}>
@@ -515,17 +510,20 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
           }
         }
 
-        @media (max-width: 768px) {
+        /* The desktop nav carries a lot of items (search + category links +
+           dropdowns + HD/Branded CTAs). Below this width it no longer fits the
+           1400px container without clipping, so collapse to the hamburger. */
+        @media (max-width: 1360px) {
           .desktop-nav {
             display: none !important;
           }
-          
+
           .mobile-menu-btn {
             display: block !important;
           }
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 1361px) {
           .mobile-menu-btn {
             display: none !important;
           }
