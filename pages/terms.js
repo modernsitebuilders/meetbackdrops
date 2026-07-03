@@ -72,16 +72,17 @@ export default function Terms() {
                 📚 Setup Guides
               </Link>
               
-              <div style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                color: 'white',
+              <Link href="/branded-backgrounds" style={{
+                color: '#374151',
+                textDecoration: 'none',
+                fontWeight: '500',
                 padding: '0.5rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '600'
+                borderRadius: '0.5rem',
+                background: '#f3f4f6',
+                transition: 'all 0.2s'
               }}>
-                ✨ 100% FREE
-              </div>
+                💼 Branded
+              </Link>
             </div>
           </nav>
         </div>
@@ -120,7 +121,7 @@ export default function Terms() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: April 25, 2026
+                Last updated: July 3, 2026
               </p>
             </div>
 
@@ -150,7 +151,7 @@ export default function Terms() {
                 2. Description of Service
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                MeetBackdrops provides high-quality virtual background images for use in video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free PNG downloads for personal use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
+                MeetBackdrops is a virtual set design studio producing studio-designed virtual background environments for video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free PNG downloads for individual professional use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
               </p>
 
               <h2 style={{
@@ -160,10 +161,10 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                3. Use License - Personal Use Only
+                3. Use License - Individual Professional Use
               </h2>
-              
-              {/* Personal Use Section */}
+
+              {/* Individual Professional Use Section */}
               <div style={{
                 background: '#f0fdf4',
                 border: '2px solid #22c55e',
@@ -177,24 +178,29 @@ export default function Terms() {
                   color: '#15803d',
                   marginBottom: '1rem'
                 }}>
-                  ✅ Allowed Personal Uses
+                  ✅ Allowed Uses
                 </h3>
                 <p style={{ color: '#065f46', marginBottom: '1rem' }}>
-                  Free virtual backgrounds provided by MeetBackdrops are licensed for personal use only, including:
+                  Free virtual backgrounds provided by MeetBackdrops are licensed for individual professional use, including on work calls for the company you work for:
                 </p>
                 <ul style={{
                   listStyle: 'disc',
                   paddingLeft: '2rem',
                   color: '#047857',
-                  marginBottom: '0'
+                  marginBottom: '1rem'
                 }}>
-                  <li>Personal video calls and online meetings</li>
-                  <li>Remote work and home office setups</li>
+                  <li>Video calls on Zoom, Microsoft Teams, Google Meet, Webex, and similar platforms</li>
+                  <li>Remote work and internal team meetings</li>
                   <li>Educational use in online classes and learning</li>
-                  <li>Personal streaming and content creation</li>
+                  <li>Webinars, livestreams, and broadcast productions</li>
+                  <li>Client calls and sales conversations</li>
+                  <li>Podcasts and recorded interviews</li>
                   <li>Freelance work and client presentations</li>
-                  <li>Video conferencing with colleagues</li>
+                  <li>Job interviews</li>
                 </ul>
+                <p style={{ color: '#065f46', marginBottom: '0', fontSize: '0.95rem', fontStyle: 'italic' }}>
+                  No attribution required. Free downloads are subject to the fair-use limits described on the <Link href="/license" style={{ color: '#047857' }}>License &amp; Usage</Link> page (currently 5 per day, 10 per rolling 30-day period).
+                </p>
               </div>
 
               {/* HD Premium Images Section */}
@@ -258,7 +264,7 @@ export default function Terms() {
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>License for Purchased HD Images</h3>
                 <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
-                  HD backgrounds obtained through one-time packs or a subscription are licensed for the same personal uses described in Section 3. Commercial use of HD images requires a separate commercial license. HD images may not be redistributed, resold, or shared with others, and your subscription does not transfer ownership of any image.
+                  HD backgrounds obtained through one-time packs or a subscription are licensed for the same individual professional uses described in Section 3 — buying adds resolution, not additional rights. Embedding images in products you sell requires a separate commercial license (Section 5). HD images may not be redistributed, resold, or shared with others, and your subscription does not transfer ownership of any image.
                 </p>
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Delivery</h3>
@@ -279,10 +285,10 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                5. Restrictions - Commercial Use Prohibited
+                5. Restrictions - Redistribution and Embedding Prohibited
               </h2>
-              
-              {/* Commercial Restrictions */}
+
+              {/* Restrictions */}
               <div style={{
                 background: '#fef2f2',
                 border: '2px solid #ef4444',
@@ -296,26 +302,29 @@ export default function Terms() {
                   color: '#991b1b',
                   marginBottom: '1rem'
                 }}>
-                  ❌ Prohibited Commercial Uses
+                  ❌ Prohibited Uses (Free, HD, or Subscription)
                 </h3>
                 <p style={{ color: '#991b1b', marginBottom: '1rem' }}>
-                  You are specifically restricted from all commercial uses, including:
+                  Regardless of which tier you are on, you are restricted from the following uses:
                 </p>
                 <ul style={{
                   listStyle: 'disc',
                   paddingLeft: '2rem',
                   color: '#dc2626',
-                  marginBottom: '0'
+                  marginBottom: '1rem'
                 }}>
-                  <li>Redistributing or reselling our virtual backgrounds</li>
+                  <li>Redistributing or reselling our virtual backgrounds, in any resolution</li>
                   <li>Including backgrounds in products or services you sell</li>
-                  <li>Using backgrounds in commercial marketing materials</li>
-                  <li>Uploading to stock photo websites or marketplaces</li>
-                  <li>Using in website templates or themes for sale</li>
-                  <li>Including in apps or software for distribution</li>
-                  <li>Creating derivative works for commercial purposes</li>
-                  <li>Using for corporate training materials sold to third parties</li>
+                  <li>Uploading to stock photo websites or asset marketplaces</li>
+                  <li>Print materials sold or distributed commercially</li>
+                  <li>Using in website templates, apps, or themes for sale</li>
+                  <li>Training materials sold or licensed to third parties</li>
+                  <li>Creating derivative works for redistribution or sale</li>
+                  <li>Adding your company logo or wordmark directly into an image (see Section 7, Branded Backgrounds)</li>
                 </ul>
+                <p style={{ color: '#991b1b', marginBottom: '0' }}>
+                  The embedding uses above are available under a paid commercial license: an <strong>Extended License ($49/image)</strong> or a <strong>Commercial Library License ($299/year)</strong> covering the entire catalog for one company. See <Link href="/commercial-license" style={{ color: '#991b1b' }}>Commercial Licensing</Link>.
+                </p>
               </div>
 
               <h2 style={{

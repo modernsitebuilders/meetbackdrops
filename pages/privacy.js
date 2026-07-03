@@ -95,7 +95,7 @@ export default function Privacy() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: April 25, 2026
+                Last updated: July 3, 2026
               </p>
             </div>
 
@@ -203,6 +203,7 @@ export default function Privacy() {
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
                   <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website (hosting, analytics, etc.)</li>
                   <li><strong>Payment Processing (Stripe):</strong> When you purchase HD images, your payment is processed by Stripe, Inc. Stripe receives your payment details and billing information directly. MeetBackdrops does not store your card details. Stripe&apos;s privacy policy is available at <a href="https://stripe.com/privacy" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
+                  <li><strong>Affiliate Links (Amazon Associates):</strong> Some blog articles contain Amazon affiliate links. If you click one, Amazon may set cookies on its own domain and we may earn a commission on qualifying purchases, at no additional cost to you. We do not share any of your data with Amazon. Amazon&apos;s privacy notice is available at <a href="https://www.amazon.com/privacy" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">amazon.com/privacy</a>.</li>
                   <li><strong>Legal Requirements:</strong> We may disclose information when required by law or to protect our rights</li>
                   <li><strong>Business Transfers:</strong> In the event of a merger or acquisition, your information may be transferred</li>
                 </ul>
