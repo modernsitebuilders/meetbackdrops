@@ -114,6 +114,39 @@ CATEGORY_GUIDE = {
 ALLOWED = set(CATEGORY_GUIDE)
 CATEGORY_FOLDER = {"bookshelves": "bookshelves-bright", "wall-shelves": "wall-shelves-bright"}
 
+# ── Seasonal GATE ─────────────────────────────────────────────────────────────
+# The flat "pick one slug" classifier reliably ranks the ROOM over the SEASON, so
+# season-styled offices/home-offices land in office/home-office and seasonal
+# categories starve (e.g. a full fall batch classified 0/20 into fall-backgrounds,
+# 2026-07-04). Fix: a two-field decision — pick the room, then a strict, high-
+# precision season GATE that defaults to "none". Final category = season if the
+# gate fires, else room. Validated by image-pipeline/backtest_seasonal.py:
+# 29/30 professional rooms stay non-seasonal, 16/16 fall recall.
+SEASON_SLUGS = {"christmas-backgrounds", "halloween-backgrounds", "valentines-backgrounds",
+                "easter-backgrounds", "spring-backgrounds", "summer-backgrounds", "fall-backgrounds"}
+ROOM_GUIDE = {k: v for k, v in CATEGORY_GUIDE.items() if k not in SEASON_SLUGS}
+ROOM_SLUGS = set(ROOM_GUIDE)
+
+# Strict triggers — a season is chosen ONLY when one is genuinely present.
+SEASON_GATE = {
+    "fall-backgrounds":       "autumn-colored foliage (orange/red/amber leaves) as a distinct element, OR harvest props (pumpkins, gourds, wheat, cornucopia), OR Thanksgiving styling.",
+    "christmas-backgrounds":  "a christmas tree, ornamented wreath/garland, stockings, or clearly festive Christmas decor.",
+    "halloween-backgrounds":  "jack-o-lanterns, cobwebs, bats, or eerie/gothic spooky night styling (spooky specifically — NOT merely warm autumn).",
+    "valentines-backgrounds": "hearts, roses, or romantic red/pink Valentine styling.",
+    "easter-backgrounds":     "easter eggs, bunnies, or pastel Easter-holiday decor.",
+    "spring-backgrounds":     "fresh blossoms / cherry blossom / daffodils as a dominant fresh-spring element.",
+    "summer-backgrounds":     "a beach, poolside, tropical or coastal, sun-drenched seaside setting.",
+}
+
+
+def resolve_category(m: dict) -> str:
+    """Room + season-gate → final category. Season wins only when the gate fires."""
+    room = m.get("room_category")
+    if room not in ROOM_SLUGS:
+        room = "office-spaces"
+    season = m.get("season")
+    return season if season in SEASON_SLUGS else room
+
 USE_CASES = ["professional video calls", "executive video calls", "remote work",
              "online presentations", "team standups", "virtual meetings"]
 FORBIDDEN_RE = re.compile(r"\b(gamer|gamers|gaming|twitch|streamer|streamers|livestreamer|esports|obs|stunning|amazing|premium|ultimate|stock)\b", re.I)
@@ -188,17 +221,25 @@ def pick_use_case(seed_str: str) -> str:
 
 
 def build_vision_prompt(use_case: str, retry_hint: str = "") -> str:
-    cats = "\n".join(f"- {slug}: {desc}" for slug, desc in CATEGORY_GUIDE.items())
+    rooms = "\n".join(f"- {slug}: {desc}" for slug, desc in ROOM_GUIDE.items())
+    seasons = "\n".join(f"- {slug}: {desc}" for slug, desc in SEASON_GATE.items())
     return f"""You are classifying and writing SEO metadata for ONE image sold as a virtual background for corporate / executive video calls on Zoom, Microsoft Teams, and Google Meet. No people are in the image.
 
 BRAND: MeetBackdrops — a virtual set design studio for corporate / executive professionals. NOT gaming/streaming/Twitch. NEVER use: gamer, gaming, Twitch, streamer, OBS, esports, livestream, stunning, amazing, perfect, premium, ultimate, stock. Approved: designed, studio-designed, 4K-upscaled, composed for camera, virtual background, virtual set, high-fidelity, corporate, executive, boardroom.
 
-STEP 1 — CATEGORY. Look at the image and choose EXACTLY ONE category slug from this list whose description best matches what is actually shown:
-{cats}
+Classify in two INDEPENDENT steps, then write metadata.
 
-STEP 2 — metadata. Then output strict JSON with EXACTLY these keys: category, title, description, alt, tags.
+STEP A — ROOM. Choose the single best slug for the physical SETTING, IGNORING any seasonal styling, from:
+{rooms}
 
-=== category === one slug from the list above, verbatim.
+STEP B — SEASON GATE. Decide whether the image is DELIBERATELY styled for a season/holiday. Default is "none". Choose a season slug ONLY when a clear, intentional seasonal element is genuinely part of the scene:
+{seasons}
+Otherwise choose "none". DO NOT infer a season from ambience alone. The following are NOT seasonal (season = "none"): warm or golden-hour lighting on its own; wood tones, a cozy blanket, or a fireplace with no seasonal decor; a single green houseplant or generic indoor greenery; a neutral, professional, or prop-free room; generic outdoor greenery with no autumn color, blossoms, or beach/coast. When unsure, choose "none".
+
+STEP C — metadata. Output strict JSON with EXACTLY these keys: room_category, season, title, description, alt, tags.
+
+=== room_category === one ROOM slug from Step A, verbatim.
+=== season === one SEASON slug from Step B verbatim, or the string "none".
 === title ({TtlMIN}-{TtlMAX} chars incl " | MeetBackdrops") === concrete image-grounded subject; Title Case; ends with " | MeetBackdrops"; no "background"/"backdrop"/"wallpaper"; no emojis.
 === description ({DScMIN}-{DScMAX} chars — HARD) === visual specifics unique to THIS image; weave the phrase "{use_case}" mid-sentence; don't start with A/An/This/The; count characters.
 === alt ({AltMIN}-{AltMAX} chars) === factual visual description for screen readers; don't start with "Image of"/"A picture of"; don't mention Zoom/virtual/background/MeetBackdrops.
@@ -254,6 +295,7 @@ def classify(webp_bytes: bytes, handle: str) -> dict:
     for attempt in range(3):
         try:
             m = vision_call(webp_bytes, use_case, hint)
+            m["category"] = resolve_category(m)  # room + season-gate → final slug
             issues = validate(m)
             if not issues:
                 return m
