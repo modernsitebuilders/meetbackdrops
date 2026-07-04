@@ -14,6 +14,13 @@ public/images/**/*-hd.png
 .claude/worktrees/
 
 # Pipeline safety backups + logs + intermediate pilot outputs (kept locally only)
+# Catch-all patterns for the dated backup files the maintenance scripts drop anywhere
+# in the tree (belt-and-suspenders over the path-specific rules below).
+*.legacy-sweep-backup.*
+*.straggler-purge-backup.*
+*.copy-rewrite-backup.*
+*.alt-rewrite-backup.*
+**/final_manifest.backup.json
 image-pipeline/*.backup.*.json
 image-pipeline/*.delete-easter-backup.*
 image-pipeline/*.merge-vision-backup.*.json

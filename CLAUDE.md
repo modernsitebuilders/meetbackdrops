@@ -77,7 +77,7 @@ data/categoryData.js                  ← UI layer (must align with manifest)
 public/data/image-metadata-complete.json  ← LEGACY (phase out)
 ```
 
-**`final_manifest.json`** — Array of ~1,029 image objects:
+**`final_manifest.json`** — Array of ~1,392 image objects:
 ```json
 {
   "id": "art-gallery-:1",
@@ -95,7 +95,7 @@ public/data/image-metadata-complete.json  ← LEGACY (phase out)
 
 > **`folder` field is the actual R2 path** — some merged categories (bookshelves, wall-shelves) split into bright/dark subfolders. Always use `folder` when constructing R2 URLs for those.
 
-**`data/categoryData.js`** — Frontend-optimized arrays per category. Powers the `/category/[slug]` pages and `ImageGrid`. If an image is in the manifest but not here, it won't appear on the category page. Keep these in sync — both should report the same per-category counts and the same total (currently 1,073 entries in each).
+**`data/categoryData.js`** — Frontend-optimized arrays per category. Powers the `/category/[slug]` pages and `ImageGrid`. If an image is in the manifest but not here, it won't appear on the category page. Keep these in sync — both should report the same per-category counts and the same total (currently ~1,392 entries in each; run the count cross-check rather than trusting this number).
 
 **`public/data/image-metadata-complete.json`** — Old system. Still used by `pages/hd.js` (`isHdOnly` function) to determine which images are HD-exclusive (no free version). Eventually should be replaced by an `isHD`/`hdOnly` field in the manifest.
 
@@ -188,17 +188,19 @@ This is [scripts/submit-indexnow.js](scripts/submit-indexnow.js). Targeted forms
 ## HD System
 
 ### Files involved
-- `pages/hd.js` — the HD page (`/hd`). Contains the hardcoded `products` array and `CATEGORY_LABELS`.
-- `lib/hdImages.js` — exports `HD_BASE_IDS` Set. Used by `ImagePreviewModal` and `HDComparisonHero` to show upsell prompts on category pages.
+- `lib/hdProducts.js` — **GENERATED single source of truth.** Exports both `HD_PRODUCTS` (the catalog) and `HD_BASE_IDS` (the upsell Set). Do not hand-edit.
+- `pages/hd.js` — the HD page (`/hd`). Imports `HD_PRODUCTS as products` from `lib/hdProducts`.
+- `lib/hdImages.js` — **deprecated shim** that just re-exports `HD_BASE_IDS` from `lib/hdProducts` for older imports. Safe to delete once nothing imports it.
+- `scripts/generate-hd-products.js` — regenerates `lib/hdProducts.js` from `final_manifest.json` (entries with `hd: true`). Runs as part of `npm run prebuild`.
 - `pages/api/hd-preview-url.js` — generates signed S3 URL for HD PNG preview.
 - `pages/api/hd-s3-download.js` — serves HD PNG download.
 
-### How HD products are defined (split across 3 places — fragile, needs future consolidation)
-1. **`products` array in `pages/hd.js`** — the canonical list of what shows on the HD page. Each entry: `{ id, name, category }` where `id` is like `easter-background-03-hd`.
-2. **`HD_BASE_IDS` in `lib/hdImages.js`** — the same base IDs (without `-hd`), used for upsell chips on category pages. Must stay in sync with `products`.
-3. **`hdOnly` flag in `public/data/image-metadata-complete.json`** — marks images that have no free version (HD exclusive). Used by `isHdOnly()` in `hd.js` to show the "Exclusive" badge and change the preview behavior.
+### How HD products are defined (consolidated — single source)
+HD products are the manifest entries with `hd: true` (currently 204). `scripts/generate-hd-products.js` reads those and writes `lib/hdProducts.js`, which is the one source for both the `/hd` catalog and the `HD_BASE_IDS` upsell set — so `products` and `HD_BASE_IDS` can no longer drift.
 
-> **Sync rule:** If you add an HD product, add it to BOTH the `products` array in `hd.js` AND `HD_BASE_IDS` in `hdImages.js`. If it's HD-only (no free download), also set `hdOnly: true` in `image-metadata-complete.json`.
+> **To add/remove an HD product:** flip the `hd` flag on the manifest entry and run `node scripts/generate-hd-products.js` (or just `npm run build`, which regenerates it in prebuild). Do NOT edit `lib/hdProducts.js`, `pages/hd.js`, or `lib/hdImages.js` by hand.
+>
+> **HD-only images** (no free version) are still marked by the `hdOnly` flag in `public/data/image-metadata-complete.json`, read by `isHdOnly()` in `hd.js` to show the "Exclusive" badge. (Legacy — eventually fold into the manifest.)
 
 ### HD thumbnail URL construction
 ```js
@@ -269,7 +271,7 @@ When you add a new page, category, or blog post, the title/description will be v
 
 1. **Don't add entries to `cloudinary-urls.json`** — it's legacy. R2 images use direct URL construction.
 2. **If an HD thumbnail is broken**, check if the webp exists in `final_manifest.json` AND `data/categoryData.js`. Missing from both = not on R2. Always confirm with a curl HEAD against `assets.streambackdrops.com/webp/{category}/{filename}.webp` before assuming the manifest is right — the manifest has been known to retain ghost entries pointing to deleted files.
-3. **HD product sync** — `products` in `hd.js` and `HD_BASE_IDS` in `hdImages.js` must match. If a product is in one but not the other, upsell chips will be inconsistent.
+3. **HD products are generated — don't hand-sync.** `products` and `HD_BASE_IDS` both come from generated `lib/hdProducts.js`; to change the HD set, flip `hd: true` in the manifest and run `node scripts/generate-hd-products.js`. Editing `hd.js`/`hdImages.js` by hand will be overwritten on the next build.
 4. **`folder` vs `category`** — For most images they're the same. For bookshelves/wall-shelves they differ (e.g. category=`bookshelves`, folder=`bookshelves-bright`). Always use `folder` for R2 paths on those categories.
 5. **`image-metadata-complete.json` is legacy** — still used for `hdOnly` detection in `hd.js`. Don't rely on it for anything new; add fields to `final_manifest.json` instead.
 6. **Manifest ↔ categoryData filename naming** — the two sources must use identical filenames. Past bugs: `nature-landscape-NN.webp` (singular, on R2) vs `nature-landscapes-NN.webp` (plural, in manifest). When adding a category or rewriting filenames, cross-check both sides with a Set diff.

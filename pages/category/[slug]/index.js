@@ -300,15 +300,16 @@ export async function getStaticProps({ params }) {
     const categoryFilenames = new Set(category.images.map((img) => img.filename));
     const manifestImages = getCategoryIndex(params.slug)
       .filter((img) => categoryFilenames.has(img.filename));
+    // Only `title` and `alt` are read client-side (ImageGrid tile alt/title
+    // attributes). description/keywords/width/height were shipped to every tile
+    // but never consumed — dropping them keeps the page-data payload well under
+    // Next's 128 kB warning threshold on large categories (e.g. office-spaces,
+    // 275 images). The preview modal reads from the image object, not this map;
+    // JSON-LD is built server-side in lib/seo/seo.js from the manifest, not here.
     imageMetadata = Object.fromEntries(
       manifestImages.map((img) => [img.filename, {
-        filename: img.filename,
         title: img.title,
-        description: img.description,
         alt: img.alt,
-        keywords: img.keywords,
-        width: img.width,
-        height: img.height,
       }])
     );
 

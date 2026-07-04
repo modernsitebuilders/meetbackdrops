@@ -12,6 +12,11 @@
  *   - All categories in data/categoryData.js, rendered through the category
  *     [slug] page template at pages/category/[slug]/index.js
  *   - All blog posts in data/blogPosts.js
+ *   - Persona collection pages in data/collections/personas.js, rendered through
+ *     pages/collections/[slug].js (title/description passed straight to <Layout>)
+ *   - Platform landing pages in data/platforms.js, rendered through
+ *     pages/[platform]/index.js (platform.title/description used verbatim; the
+ *     engine only self-asserts the platform×theme pages, not these index pages)
  *   - Raw <title>/<meta name="description"> in pages/privacy.js, pages/404.js, etc.
  *
  * Run: `npm run check:seo` (also runs as part of `prebuild`).
@@ -225,6 +230,42 @@ for (const rel of NOINDEX_RAW_HEAD_PAGES) {
     check(`blog /${slug}`, title, desc);
   }
 }
+
+// ----- Persona collection pages + platform landing pages -----
+// Both files are ESM data modules whose { slug, title, description } are passed
+// straight to <Layout>. We regex the source (same approach as the blog parser)
+// rather than importing, to keep this script dependency-free CommonJS.
+// `description:` sits on the line *after* the key, so \s* must cross the newline.
+function checkSlugTitleDesc(relFile, labelPrefix) {
+  const abs = path.join(ROOT, relFile);
+  if (!fs.existsSync(abs)) { warnings.push(`${relFile}: file not found`); return; }
+  const src = fs.readFileSync(abs, 'utf8');
+  const slugRe = /\bslug:\s*'([a-z0-9-]+)'/g;
+  let m;
+  let count = 0;
+  while ((m = slugRe.exec(src))) {
+    const slug = m[1];
+    // Look only within this entry (up to the next slug) so we grab THIS entry's meta.
+    slugRe.lastIndex = m.index + m[0].length;
+    const nextSlug = src.slice(slugRe.lastIndex).search(/\bslug:\s*'[a-z0-9-]+'/);
+    const end = nextSlug === -1 ? src.length : slugRe.lastIndex + nextSlug;
+    const block = src.slice(m.index, end);
+    const tMatch = block.match(/\btitle:\s*(['"])((?:\\.|(?!\1).)*)\1/);
+    const dMatch = block.match(/\bdescription:\s*(['"])((?:\\.|(?!\1).)*)\1/);
+    if (!tMatch || !dMatch) {
+      warnings.push(`${labelPrefix} /${slug}: could not parse title/description`);
+      continue;
+    }
+    count++;
+    const title = tMatch[2].replace(/\\'/g, "'").replace(/\\"/g, '"');
+    const desc = dMatch[2].replace(/\\'/g, "'").replace(/\\"/g, '"');
+    check(`${labelPrefix} /${slug}`, title, desc);
+  }
+  if (count === 0) errors.push(`${relFile}: parser found 0 entries — regex likely broke`);
+}
+
+checkSlugTitleDesc('data/collections/personas.js', 'collection');
+checkSlugTitleDesc('data/platforms.js', 'platform');
 
 // ----- Report -----
 if (warnings.length) {
