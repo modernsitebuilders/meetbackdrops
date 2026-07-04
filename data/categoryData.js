@@ -204,6 +204,7 @@ const IMAGES_WALL_SHELVES_BRIGHT = [
   { filename: 'minimalist-scandinavian-home-office-wall-14077133.webp', title: 'Wall Shelves Bright Background 40' },
   { filename: 'wooden-wall-shelves-books-decorative-vases-small-plant-a403adff.webp', title: 'Wall Shelves Bright Background 41' },
   { filename: 'wooden-wall-shelves-modern-design-various-compartments-small-07d3e39f.webp', title: 'Wall Shelves Bright Background 42' },
+  { filename: 'textured-wall-shelf-displaying-stacked-books-basket-6a1fd9af.webp', title: 'Wall Shelves Bright Background 43' },
 ];
 
 // wall-shelves-dark: 64 images
@@ -550,6 +551,7 @@ const IMAGES_OFFICE_SPACES = [
   { filename: 'bright-executive-office-space-wooden-cabinet-abstract-art-ea39fd41.webp', title: 'Office Space Background 273' },
   { filename: 'lounge-area-leather-sofas-stone-accent-wall-large-windows-802eb722.webp', title: 'Office Space Background 274' },
   { filename: 'warm-wood-paneled-office-space-leather-armchair-bookshelves-b2ea1b9c.webp', title: 'Office Space Background 275' },
+  { filename: 'elegant-office-space-wooden-desk-soft-seating-natural-light-e352c62b.webp', title: 'Office Space Background 276' },
 ];
 
 // home-office: 100 images
@@ -669,6 +671,11 @@ const IMAGES_HOME_OFFICE = [
   { filename: 'cozy-home-office-leather-chair-wooden-desk-large-windows-01ddce82.webp', title: 'Home Office Background 113' },
   { filename: 'rustic-home-office-wooden-table-pendant-light-shelf-decor-93249faa.webp', title: 'Home Office Background 114' },
   { filename: 'stylish-home-office-stone-wall-large-bookshelf-wooden-desk-246ceb06.webp', title: 'Home Office Background 115' },
+  { filename: 'cozy-home-office-wooden-desk-shelves-plants-large-windows-855ef0e2.webp', title: 'Home Office Background 118' },
+  { filename: 'cozy-home-office-wooden-desk-chair-bookshelves-large-window-5db62d19.webp', title: 'Home Office Background 121' },
+  { filename: 'cozy-home-office-wooden-desk-comfortable-chair-window-9a6a5fb0.webp', title: 'Home Office Background 122' },
+  { filename: 'cozy-home-office-neutral-wall-white-chair-decorative-87a49a9f.webp', title: 'Home Office Background 124' },
+  { filename: 'cozy-home-office-stylish-bookshelf-warm-decor-natural-light-9935964d.webp', title: 'Home Office Background 127' },
 ];
 
 // living-rooms: 39 images
@@ -1043,6 +1050,7 @@ const IMAGES_LIBRARIES = [
   { filename: 'attic-library-sloped-ceiling-colorful-patterned-cushions-d84df879.webp', title: 'Library Background 40' },
   { filename: 'spacious-art-studio-large-table-art-supplies-bookshelves-ffdac148.webp', title: 'Library Background 41' },
   { filename: 'modern-library-glass-walls-illuminated-shelves-filled-books-f97c519a.webp', title: 'Library Background 42' },
+  { filename: 'cozy-library-wooden-bookshelves-comfortable-sofa-large-7e429cb1.webp', title: 'Library Background 32' },
 ];
 
 // christmas-backgrounds: 93 images
@@ -1371,6 +1379,18 @@ const IMAGES_FALL_BACKGROUNDS = [
   { filename: 'modern-home-office-large-windows-showcasing-autumn-landscape-3e8bd1dd.webp', title: 'Fall Background 8' },
   { filename: 'cozy-home-office-bookshelf-modern-chair-large-windows-aad39a90.webp', title: 'Fall Background 9' },
   { filename: 'wooden-shelf-displays-pumpkin-candle-soft-natural-light-a34ccab0.webp', title: 'Fall Background 10' },
+  { filename: 'cozy-home-office-wooden-desk-plants-autumn-trees-visible-333143ea.webp', title: 'Fall Background 11' },
+  { filename: 'minimalist-home-office-scene-wooden-desk-chair-autumn-leaves-b2e95f1f.webp', title: 'Fall Background 12' },
+  { filename: 'cozy-home-office-stone-fireplace-plaid-armchair-decorative-1717c174.webp', title: 'Fall Background 13' },
+  { filename: 'cozy-chair-blanket-lamp-beside-small-table-pumpkins-softly-036b093d.webp', title: 'Fall Background 14' },
+  { filename: 'urban-loft-interior-large-windows-autumn-trees-outside-e3164039.webp', title: 'Fall Background 15' },
+  { filename: 'wooden-console-table-pumpkins-candles-vase-flowers-against-d9d15c9b.webp', title: 'Fall Background 16' },
+  { filename: 'modern-office-space-white-desk-beige-chair-autumn-b6be2453.webp', title: 'Fall Background 17' },
+  { filename: 'rustic-home-office-wooden-walls-autumn-decor-table-fireplace-ec4fb9f4.webp', title: 'Fall Background 18' },
+  { filename: 'textured-earthy-wall-decorative-objects-like-pumpkins-candle-8352e88e.webp', title: 'Fall Background 19' },
+  { filename: 'cozy-home-office-wooden-beams-soft-curtains-view-autumn-162f7ac4.webp', title: 'Fall Background 20' },
+  { filename: 'spacious-home-office-large-windows-showcasing-autumn-trees-594a5903.webp', title: 'Fall Background 21' },
+  { filename: 'cozy-home-office-large-windows-warm-autumn-light-comfortable-bd805fe0.webp', title: 'Fall Background 22' },
 ];
 
 // bokeh-backgrounds: 50 images
