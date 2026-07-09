@@ -247,6 +247,47 @@ Bookshelves and Wall Shelves are "merged" categories — they combine bright/dar
 
 ---
 
+## Analytics → Neon (queryable mirror)
+
+First-party analytics land in a **Google Sheet** (`GOOGLE_SHEET_ID`) — events queue in
+Redis and `pages/api/cron/flush-analytics.js` batch-appends them every 6 hours. That
+sheet is the **write path and remains so**. For querying/joins we mirror it into
+**Neon Postgres** (same pattern as the sister sites rightdumpster / remodelcalculators:
+`pg` Pool, numbered SQL migrations tracked in a `_migrations` table, idempotent
+upsert-by-hash sync that keeps a verbatim `source_data jsonb` per row).
+
+- `lib/db.js` — `pg` `Pool` singleton + `query()` (for future API routes).
+- `lib/migrations/db/00N_*.sql` — five tables from the sheet tabs:
+  `analytics_events` (`Analytics` + `Analytics_Archive`), `email_list` (`Email List`),
+  `reviews` (`Reviews`), and two separate sales-campaign lead tables —
+  `branded_inquiries` (`Branded Inquiries` tab) and `licensing_inquiries`
+  (`Licensing Inquiries` tab). Branded Backgrounds and Licensing are distinct
+  campaigns/products, so they get distinct tables (same 11-col schema; one generic
+  `syncInquiries(tab, table)` drives both). Derived caches (`PopularCache`,
+  `Dashboard`) and the `Suspicious Downloads` / `OutReaches` ops tabs are NOT mirrored.
+  > Caveat: `pages/api/branded-inquiry.js` writes to a `Branded Inquiries` tab that
+  > does not yet exist in the sheet (a live bug), so `branded_inquiries` stays empty
+  > until that tab exists; the sync tolerates the missing tab and fills it automatically.
+- `scripts/migrate.js` — applies pending migrations in order.
+- `scripts/data-platform/sync-sheets.mjs` (+ `_sheets.mjs` helpers) — reads the tabs
+  and upserts by `row_hash` (sha256 of the verbatim cells) with
+  `ON CONFLICT (row_hash) DO NOTHING`, so re-runs only add new rows. ET timestamp
+  strings are parsed best-effort into `*_at timestamptz` (DST-correct via `Intl`);
+  the raw row is always preserved in `source_data`, so a parse miss loses nothing.
+
+**Setup / usage** (`DATABASE_URL` must be in `.env.local` — a Neon pooled connection
+string; the `--env-file=.env.local` in the npm scripts loads it plus the Google creds):
+
+```bash
+npm run migrate      # apply lib/migrations/db/*.sql (idempotent)
+npm run data:sync    # pull sheet tabs into Neon (idempotent; re-run anytime for new rows)
+```
+
+No scheduler is wired — `data:sync` is run on demand. The Analytics tabs are
+append-only with no natural key, which is why dedup is by content hash, not upsert-key.
+
+---
+
 ## SEO meta budgets (enforced)
 
 Every page that ships to the index MUST have:
