@@ -39,7 +39,7 @@ const WALL_SHELVES_HUB_FEATURED = [
 const HUB_SUBHEAD =
   'Studio-styled wall shelves — designed shelf by shelf for camera, not lifted from a stock library.';
 
-function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collections = [], faqs = [] }) {
+function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collections = [], faqs = [], reviewsData }) {
   const [previewImage, setPreviewImage] = useState(null);
   const {
     handleDownload,
@@ -57,6 +57,9 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
   if (!category) return null; // unreachable: gated by getStaticProps
 
   const eyebrow = `The Collection · ${category.name}`;
+  const rating = reviewsData?.averageRating;
+  const reviewCount = reviewsData?.totalReviews;
+  const hasReviews = Boolean(rating && reviewCount);
 
   return (
     <>
@@ -78,6 +81,20 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
             <span style={{ color: '#d1d5db' }}>·</span>
             <span style={{ color: '#111827', fontWeight: 600 }}>{category.name}</span>
           </nav>
+
+          {hasReviews && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              margin: '0 0 1.75rem',
+              fontSize: '0.85rem',
+              color: '#4b5563',
+            }}>
+              <span aria-hidden="true" style={{ color: '#E0A82E', letterSpacing: '0.06em', fontSize: '0.95rem' }}>★★★★★</span>
+              <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · {reviewCount} client reviews</span>
+            </div>
+          )}
 
           {slug === 'wall-shelves' ? (
             <>
@@ -211,7 +228,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
   );
 }
 
-export default function CategoryPage({ slug, scores, metadata = {}, collections = [], faqs = [] }) {
+export default function CategoryPage({ slug, scores, metadata = {}, collections = [], faqs = [], reviewsData = null }) {
   // `slug` is supplied by getStaticProps (fallback:false + notFound:true on
   // missing). seo() throws on invalid input — there is no fallback branch,
   // no router-derived inference, no defensive "if (!seo)".
@@ -239,7 +256,7 @@ export default function CategoryPage({ slug, scores, metadata = {}, collections 
         ))}
       </Head>
 
-      <CategoryContent slug={slug} scores={scores} metadata={metadata} seoData={s} collections={collections} faqs={faqs} />
+      <CategoryContent slug={slug} scores={scores} metadata={metadata} seoData={s} collections={collections} faqs={faqs} reviewsData={reviewsData} />
     </Layout>
   );
 }
@@ -360,6 +377,17 @@ export async function getStaticProps({ params }) {
   // as FAQPage schema by lib/seo/seo.js. The two read from the same source.
   const faqs = getFAQs(params.slug);
 
+  // Site-wide review aggregate (same live source /hd and the homepage use) —
+  // powers the compact star trust line under the breadcrumb. Degrades to null
+  // (line hidden) if the Sheet is unreachable.
+  let reviewsData = null;
+  try {
+    const { getReviewsData } = await import('../../../lib/reviews');
+    reviewsData = await getReviewsData();
+  } catch (e) {
+    console.error('Category reviews lookup failed:', e.message);
+  }
+
   return {
     props: {
       slug: params.slug,
@@ -367,6 +395,7 @@ export async function getStaticProps({ params }) {
       metadata: imageMetadata,
       collections,
       faqs,
+      reviewsData,
     },
     revalidate: 3600,
   };
