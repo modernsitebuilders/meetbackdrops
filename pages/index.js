@@ -42,7 +42,7 @@ const CategoryGrid = dynamic(
   }
 );
 
-export default function Home() {
+export default function Home({ reviewsData }) {
   const router = useRouter();
   
   const navigate = (path) => {
@@ -161,6 +161,50 @@ export default function Home() {
           Free samples — no signup. HD editions from $4.99.
         </p>
 
+        {/* In-season feature — swap the category/copy each season. Summer leads
+            conversion in the July window; rotate to fall/holiday sets as the
+            season turns (see the image-content priorities note). */}
+        <section style={{ maxWidth: '1100px', margin: '3rem auto 0', padding: '0 1rem' }}>
+          <Link
+            prefetch={false}
+            href="/category/summer-backgrounds"
+            style={{
+              display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
+              gap: '1rem', textDecoration: 'none',
+              padding: '1.5rem 1.75rem', borderRadius: '14px',
+              border: '1px solid #E0A82E',
+              background: 'linear-gradient(90deg, #fffaf0 0%, #fff 60%)',
+            }}
+          >
+            <div style={{ textAlign: 'left' }}>
+              <div style={{
+                fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase',
+                color: '#9a6a3a', fontWeight: 700, marginBottom: '0.4rem',
+              }}>
+                In Season Now
+              </div>
+              <div style={{
+                fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+                fontWeight: 600, letterSpacing: '-0.02em',
+                fontSize: 'clamp(1.35rem, 2.6vw, 1.85rem)', color: '#111827',
+              }}>
+                Summer virtual backgrounds
+              </div>
+              <p style={{ color: '#4b5563', margin: '0.35rem 0 0', fontSize: '0.95rem', lineHeight: 1.5 }}>
+                Bright, sunlit sets designed for camera — our most-downloaded collection this month.
+              </p>
+            </div>
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap',
+              padding: '0.7rem 1.4rem', borderRadius: '999px',
+              background: '#111827', color: '#fff', fontWeight: 600, fontSize: '0.9rem',
+            }}>
+              Browse summer sets
+              <span aria-hidden="true">→</span>
+            </span>
+          </Link>
+        </section>
+
         <WhyDifferent />
 
         {/* Browse by platform — links into the platform landing hubs */}
@@ -252,7 +296,7 @@ export default function Home() {
           <YoutubeEmbed videoId="CFx0FH6Y-cc" title="MeetBackdrops Overview" />
         </div>
 
-        <SocialProof />
+        <SocialProof reviewsData={reviewsData} />
 
         {/* Curated by profession — links into /collections persona hub */}
         <section style={{ maxWidth: '1100px', margin: '4rem auto 1rem', padding: '0 1rem', textAlign: 'center' }}>
@@ -320,4 +364,10 @@ export default function Home() {
       </section>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const { getReviewsData } = await import('../lib/reviews');
+  const reviewsData = await getReviewsData();
+  return { props: { reviewsData }, revalidate: 3600 };
 }

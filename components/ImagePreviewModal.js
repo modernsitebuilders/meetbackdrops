@@ -231,44 +231,53 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
               Download Free Sample
             </button>
 
-            <a
-              href="https://zoom.us/oauth/authorize?response_type=code&client_id=10qROZhCTrK9wfXTtVHmiw&redirect_uri=https://meetbackdrops.com/api/zoom/callback"
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Zoom App is submitted to the Marketplace but not yet approved, so the
+                OAuth install flow is a dead end. Show a non-navigating "coming soon"
+                affordance instead; still log the click so we keep measuring Zoom demand
+                (the install-intent signal that helps prioritize getting approved). */}
+            <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 trackAnalytics('zoom_install_click', image.filename, slug);
               }}
+              title="Zoom app coming soon"
               style={{
                 backgroundColor: 'transparent',
-                color: '#fff',
+                color: 'rgba(255,255,255,0.55)',
                 padding: '0.85rem 1.75rem',
-                border: '1px solid rgba(255,255,255,0.35)',
-                borderBottom: '2px solid rgba(255,255,255,0.35)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                borderBottom: '2px solid rgba(255,255,255,0.18)',
                 borderRadius: '0',
                 fontSize: '0.78rem',
                 fontWeight: 600,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                cursor: 'pointer',
-                transition: 'border-color 0.2s ease, color 0.2s ease',
+                cursor: 'default',
                 whiteSpace: 'nowrap',
                 fontFamily: 'inherit',
-                textDecoration: 'none',
                 textAlign: 'center',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '0.4rem',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#fff'; e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.35)'; }}
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v9.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/>
               </svg>
               Use in Zoom
-            </a>
+              <span style={{
+                fontSize: '0.6rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                padding: '0.12rem 0.4rem',
+                marginLeft: '0.15rem',
+                borderRadius: '999px',
+                backgroundColor: 'rgba(224,168,46,0.9)',
+                color: '#111827',
+              }}>Soon</span>
+            </button>
 
             {hasHd && (
               <Link

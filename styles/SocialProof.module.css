@@ -20,10 +20,17 @@
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 2rem;
   margin: 0 auto;
   max-width: 900px;
+}
+
+.stars {
+  color: var(--brand-gold, #E0A82E);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  line-height: 1;
 }
 
 .stat {
