@@ -4,11 +4,12 @@
   "description": "Professional virtual backgrounds for video calls",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-hd-products.js && node scripts/generate-sitemaps.js && node scripts/generate-search-index.js && node scripts/validate-dataset.js && node scripts/check-seo-meta.js && node scripts/check-seo-singularity.js && node scripts/verify-seo-invariance.js",
+    "prebuild": "node scripts/generate-hd-products.js && node scripts/generate-sitemaps.js && node scripts/generate-search-index.js && VALIDATION_MODE=STRICT-LITE node scripts/validate-dataset.js && node scripts/check-content-coverage.js && node scripts/check-seo-meta.js && node scripts/check-seo-singularity.js && node scripts/verify-seo-invariance.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "validate-dataset": "node scripts/validate-dataset.js",
+    "check:coverage": "node scripts/check-content-coverage.js",
     "check:seo": "node scripts/check-seo-meta.js",
     "check:seo:invariance": "node scripts/verify-seo-invariance.js",
     "check:seo:singularity": "node scripts/check-seo-singularity.js",
