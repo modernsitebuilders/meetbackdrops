@@ -251,12 +251,34 @@ Bookshelves and Wall Shelves are "merged" categories — they combine bright/dar
 
 First-party analytics land in a **Google Sheet** (`GOOGLE_SHEET_ID`) — events queue in
 Redis and `pages/api/cron/flush-analytics.js` batch-appends them every 6 hours. That
-sheet is the **write path and remains so**. For querying/joins we mirror it into
-**Neon Postgres** (same pattern as the sister sites rightdumpster / remodelcalculators:
-`pg` Pool, numbered SQL migrations tracked in a `_migrations` table, idempotent
-upsert-by-hash sync that keeps a verbatim `source_data jsonb` per row).
+sheet remains the **system of record** for the existing admin dashboards. For
+querying/joins we mirror it into **Neon Postgres** (same pattern as the sister sites
+rightdumpster / remodelcalculators: numbered SQL migrations tracked in a `_migrations`
+table, idempotent upsert-by-hash that keeps a verbatim `source_data jsonb` per row).
 
-- `lib/db.js` — `pg` `Pool` singleton + `query()` (for future API routes).
+**Neon is kept current two ways:**
+1. **Live dual-write (primary).** The tracking + form endpoints write each event
+   straight to Neon the instant it happens, via `lib/neonEvents.mjs` (the
+   `@neondatabase/serverless` HTTP driver — no pooling, safe on Vercel functions).
+   Wired into: the 5 analytics endpoints (`analytics`, `track-page-view`,
+   `track-preview`, `track-video-play`, `track-download`), plus `save-email` and
+   `submit-review`. Each live-write is a **safe no-op when `DATABASE_URL` is unset**
+   (local dev / preview) and never throws or blocks the response. So Neon is *live*,
+   not on the 6-hour flush lag. (`branded-inquiry.js` is intentionally not wired yet —
+   its own tab bug is being fixed separately.)
+2. **Daily reconciliation (backstop).** `.github/workflows/sync-neon.yml` runs
+   `npm run data:sync` once a day to catch any event whose live write failed and to
+   refresh tables with no live-write endpoint (`licensing_inquiries`). GitHub Actions,
+   not a Vercel cron (Hobby plan caps those).
+
+The live-write and the sync compute the **same `row_hash`** (shared recipe in
+`lib/sheetRowUtils.mjs`) from byte-identical row arrays, so when a live event is later
+read from the Sheet, `ON CONFLICT (row_hash) DO NOTHING` dedups it — **no double-count.**
+
+- `lib/db.js` — `pg` `Pool` singleton + `query()` (used by the local scripts / future API routes).
+- `lib/neonEvents.mjs` — live dual-write helpers (`insertAnalyticsEventSafe`,
+  `insertEmailSafe`, `insertReviewSafe`); `lib/sheetRowUtils.mjs` — the shared
+  `rowHash` / `parseEtTimestamp` recipe both paths use.
 - `lib/migrations/db/00N_*.sql` — five tables from the sheet tabs:
   `analytics_events` (`Analytics` + `Analytics_Archive`), `email_list` (`Email List`),
   `reviews` (`Reviews`), and two separate sales-campaign lead tables —
@@ -275,16 +297,20 @@ upsert-by-hash sync that keeps a verbatim `source_data jsonb` per row).
   strings are parsed best-effort into `*_at timestamptz` (DST-correct via `Intl`);
   the raw row is always preserved in `source_data`, so a parse miss loses nothing.
 
-**Setup / usage** (`DATABASE_URL` must be in `.env.local` — a Neon pooled connection
-string; the `--env-file=.env.local` in the npm scripts loads it plus the Google creds):
+**Setup / usage.** `DATABASE_URL` (Neon pooled connection string) is loaded by the
+npm scripts via `--env-file-if-exists=.env.local`. For the **live dual-write** to work
+in production, `DATABASE_URL` must also be set in **Vercel env** (Production); without
+it the live writes safely no-op. For the **daily reconciliation** Action, add
+`DATABASE_URL`, `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_EMAIL`, `GOOGLE_PRIVATE_KEY` as
+**GitHub repo secrets**.
 
 ```bash
 npm run migrate      # apply lib/migrations/db/*.sql (idempotent)
 npm run data:sync    # pull sheet tabs into Neon (idempotent; re-run anytime for new rows)
 ```
 
-No scheduler is wired — `data:sync` is run on demand. The Analytics tabs are
-append-only with no natural key, which is why dedup is by content hash, not upsert-key.
+The Analytics tabs are append-only with no natural key, which is why dedup is by
+content hash, not upsert-key.
 
 ---
 

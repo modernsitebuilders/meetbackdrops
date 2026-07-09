@@ -1,0 +1,48 @@
+name: Sync analytics sheet to Neon
+
+# Reconciliation backstop for the live Sheets→Neon mirror.
+#
+# Analytics/email/review events are written to Neon LIVE at request time (the
+# tracking + form endpoints dual-write via lib/neonEvents.mjs), so Neon is normally
+# already current. This daily job re-runs the full `npm run data:sync` to:
+#   - catch any event whose live write failed (transient Neon blip, cold deploy, etc.)
+#   - refresh the low-volume tables (licensing_inquiries has no live-write endpoint)
+# The sync is idempotent (ON CONFLICT (row_hash) DO NOTHING), so a re-run only adds
+# genuinely new rows — running it daily is safe and cheap.
+#
+# NOT a Vercel cron (Hobby plan caps those) — GitHub Actions, same as submit-indexnow.
+
+on:
+  schedule:
+    - cron: '17 8 * * *'   # daily ~08:17 UTC (~03–04 ET). Off-peak; exact minute avoids the top-of-hour stampede.
+  workflow_dispatch: {}     # manual "Run workflow" for an on-demand reconcile
+
+concurrency:
+  group: sync-neon
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync sheet tabs into Neon
+        run: npm run data:sync
+        env:
+          # npm run data:sync uses --env-file-if-exists=.env.local, which is absent
+          # in CI, so it reads these from the process env (GitHub repo secrets).
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_EMAIL: ${{ secrets.GOOGLE_SERVICE_EMAIL }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}

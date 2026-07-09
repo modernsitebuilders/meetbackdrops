@@ -2,6 +2,7 @@ import { Redis } from '@upstash/redis';
 import crypto from 'crypto';
 import { resolveByAnyExtension } from '../../lib/manifest';
 import { normalizeAnalyticsCategory } from '../../lib/analyticsNormalize';
+import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 
 function hashIP(ip) {
   return crypto.createHash('sha256').update(ip + 'salt_streambackdrops').digest('hex').substring(0, 16);
@@ -141,7 +142,9 @@ export default async function handler(req, res) {
       // ── 2. Daily limit (5 per 24h) ─────────────────────────────────────────
       const dailyCount = parseInt(await redis.get(dailyKey) || '0', 10);
       if (dailyCount >= 5) {
-        await redis.rpush('analytics:queue', JSON.stringify(buildRow('download_denied')));
+        const deniedRow = buildRow('download_denied');
+        await redis.rpush('analytics:queue', JSON.stringify(deniedRow));
+        await insertAnalyticsEventSafe(deniedRow); // live mirror to Neon (safe no-op without DATABASE_URL)
         console.log('⛔ Daily limit reached for IP:', hashedIP.substring(0, 8) + '...');
         return res.status(429).json({
           error: 'Daily download limit reached. You can download 5 images per day. Come back tomorrow!'
@@ -159,7 +162,9 @@ export default async function handler(req, res) {
           : thirtyDaysAgo;
         const daysUntilExpiry = Math.max(1, Math.ceil((oldestTs + 30 * 24 * 60 * 60 * 1000 - Date.now()) / (24 * 60 * 60 * 1000)));
 
-        await redis.rpush('analytics:queue', JSON.stringify(buildRow('download_denied')));
+        const deniedRow = buildRow('download_denied');
+        await redis.rpush('analytics:queue', JSON.stringify(deniedRow));
+        await insertAnalyticsEventSafe(deniedRow); // live mirror to Neon (safe no-op without DATABASE_URL)
         console.log('⛔ Monthly limit reached for IP:', hashedIP.substring(0, 8) + '...');
         return res.status(429).json({
           error: `Monthly download limit reached. Your oldest download will expire in ${daysUntilExpiry} day${daysUntilExpiry !== 1 ? 's' : ''}, then you can download more!`
@@ -189,6 +194,7 @@ export default async function handler(req, res) {
     // ── 5. Queue event ─────────────────────────────────────────────────────────
     const row = buildRow(eventType);
     await redis.rpush('analytics:queue', JSON.stringify(row));
+    await insertAnalyticsEventSafe(row); // live mirror to Neon (safe no-op without DATABASE_URL)
 
     console.log('✅ Download queued successfully:', { filename, category: cleanCategory });
     res.status(200).json({ success: true });

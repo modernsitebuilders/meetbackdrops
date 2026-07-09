@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import { insertReviewSafe } from '../../lib/neonEvents.mjs';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -52,29 +53,30 @@ export default async function handler(req, res) {
       });
     }
 
-    // Save review to Reviews sheet
+    // Save review to Reviews sheet. One shared row array so the Sheet write and the
+    // Neon live-write are byte-identical and reconcile (same row_hash) on the daily sync.
+    const reviewRow = [
+      new Date().toLocaleString('en-US', {
+        timeZone: 'America/New_York',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      }),
+      rating,
+      name,
+      comment,
+      email,
+      'pending'
+    ];
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: 'Reviews!A:F',
       valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: [[
-          new Date().toLocaleString('en-US', {
-            timeZone: 'America/New_York',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit'
-          }),
-          rating,
-          name,
-          comment,
-          email,
-          'pending'
-        ]]
-      }
+      requestBody: { values: [reviewRow] }
     });
+    await insertReviewSafe(reviewRow); // live mirror to Neon (safe no-op without DATABASE_URL)
 
     // If email was provided, save to Email List sheet
     if (email && email !== 'Not provided') {

@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import { insertEmailSafe } from '../../lib/neonEvents.mjs';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -36,25 +37,27 @@ export default async function handler(req, res) {
     const emailExists = emails.some(row => row[0] === email);
 
     if (!emailExists) {
+      // One timestamp value shared by the Sheet write and the Neon live-write so the
+      // two rows are byte-identical and reconcile (same row_hash) on the daily sync.
+      const emailRow = [
+        email,
+        source || 'bonus_download',
+        new Date().toLocaleString('en-US', {
+          timeZone: 'America/New_York',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      ];
       await sheets.spreadsheets.values.append({
         spreadsheetId,
         range: 'Email List!A:C',
         valueInputOption: 'USER_ENTERED',
-        requestBody: {
-          values: [[
-            email,
-            source || 'bonus_download',
-            new Date().toLocaleString('en-US', {
-              timeZone: 'America/New_York',
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-              hour: '2-digit',
-              minute: '2-digit'
-            })
-          ]]
-        }
+        requestBody: { values: [emailRow] }
       });
+      await insertEmailSafe(emailRow); // live mirror to Neon (safe no-op without DATABASE_URL)
     }
 
     return res.status(200).json({ success: true });

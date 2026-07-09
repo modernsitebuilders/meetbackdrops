@@ -1,4 +1,5 @@
 import { Redis } from '@upstash/redis';
+import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL,
@@ -66,6 +67,7 @@ export default async function handler(req, res) {
 
   try {
     await redis.rpush('analytics:queue', JSON.stringify(row));
+    await insertAnalyticsEventSafe(row); // live mirror to Neon (safe no-op without DATABASE_URL)
     res.status(200).json({ success: true });
   } catch (error) {
     console.error('Video play tracking failed:', error.message);

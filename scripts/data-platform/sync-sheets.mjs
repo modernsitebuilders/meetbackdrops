@@ -14,7 +14,7 @@
 // Run: npm run data:sync
 
 import pg from 'pg';
-import { getSheetsClient, fetchTab, rowHash, parseEtTimestamp, toInt } from './_sheets.mjs';
+import { getSheetsClient, fetchTab, rowHash, parseEtTimestamp, toInt, ANALYTICS_HASH_PREFIX } from './_sheets.mjs';
 
 const { Client } = pg;
 
@@ -58,7 +58,12 @@ async function syncAnalytics(client, sheets) {
       console.warn(`  ⚠️  ${tab}: ${e.message} — skipping tab`);
       continue;
     }
-    // No header row in the Analytics tabs (events are appended raw).
+    // No header row in the Analytics tabs (events are appended raw). Hash is
+    // namespaced by tab. The live dual-write (lib/neonEvents.mjs) uses the
+    // 'Analytics' tab prefix (ANALYTICS_HASH_PREFIX) because the flush appends live
+    // events to the Analytics tab — so a live row and its later Analytics-tab sync
+    // reconcile to one row. (An event manually MOVED to Analytics_Archive later is a
+    // rare edge that could re-add it under the archive prefix; acceptable.)
     for (const r of values) {
       if (!r || r.length === 0) continue;
       prepared.push({
