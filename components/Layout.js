@@ -31,6 +31,7 @@ export default function Layout({
   keywords = 'professional zoom backgrounds, corporate teams backgrounds, 4k virtual backgrounds, studio-designed backgrounds, modern home office backdrop, corporate meeting backgrounds, virtual set design, designed zoom backgrounds',
   image = '/meetbackdrops-og.png',
   structuredData,
+  reviewsData = null,
   noIndex = false,
   h1 = null,
   seoContent = null,
@@ -63,7 +64,22 @@ export default function Layout({
         "urlTemplate": "https://meetbackdrops.com/?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
-    }
+    },
+    // Brand-level rating from the live Reviews source. Attached to the
+    // Organization (the studio) — NOT to individual products — so the 4.9/N
+    // aggregate describes the entity it's actually about. Emitted only where a
+    // page passes reviewsData (the homepage), keeping it a single global node.
+    ...(reviewsData?.averageRating && reviewsData?.totalReviews
+      ? {
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": reviewsData.averageRating.toString(),
+            "reviewCount": reviewsData.totalReviews.toString(),
+            "bestRating": "5",
+            "worstRating": "1",
+          },
+        }
+      : {}),
   };
 
   return (
