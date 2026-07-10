@@ -23,7 +23,8 @@
     "add-images": "bash image-pipeline/run-batch.sh",
     "migrate": "node --env-file-if-exists=.env.local scripts/migrate.js",
     "data:sync": "node --env-file-if-exists=.env.local scripts/data-platform/sync-sheets.mjs",
-    "insights": "node --env-file-if-exists=.env.local scripts/data-platform/insights.mjs"
+    "insights": "node --env-file-if-exists=.env.local scripts/data-platform/insights.mjs",
+    "gaps": "node --env-file-if-exists=.env.local scripts/data-platform/gaps.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1030.0",
