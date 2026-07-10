@@ -468,17 +468,44 @@ export default function ImagePage({ image, related, categoryName, personaCollect
   );
 }
 
+// Only the most-trafficked image pages are pre-rendered at build time; the
+// rest (~1,300+ long-tail pages) render on-demand on first request via
+// fallback: 'blocking' and are then cached per `revalidate` below. This keeps
+// the build from rendering all ~1,400 pages every deploy — a large wall-clock
+// win — while the pages that actually get traffic stay warm on deploy.
+const WARM_PAGE_COUNT = 75;
+
 export async function getStaticPaths() {
   const { getAllImages } = require('../../../lib/manifest');
-  return {
-    paths: getAllImages().map(img => ({
+
+  // Rank by popularity score (keys in the scores file are `{slug}.webp`).
+  // If scores are unavailable for any reason, warm nothing and let every page
+  // render on-demand — never fail the build over the warm list.
+  let scores = {};
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const p = path.join(process.cwd(), 'public', 'data', 'image-scores-static.json');
+    scores = JSON.parse(fs.readFileSync(p, 'utf8')).scores || {};
+  } catch {
+    scores = {};
+  }
+
+  const paths = getAllImages()
+    .map(img => ({ img, score: scores[`${img.slug}.webp`]?.score ?? 0 }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, WARM_PAGE_COUNT)
+    .map(({ img }) => ({
       params: { slug: img.category, imageSlug: img.slug },
-    })),
-    // 'blocking' instead of false: unknown paths reach getStaticProps, where
-    // we can detect a slug whose canonical category has changed (because we
-    // recategorized it) and serve a 301 redirect to the new URL — preserving
-    // SEO equity from previously-indexed paths. True 404s still happen there
-    // for slugs that aren't in the manifest at all.
+    }));
+
+  return {
+    // 'blocking' instead of false: unknown/un-warmed paths reach
+    // getStaticProps, where we can detect a slug whose canonical category has
+    // changed (because we recategorized it) and serve a 301 redirect to the
+    // new URL — preserving SEO equity from previously-indexed paths. True 404s
+    // still happen there for slugs that aren't in the manifest at all.
+    paths,
     fallback: 'blocking',
   };
 }
