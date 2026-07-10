@@ -2,6 +2,7 @@ import { Redis } from '@upstash/redis';
 import crypto from 'crypto';
 import { resolveByAnyExtension } from '../../lib/manifest';
 import { normalizeAnalyticsCategory } from '../../lib/analyticsNormalize';
+import { shouldSkipAnalytics } from '../../lib/botFilter';
 import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 
 function hashIP(ip) {
@@ -27,22 +28,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  // Block tracking from bots, crawlers, and build processes
-  const userAgent = req.headers['user-agent'] || '';
-  const isBot = !userAgent ||
-    userAgent.includes('bot') ||
-    userAgent.includes('Bot') ||
-    userAgent.includes('crawler') ||
-    userAgent.includes('spider') ||
-    userAgent.includes('Prerender') ||
-    userAgent.toLowerCase().startsWith('node') ||
-    userAgent.includes('axios') ||
-    userAgent.includes('python') ||
-    userAgent.includes('curl') ||
-    userAgent.includes('wget');
-
-  if (isBot) {
-    console.log('🤖 Skipping bot/crawler:', userAgent);
+  // Block tracking from bots, crawlers, HTTP-lib scrapers, and browser-UA
+  // spoofers (shared gate — see lib/botFilter.js). Keeps automated "downloads"
+  // out of the popularity scoring that feeds featured/most-popular rankings.
+  if (shouldSkipAnalytics(req)) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 

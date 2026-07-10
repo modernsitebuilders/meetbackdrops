@@ -1,5 +1,5 @@
 import { Redis } from '@upstash/redis';
-import { isBotUserAgent } from '../../lib/botFilter';
+import { shouldSkipAnalytics } from '../../lib/botFilter';
 import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 
 const redis = new Redis({
@@ -12,10 +12,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  // Block bots, headless browsers, synthetic monitoring, and HTTP-lib scrapers
-  // (shared list with /api/analytics — see lib/botFilter.js).
-  const userAgent = req.headers['user-agent'] || '';
-  if (isBotUserAgent(userAgent)) {
+  // Block bots, headless browsers, HTTP-lib scrapers, and browser-UA spoofers
+  // (shared gate for all 5 tracking endpoints — see lib/botFilter.js).
+  if (shouldSkipAnalytics(req)) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 

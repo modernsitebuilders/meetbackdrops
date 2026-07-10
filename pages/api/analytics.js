@@ -1,6 +1,6 @@
 // analytics.js - queues events to Redis for batch flush to Sheets + live mirror to Neon
 import { Redis } from '@upstash/redis';
-import { isBotUserAgent } from '../../lib/botFilter';
+import { shouldSkipAnalytics } from '../../lib/botFilter';
 import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 
 const redis = new Redis({
@@ -13,10 +13,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  // Keep automated traffic out of the analytics sheet (shared list with
-  // /api/track-page-view — see lib/botFilter.js).
-  const userAgent = req.headers['user-agent'] || '';
-  if (isBotUserAgent(userAgent)) {
+  // Keep automated traffic out of the analytics sheet — self-identified bots
+  // plus browser-UA spoofers (see lib/botFilter.js; shared by all 5 endpoints).
+  if (shouldSkipAnalytics(req)) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 

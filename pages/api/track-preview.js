@@ -1,4 +1,5 @@
 import { Redis } from '@upstash/redis';
+import { shouldSkipAnalytics } from '../../lib/botFilter';
 import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 
 const redis = new Redis({
@@ -11,14 +12,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const userAgent = req.headers['user-agent'] || '';
-
-  if (!userAgent ||
-      userAgent.includes('bot') ||
-      userAgent.includes('Bot') ||
-      userAgent.includes('crawler') ||
-      userAgent.includes('spider') ||
-      userAgent.includes('Prerender')) {
+  // Shared bot + browser-UA-spoofer gate (see lib/botFilter.js).
+  if (shouldSkipAnalytics(req)) {
     return res.status(200).json({ success: true, skipped: 'bot' });
   }
 
