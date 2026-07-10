@@ -14,7 +14,7 @@ import { HD_BASE_IDS } from '../../../lib/hdProducts';
 
 const CDN = 'https://assets.streambackdrops.com';
 
-export default function ImagePage({ image, related, categoryName, personaCollections = [], discovery = null }) {
+export default function ImagePage({ image, related, categoryName, personaCollections = [], discovery = null, reviewsData = null }) {
   const {
     handleDownload,
     showReviewModal,
@@ -31,6 +31,10 @@ export default function ImagePage({ image, related, categoryName, personaCollect
   const hasHd = HD_BASE_IDS.has(image.slug);
   const hdHref = hasHd ? `/hd?product=${image.slug}-hd` : '/hd';
   const [showHdModal, setShowHdModal] = useState(false);
+
+  const rating = reviewsData?.averageRating;
+  const reviewCount = reviewsData?.totalReviews;
+  const hasReviews = Boolean(rating && reviewCount);
 
   useEffect(() => {
     if (showReviewModal && hasHd) {
@@ -108,6 +112,20 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               <span>›</span>
               <span style={{ color: '#111827' }}>{image.title}</span>
             </nav>
+
+            {hasReviews && (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                margin: '0 0 1.5rem',
+                fontSize: '0.85rem',
+                color: '#4b5563',
+              }}>
+                <span aria-hidden="true" style={{ color: '#E0A82E', letterSpacing: '0.06em', fontSize: '0.95rem' }}>★★★★★</span>
+                <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · {reviewCount} client reviews</span>
+              </div>
+            )}
 
             {/* Main image */}
             <div style={{
@@ -542,8 +560,19 @@ export async function getStaticProps({ params }) {
     console.error('Persona collections lookup failed:', e.message);
   }
 
+  // Site-wide review aggregate (same live source the homepage, category pages,
+  // and /hd JSON-LD use) — powers the compact star trust line under the
+  // breadcrumb. Degrades to null (line hidden) if the Sheet is unreachable.
+  let reviewsData = null;
+  try {
+    const { getReviewsData } = await import('../../../lib/reviews');
+    reviewsData = await getReviewsData();
+  } catch (e) {
+    console.error('Image-page reviews lookup failed:', e.message);
+  }
+
   return {
-    props: { image, related, categoryName, personaCollections, discovery },
+    props: { image, related, categoryName, personaCollections, discovery, reviewsData },
     revalidate: 86400,
   };
 }
