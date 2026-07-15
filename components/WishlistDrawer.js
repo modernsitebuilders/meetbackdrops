@@ -1,3 +1,4 @@
+import { trackEvent } from '../lib/trackEvent';
 import { useEffect, useState } from 'react';
 import { useWishlist } from '../lib/WishlistContext';
 
@@ -17,13 +18,7 @@ function bestTierForCount(count) {
   return PACK_OPTIONS.find(o => o.size >= count) || PACK_OPTIONS[PACK_OPTIONS.length - 1];
 }
 
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ eventType, filename, category }),
-  }).catch(() => {});
-}
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
 export default function WishlistDrawer() {
   const { wishlist, toggleWishlist, clearWishlist, drawerOpen, closeDrawer } = useWishlist();

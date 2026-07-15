@@ -1,3 +1,4 @@
+import { trackEvent } from '../lib/trackEvent';
 import Link from 'next/link';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
@@ -5,13 +6,7 @@ import { useEffect, useRef } from 'react';
 import { webpUrl } from '../lib/cloudinaryUrl';
 import { isAdmin } from '../lib/adminAuth';
 
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ eventType, filename, category }),
-  }).catch(() => {});
-}
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 import { getSessionData, getOrCreateVisitorId, isReturningVisitor } from '../lib/sessionTracking';
 import { HD_BASE_IDS } from '../lib/hdProducts';
 

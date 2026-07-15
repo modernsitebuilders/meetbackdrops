@@ -1,20 +1,10 @@
+import { trackEvent } from '../lib/trackEvent';
 import { useState } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import { FREE_SAMPLES, webpUrl } from '../lib/freeSamples';
 
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      eventType,
-      filename,
-      category,
-      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct',
-    }),
-  }).catch(() => {});
-}
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
 export default function FreeSamplePage() {
   const [selectedId, setSelectedId] = useState(null);

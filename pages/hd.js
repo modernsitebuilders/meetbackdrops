@@ -1,3 +1,4 @@
+import { trackEvent } from '../lib/trackEvent';
 import Head from 'next/head';
 import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import ComparisonWidgetSchema from '../components/ComparisonWidgetSchema';
@@ -16,18 +17,7 @@ const SINGLE_PRICE = 4.99;
 
 const CHECKOUT_PAUSED = false;
 
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      eventType,
-      filename,
-      category,
-      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'
-    })
-  }).catch(() => {});
-}
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
 // ─── Subscriber Download Button ───────────────────────────────────────────────
 function SubscriberDownloadButton({ product, token, onDownloadComplete, onLimitReached }) {

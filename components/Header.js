@@ -1,3 +1,4 @@
+import { trackEvent } from '../lib/trackEvent';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
@@ -8,13 +9,7 @@ import SearchBox from './SearchBox';
 // Mobile menu only renders when the user opens it on a small viewport.
 const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false });
 
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ eventType, filename, category }),
-  }).catch(() => {});
-}
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
 export default function Header({ currentPage }) {
   const router = useRouter();

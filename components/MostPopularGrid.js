@@ -2,19 +2,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ eventType, filename, category }),
-  }).catch(() => {});
-}
+import { trackEvent } from '../lib/trackEvent';
 import { useImageDownload } from '../lib/useImageDownload';
 import { useShowFilenames } from '../lib/useShowFilenames';
 import ReviewModal from './ReviewModal';
 import RateLimitModal from './RateLimitModal';
 import ImagePreviewModal from './ImagePreviewModal';
+
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
 export default function MostPopularGrid() {
   const [popularData, setPopularData] = useState(null);

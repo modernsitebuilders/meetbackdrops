@@ -1,5 +1,6 @@
 'use client';
 
+import { trackEvent } from '../lib/trackEvent';
 import SocialShare from './SocialShare';
 import { folderMap } from '../data/categoryData';
 import { useState, useEffect } from 'react';
@@ -10,13 +11,7 @@ import { useWishlist } from '../lib/WishlistContext';
 import { webpUrl } from '../lib/cloudinaryUrl';
 import { useShowFilenames } from '../lib/useShowFilenames';
 
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ eventType, filename, category }),
-  }).catch(() => {});
-}
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
 export default function ImageGrid({ images, slug, onImageClick, onDownload = [], scores = {}, metadata = {}, downloadingImage }) {
   const [sortedImages, setSortedImages] = useState(images);

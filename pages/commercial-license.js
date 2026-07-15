@@ -1,19 +1,9 @@
+import { trackEvent } from '../lib/trackEvent';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 
-function trackAnalytics(eventType, filename, category) {
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      eventType,
-      filename,
-      category,
-      originalSource: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct',
-    }),
-  }).catch(() => {});
-}
+const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
 const GOLD = '#E0A82E';
 const DARK = '#111827';
