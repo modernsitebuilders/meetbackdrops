@@ -55,7 +55,7 @@ export default async function handler(req, res) {
     visitorId || 'unknown',
     now.toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
     now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-    userAgent,
+    req.headers['user-agent'] || 'unknown',
     req.headers['referer'] || 'direct',
   ];
 

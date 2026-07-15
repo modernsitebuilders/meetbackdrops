@@ -20,7 +20,7 @@ const redis = new Redis({
 const QUEUE_KEY = 'analytics:queue';
 const LOCK_KEY  = 'analytics:flush:lock';
 
-const REVENUE_EVENTS = new Set(['hd_purchase', 'hd_subscription']);
+const REVENUE_EVENTS = new Set(['hd_purchase', 'hd_subscription', 'license_purchase']);
 
 export default async function handler(req, res) {
   const isVercelCron = req.headers['x-vercel-cron'] === '1';

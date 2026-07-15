@@ -9,14 +9,20 @@
 // Do NOT use a bare `date_trunc('day', event_at)` — that buckets in UTC and
 // spills post-8pm-ET activity into the next day (the "data for tomorrow" bug).
 //
-// "Downloads" = any successful image use across surfaces (free download variants
-// + in-Zoom apply), mirroring DOWNLOAD_EVENTS in lib/analyticsNormalize.js.
+// "Downloads" = any successful image use across surfaces (free download variants,
+// in-Zoom apply, Meet add-on, email-bonus, free-sample), mirroring DOWNLOAD_EVENTS
+// in lib/analyticsNormalize.js. "Revenue" = the money events in REVENUE_EVENTS
+// there (kept separate — their filename is a product-id list, not a per-image use).
+// Keep DL and REV below in sync with those two sets.
 
 import pg from 'pg';
 
 const ET = `event_at AT TIME ZONE 'America/New_York'`;
 const NOW_ET = `(now() AT TIME ZONE 'America/New_York')`;
-const DL = `('download','cat_image_download','modal_download','zoom_apply')`;
+// Mirror of DOWNLOAD_EVENTS (lib/analyticsNormalize.js).
+const DL = `('download','cat_image_download','modal_download','zoom_apply','meet_download','email_bonus_download','free_sample_download')`;
+// Mirror of REVENUE_EVENTS (lib/analyticsNormalize.js).
+const REV = `('hd_purchase','hd_subscription','license_purchase')`;
 
 // Optional overrides: `npm run insights -- --days 60`
 const arg = (flag, def) => {
@@ -95,6 +101,45 @@ async function main() {
       round(100.0*count(*) FILTER (WHERE event_type IN ${DL})
         / nullif(count(*) FILTER (WHERE event_type IN ('cat_image_preview','image_preview')),0),1) AS preview_to_dl_pct
     FROM e`);
+
+  await run(`Downloads by surface (last ${WINDOW}d)`, `
+    SELECT event_type AS surface,
+      count(*) AS uses,
+      count(DISTINCT visitor_id) AS uniq_visitors
+    FROM analytics_events
+    WHERE event_type IN ${DL} AND ${ET} >= ${NOW_ET} - interval '${WINDOW} days'
+    GROUP BY 1 ORDER BY uses DESC`);
+
+  await run(`Revenue events (last ${WINDOW}d)`, `
+    SELECT event_type,
+      count(*) AS events,
+      count(DISTINCT session_id) AS sessions,
+      count(DISTINCT visitor_id) AS uniq_buyers,
+      to_char(min(${ET}), 'YYYY-MM-DD') AS first_seen,
+      to_char(max(${ET}), 'YYYY-MM-DD') AS last_seen
+    FROM analytics_events
+    WHERE event_type IN ${REV} AND ${ET} >= ${NOW_ET} - interval '${WINDOW} days'
+    GROUP BY 1 ORDER BY events DESC`);
+
+  await run(`Revenue by day — ET (last ${DAILY_DAYS}d; only days with revenue)`, `
+    SELECT to_char(date_trunc('day', ${ET}), 'YYYY-MM-DD') AS day,
+      count(*) FILTER (WHERE event_type='hd_purchase') AS hd_purchase,
+      count(*) FILTER (WHERE event_type='hd_subscription') AS hd_subscription,
+      count(*) FILTER (WHERE event_type='license_purchase') AS license,
+      count(*) AS total_revenue_events
+    FROM analytics_events
+    WHERE event_type IN ${REV} AND ${ET} >= ${NOW_ET} - interval '${DAILY_DAYS} days'
+    GROUP BY 1 ORDER BY 1 DESC`);
+
+  await run(`Purchase conversion — sessions → revenue (last ${WINDOW}d)`, `
+    SELECT count(DISTINCT session_id) AS sessions,
+      count(DISTINCT session_id) FILTER (WHERE event_type IN ${DL}) AS sessions_with_download,
+      count(DISTINCT session_id) FILTER (WHERE event_type IN ${REV}) AS sessions_with_revenue,
+      count(*) FILTER (WHERE event_type IN ${REV}) AS revenue_events,
+      round(100.0*count(DISTINCT session_id) FILTER (WHERE event_type IN ${REV})
+        / nullif(count(DISTINCT session_id),0),3) AS pct_sessions_converting
+    FROM analytics_events
+    WHERE ${ET} >= ${NOW_ET} - interval '${WINDOW} days'`);
 
   await run(`Category conversion (last ${WINDOW}d, >50 views)`, `
     SELECT category,

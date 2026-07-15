@@ -17,6 +17,7 @@
 const fs   = require('fs');
 const path = require('path');
 const { parse } = require('csv-parse/sync');
+const { isDownloadEvent } = require('../lib/analyticsNormalize');
 
 // ── Config ───────────────────────────────────────────────────────────────────
 const RESET_DATE = new Date('2026-01-25T00:00:00Z');
@@ -59,7 +60,10 @@ let skipped = 0, counted = 0;
 
 for (const row of rows) {
   const [timestamp, eventType, , filename] = row;
-  if (eventType !== 'download') continue;
+  // Use the shared usage-event set (a GA export normally only carries the bare
+  // 'download' gtag event, but this keeps the definition consistent with
+  // calculate-scores.js / insights and future-proofs a richer export).
+  if (!isDownloadEvent(eventType)) continue;
 
   let dt;
   try {
