@@ -64,7 +64,25 @@ const matchBody = `
     ${windowClause}
 `;
 
-const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+const client = new pg.Client({
+  connectionString: process.env.DATABASE_URL,
+  keepAlive: true,
+  // These passes are set-based aggregates over the whole event table; cap them so a
+  // pathological plan fails in minutes rather than sitting on the connection until
+  // something upstream drops it.
+  statement_timeout: 10 * 60_000,
+});
+
+// A pg.Client with no 'error' listener turns a dropped socket into an unhandled
+// 'error' event, which kills the process outright — that is exactly how the Sheets
+// sync used to lose an entire run ("Connection terminated unexpectedly"). Listening
+// turns it into an ordinary, reportable failure with a non-zero exit. This pass is
+// idempotent and monotonic (is_bot only ever goes false→true), so the next scheduled
+// run simply picks up where this one stopped.
+client.on('error', (e) => {
+  console.error('flag-bots: database connection error —', e.message);
+  process.exitCode = 1;
+});
 
 async function main() {
   await client.connect();
@@ -101,6 +119,11 @@ async function main() {
   await client.end();
   console.log('\nDone.\n');
 }
+
+process.on('unhandledRejection', (e) => {
+  console.error('flag-bots: unhandled rejection —', e);
+  process.exit(1);
+});
 
 main().catch(async (e) => {
   console.error('flag-bots failed:', e.message);

@@ -261,6 +261,8 @@ table, idempotent upsert-by-hash that keeps a verbatim `source_data jsonb` per r
    `npm run data:sync` **every 6 hours (4x/day)** to pull all new Analytics/Email/Review
    rows from the Sheet into Neon and refresh tables with no live-write endpoint
    (`licensing_inquiries`). GitHub Actions, not a Vercel cron (Hobby plan caps those).
+   The job is capped at `timeout-minutes` so a future slowdown fails fast and visibly
+   instead of creeping back toward the hour mark that broke it in Sept 2026.
    Every-6h matches the Sheet's own 6-hour Redis flush cadence, so this loses no data
    a faster path would have captured — and it lets Neon **auto-suspend (scale to zero)
    between runs** instead of being kept awake.
@@ -281,11 +283,15 @@ The live-write and the sync compute the **same `row_hash`** (shared recipe in
 `lib/sheetRowUtils.mjs`) from byte-identical row arrays, so when a live event is later
 read from the Sheet, `ON CONFLICT (row_hash) DO NOTHING` dedups it — **no double-count.**
 
-- `lib/db.js` — `pg` `Pool` singleton + `query()` (used by the local scripts / future API routes).
+- `lib/db.js` — `pg` `Pool` singleton + `query()` (used by the reporting scripts —
+  `insights.mjs`, `gaps.mjs`, `flag-bots.mjs` — and future API routes). The **sheet
+  sync does not use it**: it talks to Neon over the `@neondatabase/serverless` HTTP
+  driver via `scripts/data-platform/_neon.mjs`, because a long-lived `pg` socket
+  idling between Sheets reads is what used to get dropped mid-run.
 - `lib/neonEvents.mjs` — live dual-write helpers (`insertAnalyticsEventSafe`,
   `insertEmailSafe`, `insertReviewSafe`); `lib/sheetRowUtils.mjs` — the shared
   `rowHash` / `parseEtTimestamp` recipe both paths use.
-- `lib/migrations/db/00N_*.sql` — five tables from the sheet tabs:
+- `lib/migrations/db/00N_*.sql` — five mirrored tables from the sheet tabs:
   `analytics_events` (`Analytics` + `Analytics_Archive`), `email_list` (`Email List`),
   `reviews` (`Reviews`), and two separate sales-campaign lead tables —
   `branded_inquiries` (`Branded Inquiries` tab) and `licensing_inquiries`
@@ -296,12 +302,35 @@ read from the Sheet, `ON CONFLICT (row_hash) DO NOTHING` dedups it — **no doub
   > Caveat: `pages/api/branded-inquiry.js` writes to a `Branded Inquiries` tab that
   > does not yet exist in the sheet (a live bug), so `branded_inquiries` stays empty
   > until that tab exists; the sync tolerates the missing tab and fills it automatically.
-- `scripts/migrate.js` — applies pending migrations in order.
-- `scripts/data-platform/sync-sheets.mjs` (+ `_sheets.mjs` helpers) — reads the tabs
-  and upserts by `row_hash` (sha256 of the verbatim cells) with
+
+  `007_sync_state.sql` adds a sixth table, `sync_state`, which mirrors no tab — it is
+  the sync's own watermark bookkeeping (see below).
+- `scripts/migrate.js` — applies pending migrations in order. The sync workflow runs
+  `npm run migrate` before `npm run data:sync`, so a new migration ships with the push.
+- `scripts/data-platform/sync-sheets.mjs` (+ `_sheets.mjs` / `_neon.mjs` helpers) —
+  reads the tabs and upserts by `row_hash` (sha256 of the verbatim cells) with
   `ON CONFLICT (row_hash) DO NOTHING`, so re-runs only add new rows. ET timestamp
   strings are parsed best-effort into `*_at timestamptz` (DST-correct via `Intl`);
   the raw row is always preserved in `source_data`, so a parse miss loses nothing.
+
+  **Runtime shape (rewritten Sept 2026 — the job was failing at ~1h with
+  `Connection terminated unexpectedly`).** Two rules to preserve if you touch it:
+  1. **Never insert row-by-row.** Rows go through `insertBatched()` in
+     `_neon.mjs` — one multi-row `INSERT` per chunk (~500 rows), sized against
+     Postgres's 65535 bind-parameter cap. The old per-row loop paid a network round
+     trip per historical event, which is what grew the run to an hour.
+  2. **The Analytics tabs are read from a watermark, not end-to-end.** `sync_state`
+     records the last sheet row consumed per tab; a normal run only fetches the tail
+     (plus a 50-row overlap). This is an optimization only — `row_hash` still makes a
+     full re-read safe — so it self-heals: no watermark, a tab that turned out
+     *shorter* than its watermark (rows hand-moved to `Analytics_Archive`), or a
+     weekly periodic reconcile all fall back to a full read. Force one with
+     `npm run data:sync -- --full` (or `SYNC_FULL=1`).
+
+  The watermark is checkpointed *as chunks commit*, and no chunk runs inside a
+  long-lived transaction, so a run that dies part-way keeps what it wrote and the next
+  run resumes from that row rather than restarting. Statements retry with backoff;
+  permanent SQLSTATEs (42/22/23/…) fail fast instead of spinning.
 
 **Setup / usage.** `DATABASE_URL` (Neon pooled connection string) is loaded by the
 npm scripts via `--env-file-if-exists=.env.local`. The optional **live dual-write** is

@@ -35,10 +35,33 @@ export async function getSheetsClient() {
 }
 
 // Fetch a tab range's rows (array of arrays). Returns [] when the tab is empty.
-export async function fetchTab(sheets, range) {
-  const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.GOOGLE_SHEET_ID,
-    range,
-  });
-  return res.data.values || [];
+//
+// Retried on transient failures (Google 429/5xx, socket resets) so a blip part-way
+// through a multi-tab sync doesn't throw away the run. A genuinely bad range — a tab
+// that doesn't exist yet, e.g. the not-yet-created "Branded Inquiries" — fails fast so
+// the caller's skip-the-tab handling still kicks in immediately.
+const RETRYABLE_SHEETS_STATUS = new Set([408, 429, 500, 502, 503, 504]);
+
+export async function fetchTab(sheets, range, { attempts = 4, baseMs = 800 } = {}) {
+  let lastErr;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const res = await sheets.spreadsheets.values.get({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID,
+        range,
+      });
+      return res.data.values || [];
+    } catch (e) {
+      lastErr = e;
+      const status = e?.code ?? e?.response?.status;
+      const transient = typeof status === 'number'
+        ? RETRYABLE_SHEETS_STATUS.has(status)
+        : true; // no HTTP status at all = network-level, worth another try
+      if (!transient || attempt === attempts) break;
+      const wait = Math.round(baseMs * 2 ** (attempt - 1) * (0.75 + Math.random() * 0.5));
+      console.warn(`  \u26a0\ufe0f  sheets ${range}: ${e.message} — retrying (${attempt}/${attempts - 1}) in ${wait}ms`);
+      await new Promise(r => setTimeout(r, wait));
+    }
+  }
+  throw lastErr;
 }
