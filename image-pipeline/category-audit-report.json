@@ -1,5 +1,806 @@
 [
   {
+    "slug": "chesterfield-sofa-burgundy-cushions-rustic-coffee-table-925f5cdc",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Chesterfield Sofa with Festive Decor | MeetBackdrops"
+  },
+  {
+    "slug": "light-wood-sideboard-multiple-drawers-decorated-wreath-201ea9a4",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Light Wood Sideboard with Holiday Decor and Natural Elements | MeetBackdrops"
+  },
+  {
+    "slug": "bright-kitchen-natural-wood-cabinets-white-countertops-0e3dfb5d",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "kitchens",
+    "catalogScore": 1,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Cozy Wood Kitchen With Snowy View | MeetBackdrops"
+  },
+  {
+    "slug": "bright-living-room-christmas-tree-soft-beige-sofa-decorative-384d1f57",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Christmas Tree and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-light-colored-sofa-red-throw-blanket-wooden-04609ad2",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Soft Textiles And Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "white-couch-multiple-cushions-red-throw-blanket-decorative-2ca8444e",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy White Couch With Red Accents and Festive Tree | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-dark-sofa-decorative-pillows-coffee-table-c60105a9",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Elegant Living Room with Cozy Textiles and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "bohemian-lounge-colorful-textiles-candles-decorative-77c205aa",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Cozy Bohemian Lounge with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-light-sofa-decorative-pillows-round-coffee-b46dc24c",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Elegant Sofa And Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-library-nook-vintage-desk-stacked-books-red-chair-c5426c14",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 5,
+    "suggestedScore": 5,
+    "mismatch": false,
+    "visionTitle": "Cozy Library Setting with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "vintage-desk-chair-decorated-holiday-greenery-candles-books-e4a379e4",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Elegant Desk with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-tufted-beige-sofa-rustic-coffee-table-932e5534",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Living Room with Cozy Atmosphere and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "bright-living-room-white-sofa-christmas-tree-decorative-93a3ffc2",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant White Living Room with Christmas Tree | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-white-desk-red-white-decorations-surrounded-christmas-638a0c9d",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Rustic White Desk with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-office-christmas-tree-white-desk-warm-lighting-a20b7756",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Holiday Office Space with Greenery and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-office-decorated-holidays-christmas-tree-red-white-5dd87827",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Red and White Holiday Office Space | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-christmas-tree-white-sofa-red-plaid-blanket-7681a48b",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Holiday Living Room with Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-white-sofas-rustic-coffee-table-festive-ca3d4762",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy White Living Room with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-kitchen-white-cabinets-holiday-decorations-natural-f7bd72cb",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "kitchens",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Rustic Kitchen with Holiday Decor and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-executive-office-white-bookshelves-filled-books-fa3cbad8",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Home Office With Bookshelves and Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-office-interior-christmas-tree-wooden-shelves-filled-2fd67936",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Rustic Office with Christmas Tree and Bookshelves | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-cabin-living-room-leather-sofa-wooden-table-festive-988e23ab",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Rustic Cabin Living Room with Festive Decor | MeetBackdrops"
+  },
+  {
+    "slug": "modern-office-setup-white-desk-red-chair-holiday-decorations-4b091436",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "modern-home-office-white-desk-ergonomic-chair-festive-ced04b07",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Home Office with Festive Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-christmas-tree-rustic-wooden-walls-warm-6e8bdc7f",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Rustic Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-living-room-warm-wood-walls-christmas-tree-cozy-sofa-1a9bd00d",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Rustic Living Room with Christmas Tree and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-scene-beige-couch-plaid-throws-wooden-be01b410",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Rustic Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "leather-sofa-draped-plaid-blanket-beside-christmas-tree-9fc0ac1e",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Leather Sofa With Christmas Tree and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-living-room-whitewashed-sofa-red-pillows-christmas-c5a3893c",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Rustic Living Room with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "bright-office-space-christmas-tree-wooden-desk-minimalist-f6ce1de6",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Minimalist Office Space with Christmas Tree and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "modern-oak-desk-two-chairs-festive-decorations-shelves-small-312b0677",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "bookshelves",
+    "catalogScore": 1,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Warm Lighting and Natural Elements | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-living-room-scene-white-sofa-plaid-pillows-table-1b41bd76",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Rustic Living Room with Candles and Christmas Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-white-sofa-plaid-pillows-christmas-tree-52f7382a",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Christmas Tree And Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-living-room-brown-leather-sofa-two-decorated-6ed130fb",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Leather Sofa with Festive Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-fireplace-large-windows-christmas-tree-9688fabf",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 1,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Fireplace and Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-scene-white-sectional-sofa-rustic-table-red-e52ad61f",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Holiday Living Room with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "bright-kitchen-marble-island-white-cabinets-decorative-5d607ecb",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "kitchens",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Elegant Kitchen with Bright Lighting and Warm Atmosphere | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-office-setup-white-desk-cream-chair-holiday-wreath-e76935ed",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Home Office with Festive Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "bright-living-room-white-sofa-christmas-tree-rustic-coffee-3b419f3e",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy White Sofa with Festive Tree and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-home-office-cluttered-desk-books-white-chair-holiday-00124770",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 3,
+    "mismatch": true,
+    "visionTitle": "Cozy Home Office with Books and Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "modern-executive-desk-two-white-chairs-decorated-greenery-828c509d",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom Desk with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-light-colored-sectional-sofa-wooden-coffee-cc3c0976",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 2,
+    "mismatch": true,
+    "visionTitle": "Cozy Living Room with Soft Lighting and Warm Atmosphere | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-gray-sofa-decorative-pillows-wooden-coffee-8f494098",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Festive Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-gray-sectional-sofa-wooden-coffee-table-red-1383254d",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 1,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Modern Sofa And Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "gray-sofa-plaid-cushions-wooden-tray-candles-holiday-537dcc6e",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Gray Sofa and Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-white-sofa-plush-cushions-plaid-throw-small-table-7b0aa259",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy White Sofa with Holiday Accents and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "bright-living-room-white-sofa-red-plaid-throw-decorated-a6c902f9",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Holiday Decor and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "teal-tufted-couch-burgundy-pillows-gold-decor-festive-60a61ad7",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Teal Couch with Gold Accents and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "green-velvet-couch-decorative-pillow-next-christmas-tree-55f114e1",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Green Couch with Festive Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-scene-leather-sofa-decorative-table-festive-15404d8c",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Leather Sofa and Coffee Table in Cozy Setting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-scene-brown-leather-sectional-geometric-e84a5cc3",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Warm Lighting and Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-kitchen-gray-cabinets-large-windows-festive-decorations-0303f04c",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "kitchens",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Elegant Kitchen with Winter Decor and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-gray-sofa-christmas-tree-decorations-bowl-3dfaf7a4",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Christmas Tree and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "office-white-desk-decorated-christmas-tree-wreaths-wall-cafe61f2",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Home Office with Holiday Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-living-room-brown-sofa-plaid-pillows-christmas-tree-0bfafc09",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Rustic Living Room with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-lodge-living-room-leather-sofa-antlers-wooden-coffee-922a64fd",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Rustic Lodge Living Room with Antlers and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-leather-sofa-antlers-wooden-table-surrounded-5242d6f9",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Rustic Leather Sofa With Antlers and Greenery | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-kitchen-wooden-cabinets-holiday-decorations-soft-57db4ca5",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Rustic Kitchen with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-light-colored-sofa-wooden-coffee-table-52b5a6f7",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 1,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Rustic Furniture and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "light-gray-sofa-plaid-blanket-pinecones-set-against-white-ed67556a",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Holiday Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-study-wooden-desk-leather-armchair-festive-decorations-822acfb9",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Library Setting with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "rustic-wooden-cabinetry-holiday-decorations-including-047699f9",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Rustic Wooden Cabinet with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-beige-sofa-decorative-pillows-dark-coffee-a8aee541",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Holiday Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-beige-sectional-sofa-rustic-wooden-coffee-cd4eb412",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 1,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Plush Sofa And Rustic Coffee Table | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-home-office-warm-lighting-desk-shelves-framed-pictures-4ea49ed5",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Elegant Home Office with Warm Lighting and Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-scene-light-sofa-red-throw-rustic-table-b616e72d",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Christmas Tree and Rustic Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-gray-sectional-sofa-decorated-christmas-ede54e7c",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Living Room with Holiday Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-gray-sectional-sofa-burgundy-pillows-0e63d40d",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Tree and Modern Sofa | MeetBackdrops"
+  },
+  {
+    "slug": "navy-sofa-decorative-pillows-festive-wreath-wall-marble-41cf1ef6",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Elegant Navy Sofa with Festive Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "bright-white-kitchen-festive-decorations-large-windows-a9f74b2b",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Bright White Kitchen with Festive Decor | MeetBackdrops"
+  },
+  {
+    "slug": "modern-white-couch-silver-decorative-accents-small-table-4179d0b7",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern White Couch with Silver Accents and Festive Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-dark-sofa-pink-cushions-glass-coffee-table-b4a4a807",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Couch with Holiday Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "executive-office-large-desk-bookshelves-decorated-christmas-1e7bb08b",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Executive Office with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-tufted-sofa-blue-throw-decorative-pillows-b4e7fa55",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Living Room with Cozy Atmosphere and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "contemporary-office-interior-desk-decorative-items-christmas-a7b532c6",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-christmas-tree-soft-lighting-beige-sofa-36c64903",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Christmas Tree and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-leather-sofa-plaid-throw-rustic-wooden-table-decorated-d8b1906c",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Leather Sofa With Festive Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-white-sofa-pillows-wooden-coffee-table-371ca81b",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Festive Decor and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-beige-sofa-red-plaid-pillows-wooden-coffee-5e308b92",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-executive-office-large-desk-christmas-tree-warm-dc98b1ce",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Elegant Executive Office with Holiday Decor | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-office-wood-paneling-christmas-tree-adorned-ornaments-e939abe3",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Wood Paneled Office with Christmas Tree | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-boardroom-scene-plush-sofa-rustic-table-candles-967c944c",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Elegant Holiday Living Room With Cozy Sofa And Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-white-sofa-red-plaid-pillows-coffee-table-c2cc7ca5",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Festive Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-tufted-sofa-christmas-tree-decorative-1f5696f5",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Elegant Living Room with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-yellow-leather-sofa-plaid-throw-wooden-df0ef627",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room With Festive Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "luxurious-living-room-red-sofas-decorative-pillows-coffee-78185ac7",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Holiday Living Room with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-christmas-tree-stockings-fireplace-warm-04ec74f6",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Cozy Living Room with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "cozy-living-room-christmas-tree-white-walls-fireplace-coffee-e4f9ad11",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Elegant Living Room with Holiday Decor and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "bright-room-white-built-shelves-fireplace-holiday-wreath-6128563b",
+    "catalogCategory": "christmas-backgrounds",
+    "visionSuggested": "christmas-backgrounds",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Elegant White Fireplace with Holiday Wreath and Warm Lighting | MeetBackdrops"
+  },
+  {
     "slug": "two-wooden-shelves-against-white-wall-one-books-plant-other-d50bd43b",
     "catalogCategory": "wall-shelves",
     "visionSuggested": "bookshelves",
@@ -810,139 +1611,283 @@
     "visionTitle": "Modern Minimalist Shelving With Soft Lighting | MeetBackdrops"
   },
   {
-    "slug": "easter-background-49",
-    "catalogCategory": "easter-backgrounds",
+    "slug": "japanese-kissaten-style-coffee-house-interi-4f93c325",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Cozy Boardroom with Warm Lighting and Modern Decor | MeetBackdrops"
+  },
+  {
+    "slug": "midcentury-modern-cafe-interior-74ca2b87",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Lounge with Warm Lighting and Natural Elements | MeetBackdrops"
+  },
+  {
+    "slug": "scandinavian-inspired-minimalist-cafe-inte-a6831bdf",
+    "catalogCategory": "coffee-shops",
     "visionSuggested": "office-spaces",
     "catalogScore": 0,
-    "suggestedScore": 3,
-    "mismatch": true,
-    "visionTitle": "Modern Executive Office with Natural Light | MeetBackdrops"
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Bright Modern Café Interior with Natural Light | MeetBackdrops"
   },
   {
-    "slug": "easter-background-73",
-    "catalogCategory": "easter-backgrounds",
+    "slug": "bookshop-cafe-hybrid-distinct-standa-d7a80a39",
+    "catalogCategory": "coffee-shops",
     "visionSuggested": "bookshelves",
-    "catalogScore": 0,
-    "suggestedScore": 2,
-    "mismatch": true,
-    "visionTitle": "Brightly Lit Modern Bookshelf With Decorative Accents | MeetBackdrops"
-  },
-  {
-    "slug": "easter-background-88",
-    "catalogCategory": "easter-backgrounds",
-    "visionSuggested": "bookshelves",
-    "catalogScore": 0,
-    "suggestedScore": 2,
-    "mismatch": true,
-    "visionTitle": "Elegant Bookshelf Arrangement with Soft Lighting | MeetBackdrops"
-  },
-  {
-    "slug": "home-offices-07",
-    "catalogCategory": "home-office",
-    "visionSuggested": "office-spaces",
     "catalogScore": 2,
-    "suggestedScore": 4,
-    "mismatch": true,
-    "visionTitle": "Bright Office Space with Greenery and Natural Light | MeetBackdrops"
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Cozy Library Cafe With Natural Light | MeetBackdrops"
   },
   {
-    "slug": "home-offices-22",
-    "catalogCategory": "home-office",
+    "slug": "bright-mediterranean-cafe-interior-feature-e1fc7729",
+    "catalogCategory": "coffee-shops",
     "visionSuggested": "office-spaces",
-    "catalogScore": 1,
-    "suggestedScore": 3,
-    "mismatch": true,
-    "visionTitle": "Minimalist Office Space with Natural Light | MeetBackdrops"
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Charming Mediterranean Café with Natural Light | MeetBackdrops"
   },
   {
-    "slug": "home-offices-23",
-    "catalogCategory": "home-office",
-    "visionSuggested": "office-spaces",
-    "catalogScore": 1,
-    "suggestedScore": 3,
-    "mismatch": true,
-    "visionTitle": "Minimalist Office Space with Greenery and Soft Lighting | MeetBackdrops"
-  },
-  {
-    "slug": "home-offices-29",
-    "catalogCategory": "home-office",
-    "visionSuggested": "office-spaces",
+    "slug": "bright-airy-space-built-sustainable-ma-bddf78d7",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "coffee-shops",
     "catalogScore": 2,
-    "suggestedScore": 4,
-    "mismatch": true,
-    "visionTitle": "Bright Minimalist Office Space with Natural Light | MeetBackdrops"
-  },
-  {
-    "slug": "nature-landscape-14",
-    "catalogCategory": "nature-landscapes",
-    "visionSuggested": "summer-backgrounds",
-    "catalogScore": 0,
-    "suggestedScore": 4,
-    "mismatch": true,
-    "visionTitle": "Coastal Retreat with Ocean View and Soft Lighting | MeetBackdrops"
-  },
-  {
-    "slug": "nature-landscape-21",
-    "catalogCategory": "nature-landscapes",
-    "visionSuggested": "summer-backgrounds",
-    "catalogScore": 0,
     "suggestedScore": 2,
-    "mismatch": true,
-    "visionTitle": "Tropical Beach Scene with Umbrella and Lounge Chairs | MeetBackdrops"
+    "mismatch": false,
+    "visionTitle": "Modern Coffee Shop Interior With Greenery | MeetBackdrops"
   },
   {
-    "slug": "nature-landscape-22",
-    "catalogCategory": "nature-landscapes",
-    "visionSuggested": "summer-backgrounds",
-    "catalogScore": 0,
-    "suggestedScore": 4,
-    "mismatch": true,
-    "visionTitle": "Cozy Beachfront Lounge with Sunset View | MeetBackdrops"
-  },
-  {
-    "slug": "spring-background-01",
-    "catalogCategory": "spring-backgrounds",
-    "visionSuggested": "bookshelves",
-    "catalogScore": 0,
-    "suggestedScore": 2,
-    "mismatch": true,
-    "visionTitle": "Bookshelf With Vintage Books and Fresh Flowers | MeetBackdrops"
-  },
-  {
-    "slug": "spring-background-36",
-    "catalogCategory": "spring-backgrounds",
-    "visionSuggested": "bookshelves",
-    "catalogScore": 0,
-    "suggestedScore": 2,
-    "mismatch": true,
-    "visionTitle": "Bookshelf With Eucalyptus and Warm Lighting | MeetBackdrops"
-  },
-  {
-    "slug": "spring-background-43",
-    "catalogCategory": "spring-backgrounds",
-    "visionSuggested": "bookshelves",
-    "catalogScore": 0,
-    "suggestedScore": 2,
-    "mismatch": true,
-    "visionTitle": "Brightly Lit Home Library with Bookshelves | MeetBackdrops"
-  },
-  {
-    "slug": "spring-background-73",
-    "catalogCategory": "spring-backgrounds",
-    "visionSuggested": "bookshelves",
-    "catalogScore": 0,
-    "suggestedScore": 2,
-    "mismatch": true,
-    "visionTitle": "Brightly Lit Bookshelf With Greenery and Warm Wood | MeetBackdrops"
-  },
-  {
-    "slug": "urban-loft-16",
-    "catalogCategory": "urban-lofts",
+    "slug": "lush-plant-filled-conservatory-cafe-interio-c0edbf0d",
+    "catalogCategory": "coffee-shops",
     "visionSuggested": "office-spaces",
     "catalogScore": 0,
-    "suggestedScore": 3,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Lush Greenhouse Café with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "minimalist-white-walled-gallery-space-featu-ee1c42c2",
+    "catalogCategory": "art-galleries",
+    "visionSuggested": "art-galleries",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Colorful Art Gallery with Modern Seating and Bright Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "quiet-after-hours-cafe-interior-ambient-pe-fedffab2",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Cozy Evening Café Scene with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "space-rich-colorful-geometric-zellige-099b6c3c",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Moroccan-Inspired Lounge with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "stark-ultra-modern-minimalist-interior-feat-7ed3b279",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "coffee-shops",
+    "catalogScore": 1,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Sleek Modern Cafe Interior with Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "tailored-formality-luxury-cafe-closer-c29f3135",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Elegant Boardroom with Warm Lighting and Rich Textures | MeetBackdrops"
+  },
+  {
+    "slug": "warm-wood-heavy-interior-viewed-seat-00afa8e5",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "nature-landscapes",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Rustic Mountain Lodge with Cozy Fireplace and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "architectural-photograph-seated-per-b38ad0a3",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "coffee-shops",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Industrial Coffee Shop Interior with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "interior-focusing-natural-imperfection-062ab8fd",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Natural Stone Tables in Earthy Studio Space | MeetBackdrops"
+  },
+  {
+    "slug": "interior-distinct-old-world-feel-d-1f921d5b",
+    "catalogCategory": "historic-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Rustic Pantry with Wooden Tables and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "intimate-parisian-bistro-interior-foregro-c3c5aebe",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Charming Café Interior with Soft Lighting and Elegant Décor | MeetBackdrops"
+  },
+  {
+    "slug": "opulent-art-deco-interior-geomet-37ab4b7d",
+    "catalogCategory": "historic-spaces",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Elegant Art Deco Lounge with Gold Accents | MeetBackdrops"
+  },
+  {
+    "slug": "outdoor-cafe-patio-seated-table-per-997caa5d",
+    "catalogCategory": "gardens-patios",
+    "visionSuggested": "gardens-patios",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Lush Outdoor Patio with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "interior-perspective-seated-viewpoint-9fe75439",
+    "catalogCategory": "coffee-shops",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 2,
     "mismatch": true,
-    "visionTitle": "Modern Executive Office With City View and Warm Lighting | MeetBackdrops"
+    "visionTitle": "Bright Modern Office Space with City View | MeetBackdrops"
+  },
+  {
+    "slug": "modern-corporate-backdrop-plain-light-57c8397f",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Warm Textured Wall with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "ultra-minimalist-modern-workspace-designed-fo-ba61a369",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Minimalist White Boardroom With Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "high-end-zoom-backdrop-premium-matte-c-5db34340",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "urban-lofts",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Industrial Gray Wall With Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "professional-virtual-backdrop-c-bc46b971",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Soft Green Wall with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "empty-minimalist-room-single-long-table-6ee15f55",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Bright Minimalist Boardroom with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "minimalist-corporate-video-background-6c0c9439",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Textured Gray Wall With Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "corporate-background-light-grei-37194ab7",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Bright Minimalist Boardroom with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "minimalist-corporate-office-wall-soft-70590a9f",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Natural Light and Clean Lines | MeetBackdrops"
+  },
+  {
+    "slug": "seamless-video-call-background-d4a783bf",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Softly Lit Blue Wall with Subtle Texture | MeetBackdrops"
+  },
+  {
+    "slug": "empty-minimalist-japandi-home-office-sin-2d1a60a0",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 2,
+    "mismatch": true,
+    "visionTitle": "Minimalist Workspace with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "high-end-minimalist-office-background-fl-b1c3f800",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Minimalist Boardroom with Soft Lighting | MeetBackdrops"
   },
   {
     "slug": "minimalist-scandinavian-home-office-wall-14077133",
@@ -952,5 +1897,500 @@
     "suggestedScore": 1,
     "mismatch": false,
     "visionTitle": "Minimalist Boardroom With Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "art-deco-home-office-geometric-patterns-0ad457a8-2dc2-4a64-b27460b0",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Elegant Green Executive Office with Gold Accents | MeetBackdrops"
+  },
+  {
+    "slug": "modern-minimalist-home-office-clean-whit-e0d96066",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Bright Minimalist Home Office With Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "contemporary-executive-home-office-sleek-59343f5b",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office with City View and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "calming-online-consultation-background-c-9cd754e4",
+    "catalogCategory": "home-office",
+    "visionSuggested": "neutral-backgrounds",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Soft Light Reflections on Neutral Wall | MeetBackdrops"
+  },
+  {
+    "slug": "calming-therapy-office-virtual-background-c7794f51",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Fiddle Leaf Fig Plant with Soft Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "dslr-photograph-modern-home-office-simple-3b2a6aba",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 4,
+    "mismatch": true,
+    "visionTitle": "Modern Office Workspace with Concrete Walls and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "contemporary-executive-home-office-sleek-468eda8d-a5a6-473e-42a134b0",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office With City View and Bright Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "telehealth-backdrop-mental-health-pro-ab91e143",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Cozy Corner with Soft Drapes and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "therapist-private-office-consultation-de-d4976e6c",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 3,
+    "mismatch": true,
+    "visionTitle": "Cozy Office Space with Nature Art and Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "professional-home-office-clean-white-des-d0975b43",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 3,
+    "mismatch": true,
+    "visionTitle": "Modern White Office with Natural Light and Minimalist Decor | MeetBackdrops"
+  },
+  {
+    "slug": "mediterranean-villa-home-office-terracot-bd550ea5",
+    "catalogCategory": "home-office",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 2,
+    "mismatch": true,
+    "visionTitle": "Elegant Stone Wall Living Room with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "serene-telehealth-background-soft-focus-500a838c",
+    "catalogCategory": "home-office",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Minimalist Lounge With Soft Lighting and Warm Tones | MeetBackdrops"
+  },
+  {
+    "slug": "architect-private-studio-drafting-table-4980a0dc",
+    "catalogCategory": "home-office",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Warm Lighting and Natural Materials | MeetBackdrops"
+  },
+  {
+    "slug": "professional-counselors-office-backdrop-so-89b55e27",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Lush Greenery Against Warm Textured Wall | MeetBackdrops"
+  },
+  {
+    "slug": "serene-counseling-office-backdrop-clean-5f4585ce",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Elegant Wood Paneling with Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "wellness-practitioner-private-office-tre-35ed360d",
+    "catalogCategory": "home-office",
+    "visionSuggested": "living-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Cozy Lounge with Natural Elements and Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "wellness-practitioner-private-office-tre-456572bd",
+    "catalogCategory": "home-office",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Medical Office with Soft Lighting and Calm Atmosphere | MeetBackdrops"
+  },
+  {
+    "slug": "real-home-office-photograph-single-warm-66305c46",
+    "catalogCategory": "home-office",
+    "visionSuggested": "home-office",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Warmly Lit Study With Bookshelf and Desk | MeetBackdrops"
+  },
+  {
+    "slug": "lean-modern-open-office-simple-desks-position-2c05888a",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Office Workspace with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "modern-clean-tech-company-office-background-cf69cf91",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Office Space with Warm Lighting and Open Layout | MeetBackdrops"
+  },
+  {
+    "slug": "international-executive-office-global-de-159148db",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office with City View and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "modern-tech-company-conference-room-sleek-5ab030e9",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Glass Boardroom with Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "bright-luxury-corporate-meeting-room-lar-d9f84c13",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Glass Boardroom With Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "lean-modern-open-office-simple-desks-position-3639ef9f",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Office Space with Natural Light and Minimalist Design | MeetBackdrops"
+  },
+  {
+    "slug": "modern-glass-conference-room-large-oval-9fb29c16",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Green Accents and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "empty-minimalist-executive-boardroom-sin-e85c7187",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Natural Light and Neutral Tones | MeetBackdrops"
+  },
+  {
+    "slug": "real-glass-lobby-photograph-single-moder-083b4186",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Modern Lobby With Natural Light and Minimalist Design | MeetBackdrops"
+  },
+  {
+    "slug": "modern-corporate-office-backdrop-elegan-f3ad4d2f",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Warm Lighting and Glass Walls | MeetBackdrops"
+  },
+  {
+    "slug": "professional-medical-office-clean-white-251559ff",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Bright Modern Office Space with Blue Accents and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "law-firm-lobby-traditional-reception-e816bf54",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Elegant Boardroom Lounge with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "modern-dental-medical-clinic-backdrop-9a9db500",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Dental Office With Bright Lighting And Clean Lines | MeetBackdrops"
+  },
+  {
+    "slug": "realistic-modern-engineering-office-tech-391ed5b3",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office with Technical Drawings | MeetBackdrops"
+  },
+  {
+    "slug": "high-end-clinical-telemedicine-backdrop-aa7c6e16",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Glass Office Space with Bright Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "university-lobby-information-desk-lef-f9627ec6",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Corporate Lobby with Soft Lighting and Welcoming Atmosphere | MeetBackdrops"
+  },
+  {
+    "slug": "corporate-executive-office-large-wooden-8ca3f095",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Spacious Executive Office with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "real-conference-room-photograph-single-g-8a2e5886",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Natural Light and City Views | MeetBackdrops"
+  },
+  {
+    "slug": "architectural-interior-photography-empty-m-8640e0d5",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Office Cubicles with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "active-financial-executive-office-marble-c118d53b",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "realistic-upscale-real-estate-office-pro-9315ba84",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom With Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "aspirational-corporate-office-background-f-62352511",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Bright Modern Office Space with Greenery and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "sleek-contemporary-corporate-meeting-space-3e232331",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Warm Lighting and Sleek Design | MeetBackdrops"
+  },
+  {
+    "slug": "executive-interview-backdrop-beautifull-c357bc10",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Modern Glass Corridor with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "media-company-open-workspace-editing-sta-8c7b59e4",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Office Space with Industrial Accents and Bright Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "media-company-open-workspace-editing-sta-ba7c530c",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Office Space with Purple Accents and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "high-end-executive-corner-office-background-7bd41289",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Executive Office With City View at Dusk | MeetBackdrops"
+  },
+  {
+    "slug": "tech-startup-conference-room-collaborati-4e70ae7b",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 1,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Red Accents and Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "medical-executive-office-professional-de-10d0b8dd",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 3,
+    "suggestedScore": 3,
+    "mismatch": false,
+    "visionTitle": "Modern Office Space with Natural Light and Red Accents | MeetBackdrops"
+  },
+  {
+    "slug": "modern-open-office-workspace-desks-posit-034a1a29",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 2,
+    "suggestedScore": 2,
+    "mismatch": false,
+    "visionTitle": "Modern Office Space with Natural Light and Greenery | MeetBackdrops"
+  },
+  {
+    "slug": "bright-airy-professional-office-setting-0cebec44",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 4,
+    "suggestedScore": 4,
+    "mismatch": false,
+    "visionTitle": "Modern Open Office Space with Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "textured-orange-wall-subtle-variations-creating-warm-93752fdd",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Textured Orange Wall with Warm Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "textured-wall-soft-yellow-pink-hues-providing-warm-inviting-1dbd70d1",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Textured Yellow and Pink Wall with Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "textured-wall-natural-light-streaming-through-large-windows-4092e324",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom With Natural Light | MeetBackdrops"
+  },
+  {
+    "slug": "executive-boardroom-modern-furniture-large-windows-showing-bd4334cd",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom with Natural Light and Warm Accents | MeetBackdrops"
+  },
+  {
+    "slug": "textured-blue-wall-soft-lighting-minimalist-design-creating-5321396e",
+    "catalogCategory": "neutral-backgrounds",
+    "visionSuggested": "office-spaces",
+    "catalogScore": 0,
+    "suggestedScore": 0,
+    "mismatch": false,
+    "visionTitle": "Minimalist Blue Room With Soft Lighting | MeetBackdrops"
+  },
+  {
+    "slug": "spacious-modern-office-interior-large-windows-overlooking-46f87f49",
+    "catalogCategory": "office-spaces",
+    "visionSuggested": "conference-rooms",
+    "catalogScore": 0,
+    "suggestedScore": 1,
+    "mismatch": false,
+    "visionTitle": "Modern Boardroom With City View and Soft Lighting | MeetBackdrops"
   }
 ]
