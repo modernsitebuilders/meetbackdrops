@@ -11,6 +11,7 @@ import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
 import BackToTop from '../../../components/BackToTop';
 import ImageDiscovery from '../../../components/ImageDiscovery';
 import { HD_BASE_IDS } from '../../../lib/hdProducts';
+import { buildImagePageTitle, buildImagePageDescription } from '../../../lib/imagePageMeta';
 
 const CDN = 'https://assets.streambackdrops.com';
 
@@ -47,9 +48,13 @@ export default function ImagePage({ image, related, categoryName, personaCollect
   const canonicalUrl = `https://meetbackdrops.com/category/${image.category}/${image.slug}`;
   const categoryUrl = `/category/${image.category}`;
 
-  const pageTitle = `${image.title} | Free Virtual Background | MeetBackdrops`;
-  const pageDescription = image.description ||
-    `Download this free ${categoryName.toLowerCase()} virtual background for Zoom, Teams & Google Meet. No signup, no watermarks.`;
+  // NOTE: manifest titles ALREADY end with " | MeetBackdrops" and ~1,076 of them
+  // carry a templated marketing tail after an em dash. Both are stripped here so
+  // the rendered <title> stays inside the 65-char budget with the brand appended
+  // exactly once. Scheme + budgets live in lib/imagePageMeta.js and are enforced
+  // for all manifest entries by scripts/check-seo-meta.js — don't inline them.
+  const pageTitle = buildImagePageTitle(image.title);
+  const pageDescription = buildImagePageDescription(image.description, categoryName);
 
   const downloadImage = { filename: image.image_webp, title: image.title };
   const isDownloading = downloadingImage === image.image_webp;

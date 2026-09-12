@@ -18,6 +18,11 @@
  *     pages/[platform]/index.js (platform.title/description used verbatim; the
  *     engine only self-asserts the platform×theme pages, not these index pages)
  *   - Raw <title>/<meta name="description"> in pages/privacy.js, pages/404.js, etc.
+ *   - Every individual image page (~1,759 — the site's largest page class),
+ *     rendered through pages/category/[slug]/[imageSlug].js. Titles and
+ *     descriptions are built from image-pipeline/final_manifest.json fields by
+ *     lib/imagePageMeta.js, which this script requires directly (no page
+ *     rendering, no logic duplicated here) so the check can't drift from the page.
  *
  * Run: `npm run check:seo` (also runs as part of `prebuild`).
  */
@@ -267,6 +272,76 @@ function checkSlugTitleDesc(relFile, labelPrefix) {
 
 checkSlugTitleDesc('data/collections/personas.js', 'collection');
 checkSlugTitleDesc('data/platforms.js', 'platform');
+
+// ----- Individual image pages -----
+// The largest page class on the site: one page per manifest entry, rendered by
+// pages/category/[slug]/[imageSlug].js. That page builds its <title> and meta
+// description with lib/imagePageMeta.js, so we require the same module and run
+// every manifest entry through it — cheap (string ops on ~1,759 entries, no
+// rendering) and immune to drift, unlike re-implementing the template here.
+//
+// Output is aggregated: one error line per distinct failure with a sample and a
+// count, not 1,759 lines. A single bad entry still fails the build.
+{
+  const { buildImagePageTitle, buildImagePageDescription } = require(path.join(ROOT, 'lib/imagePageMeta.js'));
+  const manifest = require(path.join(ROOT, 'image-pipeline/final_manifest.json'));
+
+  if (!Array.isArray(manifest) || manifest.length === 0) {
+    errors.push('final_manifest.json: no image entries found — image pages unchecked');
+  }
+
+  const titleTooLong = [];
+  const titleTooShort = [];
+  const titleMissing = [];
+  const descTooLong = [];
+  const descTooShort = [];
+  const descMissing = [];
+  const brandDoubled = [];
+
+  for (const entry of manifest) {
+    if (!entry || !entry.slug) continue;
+    const label = `/category/${entry.category}/${entry.slug}`;
+    const title = buildImagePageTitle(entry.title);
+    const desc = buildImagePageDescription(entry.description, entry.category);
+
+    if (!title) titleMissing.push(label);
+    else if (title.length > TITLE_MAX) titleTooLong.push({ label, len: title.length, value: title });
+    else if (title.length < TITLE_MIN) titleTooShort.push({ label, len: title.length, value: title });
+
+    // The brand must appear exactly once — this is the bug that shipped doubled
+    // brands on every image page (manifest titles already carry the suffix).
+    const brandHits = (title.match(/MeetBackdrops/gi) || []).length;
+    if (brandHits !== 1) brandDoubled.push({ label, len: brandHits, value: title });
+
+    if (!desc) descMissing.push(label);
+    else if (desc.length > DESC_MAX) descTooLong.push({ label, len: desc.length, value: desc });
+    else if (desc.length < DESC_MIN) descTooShort.push({ label, len: desc.length, value: desc });
+  }
+
+  function report(bucket, sink, describe) {
+    if (bucket.length === 0) return;
+    const worst = bucket.slice().sort((a, b) => b.len - a.len)[0];
+    sink.push(
+      `image pages: ${bucket.length} of ${manifest.length} ${describe} — worst ${worst.label} ` +
+      `(${worst.len}) "${worst.value}"`
+    );
+  }
+
+  for (const label of titleMissing.slice(0, 5)) errors.push(`image page ${label}: missing title`);
+  for (const label of descMissing.slice(0, 5)) errors.push(`image page ${label}: missing description`);
+  report(titleTooLong, errors, `title > ${TITLE_MAX} chars`);
+  report(brandDoubled, errors, 'do not contain the brand exactly once');
+  report(descTooLong, errors, `description > ${DESC_MAX} chars`);
+  report(descTooShort, errors, `description < ${DESC_MIN} chars`);
+  report(titleTooShort, warnings, `title < ${TITLE_MIN} chars`);
+
+  const clean =
+    titleTooLong.length + titleTooShort.length + titleMissing.length +
+    descTooLong.length + descTooShort.length + descMissing.length + brandDoubled.length === 0;
+  if (clean) {
+    console.log(`   ${manifest.length} image pages checked via lib/imagePageMeta.js — all within budget.`);
+  }
+}
 
 // ----- Report -----
 if (warnings.length) {

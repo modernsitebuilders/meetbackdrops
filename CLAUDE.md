@@ -334,8 +334,22 @@ These are enforced by [scripts/check-seo-meta.js](scripts/check-seo-meta.js), wh
 - `components/Layout.js` default props (the fallback when a page omits a prop)
 - All categories in `data/categoryData.js` (rendered through the `[slug]` template — name + optional `seoDescription` override)
 - All blog posts in `data/blogPosts.js`
+- **Every individual image page** (~1,759 — the site's largest page class), rendered through `pages/category/[slug]/[imageSlug].js`
 
 When you add a new page, category, or blog post, the title/description will be validated automatically. If you add a new top-level page that uses `<Layout>`, also add its path to `LAYOUT_PAGES` in the script. If a page is intentionally `noindex` (utility/admin), add it to `SKIP_PAGES` or `NOINDEX_RAW_HEAD_PAGES` so the description isn't required.
+
+### Image page titles/descriptions — built at render time, never inlined
+
+Image page `<title>` and `<meta description>` are built by [lib/imagePageMeta.js](lib/imagePageMeta.js) (`buildImagePageTitle` / `buildImagePageDescription`), which the page imports and `check-seo-meta.js` `require`s — so the check runs the page's *actual* logic over all manifest entries instead of re-implementing it. **Never build an image page title by string-concatenating `image.title` in the page.**
+
+The stored manifest copy cannot ship verbatim, which is why the helper exists:
+
+- Every `title` in `final_manifest.json` already ends with `" | MeetBackdrops"` (mandated by the vision prompt in `image-pipeline/vision-full.js`). Appending the brand again in the page produced a **doubled brand on all 1,759 image pages** (rendered titles ran 76-141 chars) until this was fixed.
+- ~1,076 older entries carry a templated marketing tail after an em dash (`… — Studio-Designed Background for Teams & Zoom`) from `rewrite-manifest-copy.js`. It's boilerplate repeated across a thousand pages and alone breaks the budget, so the helper keeps the descriptive head and drops the tail.
+- Descriptive heads still run to ~83 chars, so the head is trimmed to a complete clause (never mid-phrase) to fit 65 with the brand suffix.
+- 191 descriptions sit below the 110-char floor; the helper appends a platform tail so search engines index our copy rather than rewriting it.
+
+All of this is **render-time only** — the manifest is not rewritten, so the pipeline's stored copy stays the single source for the image data.
 
 **Do not add commentary to source files claiming a string is "intentionally too short/long for SEO."** Either it's within budget (and the comment is noise) or it's not (and the comment is wrong). The script is the source of truth.
 
