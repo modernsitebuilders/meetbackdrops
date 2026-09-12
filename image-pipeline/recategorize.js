@@ -19,6 +19,13 @@
  * Usage:
  *   node image-pipeline/recategorize.js --dry-run   # show plan, no writes
  *   node image-pipeline/recategorize.js             # execute (also copies R2)
+ *
+ * Explicit, human-directed moves (bypasses the audit + title-strict filter —
+ * a reviewer looked at the images and decided; see CLAUDE.md: the pipeline's
+ * call is raised to the human, and this is how their decision is applied):
+ *   node image-pipeline/recategorize.js --moves-file moves.txt --dry-run
+ *   node image-pipeline/recategorize.js --moves-file moves.txt
+ * where moves.txt is one `slug,new-category` per line (# comments allowed).
  */
 
 const fs = require('fs');
@@ -26,6 +33,7 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const { S3Client, CopyObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3');
+const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
 const FM_PATH = path.join(__dirname, 'final_manifest.json');
@@ -34,6 +42,8 @@ const CD_PATH = path.join(ROOT, 'data/categoryData.js');
 const CC_PATH = path.join(ROOT, 'lib/categories-config.js');
 
 const DRY_RUN = process.argv.includes('--dry-run');
+const mfIdx = process.argv.indexOf('--moves-file');
+const MOVES_FILE = mfIdx >= 0 ? process.argv[mfIdx + 1] : null;
 const TS = new Date().toISOString().replace(/[:.]/g, '-');
 
 // Category → default folder. For bookshelves/wall-shelves, incoming entries
@@ -145,11 +155,55 @@ async function r2Copy(srcKey, dstKey) {
 
 async function main() {
   const fm = JSON.parse(fs.readFileSync(FM_PATH, 'utf8'));
+
+  const moves = [];
+
+  if (MOVES_FILE) {
+    // ── Explicit mode ──────────────────────────────────────────────────────
+    // A human reviewed the images and chose these destinations. No heuristic
+    // filter applies; we only validate that the slug and category are real.
+    const fmMap = Object.fromEntries(fm.map(e => [e.slug, e]));
+    const lines = fs.readFileSync(MOVES_FILE, 'utf8').split('\n')
+      .map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+    const problems = [];
+    for (const line of lines) {
+      const [slug, newCategory] = line.split(',').map(x => (x || '').trim());
+      if (!slug || !newCategory) { problems.push(`malformed line: ${line}`); continue; }
+      const e = fmMap[slug];
+      if (!e) { problems.push(`slug not in manifest: ${slug}`); continue; }
+      if (!CATEGORY_TO_FOLDER[newCategory]) { problems.push(`unknown category: ${newCategory}`); continue; }
+      if (!CATEGORY_TO_ARRAY[newCategory]) { problems.push(`no categoryData array for: ${newCategory}`); continue; }
+      if (!CATEGORY_TO_ARRAY[e.category]) { problems.push(`no categoryData array for source: ${e.category} (${slug})`); continue; }
+      if (e.category === newCategory) { problems.push(`already in ${newCategory}: ${slug}`); continue; }
+      moves.push({
+        slug,
+        oldCategory: e.category,
+        oldFolder: e.folder,
+        newCategory,
+        newFolder: CATEGORY_TO_FOLDER[newCategory],
+        title: e.title,
+        filename: e.image_webp,
+      });
+    }
+    if (problems.length) {
+      console.error(`\n✗ ${problems.length} problem(s) in ${MOVES_FILE} — nothing written:`);
+      problems.forEach(p => console.error(`    ${p}`));
+      process.exit(1);
+    }
+    console.log(`▶  Move plan (explicit, --moves-file ${MOVES_FILE})`);
+    console.log(`  moves requested  : ${lines.length}`);
+    console.log(`  all validated    : ${moves.length}`);
+    console.log();
+    for (const m of moves) {
+      console.log(`    ${m.oldCategory.padEnd(22)} → ${m.newCategory}   ${(m.title || '').replace(' | MeetBackdrops', '')}`);
+    }
+    console.log();
+  } else {
+
   const vis = JSON.parse(fs.readFileSync(VIS_PATH, 'utf8'));
   const audit = JSON.parse(fs.readFileSync(path.join(__dirname, 'category-audit-report.json'), 'utf8'));
 
   // Build move list with TITLE-STRICT filter
-  const moves = [];
   for (const r of audit) {
     if (!r.mismatch) continue;
     const v = vis[r.slug];
@@ -176,6 +230,9 @@ async function main() {
   console.log(`  total candidates : ${audit.filter(r => r.mismatch).length}`);
   console.log(`  passing filter   : ${moves.length}`);
   console.log();
+  }
+
+  if (!moves.length) { console.log('Nothing to move.'); return; }
 
   // Group by destination
   const byNew = {};
@@ -253,16 +310,12 @@ async function main() {
   console.log(`✓ moved ${cdMoved}/${moves.length} entries in data/categoryData.js`);
 
   // 3. Update counts in lib/categories-config.js
-  let ccSrc = fs.readFileSync(CC_PATH, 'utf8');
-  for (const cat of Object.keys(newCounts)) {
-    const oldVal = oldCounts[cat] || 0;
-    const newVal = newCounts[cat] || 0;
-    if (oldVal === newVal) continue;
-    const re = new RegExp(`("${cat.replace(/[-]/g, '\\-')}":\\s*\\{[\\s\\S]*?"count":\\s*)${oldVal}(\\s*,)`);
-    ccSrc = ccSrc.replace(re, `$1${newVal}$2`);
-  }
-  fs.writeFileSync(CC_PATH, ccSrc);
-  console.log(`✓ updated category counts in lib/categories-config.js`);
+  // Delegate to sync-counts.js, which recomputes EVERY count and TOTAL_IMAGES
+  // from the manifest. A previous hand-rolled regex here silently failed to
+  // decrement source categories (it matched on the old value, which is brittle
+  // against formatting), leaving config counts drifted from the manifest.
+  // CLAUDE.md: counts are derived from the manifest, never bumped by hand.
+  execFileSync(process.execPath, [path.join(__dirname, 'sync-counts.js')], { stdio: 'inherit' });
 
   // 4. R2: copy webps to new folders
   console.log(`\n▶  Copying webps to new R2 folders...`);

@@ -17,7 +17,12 @@
  * bookshelves still resolve under /category/bookshelves/… (see
  * pages/category/[slug]/[imageSlug].js getStaticPaths).
  *
- * Reads the batch from process_new_images_output.json (the pipeline's output).
+ * Reads the batch from process_new_images_output.json (the pipeline's output),
+ * but resolves each slug's CURRENT category from final_manifest.json — the
+ * manifest is the source of truth, and an image may have been recategorized
+ * after the pipeline ran (see recategorize.js --moves-file). Using the stale
+ * batch category would submit URLs that immediately 301, which is exactly the
+ * kind of noise IndexNow should not carry.
  * The file it writes MUST be committed: the GitHub Action submits it on push.
  */
 
@@ -26,6 +31,7 @@ const path = require('path');
 
 const SITE = 'https://meetbackdrops.com';
 const OUT_PATH = path.join(__dirname, 'process_new_images_output.json');
+const FM_PATH = path.join(__dirname, 'final_manifest.json');
 const URLS_PATH = path.join(__dirname, 'last-batch-urls.txt');
 const REL = (p) => path.relative(path.join(__dirname, '..'), p);
 
@@ -36,11 +42,29 @@ if (!fs.existsSync(OUT_PATH)) {
 
 const batch = JSON.parse(fs.readFileSync(OUT_PATH, 'utf8'));
 
+// slug -> current canonical category, from the manifest.
+const currentCategory = Object.create(null);
+try {
+  for (const e of JSON.parse(fs.readFileSync(FM_PATH, 'utf8'))) {
+    if (e && e.slug && e.category) currentCategory[e.slug] = e.category;
+  }
+} catch (err) {
+  console.error(`  ! could not read ${REL(FM_PATH)} (${err.message}) — falling back to batch categories.`);
+}
+
 const urls = new Set();
+let retargeted = 0;
 for (const e of batch || []) {
   if (!e || !e.category || !e.slug) continue;
-  urls.add(`${SITE}/category/${e.category}/${e.slug}`); // new image page
-  urls.add(`${SITE}/category/${e.category}`); // updated category landing page
+  // Prefer the manifest's category: the image may have been recategorized
+  // since the pipeline wrote this batch file.
+  const category = currentCategory[e.slug] || e.category;
+  if (category !== e.category) retargeted++;
+  urls.add(`${SITE}/category/${category}/${e.slug}`); // new image page
+  urls.add(`${SITE}/category/${category}`); // updated category landing page
+}
+if (retargeted) {
+  console.log(`  ${retargeted} URL(s) retargeted to a recategorized slug's current category.`);
 }
 
 const list = [...urls].sort();

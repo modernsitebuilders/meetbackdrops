@@ -40,3 +40,6 @@ pages/category/**/index.js.wave2-sweep-backup.*
 scripts/generate-hd-products.js.wave2-backup.*
 public/data/image-metadata-complete.json.*-backup.*
 public/data/image-scores-static.json.wave2-backup.*
+
+# Local-only review sheets (never deployed)
+*.local.html
