@@ -11,6 +11,7 @@ import { HD_BASE_IDS } from '../lib/hdProducts';
 import { useWishlist } from '../lib/WishlistContext';
 import { webpUrl } from '../lib/cloudinaryUrl';
 import { useShowFilenames } from '../lib/useShowFilenames';
+import { buildImagePageTitle } from '../lib/imagePageMeta';
 
 const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
@@ -386,7 +387,7 @@ export default function ImageGrid({ images, slug, onImageClick, onDownload = [],
 
                     <SocialShare
                       image={{...image, category: slug}}
-                      title={metadata[image.filename]?.title || `${image.title} — MeetBackdrops Studio`}
+                      title={buildImagePageTitle(metadata[image.filename]?.title || image.title)}
                       size="small"
                       showLabels={false}
                       vertical={false}

@@ -9,6 +9,7 @@ import { isAdmin } from '../lib/adminAuth';
 const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 import { getSessionData, getOrCreateVisitorId, isReturningVisitor } from '../lib/sessionTracking';
 import { HD_BASE_IDS } from '../lib/hdProducts';
+import { buildImagePageTitle } from '../lib/imagePageMeta';
 
 export default function ImagePreviewModal({ image, slug, onClose, onDownload, cloudinaryUrls }) {
   if (!image) return null;
@@ -156,7 +157,10 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
         }}>
           <SocialShare
             image={{...image, category: slug}}
-            title={`${image.title} - Free Virtual Background`}
+            // Share text = the image page's own <title>. image.title arrives in several
+            // shapes (manifest copy already ends " | MeetBackdrops"; categoryData and the
+            // search index don't), so normalize it rather than appending a suffix here.
+            title={buildImagePageTitle(image.title)}
             size="large"
             showLabels={false}
             vertical={true}
