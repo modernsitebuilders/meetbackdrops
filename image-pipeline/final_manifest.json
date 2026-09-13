@@ -33483,7 +33483,9 @@
       "interior",
       "autumn"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 129
   },
   {
     "id": "bookshelves:cozy-nook-bookshelf-filled-books-soft-lighting-decorative-cb35e9ec",
