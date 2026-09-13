@@ -179,6 +179,7 @@ export default function PlatformThemePage({
       {previewImage && (
         <ImagePreviewModal
           image={previewImage}
+          manifestTitle={metadata?.[previewImage.filename]?.title}
           slug={previewImage.category || platform.slug}
           onClose={() => setPreviewImage(null)}
           onDownload={(image, eventType) => handleDownload(image, image.category || platform.slug, eventType)}

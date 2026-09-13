@@ -11,7 +11,7 @@ import { getSessionData, getOrCreateVisitorId, isReturningVisitor } from '../lib
 import { HD_BASE_IDS } from '../lib/hdProducts';
 import { buildImagePageTitle } from '../lib/imagePageMeta';
 
-export default function ImagePreviewModal({ image, slug, onClose, onDownload, cloudinaryUrls }) {
+export default function ImagePreviewModal({ image, slug, onClose, onDownload, cloudinaryUrls, manifestTitle }) {
   if (!image) return null;
 
   const baseId = image.filename ? image.filename.replace(/\.\w+$/, '') : null;
@@ -157,10 +157,12 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
         }}>
           <SocialShare
             image={{...image, category: slug}}
-            // Share text = the image page's own <title>. image.title arrives in several
-            // shapes (manifest copy already ends " | MeetBackdrops"; categoryData and the
-            // search index don't), so normalize it rather than appending a suffix here.
-            title={buildImagePageTitle(image.title)}
+            // Share text = the image page's own <title>, built from the manifest title.
+            // Callers pass `manifestTitle` because image.title is often a thinner
+            // stand-in (categoryData's "Historic Spaces Background 33", or a title
+            // rebuilt from the filename). buildImagePageTitle normalizes whichever
+            // shape arrives — brand exactly once, within the 65-char budget.
+            title={buildImagePageTitle(manifestTitle || image.title)}
             size="large"
             showLabels={false}
             vertical={true}

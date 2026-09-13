@@ -200,6 +200,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
       {previewImage && (
         <ImagePreviewModal
           image={previewImage}
+          manifestTitle={metadata?.[previewImage.filename]?.title}
           slug={slug}
           onClose={() => setPreviewImage(null)}
           onDownload={(image, eventType) => handleDownload(image, slug, eventType)}

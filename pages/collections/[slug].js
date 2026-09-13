@@ -228,6 +228,7 @@ export default function CollectionPage({ def, images, scores, metadata, seoData,
       {previewImage && (
         <ImagePreviewModal
           image={previewImage}
+          manifestTitle={metadata?.[previewImage.filename]?.title}
           slug={previewImage.category || def.slug}
           onClose={() => setPreviewImage(null)}
           onDownload={(image, eventType) => handleDownload(image, image.category || def.slug, eventType)}

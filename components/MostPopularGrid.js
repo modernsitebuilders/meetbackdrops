@@ -123,7 +123,7 @@ export default function MostPopularGrid() {
               e.currentTarget.style.transform = 'translateY(0)';
               setHoveredIndex(null);
             }}
-            onClick={() => { trackAnalytics('popular_image_click', image.filename, image.category); setSelectedImage({ filename: image.filename, title: image.filename.replace('.webp', '').replace(/-/g, ' '), category: image.category }); }}
+            onClick={() => { trackAnalytics('popular_image_click', image.filename, image.category); setSelectedImage({ filename: image.filename, title: image.filename.replace('.webp', '').replace(/-/g, ' '), manifestTitle: image.title, category: image.category }); }}
           >
             <div style={{
               position: 'relative',
@@ -253,6 +253,7 @@ export default function MostPopularGrid() {
       {selectedImage && (
         <ImagePreviewModal
           image={selectedImage}
+          manifestTitle={selectedImage.manifestTitle}
           slug={selectedImage.category}
           onClose={() => setSelectedImage(null)}
           onDownload={(img, eventType) => handleDownload(img, img.category, eventType)}

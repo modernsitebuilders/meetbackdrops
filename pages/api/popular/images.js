@@ -1,5 +1,11 @@
 // pages/api/popular/images.js
 import { google } from 'googleapis';
+import { resolveByAnyExtension } from '../../../lib/manifest';
+
+// The PopularCache sheet stores filenames only. Attach each image's manifest
+// title so the preview modal can share it (see buildImagePageTitle).
+const withManifestTitles = (images = []) =>
+  images.map((img) => ({ ...img, title: resolveByAnyExtension(img.filename)?.title || img.title || null }));
 
 export default async function handler(req, res) {
   try {
@@ -98,6 +104,7 @@ export default async function handler(req, res) {
       responseData.topImage = jsonData.topImage;
     }
     
+    responseData.images = withManifestTitles(responseData.images);
     res.status(200).json(responseData);
     
   } catch (error) {
@@ -116,6 +123,7 @@ export default async function handler(req, res) {
         res.setHeader('Cache-Control', 'public, s-maxage=30');
         return res.status(200).json({
           ...cached,
+          images: withManifestTitles(cached.images),
           source: 'fallback-cache',
           warning: 'Using fallback cache due to Google Sheets error',
           error: error.message

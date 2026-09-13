@@ -187,6 +187,7 @@ export default function ThemeCollectionPage({
       {previewImage && (
         <ImagePreviewModal
           image={previewImage}
+          manifestTitle={metadata?.[previewImage.filename]?.title}
           slug={previewImage.category || theme.slug}
           onClose={() => setPreviewImage(null)}
           onDownload={(image, eventType) => handleDownload(image, image.category || theme.slug, eventType)}
