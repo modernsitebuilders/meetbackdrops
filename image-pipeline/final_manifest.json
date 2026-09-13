@@ -13934,7 +13934,8 @@
       "remote work"
     ],
     "hdOnly": false,
-    "index": 87
+    "index": 87,
+    "hd": true
   },
   {
     "id": "home-offices-:88",
@@ -14167,7 +14168,8 @@
       "virtual meetings"
     ],
     "hdOnly": false,
-    "index": 97
+    "index": 97,
+    "hd": true
   },
   {
     "id": "home-offices-:98",
@@ -25484,7 +25486,8 @@
       "virtual meetings"
     ],
     "hdOnly": false,
-    "index": 38
+    "index": 38,
+    "hd": true
   },
   {
     "id": "wall-shelves-dark-:39",
@@ -28162,7 +28165,9 @@
       "greenery",
       "virtual meetings"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 128
   },
   {
     "id": "office-spaces:international-executive-office-global-de-159148db",
