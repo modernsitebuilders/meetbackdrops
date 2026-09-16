@@ -52,6 +52,11 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
+      // The Stripe account is Modern Site Builders, so its default card statement
+      // descriptor is MODERNSITEBUILDERS.COM. Card charges can't override the full
+      // descriptor, only append a suffix to the account's shortened prefix
+      // (Dashboard → Settings → Public details), so buyers see "<PREFIX>* MEETBACKDROPS".
+      payment_intent_data: { statement_descriptor_suffix: "MEETBACKDROPS" },
       // Collect the legal name the license is issued to (printed on the certificate).
       custom_fields: [
         {
