@@ -162,13 +162,13 @@ export default function Home({ reviewsData }) {
           Free samples — no signup. HD editions from $4.99.
         </p>
 
-        {/* In-season feature — swap the category/copy each season. Summer leads
-            conversion in the July window; rotate to fall/holiday sets as the
-            season turns (see the image-content priorities note). */}
+        {/* In-season feature — swap the category/copy each season. Fall from
+            mid-September; rotate to holiday sets as the season turns (see the
+            image-content priorities note). */}
         <section style={{ maxWidth: '1100px', margin: '3rem auto 0', padding: '0 1rem' }}>
           <Link
             prefetch={false}
-            href="/category/summer-backgrounds"
+            href="/category/fall-backgrounds"
             style={{
               display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
               gap: '1rem', textDecoration: 'none',
@@ -189,10 +189,10 @@ export default function Home({ reviewsData }) {
                 fontWeight: 600, letterSpacing: '-0.02em',
                 fontSize: 'clamp(1.35rem, 2.6vw, 1.85rem)', color: '#111827',
               }}>
-                Summer virtual backgrounds
+                Fall virtual backgrounds
               </div>
               <p style={{ color: '#4b5563', margin: '0.35rem 0 0', fontSize: '0.95rem', lineHeight: 1.5 }}>
-                Bright, sunlit sets designed for camera — our most-downloaded collection this month.
+                Warm autumn sets in amber and rust tones, designed for camera — new for the season.
               </p>
             </div>
             <span style={{
@@ -200,7 +200,7 @@ export default function Home({ reviewsData }) {
               padding: '0.7rem 1.4rem', borderRadius: '999px',
               background: '#111827', color: '#fff', fontWeight: 600, fontSize: '0.9rem',
             }}>
-              Browse summer sets
+              Browse fall sets
               <span aria-hidden="true">→</span>
             </span>
           </Link>
