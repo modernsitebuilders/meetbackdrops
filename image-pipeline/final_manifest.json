@@ -32449,7 +32449,9 @@
       "soft colors",
       "professional video calls"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 102
   },
   {
     "id": "fall-backgrounds:cozy-home-office-large-windows-warm-autumn-light-comfortable-bd805fe0",
@@ -36193,7 +36195,9 @@
       "bright",
       "workspace"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 104
   },
   {
     "id": "office-spaces:modern-dining-space-wooden-table-elegant-chairs-decorative-b76e51bf",
@@ -36831,7 +36835,9 @@
       "bright",
       "serene"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 103
   },
   {
     "id": "bookshelves:wooden-bookshelves-filled-books-lamp-providing-classic-0aff5bc3",
@@ -37205,7 +37211,9 @@
       "industrial",
       "workspace"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 98
   },
   {
     "id": "neutral-backgrounds:neutral-wall-blinds-framed-artwork-suitable-professional-e67f3db2",
@@ -38285,7 +38293,9 @@
       "interior",
       "online presentations"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 131
   },
   {
     "id": "neutral-backgrounds:textured-neutral-wall-soft-lighting-designed-professional-1624ce02",
@@ -38439,7 +38449,9 @@
       "design",
       "executive"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 130
   },
   {
     "id": "office-spaces:black-paneled-wall-framed-certificate-window-designed-654d728c",
