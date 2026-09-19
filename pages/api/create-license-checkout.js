@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { getProduct } from "../../lib/products";
+import { attributionMetadata } from "../../lib/checkoutAttribution";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { licenseType, productId } = req.body || {};
+  const { licenseType, productId, analytics } = req.body || {};
 
   if (licenseType !== "image" && licenseType !== "library") {
     return res.status(400).json({ error: "licenseType must be 'image' or 'library'" });
@@ -89,6 +90,8 @@ export default async function handler(req, res) {
         // product_ids lets the existing /api/hd-s3-download authorize the HD file
         // for a per-image license exactly as it does for an HD purchase.
         ...(product ? { product_ids: product.id, product_id: product.id } : {}),
+        // Buyer attribution for the webhook's server-side license_purchase record.
+        ...attributionMetadata(analytics),
       },
     });
 

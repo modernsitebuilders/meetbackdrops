@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { attributionMetadata } from '../../lib/checkoutAttribution';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -29,6 +30,8 @@ export default async function handler(req, res) {
       metadata: {
         site: 'streambackdrops',
         product_type: 'subscription',
+        // Buyer attribution for the webhook's server-side hd_subscription record.
+        ...attributionMetadata(req.body?.analytics),
       },
       success_url: `${req.headers.origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/hd`,

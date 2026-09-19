@@ -705,7 +705,12 @@ function SubscriptionCTA({ onVerifyClick }) {
     setLoading(true);
     trackAnalytics('sub_cta_click', null, 'subscription');
     try {
-      const res = await fetch('/api/create-subscription-checkout', { method: 'POST' });
+      const res = await fetch('/api/create-subscription-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // Attribution for the webhook's server-side hd_subscription record.
+        body: JSON.stringify({ analytics: getAttribution() }),
+      });
       const { url } = await res.json();
       window.location.href = url;
     } catch {

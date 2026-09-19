@@ -102,17 +102,9 @@ export default async function handler(req, res) {
     // Add email to Email List sheet (fire-and-forget, deduped)
     if (email) addToEmailList(email).catch(() => {});
 
-    // Track subscription in analytics (fire-and-forget)
-    fetch(`${req.headers.origin || 'http://localhost:3000'}/api/analytics`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'user-agent': 'subscriber' },
-      body: JSON.stringify({
-        eventType: 'hd_subscription',
-        filename: email,
-        category: 'subscription',
-        originalSource: req.headers['referer'] || 'direct',
-      }),
-    }).catch(() => {});
+    // The hd_subscription revenue event is recorded server-side by the Stripe
+    // webhook (pages/api/stripe-webhook.js) — not here, so it isn't double-counted
+    // and doesn't depend on the buyer reaching /subscription-success.
 
     return res.status(200).json({ token, email });
 

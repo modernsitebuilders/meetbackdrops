@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import { getSessionData, getVisitorType } from '../lib/sessionTracking';
 
 export default function LicenseSuccess() {
   const [status, setStatus] = useState('verifying');
@@ -33,7 +32,11 @@ export default function LicenseSuccess() {
         setData({ ...d, sessionId });
         setStatus('success');
 
-        // Idempotent analytics (keyed by session id, mirrors hd-download.js).
+        // GA4 purchase event only. The INTERNAL license_purchase record (Sheet +
+        // Neon) is written server-side by the Stripe webhook
+        // (pages/api/stripe-webhook.js), so it survives ad blockers and buyers who
+        // never reach this page. localStorage guard keyed by Stripe session id so
+        // reopening this URL won't double-fire the GA4 event.
         try {
           const trackedKey = `license_purchase_tracked_${sessionId}`;
           const already =
@@ -41,24 +44,6 @@ export default function LicenseSuccess() {
             window.localStorage &&
             window.localStorage.getItem(trackedKey) === '1';
           if (!already) {
-            const session = getSessionData();
-            fetch('/api/analytics', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                eventType: 'license_purchase',
-                filename: d.productId || d.licenseType,
-                category: 'license',
-                originalSource: session?.originalReferrer || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
-                sessionId: session?.id || '',
-                visitorId: session?.visitorId || '',
-                pageViewsInSession: session?.pageViews || 0,
-                downloadsInSession: session?.downloads || 0,
-                visitorType: getVisitorType(),
-                landingPage: session?.landingPage || '',
-              }),
-            }).catch(() => {});
-
             if (typeof window !== 'undefined' && window.gtag && d.amount_total != null) {
               window.gtag('event', 'purchase', {
                 transaction_id: sessionId,

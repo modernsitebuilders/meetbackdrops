@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import { trackEvent } from '../lib/trackEvent';
 
 const SERIF = "'Fraunces', Georgia, 'Times New Roman', serif";
 const GRAPHITE = '#111827';
@@ -412,6 +413,13 @@ export default function BrandedBackgroundsPage() {
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle');
+  // Funnel: started (first field focus, once) → submitted | failed.
+  const startedRef = useRef(false);
+  const onFormFocus = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackEvent('branded_form_started', null, 'branded');
+  };
   const [serverError, setServerError] = useState('');
 
   const update = (key) => (e) => {
@@ -447,8 +455,10 @@ export default function BrandedBackgroundsPage() {
         throw new Error(data.error || 'Submission failed');
       }
       setStatus('success');
+      trackEvent('branded_inquiry_submitted', form.teamSize || null, 'branded');
     } catch (err) {
       setStatus('error');
+      trackEvent('branded_inquiry_failed', String(err.message || '').slice(0, 100), 'branded');
       setServerError(err.message || 'Submission failed. Please email info@meetbackdrops.com.');
     }
   };
@@ -1019,6 +1029,7 @@ export default function BrandedBackgroundsPage() {
             ) : (
               <form
                 onSubmit={onSubmit}
+                onFocus={onFormFocus}
                 noValidate
                 style={{ background: '#fff', padding: '2.5rem', border: `1px solid ${RULE}` }}
               >

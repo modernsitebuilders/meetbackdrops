@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 import { Redis } from '@upstash/redis';
 import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
+import { sendStudioAlert, formatMoney } from '../../lib/studioAlert';
 
 const isTest = process.env.STRIPE_MODE === 'test';
 
@@ -9,21 +10,24 @@ const redis = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
-// Record a completed HD purchase as an `hd_purchase` analytics event — the same
-// 15-column row shape pages/api/analytics.js writes — straight from the webhook.
+// Record a completed sale as a revenue analytics event (`hd_purchase`,
+// `hd_subscription` or `license_purchase` — REVENUE_EVENTS in
+// lib/analyticsNormalize.js) — the same 15-column row shape pages/api/analytics.js
+// writes — straight from the webhook.
 //
-// WHY here and not only on the /hd-download success page: the client-side write
-// fires only if the buyer returns to /hd-download AND their browser lets the
-// /api/analytics beacon through. Ad/privacy blockers (which block paths named
-// "analytics") and closed tabs silently drop it, so real, paid sales went
-// unrecorded (e.g. the 2026-08-11 sale). Stripe retries this webhook until it gets
-// a 200, server-side, so it's the reliable, ad-blocker-proof record.
+// WHY here and not on the success pages: a client-side write fires only if the
+// buyer returns to the success page AND their browser lets the /api/analytics
+// beacon through. Ad/privacy blockers (which block paths named "analytics") and
+// closed tabs silently drop it, so real, paid sales went unrecorded (e.g. the
+// 2026-08-11 HD sale). Stripe retries this webhook until it gets a 200,
+// server-side, so it's the reliable, ad-blocker-proof record. The success pages
+// now send only the GA4 purchase event, so nothing is counted twice.
 //
 // Dedup: the row timestamp is derived from the Stripe session's `created` time (not
 // wall-clock now), so a webhook redelivery produces a byte-identical row → identical
 // row_hash → ON CONFLICT (row_hash) DO NOTHING no-ops it. The buyer's attribution
-// rides in on session.metadata (a_sid/a_vid/a_src/... set by create-checkout.js).
-async function recordHdPurchase(session, productIds) {
+// rides in on session.metadata (a_sid/a_vid/a_src/..., lib/checkoutAttribution.js).
+async function recordRevenueEvent(session, eventType, filename, category) {
   try {
     const m = session?.metadata || {};
     // ET wall-clock string matching the format pages/api/analytics.js writes, built
@@ -32,10 +36,10 @@ async function recordHdPurchase(session, productIds) {
     const et = (opts) => created.toLocaleString('en-US', { timeZone: 'America/New_York', ...opts });
     const row = [
       et({ year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-      'hd_purchase',
+      eventType,
       m.a_src || 'direct',
-      productIds.join(','),
-      'hd',
+      filename,
+      category,
       m.a_pv != null ? parseInt(m.a_pv, 10) || 0 : 0,
       0,
       m.a_vtype || 'new',
@@ -48,13 +52,47 @@ async function recordHdPurchase(session, productIds) {
       'stripe-webhook',
     ];
     // Queue for the Sheet (system of record) + live-mirror to Neon, exactly like
-    // pages/api/analytics.js. Both dedup on the shared cell-hash, so the daily
+    // pages/api/analytics.js. Both dedup on the shared cell-hash, so the
     // sheet→Neon reconciliation won't double-insert.
     await redis.rpush('analytics:queue', JSON.stringify(row));
     await insertAnalyticsEventSafe(row);
   } catch (e) {
     // Never let analytics recording break the 200 we owe Stripe.
-    console.error('[stripe-webhook] hd_purchase recording failed:', e?.message);
+    console.error(`[stripe-webhook] ${eventType} recording failed:`, e?.message);
+  }
+}
+
+// Email the studio about the sale. Stripe redelivers webhooks (retries, manual
+// resends), so claim the session id in Redis first — one sale, one email. If Redis
+// is unreachable we send anyway: a duplicate alert beats a missed sale.
+async function alertSale(session, { product, detail }) {
+  try {
+    let claimed = true;
+    try {
+      claimed = (await redis.set(`sale_alerted:${session.id}`, '1', { nx: true, ex: 60 * 60 * 24 * 30 })) === 'OK';
+    } catch { /* Redis down — fall through and send */ }
+    if (!claimed) return;
+
+    const m = session?.metadata || {};
+    const cd = session?.customer_details || {};
+    const amount = formatMoney(session?.amount_total, session?.currency || 'usd');
+    await sendStudioAlert({
+      subject: `💰 New sale: ${product} — ${amount}${isTest ? ' [TEST MODE]' : ''}`,
+      eyebrow: `MeetBackdrops · New sale${isTest ? ' · TEST MODE' : ''}`,
+      heading: `${product} — ${amount}`,
+      rows: [
+        ['Customer', cd.name],
+        ['Email', cd.email],
+        ...detail,
+        ['Came from', m.a_src],
+        ['Landing page', m.a_land],
+        ['Stripe session', session.id],
+      ],
+      replyTo: cd.email || undefined,
+      footer: 'Reply to this email to reach the customer directly.',
+    });
+  } catch (e) {
+    console.error('[stripe-webhook] sale alert failed:', e?.message);
   }
 }
 
@@ -156,11 +194,30 @@ export default async function handler(req, res) {
     return res.status(200).json({ received: true, ignored: true });
   }
 
-  // Subscription checkouts are acknowledged here; lifecycle handling lives elsewhere.
+  // HD subscription ($9/mo): record + alert. Access itself is granted by
+  // /api/subscription-activate when the buyer lands on /subscription-success.
   if (metadata.product_type === 'subscription') {
-    console.log('[stripe-webhook] Subscription checkout acknowledged:', {
-      session_id: session.id,
-      customer: session.customer,
+    const email = session?.customer_details?.email || '';
+    await recordRevenueEvent(session, 'hd_subscription', email, 'subscription');
+    await alertSale(session, {
+      product: 'HD Subscription',
+      detail: [['Plan', '10 HD downloads / month']],
+    });
+    return res.status(200).json({ received: true });
+  }
+
+  // Commercial licenses ($49 single image / $299 library): record + alert. The
+  // certificate + HD file are served by /license-success via /api/verify-license.
+  if (metadata.product_type === 'extended_license' || metadata.product_type === 'commercial_library') {
+    const isLibrary = metadata.product_type === 'commercial_library';
+    const licensee = (session?.custom_fields || []).find((f) => f.key === 'licensee')?.text?.value;
+    await recordRevenueEvent(session, 'license_purchase', metadata.product_id || metadata.license_type || metadata.product_type, 'license');
+    await alertSale(session, {
+      product: isLibrary ? 'Commercial Library License' : 'Extended License',
+      detail: [
+        ['Licensee', licensee],
+        ...(isLibrary ? [] : [['Image', metadata.product_id]]),
+      ],
     });
     return res.status(200).json({ received: true });
   }
@@ -194,7 +251,11 @@ export default async function handler(req, res) {
 
   // 📊 Record the sale server-side (reliable; not dependent on the buyer returning
   // to /hd-download or their browser allowing the analytics beacon through).
-  await recordHdPurchase(session, productIds);
+  await recordRevenueEvent(session, 'hd_purchase', productIds.join(','), 'hd');
+  await alertSale(session, {
+    product: productIds.length === 1 ? 'HD Edition' : `HD Editions (${productIds.length}-pack)`,
+    detail: [['Images', productIds.join(', ')]],
+  });
 
   // 🔓 Unlock each purchased HD image
   for (const id of productIds) {

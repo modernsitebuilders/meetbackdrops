@@ -1,21 +1,19 @@
 import { google } from 'googleapis';
+import { sendStudioAlert } from '../../lib/studioAlert';
 
-// Validates and stores B2B branded-backgrounds inquiries, and sends an email
-// notification to the studio inbox.
+// Validates and stores B2B branded-backgrounds inquiries, and emails the studio
+// inbox (lib/studioAlert.js, MailerSend — LICENSING_INBOX, default
+// info@meetbackdrops.com).
 //
-// Storage: appends to a "Branded Inquiries" sheet in the existing
-// GOOGLE_SHEET_ID workbook. Headers: Timestamp | Name | Work Email | Company |
-// Role | Team Size | Timeline | Use Case | Notes | IP | User-Agent.
-// (If the sheet tab doesn't exist yet, create one named "Branded Inquiries"
-// with those headers, or rename the existing "Licensing Inquiries" tab.)
+// Storage: appends to the "Branded Inquiries" tab of the GOOGLE_SHEET_ID workbook
+// (mirrored to Neon `branded_inquiries` by the sheet sync). The tab is created
+// with its header row on first use if it doesn't exist — until Sept 2026 it
+// didn't, so every append failed silently. Columns: Timestamp | Name | Work Email |
+// Company | Role | Team Size | Timeline | Use Case | Notes | IP | User-Agent.
 //
-// Email: sends via MailerSend's HTTP API. Requires:
-//   MAILERSEND_API_KEY        — from https://mailersend.com (free tier 3K/mo)
-//   LICENSING_INBOX           — defaults to info@meetbackdrops.com
-//   LICENSING_FROM            — defaults to "MeetBackdrops Studio <notifications@meetbackdrops.com>"
-//
-// If env vars are missing or the call fails, the lead is still logged to the
-// server console + Sheets so it isn't lost.
+// A lead is only lost if BOTH the email and the sheet fail — then the endpoint
+// returns 500 so the form shows the "email us directly" fallback instead of a
+// false success. Either one succeeding is a 200.
 
 const FREE_EMAIL_DOMAINS = new Set([
   'gmail.com',
@@ -37,100 +35,28 @@ function clean(str, max = 2000) {
   return str.trim().slice(0, max);
 }
 
-function escapeHtml(s) {
-  return String(s || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
-function parseSender(raw) {
-  const m = String(raw || '').match(/^\s*(.+?)\s*<\s*([^>]+)\s*>\s*$/);
-  if (m) return { name: m[1], email: m[2] };
-  return { email: String(raw || '').trim() };
-}
-
-async function sendStudioNotification({ lead, isFreeDomain, ip, timestamp }) {
-  const apiKey = process.env.MAILERSEND_API_KEY;
-  const to = process.env.LICENSING_INBOX || 'info@meetbackdrops.com';
-  const fromRaw = process.env.LICENSING_FROM || 'MeetBackdrops Studio <notifications@meetbackdrops.com>';
-  const from = parseSender(fromRaw);
-
-  if (!apiKey) {
-    return { ok: false, reason: 'no-api-key' };
-  }
-
-  const subject = `New branded backgrounds inquiry — ${lead.company || lead.name}`;
-  const lines = [
-    `Submitted: ${timestamp} ET`,
-    `Name:      ${lead.name}`,
-    `Email:     ${lead.workEmail}${isFreeDomain ? '  (free-domain)' : ''}`,
-    `Company:   ${lead.company}`,
-    `Role:      ${lead.role || '—'}`,
-    `Set size:  ${lead.teamSize}`,
-    `Timeline:  ${lead.timeline || '—'}`,
-    `IP:        ${ip || '—'}`,
-    '',
-    'Brand & set brief:',
-    lead.useCase,
-    '',
-    'Notes:',
-    lead.notes || '—',
-  ];
-  const text = lines.join('\n');
-  const html = `
-<div style="font-family:Georgia,serif;color:#111827;max-width:640px;line-height:1.55">
-  <p style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#9a6a3a;font-weight:600;margin:0 0 .75rem">
-    MeetBackdrops Studio · New Branded Backgrounds Inquiry
-  </p>
-  <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em;font-size:1.5rem;margin:0 0 1.25rem">
-    ${escapeHtml(lead.company || lead.name)}
-  </h2>
-  <table cellpadding="6" style="border-collapse:collapse;font-size:.95rem">
-    <tr><td style="color:#6b7280">Submitted</td><td>${escapeHtml(timestamp)} ET</td></tr>
-    <tr><td style="color:#6b7280">Name</td><td>${escapeHtml(lead.name)}</td></tr>
-    <tr><td style="color:#6b7280">Email</td><td><a href="mailto:${escapeHtml(lead.workEmail)}">${escapeHtml(lead.workEmail)}</a>${isFreeDomain ? ' <span style="color:#9a6a3a;font-size:.8rem">(free-domain)</span>' : ''}</td></tr>
-    <tr><td style="color:#6b7280">Company</td><td>${escapeHtml(lead.company)}</td></tr>
-    <tr><td style="color:#6b7280">Role</td><td>${escapeHtml(lead.role || '—')}</td></tr>
-    <tr><td style="color:#6b7280">Set size</td><td>${escapeHtml(lead.teamSize)}</td></tr>
-    <tr><td style="color:#6b7280">Timeline</td><td>${escapeHtml(lead.timeline || '—')}</td></tr>
-    <tr><td style="color:#6b7280;vertical-align:top">Brand &amp; set brief</td><td style="white-space:pre-wrap">${escapeHtml(lead.useCase)}</td></tr>
-    <tr><td style="color:#6b7280;vertical-align:top">Notes</td><td style="white-space:pre-wrap">${escapeHtml(lead.notes || '—')}</td></tr>
-    <tr><td style="color:#6b7280">IP</td><td style="font-family:monospace;font-size:.85rem">${escapeHtml(ip || '—')}</td></tr>
-  </table>
-  <p style="margin-top:1.5rem;color:#6b7280;font-size:.85rem">
-    Reply directly to this email to respond to the prospect — the Reply-To header is set to their work email.
-  </p>
-</div>`.trim();
-
-  try {
-    const res = await fetch('https://api.mailersend.com/v1/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        from,
-        to: [{ email: to }],
-        reply_to: { email: lead.workEmail },
-        subject,
-        text,
-        html,
-      }),
-    });
-    if (!res.ok) {
-      const body = await res.text().catch(() => '');
-      return { ok: false, reason: 'mailersend-error', status: res.status, body };
-    }
-    const messageId = res.headers.get('x-message-id') || null;
-    return { ok: true, id: messageId };
-  } catch (err) {
-    return { ok: false, reason: 'network-error', message: err.message };
-  }
+function studioNotification({ lead, isFreeDomain, ip, timestamp }) {
+  return sendStudioAlert({
+    subject: `New branded backgrounds inquiry — ${lead.company || lead.name}`,
+    eyebrow: 'MeetBackdrops Studio · New Branded Backgrounds Inquiry',
+    heading: lead.company || lead.name,
+    rows: [
+      ['Submitted', `${timestamp} ET`],
+      ['Name', lead.name],
+      ['Email', `${lead.workEmail}${isFreeDomain ? '  (free-domain)' : ''}`],
+      ['Company', lead.company],
+      ['Role', lead.role],
+      ['Set size', lead.teamSize],
+      ['Timeline', lead.timeline],
+      ['IP', ip],
+    ],
+    blocks: [
+      ['Brand & set brief', lead.useCase],
+      ['Notes', lead.notes],
+    ],
+    replyTo: lead.workEmail,
+    footer: 'Reply directly to this email to respond to the prospect — the Reply-To header is set to their work email.',
+  });
 }
 
 export default async function handler(req, res) {
@@ -185,7 +111,7 @@ export default async function handler(req, res) {
   });
 
   const [emailResult, sheetsResult] = await Promise.allSettled([
-    sendStudioNotification({ lead, isFreeDomain, ip, timestamp }),
+    studioNotification({ lead, isFreeDomain, ip, timestamp }),
     appendToSheet({ lead, ip, userAgent, timestamp }),
   ]);
 
@@ -199,6 +125,15 @@ export default async function handler(req, res) {
   }
   if (!sheetsStatus.ok) {
     console.error('[branded-inquiry] sheets append failed:', sheetsStatus.message || sheetsStatus.reason);
+  }
+
+  if (!emailStatus.ok && !sheetsStatus.ok) {
+    // Nothing reached the studio — say so, so the form offers the direct-email
+    // fallback rather than a false "we'll be in touch".
+    console.error('[branded-inquiry] LEAD NOT DELIVERED (email + sheet both failed):', lead.workEmail);
+    return res.status(500).json({
+      error: "We couldn't send your inquiry. Please email info@meetbackdrops.com directly.",
+    });
   }
 
   return res.status(200).json({
@@ -228,9 +163,10 @@ async function appendToSheet({ lead, ip, userAgent, timestamp }) {
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
     const sheets = google.sheets({ version: 'v4', auth });
+    await ensureTab(sheets, spreadsheetId);
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Branded Inquiries!A:K',
+      range: `'${TAB}'!A:K`,
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[
@@ -243,4 +179,27 @@ async function appendToSheet({ lead, ip, userAgent, timestamp }) {
   } catch (err) {
     return { ok: false, reason: 'sheets-error', message: err.message };
   }
+}
+
+const TAB = 'Branded Inquiries';
+const HEADERS = [
+  'Timestamp', 'Name', 'Work Email', 'Company', 'Role', 'Team Size',
+  'Timeline', 'Use Case', 'Notes', 'IP', 'User-Agent',
+];
+
+// Create the tab (with its header row) if the workbook doesn't have it yet.
+async function ensureTab(sheets, spreadsheetId) {
+  const meta = await sheets.spreadsheets.get({ spreadsheetId, fields: 'sheets.properties.title' });
+  const exists = (meta.data.sheets || []).some((sh) => sh.properties?.title === TAB);
+  if (exists) return;
+  await sheets.spreadsheets.batchUpdate({
+    spreadsheetId,
+    requestBody: { requests: [{ addSheet: { properties: { title: TAB } } }] },
+  });
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: `'${TAB}'!A1:K1`,
+    valueInputOption: 'RAW',
+    requestBody: { values: [HEADERS] },
+  });
 }

@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
+import { trackEvent } from '../lib/trackEvent';
 
-export default function RateLimitModal({ onClose, errorMessage, onEmailBonus, emailBonusUsed }) {
+export default function RateLimitModal({ onClose: closeModal, errorMessage, onEmailBonus, emailBonusUsed }) {
   const isDaily = errorMessage?.includes('Daily download limit');
+  const limitKind = isDaily ? 'daily' : 'monthly';
+  const onClose = () => {
+    trackEvent('rate_limit_close', null, limitKind);
+    closeModal();
+  };
 
   const daysMatch = errorMessage?.match(/(\d+) day/);
   const daysRemaining = daysMatch ? daysMatch[1] : '?';
@@ -16,12 +22,18 @@ export default function RateLimitModal({ onClose, errorMessage, onEmailBonus, em
   // the counter, then increment it so THIS mount counts as a hit for next time.
   const [priorHits, setPriorHits] = useState(0);
   useEffect(() => {
+    let hitNumber = 1;
     try {
       const prev = parseInt(localStorage.getItem('sb_ratelimit_hits') || '0', 10) || 0;
       setPriorHits(prev);
       localStorage.setItem('sb_ratelimit_hits', String(prev + 1));
+      hitNumber = prev + 1;
     } catch { /* localStorage unavailable — treat as first hit */ }
-  }, []);
+    // The wall is where free demand runs out — record every hit and which offer
+    // led, so the upgrade path can be measured. filename = variant shown (same
+    // rule as emphasizeHd below), category = which cap.
+    trackEvent('rate_limit_hit', hitNumber > 1 || emailBonusUsed ? 'hd_first' : 'email_first', limitKind);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const canOfferBonus = !emailBonusUsed && typeof onEmailBonus === 'function';
   // Lead with HD once the free path is exhausted: bonus already used, or this is
@@ -35,6 +47,7 @@ export default function RateLimitModal({ onClose, errorMessage, onEmailBonus, em
       return;
     }
     setSubmitting(true);
+    trackEvent('rate_limit_bonus_submit', null, limitKind);
     await onEmailBonus(email);
     setSubmitting(false);
   };
@@ -70,6 +83,7 @@ export default function RateLimitModal({ onClose, errorMessage, onEmailBonus, em
       </p>
       <a
         href="/hd"
+        onClick={() => trackEvent('rate_limit_hd_click', hero ? 'hero' : 'secondary', limitKind)}
         style={{
           display: 'inline-block',
           padding: hero ? '0.7rem 1.4rem' : '0.55rem 1.1rem',

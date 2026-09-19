@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { getProduct } from "../../lib/products";
+import { attributionMetadata } from "../../lib/checkoutAttribution";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -66,21 +67,9 @@ export default async function handler(req, res) {
 
   const ids = productIds;
 
-  // Carry the buyer's first-party analytics attribution (session id, visitor id,
-  // original source, landing page) INTO the Stripe session metadata so the webhook
-  // — the reliable, server-side, ad-blocker-proof record of the sale — can emit a
-  // fully-attributed `hd_purchase` event. Without this the webhook still records the
-  // sale, but as source 'direct'/unknown. Stripe metadata values are strings ≤500
-  // chars; we truncate defensively and drop empties. See pages/api/stripe-webhook.js.
-  const a = analytics && typeof analytics === "object" ? analytics : {};
-  const metaStr = (v) => (v == null ? "" : String(v).slice(0, 480));
-  const analyticsMeta = {};
-  if (metaStr(a.sessionId))   analyticsMeta.a_sid   = metaStr(a.sessionId);
-  if (metaStr(a.visitorId))   analyticsMeta.a_vid   = metaStr(a.visitorId);
-  if (metaStr(a.originalSource)) analyticsMeta.a_src = metaStr(a.originalSource);
-  if (metaStr(a.landingPage)) analyticsMeta.a_land  = metaStr(a.landingPage);
-  if (metaStr(a.visitorType)) analyticsMeta.a_vtype = metaStr(a.visitorType);
-  if (a.pageViews != null)    analyticsMeta.a_pv    = metaStr(a.pageViews);
+  // Buyer attribution → Stripe metadata, for the webhook's server-side
+  // hd_purchase record (see lib/checkoutAttribution.js).
+  const analyticsMeta = attributionMetadata(analytics);
 
   // Validate all products exist
   for (const id of ids) {

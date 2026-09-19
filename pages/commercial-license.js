@@ -1,4 +1,4 @@
-import { trackEvent } from '../lib/trackEvent';
+import { trackEvent, getAttribution } from '../lib/trackEvent';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
@@ -28,7 +28,8 @@ export default function CommercialLicense() {
       const res = await fetch('/api/create-license-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ licenseType, productId }),
+        // Attribution for the webhook's server-side license_purchase record.
+        body: JSON.stringify({ licenseType, productId, analytics: getAttribution() }),
       });
       const data = await res.json();
       if (data.url) {
