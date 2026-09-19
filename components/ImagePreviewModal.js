@@ -322,7 +322,7 @@ export default function ImagePreviewModal({ image, slug, onClose, onDownload, cl
                 marginTop: '0.15rem',
                 letterSpacing: '0.02em',
               }}>
-                HD = 2912×1632 — stays sharp on large &amp; dual monitors and in recorded calls.
+                HD = 2912×1632 — 4× the pixels, for recordings, editing, cropping &amp; wallpaper.
               </div>
             )}
 

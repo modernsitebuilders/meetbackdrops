@@ -130,7 +130,7 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
             ⭐ HD — See the Difference
           </div>
           <div style={{ fontSize: '1rem', color: '#6b7280', lineHeight: '1.6' }}>
-            Same background, full resolution — crisp on big screens &amp; in recordings.<br />2912×1632 · from $4.99
+            Same background, full resolution — crisp in recordings, edits &amp; crops.<br />2912×1632 · from $4.99
           </div>
         </div>
 

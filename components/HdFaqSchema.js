@@ -8,7 +8,7 @@ export default function HdFaqSchema() {
         "name": "What resolution are the HD virtual backgrounds?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MeetBackdrops HD backgrounds are 2912×1632 pixels — exactly twice the resolution of standard backgrounds (1456×816). They render noticeably sharper on high-resolution displays, large monitors, and in recorded video."
+          "text": "MeetBackdrops HD backgrounds are 2912×1632 pixels — exactly twice the resolution of standard backgrounds (1456×816). With 4× the pixels, they hold detail when cropped, edited into video, or used as desktop wallpaper on high-resolution displays."
         }
       },
       {
@@ -32,7 +32,7 @@ export default function HdFaqSchema() {
         "name": "Do HD backgrounds work with Zoom, Microsoft Teams, and Google Meet?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. HD backgrounds work with all major video conferencing platforms including Zoom, Microsoft Teams, Google Meet, Webex, and OBS Studio. The higher resolution is especially noticeable on large monitors and in meeting recordings."
+          "text": "Yes. HD backgrounds work with all major video conferencing platforms including Zoom, Microsoft Teams, Google Meet, Webex, and OBS Studio. The extra resolution shows most when you crop or reframe, edit recorded video, or use the image outside the call."
         }
       },
       {

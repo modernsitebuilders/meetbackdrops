@@ -73,7 +73,7 @@ export default function MostPopularPage() {
           <p style={{ fontSize: '1rem', color: '#475569', marginBottom: '1.5rem', lineHeight: 1.5, maxWidth: '640px' }}>
             The most-downloaded backgrounds across the catalog, ranked by real download data.
             Every background is a free download. Cards marked <span style={{ color: '#9a6a3a', fontWeight: 700 }}>✦ HD available</span> are
-            <em> also</em> offered as full-resolution HD Editions from $4.99 — sharp on large monitors and in recorded calls.
+            <em> also</em> offered as full-resolution HD Editions from $4.99 — full-resolution masters for recordings, editing and wallpaper.
           </p>
 
           <MostPopularGrid />

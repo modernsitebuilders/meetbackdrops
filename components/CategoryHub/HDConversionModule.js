@@ -86,7 +86,7 @@ export default function HDConversionModule({ slug, premiumImages = [], scores = 
           being judged whether they mean to or not.
         </p>
         <ul className={styles.hdBenefits}>
-          <li>Your client has a 4K monitor. Your free background looks like a Zoom from 2020 on it. HD holds up to their screen.</li>
+          <li>It&apos;s the master file — the same set at 4× the pixels. The version you keep for the calls that matter.</li>
           <li>The first 5 seconds decide the meeting. They see the room before they hear the pitch. Make sure it&apos;s saying what you want it to.</li>
           <li>Record it, post it, reframe it. HD crops cleanly — no &ldquo;why does this look grainy?&rdquo; DMs after you share the clip.</li>
         </ul>

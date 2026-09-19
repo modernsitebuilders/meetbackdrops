@@ -78,8 +78,8 @@ export default function RateLimitModal({ onClose: closeModal, errorMessage, onEm
         lineHeight: 1.5,
       }}>
         {hero
-          ? 'Full-resolution HD Editions download instantly, with no daily cap — and stay sharp on large or dual monitors and in recordings. HD from $4.99, or $9/mo for 10 downloads every month.'
-          : 'HD Editions stay sharp on large and dual monitors and in recordings — where the free size gets soft. From $4.99, instant download.'}
+          ? 'Full-resolution HD Editions download instantly, with no daily cap — our highest-quality masters, with 4× the pixels for recordings, editing and cropping. HD from $4.99, or $9/mo for 10 downloads every month.'
+          : 'HD Editions are the full-resolution masters — 4× the pixels for recordings, video editing, cropping and desktop wallpaper. From $4.99, instant download.'}
       </p>
       <a
         href="/hd"

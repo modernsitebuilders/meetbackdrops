@@ -270,11 +270,11 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '0.7rem', fontWeight: 700, background: '#facc15', color: '#111', padding: '0.15rem 0.5rem', borderRadius: '4px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>HD</span>
                   <span style={{ fontSize: '1rem', fontWeight: 700 }}>
-                    {hasHd ? 'This image in HD — 2912 × 1632' : 'For 27"+ monitors, recordings, and Teams Premium'}
+                    {hasHd ? 'This image in HD — 2912 × 1632' : 'For recordings, video editing, and wallpaper'}
                   </span>
                 </div>
                 <p style={{ margin: 0, fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-                  Free version is <strong style={{ color: '#fff' }}>1456 × 816</strong> (1.18 MP — below 1080p). HD is <strong style={{ color: '#fff' }}>2912 × 1632</strong> (4.75 MP — covers QHD natively). On large monitors, executive cameras, and recorded calls, the free version softens; HD doesn't.
+                  Free version is <strong style={{ color: '#fff' }}>1456 × 816</strong> (1.18 MP — below 1080p). HD is <strong style={{ color: '#fff' }}>2912 × 1632</strong> (4.75 MP — covers QHD natively). Crop it, reframe it, or edit it into a recorded video and the free version softens; HD holds detail.
                 </p>
               </div>
               <Link prefetch={false}

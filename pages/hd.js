@@ -1208,8 +1208,8 @@ function HdVideoSection() {
           maxWidth: '560px',
           lineHeight: 1.6,
         }}>
-          See what 4K source files look like on a Zoom or Teams call — and where standard
-          backgrounds fall apart under codec compression.
+          See the full-resolution master side by side with the standard file — every
+          detail, up close.
         </p>
         <div style={{
           position: 'relative',
@@ -1624,7 +1624,7 @@ export default function Premium({ reviewsData }) {
           lineHeight: 1.65,
           color: '#d1d5db',
         }}>
-          2912×1632 PNG. 4× the resolution of the free sample. From $4.99.
+          2912×1632 PNG. 4× the pixels of the free downloads. From $4.99.
         </p>
 
         {isSubscriber ? (
@@ -1779,10 +1779,9 @@ export default function Premium({ reviewsData }) {
             margin: 0,
             letterSpacing: '-0.01em',
           }}>
-            Zoom and Teams compress your video stream in real time. Standard 1080p backgrounds
-            lose detail in the compression — fine grids turn to mud, edges shimmer. Our 4K source
-            files give the codec more pixels to throw away, so what reaches your colleague&rsquo;s
-            screen still looks composed.
+            HD Editions are the full-resolution masters: 2912×1632, 4× the pixels of the free
+            file. That headroom is what lets you crop in, reframe, drop the set into an edited
+            video, or run it as wallpaper on a high-res display without it going soft.
           </p>
           <p style={{
             fontSize: '0.85rem',
