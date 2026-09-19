@@ -1,26 +1,33 @@
 // scripts/data-platform/flag-bots.mjs
 //
 // Authoritative, re-runnable classifier for the behavioral crawler that inflated
-// sessions/visitors in Aug 2026 (see lib/migrations/db/006_analytics_is_bot.sql).
-// Sets analytics_events.is_bot on rows matching the crawler's SESSION-LEVEL
-// fingerprint — the signal that actually separates it from a real visitor and
-// that single-event ingest can't see:
+// sessions/visitors in Jul–Aug 2026 (see lib/migrations/db/006_analytics_is_bot.sql).
+// It decides ONE verdict per SESSION and writes it to every row of that session,
+// so a session is never half-flagged:
 //
-//   • the session has exactly ONE event, AND
-//   • that event is a page_view (no download / preview / revenue — zero
-//     engagement), AND
-//   • the UA is desktop-Linux Chromium (`X11; Linux x86_64` + `Chrome/`).
+//   HUMAN — the session is engaged: ≥2 events OR ≥1 download (the same ENGAGED
+//           definition insights.mjs uses). Every row → is_bot = false. This also
+//           CLEARS the header-level ingest pre-tag (lib/neonEvents.mjs), which fires
+//           on a real Linux-desktop visitor's landing page_view just as it does on
+//           the crawler — only behavior after landing tells them apart.
+//   BOT   — the session is NOT engaged (a single event) AND either
+//             • that event is a page_view from a desktop-Linux Chromium UA
+//               (`X11; Linux x86_64` + `Chrome/`) — the crawler's fingerprint, or
+//             • any row of it carries the ingest pre-tag.
+//           Every row → is_bot = true.
+//   (anything else) — left exactly as it is.
 //
-// Precision-first: the ONLY real users this can touch are Linux-desktop bouncers
-// (one page, then gone) — the lowest-value, fully recoverable segment. Any real
-// visitor who does a second thing (another page, a download) has a ≥2-event or
-// engaged session and is NEVER matched. The UA-agnostic safety net is the
-// engaged-sessions metric in insights.mjs; this flag is the UA-specific cleanup
-// so even raw event/visitor totals exclude the known offender.
+// Precision-first: the ONLY real users the BOT rule can touch are Linux-desktop
+// bouncers (one page, then gone) — the lowest-value, fully recoverable segment.
+// Any visitor who does a second thing is HUMAN by construction.
 //
-// MONOTONIC: only promotes is_bot false→true. It never clears a flag, so the
-// header-level ingest pre-tag (lib/neonEvents.mjs) is preserved and re-runs are
-// safe/idempotent. Run: `npm run flag:bots`  (optional `-- --days 60` to scope;
+// Session counts assume analytics_events holds no duplicate events. That held only
+// after scripts/data-platform/dedupe-analytics.mjs (Sept 2026): before it, events
+// moved to Analytics_Archive existed twice, so each one-hit crawler session looked
+// like a 2-event engaged session and escaped this classifier.
+//
+// Idempotent: re-runs only touch rows whose verdict changed. Run: `npm run flag:bots`
+// (optional `-- --days 60` to scope to sessions active in that window;
 // `-- --dry-run` to preview counts without writing).
 
 import pg from 'pg';
@@ -40,28 +47,43 @@ if (!process.env.DATABASE_URL) {
   process.exit(1);
 }
 
-// Window predicate reused by the count + update passes so they always agree.
-const windowClause = DAYS > 0 ? `AND ${ET} >= ${NOW_ET} - interval '${DAYS} days'` : '';
+// Sessions with any event inside the window (all sessions when --days is unset).
+// The verdict itself always looks at the session's FULL history, so a session
+// straddling the window edge is still judged on everything it did.
+const windowClause = DAYS > 0
+  ? `AND session_id IN (SELECT session_id FROM analytics_events WHERE ${ET} >= ${NOW_ET} - interval '${DAYS} days')`
+  : '';
 
-// A row is bot IF it is the sole event of its session AND is an unengaged
-// page_view from a desktop-Linux Chromium UA. `single AS (…)` are the
-// exactly-one-event sessions; the FROM/WHERE fragment applies the per-row test.
-// Each query below prepends its own SELECT list to this shared body, so the
-// preview and the UPDATE always match exactly the same rows.
-const matchBody = `
-  FROM analytics_events e
-  JOIN (
-    SELECT session_id
+// Mirror of DOWNLOAD_EVENTS (lib/analyticsNormalize.js) — same as insights.mjs.
+const DL = `('download','cat_image_download','modal_download','zoom_apply','meet_download','email_bonus_download','free_sample_download')`;
+
+// Per-session verdict: true = bot, false = human, NULL = no opinion (leave rows as-is).
+// Shared by the preview and the UPDATE so both always act on exactly the same rows.
+const verdictCte = `
+  WITH sess AS (
+    SELECT session_id,
+      count(*) AS n_ev,
+      count(*) FILTER (WHERE event_type IN ${DL}) AS n_dl,
+      bool_or(is_bot) AS any_pretag,
+      bool_or(event_type = 'page_view'
+              AND user_agent ILIKE '%X11; Linux x86_64%'
+              AND user_agent ILIKE '%Chrome/%') AS fingerprint
     FROM analytics_events
-    WHERE session_id <> ''
+    WHERE session_id <> '' ${windowClause}
     GROUP BY session_id
-    HAVING count(*) = 1
-  ) s USING (session_id)
-  WHERE e.event_type = 'page_view'
-    AND e.user_agent ILIKE '%X11; Linux x86_64%'
-    AND e.user_agent ILIKE '%Chrome/%'
-    AND e.is_bot = false
-    ${windowClause}
+  ),
+  verdict AS (
+    SELECT session_id,
+      CASE WHEN n_ev >= 2 OR n_dl >= 1 THEN false
+           WHEN fingerprint OR any_pretag THEN true
+      END AS bot
+    FROM sess
+  )
+`;
+const changedRows = `
+  FROM analytics_events e
+  JOIN verdict v USING (session_id)
+  WHERE v.bot IS NOT NULL AND e.is_bot IS DISTINCT FROM v.bot
 `;
 
 const client = new pg.Client({
@@ -77,8 +99,8 @@ const client = new pg.Client({
 // 'error' event, which kills the process outright — that is exactly how the Sheets
 // sync used to lose an entire run ("Connection terminated unexpectedly"). Listening
 // turns it into an ordinary, reportable failure with a non-zero exit. This pass is
-// idempotent and monotonic (is_bot only ever goes false→true), so the next scheduled
-// run simply picks up where this one stopped.
+// idempotent (it writes each session's verdict), so the next scheduled run simply
+// picks up where this one stopped.
 client.on('error', (e) => {
   console.error('flag-bots: database connection error —', e.message);
   process.exitCode = 1;
@@ -88,22 +110,26 @@ async function main() {
   await client.connect();
   console.log(`\nflag-bots — ${DRY ? 'DRY RUN (no writes)' : 'LIVE'} — scope: ${DAYS > 0 ? DAYS + 'd' : 'all history'}`);
 
-  // Preview: how many NEW rows this run would promote (is_bot currently false).
-  const preview = await client.query(
-    `SELECT to_char(${ET}, 'YYYY-MM-DD') AS day, count(*)::int AS newly_flagged
-     ${matchBody}
+  // Preview: which rows this run would change, in total and by day.
+  const cols = `count(*) FILTER (WHERE v.bot)::int AS to_bot, count(*) FILTER (WHERE NOT v.bot)::int AS to_human`;
+  const [{ to_bot, to_human }] = (await client.query(`${verdictCte} SELECT ${cols} ${changedRows}`)).rows;
+  const byDay = await client.query(
+    `${verdictCte} SELECT to_char(${ET}, 'YYYY-MM-DD') AS day, ${cols} ${changedRows}
      GROUP BY 1 ORDER BY 1 DESC LIMIT 30`);
-  const totalNew = preview.rows.reduce((n, r) => n + r.newly_flagged, 0);
-  console.log(`\nWould newly flag ${totalNew} rows. By day (latest 30):`);
-  console.table(preview.rows);
+  console.log(`\nWould change ${to_bot + to_human} rows: ${to_bot} → bot, ` +
+    `${to_human} → human (pre-tag cleared on engaged sessions). By day (latest 30):`);
+  console.table(byDay.rows);
 
   if (DRY) {
     console.log('\nDry run — no changes written.');
   } else {
     const upd = await client.query(
-      `UPDATE analytics_events t SET is_bot = true
-       WHERE t.id IN ( SELECT e.id ${matchBody} )`);
-    console.log(`\n✓ Promoted ${upd.rowCount} rows to is_bot = true.`);
+      `${verdictCte}
+       UPDATE analytics_events t SET is_bot = v.bot
+       FROM verdict v
+       WHERE t.session_id = v.session_id
+         AND v.bot IS NOT NULL AND t.is_bot IS DISTINCT FROM v.bot`);
+    console.log(`\n✓ Updated ${upd.rowCount} rows to their session's verdict.`);
   }
 
   // Standing totals so a re-run shows the cumulative picture.

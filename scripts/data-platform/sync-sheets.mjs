@@ -37,7 +37,7 @@
 // and migrations 001–007 already applied (npm run migrate).
 // Run: npm run data:sync
 
-import { getSheetsClient, fetchTab, rowHash, parseEtTimestamp, toInt } from './_sheets.mjs';
+import { getSheetsClient, fetchTab, rowHash, parseEtTimestamp, toInt, ANALYTICS_HASH_PREFIX } from './_sheets.mjs';
 import { getSql, withRetry, insertBatched } from './_neon.mjs';
 import { pathToFileURL } from 'node:url';
 
@@ -145,7 +145,11 @@ async function readAnalyticsTab(sheets, sql, tab) {
 
 function prepareAnalyticsRow(r, tab, sheetRow) {
   return {
-    row_hash: rowHash(r, tab),
+    // Hashed under ONE namespace for both tabs, never the tab it was read from: an
+    // event is the same event whether it sits in Analytics or has been moved to
+    // Analytics_Archive. Tab-namespaced hashes double-inserted every moved row
+    // (~25k rows, May–Aug 2026) — see scripts/data-platform/dedupe-analytics.mjs.
+    row_hash: rowHash(r, ANALYTICS_HASH_PREFIX),
     _sheetRow: sheetRow,          // absolute 1-based sheet row; drives the watermark
     source_tab: tab,
     source_data: JSON.stringify(r),
@@ -181,15 +185,12 @@ const analyticsValues = r => [
 const CHECKPOINT_MS = 5_000;
 
 async function syncAnalytics(sql, sheets) {
-  // Read both the live tab and the overflow archive; tag each with source_tab so an
-  // identical event present in both is kept once per tab (hash is namespaced).
+  // Read both the live tab and the overflow archive. source_tab records where a row
+  // was first seen, but the hash is tab-independent (ANALYTICS_HASH_PREFIX, the same
+  // prefix the live dual-write in lib/neonEvents.mjs uses), so an event present in
+  // both tabs — or live-written, then moved to Analytics_Archive — is kept once.
   //
-  // No header row in the Analytics tabs (events are appended raw). The live
-  // dual-write (lib/neonEvents.mjs) uses the 'Analytics' tab prefix
-  // (ANALYTICS_HASH_PREFIX) because the flush appends live events to the Analytics
-  // tab — so a live row and its later Analytics-tab sync reconcile to one row. (An
-  // event manually MOVED to Analytics_Archive later is a rare edge that could re-add
-  // it under the archive prefix; acceptable.)
+  // No header row in the Analytics tabs (events are appended raw).
   //
   // Tabs are handled ONE AT A TIME, and each tab's watermark is advanced as its
   // chunks commit rather than once at the end. That ordering is what makes the very
