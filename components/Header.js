@@ -110,13 +110,13 @@ const openDrawer = wishlistContext.openDrawer || (() => {});
   ];
 
   const seasonalItems = [
-    { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
+    { name: 'Fall 🍂', path: '/category/fall-backgrounds' },
     { name: 'Halloween 🎃', path: '/category/halloween-backgrounds' },
+    { name: 'Christmas 🎄', path: '/category/christmas-backgrounds' },
     { name: 'Valentine\'s Day 💕', path: '/category/valentines-backgrounds' },
     { name: 'Easter 🐣', path: '/category/easter-backgrounds' },
     { name: 'Spring 🌸', path: '/category/spring-backgrounds' },
-    { name: 'Summer ☀️', path: '/category/summer-backgrounds' },
-    { name: 'Fall 🍂', path: '/category/fall-backgrounds' }
+    { name: 'Summer ☀️', path: '/category/summer-backgrounds' }
   ];
 
   const moreCategories = [
