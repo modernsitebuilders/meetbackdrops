@@ -193,7 +193,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 </h2>
                 <p style={{ marginBottom: '1.5rem', color: '#374151' }}>
                   Studio-designed backgrounds that read as professional on a Teams, Zoom, or Google Meet
-                  interview — free to download, or in HD for large monitors and recorded calls. Tap any
+                  interview — free to download, or in HD when you need the full-size file. Tap any
                   one to preview and download.
                 </p>
                 <div style={{
@@ -243,7 +243,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Your background communicates before you speak. A cluttered space signals disorganization. A blank wall suggests lack of personality. And in 2026, AI interview platforms are actively analyzing your environment as part of their candidate evaluation algorithms.
+                Your background communicates before you speak. A cluttered space signals disorganization. A blank wall suggests lack of personality. And where the interview is recorded or one-way, that first impression is fixed on video for whoever reviews it later.
               </p>
 
               {/* HD_BLOCK_1 */}
@@ -258,7 +258,8 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </h2>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Not all virtual backgrounds perform equally in modern AI-driven interviews.
+                Both are the same sets, composed the same way. The difference is size — and
+                which one you want depends on where the picture ends up.
               </p>
 
               <h3 style={{
@@ -268,12 +269,12 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                Free Backgrounds
+                Free Backgrounds (1456×816)
               </h3>
               <ul style={{ marginBottom: '1.25rem', paddingLeft: '1.5rem' }}>
-                <li style={{ marginBottom: '0.5rem' }}>Suitable for general video calls</li>
-                <li style={{ marginBottom: '0.5rem' }}>Good for casual use</li>
-                <li style={{ marginBottom: '0.5rem' }}>May lack consistency in lighting and composition</li>
+                <li style={{ marginBottom: '0.5rem' }}>Everything a live interview needs — Zoom, Teams, and Meet scale your background into the video stream, so this is the resolution that reaches the interviewer either way</li>
+                <li style={{ marginBottom: '0.5rem' }}>The full set, not a cut-down or watermarked preview</li>
+                <li style={{ marginBottom: '0.5rem' }}>No sign-up, no cost</li>
               </ul>
 
               <h3 style={{
@@ -283,17 +284,17 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                HD Backgrounds (Recommended)
+                HD Editions (2912×1632)
               </h3>
               <ul style={{ marginBottom: '1.25rem', paddingLeft: '1.5rem' }}>
-                <li style={{ marginBottom: '0.5rem' }}>Optimized for AI interview systems (HireVue, Sapia.ai, etc.)</li>
-                <li style={{ marginBottom: '0.5rem' }}>Designed for 1080p+ clarity and sharp visual fidelity</li>
-                <li style={{ marginBottom: '0.5rem' }}>Professionally composed for recruiter perception</li>
-                <li style={{ marginBottom: '0.5rem' }}>Reduce visual distractions that impact evaluation systems</li>
+                <li style={{ marginBottom: '0.5rem' }}>A larger render of the same set — four times the pixels and about four times the file size, so it holds real detail rather than being a stretched copy</li>
+                <li style={{ marginBottom: '0.5rem' }}>Worth it for a recorded or one-way interview you will edit, trim, or reframe afterwards</li>
+                <li style={{ marginBottom: '0.5rem' }}>Holds up when you crop into the set, change aspect ratio, or use it outside the call</li>
               </ul>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                In 2026, most successful candidates use HD-optimized backgrounds for interviews where performance matters.
+                For a live interview, the free file is genuinely all you need. Take the HD
+                edition when you will see the image at full size rather than through a video call.
               </p>
 
               <h2 style={{
@@ -303,7 +304,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 marginTop: '3rem',
                 marginBottom: '1.25rem'
               }}>
-                How AI Interview Platforms Evaluate Your Background
+                What Recorded and AI Interviews Actually Look At
               </h2>
 
               {/* HD_BLOCK_2 */}
@@ -314,23 +315,23 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                Why HD Backgrounds Matter in AI Interviews
+                What a good background actually buys you
               </h3>
               <p style={{ marginBottom: '1.25rem' }}>
-                Modern interview platforms evaluate video quality as part of candidate assessment.
+                None of this depends on your file being 4K. It depends on the set being clean and the room being lit:
               </p>
               <ul style={{ marginBottom: '1.25rem', paddingLeft: '1.5rem' }}>
-                <li style={{ marginBottom: '0.5rem' }}>stable visual clarity for AI analysis</li>
-                <li style={{ marginBottom: '0.5rem' }}>consistent lighting perception</li>
-                <li style={{ marginBottom: '0.5rem' }}>reduced background noise interference</li>
-                <li style={{ marginBottom: '0.5rem' }}>stronger overall professional presentation signal</li>
+                <li style={{ marginBottom: '0.5rem' }}>Nothing moving behind you to pull focus mid-answer</li>
+                <li style={{ marginBottom: '0.5rem' }}>A stable cutout, so your hands and hair do not flicker at the edges</li>
+                <li style={{ marginBottom: '0.5rem' }}>Your face clearly lit and easy to read on playback</li>
+                <li style={{ marginBottom: '0.5rem' }}>A setting that matches the role you are interviewing for</li>
               </ul>
               <p style={{ marginBottom: '1.25rem' }}>
-                This is especially important in automated screening systems where first impressions are data-driven.
+                On a recorded interview this matters more than on a live one, because the file is what gets reviewed — possibly more than once, and possibly weeks later.
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                AI has transformed hiring. Platforms like HireVue, Interviewer.AI, Jobma, and Sapia.ai now screen thousands of candidates using automated video analysis. Understanding what these systems evaluate is crucial for 2026 job seekers.
+                Recorded and one-way interviews are now common, on platforms such as HireVue, Interviewer.AI, Jobma, and Sapia.ai. What these systems actually assess has narrowed over time — HireVue removed facial analysis from its assessments in 2021 after criticism of the practice, and several vendors now describe their scoring as based on what you say rather than how your room looks. Assume a human will watch the recording, and that the video is the record.
               </p>
 
               <h3 style={{
@@ -344,15 +345,15 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </h3>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Modern AI interview platforms evaluate far more than your answers:
+                Whether a person or a system is reviewing the recording, these are the things you control:
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                <strong>Visual Environment Analysis:</strong> AI detects background clutter, movement, and distractions. Systems flag when people walk behind you, pets appear, or objects move in frame. Clean, static backgrounds score higher in automated evaluations.
+                <strong>Your background:</strong> Movement behind you — someone walking through, a pet, a door opening — pulls attention away from your answer, and on a recording it is there permanently. A clean, static background removes the problem rather than relying on anyone to ignore it.
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                <strong>Lighting Quality:</strong> Algorithms assess whether your face is properly lit and clearly visible. Poor lighting triggers lower confidence scores in facial recognition systems, which can affect your overall evaluation.
+                <strong>Lighting:</strong> If your face is underlit or backlit, you are harder to read — for a reviewer watching the recording, and for any automated transcription or analysis the platform runs. Front lighting is the single cheapest fix available to you.
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
@@ -360,7 +361,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                <strong>Audio Clarity:</strong> Background noise detection has become sophisticated. AI platforms flag traffic sounds, echoes, overlapping voices, and poor microphone quality. Some systems automatically lower candidate scores when audio quality is inconsistent.
+                <strong>Audio Clarity:</strong> Background noise detection has become sophisticated. AI platforms flag traffic sounds, echoes, overlapping voices, and poor microphone quality. Poor audio also degrades automated transcription, so a garbled answer can be recorded as a worse answer than you gave.
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
@@ -374,15 +375,15 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                How Your Background Affects AI Scoring
+                How Your Background Affects the Impression You Make
               </h3>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Research shows that interviewers consider your backdrop a visual cue to determine performance ratings. In AI systems, this manifests as:
+                Interviewers read your backdrop as a cue about you, the same way they read how you dress. That is a human judgement, and it is the one worth preparing for:
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Professional environments (home offices, neat bookshelves, neutral walls with minimal decor) correlate with higher initial scores. The AI interprets visual organization as a proxy for professional competence.
+                A tidy home office, a neat bookshelf, or a plain wall reads as organised and prepared. It is a small signal, but it is free to get right and it is working before you say a word.
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
@@ -390,15 +391,15 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Virtual backgrounds can trigger lower authenticity scores. While platforms won't disqualify you for using them, AI systems trained on thousands of interviews have learned that candidates with real, professional spaces tend to perform better in subsequent hiring stages.
+                A virtual background is not a mark against you — no major platform lists background type as a scoring factor. What does cost you is a badly executed one: poor lighting and a cluttered real room behind it make the cutout unstable, and a flickering edge is more distracting than an ordinary room would have been.
               </p>
 
               {/* HD_BLOCK_CTA_1 */}
               <BlogHDUpsellCard
                 productId="boardroom-wooden-table-chairs-bookshelves-illuminated-45b44bc0-hd"
                 category="office-spaces"
-                headline="An interview-ready office set, designed for AI screening clarity"
-                sub="Studio-composed at 2912×1632 — sharper rendering on HireVue, Sapia.ai and other automated platforms than free virtual backgrounds."
+                headline="An interview-ready office set, at full resolution"
+                sub="The same set at 2912×1632 — four times the pixels, for a recorded interview you will trim or reframe, or anywhere you see the image at full size."
                 utmCampaign="job_interview_block_1"
               />
 
@@ -563,7 +564,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </h3>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                Lighting makes or breaks video quality. Poor lighting causes AI facial recognition systems to struggle, which can lower your automated scores.
+                Lighting makes or breaks video quality. Poor lighting makes you harder to read on playback, and it is the main reason virtual-background cutouts come apart at the edges.
               </p>
 
               <p style={{ marginBottom: '1.25rem' }}>
@@ -613,8 +614,8 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               <BlogHDUpsellCard
                 productId="cozy-home-office-wooden-desk-computer-displaying-landscape-d79a8759-hd"
                 category="home-office"
-                headline="A home-office set that holds up under codec compression"
-                sub="Engineered for the 1080p+ clarity recruiters and AI systems actually parse — $4.99 for a single HD edition."
+                headline="A home-office set, at full resolution"
+                sub="The same set at 2912×1632 — four times the pixels, for cropping, reframing, or editing into a recorded interview. $4.99 for a single HD edition."
                 utmCampaign="job_interview_block_3"
               />
 
@@ -977,7 +978,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 Do AI interview platforms penalize virtual backgrounds?
               </h3>
               <p style={{ marginBottom: '1.25rem' }}>
-                Not directly, but they can indirectly affect scores. Virtual backgrounds sometimes cause technical glitches (floating heads, cutting off hands) that distract from your content. They also prevent AI from assessing your actual environment, which some systems use as professionalism indicators. Real or blurred backgrounds score better in practice.
+                No platform publicly penalises them, and none of the major vendors list background type as a scoring factor. The real risk is technical, not algorithmic: without good lighting and separation from your wall, edge detection slips — hands vanish, hair flickers, the cutout breathes around your shoulders. That is distracting on a live call and permanent on a recording. A virtual background is a good choice when your real room is not presentable; test it on the actual platform first, and fall back to blur if the edges are unstable.
               </p>
 
               <h3 style={{
@@ -1074,7 +1075,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
               </ul>
 
               <p style={{ marginBottom: '1.25rem' }}>
-                All backgrounds are free to download for general use — plus HD interview-optimized backgrounds designed for professional performance in AI-driven hiring systems. No sign-up required. Updated regularly with new professional options for every industry.
+                All backgrounds are free to download, at the resolution a video call actually uses — plus HD editions at 2912×1632 when you need the full-size file. No sign-up required. Updated regularly with new professional options for every industry.
               </p>
 
               <h2 style={{
@@ -1332,7 +1333,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                       Sister site: WolfResume — AI Resumes ↗
                     </div>
                     <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
-                      Build a resume tuned for the same AI screening that now evaluates your video interview
+                      Build a resume that gets past the keyword screening before the interview
                     </div>
                   </a>
                 </div>
