@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import ComparisonWidget from './ComparisonWidget';
 import PostCompareModal from './PostCompareModal';
-import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
+import { trackEvent } from '../lib/trackEvent';
 import { HD_BASE_IDS } from '../lib/hdProducts';
 import { isHdOnlyFilename } from '../lib/hdOnly';
 import { webpUrl } from '../lib/cloudinaryUrl';
@@ -69,29 +69,21 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
 
   const trackCompareClick = () => {
     if (process.env.NODE_ENV !== 'production') return;
-    const session = getOrCreateSession();
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'cat_page_hd_compare_clicked', {
         event_category: 'Category Page HD Promo',
         event_label: slug,
       });
     }
-    fetch('/api/analytics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        eventType: 'cat_page_hd_compare_clicked',
-        filename: hdId,
-        category: slug,
-        source: 'category_page_hd_promo',
-        originalSource: session?.originalUtmSource || (typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct'),
-        sessionId: session?.id || 'unknown',
-        visitorId: session?.visitorId || 'unknown',
-        pageViewsInSession: session?.pageViews || 0,
-        visitorType: getVisitorType(),
-        landingPage: session?.landingPage || '',
-      }),
-    }).catch(() => {});
+    // Was a hand-rolled POST that passed `source: 'category_page_hd_promo'` —
+    // /api/analytics persists only its fixed field list, so that field was
+    // silently dropped on every click. Nothing is lost by removing it: the
+    // surface is already encoded in the event name. Going through trackEvent
+    // also fixes a subtler drift — the old inline originalSource used only
+    // originalUtmSource and fell back to the CURRENT document.referrer, where
+    // every other surface builds source/medium/campaign and falls back to the
+    // session's ORIGINAL referrer — and adds the missing downloadsInSession.
+    trackEvent('cat_page_hd_compare_clicked', hdId, slug);
   };
 
   const sessionFlagKey = `sb_post_compare_shown_${baseId}`;
