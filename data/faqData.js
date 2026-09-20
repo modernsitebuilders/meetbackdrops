@@ -657,15 +657,15 @@ export const faqData = {
   'hd-virtual-backgrounds': [
     {
       question: "What resolution are the HD virtual backgrounds?",
-      answer: "Our HD backgrounds are 2912×1632 pixels — roughly 2.5K resolution. That's approximately 2.3× the pixel count of a standard 1080p image, giving the codec significantly more detail to work with before compression."
+      answer: "Our HD backgrounds are 2912×1632 pixels — roughly 2.5K, and 4× the pixels of the free 1456×816 download. That headroom is what lets you crop in, reframe, or edit the set into recorded video without it going soft."
     },
     {
-      question: "Why do HD backgrounds look better on Zoom and Teams?",
-      answer: "Zoom, Teams, and Google Meet compress your video stream before sending it to other participants. A higher-resolution source image retains more detail after that compression. A 2912×1632 background stays visibly sharper than a 1080p one at the same stream quality."
+      question: "Will people on the call see the difference between free and HD?",
+      answer: "On a live Zoom, Teams, or Meet call, no. All three scale your background into the outgoing video stream before encoding it, so both files reach the other end looking the same. HD earns its keep off the call — cropping, reframing, editing the set into recorded video, or wallpaper on a high-resolution display."
     },
     {
       question: "Are the free backgrounds lower quality than the HD ones?",
-      answer: "The free backgrounds are 1456×816 — high enough for most video calls. The HD versions (2912×1632) are noticeably sharper on large monitors, during presentations on room screens, and any time the background is scrutinised closely."
+      answer: "The free file isn't cut down or watermarked — it's the full set at 1456×816, which is all a video call uses. The HD edition is a larger render of the same set: 2912×1632, four times the pixels and about four times the file size, so it holds real detail rather than being a stretched copy. Buy it when you'll see the image at full size — cropping in, reframing, editing it into video, or on a 4K display."
     },
     {
       question: "What file format are the HD backgrounds?",

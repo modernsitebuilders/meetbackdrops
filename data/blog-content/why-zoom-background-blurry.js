@@ -169,17 +169,17 @@ export const whyZoomBackgroundBlurryContent = () => (
               "But my background looked fine last year"
             </h2>
             <p style={{ lineHeight: '1.8', color: '#374151', marginBottom: '1.5rem' }}>
-              You probably bought a bigger monitor. Most virtual backgrounds were sized in 2020-2021, when 13" laptop screens dominated remote work. The same image on a 14" MacBook self-view looks roughly the same as it always did. On a 27" external display — much less so. The image didn't get worse; the surface you're previewing it on got bigger.
+              Your display probably got bigger. The stream itself didn&apos;t change — Zoom, Teams, and Meet send the same resolution they always did — but a 27&quot; external monitor spreads that stream across far more pixels than a 14&quot; laptop did, so softness that was always there is simply easier to see. The image didn&apos;t get worse; the surface you&apos;re viewing it on got bigger. It is also why a larger source file doesn&apos;t fix this particular problem: the platform sets the resolution before the picture reaches anyone&apos;s screen.
             </p>
 
             <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.75rem', color: '#111827' }}>
-              Does HD make a difference your audience can see?
+              Does HD fix a blurry background?
             </h2>
             <p style={{ lineHeight: '1.8', color: '#374151', marginBottom: '1.5rem' }}>
-              Yes, and the reason is non-obvious. Even though the receiver's stream is being compressed down to ~720p in most cases, codecs preserve detail far better when there's <em>more source detail to work with</em>. A 4.75 MP source compressed to a 720p output retains visibly sharper textures than a 1.18 MP source compressed to the same target — because the encoder has more headroom and fewer painful tradeoffs to make.
+              Not on the call itself. Zoom, Teams, and Meet scale your background image down into the outgoing video stream <em>before</em> it is encoded, so a 2912×1632 file and a 1456×816 file reach the other end looking the same. If your background looks blurry on a call, the cause is upstream — bandwidth, lighting, or your camera — and the fixes above are what move it.
             </p>
             <p style={{ lineHeight: '1.8', color: '#374151', marginBottom: '1.5rem' }}>
-              For a 1:1 sales call, the difference is subtle. For a webinar, recorded panel, or any call that gets played back later (on a bigger screen, by people not on the original call), the difference is obvious — and unflattering for whoever shows up looking soft.
+              Where HD earns its keep is anywhere you see the image at full size. The HD edition is a larger render of the same set — 2912×1632 against 1456×816, four times the pixels and roughly four times the file size, so it carries real detail rather than being a stretched copy. That is what lets you crop into it, reframe it for a different aspect ratio, edit it into recorded video, or run it as wallpaper on a 4K display without it going soft. It is headroom for everything except the live call, where the platform decides the resolution for you.
             </p>
 
             <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.75rem', color: '#111827' }}>
