@@ -5,7 +5,14 @@ import ComparisonWidget from './ComparisonWidget';
 import PostCompareModal from './PostCompareModal';
 import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
 import { HD_BASE_IDS } from '../lib/hdProducts';
+import { isHdOnlyFilename } from '../lib/hdOnly';
 import { webpUrl } from '../lib/cloudinaryUrl';
+
+// ImageGrid renders free images sorted by score into a
+// `repeat(auto-fill, minmax(260px, 1fr))` grid — up to 4 across on desktop, 1 on
+// mobile. The promo used the same sort, so it kept picking the image the grid
+// already leads with, stacking the same picture twice.
+const GRID_LEAD_SLOTS = 4;
 
 export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -13,7 +20,6 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [loading, setLoading] = useState(false);
   const [sliderUsed, setSliderUsed] = useState(false);
   const [postCompareOpen, setPostCompareOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   // office-spaces: always use the fixed comparison pair
   let baseId, hdId, imageFolder, freeUrl;
@@ -29,10 +35,24 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
     imageFolder = fixedImage.folder || slug;
     freeUrl = webpUrl(imageFolder, fixedFilename);
   } else {
-    // Find the highest-scored image in this category that has an HD version
-    const topImage = [...images]
+    const score = (img) => scores[img.filename] || 0;
+
+    // Mirror ImageGrid's ordering so we know which images open the grid.
+    const leadRow = new Set(
+      images
+        .filter(img => !isHdOnlyFilename(img.filename))
+        .sort((a, b) => score(b) - score(a))
+        .slice(0, GRID_LEAD_SLOTS)
+        .map(img => img.filename)
+    );
+
+    const hdCandidates = [...images]
       .filter(img => HD_BASE_IDS.has(img.filename.replace(/\.\w+$/, '')))
-      .sort((a, b) => (scores[b.filename] || 0) - (scores[a.filename] || 0))[0];
+      .sort((a, b) => score(b) - score(a));
+
+    // Prefer the best HD image the grid isn't already showing up top. Thin
+    // categories fall back to the best candidate — a duplicate beats no promo.
+    const topImage = hdCandidates.find(img => !leadRow.has(img.filename)) || hdCandidates[0];
 
     if (!topImage) {
       if (typeof window !== 'undefined') {
@@ -134,47 +154,79 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
           </div>
         </div>
 
-        {/* Right: image card with single button */}
-        <div
+        {/* Right: image card — the whole card is the control */}
+        <button
+          type="button"
+          className="hd-promo-card"
           onClick={handleCompare}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          style={{
-            position: 'relative',
-            width: '300px',
-            flexShrink: 0,
-            borderRadius: '0.5rem',
-            overflow: 'hidden',
-            cursor: 'pointer',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.12)',
-          }}
+          aria-label="Compare this background in free and HD quality"
         >
           <div style={{ aspectRatio: '16/9' }}>
             <img
               src={freeUrl}
-              alt="HD preview"
+              alt=""
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           </div>
-          {isHovered && (
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'rgba(0,0,0,0.38)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <button style={{
-                background: '#FFD700', color: '#000',
-                border: 'none', borderRadius: '6px',
-                padding: '0.5rem 1rem',
-                fontWeight: '700', fontSize: '0.85rem',
-                cursor: 'pointer', pointerEvents: 'none',
-              }}>
-                {loading ? 'Loading...' : '🔍 See HD Quality'}
-              </button>
-            </div>
-          )}
-        </div>
+          <span className="hd-promo-overlay">
+            <span className="hd-promo-cta">
+              {loading ? 'Loading...' : '🔍 See HD Quality'}
+            </span>
+          </span>
+        </button>
       </div>
+
+      <style jsx>{`
+        .hd-promo-card {
+          position: relative;
+          width: 300px;
+          flex-shrink: 0;
+          padding: 0;
+          border: none;
+          background: none;
+          font: inherit;
+          display: block;
+          border-radius: 0.5rem;
+          overflow: hidden;
+          cursor: pointer;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        }
+        .hd-promo-cta {
+          background: #FFD700;
+          color: #000;
+          border-radius: 6px;
+          padding: 0.5rem 1rem;
+          font-weight: 700;
+          font-size: 0.85rem;
+        }
+
+        /* Touch / no-hover: the CTA is always visible, sitting on a bottom
+           gradient so it never hides the background it is selling. */
+        .hd-promo-overlay {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          padding-bottom: 0.75rem;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 55%);
+        }
+
+        /* Pointer devices keep the original hover reveal. */
+        @media (hover: hover) {
+          .hd-promo-overlay {
+            align-items: center;
+            padding-bottom: 0;
+            background: rgba(0, 0, 0, 0.38);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+          }
+          .hd-promo-card:hover .hd-promo-overlay,
+          .hd-promo-card:focus-visible .hd-promo-overlay {
+            opacity: 1;
+          }
+        }
+      `}</style>
 
       {modalOpen && hdUrl && (
         <ComparisonWidget
