@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { getOrCreateSession, getVisitorType } from '../../lib/sessionTracking';
+import { trackEvent } from '../../lib/trackEvent';
 import HubHero from './HubHero';
 import SocialProofBand from './SocialProofBand';
 import HDConversionModule from './HDConversionModule';
@@ -11,6 +11,16 @@ import styles from '../../styles/CategoryHub.module.css';
 
 const HD_MODULE_ID = 'hub-hd-module';
 
+// `extra` is GA4-only. The old hand-rolled POST spread it into the
+// /api/analytics body too, but that endpoint persists only its destructured
+// field list, so everything except the hoisted `filename` was silently dropped
+// — including the dead `source: 'category_hub_v2'`. Nothing is lost removing
+// it: the surface is already in the `hub_` event-name prefix.
+//
+// That POST also omitted originalSource entirely, so every hub event landed as
+// source 'direct' (the endpoint's fallback) with pageViews/downloads of 0.
+// trackEvent supplies those. Scroll depth is unaffected — it is encoded in the
+// event name (`hub_scroll_depth_<n>`), not in a dropped field.
 function trackHubEvent(eventType, slug, extra = {}) {
   if (typeof window === 'undefined') return;
   if (window.gtag) {
@@ -20,22 +30,7 @@ function trackHubEvent(eventType, slug, extra = {}) {
       ...extra,
     });
   }
-  const session = getOrCreateSession?.() || null;
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      eventType,
-      filename: extra.filename || 'hub',
-      category: slug,
-      source: 'category_hub_v2',
-      sessionId: session?.id || 'unknown',
-      visitorId: session?.visitorId || 'unknown',
-      visitorType: getVisitorType?.() || 'unknown',
-      landingPage: session?.landingPage || '',
-      ...extra,
-    }),
-  }).catch(() => {});
+  trackEvent(eventType, extra.filename || 'hub', slug);
 }
 
 function scrollToHdModule() {

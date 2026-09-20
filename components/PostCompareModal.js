@@ -1,9 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
-import { getOrCreateSession, getVisitorType } from '../lib/sessionTracking';
+import { trackEvent } from '../lib/trackEvent';
 
-function track(eventType, { imageId, slug, extra = {} }) {
+// All three CTAs (primary / secondary / dismiss) used to fire ONE
+// `post_compare_cta_click` event distinguished only by an `extra.target` field.
+// /api/analytics persists only its destructured field list, so `target` and
+// `href` were silently dropped — which made a DISMISS indistinguishable from a
+// conversion click in the first-party data. GA4 never received target either,
+// so it was recorded nowhere. The target now rides in the event name, matching
+// the `hub_scroll_depth_<n>` precedent in CategoryHub.
+//
+// The old hand-rolled POST also omitted originalSource entirely, so every row
+// from this surface landed as source 'direct' (the endpoint's fallback), along
+// with pageViews/downloads of 0. trackEvent supplies all of them.
+function track(eventType, { imageId, slug }) {
   if (typeof window === 'undefined') return;
   if (window.gtag) {
     window.gtag('event', eventType, {
@@ -11,22 +22,7 @@ function track(eventType, { imageId, slug, extra = {} }) {
       event_label: imageId,
     });
   }
-  const session = getOrCreateSession?.() || null;
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      eventType,
-      filename: imageId,
-      category: slug,
-      source: 'post_compare_modal',
-      sessionId: session?.id || 'unknown',
-      visitorId: session?.visitorId || 'unknown',
-      visitorType: getVisitorType?.() || 'unknown',
-      landingPage: session?.landingPage || '',
-      ...extra,
-    }),
-  }).catch(() => {});
+  trackEvent(eventType, imageId, slug);
 }
 
 export default function PostCompareModal({
@@ -49,15 +45,15 @@ export default function PostCompareModal({
   if (!isOpen) return null;
 
   const handlePrimary = () => {
-    track('post_compare_cta_click', { imageId, slug, extra: { target: 'primary', href: primaryHref } });
+    track('post_compare_cta_primary', { imageId, slug });
   };
 
   const handleSecondary = () => {
-    track('post_compare_cta_click', { imageId, slug, extra: { target: 'secondary', href: secondaryHref } });
+    track('post_compare_cta_secondary', { imageId, slug });
   };
 
   const handleDismiss = () => {
-    track('post_compare_cta_click', { imageId, slug, extra: { target: 'dismiss' } });
+    track('post_compare_cta_dismiss', { imageId, slug });
     onClose?.();
   };
 
