@@ -11,7 +11,7 @@ import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
 import BackToTop from '../../../components/BackToTop';
 import ImageDiscovery from '../../../components/ImageDiscovery';
 import { HD_BASE_IDS } from '../../../lib/hdProducts';
-import { buildImagePageTitle, buildImagePageDescription } from '../../../lib/imagePageMeta';
+import { buildImagePageTitle, buildImagePageDescription, buildImageDisplayTitle } from '../../../lib/imagePageMeta';
 
 const CDN = 'https://assets.streambackdrops.com';
 
@@ -44,7 +44,11 @@ export default function ImagePage({ image, related, categoryName, personaCollect
     }
   }, [showReviewModal]);
 
-  const webpUrl = `${CDN}/webp/${image.category}/${image.image_webp}`;
+  // R2 path comes from `folder`, NOT `category`. They differ for 348 entries
+  // (bookshelves/wall-shelves bright+dark, and office-spaces/conference-rooms),
+  // and building this from `category` 404s the hero, the og:image and the
+  // schema contentUrl on every one of those pages. See CLAUDE.md pitfall #4.
+  const webpUrl = `${CDN}/webp/${image.folder || image.category}/${image.image_webp}`;
   const canonicalUrl = `https://meetbackdrops.com/category/${image.category}/${image.slug}`;
   const categoryUrl = `/category/${image.category}`;
 
@@ -54,6 +58,9 @@ export default function ImagePage({ image, related, categoryName, personaCollect
   // exactly once. Scheme + budgets live in lib/imagePageMeta.js and are enforced
   // for all manifest entries by scripts/check-seo-meta.js — don't inline them.
   const pageTitle = buildImagePageTitle(image.title);
+  // On-page display name: same descriptive head as the <title>, without the
+  // brand suffix the manifest stores and without the SERP length trim.
+  const displayTitle = buildImageDisplayTitle(image.title);
   const pageDescription = buildImagePageDescription(image.description, categoryName);
 
   const downloadImage = { filename: image.image_webp, title: image.title };
@@ -71,14 +78,14 @@ export default function ImagePage({ image, related, categoryName, personaCollect
           <BreadcrumbSchema items={[
             { name: 'Home', url: 'https://meetbackdrops.com' },
             { name: categoryName, url: `https://meetbackdrops.com${categoryUrl}` },
-            { name: image.title, url: canonicalUrl },
+            { name: displayTitle, url: canonicalUrl },
           ]} />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ImageObject',
-              name: image.title,
+              name: displayTitle,
               description: image.description,
               contentUrl: webpUrl,
               url: canonicalUrl,
@@ -106,8 +113,8 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               dangerouslySetInnerHTML={{ __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'Product',
-                name: `${image.title} — HD Edition`,
-                description: `HD Edition (2912×1632) of ${image.title}, a studio-designed virtual background for Zoom, Microsoft Teams, and Google Meet.`,
+                name: `${displayTitle} — HD Edition`,
+                description: `HD Edition (2912×1632) of ${displayTitle}, a studio-designed virtual background for Zoom, Microsoft Teams, and Google Meet.`,
                 image: webpUrl,
                 brand: { '@type': 'Brand', name: 'MeetBackdrops' },
                 offers: {
@@ -127,7 +134,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
           )}
         </Head>
 
-        <div style={{ padding: '2rem', background: '#f9fafb', minHeight: '100vh' }}>
+        <div style={{ padding: '1.1rem 2rem 2rem', background: '#f9fafb', minHeight: '100vh' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
             {/* Breadcrumb */}
@@ -135,7 +142,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',
-              marginBottom: '1.5rem',
+              marginBottom: '0.9rem',
               fontSize: '0.9rem',
               color: '#6b7280',
               flexWrap: 'wrap',
@@ -144,33 +151,21 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               <span>›</span>
               <Link prefetch={false} href={categoryUrl} style={{ color: '#9a6a3a', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.04em' }}>{categoryName}</Link>
               <span>›</span>
-              <span style={{ color: '#111827' }}>{image.title}</span>
+              <span style={{ color: '#111827' }}>{displayTitle}</span>
             </nav>
 
-            {hasReviews && (
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                margin: '0 0 1.5rem',
-                fontSize: '0.85rem',
-                color: '#4b5563',
-              }}>
-                <span aria-hidden="true" style={{ color: '#E0A82E', letterSpacing: '0.06em', fontSize: '0.95rem' }}>★★★★★</span>
-                <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · {reviewCount} client reviews</span>
-              </div>
-            )}
-
-            {/* Main image */}
-            <div style={{
-              borderRadius: '12px',
-              overflow: 'hidden',
-              marginBottom: '2rem',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
-            }}>
+            {/* Main image — height-capped so the download CTA below it clears the
+                fold on laptop viewports. ~93% of arrivals here are referer-less
+                deep links (Google Images); they fire one page_view and leave, so
+                anything below ~900px is never seen. The cap is applied to the
+                WRAPPER WIDTH (derived from the fixed 16:9 ratio) rather than to
+                the <img> height, so the image keeps its aspect ratio with no
+                letterboxing. Measure before changing: the button must sit above
+                the fold at 1366×768 and 1440×900. */}
+            <div className="mb-hero">
               <img
                 src={webpUrl}
-                alt={image.alt || image.title}
+                alt={image.alt || displayTitle}
                 width={1456}
                 height={816}
                 loading="eager"
@@ -180,43 +175,119 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               />
             </div>
 
-            {/* Title + download */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              gap: '2rem',
-              marginBottom: '1.5rem',
-              flexWrap: 'wrap',
-            }}>
-              <div style={{ flex: 1, minWidth: '260px' }}>
-                <h1 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#111827', marginBottom: '0.75rem', lineHeight: '1.3' }}>
-                  {image.title}
+            {/* Action bar — title, download, and the format reason, all above the
+                fold. The PNG note is not decoration: the hero above is the full
+                1456×816 asset as .webp, so a right-click save yields a file Zoom
+                and Teams both reject. Saying so converts that shortcut from a
+                silent leak into a reason to press the button. */}
+            <div className="mb-action-bar">
+              <div style={{ flex: 1, minWidth: '240px' }}>
+                <h1 style={{ fontSize: '1.6rem', fontWeight: '700', color: '#111827', margin: '0 0 0.4rem', lineHeight: '1.25' }}>
+                  {displayTitle}
                 </h1>
-                <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: '1.7', margin: 0 }}>
-                  {image.description}
+                {hasReviews && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.82rem', color: '#4b5563' }}>
+                    <span aria-hidden="true" style={{ color: '#E0A82E', letterSpacing: '0.06em', fontSize: '0.9rem' }}>★★★★★</span>
+                    <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · {reviewCount} client reviews</span>
+                  </div>
+                )}
+              </div>
+              <div className="mb-action-col">
+                <div className="mb-action-buttons">
+                  <button
+                    onClick={() => handleDownload(downloadImage, image.category)}
+                    disabled={isDownloading}
+                    style={{
+                      background: isDownloading ? '#9ca3af' : '#111827',
+                      color: '#fff',
+                      border: 'none',
+                      padding: '0.875rem 2rem',
+                      borderRadius: '8px',
+                      fontSize: '1rem',
+                      fontWeight: '600',
+                      cursor: isDownloading ? 'not-allowed' : 'pointer',
+                      whiteSpace: 'nowrap',
+                      transition: 'background 0.2s',
+                      flex: '1 1 auto',
+                    }}
+                  >
+                    {isDownloading ? 'Downloading…' : '⬇ Free PNG Download'}
+                  </button>
+                  {hasHd && (
+                    <Link prefetch={false}
+                      href={hdHref}
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                        background: '#facc15', color: '#111827', textDecoration: 'none',
+                        padding: '0.875rem 1.35rem', borderRadius: '8px',
+                        fontWeight: 700, fontSize: '0.95rem', whiteSpace: 'nowrap',
+                      }}
+                    >
+                      HD $4.99
+                    </Link>
+                  )}
+                </div>
+                <p className="mb-format-note">
+                  PNG, 1456 × 816 — the format Zoom, Teams, and Meet accept.
+                  Right-click-saving the image above gives you a <strong style={{ color: '#374151' }}>.webp</strong>, which they reject.
                 </p>
               </div>
-              <button
-                onClick={() => handleDownload(downloadImage, image.category)}
-                disabled={isDownloading}
-                style={{
-                  background: isDownloading ? '#9ca3af' : '#111827',
-                  color: '#fff',
-                  border: 'none',
-                  padding: '0.875rem 2rem',
-                  borderRadius: '8px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  cursor: isDownloading ? 'not-allowed' : 'pointer',
-                  whiteSpace: 'nowrap',
-                  transition: 'background 0.2s',
-                  flexShrink: 0,
-                }}
-              >
-                {isDownloading ? 'Downloading…' : '⬇ Free Download'}
-              </button>
             </div>
+
+            <p style={{ fontSize: '0.95rem', color: '#4b5563', lineHeight: '1.65', margin: '0 0 1.5rem' }}>
+              {image.description}
+            </p>
+
+            {/* Related strip — moved ABOVE the fold-ish content that used to bury
+                it at ~900px+. A Google Images arrival landed on one specific
+                picture that may not be the one they wanted; this is their escape
+                hatch to the rest of the category instead of the back button.
+                Horizontally scrollable so it costs one row of height, not six. */}
+            {related.length > 0 && (
+              <section style={{ marginBottom: '2rem' }}>
+                <div style={{
+                  display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+                  gap: '1rem', marginBottom: '0.7rem', flexWrap: 'wrap',
+                }}>
+                  <h2 style={{ fontSize: '1rem', fontWeight: 600, color: '#111827', margin: 0 }}>
+                    More {categoryName} backgrounds
+                  </h2>
+                  <Link prefetch={false} href={categoryUrl} style={{
+                    color: '#9a6a3a', fontWeight: 600, textDecoration: 'none',
+                    fontSize: '0.82rem', letterSpacing: '0.04em', whiteSpace: 'nowrap',
+                  }}>
+                    View all {categoryName} →
+                  </Link>
+                </div>
+                <div className="mb-related-strip">
+                  {related.map(rel => (
+                    <Link prefetch={false}
+                      key={rel.slug}
+                      href={`/category/${rel.category}/${rel.slug}`}
+                      style={{ textDecoration: 'none', color: 'inherit', scrollSnapAlign: 'start' }}
+                    >
+                      {/* Plain <div> carries the card styling: styled-jsx scopes
+                          its class to DOM elements it emits, so hanging it on the
+                          <Link> component instead would be fragile. */}
+                      <div className="mb-related-card">
+                        <img
+                          src={`${CDN}/webp/${rel.folder || rel.category}/${rel.image_webp}`}
+                          alt={rel.alt || rel.title}
+                          loading="lazy"
+                          style={{ width: '100%', display: 'block', aspectRatio: '16/9', objectFit: 'cover' }}
+                        />
+                        <p style={{
+                          margin: 0, padding: '0.55rem 0.65rem', fontSize: '0.8rem',
+                          color: '#374151', fontWeight: 500, lineHeight: 1.35,
+                        }}>
+                          {rel.title}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* How to use — visible after the user has the file. Lightweight, no JS state. */}
             <details style={{
@@ -366,49 +437,16 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               </section>
             )}
 
-            {/* Related images */}
-            {related.length > 0 && (
-              <div>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#111827', marginBottom: '1rem' }}>
-                  More {categoryName} Backgrounds
-                </h2>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                  gap: '1rem',
-                }}>
-                  {related.map(rel => (
-                    <Link prefetch={false}
-                      key={rel.slug}
-                      href={`/category/${rel.category}/${rel.slug}`}
-                      style={{ textDecoration: 'none', color: 'inherit' }}
-                    >
-                      <div style={{
-                        borderRadius: '8px',
-                        overflow: 'hidden',
-                        background: '#fff',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                      }}>
-                        <img
-                          src={`${CDN}/webp/${rel.category}/${rel.image_webp}`}
-                          alt={rel.alt || rel.title}
-                          loading="lazy"
-                          style={{ width: '100%', display: 'block', aspectRatio: '16/9', objectFit: 'cover' }}
-                        />
-                        <p style={{ margin: 0, padding: '0.75rem', fontSize: '0.875rem', color: '#374151', fontWeight: '500' }}>
-                          {rel.title}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-                <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-                  <Link prefetch={false} href={categoryUrl} style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px', fontSize: '0.85rem', letterSpacing: '0.08em' }}>
-                    View all {categoryName} backgrounds →
-                  </Link>
-                </div>
-              </div>
-            )}
+            {/* The related grid that used to live here was MOVED above, under the
+                action bar — it was sitting past 900px on a page where 88% of
+                sessions never scroll. Only the category link remains as the
+                closing exit. Don't re-add a second copy of `related` here: it
+                would duplicate six internal links on the same page. */}
+            <div style={{ textAlign: 'center', paddingTop: '0.5rem' }}>
+              <Link prefetch={false} href={categoryUrl} style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px', fontSize: '0.85rem', letterSpacing: '0.08em' }}>
+                View all {categoryName} backgrounds →
+              </Link>
+            </div>
 
           </div>
         </div>
@@ -478,6 +516,106 @@ export default function ImagePage({ image, related, categoryName, personaCollect
           )}
         </div>
         <style jsx>{`
+          /* Hero cap. 1456/816 = 1.7843, so capping the wrapper WIDTH at
+             (max height × 1.7843) caps the rendered height with no letterboxing.
+             52vh keeps the action bar above the fold at 1366×768 and 1440×900 —
+             the two viewports where the CTA previously landed just below it. */
+          .mb-hero {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            max-width: min(100%, calc(52vh * 1.7843));
+            margin: 0 auto;
+          }
+          /* 768px-tall laptops are the tightest common case: at 52vh the related
+             strip lands ~3px under the fold, which defeats the point of moving
+             it up. Tighten the hero so the strip peeks instead. */
+          @media (max-height: 820px) {
+            .mb-hero { max-width: min(100%, calc(46vh * 1.7843)); }
+          }
+          /* Short/landscape viewports: the vh cap gets tiny, so floor the width. */
+          @media (max-height: 620px) {
+            .mb-hero { max-width: min(100%, 640px); }
+          }
+          /* Phones scroll to the image anyway and the sticky CTA covers the
+             action; give the image its full width back. */
+          @media (max-width: 767px) {
+            .mb-hero { max-width: 100%; }
+          }
+
+          .mb-action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin: 1.1rem 0 1.25rem;
+            flex-wrap: wrap;
+          }
+          .mb-action-col {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.4rem;
+            max-width: 100%;
+          }
+          .mb-action-buttons {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+          }
+          .mb-format-note {
+            margin: 0;
+            font-size: 0.78rem;
+            color: #6b7280;
+            text-align: right;
+            max-width: 22rem;
+            line-height: 1.45;
+          }
+          /* Phones: the right-aligned column overflows a 320px content box, so
+             go full-width and left-aligned rather than letting the button and
+             the note run off the edge. */
+          @media (max-width: 767px) {
+            .mb-action-col {
+              width: 100%;
+              align-items: stretch;
+            }
+            .mb-action-buttons { justify-content: stretch; }
+            .mb-format-note { text-align: left; max-width: 100%; }
+          }
+
+          .mb-related-strip {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(200px, 1fr);
+            gap: 0.75rem;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            padding-bottom: 0.4rem;
+            -webkit-overflow-scrolling: touch;
+          }
+          .mb-related-strip::-webkit-scrollbar { height: 6px; }
+          .mb-related-strip::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 999px;
+          }
+          .mb-related-card {
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+          }
+          .mb-related-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+          }
+          @media (max-width: 767px) {
+            .mb-related-strip { grid-auto-columns: minmax(160px, 1fr); }
+          }
+
           .mb-sticky-cta {
             position: fixed;
             left: 0;
