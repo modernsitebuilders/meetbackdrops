@@ -37,6 +37,29 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
     { category: 'neutral-backgrounds', folder: 'neutral-backgrounds', slug: 'high-end-zoom-backdrop-premium-matte-c-5db34340',
       alt: 'Neutral gray wall virtual background for a formal interview on Microsoft Teams',
       caption: 'Neutral wall — safe, formal, zero distractions' },
+    // Second row, added 2026-09-19. The gallery is this page's best-performing
+    // element — landing-session download rate went 6.4% → 19.4% when the first
+    // six shipped (2026-08-09) — so it earns more picks. Chosen by actual
+    // download volume within interview-appropriate categories; every pick has
+    // an HD edition, so each one lands on an image page that can upsell.
+    { category: 'home-office', folder: 'home-office', slug: 'industrial-boardroom-exposed-brick-walls-large-windows-9aff17cd',
+      alt: 'Industrial boardroom with exposed brick — virtual background for a video job interview',
+      caption: 'Industrial boardroom — confident without feeling corporate' },
+    { category: 'office-spaces', folder: 'office-spaces', slug: 'modern-office-large-windows-showcasing-lush-greenery-desk-ea0d32ef',
+      alt: 'Modern office with greenery and large windows — Zoom interview background',
+      caption: 'Office with greenery — bright and open, easy on camera' },
+    { category: 'office-spaces', folder: 'office-spaces', slug: 'modern-office-interior-large-windows-showcasing-city-skyline-3b5d303b',
+      alt: 'Modern office overlooking a city skyline — background for a senior-role video interview',
+      caption: 'City skyline office — suits senior and client-facing roles' },
+    { category: 'home-office', folder: 'home-office', slug: 'minimalist-shelf-stacked-books-decorative-items-illuminated-174c5297',
+      alt: 'Minimalist lit shelf with books — tidy interview background for Teams or Zoom',
+      caption: 'Minimal shelf — tidy, with just enough personality' },
+    { category: 'office-spaces', folder: 'office-spaces', slug: 'minimalist-office-space-light-colored-wall-black-shelves-b25c17ac',
+      alt: 'Minimalist office with a light wall and black shelves — clean video interview backdrop',
+      caption: 'Minimal office — keeps the focus on you' },
+    { category: 'neutral-backgrounds', folder: 'neutral-backgrounds', slug: 'seamless-video-call-background-d4a783bf',
+      alt: 'Soft textured blue wall — plain, professional background for a video interview',
+      caption: 'Soft blue wall — the safest pick when in doubt' },
   ];
 
   // ImageObject schema for the interview-picks gallery. The gallery images were
