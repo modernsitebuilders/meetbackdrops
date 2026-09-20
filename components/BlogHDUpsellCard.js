@@ -1,41 +1,52 @@
 import Link from 'next/link';
+import { trackEvent } from '../lib/trackEvent';
 
 const SINGLE_PRICE = 4.99;
 
 // Inline HD upsell for blog posts. Renders a product preview, a contextual
 // headline, and a Buy HD CTA that deep-links into /hd via ?highlight=<id>.
 //
+// The CTA is an INTERNAL link and therefore carries NO utm_* params. UTMs on an
+// internal link are picked up by components/Analytics.js, which persists them to
+// sessionStorage and prefers them over the real ones — so one click relabelled
+// every later page view in that session as inbound `blog/cta/<campaign>` traffic.
+// GA4 did worse, treating the new campaign as a new session. Placement
+// attribution rides on the blog_hd_cta_clicked event instead, which carries the
+// session id and landing page and so joins to any later purchase.
+//
 // Props:
 //   productId  e.g. 'boardroom-wooden-table-chairs-bookshelves-illuminated-45b44bc0-hd' (the trailing '-hd' is optional)
 //   category   e.g. 'office-spaces' — used to build the R2 webp URL
 //   headline   short editorial line, varies per placement
 //   sub        optional 1-line supporting copy
-//   utmSource  defaults 'blog'
-//   utmCampaign required — used for attribution and analytics labels
+//   placement  required — identifies which in-post block was clicked; becomes the
+//              event's category column (see handleClick)
 export default function BlogHDUpsellCard({
   productId,
   category,
   headline,
   sub,
-  utmSource = 'blog',
-  utmCampaign,
+  placement,
 }) {
-  if (!productId || !category || !utmCampaign) return null;
+  if (!productId || !category || !placement) return null;
 
   const baseId = productId.replace(/-hd$/, '');
   const thumb = `https://assets.streambackdrops.com/webp/${category}/${baseId}.webp`;
-  const href = `/hd?highlight=${baseId}-hd&utm_source=${encodeURIComponent(
-    utmSource
-  )}&utm_medium=cta&utm_campaign=${encodeURIComponent(utmCampaign)}`;
+  const href = `/hd?highlight=${baseId}-hd`;
 
   const handleClick = () => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'blog_hd_cta_clicked', {
         event_category: 'Blog HD Upsell',
-        event_label: utmCampaign,
+        event_label: placement,
         product_id: `${baseId}-hd`,
       });
     }
+    // First-party row. `placement` goes in the category column because
+    // /api/analytics only persists its fixed field list — an extra `placement`
+    // key would be silently dropped. The image category stays recoverable from
+    // the filename via the manifest.
+    trackEvent('blog_hd_cta_clicked', `${baseId}-hd`, placement);
   };
 
   return (

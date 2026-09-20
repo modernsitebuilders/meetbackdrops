@@ -400,7 +400,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 category="office-spaces"
                 headline="An interview-ready office set, at full resolution"
                 sub="The same set at 2912×1632 — four times the pixels, for a recorded interview you will trim or reframe, or anywhere you see the image at full size."
-                utmCampaign="job_interview_block_1"
+                placement="job_interview_block_1"
               />
 
               <h2 style={{
@@ -585,7 +585,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 category="bookshelves-bright"
                 headline="When your real background isn't an option"
                 sub="A clean, bright bookshelf set composed for camera — reads as authentic on Zoom, Teams, and Google Meet without the giveaway sharpness of stock images."
-                utmCampaign="job_interview_block_2"
+                placement="job_interview_block_2"
               />
 
               <h3 style={{
@@ -616,7 +616,7 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 category="home-office"
                 headline="A home-office set, at full resolution"
                 sub="The same set at 2912×1632 — four times the pixels, for cropping, reframing, or editing into a recorded interview. $4.99 for a single HD edition."
-                utmCampaign="job_interview_block_3"
+                placement="job_interview_block_3"
               />
 
               <h3 style={{

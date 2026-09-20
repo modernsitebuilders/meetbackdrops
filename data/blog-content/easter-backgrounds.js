@@ -282,7 +282,7 @@ export const easterBackgroundsContent = (categoryInfo) => {
                 category="easter-backgrounds"
                 headline="Want an Easter set in true HD?"
                 sub="A 2912×1632 edition composed for camera — crisp, codec-friendly, and ready for the executive holiday all-hands. $4.99."
-                utmCampaign="easter_blog_inline"
+                placement="easter_blog_inline"
               />
             </section>
 

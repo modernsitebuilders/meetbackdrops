@@ -277,7 +277,7 @@ export const christmasBackgroundsContent = () => {
               category="christmas-backgrounds"
               headline="Want one in true HD for the all-hands?"
               sub="A 2912×1632 HD edition tuned for camera and codec compression — looks crisp on every platform, even when bandwidth dips."
-              utmCampaign="christmas_blog_inline"
+              placement="christmas_blog_inline"
             />
           </section>
 
