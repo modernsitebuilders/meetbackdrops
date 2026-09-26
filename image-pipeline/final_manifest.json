@@ -3622,7 +3622,8 @@
       "minimalist"
     ],
     "hdOnly": false,
-    "index": 13
+    "index": 13,
+    "hd": true
   },
   {
     "id": "bookshelves-dark-:14",
@@ -19824,7 +19825,8 @@
       "composition"
     ],
     "hdOnly": false,
-    "index": 90
+    "index": 90,
+    "hd": true
   },
   {
     "id": "office-spaces-:93",
@@ -27583,7 +27585,9 @@
       "environment",
       "virtual meetings"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 6
   },
   {
     "id": "neutral-backgrounds:corporate-background-light-grei-37194ab7",
@@ -30066,7 +30070,9 @@
       "minimalist",
       "indoor plants"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 10
   },
   {
     "id": "home-office:cozy-home-office-stone-fireplace-comfortable-seating-wooden-d5c1d440",
@@ -30880,7 +30886,9 @@
       "natural light",
       "workspace"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 2
   },
   {
     "id": "home-office:rustic-home-office-wooden-table-pendant-light-shelf-decor-93249faa",
@@ -32205,7 +32213,9 @@
       "team standups",
       "productive"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 6
   },
   {
     "id": "fall-backgrounds:urban-loft-interior-large-windows-autumn-trees-outside-e3164039",
@@ -33463,7 +33473,9 @@
       "interior",
       "virtual meetings"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 9
   },
   {
     "id": "office-spaces:sophisticated-office-corner-floor-lamp-large-window-2bdc04e7",
@@ -36991,7 +37003,9 @@
       "interior",
       "minimalist"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 7
   },
   {
     "id": "neutral-backgrounds:textured-neutral-wall-wooden-shelf-decorative-vase-suitable-39dac1cc",
@@ -37145,7 +37159,9 @@
       "corporate",
       "clean"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 6
   },
   {
     "id": "bookshelves:wooden-bookshelves-books-framed-photo-natural-light-window-a7e8404e",
@@ -37189,7 +37205,9 @@
       "sophisticated",
       "warm tones"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 1
   },
   {
     "id": "urban-lofts:rustic-exposed-brick-wall-concrete-accents-wooden-beams-cdb49e82",
@@ -37279,7 +37297,9 @@
       "calm",
       "interior"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 5
   },
   {
     "id": "fall-backgrounds:green-wall-textured-finish-vase-holding-colorful-autumn-a7619d9f",
@@ -37411,7 +37431,9 @@
       "interior",
       "virtual meetings"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 8
   },
   {
     "id": "office-spaces:elegant-wood-paneling-detailed-craftsmanship-suitable-cd70f031",
@@ -38539,7 +38561,9 @@
       "interior",
       "design"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 9
   },
   {
     "id": "neutral-backgrounds:vibrant-orange-wall-wooden-shelf-holding-books-potted-plant-6ab581b4",
@@ -38715,7 +38739,9 @@
       "professional",
       "virtual meetings"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 15
   },
   {
     "id": "neutral-backgrounds:textured-wall-soft-lighting-fixtures-either-side-creating-9e640783",
@@ -39177,7 +39203,9 @@
       "executive video calls",
       "interior"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 8
   },
   {
     "id": "office-spaces:sophisticated-boardroom-rich-green-walls-wooden-accents-a985b1bc",
@@ -39311,7 +39339,9 @@
       "executive",
       "design"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 9
   },
   {
     "id": "office-spaces:textured-wall-soft-lighting-framed-artwork-designed-64a0b133",
@@ -39751,7 +39781,9 @@
       "minimalist",
       "workspace"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 1
   },
   {
     "id": "urban-lofts:textured-exposed-brick-wall-warm-tones-suitable-professional-2d82745b",
