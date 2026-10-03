@@ -7,6 +7,12 @@
       "runtimeArgs": ["node_modules/.bin/next", "dev"],
       "port": 3000,
       "autoPort": true
+    },
+    {
+      "name": "review-tool",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["image-pipeline/review-tool/server.js", "8842"],
+      "port": 8842
     }
   ]
 }

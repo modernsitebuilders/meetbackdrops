@@ -146,6 +146,14 @@ const IMAGES_BOOKSHELVES_BRIGHT = [
   { filename: 'wooden-bookshelves-mix-closed-cabinets-open-shelves-3bc8cf2e.webp', title: 'Bookshelves Bright Background 142' },
   { filename: 'stylish-bookshelf-filled-books-decorative-elements-providing-0aaeb74d.webp', title: 'Bookshelves Bright Background 143' },
   { filename: 'set-elegant-green-bookshelves-filled-vintage-books-providing-15f795b1.webp', title: 'Bookshelves Bright Background 144' },
+  { filename: 'neatly-arranged-colorful-books-shelves-soft-lighting-47656a05.webp', title: 'Bookshelves Bright Background 145' },
+  { filename: 'light-wood-bookshelves-empty-shelves-green-plant-beside-them-5f4d9c9b.webp', title: 'Bookshelves Bright Background 146' },
+  { filename: 'bookshelves-filled-various-books-decorative-pottery-b7f96cee.webp', title: 'Bookshelves Bright Background 147' },
+  { filename: 'bookshelves-filled-various-books-rich-red-setting-woven-374cea93.webp', title: 'Bookshelves Bright Background 148' },
+  { filename: 'well-organized-bookshelf-filled-various-books-decorative-658133dd.webp', title: 'Bookshelves Bright Background 149' },
+  { filename: 'richly-colored-bookshelf-filled-various-books-creating-658a422d.webp', title: 'Bookshelves Bright Background 150' },
+  { filename: 'neutral-bookshelves-subtle-plant-corner-designed-2e975f17.webp', title: 'Bookshelves Bright Background 151' },
+  { filename: 'refined-wall-shelves-subtle-textures-providing-clean-40750efd.webp', title: 'Bookshelves Bright Background 152' },
 ];
 
 // bookshelves-dark: 51 images
@@ -267,6 +275,18 @@ const IMAGES_WALL_SHELVES_BRIGHT = [
   { filename: 'decorative-wall-shelves-terracotta-vase-dried-wheat-set-9855154b.webp', title: 'Wall Shelves Bright Background 62' },
   { filename: 'minimalist-wall-shelves-tree-vase-decorative-sphere-against-bcbef69a.webp', title: 'Wall Shelves Bright Background 63' },
   { filename: 'wooden-wall-shelves-decorative-vases-plant-set-against-2b24b418.webp', title: 'Wall Shelves Bright Background 64' },
+  { filename: 'stylish-wall-shelves-pottery-dishware-illuminated-soft-5f1d105b.webp', title: 'Wall Shelves Bright Background 65' },
+  { filename: 'three-wooden-floating-shelves-mounted-plain-wall-green-plant-1b4448a0.webp', title: 'Wall Shelves Bright Background 66' },
+  { filename: 'rustic-whitewashed-wall-shelves-textured-finish-creating-ea0042ca.webp', title: 'Wall Shelves Bright Background 67' },
+  { filename: 'textured-wall-floating-shelves-woven-baskets-creating-cozy-b25a29fc.webp', title: 'Wall Shelves Bright Background 68' },
+  { filename: 'rustic-wooden-shelves-mounted-brick-wall-warm-lighting-80d4b39a.webp', title: 'Wall Shelves Bright Background 69' },
+  { filename: 'rustic-wall-shelves-industrial-pipes-edison-bulbs-creating-3879da4e.webp', title: 'Wall Shelves Bright Background 70' },
+  { filename: 'textured-wall-two-floating-white-shelves-displaying-bowl-2f87c7d4.webp', title: 'Wall Shelves Bright Background 71' },
+  { filename: 'two-minimalist-wooden-wall-shelves-green-plant-softly-lit-ba9c4f90.webp', title: 'Wall Shelves Bright Background 72' },
+  { filename: 'rustic-wooden-wall-shelves-plants-natural-light-window-37759bce.webp', title: 'Wall Shelves Bright Background 73' },
+  { filename: 'dark-floating-shelves-green-wall-creating-stylish-ad1134d2.webp', title: 'Wall Shelves Bright Background 74' },
+  { filename: 'two-wooden-wall-shelves-small-plant-framed-artwork-above-796a15c4.webp', title: 'Wall Shelves Bright Background 75' },
+  { filename: 'light-blue-wall-white-floating-shelves-displaying-decorative-13b4ba5f.webp', title: 'Wall Shelves Bright Background 76' },
 ];
 
 // wall-shelves-dark: 64 images
@@ -687,6 +707,18 @@ const IMAGES_OFFICE_SPACES = [
   { filename: 'richly-paneled-red-walls-framed-artwork-small-potted-plant-6a803dc7.webp', title: 'Office Space Background 347' },
   { filename: 'warm-wooden-paneling-window-creating-sophisticated-backdrop-16dbab28.webp', title: 'Office Space Background 348' },
   { filename: 'warm-wood-paneling-subtle-decorative-touch-suitable-8b384bb4.webp', title: 'Office Space Background 349' },
+  { filename: 'warm-wooden-cabinet-textured-doors-clock-creating-cozy-36b777a3.webp', title: 'Office Space Background 350' },
+  { filename: 'textured-dark-wall-corner-soft-lighting-corporate-video-call-a759b0b5.webp', title: 'Office Space Background 351' },
+  { filename: 'warm-wooden-paneling-rich-textures-tones-suitable-corporate-0b28285c.webp', title: 'Office Space Background 352' },
+  { filename: 'vibrant-green-plants-hanging-against-soft-gray-wall-creating-2afea419.webp', title: 'Office Space Background 353' },
+  { filename: 'dark-paneled-wall-elegant-molding-soft-lighting-suitable-aa800d32.webp', title: 'Office Space Background 354' },
+  { filename: 'close-up-rich-wood-paneling-warm-tone-creating-sophisticated-34dddc5a.webp', title: 'Office Space Background 355' },
+  { filename: 'textured-beige-wall-soft-sheen-providing-warm-inviting-cf3dc540.webp', title: 'Office Space Background 356' },
+  { filename: 'warm-wood-paneling-globe-lamp-creating-sophisticated-office-68f8d032.webp', title: 'Office Space Background 357' },
+  { filename: 'corner-room-rich-mahogany-wood-paneling-warm-lighting-806f2ee3.webp', title: 'Office Space Background 358' },
+  { filename: 'warm-wooden-paneling-spotlight-creating-sophisticated-d0941461.webp', title: 'Office Space Background 359' },
+  { filename: 'burgundy-leather-paneling-tufted-design-brass-wall-sconce-f9fa795e.webp', title: 'Office Space Background 360' },
+  { filename: 'sophisticated-office-space-softly-lit-shelves-elegant-design-d4fd0f16.webp', title: 'Office Space Background 361' },
 ];
 
 // home-office: 100 images
@@ -831,6 +863,10 @@ const IMAGES_HOME_OFFICE = [
   { filename: 'bright-home-office-wooden-desk-minimalist-decor-natural-e637cada.webp', title: 'Home Office Background 138' },
   { filename: 'bright-home-office-shelves-filled-books-decorative-items-8b0bfe39.webp', title: 'Home Office Background 139' },
   { filename: 'sophisticated-green-paneling-shelf-books-framed-artwork-8452f25d.webp', title: 'Home Office Background 140' },
+  { filename: 'dark-green-wall-brass-light-fixture-framed-artwork-corner-8f8d3689.webp', title: 'Home Office Background 141' },
+  { filename: 'bright-corner-filled-hanging-potted-green-plants-showcasing-4aedc2af.webp', title: 'Home Office Background 142' },
+  { filename: 'black-wall-adorned-intricate-gold-damask-patterns-creating-c4411b1f.webp', title: 'Home Office Background 143' },
+  { filename: 'warm-wood-paneling-soft-lighting-creating-professional-bbbc0671.webp', title: 'Home Office Background 144' },
 ];
 
 // living-rooms: 39 images
@@ -1004,6 +1040,9 @@ const IMAGES_COFFEE_SHOPS = [
   { filename: 'stylish-coffee-shop-interior-wooden-seating-counter-coffee-dfa15279.webp', title: 'Coffee Shop Background 59' },
   { filename: 'cozy-coffee-shop-interior-wooden-counter-shelves-coffee-2426e368.webp', title: 'Coffee Shop Background 60' },
   { filename: 'interior-cozy-coffee-shop-wooden-furniture-barista-counter-6101d89b.webp', title: 'Coffee Shop Background 61' },
+  { filename: 'wall-shelves-potted-plants-mugs-casting-soft-shadows-well-b37f6b40.webp', title: 'Coffee Shop Background 62' },
+  { filename: 'wall-shelves-white-dishware-soft-lighting-create-minimalist-0139682a.webp', title: 'Coffee Shop Background 63' },
+  { filename: 'textured-exposed-brick-wall-two-hanging-lights-shelves-842a538a.webp', title: 'Coffee Shop Background 64' },
 ];
 
 // art-galleries: 29 images
@@ -1263,6 +1302,19 @@ const IMAGES_LIBRARIES = [
   { filename: 'library-wooden-shelves-filled-books-large-window-wooden-ac6e5440.webp', title: 'Library Background 43' },
   { filename: 'wooden-library-shelves-filled-books-elegant-wall-sconces-a9b4892c.webp', title: 'Library Background 44' },
   { filename: 'library-wooden-shelves-filled-books-warm-lighting-wooden-da7008db.webp', title: 'Library Background 45' },
+  { filename: 'vibrant-bookshelves-filled-books-arranged-spectrum-colors-e747b96d.webp', title: 'Library Background 46' },
+  { filename: 'bookshelves-filled-variety-colorful-books-well-lit-setting-110cf4a4.webp', title: 'Library Background 47' },
+  { filename: 'bookshelves-filled-variety-books-well-lit-setting-providing-001068d7.webp', title: 'Library Background 48' },
+  { filename: 'well-organized-bookshelf-filled-numerous-books-illuminated-61917087.webp', title: 'Library Background 49' },
+  { filename: 'bookshelves-filled-diverse-collection-books-providing-0b038b00.webp', title: 'Library Background 50' },
+  { filename: 'wood-paneled-wall-ladder-against-creating-warm-inviting-c6b89c29.webp', title: 'Library Background 51' },
+  { filename: 'grand-window-library-clouds-sunlight-streaming-through-8d031f91.webp', title: 'Library Background 52' },
+  { filename: 'detailed-view-ornate-bookshelves-filled-leather-bound-books-169b524e.webp', title: 'Library Background 53' },
+  { filename: 'library-interior-wooden-bookshelves-green-lamps-providing-27d9e4f2.webp', title: 'Library Background 54' },
+  { filename: 'wooden-bookshelves-filled-books-illuminated-soft-light-large-ba472fca.webp', title: 'Library Background 55' },
+  { filename: 'well-organized-bookshelf-filled-various-books-illuminated-267c7de3.webp', title: 'Library Background 56' },
+  { filename: 'wall-colorful-bookshelves-filled-various-books-creating-warm-56177f77.webp', title: 'Library Background 57' },
+  { filename: 'bookshelves-filled-various-classic-books-warm-toned-wooden-30351612.webp', title: 'Library Background 58' },
 ];
 
 // christmas-backgrounds: 93 images
@@ -1411,6 +1463,21 @@ const IMAGES_HALLOWEEN_BACKGROUNDS = [
   { filename: 'sophisticated-living-room-plush-sofa-glass-coffee-table-aa6fb2b2.webp', title: 'Halloween Backgrounds Background 24' },
   { filename: 'home-office-desk-halloween-decorations-warm-lighting-63bf7ee3.webp', title: 'Halloween Background 18' },
   { filename: 'rustic-living-room-leather-sofas-stone-fireplace-halloween-f5fe050b.webp', title: 'Halloween Background 19' },
+  { filename: 'warm-neutral-wall-subtle-texture-providing-clean-2f757136.webp', title: 'Halloween Background 20' },
+  { filename: 'bookshelves-filled-old-books-carved-pumpkin-candle-creating-ca3594d8.webp', title: 'Halloween Background 21' },
+  { filename: 'wood-paneling-carved-shelf-displaying-glowing-pumpkin-f6c35ac7.webp', title: 'Halloween Background 22' },
+  { filename: 'colorful-halloween-lanterns-ghost-decorations-hanging-9ec267e5.webp', title: 'Halloween Background 23' },
+  { filename: 'warm-neutral-wall-soft-shadows-vase-dried-wheat-pumpkin-90f5b1e4.webp', title: 'Halloween Background 24' },
+  { filename: 'warm-wooden-paneling-subtle-lighting-creating-professional-9159c2d8.webp', title: 'Halloween Background 25' },
+  { filename: 'carved-jack-o-lanterns-candles-creating-warm-glow-set-b42e7605.webp', title: 'Halloween Background 26' },
+  { filename: 'dark-wall-gold-decorative-elements-suitable-corporate-video-4604ec03.webp', title: 'Halloween Background 27' },
+  { filename: 'warm-orange-wall-carved-jack-o-lanterns-creating-festive-0011f2e2.webp', title: 'Halloween Background 28' },
+  { filename: 'textured-rustic-wood-wall-seasonal-halloween-decor-including-44c665e5.webp', title: 'Halloween Background 29' },
+  { filename: 'wooden-paneling-autumn-wreath-pumpkin-colorful-leaves-c9791f90.webp', title: 'Halloween Background 30' },
+  { filename: 'softly-lit-neutral-wall-warm-tones-subtle-texture-e3a5ae87.webp', title: 'Halloween Background 31' },
+  { filename: 'textured-orange-wall-black-bat-decorations-suitable-festive-83f61124.webp', title: 'Halloween Background 32' },
+  { filename: 'warm-autumn-foliage-drapes-over-wooden-wall-carved-pumpkin-85ed90a3.webp', title: 'Halloween Background 33' },
+  { filename: 'white-pumpkins-displayed-wooden-shelves-creating-cozy-fall-5d199e58.webp', title: 'Halloween Background 34' },
 ];
 
 // valentines-backgrounds: 11 images
@@ -1698,6 +1765,7 @@ const IMAGES_FALL_BACKGROUNDS = [
   { filename: 'home-office-soft-green-walls-wooden-shelf-windows-showing-8e31d6d9.webp', title: 'Fall Background 81' },
   { filename: 'cozy-kitchen-wooden-cabinets-coffee-machine-autumn-leaves-c727bb82.webp', title: 'Fall Background 82' },
   { filename: 'cream-kitchen-cabinets-autumn-decorations-including-pumpkins-365f5783.webp', title: 'Fall Background 83' },
+  { filename: 'warm-neutral-wall-subtle-texture-decorative-branch-vase-6b493bcf.webp', title: 'Fall Background 84' },
 ];
 
 // bokeh-backgrounds: 50 images
@@ -1865,6 +1933,30 @@ const IMAGES_NEUTRAL_BACKGROUNDS = [
   { filename: 'dark-paneled-wall-candle-sconce-greenery-creating-refined-0fd0dbb9.webp', title: 'Neutral & Plain Walls Background 112' },
   { filename: 'textured-green-wall-subtle-vertical-lines-small-plant-accent-77c36dff.webp', title: 'Neutral & Plain Walls Background 113' },
   { filename: 'wooden-wall-soft-string-lights-creating-warm-ambiance-7a815542.webp', title: 'Neutral & Plain Walls Background 115' },
+  { filename: 'soft-neutral-wall-pink-flowers-cascading-shelf-creating-calm-a171dc48.webp', title: 'Neutral & Plain Walls Background 109' },
+  { filename: 'textured-white-wall-vertical-lines-simple-wooden-shelf-05e6d8f6.webp', title: 'Neutral & Plain Walls Background 110' },
+  { filename: 'textured-white-wall-subtle-pattern-providing-clean-25f88501.webp', title: 'Neutral & Plain Walls Background 111' },
+  { filename: 'soft-neutral-wall-elegant-trim-framed-artwork-well-lit-space-4ea34fbd.webp', title: 'Neutral & Plain Walls Background 112' },
+  { filename: 'solid-blue-wall-classic-clock-shelf-designed-professional-68a084a1.webp', title: 'Neutral & Plain Walls Background 113' },
+  { filename: 'textured-wooden-wall-soft-lighting-creating-warm-inviting-7716f776.webp', title: 'Neutral & Plain Walls Background 114' },
+  { filename: 'solid-burgundy-wall-subtle-texture-providing-rich-elegant-fc0855dc.webp', title: 'Neutral & Plain Walls Background 115' },
+  { filename: 'sophisticated-black-wall-stylish-sconce-designed-b1aa1580.webp', title: 'Neutral & Plain Walls Background 116' },
+  { filename: 'neutral-wall-subtle-texture-potted-plant-floating-shelf-d763420d.webp', title: 'Neutral & Plain Walls Background 117' },
+  { filename: 'rich-brown-wall-stylish-wall-sconce-providing-warm-lighting-9a3c8d69.webp', title: 'Neutral & Plain Walls Background 118' },
+  { filename: 'soft-green-wall-subtle-shadow-corner-shelf-books-decorative-bcc9727b.webp', title: 'Neutral & Plain Walls Background 119' },
+  { filename: 'soft-green-wall-natural-light-casting-shadows-textured-ae877c49.webp', title: 'Neutral & Plain Walls Background 120' },
+  { filename: 'textured-green-wall-paneling-providing-sophisticated-51fa8e85.webp', title: 'Neutral & Plain Walls Background 121' },
+  { filename: 'textured-wall-surface-light-neutral-tones-suitable-corporate-8673b616.webp', title: 'Neutral & Plain Walls Background 122' },
+  { filename: 'textured-neutral-wall-panels-subtle-shadows-designed-11c629f6.webp', title: 'Neutral & Plain Walls Background 123' },
+  { filename: 'softly-textured-wall-gentle-light-reflections-creating-476e907f.webp', title: 'Neutral & Plain Walls Background 124' },
+  { filename: 'textured-wall-warm-neutral-tones-subtle-shadows-corporate-6016bef0.webp', title: 'Neutral & Plain Walls Background 125' },
+  { filename: 'soft-neutral-wall-subtle-texture-natural-light-corporate-2be9d94b.webp', title: 'Neutral & Plain Walls Background 126' },
+  { filename: 'soft-neutral-wall-subtle-shadows-small-shelf-holding-books-21e9cc95.webp', title: 'Neutral & Plain Walls Background 127' },
+  { filename: 'textured-wooden-wall-various-shades-brown-black-providing-f83b64e2.webp', title: 'Neutral & Plain Walls Background 128' },
+  { filename: 'soft-green-wall-subtle-shadows-providing-neutral-backdrop-778e4b57.webp', title: 'Neutral & Plain Walls Background 129' },
+  { filename: 'textured-warm-wall-soft-shadows-corporate-video-calls-1202ee90.webp', title: 'Neutral & Plain Walls Background 130' },
+  { filename: 'textured-clay-wall-soft-directional-shadows-creating-warm-c65cde6e.webp', title: 'Neutral & Plain Walls Background 131' },
+  { filename: 'soft-green-wall-two-minimalist-shelves-designed-professional-bd124353.webp', title: 'Neutral & Plain Walls Background 132' },
 ];
 
 

@@ -43,3 +43,5 @@ public/data/image-scores-static.json.wave2-backup.*
 
 # Local-only review sheets (never deployed)
 *.local.html
+image-pipeline/review-tool/data.json
+image-pipeline/review-tool/corrections.json
