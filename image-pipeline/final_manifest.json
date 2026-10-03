@@ -25582,7 +25582,8 @@
       "online presentations"
     ],
     "hdOnly": false,
-    "index": 43
+    "index": 43,
+    "hd": true
   },
   {
     "id": "wall-shelves-dark-:44",
@@ -26091,7 +26092,8 @@
       "remote work"
     ],
     "hdOnly": false,
-    "index": 75
+    "index": 75,
+    "hd": true
   },
   {
     "id": "wall-shelves-dark-:76",
@@ -32659,7 +32661,9 @@
       "holiday",
       "professional video calls"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 127
   },
   {
     "id": "living-rooms:modern-living-room-soft-pink-sofas-coffee-table-large-d7da9a5f",
@@ -35479,7 +35483,9 @@
       "warm lighting",
       "modern design"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 105
   },
   {
     "id": "bookshelves:well-organized-bookshelf-filled-various-colored-books-a6b6523d",
