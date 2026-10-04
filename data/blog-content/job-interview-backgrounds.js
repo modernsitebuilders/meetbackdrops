@@ -228,6 +228,27 @@ export const jobInterviewBackgroundsContent = (categoryInfo) => {
                 </div>
               </section>
 
+              {/* Early browse-more CTA — the full "Browse our collections" block
+                  used to be the only path to the category pages, ~80% down this
+                  2026-01 post. Readers who are sold by the gallery above had no
+                  next step until then. This gives them one immediately. */}
+              <p style={{ marginBottom: '2.5rem', color: '#374151' }}>
+                Want more options? See the full{' '}
+                <Link href="/category/home-office" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                  Home Office ({homeOfficesCount})
+                </Link>,{' '}
+                <Link href="/category/office-spaces" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                  Office Spaces ({officeSpacesCount})
+                </Link>, and{' '}
+                <Link href="/category/bookshelves" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                  Bookshelves ({bookshelvesCount})
+                </Link>{' '}
+                collections, or browse everything on the{' '}
+                <Link href="/" style={{ color: '#2563eb', textDecoration: 'underline', fontWeight: '500' }}>
+                  homepage
+                </Link>.
+              </p>
+
               <h2 style={{
                 fontSize: '1.875rem',
                 fontWeight: 'bold',
