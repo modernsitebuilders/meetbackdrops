@@ -110,6 +110,7 @@ CATEGORY_GUIDE = {
     "spring-backgrounds":  "Spring scenes — fresh blooms, cherry blossom, daffodils, sunrooms.",
     "summer-backgrounds":  "Summer scenes — beach, poolside, tropical, coastal, sun-drenched patios.",
     "fall-backgrounds":    "Fall / autumn & Thanksgiving — warm rust/amber/ochre palette, autumn foliage, cozy harvest styling (subtle pumpkins/gourds/wheat), fireside warmth. Warm seasonal offices, home offices, or cozy cabins. Not spooky (that's halloween-backgrounds).",
+    "winter-backgrounds":  "Winter scenes with NO Christmas decor — snow or a snowy landscape visible (often through a window), frosted trees, cold clear winter light. Any tree/wreath/garland/ornaments belongs in christmas-backgrounds.",
 }
 ALLOWED = set(CATEGORY_GUIDE)
 CATEGORY_FOLDER = {"bookshelves": "bookshelves-bright", "wall-shelves": "wall-shelves-bright"}
@@ -123,7 +124,8 @@ CATEGORY_FOLDER = {"bookshelves": "bookshelves-bright", "wall-shelves": "wall-sh
 # gate fires, else room. Validated by image-pipeline/backtest_seasonal.py:
 # 29/30 professional rooms stay non-seasonal, 16/16 fall recall.
 SEASON_SLUGS = {"christmas-backgrounds", "halloween-backgrounds", "valentines-backgrounds",
-                "easter-backgrounds", "spring-backgrounds", "summer-backgrounds", "fall-backgrounds"}
+                "easter-backgrounds", "spring-backgrounds", "summer-backgrounds", "fall-backgrounds",
+                "winter-backgrounds"}
 ROOM_GUIDE = {k: v for k, v in CATEGORY_GUIDE.items() if k not in SEASON_SLUGS}
 ROOM_SLUGS = set(ROOM_GUIDE)
 
@@ -136,6 +138,7 @@ SEASON_GATE = {
     "easter-backgrounds":     "easter eggs, bunnies, or pastel Easter-holiday decor.",
     "spring-backgrounds":     "fresh blossoms / cherry blossom / daffodils as a dominant fresh-spring element.",
     "summer-backgrounds":     "a beach, poolside, tropical or coastal, sun-drenched seaside setting.",
+    "winter-backgrounds":     "snow, falling snow, or a snow-covered landscape clearly visible as a distinct element (e.g. through a window), with NO Christmas decor. If a christmas tree, wreath, garland, or ornaments are present choose christmas-backgrounds instead. Cool light or a white room alone is NOT winter.",
 }
 
 

@@ -68,6 +68,7 @@ const SEASONS = {
   'fall-backgrounds': [9, 10, 11],
   'halloween-backgrounds': [9, 10],
   'christmas-backgrounds': [11, 12],
+  'winter-backgrounds': [12, 1, 2],
 };
 
 // Month to evaluate against. Defaults to the current month; override for

@@ -87,6 +87,7 @@ Alternatively, an HD Subscription ($9/month) includes 10 HD downloads per billin
 - [Spring Backgrounds](https://meetbackdrops.com/category/spring-backgrounds) — ${CATEGORIES['spring-backgrounds'].count} images. Fresh florals, soft pastels, and bright airy interiors.
 - [Summer Backgrounds](https://meetbackdrops.com/category/summer-backgrounds) — ${CATEGORIES['summer-backgrounds'].count} images. Bright coastal patios, beaches, and sun-drenched settings.
 - [Fall & Thanksgiving Backgrounds](https://meetbackdrops.com/category/fall-backgrounds) — ${CATEGORIES['fall-backgrounds'].count} images. Warm autumn foliage, amber tones, and cozy harvest scenes.
+- [Winter Backgrounds](https://meetbackdrops.com/category/winter-backgrounds) — ${CATEGORIES['winter-backgrounds'].count} images. Snowy window views, soft winter light, and calm seasonal interiors.
 
 ## Collections by Profession
 

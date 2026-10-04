@@ -25,6 +25,7 @@ const THUMBNAILS = {
   'spring-backgrounds':   'spring-backgrounds/wooden-shelf-collection-vintage-books-vase-fresh-flowers-1d3f1286.webp',
   'summer-backgrounds':   'summer-backgrounds/coastal-living-room-white-sofas-blue-cushions-wooden-coffee-cdc74411.webp',
   'fall-backgrounds':     'fall-backgrounds/large-windows-showcase-vibrant-autumn-trees-creating-cozy-6b0f1ac9.webp',
+  'winter-backgrounds':   'winter-backgrounds/brightly-lit-room-snowy-windows-soft-curtains-showcasing-caa570a9.webp',
   'urban-lofts':          'urban-lofts/spacious-studio-large-arched-windows-city-skyline-visible-a68fd77c.webp',
   'wall-shelves':         'wall-shelves-bright/two-wooden-shelves-against-white-wall-one-books-plant-other-d50bd43b.webp',
   'valentines-backgrounds':'valentines-backgrounds/cozy-library-dark-wooden-shelves-filled-books-soft-pink-7d9fe040.webp',
@@ -53,6 +54,7 @@ const RELATED = {
   'spring-backgrounds':    ['easter-backgrounds',    'summer-backgrounds',     'gardens-patios'],
   'summer-backgrounds':    ['spring-backgrounds',    'fall-backgrounds',       'gardens-patios'],
   'fall-backgrounds':      ['home-office',           'halloween-backgrounds',  'summer-backgrounds'],
+  'winter-backgrounds':    ['christmas-backgrounds', 'home-office',            'neutral-backgrounds'],
   'bokeh-backgrounds':     ['art-galleries',         'valentines-backgrounds', 'nature-landscapes'],
 };
 

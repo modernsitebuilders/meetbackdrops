@@ -80,6 +80,7 @@ export default async function handler(req, res) {
       'spring-backgrounds': 'Spring Backgrounds',
       'summer-backgrounds': 'Summer Backgrounds',
       'fall-backgrounds': 'Fall & Thanksgiving Backgrounds',
+      'winter-backgrounds': 'Winter Backgrounds',
       'bokeh-backgrounds': 'Bokeh Backgrounds'
     };
 

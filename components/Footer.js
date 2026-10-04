@@ -114,6 +114,9 @@ export default function Footer() {
               <Link prefetch={false} href="/category/christmas-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Christmas 🎄
               </Link>
+              <Link prefetch={false} href="/category/winter-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
+                Winter ❄️
+              </Link>
               <Link prefetch={false} href="/category/halloween-backgrounds" style={{ color: '#d1d5db', textDecoration: 'none', fontSize: '0.9rem' }}>
                 Halloween 🎃
               </Link>

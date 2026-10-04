@@ -26,6 +26,12 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/data.json') {
     return send(res, 200, 'application/json', fs.readFileSync(path.join(DIR, 'data.json')));
   }
+  // Local previews for a batch reviewed BEFORE upload (review-tool/previews/{hash8}.webp).
+  const pv = req.method === 'GET' && /^\/previews\/([a-f0-9]{8}\.webp)$/.exec(req.url);
+  if (pv) {
+    const file = path.join(DIR, 'previews', pv[1]);
+    return fs.existsSync(file) ? send(res, 200, 'image/webp', fs.readFileSync(file)) : send(res, 404, 'text/plain', 'not found');
+  }
   if (req.method === 'POST' && req.url === '/save') {
     let body = '';
     req.on('data', (c) => (body += c));
