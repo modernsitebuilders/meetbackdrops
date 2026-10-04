@@ -1979,7 +1979,7 @@ export const categoryInfo = {
   'office-spaces': {
     name: 'Office Spaces',
     description: 'Professional office backgrounds for business calls',
-    seoDescription: 'Download 60+ free office virtual backgrounds for Zoom, Teams & Google Meet. Executive settings for business calls — no signup required, instant download.',
+    seoDescription: 'Free virtual office background images for Zoom, Teams & Google Meet. 60+ executive settings for business calls — no signup, instant download.',
     images: IMAGES_OFFICE_SPACES
   },
 
