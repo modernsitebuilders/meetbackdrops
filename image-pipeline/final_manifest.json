@@ -4624,7 +4624,8 @@
       "virtual meetings"
     ],
     "hdOnly": false,
-    "index": 4
+    "index": 4,
+    "hd": true
   },
   {
     "id": "christmas-background-:5",
@@ -4762,7 +4763,8 @@
       "executive video calls"
     ],
     "hdOnly": false,
-    "index": 10
+    "index": 10,
+    "hd": true
   },
   {
     "id": "christmas-background-:100",
@@ -5019,7 +5021,8 @@
       "decorative"
     ],
     "hdOnly": false,
-    "index": 112
+    "index": 112,
+    "hd": true
   },
   {
     "id": "christmas-background-:113",
@@ -5042,7 +5045,8 @@
       "online presentations"
     ],
     "hdOnly": false,
-    "index": 113
+    "index": 113,
+    "hd": true
   },
   {
     "id": "christmas-background-:114",
@@ -5111,7 +5115,8 @@
       "team standups"
     ],
     "hdOnly": false,
-    "index": 116
+    "index": 116,
+    "hd": true
   },
   {
     "id": "christmas-background-:117",
@@ -5831,7 +5836,8 @@
       "composition"
     ],
     "hdOnly": false,
-    "index": 34
+    "index": 34,
+    "hd": true
   },
   {
     "id": "christmas-background-:35",
@@ -6111,7 +6117,8 @@
       "virtual meetings"
     ],
     "hdOnly": false,
-    "index": 46
+    "index": 46,
+    "hd": true
   },
   {
     "id": "christmas-background-:47",
