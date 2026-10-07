@@ -40501,7 +40501,9 @@
       "textured",
       "team standups"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 25
   },
   {
     "id": "office-spaces:dark-paneled-wall-elegant-molding-soft-lighting-suitable-aa800d32",
