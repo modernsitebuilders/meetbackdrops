@@ -33730,7 +33730,9 @@
       "warm lighting",
       "living room"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 26
   },
   {
     "id": "christmas-backgrounds:rustic-cabin-interior-wooden-beams-small-tree-warm-fireplace-6f20afc4",
