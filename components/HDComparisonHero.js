@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ComparisonWidget from './ComparisonWidget';
 import PostCompareModal from './PostCompareModal';
 import { trackEvent } from '../lib/trackEvent';
+import { getHeroVariant, HERO_HIDDEN } from '../lib/abTest';
 import { HD_BASE_IDS } from '../lib/hdProducts';
 import { isHdOnlyFilename } from '../lib/hdOnly';
 import { webpUrl } from '../lib/cloudinaryUrl';
@@ -14,12 +15,33 @@ import { webpUrl } from '../lib/cloudinaryUrl';
 // already leads with, stacking the same picture twice.
 const GRID_LEAD_SLOTS = 4;
 
+// A/B test (lib/abTest.js): logs which arm this visitor is in, once per session per
+// category. Rendered only where the promo is eligible, so exposure counts match
+// pages that would have shown it. Renders nothing.
+function ExposureBeacon({ slug, variant }) {
+  useEffect(() => {
+    try {
+      const key = `mb_ab_exp_${slug}`;
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, '1');
+    } catch {
+      // storage blocked: fall through and log (over-count beats losing the arm)
+    }
+    trackEvent('hd_compare_ab_exposure', variant, slug);
+  }, [slug, variant]);
+  return null;
+}
+
 export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [hdUrl, setHdUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [sliderUsed, setSliderUsed] = useState(false);
   const [postCompareOpen, setPostCompareOpen] = useState(false);
+  // SSR/ISR HTML always contains the promo (control); holdout visitors drop it after
+  // hydration so the control arm is byte-identical to pre-experiment behaviour.
+  const [variant, setVariant] = useState('hero_shown');
+  useEffect(() => { setVariant(getHeroVariant()); }, []);
 
   // office-spaces: always use the fixed comparison pair
   let baseId, hdId, imageFolder, freeUrl;
@@ -125,8 +147,13 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
     setLoading(false);
   };
 
+  if (variant === HERO_HIDDEN) {
+    return <ExposureBeacon slug={slug} variant={variant} />;
+  }
+
   return (
     <>
+      <ExposureBeacon slug={slug} variant={variant} />
       <div style={{
         marginTop: '3rem',
         marginBottom: '2rem',
