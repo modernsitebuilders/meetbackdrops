@@ -13663,7 +13663,8 @@
       "online presentations"
     ],
     "hdOnly": false,
-    "index": 75
+    "index": 75,
+    "hd": true
   },
   {
     "id": "home-offices-:76",
@@ -20413,7 +20414,8 @@
       "minimalist style"
     ],
     "hdOnly": false,
-    "index": 22
+    "index": 22,
+    "hd": true
   },
   {
     "id": "spring-background-:23",
@@ -29595,7 +29597,9 @@
       "modern design",
       "bright interior"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 106
   },
   {
     "id": "fall-backgrounds:cozy-home-office-desk-chair-large-windows-overlooking-lake-c144465f",
