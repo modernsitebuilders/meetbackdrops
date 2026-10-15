@@ -4858,7 +4858,8 @@
       "festive"
     ],
     "hdOnly": false,
-    "index": 103
+    "index": 103,
+    "hd": true
   },
   {
     "id": "christmas-background-:104",
@@ -4904,7 +4905,8 @@
       "executive video calls"
     ],
     "hdOnly": false,
-    "index": 105
+    "index": 105,
+    "hd": true
   },
   {
     "id": "christmas-background-:106",
@@ -6331,7 +6333,8 @@
       "online presentations"
     ],
     "hdOnly": false,
-    "index": 66
+    "index": 66,
+    "hd": true
   },
   {
     "id": "christmas-background-:68",
@@ -42688,7 +42691,9 @@
       "studio-designed",
       "high-fidelity"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 107
   },
   {
     "id": "neutral-backgrounds:neutral-wall-soft-lighting-small-shelf-holding-books-46ff6173",
@@ -43128,7 +43133,9 @@
       "minimalist",
       "team standups"
     ],
-    "hdOnly": false
+    "hdOnly": false,
+    "hd": true,
+    "index": 108
   },
   {
     "id": "neutral-backgrounds:plain-soft-neutral-wall-open-window-allowing-natural-light-a9b57838",
