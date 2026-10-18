@@ -332,38 +332,16 @@ export async function getStaticProps({ params }) {
       }])
     );
 
-    let liveLoaded = false;
+    // Site-wide popularity score (lib/popularity.js), refreshed daily from Neon
+    // by .github/workflows/refresh-scores.yml. Same source as every other grid.
+    const staticScoresPath = path.join(process.cwd(), 'public', 'data', 'image-scores-static.json');
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ||
-        (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://meetbackdrops.com');
-      const response = await fetch(`${baseUrl}/api/calculate-scores`, { signal: AbortSignal.timeout(8000) });
-      if (response.ok) {
-        const data = await response.json();
-        const allScores = data.scores || {};
-        category.images.forEach((image) => {
-          const imageStats = allScores[image.filename];
-          scores[image.filename] = imageStats?.score ?? 30;
-        });
-        liveLoaded = Object.keys(scores).length > 0;
-      }
+      const allScores = JSON.parse(fs.readFileSync(staticScoresPath, 'utf8')).scores || {};
+      category.images.forEach((image) => {
+        scores[image.filename] = allScores[image.filename]?.score ?? 0;
+      });
     } catch (e) {
-      console.log('Live scores unavailable, falling back to static file:', e.message);
-    }
-
-    if (!liveLoaded) {
-      const staticScoresPath = path.join(process.cwd(), 'public', 'data', 'image-scores-static.json');
-      if (fs.existsSync(staticScoresPath)) {
-        try {
-          const staticData = JSON.parse(fs.readFileSync(staticScoresPath, 'utf8'));
-          const allScores = staticData.scores || {};
-          category.images.forEach((image) => {
-            const entry = allScores[image.filename];
-            scores[image.filename] = entry?.score ?? 30;
-          });
-        } catch (e) {
-          console.error('Failed to read static scores file:', e.message);
-        }
-      }
+      console.error('Failed to read static scores file:', e.message);
     }
   } catch (error) {
     console.error('Build-time scoring failed, using fallback scores:', error.message);

@@ -4,7 +4,7 @@
   "description": "Professional virtual backgrounds for video calls",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-hd-products.js && node scripts/generate-sitemaps.js && node scripts/generate-search-index.js && VALIDATION_MODE=STRICT-LITE node scripts/validate-dataset.js && node scripts/check-content-coverage.js && node scripts/check-seo-meta.js && node scripts/check-seo-singularity.js && node scripts/verify-seo-invariance.js",
+    "prebuild": "node scripts/data-platform/generate-scores.mjs --fill-missing && node scripts/generate-hd-products.js && node scripts/generate-sitemaps.js && node scripts/generate-search-index.js && VALIDATION_MODE=STRICT-LITE node scripts/validate-dataset.js && node scripts/check-content-coverage.js && node scripts/check-seo-meta.js && node scripts/check-seo-singularity.js && node scripts/verify-seo-invariance.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -25,6 +25,8 @@
     "data:sync": "node --env-file-if-exists=.env.local scripts/data-platform/sync-sheets.mjs",
     "data:dedupe": "node --env-file-if-exists=.env.local scripts/data-platform/dedupe-analytics.mjs",
     "insights": "node --env-file-if-exists=.env.local scripts/data-platform/insights.mjs",
+    "scores:generate": "node --env-file-if-exists=.env.local scripts/data-platform/generate-scores.mjs",
+    "scores:fill-missing": "node scripts/data-platform/generate-scores.mjs --fill-missing",
     "flag:bots": "node --env-file-if-exists=.env.local scripts/data-platform/flag-bots.mjs",
     "gaps": "node --env-file-if-exists=.env.local scripts/data-platform/gaps.mjs",
     "ab:hd-compare": "node --env-file-if-exists=.env.local scripts/data-platform/ab-hd-compare.mjs"

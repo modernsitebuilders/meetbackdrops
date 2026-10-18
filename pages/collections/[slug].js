@@ -270,9 +270,8 @@ export async function getStaticProps({ params }) {
   if (!def) return { notFound: true };
   if (!getPublishedSlugs().includes(def.slug)) return { notFound: true };
 
-  // Static popularity feeds the composite ranking (relevance dominant,
-  // popularity as tiebreaker). The composite scores are passed straight to
-  // ImageGrid so the displayed order matches the relevance-first selection.
+  // Site-wide popularity (lib/popularity.js) orders the collection; the scores
+  // are passed straight to ImageGrid so the displayed order matches the selection.
   let rawScores = {};
   try {
     const p = path.join(process.cwd(), 'public', 'data', 'image-scores-static.json');

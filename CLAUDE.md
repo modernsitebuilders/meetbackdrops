@@ -241,9 +241,18 @@ Bookshelves and Wall Shelves are "merged" categories — they combine bright/dar
 ---
 
 ## Scoring / Popularity
-- `public/data/image-scores-static.json` — pre-computed popularity scores
-- `lib/imageScoring.js` — scoring logic
-- Used for featured images, "most popular" rankings, hub pages
+**One score, every grid.** Category, theme, platform, collection, hub, related-image, search-browse and `/most-popular` ordering all come from `public/data/image-scores-static.json`. Where on the site a download happened doesn't matter, only how many and how recently. Rules: [lib/popularity.js](lib/popularity.js).
+
+- **Popularity** = recency-weighted downloads: one per visitor per image per day, bots excluded, each weighted `0.5^(age_days/30)`. A download today counts 1.0, 30 days ago 0.5.
+- **Tiers** (encoded into `score`, so every consumer just sorts descending):
+  - **Proven**: popularity ≥ 1.0.
+  - **New**: on site < 30 days and not yet proven.
+  - **Stale**: everything else.
+  - A new image must never rank among or below images that had their chance and didn't convert. Ties within New go newest-first.
+- **`addedAt`** (YYYY-MM-DD) on every manifest entry drives the New tier; `merge-batch.js` stamps it. Pre-April-2026 images carry `2026-04-17` as an upper bound (backfilled from git history). That date is approximate, so don't quote it as a real add date.
+- **Refresh**: `.github/workflows/refresh-scores.yml` runs `npm run scores:generate` (Neon → file) daily at 06:47 UTC and commits the file, and that push redeploys. It's a bot commit to `main` every day, so `git pull --rebase` before pushing. `prebuild` runs `scores:fill-missing`, so a batch pushed between refreshes ranks as New instead of sinking.
+- Capped grids (themes/collections, 48–60 slots) can fill entirely with Proven images, so New images get their exposure on the uncapped category pages.
+- `/api/calculate-scores` and `/api/popular/images` just read the file. Don't reintroduce a second formula.
 
 ---
 

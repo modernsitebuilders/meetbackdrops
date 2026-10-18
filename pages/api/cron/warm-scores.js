@@ -1,10 +1,10 @@
 /**
  * /api/cron/warm-scores
  *
- * Called by cron-job.org to pre-warm the calculate-scores cache.
- * Internally fetches /api/calculate-scores (which does the heavy lifting and
- * caches results in memory for 1 hour) but only returns a tiny summary so
- * cron-job.org never hits its "response data too big" limit.
+ * Called by cron-job.org. Kept as a cheap health check: /api/calculate-scores now
+ * just serves the daily scores file (nothing to warm), and this returns a tiny
+ * summary so cron-job.org never hits its "response data too big" limit. The
+ * cron-job.org job can be retired.
  */
 
 export default async function handler(req, res) {

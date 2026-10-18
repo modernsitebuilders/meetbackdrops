@@ -150,14 +150,6 @@
       "schedule": "0 0 * * *"
     },
     {
-      "path": "/api/cron/update-popular",
-      "schedule": "0 3 * * *"
-    },
-    {
-      "path": "/api/cron/revalidate-categories",
-      "schedule": "30 3 * * *"
-    },
-    {
       "path": "/api/consolidate-analytics",
       "schedule": "0 4 * * 0"
     },

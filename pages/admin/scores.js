@@ -61,23 +61,10 @@ export default function ScoresAdmin() {
     return sortOrder === 'desc' ? bVal - aVal : aVal - bVal;
   });
 
-  const getStatusColor = (score) => {
-    if (score === 0) return '#fee2e2';
-    if (score < 20) return '#fef3c7';
-    return '#d1fae5';
-  };
-
-  const getStatusTextColor = (score) => {
-    if (score === 0) return '#991b1b';
-    if (score < 20) return '#92400e';
-    return '#065f46';
-  };
-
-  const getStatusText = (score) => {
-    if (score === 0) return '⚠️ REMOVE';
-    if (score < 20) return '⚡ WARNING';
-    return '✅ HEALTHY';
-  };
+  // Tier from lib/popularity.js: 2 proven, 1 new (< 30 days, not yet proven), 0 stale.
+  const getStatusColor = (tier) => (tier === 2 ? '#d1fae5' : tier === 1 ? '#e0e7ff' : '#fef3c7');
+  const getStatusTextColor = (tier) => (tier === 2 ? '#065f46' : tier === 1 ? '#3730a3' : '#92400e');
+  const getStatusText = (tier) => (tier === 2 ? '✅ PROVEN' : tier === 1 ? '🆕 NEW' : '⏸ STALE');
 
   const handleSort = (column) => {
     if (sortBy === column) {
@@ -96,7 +83,7 @@ export default function ScoresAdmin() {
         <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <h1 style={{ margin: '0 0 0.5rem 0' }}>📊 Image Scoring Dashboard</h1>
-            <p style={{ margin: 0, color: '#6b7280' }}>Monitor performance and identify removal candidates</p>
+            <p style={{ margin: 0, color: '#6b7280' }}>Recency-weighted popularity — the order every grid uses (refreshed daily)</p>
           </div>
           <Link href="/admin" style={{ padding: '0.75rem 1.5rem', background: '#2563eb', color: 'white', borderRadius: '6px', textDecoration: 'none' }}>
             ← Back to Hub
@@ -114,8 +101,8 @@ export default function ScoresAdmin() {
               <div style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '0.5rem', color: '#92400e' }}>{summary.zeroDownloads}</div>
             </div>
             <div style={{ background: '#fee2e2', padding: '1.5rem', borderRadius: '8px' }}>
-              <div style={{ fontSize: '0.875rem', color: '#991b1b' }}>Flagged for Removal</div>
-              <div style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '0.5rem', color: '#991b1b' }}>{summary.flaggedForRemoval}</div>
+              <div style={{ fontSize: '0.875rem', color: '#991b1b' }}>Stale (30+ days, below threshold)</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '0.5rem', color: '#991b1b' }}>{summary.stale}</div>
             </div>
             <div style={{ background: '#e0e7ff', padding: '1.5rem', borderRadius: '8px' }}>
               <button 
@@ -213,10 +200,10 @@ export default function ScoresAdmin() {
                         fontSize: '0.75rem',
                         fontWeight: '600',
                         borderRadius: '12px',
-                        background: getStatusColor(data.score),
-                        color: getStatusTextColor(data.score)
+                        background: getStatusColor(data.tier),
+                        color: getStatusTextColor(data.tier)
                       }}>
-                        {getStatusText(data.score)}
+                        {getStatusText(data.tier)}
                       </span>
                     </td>
                   </tr>

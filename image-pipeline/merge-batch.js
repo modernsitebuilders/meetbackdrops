@@ -4,8 +4,10 @@
  * of truth: image-pipeline/final_manifest.json and data/categoryData.js.
  *
  * - Appends a manifest stub per image (id/slug/category/folder/webp/png,
- *   empty title/description/alt, tags:[], hdOnly:false). Matches the shape of
- *   prior batches; rewrite-manifest-copy.js fills the SEO copy afterward.
+ *   empty title/description/alt, tags:[], hdOnly:false, addedAt). Matches the
+ *   shape of prior batches; rewrite-manifest-copy.js fills the SEO copy afterward.
+ *   `addedAt` (local YYYY-MM-DD, the day the batch is merged) drives the new-image
+ *   ranking tier in lib/popularity.js — never omit it.
  * - Inserts a { filename, title } line into the correct IMAGES_* array in
  *   categoryData.js, numbering titles sequentially within each array.
  *
@@ -20,6 +22,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DRY = process.argv.includes('--dry-run');
+const TODAY = new Date().toLocaleDateString('en-CA'); // local YYYY-MM-DD
 const ROOT = path.join(__dirname, '..');
 const OUT_PATH = path.join(__dirname, 'process_new_images_output.json');
 const FM_PATH = path.join(__dirname, 'final_manifest.json');
@@ -88,6 +91,7 @@ for (const e of batch) {
     alt: e.alt || '',
     tags: Array.isArray(e.tags) ? e.tags : [],
     hdOnly: false,
+    addedAt: TODAY,
   });
   haveSlug.add(e.slug);
   added++;

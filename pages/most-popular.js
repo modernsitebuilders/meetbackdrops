@@ -90,15 +90,13 @@ export default function MostPopularPage() {
               🤔 How This List Works
             </h3>
             <div style={{ color: '#475569', lineHeight: '1.6' }}>
-              <p>This list is automatically generated based on:</p>
+              <p>This list ranks backgrounds by how often people download them, with recent downloads counting most:</p>
               <ul style={{ paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-                <li><strong>Recent downloads</strong>: Images downloaded in the last 30 days get bonus points</li>
-                <li><strong>Total downloads</strong>: Each download adds to the score</li>
-                <li><strong>Recency</strong>: New images get a visibility boost</li>
-                <li><strong>Activity</strong>: Images lose points slowly if not downloaded</li>
+                <li><strong>Every download counts</strong>: Wherever it happens on the site</li>
+                <li><strong>Recent downloads count most</strong>: A download's weight halves every 30 days, so what people are choosing now rises to the top</li>
               </ul>
               <p style={{ marginTop: '1rem' }}>
-                The list updates automatically every hour. Images are scored 0-100, with popular images rising to the top.
+                The list updates daily.
               </p>
             </div>
           </div>
