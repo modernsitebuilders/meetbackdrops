@@ -3715,7 +3715,8 @@
       "professional video calls"
     ],
     "hdOnly": false,
-    "index": 17
+    "index": 17,
+    "hd": true
   },
   {
     "id": "bookshelves-dark-:19",
@@ -8121,7 +8122,8 @@
       "urban landscape"
     ],
     "hdOnly": false,
-    "index": 28
+    "index": 28,
+    "hd": true
   },
   {
     "id": "conference-room-:29",
@@ -25220,7 +25222,8 @@
       "team standups"
     ],
     "hdOnly": false,
-    "index": 24
+    "index": 24,
+    "hd": true
   },
   {
     "id": "wall-shelves-dark-:26",
