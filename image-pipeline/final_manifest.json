@@ -7526,7 +7526,8 @@
     ],
     "hdOnly": false,
     "index": 26,
-    "addedAt": "2026-04-17"
+    "addedAt": "2026-04-17",
+    "hd": true
   },
   {
     "id": "coffee-shop-:27",
@@ -12937,7 +12938,8 @@
     ],
     "hdOnly": false,
     "index": 21,
-    "addedAt": "2026-05-06"
+    "addedAt": "2026-05-06",
+    "hd": true
   },
   {
     "id": "office-spaces-:22-b7c2b0bd",
@@ -14646,7 +14648,8 @@
     ],
     "hdOnly": false,
     "index": 91,
-    "addedAt": "2026-05-06"
+    "addedAt": "2026-05-06",
+    "hd": true
   },
   {
     "id": "home-offices-:92",
@@ -28889,7 +28892,9 @@
       "team standups"
     ],
     "hdOnly": false,
-    "addedAt": "2026-06-08"
+    "addedAt": "2026-06-08",
+    "index": 10,
+    "hd": true
   },
   {
     "id": "neutral-backgrounds:high-end-minimalist-office-background-fl-b1c3f800",
@@ -37213,7 +37218,9 @@
       "decor"
     ],
     "hdOnly": false,
-    "addedAt": "2026-08-01"
+    "addedAt": "2026-08-01",
+    "index": 56,
+    "hd": true
   },
   {
     "id": "neutral-backgrounds:bright-white-wall-subtle-texture-providing-clean-8cec7111",
@@ -38459,7 +38466,9 @@
       "minimalist"
     ],
     "hdOnly": false,
-    "addedAt": "2026-09-01"
+    "addedAt": "2026-09-01",
+    "index": 2,
+    "hd": true
   },
   {
     "id": "home-office:bright-home-office-shelves-filled-books-decorative-items-8b0bfe39",
