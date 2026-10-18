@@ -95,7 +95,7 @@ export default function Privacy() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: July 3, 2026
+                Last updated: October 18, 2026
               </p>
             </div>
 
@@ -137,12 +137,14 @@ export default function Privacy() {
                   Information You Provide
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  We may collect information you provide directly to us, such as when you contact us through email or contact forms:
+                  We collect information you provide directly to us:
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
-                  <li>Name and email address when contacting support</li>
-                  <li>Messages and feedback you send to us</li>
-                  <li>Any other information you choose to provide</li>
+                  <li><strong>Email address</strong> when you enter it to unlock a bonus download or a free HD sample</li>
+                  <li><strong>Reviews:</strong> your rating and comment, plus the name and email address if you choose to give them</li>
+                  <li><strong>Branded Backgrounds and licensing inquiries:</strong> your name, work email, company, team size, and the project brief you send</li>
+                  <li><strong>Purchases:</strong> the name, email address, and billing country or address you enter at Stripe checkout, plus the licensee name for a commercial license. Stripe shares these with us so we can deliver your order and keep a record of the sale.</li>
+                  <li>Messages and feedback you send to us, and any other information you choose to provide</li>
                 </ul>
 
                 <h3 style={{
@@ -157,9 +159,10 @@ export default function Privacy() {
                   When you visit our website, we may automatically collect certain information:
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
-                  <li>Browser type and version</li>
+                  <li>Browser type and version (your browser&apos;s user-agent string)</li>
                   <li>Pages you visit and time spent on our site</li>
-                  <li>Referring website information</li>
+                  <li>Referring website information, including campaign (UTM) tags in the link you followed</li>
+                  <li>Your IP address, used as described under &quot;IP Addresses&quot; below</li>
                   <li>Device information (mobile, desktop, etc.)</li>
                   <li>Interaction events such as image previews, downloads, category filters selected, pack sizes viewed, and checkout initiations — used solely to improve site performance and content</li>
                   <li>Search queries entered on our site</li>
@@ -201,7 +204,7 @@ export default function Privacy() {
                   We do not sell, trade, or otherwise transfer your personal information to third parties, except in the following circumstances:
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
-                  <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website (hosting, analytics, etc.)</li>
+                  <li><strong>Service Providers:</strong> We share information with service providers who operate parts of our website for us: Vercel (hosting), Cloudflare and Amazon Web Services (image storage and delivery), Google (Google Analytics, and Google Sheets for storing site records), Neon (database), Upstash (download-limit counters), and MailerSend (email notifications sent to our studio when you buy, inquire, or leave a review). They process this information only to provide their services to us.</li>
                   <li><strong>Payment Processing (Stripe):</strong> When you purchase HD images, your payment is processed by Stripe, Inc. Stripe receives your payment details and billing information directly. MeetBackdrops does not store your card details. Stripe&apos;s privacy policy is available at <a href="https://stripe.com/privacy" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
                   <li><strong>Affiliate Links (Amazon Associates):</strong> Some blog articles contain Amazon affiliate links. If you click one, Amazon may set cookies on its own domain and we may earn a commission on qualifying purchases, at no additional cost to you. We do not share any of your data with Amazon. Amazon&apos;s privacy notice is available at <a href="https://www.amazon.com/privacy" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">amazon.com/privacy</a>.</li>
                   <li><strong>Legal Requirements:</strong> We may disclose information when required by law or to protect our rights</li>
@@ -260,19 +263,47 @@ export default function Privacy() {
                   We use cookies and similar tracking technologies to enhance your experience on our website:
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
-                  <li><strong>Essential Cookies:</strong> Required for basic website functionality</li>
-                  <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our site</li>
-                  <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
-                  <li><strong>Visitor ID</strong> (<code>sb_visitor_id</code>): An anonymous, randomly-generated identifier stored in your browser&apos;s local storage to understand return visit frequency. Cannot be used to identify you personally.</li>
-                  <li><strong>Download Counter</strong> (<code>sb_download_count</code>): Tracks the number of free images downloaded in your current session to enforce fair-use limits.</li>
+                  <li><strong>Google Analytics:</strong> We use Google Analytics (loaded through Google Tag Manager) to measure how visitors use the site. It sets first-party cookies (such as <code>_ga</code>) and sends usage data to Google. Advertising storage, ad personalization, and ad-related data sharing are turned off. You can opt out with Google&apos;s <a href="https://tools.google.com/dlpage/gaoptout" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">browser add-on</a>; see <a href="https://policies.google.com/technologies/partner-sites" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">how Google uses data from sites that use its services</a>.</li>
+                  <li><strong>Visitor and session IDs</strong> (<code>sb_visitor_id</code>, <code>sb_session</code>, <code>sb_first_visit</code>): Random identifiers stored in your browser&apos;s local storage so our own analytics can tell new visits from return visits. They contain no personal details.</li>
+                  <li><strong>Visit source</strong> (<code>entry_referrer</code>, <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>): Stored in session storage, which clears when you close the tab, so a download can be credited to the site or campaign that brought you here.</li>
+                  <li><strong>Download limits</strong> (<code>sb_download_count</code>, <code>sb_ratelimit_hits</code>, <code>sb_email_bonus_used</code>, <code>sb_hd_sample_used</code>, <code>sb_hd_sample_email</code>): Track your free downloads, whether you have used the email bonus download or free HD sample, and how often you have reached the limit.</li>
                   <li><strong>Subscription Token</strong> (<code>sb_sub_token</code>): Stored locally if you purchase a subscription, to authenticate your download access without requiring a login.</li>
                   <li><strong>Wishlist</strong> (<code>sb_wishlist</code>): Stores the IDs of HD images you have saved to your wishlist. This data never leaves your device — it is not transmitted to our servers.</li>
+                  <li><strong>Page design tests</strong> (<code>mb_ab_hd_compare_hero</code>): Remembers which version of a page section you were shown, so it stays the same on every visit while we compare designs.</li>
                 </ul>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
                   You can clear all locally stored data at any time through your browser&apos;s settings. Doing so will remove your wishlist, download count, and subscription token.
                 </p>
-                <p style={{color: '#6b7280', fontWeight: '600'}}>
-                  We do not collect or store IP addresses.
+
+                <h3 style={{
+                  fontSize: '1.2rem',
+                  fontWeight: '600',
+                  color: '#111827',
+                  marginBottom: '0.5rem'
+                }}>
+                  IP Addresses
+                </h3>
+                <p style={{color: '#6b7280', marginBottom: '1rem'}}>
+                  We use your IP address in three limited ways:
+                </p>
+                <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
+                  <li><strong>Download limits:</strong> When you download a free image, we store a one-way hash of your IP address, not the address itself, to enforce the daily and monthly free-download limits and to count each download once.</li>
+                  <li><strong>Bot filtering:</strong> We keep a short-lived counter keyed to your IP address that expires after one hour, to keep automated traffic out of our statistics.</li>
+                  <li><strong>Inquiry forms:</strong> When you submit a Branded Backgrounds inquiry, we record your IP address and browser type with it, to help us screen out spam.</li>
+                </ul>
+              </section>
+
+              <section style={{marginBottom: '2rem'}}>
+                <h2 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                  color: '#111827',
+                  marginBottom: '1rem'
+                }}>
+                  Data Retention
+                </h2>
+                <p style={{color: '#6b7280'}}>
+                  We keep purchase records for as long as we need them for accounting, tax, and license verification. We keep email addresses, reviews, and inquiries until you ask us to delete them. We keep usage records, which use the random IDs and hashed IP addresses described above rather than your name or email address, to measure trends over time.
                 </p>
               </section>
 

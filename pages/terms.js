@@ -121,7 +121,7 @@ export default function Terms() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: July 3, 2026
+                Last updated: October 18, 2026
               </p>
             </div>
 
@@ -151,7 +151,7 @@ export default function Terms() {
                 2. Description of Service
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                MeetBackdrops is a virtual set design studio producing studio-designed virtual background environments for video conferencing, online meetings, and related communications. The majority of our backgrounds are available as free PNG downloads for individual professional use. A selection of premium HD backgrounds are available exclusively as paid downloads and are marked with a 💎 HD Only badge.
+                MeetBackdrops is a virtual set design studio producing studio-designed virtual background environments for video conferencing, online meetings, and related communications. Every background is available as a free PNG download for individual professional use. Selected backgrounds are also offered as paid HD Editions at 2912×1632.
               </p>
 
               <h2 style={{
@@ -211,7 +211,7 @@ export default function Terms() {
                 marginTop: '2rem',
                 marginBottom: '1rem'
               }}>
-                4. HD Premium Images
+                4. HD Editions
               </h2>
 
               <div style={{
@@ -227,10 +227,10 @@ export default function Terms() {
                   color: '#1e40af',
                   marginBottom: '1rem'
                 }}>
-                  💎 HD Only Images
+                  💎 Also in HD
                 </h3>
                 <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
-                  Certain images on MeetBackdrops are designated as HD Only and are not available as free downloads. These images are exclusively accessible through a paid HD image pack.
+                  Images marked as available in HD can also be purchased as a full-resolution HD Edition (2912×1632 PNG). The free version of each image remains available; an HD Edition is an optional upgrade.
                 </p>
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Pricing</h3>
