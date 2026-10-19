@@ -3,7 +3,13 @@ const nextConfig = {
   outputFileTracingExcludes: {
     '*': [
       './public/images/**/*',
-      './public/data/**/*',
+      // Not all of public/data: image-scores-static.json must ship with the
+      // functions — ISR category/theme/collection pages and /api/popular/images
+      // + /api/calculate-scores read it at runtime (lib/popularity.js).
+      './public/data/image-metadata*',
+      './public/data/search-index.json',
+      './public/data/*.json.*',
+      './public/data/.DS_Store',
     ],
   },
   images: {
