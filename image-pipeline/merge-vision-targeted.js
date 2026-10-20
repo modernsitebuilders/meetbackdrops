@@ -9,12 +9,18 @@
  *
  *   node image-pipeline/merge-vision-targeted.js /tmp/new61.slugs --dry-run
  *   node image-pipeline/merge-vision-targeted.js /tmp/new61.slugs
+ *   node image-pipeline/merge-vision-targeted.js /tmp/x.slugs --keep-tags
+ *
+ * --keep-tags: replace only title/description/alt. Use it for copy refreshes on
+ * existing entries — tags drive collection facets, so swapping them would
+ * silently move images in and out of collections.
  */
 const fs = require('fs');
 const path = require('path');
 
 const SLUGS_FILE = process.argv[2];
 const DRY = process.argv.includes('--dry-run');
+const KEEP_TAGS = process.argv.includes('--keep-tags');
 if (!SLUGS_FILE) { console.error('usage: merge-vision-targeted.js <slugs-file> [--dry-run]'); process.exit(1); }
 
 const FM_PATH = path.join(__dirname, 'final_manifest.json');
@@ -33,7 +39,7 @@ for (const e of fm) {
   e.title = v.title;
   e.description = v.description;
   e.alt = v.alt;
-  e.tags = v.tags;
+  if (!KEEP_TAGS) e.tags = v.tags;
   merged++;
 }
 

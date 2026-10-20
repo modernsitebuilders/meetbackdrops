@@ -13,6 +13,54 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 // YT iframe API + tracking. Below the fold — defer the chunk + script load.
+// "In Season Now" feature. Picked in getStaticProps (revalidates hourly), so the
+// homepage rotates on its own: fall through October, Christmas from Nov 1,
+// winter after the holidays. Months are 1-12; first match wins.
+const SEASONAL_FEATURES = [
+  {
+    months: [11, 12],
+    href: '/category/christmas-backgrounds',
+    heading: 'Christmas virtual backgrounds',
+    copy: 'Fireplaces, trees and holiday interiors, designed for camera — ready for year-end calls and team parties.',
+    cta: 'Browse Christmas sets',
+  },
+  {
+    months: [1, 2],
+    href: '/category/winter-backgrounds',
+    heading: 'Winter virtual backgrounds',
+    copy: 'Snowy views and warm cabin interiors, designed for camera — for the season after the holidays.',
+    cta: 'Browse winter sets',
+  },
+  {
+    months: [3, 4, 5],
+    href: '/category/spring-backgrounds',
+    heading: 'Spring virtual backgrounds',
+    copy: 'Fresh greenery and soft daylight, designed for camera — new for the season.',
+    cta: 'Browse spring sets',
+  },
+  {
+    months: [6, 7, 8],
+    href: '/category/summer-backgrounds',
+    heading: 'Summer virtual backgrounds',
+    copy: 'Bright coastal and garden sets, designed for camera — new for the season.',
+    cta: 'Browse summer sets',
+  },
+  {
+    months: [9, 10],
+    href: '/category/fall-backgrounds',
+    heading: 'Fall virtual backgrounds',
+    copy: 'Warm autumn sets in amber and rust tones, designed for camera — new for the season.',
+    cta: 'Browse fall sets',
+  },
+];
+
+function pickSeasonalFeature(date = new Date()) {
+  const month = Number(
+    new Intl.DateTimeFormat('en-US', { month: 'numeric', timeZone: 'America/New_York' }).format(date)
+  );
+  return SEASONAL_FEATURES.find((f) => f.months.includes(month)) || null;
+}
+
 const YoutubeEmbed = dynamic(() => import('../components/YoutubeEmbed'), { ssr: false });
 
 // Lazy load the category grid - only loads when scrolled into view
@@ -42,7 +90,7 @@ const CategoryGrid = dynamic(
   }
 );
 
-export default function Home({ reviewsData }) {
+export default function Home({ reviewsData, seasonal }) {
   const router = useRouter();
   
   const navigate = (path) => {
@@ -162,13 +210,12 @@ export default function Home({ reviewsData }) {
           Free samples — no signup. HD editions from $4.99.
         </p>
 
-        {/* In-season feature — swap the category/copy each season. Fall from
-            mid-September; rotate to holiday sets as the season turns (see the
-            image-content priorities note). */}
+        {/* In-season feature — rotates by month, see SEASONAL_FEATURES. */}
+        {seasonal && (
         <section style={{ maxWidth: '1100px', margin: '3rem auto 0', padding: '0 1rem' }}>
           <Link
             prefetch={false}
-            href="/category/fall-backgrounds"
+            href={seasonal.href}
             style={{
               display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
               gap: '1rem', textDecoration: 'none',
@@ -189,10 +236,10 @@ export default function Home({ reviewsData }) {
                 fontWeight: 600, letterSpacing: '-0.02em',
                 fontSize: 'clamp(1.35rem, 2.6vw, 1.85rem)', color: '#111827',
               }}>
-                Fall virtual backgrounds
+                {seasonal.heading}
               </div>
               <p style={{ color: '#4b5563', margin: '0.35rem 0 0', fontSize: '0.95rem', lineHeight: 1.5 }}>
-                Warm autumn sets in amber and rust tones, designed for camera — new for the season.
+                {seasonal.copy}
               </p>
             </div>
             <span style={{
@@ -200,11 +247,12 @@ export default function Home({ reviewsData }) {
               padding: '0.7rem 1.4rem', borderRadius: '999px',
               background: '#111827', color: '#fff', fontWeight: 600, fontSize: '0.9rem',
             }}>
-              Browse fall sets
+              {seasonal.cta}
               <span aria-hidden="true">→</span>
             </span>
           </Link>
         </section>
+        )}
 
         <WhyDifferent />
 
@@ -370,5 +418,5 @@ export default function Home({ reviewsData }) {
 export async function getStaticProps() {
   const { getReviewsData } = await import('../lib/reviews');
   const reviewsData = await getReviewsData();
-  return { props: { reviewsData }, revalidate: 3600 };
+  return { props: { reviewsData, seasonal: pickSeasonalFeature() }, revalidate: 3600 };
 }
