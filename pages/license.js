@@ -41,7 +41,7 @@ export default function License() {
       <Head>
         <link rel="canonical" href="https://meetbackdrops.com/license" />
         <title>License & Usage Rights - MeetBackdrops</title>
-        <meta name="description" content="MeetBackdrops license terms — free for individual professional use on Zoom, Teams, and Meet. HD Editions and Subscription add resolution, not extra rights." />
+        <meta name="description" content="MeetBackdrops license terms — free for individual professional use on Zoom, Teams, and Meet. HD Editions add resolution, not extra rights." />
         <meta name="robots" content="index, follow" />
       </Head>
 
@@ -213,7 +213,7 @@ export default function License() {
               </div>
             </section>
 
-            {/* HD Editions & Subscription */}
+            {/* HD Editions */}
             <section style={{ marginBottom: '3rem' }}>
               <div style={{
                 background: '#fef9c3',
@@ -230,7 +230,7 @@ export default function License() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  💎 HD Editions & Subscription
+                  💎 HD Editions
                 </h3>
                 <p style={{
                   color: '#713f12',
@@ -246,7 +246,7 @@ export default function License() {
                   lineHeight: 1.7,
                   marginBottom: '1rem'
                 }}>
-                  HD Editions (one-time purchase) and an active HD Subscription deliver the same image at <strong>2912×1632</strong> instead of the free-tier resolution. Permitted uses are identical to the Free section above — Zoom, Teams, Meet, Webex, webinars, podcasts, job interviews, individual professional video calls. Buying or subscribing does <strong>not</strong> grant additional team-deployment, redistribution, or branding rights.
+                  HD Editions (one-time purchase) deliver the same image at <strong>2912×1632</strong> instead of the free-tier resolution. Permitted uses are identical to the Free section above — Zoom, Teams, Meet, Webex, webinars, podcasts, job interviews, individual professional video calls. Buying does <strong>not</strong> grant additional team-deployment, redistribution, or branding rights.
                 </p>
                 <p style={{
                   color: '#713f12',
@@ -254,7 +254,7 @@ export default function License() {
                   fontStyle: 'italic',
                   margin: 0
                 }}>
-                  HD Editions and Subscription downloads are not counted against the free-tier daily/monthly limits below.
+                  HD Edition downloads are not counted against the free-tier daily limit below.
                 </p>
               </div>
             </section>
@@ -276,7 +276,7 @@ export default function License() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  ❌ Not Permitted (Free, HD, or Subscription)
+                  ❌ Not Permitted (Free or HD)
                 </h3>
                 <p style={{
                   color: '#991b1b',
@@ -456,9 +456,7 @@ export default function License() {
                     padding: 0,
                     margin: 0
                   }}>
-                    <li style={{ marginBottom: '0.75rem' }}>📅 <strong>Daily Limit:</strong> 5 free downloads per day</li>
-                    <li style={{ marginBottom: '0.75rem' }}>📊 <strong>Monthly Limit:</strong> 10 free downloads per rolling 30-day period</li>
-                    <li style={{ marginBottom: '0.75rem' }}>⏳ <strong>Rolling Quota:</strong> As your oldest downloads pass the 30-day mark, your quota refreshes automatically</li>
+                    <li style={{ marginBottom: '0.75rem' }}>📅 <strong>Daily Limit:</strong> 30 free downloads per day</li>
                   </ul>
                 </div>
                 <p style={{
@@ -466,7 +464,7 @@ export default function License() {
                   fontSize: '0.95rem',
                   fontStyle: 'italic'
                 }}>
-                  These limits apply to free downloads only. <strong>HD Editions</strong> (one-time purchase) and an <strong>active HD Subscription</strong> are not subject to the free-tier daily or monthly limits.
+                  This limit applies to free downloads only. <strong>HD Editions</strong> (one-time purchase) are not subject to it.
                 </p>
               </div>
             </section>
@@ -497,7 +495,6 @@ export default function License() {
                   <li><strong>Rights:</strong> Each background is produced by MeetBackdrops through its own studio process. Your use is governed by these license terms; access and use are conditioned on agreeing to them.</li>
                   <li><strong>No Warranty:</strong> Backgrounds are provided "as is" without warranty of any kind.</li>
                   <li><strong>Modifications:</strong> You may crop or color-adjust a background for your own video-call use. You may not redistribute the modified file, sell it, or add your company logo to it (Branded Backgrounds covers the logo-integration case).</li>
-                  <li><strong>Subscription:</strong> The HD Subscription is billed monthly, renews automatically, and can be cancelled anytime. License rights granted by past downloads survive cancellation; ability to access new downloads ends with the subscription.</li>
                   <li><strong>Questions:</strong> If you're unsure whether a specific use is permitted, contact us before using.</li>
                 </ul>
               </div>

@@ -19,71 +19,6 @@ const CHECKOUT_PAUSED = false;
 
 const trackAnalytics = (eventType, filename, category, extra) => trackEvent(eventType, filename, category, extra);
 
-// ─── Subscriber Download Button ───────────────────────────────────────────────
-function SubscriberDownloadButton({ product, token, onDownloadComplete, onLimitReached }) {
-  const [loading, setLoading] = useState(false);
-  const [done, setDone] = useState(false);
-
-  const handleDownload = async (e) => {
-    e.stopPropagation();
-    setLoading(true);
-    try {
-      const res = await fetch('/api/subscription-download', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          token,
-          imageId: product.id,
-          category: product.category,
-        }),
-      });
-      const data = await res.json();
-      if (res.ok && data.url) {
-        const a = document.createElement('a');
-        a.href = data.url;
-        a.download = `${product.id}.png`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setDone(true);
-        onDownloadComplete(data.remaining);
-        trackAnalytics('hd_sub_download', product.id, product.category);
-      } else if (res.status === 429) {
-        onLimitReached(data.error);
-      } else {
-        onLimitReached(data.error || 'Download failed. Please try again.');
-      }
-    } catch {
-      onLimitReached('Download failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <button
-      onClick={handleDownload}
-      disabled={loading || done}
-      style={{
-        position: 'absolute',
-        bottom: '10px', left: '50%',
-        transform: 'translateX(-50%)',
-        background: done ? '#10b981' : loading ? 'rgba(0,0,0,0.6)' : 'rgba(124,58,237,0.92)',
-        color: 'white',
-        padding: '0.5rem 1.2rem',
-        border: 'none', borderRadius: '8px',
-        cursor: done || loading ? 'default' : 'pointer',
-        zIndex: 3, fontWeight: 'bold',
-        fontSize: '0.85rem',
-        whiteSpace: 'nowrap',
-        transition: 'background 0.2s',
-      }}
-    >
-      {done ? '✓ Downloaded' : loading ? 'Preparing...' : '⬇ Download HD'}
-    </button>
-  );
-}
-
 // ─── HD Preview Lightbox ──────────────────────────────────────────────────────
 function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow, hdOnly }) {
   const [buying, setBuying] = useState(false);
@@ -223,7 +158,7 @@ function HdOnlyLightbox({ imageUrl, productId, onClose, onBuyNow, hdOnly }) {
 }
 
 // ─── HD Product Card ───────────────────────────────────────────────────────────
-function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle, onPreview, hdOnly, onMouseEnter, onMouseLeave, subscriberMode, subToken, onDownloadComplete, onLimitReached }) {
+function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle, onPreview, hdOnly, onMouseEnter, onMouseLeave }) {
   const { toggleWishlist, isWishlisted, openDrawer } = useWishlist();
   const wishlisted = isWishlisted(product.id);
   const thumb = `https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`;
@@ -244,14 +179,14 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
         borderRadius: '0',
         overflow: 'hidden',
         position: 'relative',
-        cursor: subscriberMode ? 'default' : 'pointer',
+        cursor: 'pointer',
         boxShadow: isHighlighted
           ? '0 0 0 2px #9a6a3a, 0 0 0 4px rgba(154, 106, 58, 0.2)'
           : 'none',
         transition: 'box-shadow 0.35s ease, border-color 0.2s ease',
         background: '#fff',
       }}
-      onClick={() => !subscriberMode && onToggle(product.id)}
+      onClick={() => onToggle(product.id)}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -264,7 +199,7 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
         zIndex: 1
       }} />
 
-      {isSelected && !subscriberMode && (
+      {isSelected && (
         <div style={{
           position: 'absolute',
           top: '10px', right: '10px',
@@ -338,9 +273,9 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
         }}
         style={{
           position: 'absolute',
-          top: subscriberMode ? '10px' : '50%',
+          top: '50%',
           left: '50%',
-          transform: subscriberMode ? 'translateX(-50%)' : 'translate(-50%, -50%)',
+          transform: 'translate(-50%, -50%)',
           background: '#111827', color: '#fff',
           padding: '0.6rem 1.25rem',
           border: '1px solid #111827', borderRadius: '0',
@@ -356,16 +291,6 @@ function HdProductCard({ product, isSelected, isHovered, isHighlighted, onToggle
       >
         Preview HD
       </button>
-
-      {/* Subscriber download button */}
-      {subscriberMode && isHovered && (
-        <SubscriberDownloadButton
-          product={product}
-          token={subToken}
-          onDownloadComplete={onDownloadComplete}
-          onLimitReached={onLimitReached}
-        />
-      )}
 
       <img
         src={`https://assets.streambackdrops.com/webp/${product.category}/${product.id.replace('-hd', '')}.webp`}
@@ -693,199 +618,6 @@ function CheckoutBar({ selected, packSize, onClear, onChangePack, onCheckout }) 
       >
         Change pack
       </button>
-    </div>
-  );
-}
-
-// ─── Subscription CTA ──────────────────────────────────────────────────────────
-function SubscriptionCTA({ onVerifyClick }) {
-  const [loading, setLoading] = useState(false);
-
-  const handleSubscribe = async () => {
-    setLoading(true);
-    trackAnalytics('sub_cta_click', null, 'subscription');
-    try {
-      const res = await fetch('/api/create-subscription-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        // Attribution for the webhook's server-side hd_subscription record.
-        body: JSON.stringify({ analytics: getAttribution() }),
-      });
-      const { url } = await res.json();
-      window.location.href = url;
-    } catch {
-      alert('Something went wrong. Please try again.');
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div style={{
-      background: '#111827',
-      color: '#fff',
-      borderRadius: '0',
-      borderTop: '2px solid #9a6a3a',
-      padding: '2rem 2rem',
-      margin: '2.5rem 0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      flexWrap: 'wrap',
-      gap: '1.5rem',
-    }}>
-      <div style={{ flex: '1 1 320px' }}>
-        <div style={{
-          fontSize: '0.7rem',
-          letterSpacing: '0.22em',
-          textTransform: 'uppercase',
-          color: '#c79a6b',
-          fontWeight: 600,
-          marginBottom: '0.5rem',
-        }}>
-          Unlimited monthly access
-        </div>
-        <div style={{
-          fontFamily: "'Fraunces', Georgia, serif",
-          fontSize: '1.6rem',
-          fontWeight: 600,
-          letterSpacing: '-0.01em',
-          marginBottom: '0.5rem',
-          lineHeight: 1.15,
-        }}>
-          Subscribe — $9 per month
-        </div>
-        <div style={{ fontSize: '0.92rem', color: '#d1d5db', lineHeight: 1.55 }}>
-          10 HD downloads per month · resets each billing cycle · cancel anytime.
-        </div>
-      </div>
-      <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button
-          onClick={handleSubscribe}
-          disabled={loading}
-          style={{
-            background: '#fff', color: '#111827',
-            border: '1px solid #fff',
-            padding: '0.85rem 1.75rem',
-            borderRadius: '0', fontWeight: 600,
-            cursor: loading ? 'default' : 'pointer',
-            fontSize: '0.78rem',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            whiteSpace: 'nowrap',
-            fontFamily: 'inherit',
-          }}
-        >
-          {loading ? 'Loading…' : 'Start Subscription'}
-        </button>
-        <button
-          onClick={() => { trackAnalytics('hd_verify_sub_click', null, 'subscription'); onVerifyClick(); }}
-          style={{
-            background: 'transparent', color: '#fff',
-            border: '1px solid rgba(255,255,255,0.4)',
-            padding: '0.85rem 1.25rem',
-            borderRadius: '0',
-            cursor: 'pointer',
-            fontSize: '0.72rem',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            fontWeight: 500,
-            whiteSpace: 'nowrap',
-            fontFamily: 'inherit',
-          }}
-        >
-          Already subscribed?
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// ─── Verify Email Modal ────────────────────────────────────────────────────────
-function VerifyEmailModal({ onClose, onVerified }) {
-  const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleVerify = async () => {
-    if (!email.includes('@')) { setError('Please enter a valid email address.'); return; }
-    setLoading(true);
-    setError('');
-    try {
-      const res = await fetch('/api/refresh-subscription-token', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const data = await res.json();
-      if (data.token) {
-        localStorage.setItem('sb_sub_token', data.token);
-        onVerified(data.token);
-      } else {
-        setError(data.error || 'No active subscription found for this email.');
-      }
-    } catch {
-      setError('Something went wrong. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div style={{
-      position: 'fixed', inset: 0,
-      background: 'rgba(0,0,0,0.6)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      zIndex: 200, padding: '1rem',
-    }}
-      onClick={onClose}
-    >
-      <div
-        style={{
-          background: 'white', borderRadius: '12px',
-          padding: '2rem', maxWidth: '420px', width: '100%',
-        }}
-        onClick={e => e.stopPropagation()}
-      >
-        <h2 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>Verify your subscription</h2>
-        <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1.25rem' }}>
-          Enter the email address you subscribed with to restore access.
-        </p>
-        <input
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && handleVerify()}
-          placeholder="your@email.com"
-          style={{
-            width: '100%', padding: '0.75rem 1rem',
-            border: '2px solid #e5e7eb', borderRadius: '8px',
-            fontSize: '1rem', marginBottom: '0.75rem',
-            boxSizing: 'border-box',
-          }}
-        />
-        {error && <p style={{ color: '#dc2626', fontSize: '0.875rem', marginBottom: '0.75rem' }}>{error}</p>}
-        <button
-          onClick={handleVerify}
-          disabled={loading}
-          style={{
-            width: '100%',
-            background: '#111827',
-            color: '#fff',
-            border: '1px solid #111827',
-            borderBottom: '2px solid #9a6a3a',
-            padding: '0.95rem',
-            borderRadius: '0',
-            fontWeight: 600,
-            fontSize: '0.78rem',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            cursor: loading ? 'default' : 'pointer',
-            fontFamily: 'inherit',
-          }}
-        >
-          {loading ? 'Verifying…' : 'Verify Subscription'}
-        </button>
-      </div>
     </div>
   );
 }
@@ -1384,53 +1116,6 @@ export default function Premium({ reviewsData }) {
     return () => cancelAnimationFrame(rafId);
   }, [router.isReady, router.query.highlight, router.query.product]);
 
-  // Subscription state
-  const [subStatus, setSubStatus] = useState(null); // null | { valid, email, remaining, downloadsThisMonth }
-  const [subToken, setSubToken] = useState(null);
-  const [showVerifyModal, setShowVerifyModal] = useState(false);
-  const [limitMessage, setLimitMessage] = useState('');
-
-  // Check for subscription token on mount
-  useEffect(() => {
-    const token = localStorage.getItem('sb_sub_token');
-    if (!token) return;
-    setSubToken(token);
-
-    fetch('/api/verify-subscription', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.valid) {
-          setSubStatus(data);
-        } else {
-          // Token invalid/expired — clear it
-          localStorage.removeItem('sb_sub_token');
-          setSubToken(null);
-        }
-      })
-      .catch(() => {});
-  }, []);
-
-  const handleDownloadComplete = (remaining) => {
-    setSubStatus(prev => prev ? { ...prev, remaining, downloadsThisMonth: 10 - remaining } : prev);
-  };
-
-  const handleVerified = (token) => {
-    setSubToken(token);
-    setShowVerifyModal(false);
-    fetch('/api/verify-subscription', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token }),
-    })
-      .then(res => res.json())
-      .then(data => { if (data.valid) setSubStatus(data); })
-      .catch(() => {});
-  };
-
   const handleCheckout = async (productIds) => {
     const ids = productIds
       ?? (packSize ? bundleSelected : selectedId ? [selectedId] : []);
@@ -1492,7 +1177,6 @@ export default function Premium({ reviewsData }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const isSubscriber = subStatus?.valid;
   const filteredProducts = products.filter(p => {
     if (activeCategory === 'all') return true;
     const group = CATEGORY_GROUPS[activeCategory];
@@ -1522,8 +1206,8 @@ export default function Premium({ reviewsData }) {
       </Head>
 
       {/* Free-sample banner — slim, dismissible-feeling entry to /free-sample.
-          Hidden for subscribers (irrelevant) and when a focus hero is up. */}
-      {!isSubscriber && !selectedProduct && !packSize && (
+          Hidden when a focus hero is up. */}
+      {!selectedProduct && !packSize && (
         <Link
           href="/free-sample"
           onClick={() => trackAnalytics('free_sample_banner_click', 'hd_top', 'banner')}
@@ -1544,8 +1228,8 @@ export default function Premium({ reviewsData }) {
         </Link>
       )}
 
-      {/* Sticky pack bar — only for non-subscribers, hidden when focus hero is showing */}
-      {!isSubscriber && !selectedProduct && (
+      {/* Sticky pack bar — hidden when focus hero is showing */}
+      {!selectedProduct && (
         <StickyPackBar
           packSize={packSize}
           selected={bundleSelected}
@@ -1556,7 +1240,7 @@ export default function Premium({ reviewsData }) {
       )}
 
       {/* Bundle checkout bar — floats bottom-right when a pack is active */}
-      {!isSubscriber && packSize && (
+      {packSize && (
         <CheckoutBar
           selected={bundleSelected}
           packSize={packSize}
@@ -1567,7 +1251,7 @@ export default function Premium({ reviewsData }) {
       )}
 
       {/* Focus Hero — shown when a single image is selected (not in bundle mode) */}
-      {!isSubscriber && selectedProduct && !packSize && (
+      {selectedProduct && !packSize && (
         <FocusHero
           product={selectedProduct}
           hdOnly={isHdOnly(selectedProduct.id)}
@@ -1627,82 +1311,8 @@ export default function Premium({ reviewsData }) {
           2912×1632 PNG. 4× the pixels of the free downloads. From $4.99.
         </p>
 
-        {isSubscriber ? (
-          /* ── Subscriber badge ── */
-          <div style={{ display: 'inline-block', marginBottom: '1.5rem' }}>
-            <div style={{
-              border: '1px solid rgba(255,255,255,0.2)',
-              borderTop: '2px solid #9a6a3a',
-              padding: '1rem 1.75rem',
-              borderRadius: '0',
-              textAlign: 'left',
-            }}>
-              <div style={{
-                fontSize: '0.7rem',
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                color: '#c79a6b',
-                fontWeight: 600,
-                marginBottom: '0.4rem',
-              }}>
-                Active Subscription
-              </div>
-              <div style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontSize: '1.2rem',
-                fontWeight: 600,
-                letterSpacing: '-0.01em',
-              }}>
-                {subStatus.remaining} of 10 HD downloads remaining this month
-              </div>
-              <div style={{ fontSize: '0.85rem', marginTop: '0.4rem', color: '#d1d5db' }}>
-                Hover over any image and click Download HD · {subStatus.email}
-              </div>
-            </div>
-            {limitMessage && (
-              <div style={{
-                marginTop: '0.6rem',
-                border: '1px solid #c79a6b',
-                color: '#fde68a',
-                borderRadius: '0',
-                padding: '0.7rem 1.2rem',
-                fontSize: '0.92rem',
-                fontWeight: 500,
-              }}>
-                {limitMessage}
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
             {/* ── Pack picker ── */}
             <PackPicker packSize={packSize} onSelect={handlePackSelect} />
-
-            {/* Inline subscription mention — preserves high-intent path without competing visually */}
-            <div style={{
-              marginTop: '0.5rem',
-              fontSize: '0.85rem',
-              color: '#9ca3af',
-              textAlign: 'center',
-            }}>
-              Or unlimited monthly access —{' '}
-              <a
-                href="#subscription"
-                onClick={(e) => {
-                  e.preventDefault();
-                  trackAnalytics('hd_inline_sub_link_click', null, 'hd_hero');
-                  document.getElementById('subscription')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                style={{
-                  color: '#c79a6b',
-                  textDecoration: 'underline',
-                  textUnderlineOffset: '3px',
-                  fontWeight: 600,
-                }}
-              >
-                see plans below ↓
-              </a>
-            </div>
 
             {/* Muted comparison link — reframed from "escape hatch" to "due diligence" */}
             <div style={{
@@ -1723,8 +1333,6 @@ export default function Premium({ reviewsData }) {
                 Compare with free samples →
               </a>
             </div>
-          </>
-        )}
       </section>
 
       {/* Trust signals row — replaces the old "Hover over images" helper */}
@@ -1895,20 +1503,10 @@ export default function Premium({ reviewsData }) {
               hdOnly={isHdOnly(product.id)}
               onMouseEnter={() => setHoveredProduct(product.id)}
               onMouseLeave={() => setHoveredProduct(null)}
-              subscriberMode={isSubscriber}
-              subToken={subToken}
-              onDownloadComplete={handleDownloadComplete}
-              onLimitReached={setLimitMessage}
             />
           ))}
         </div>
 
-        {/* Subscription CTA — below the grid for non-subscribers (visitors who scrolled have signaled intent) */}
-        {!isSubscriber && (
-          <div id="subscription" style={{ scrollMarginTop: '5rem' }}>
-            <SubscriptionCTA onVerifyClick={() => setShowVerifyModal(true)} />
-          </div>
-        )}
       </section>
 
       {/* Walkthrough video — bottom of page, lazy-loaded */}
@@ -1922,14 +1520,6 @@ export default function Premium({ reviewsData }) {
           hdOnly={hdOnlyPreview.hdOnly}
           onClose={() => setHdOnlyPreview(null)}
           onBuyNow={handleHdOnlyBuy}
-        />
-      )}
-
-      {/* Verify email modal */}
-      {showVerifyModal && (
-        <VerifyEmailModal
-          onClose={() => setShowVerifyModal(false)}
-          onVerified={handleVerified}
         />
       )}
 

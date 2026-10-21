@@ -199,7 +199,7 @@ export default function Terms() {
                   <li>Job interviews</li>
                 </ul>
                 <p style={{ color: '#065f46', marginBottom: '0', fontSize: '0.95rem', fontStyle: 'italic' }}>
-                  No attribution required. Free downloads are subject to the fair-use limits described on the <Link href="/license" style={{ color: '#047857' }}>License &amp; Usage</Link> page (currently 5 per day, 10 per rolling 30-day period).
+                  No attribution required. Free downloads are subject to the fair-use limits described on the <Link href="/license" style={{ color: '#047857' }}>License &amp; Usage</Link> page (currently 30 per day).
                 </p>
               </div>
 
@@ -247,24 +247,9 @@ export default function Terms() {
                   Prices are subject to change. The price displayed at the time of purchase is the price you will be charged.
                 </p>
 
-                <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Monthly Subscription</h3>
-                <p style={{ color: '#1e3a8a', marginBottom: '0.5rem' }}>
-                  As an alternative to one-time packs, HD images are also available through a monthly subscription:
-                </p>
-                <ul style={{ listStyle: 'disc', paddingLeft: '2rem', color: '#1e40af', marginBottom: '1rem' }}>
-                  <li>$9.00 USD per month</li>
-                  <li>10 HD image downloads per billing cycle</li>
-                  <li>Download allowance resets each billing cycle and does not roll over</li>
-                  <li>Subscription auto-renews monthly until cancelled</li>
-                  <li>You may cancel at any time; cancellation takes effect at the end of the current paid billing cycle, and you retain access through that period</li>
-                </ul>
-                <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
-                  Subscriptions are billed and managed through Stripe. Subscription pricing is subject to change with prior notice; you will be notified before any price increase takes effect on your account. Per the refund policy below, fees already paid are non-refundable.
-                </p>
-
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>License for Purchased HD Images</h3>
                 <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
-                  HD backgrounds obtained through one-time packs or a subscription are licensed for the same individual professional uses described in Section 3 — buying adds resolution, not additional rights. Embedding images in products you sell requires a separate commercial license (Section 5). HD images may not be redistributed, resold, or shared with others, and your subscription does not transfer ownership of any image.
+                  HD backgrounds obtained through one-time packs are licensed for the same individual professional uses described in Section 3 — buying adds resolution, not additional rights. Embedding images in products you sell requires a separate commercial license (Section 5). HD images may not be redistributed, resold, or shared with others, and purchase does not transfer ownership of any image.
                 </p>
 
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e40af', marginBottom: '0.5rem' }}>Delivery</h3>
@@ -302,7 +287,7 @@ export default function Terms() {
                   color: '#991b1b',
                   marginBottom: '1rem'
                 }}>
-                  ❌ Prohibited Uses (Free, HD, or Subscription)
+                  ❌ Prohibited Uses (Free or HD)
                 </h3>
                 <p style={{ color: '#991b1b', marginBottom: '1rem' }}>
                   Regardless of which tier you are on, you are restricted from the following uses:
@@ -427,7 +412,7 @@ export default function Terms() {
                 11. Refund Policy
               </h2>
               <p style={{ marginBottom: '1.5rem' }}>
-                All sales are final. Due to the digital nature of our products — including HD image packs and monthly subscription fees — we do not offer refunds, exchanges, or credits once a purchase is completed and download access has been granted. Cancelling a subscription stops future billing but does not refund the current billing cycle. By completing a purchase or starting a subscription, you acknowledge and agree to this no-refund policy. If you experience a technical issue preventing download, please contact us within 7 days of purchase and we will work to resolve it.
+                All sales are final. Due to the digital nature of our products — including HD image packs and licenses — we do not offer refunds, exchanges, or credits once a purchase is completed and download access has been granted. By completing a purchase, you acknowledge and agree to this no-refund policy. If you experience a technical issue preventing download, please contact us within 7 days of purchase and we will work to resolve it.
               </p>
               <h2 style={{
                 fontSize: '1.8rem',

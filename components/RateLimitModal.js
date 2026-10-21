@@ -2,15 +2,16 @@ import { useState, useEffect } from 'react';
 import { trackEvent } from '../lib/trackEvent';
 
 export default function RateLimitModal({ onClose: closeModal, errorMessage, onEmailBonus, emailBonusUsed }) {
-  const isDaily = errorMessage?.includes('Daily download limit');
-  const limitKind = isDaily ? 'daily' : 'monthly';
+  // Only a daily cap exists now; kept as a field so wall events stay comparable
+  // with the history logged under the old daily/monthly split.
+  const limitKind = 'daily';
   const onClose = () => {
     trackEvent('rate_limit_close', null, limitKind);
     closeModal();
   };
 
-  const daysMatch = errorMessage?.match(/(\d+) day/);
-  const daysRemaining = daysMatch ? daysMatch[1] : '?';
+  const limitMatch = errorMessage?.match(/download (\d+) images per day/);
+  const dailyLimit = limitMatch ? limitMatch[1] : null;
 
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -78,7 +79,7 @@ export default function RateLimitModal({ onClose: closeModal, errorMessage, onEm
         lineHeight: 1.5,
       }}>
         {hero
-          ? 'Full-resolution HD Editions download instantly, with no daily cap — our highest-quality masters, with 4× the pixels for recordings, editing and cropping. HD from $4.99, or $9/mo for 10 downloads every month.'
+          ? 'Full-resolution HD Editions download instantly, with no daily cap — our highest-quality masters, with 4× the pixels for recordings, editing and cropping. HD from $4.99.'
           : 'HD Editions are the full-resolution masters — 4× the pixels for recordings, video editing, cropping and desktop wallpaper. From $4.99, instant download.'}
       </p>
       <a
@@ -220,7 +221,7 @@ export default function RateLimitModal({ onClose: closeModal, errorMessage, onEm
           textAlign: 'center',
           marginBottom: '0.5rem',
         }}>
-          {isDaily ? 'Daily Limit Reached' : 'Monthly Limit Reached'}
+          Daily Limit Reached
         </h2>
 
         <p style={{
@@ -232,9 +233,7 @@ export default function RateLimitModal({ onClose: closeModal, errorMessage, onEm
         }}>
           {emphasizeHd
             ? "You're clearly getting good use out of these — here's how to keep downloading without the wait."
-            : (isDaily
-              ? "You've hit the 5 free downloads per day. Come back tomorrow — or keep going below."
-              : `You've used your 10 monthly downloads. Your oldest expires in ${daysRemaining} day${daysRemaining !== '1' ? 's' : ''} — or keep going below.`)}
+            : `You've hit today's limit of ${dailyLimit || 'free'} downloads. It resets tomorrow — or keep going below.`}
         </p>
 
         {/* Repeat / free-path exhausted → HD is the hero; bonus (if any) demoted.

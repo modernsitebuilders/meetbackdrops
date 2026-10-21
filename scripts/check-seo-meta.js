@@ -98,7 +98,6 @@ const SKIP_PAGES = new Set([
   'pages/_app.js',
   'pages/_document.js',
   'pages/indexnow-test.js',
-  'pages/subscription-success.js',
   'pages/hd-download.js', // already in LAYOUT_PAGES; never both
 ]);
 

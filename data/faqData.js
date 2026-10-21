@@ -673,7 +673,7 @@ export const faqData = {
     },
     {
       question: "How much do HD virtual backgrounds cost?",
-      answer: "HD backgrounds are available in packs starting at $4.99 for a single image. Multi-image packs offer savings up to 60% — a 20-image pack is $39.99. There is also a monthly subscription option for 10 downloads per month."
+      answer: "HD backgrounds are available in packs starting at $4.99 for a single image. Multi-image packs offer savings up to 60% — a 20-image pack is $39.99."
     },
     {
       question: "Do I need a green screen for HD virtual backgrounds?",

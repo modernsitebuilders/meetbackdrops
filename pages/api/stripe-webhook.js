@@ -194,18 +194,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ received: true, ignored: true });
   }
 
-  // HD subscription ($9/mo): record + alert. Access itself is granted by
-  // /api/subscription-activate when the buyer lands on /subscription-success.
-  if (metadata.product_type === 'subscription') {
-    const email = session?.customer_details?.email || '';
-    await recordRevenueEvent(session, 'hd_subscription', email, 'subscription');
-    await alertSale(session, {
-      product: 'HD Subscription',
-      detail: [['Plan', '10 HD downloads / month']],
-    });
-    return res.status(200).json({ received: true });
-  }
-
   // Commercial licenses ($49 single image / $299 library): record + alert. The
   // certificate + HD file are served by /license-success via /api/verify-license.
   if (metadata.product_type === 'extended_license' || metadata.product_type === 'commercial_library') {

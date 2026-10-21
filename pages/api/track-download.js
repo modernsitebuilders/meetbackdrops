@@ -5,6 +5,9 @@ import { normalizeAnalyticsCategory } from '../../lib/analyticsNormalize';
 import { shouldSkipAnalytics, isSuspectedBehavioralBot } from '../../lib/botFilter';
 import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 
+// Free downloads per hashed IP per UTC day.
+const DAILY_LIMIT = 30;
+
 function hashIP(ip) {
   return crypto.createHash('sha256').update(ip + 'salt_streambackdrops').digest('hex').substring(0, 16);
 }
@@ -125,47 +128,26 @@ export default async function handler(req, res) {
     if (!isAdmin) {
       const today = new Date().toISOString().slice(0, 10).replace(/-/g, ''); // YYYYMMDD
       const dailyKey = `dl:daily:${hashedIP}:${today}`;
-      const monthlyKey = `dl:monthly:${hashedIP}`;
-      const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
-
-      // ── 2. Daily limit (5 per 24h) ─────────────────────────────────────────
+      // ── 2. Daily limit ─────────────────────────────────────────────────────
+      // Abuse guard only, set well above normal use. There is no monthly cap:
+      // the old 5/day + 10/30-day wall blocked ~300 visitors a quarter for ~no
+      // revenue, and IP-keyed caps hit whole offices sharing one address.
       const dailyCount = parseInt(await redis.get(dailyKey) || '0', 10);
-      if (dailyCount >= 5) {
+      if (dailyCount >= DAILY_LIMIT) {
         const deniedRow = buildRow('download_denied');
         const isBot = isSuspectedBehavioralBot({ userAgent: deniedRow[13], referer: deniedRow[14] });
         await redis.rpush('analytics:queue', JSON.stringify(deniedRow));
         await insertAnalyticsEventSafe(deniedRow, { isBot }); // live mirror to Neon (safe no-op without DATABASE_URL)
         console.log('⛔ Daily limit reached for IP:', hashedIP.substring(0, 8) + '...');
         return res.status(429).json({
-          error: 'Daily download limit reached. You can download 5 images per day. Come back tomorrow!'
-        });
-      }
-
-      // ── 3. Monthly limit (10 per 30 days) ──────────────────────────────────
-      await redis.zremrangebyscore(monthlyKey, 0, thirtyDaysAgo);
-      const monthlyCount = await redis.zcard(monthlyKey);
-      if (monthlyCount >= 10) {
-        // Get oldest entry to calculate expiry
-        const [oldestMember] = await redis.zrange(monthlyKey, 0, 0);
-        const oldestTs = oldestMember
-          ? parseFloat(await redis.zscore(monthlyKey, oldestMember) || thirtyDaysAgo)
-          : thirtyDaysAgo;
-        const daysUntilExpiry = Math.max(1, Math.ceil((oldestTs + 30 * 24 * 60 * 60 * 1000 - Date.now()) / (24 * 60 * 60 * 1000)));
-
-        const deniedRow = buildRow('download_denied');
-        const isBot = isSuspectedBehavioralBot({ userAgent: deniedRow[13], referer: deniedRow[14] });
-        await redis.rpush('analytics:queue', JSON.stringify(deniedRow));
-        await insertAnalyticsEventSafe(deniedRow, { isBot }); // live mirror to Neon (safe no-op without DATABASE_URL)
-        console.log('⛔ Monthly limit reached for IP:', hashedIP.substring(0, 8) + '...');
-        return res.status(429).json({
-          error: `Monthly download limit reached. Your oldest download will expire in ${daysUntilExpiry} day${daysUntilExpiry !== 1 ? 's' : ''}, then you can download more!`
+          error: `Daily download limit reached. You can download ${DAILY_LIMIT} images per day. Come back tomorrow!`
         });
       }
     } else {
       console.log('👑 Admin bypass - skipping limits');
     }
 
-    // ── 4. Mark duplicate & update counters ────────────────────────────────────
+    // ── 3. Mark duplicate & update counters ────────────────────────────────────
     if (sessionId) {
       await redis.set(`dl:dup:${sessionId}:${filename}`, '1', { ex: 86400 });
     }
@@ -173,16 +155,12 @@ export default async function handler(req, res) {
     if (!isAdmin) {
       const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
       const dailyKey = `dl:daily:${hashedIP}:${today}`;
-      const monthlyKey = `dl:monthly:${hashedIP}`;
-      const uniqueId = `${Date.now()}-${Math.random()}`;
 
       await redis.incr(dailyKey);
       await redis.expire(dailyKey, 26 * 60 * 60); // 26h TTL
-      await redis.zadd(monthlyKey, { score: Date.now(), member: uniqueId });
-      await redis.expire(monthlyKey, 35 * 24 * 60 * 60); // 35d TTL
     }
 
-    // ── 5. Queue event ─────────────────────────────────────────────────────────
+    // ── 4. Queue event ─────────────────────────────────────────────────────────
     const row = buildRow(eventType);
     const isBot = isSuspectedBehavioralBot({ userAgent: row[13], referer: row[14] });
     await redis.rpush('analytics:queue', JSON.stringify(row));

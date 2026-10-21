@@ -267,12 +267,11 @@ export default function Privacy() {
                   <li><strong>Visitor and session IDs</strong> (<code>sb_visitor_id</code>, <code>sb_session</code>, <code>sb_first_visit</code>): Random identifiers stored in your browser&apos;s local storage so our own analytics can tell new visits from return visits. They contain no personal details.</li>
                   <li><strong>Visit source</strong> (<code>entry_referrer</code>, <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>): Stored in session storage, which clears when you close the tab, so a download can be credited to the site or campaign that brought you here.</li>
                   <li><strong>Download limits</strong> (<code>sb_download_count</code>, <code>sb_ratelimit_hits</code>, <code>sb_email_bonus_used</code>, <code>sb_hd_sample_used</code>, <code>sb_hd_sample_email</code>): Track your free downloads, whether you have used the email bonus download or free HD sample, and how often you have reached the limit.</li>
-                  <li><strong>Subscription Token</strong> (<code>sb_sub_token</code>): Stored locally if you purchase a subscription, to authenticate your download access without requiring a login.</li>
                   <li><strong>Wishlist</strong> (<code>sb_wishlist</code>): Stores the IDs of HD images you have saved to your wishlist. This data never leaves your device — it is not transmitted to our servers.</li>
                   <li><strong>Page design tests</strong> (<code>mb_ab_hd_compare_hero</code>): Remembers which version of a page section you were shown, so it stays the same on every visit while we compare designs.</li>
                 </ul>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  You can clear all locally stored data at any time through your browser&apos;s settings. Doing so will remove your wishlist, download count, and subscription token.
+                  You can clear all locally stored data at any time through your browser&apos;s settings. Doing so will remove your wishlist and download count.
                 </p>
 
                 <h3 style={{
@@ -287,7 +286,7 @@ export default function Privacy() {
                   We use your IP address in three limited ways:
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
-                  <li><strong>Download limits:</strong> When you download a free image, we store a one-way hash of your IP address, not the address itself, to enforce the daily and monthly free-download limits and to count each download once.</li>
+                  <li><strong>Download limits:</strong> When you download a free image, we store a one-way hash of your IP address, not the address itself, to enforce the daily free-download limit and to count each download once.</li>
                   <li><strong>Bot filtering:</strong> We keep a short-lived counter keyed to your IP address that expires after one hour, to keep automated traffic out of our statistics.</li>
                   <li><strong>Inquiry forms:</strong> When you submit a Branded Backgrounds inquiry, we record your IP address and browser type with it, to help us screen out spam.</li>
                 </ul>

@@ -16,7 +16,7 @@ export default function HdFaqSchema() {
         "name": "How much do HD virtual backgrounds cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HD backgrounds are available as one-time purchases starting at $4.99 for one image, $6.99 for two, or $8.99 for three. A subscription plan is also available at $9/month, which includes 10 HD downloads per billing period."
+          "text": "HD backgrounds are available as one-time purchases starting at $4.99 for one image, $6.99 for two, or $8.99 for three."
         }
       },
       {
