@@ -11,6 +11,8 @@ import BreadcrumbSchema from '../../../components/BreadcrumbSchema';
 import BackToTop from '../../../components/BackToTop';
 import ImageDiscovery from '../../../components/ImageDiscovery';
 import { HD_BASE_IDS } from '../../../lib/hdProducts';
+import { isLogoReady, LOGO_PRICE_LABEL } from '../../../lib/logoBackground';
+import { trackEvent } from '../../../lib/trackEvent';
 import { buildImagePageTitle, buildImagePageDescription, buildImageDisplayTitle } from '../../../lib/imagePageMeta';
 
 const CDN = 'https://assets.streambackdrops.com';
@@ -31,6 +33,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
 
   const hasHd = HD_BASE_IDS.has(image.slug);
   const hdHref = hasHd ? `/hd?product=${image.slug}-hd` : '/hd';
+  const logoReady = isLogoReady(image.slug);
   const [showHdModal, setShowHdModal] = useState(false);
 
   const rating = reviewsData?.averageRating;
@@ -231,6 +234,15 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                   PNG, 1456 × 816 — the format Zoom, Teams, and Meet accept.
                   Right-click-saving the image above gives you a <strong style={{ color: '#374151' }}>.webp</strong>, which they reject.
                 </p>
+                {logoReady && (
+                  <Link prefetch={false}
+                    href={`/add-logo/${image.slug}`}
+                    onClick={() => trackEvent('logo_cta_click', image.slug, 'image_page')}
+                    style={{ display: 'inline-block', marginTop: '0.5rem', color: '#9a6a3a', fontWeight: 600, fontSize: '0.9rem', textDecoration: 'none' }}
+                  >
+                    Add your logo or name to this background — {LOGO_PRICE_LABEL} →
+                  </Link>
+                )}
               </div>
             </div>
 

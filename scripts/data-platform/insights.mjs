@@ -31,7 +31,7 @@ const ENGAGED = `(n_ev >= 2 OR n_dl >= 1)`;
 // Mirror of DOWNLOAD_EVENTS (lib/analyticsNormalize.js).
 const DL = `('download','cat_image_download','modal_download','zoom_apply','meet_download','email_bonus_download','free_sample_download')`;
 // Mirror of REVENUE_EVENTS (lib/analyticsNormalize.js).
-const REV = `('hd_purchase','hd_subscription','license_purchase')`;
+const REV = `('hd_purchase','hd_subscription','license_purchase','logo_purchase')`;
 
 // Optional overrides: `npm run insights -- --days 60`
 const arg = (flag, def) => {
@@ -152,6 +152,7 @@ async function main() {
       count(*) FILTER (WHERE event_type='hd_purchase') AS hd_purchase,
       count(*) FILTER (WHERE event_type='hd_subscription') AS hd_subscription,
       count(*) FILTER (WHERE event_type='license_purchase') AS license,
+      count(*) FILTER (WHERE event_type='logo_purchase') AS logo,
       count(*) AS total_revenue_events
     FROM ${AE}
     WHERE event_type IN ${REV} AND ${ET} >= ${NOW_ET} - interval '${DAILY_DAYS} days'

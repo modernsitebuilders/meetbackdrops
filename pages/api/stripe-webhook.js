@@ -194,6 +194,17 @@ export default async function handler(req, res) {
     return res.status(200).json({ received: true, ignored: true });
   }
 
+  // "Add your logo" background ($19): record + alert. The file is rendered on
+  // demand by /api/logo-download for the paid session.
+  if (metadata.product_type === 'logo_background') {
+    await recordRevenueEvent(session, 'logo_purchase', metadata.image_slug || '', 'logo');
+    await alertSale(session, {
+      product: 'Logo Background',
+      detail: [['Image', metadata.image_slug], ['Order', metadata.order_id]],
+    });
+    return res.status(200).json({ received: true });
+  }
+
   // Commercial licenses ($49 single image / $299 library): record + alert. The
   // certificate + HD file are served by /license-success via /api/verify-license.
   if (metadata.product_type === 'extended_license' || metadata.product_type === 'commercial_library') {

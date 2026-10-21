@@ -98,6 +98,8 @@ const SKIP_PAGES = new Set([
   'pages/_app.js',
   'pages/_document.js',
   'pages/indexnow-test.js',
+  'pages/logo-success.js', // noindex post-purchase page
+  'pages/add-logo', // noindex editor; opened from image pages
   'pages/hd-download.js', // already in LAYOUT_PAGES; never both
 ]);
 

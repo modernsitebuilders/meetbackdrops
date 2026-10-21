@@ -15,7 +15,7 @@ import { neon } from '@neondatabase/serverless';
 import { sendStudioAlert } from '../../../lib/studioAlert';
 
 const DL = `('download','cat_image_download','modal_download','zoom_apply','meet_download','email_bonus_download','free_sample_download')`;
-const REV = `('hd_purchase','hd_subscription','license_purchase')`;
+const REV = `('hd_purchase','hd_subscription','license_purchase','logo_purchase')`;
 const WEEK = `event_at >= now() - interval '7 days' AND NOT is_bot`;
 
 export default async function handler(req, res) {
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
         ORDER BY coalesce(inquiry_at, created_at)`),
     ]);
 
-    const label = { hd_purchase: 'HD', hd_subscription: 'HD subscription', license_purchase: 'License' };
+    const label = { hd_purchase: 'HD', hd_subscription: 'HD subscription', license_purchase: 'License', logo_purchase: 'Logo background' };
     const wallRow = (type) => wall.filter((r) => r.event_type === type);
     const sum = (rows, k) => rows.reduce((n, r) => n + Number(r[k]), 0);
     const hits = wallRow('rate_limit_hit');

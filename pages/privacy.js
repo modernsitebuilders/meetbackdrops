@@ -141,6 +141,7 @@ export default function Privacy() {
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
                   <li><strong>Email address</strong> when you enter it to unlock a bonus download or a free HD sample</li>
+                  <li><strong>Logo or name and title</strong> you add when you buy a logo background. It stays in your browser while you edit and is uploaded only at checkout, then stored privately to produce your file</li>
                   <li><strong>Reviews:</strong> your rating and comment, plus the name and email address if you choose to give them</li>
                   <li><strong>Branded Backgrounds and licensing inquiries:</strong> your name, work email, company, team size, and the project brief you send</li>
                   <li><strong>Purchases:</strong> the name, email address, and billing country or address you enter at Stripe checkout, plus the licensee name for a commercial license. Stripe shares these with us so we can deliver your order and keep a record of the sale.</li>
