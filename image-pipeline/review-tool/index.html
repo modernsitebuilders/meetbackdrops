@@ -2,87 +2,107 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Batch Category Review — 2026-10-04</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch Category Review</title>
 <style>
   :root {
     --bg: #f5f5f5; --card: #ffffff; --ink: #111827; --muted: #6b7280;
     --border: #e5e7eb; --accent: #E0A82E; --accent-ink: #111827;
     --changed: #fef3c7; --changed-border: #d97706;
     --reject: #fee2e2; --reject-border: #dc2626;
+    --ok: #16a34a;
   }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); }
   header {
     position: sticky; top: 0; z-index: 10; background: var(--ink); color: #fff;
-    padding: 14px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    padding: 12px 20px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   }
   header h1 { font-size: 15px; margin: 0; font-weight: 600; }
-  header .stats { font-size: 13px; color: #d1d5db; display: flex; gap: 14px; flex-wrap: wrap; }
-  header .stats b { color: #fff; }
-  header .spacer { flex: 1; }
-  button#saveBtn {
-    background: var(--accent); color: var(--accent-ink); border: none; font-weight: 700;
-    padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;
-  }
-  button#saveBtn:active { transform: translateY(1px); }
-  #saveStatus { font-size: 13px; color: #d1d5db; }
+  .progress { flex: 1; min-width: 160px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: #d1d5db; }
+  .progress .bar { flex: 1; height: 6px; background: #374151; border-radius: 3px; overflow: hidden; }
+  .progress .bar i { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+  .modes { display: flex; gap: 4px; }
+  .modes button { background: #374151; color: #fff; border: 0; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .modes button.active { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+  #saveStatus { font-size: 12.5px; color: #d1d5db; min-width: 110px; text-align: right; }
+  .stats { padding: 8px 20px; font-size: 12.5px; color: var(--muted); background: #fff; border-bottom: 1px solid var(--border); }
+  .stats b { color: var(--ink); }
   .toolbar {
-    display: flex; gap: 8px; padding: 10px 20px; background: #fff; border-bottom: 1px solid var(--border);
-    flex-wrap: wrap; position: sticky; top: 56px; z-index: 9;
+    display: flex; gap: 8px; padding: 10px 20px; background: #fff; border-bottom: 1px solid var(--border); flex-wrap: wrap;
   }
   .toolbar button {
     border: 1px solid var(--border); background: #fff; border-radius: 999px; padding: 6px 12px;
     font-size: 12.5px; cursor: pointer; color: var(--ink);
   }
   .toolbar button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 14px; padding: 16px 20px;
-  }
-  .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
-    display: flex; flex-direction: column;
-  }
+
+  /* ── grid mode ── */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; padding: 16px 20px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
   .card.changed { border-color: var(--changed-border); background: var(--changed); }
   .card.rejected { border-color: var(--reject-border); background: var(--reject); opacity: 0.6; }
-  .card img { width: 100%; height: 150px; object-fit: cover; display: block; background: #e5e7eb; cursor: zoom-in; }
+  .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #e5e7eb; cursor: zoom-in; }
   .card .body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
-  .card .title { font-size: 12.5px; font-weight: 600; line-height: 1.3; min-height: 32px; }
+  .card .title { font-size: 12.5px; font-weight: 600; line-height: 1.3; }
   .card .orig { font-size: 11px; color: var(--muted); }
-  .card select {
-    width: 100%; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--border);
-    font-size: 12.5px; background: #fff; color: var(--ink);
-  }
-  .card .quickrow { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 2px; }
-  .card .quickrow button {
+  .card .orig .seen { color: var(--ok); font-weight: 600; }
+  select { width: 100%; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--border); font-size: 12.5px; background: #fff; color: var(--ink); }
+  .quickrow { display: flex; gap: 4px; flex-wrap: wrap; }
+  .quickrow button {
     font-size: 11px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border);
     background: #fff; cursor: pointer; color: var(--ink);
   }
-  .card .quickrow button.picked { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
-  .card .rejrow { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--reject-border); margin-top: 2px; }
-  /* lightbox */
-  #lightbox {
-    position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none;
-    align-items: center; justify-content: center; z-index: 100; cursor: zoom-out;
+  .quickrow button.picked { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+  .rejrow { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--reject-border); }
+  #lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; z-index: 100; cursor: zoom-out; }
+  #lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 6px; }
+
+  /* ── one-at-a-time mode ── */
+  .focus { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 20px; padding: 16px 20px; max-width: 1500px; margin: 0 auto; }
+  .focus .stage { position: relative; }
+  .focus .stage img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; background: #e5e7eb; display: block; }
+  .focus .stage.rejected img { opacity: .35; }
+  .focus .stage .badge { position: absolute; top: 12px; left: 12px; background: rgba(17,24,39,.8); color: #fff; padding: 4px 10px; border-radius: 999px; font-size: 12.5px; }
+  .focus .stage .rejbadge { position: absolute; top: 12px; right: 12px; background: var(--reject-border); color: #fff; padding: 4px 10px; border-radius: 999px; font-size: 12.5px; font-weight: 700; }
+  .focus .meta { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .focus .meta b { color: var(--ink); }
+  .focus .nav { display: flex; gap: 8px; margin-top: 12px; }
+  .focus .nav button { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 13px; color: var(--ink); }
+  .panel { display: flex; flex-direction: column; gap: 6px; }
+  .panel .pick {
+    display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; padding: 9px 12px;
+    border-radius: 8px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 14px; color: var(--ink);
   }
-  #lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 6px; }
+  .panel .pick kbd { display: inline-block; min-width: 22px; text-align: center; font: 600 12px ui-monospace, Menlo, monospace; background: #f3f4f6; border: 1px solid var(--border); border-radius: 4px; padding: 1px 4px; color: var(--muted); }
+  .panel .pick.picked { background: var(--accent); border-color: var(--accent); font-weight: 700; }
+  .panel .pick.picked kbd { background: rgba(255,255,255,.6); color: var(--ink); }
+  .panel .pick .guess { margin-left: auto; font-size: 11px; color: var(--muted); }
+  .panel .pick.reject { color: var(--reject-border); }
+  .panel .pick.reject.picked { background: var(--reject-border); border-color: var(--reject-border); color: #fff; }
+  .panel .help { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 6px; }
+  .panel select { margin-top: 4px; }
+  .done { padding: 60px 20px; text-align: center; color: var(--muted); }
+  .done b { color: var(--ink); }
+  @media (max-width: 900px) { .focus { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Batch Review — Oct 4 2026 (99 images)</h1>
-  <div class="stats" id="stats"></div>
-  <div class="spacer"></div>
+  <h1 id="heading">Batch Review</h1>
+  <div class="progress"><span id="progText"></span><div class="bar"><i id="progBar"></i></div></div>
+  <div class="modes">
+    <button id="modeFocus">One at a time</button>
+    <button id="modeGrid">Grid</button>
+  </div>
   <span id="saveStatus"></span>
-  <button id="saveBtn">Save corrections → corrections.json</button>
 </header>
 
+<div class="stats" id="stats"></div>
 <div class="toolbar" id="toolbar"></div>
-
-<div class="grid" id="grid"></div>
-
-<div id="lightbox"><img id="lightboxImg"></div>
+<div id="view"></div>
+<div id="lightbox"><img id="lightboxImg" alt=""></div>
 
 <script>
 const CATEGORIES = [
@@ -93,142 +113,246 @@ const CATEGORIES = [
   "easter-backgrounds","spring-backgrounds","summer-backgrounds",
   "fall-backgrounds","bokeh-backgrounds"
 ];
-// The categories this batch was actually written for — surfaced as one-click buttons.
-const QUICK = ["christmas-backgrounds","winter-backgrounds","home-office","libraries","bookshelves","wall-shelves",
-               "neutral-backgrounds","office-spaces","urban-lofts","nature-landscapes"];
+// Default one-click categories; data.json can override with {"quick": [...]} for the batch it was written for.
+let QUICK = ["christmas-backgrounds","winter-backgrounds","fall-backgrounds","home-office","office-spaces",
+             "bookshelves","libraries","living-rooms","wall-shelves","neutral-backgrounds"];
+const KEYS = ['1','2','3','4','5','6','7','8','9','0'];
 
 let DATA = [];
-let filter = 'all';
+let filter = 'all';      // grid filter: 'all' | 'todo' | 'changed' | 'rejected' | <originalCategory>
+let mode = 'focus';
+let pos = 0;             // index into DATA for one-at-a-time mode
 
-function label(slug) {
-  return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-}
+const label = (slug) => slug.replace(/-backgrounds$/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
 async function load() {
-  const res = await fetch('/data.json');
-  DATA = await res.json();
+  const raw = await (await fetch('/data.json')).json();
+  DATA = Array.isArray(raw) ? raw : raw.items;
+  if (!Array.isArray(raw)) {
+    if (raw.batch) { document.getElementById('heading').textContent = `Batch Review — ${raw.batch}`; document.title = `Review — ${raw.batch}`; }
+    if (raw.quick) QUICK = raw.quick.slice(0, 10);
+  }
+  // Resume: apply picks saved earlier (matched by slug).
+  try {
+    const saved = await (await fetch('/corrections.json')).json();
+    const bySlug = Object.fromEntries(saved.map(s => [s.slug, s]));
+    DATA.forEach(d => {
+      const s = bySlug[d.slug];
+      if (s) { d.category = s.category; d.rejected = !!s.rejected; d.reviewed = !!s.reviewed || s.category !== s.originalCategory || !!s.rejected; }
+    });
+  } catch (e) {}
+  const firstTodo = DATA.findIndex(d => !d.reviewed);
+  pos = firstTodo === -1 ? 0 : firstTodo;
   render();
 }
 
-function stats() {
-  const counts = {};
-  let changed = 0, rejected = 0;
+// ── autosave ──
+let saveTimer = null;
+function changed() {
+  render();
+  document.getElementById('saveStatus').textContent = 'saving…';
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(save, 400);
+}
+async function save() {
+  const status = document.getElementById('saveStatus');
+  try {
+    const res = await fetch('/save', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(DATA.map(({ slug, category, originalCategory, rejected, reviewed }) =>
+        ({ slug, category, originalCategory, rejected: !!rejected, reviewed: !!reviewed })))
+    });
+    status.textContent = res.ok ? '✓ saved' : '✗ save failed';
+  } catch (e) { status.textContent = '✗ save failed — is the server running?'; }
+}
+
+function setCategory(d, c) { d.category = c; d.rejected = false; d.reviewed = true; }
+function toggleReject(d) { d.rejected = !d.rejected; d.reviewed = true; }
+
+// ── header / stats ──
+function header() {
+  const reviewed = DATA.filter(d => d.reviewed).length;
+  document.getElementById('progText').textContent = `${reviewed} / ${DATA.length} reviewed`;
+  document.getElementById('progBar').style.width = (DATA.length ? reviewed / DATA.length * 100 : 0) + '%';
+  document.getElementById('modeFocus').className = mode === 'focus' ? 'active' : '';
+  document.getElementById('modeGrid').className = mode === 'grid' ? 'active' : '';
+
+  const counts = {}; let changedN = 0, rejected = 0;
   DATA.forEach(d => {
     if (d.rejected) { rejected++; return; }
     counts[d.category] = (counts[d.category] || 0) + 1;
-    if (d.category !== d.originalCategory) changed++;
+    if (d.category !== d.originalCategory) changedN++;
   });
-  const parts = Object.entries(counts).sort((a,b) => b[1]-a[1])
-    .map(([k,v]) => `${label(k)}: <b>${v}</b>`);
-  document.getElementById('stats').innerHTML =
-    parts.join(' &nbsp;·&nbsp; ') + ` &nbsp;·&nbsp; <b>${changed}</b> changed` +
-    (rejected ? ` &nbsp;·&nbsp; <b>${rejected}</b> rejected` : '');
+  document.getElementById('stats').innerHTML = 'Going on site: ' +
+    Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${label(k)} <b>${v}</b>`).join(' · ') +
+    ` &nbsp;|&nbsp; <b>${changedN}</b> changed from the pipeline's guess` + (rejected ? ` · <b>${rejected}</b> discarded` : '');
 }
 
-function renderToolbar() {
-  const origCounts = {};
-  DATA.forEach(d => origCounts[d.originalCategory] = (origCounts[d.originalCategory]||0)+1);
-  const cats = Object.keys(origCounts).sort((a,b) => origCounts[b]-origCounts[a]);
+function toolbar() {
   const tb = document.getElementById('toolbar');
+  tb.style.display = mode === 'grid' ? 'flex' : 'none';
+  if (mode !== 'grid') return;
+  const origCounts = {};
+  DATA.forEach(d => origCounts[d.originalCategory] = (origCounts[d.originalCategory] || 0) + 1);
+  const opts = [
+    ['all', `All (${DATA.length})`],
+    ['todo', `Not reviewed (${DATA.filter(d => !d.reviewed).length})`],
+    ['changed', `Changed (${DATA.filter(d => d.category !== d.originalCategory && !d.rejected).length})`],
+    ['rejected', `Discarded (${DATA.filter(d => d.rejected).length})`],
+    ...Object.keys(origCounts).sort((a, b) => origCounts[b] - origCounts[a]).map(c => [c, `Guessed ${label(c)} (${origCounts[c]})`])
+  ];
   tb.innerHTML = '';
-  const allBtn = document.createElement('button');
-  allBtn.textContent = `All (${DATA.length})`;
-  allBtn.className = filter === 'all' ? 'active' : '';
-  allBtn.onclick = () => { filter = 'all'; render(); };
-  tb.appendChild(allBtn);
-  cats.forEach(c => {
+  opts.forEach(([key, text]) => {
     const b = document.createElement('button');
-    b.textContent = `${label(c)} (${origCounts[c]})`;
-    b.className = filter === c ? 'active' : '';
-    b.onclick = () => { filter = c; render(); };
+    b.textContent = text; b.className = filter === key ? 'active' : '';
+    b.onclick = () => { filter = key; render(); };
     tb.appendChild(b);
   });
 }
 
-function card(d) {
-  const div = document.createElement('div');
-  div.className = 'card' + (d.category !== d.originalCategory ? ' changed' : '') + (d.rejected ? ' rejected' : '');
+function matches(d) {
+  if (filter === 'all') return true;
+  if (filter === 'todo') return !d.reviewed;
+  if (filter === 'changed') return d.category !== d.originalCategory && !d.rejected;
+  if (filter === 'rejected') return d.rejected;
+  return d.originalCategory === filter;
+}
 
-  const img = document.createElement('img');
-  img.src = d.webpUrl;
-  img.loading = 'lazy';
-  img.onclick = () => {
-    document.getElementById('lightboxImg').src = d.webpUrl;
-    document.getElementById('lightbox').style.display = 'flex';
-  };
-  div.appendChild(img);
-
-  const body = document.createElement('div');
-  body.className = 'body';
-
-  const title = document.createElement('div');
-  title.className = 'title';
-  title.textContent = d.title.replace(' | MeetBackdrops', '');
-  body.appendChild(title);
-
-  const orig = document.createElement('div');
-  orig.className = 'orig';
-  orig.textContent = 'pipeline guessed: ' + label(d.originalCategory);
-  body.appendChild(orig);
-
-  const quickrow = document.createElement('div');
-  quickrow.className = 'quickrow';
-  QUICK.forEach(c => {
-    const b = document.createElement('button');
-    b.textContent = label(c);
-    if (c === d.category) b.classList.add('picked');
-    b.onclick = () => { d.category = c; render(); };
-    quickrow.appendChild(b);
-  });
-  body.appendChild(quickrow);
-
+function categorySelect(d, onPick) {
   const select = document.createElement('select');
+  const none = document.createElement('option'); none.textContent = 'Other category…'; none.value = '';
+  select.appendChild(none);
   CATEGORIES.forEach(c => {
     const opt = document.createElement('option');
     opt.value = c; opt.textContent = label(c);
-    if (c === d.category) opt.selected = true;
+    if (c === d.category && !QUICK.includes(c)) opt.selected = true;
     select.appendChild(opt);
   });
-  select.onchange = () => { d.category = select.value; render(); };
-  body.appendChild(select);
+  select.onchange = () => { if (select.value) onPick(select.value); };
+  return select;
+}
 
-  const rejrow = document.createElement('label');
-  rejrow.className = 'rejrow';
-  rejrow.innerHTML = `<input type="checkbox" ${d.rejected ? 'checked' : ''}> discard this image (don't add to site)`;
-  rejrow.querySelector('input').onchange = (e) => { d.rejected = e.target.checked; render(); };
-  body.appendChild(rejrow);
+// ── grid mode ──
+function renderGrid(view) {
+  const grid = document.createElement('div'); grid.className = 'grid';
+  DATA.filter(matches).forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'card' + (d.category !== d.originalCategory ? ' changed' : '') + (d.rejected ? ' rejected' : '');
+    const img = document.createElement('img');
+    img.src = d.webpUrl; img.loading = 'lazy'; img.alt = d.alt || '';
+    img.onclick = () => { document.getElementById('lightboxImg').src = d.webpUrl; document.getElementById('lightbox').style.display = 'flex'; };
+    div.appendChild(img);
+    const body = document.createElement('div'); body.className = 'body';
+    const title = document.createElement('div'); title.className = 'title';
+    title.textContent = d.title.replace(' | MeetBackdrops', '');
+    body.appendChild(title);
+    const orig = document.createElement('div'); orig.className = 'orig';
+    orig.innerHTML = `pipeline guessed: ${label(d.originalCategory)}` + (d.reviewed ? ' · <span class="seen">reviewed</span>' : '');
+    body.appendChild(orig);
+    const quickrow = document.createElement('div'); quickrow.className = 'quickrow';
+    QUICK.forEach(c => {
+      const b = document.createElement('button');
+      b.textContent = label(c);
+      if (c === d.category && !d.rejected) b.classList.add('picked');
+      b.onclick = () => { setCategory(d, c); changed(); };
+      quickrow.appendChild(b);
+    });
+    body.appendChild(quickrow);
+    body.appendChild(categorySelect(d, c => { setCategory(d, c); changed(); }));
+    const rejrow = document.createElement('label'); rejrow.className = 'rejrow';
+    rejrow.innerHTML = `<input type="checkbox" ${d.rejected ? 'checked' : ''}> discard (don't add to site)`;
+    rejrow.querySelector('input').onchange = () => { toggleReject(d); changed(); };
+    body.appendChild(rejrow);
+    div.appendChild(body);
+    grid.appendChild(div);
+  });
+  view.appendChild(grid);
+}
 
-  div.appendChild(body);
-  return div;
+// ── one-at-a-time mode ──
+function advance() {
+  const next = DATA.findIndex((d, i) => i > pos && !d.reviewed);
+  if (next !== -1) pos = next;
+  else if (pos < DATA.length - 1) pos++;
+}
+
+function renderFocus(view) {
+  if (!DATA.length) { view.innerHTML = '<div class="done">No images in this batch.</div>'; return; }
+  const d = DATA[pos];
+  const wrap = document.createElement('div'); wrap.className = 'focus';
+
+  const left = document.createElement('div');
+  const stage = document.createElement('div'); stage.className = 'stage' + (d.rejected ? ' rejected' : '');
+  stage.innerHTML = `<img src="${d.webpUrl}" alt=""><span class="badge">${pos + 1} of ${DATA.length}</span>` +
+    (d.rejected ? '<span class="rejbadge">DISCARD</span>' : '');
+  stage.querySelector('img').alt = d.alt || '';
+  left.appendChild(stage);
+  // preload the next couple so stepping through is instant
+  [1, 2].forEach(k => { if (DATA[pos + k]) new Image().src = DATA[pos + k].webpUrl; });
+  const meta = document.createElement('div'); meta.className = 'meta';
+  meta.innerHTML = `<b></b><br>Pipeline guessed: <b>${label(d.originalCategory)}</b>` +
+    (d.reviewed ? ' · <span style="color:var(--ok);font-weight:600">reviewed</span>' : '');
+  meta.querySelector('b').textContent = d.title.replace(' | MeetBackdrops', '');
+  left.appendChild(meta);
+  const nav = document.createElement('div'); nav.className = 'nav';
+  nav.innerHTML = '<button id="prevBtn">← Previous</button><button id="nextBtn">Next →</button>';
+  nav.querySelector('#prevBtn').onclick = () => { if (pos > 0) { pos--; render(); } };
+  nav.querySelector('#nextBtn').onclick = () => { if (pos < DATA.length - 1) { pos++; render(); } };
+  left.appendChild(nav);
+  wrap.appendChild(left);
+
+  const panel = document.createElement('div'); panel.className = 'panel';
+  const quick = QUICK.includes(d.originalCategory) ? QUICK : [...QUICK.slice(0, 9), d.originalCategory];
+  quick.forEach((c, i) => {
+    const b = document.createElement('button');
+    b.className = 'pick' + (c === d.category && !d.rejected ? ' picked' : '');
+    b.innerHTML = `<kbd>${KEYS[i]}</kbd><span>${label(c)}</span>` + (c === d.originalCategory ? '<span class="guess">guess</span>' : '');
+    b.onclick = () => { setCategory(d, c); advance(); changed(); };
+    panel.appendChild(b);
+  });
+  panel.appendChild(categorySelect(d, c => { setCategory(d, c); advance(); changed(); }));
+  const keep = document.createElement('button'); keep.className = 'pick';
+  keep.innerHTML = `<kbd>↵</kbd><span>Keep "${label(d.category)}"</span>`;
+  keep.onclick = () => { d.rejected = false; d.reviewed = true; advance(); changed(); };
+  panel.appendChild(keep);
+  const rej = document.createElement('button'); rej.className = 'pick reject' + (d.rejected ? ' picked' : '');
+  rej.innerHTML = '<kbd>X</kbd><span>Discard (don\'t add to site)</span>';
+  rej.onclick = () => { toggleReject(d); if (d.rejected) advance(); changed(); };
+  panel.appendChild(rej);
+  const help = document.createElement('div'); help.className = 'help';
+  help.innerHTML = 'Number keys pick a category and move on. Enter keeps the current one. ← → step without changing. Z opens the image full screen. Everything saves automatically.';
+  panel.appendChild(help);
+  wrap.appendChild(panel);
+  view.appendChild(wrap);
+  window.__quick = quick;
 }
 
 function render() {
-  renderToolbar();
-  stats();
-  const grid = document.getElementById('grid');
-  grid.innerHTML = '';
-  DATA.filter(d => filter === 'all' || d.originalCategory === filter)
-      .forEach(d => grid.appendChild(card(d)));
+  header(); toolbar();
+  const view = document.getElementById('view'); view.innerHTML = '';
+  if (mode === 'grid') renderGrid(view); else renderFocus(view);
 }
 
-document.getElementById('lightbox').onclick = () => {
-  document.getElementById('lightbox').style.display = 'none';
-};
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'SELECT' || e.metaKey || e.ctrlKey || e.altKey) return;
+  const lb = document.getElementById('lightbox');
+  if (lb.style.display === 'flex') { if (e.key === 'Escape' || e.key === 'z' || e.key === 'Z') lb.style.display = 'none'; return; }
+  if (mode !== 'focus' || !DATA.length) return;
+  const d = DATA[pos];
+  const i = KEYS.indexOf(e.key);
+  if (i !== -1 && window.__quick[i]) { setCategory(d, window.__quick[i]); advance(); changed(); }
+  else if (e.key === 'Enter') { d.rejected = false; d.reviewed = true; advance(); changed(); }
+  else if (e.key === 'x' || e.key === 'X') { toggleReject(d); if (d.rejected) advance(); changed(); }
+  else if (e.key === 'ArrowRight') { if (pos < DATA.length - 1) { pos++; render(); } }
+  else if (e.key === 'ArrowLeft') { if (pos > 0) { pos--; render(); } }
+  else if (e.key === 'z' || e.key === 'Z') { document.getElementById('lightboxImg').src = d.webpUrl; lb.style.display = 'flex'; }
+  else return;
+  e.preventDefault();
+});
 
-document.getElementById('saveBtn').onclick = async () => {
-  const status = document.getElementById('saveStatus');
-  status.textContent = 'saving…';
-  const res = await fetch('/save', {
-    method: 'POST', headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(DATA.map(({slug, category, originalCategory, rejected}) =>
-      ({slug, category, originalCategory, rejected: !!rejected})))
-  });
-  if (res.ok) {
-    status.textContent = '✓ saved — tell Claude you\'re done';
-  } else {
-    status.textContent = '✗ save failed';
-  }
-};
+document.getElementById('lightbox').onclick = () => { document.getElementById('lightbox').style.display = 'none'; };
+document.getElementById('modeFocus').onclick = () => { mode = 'focus'; render(); };
+document.getElementById('modeGrid').onclick = () => { mode = 'grid'; render(); };
 
 load();
 </script>

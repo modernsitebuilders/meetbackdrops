@@ -3,6 +3,7 @@
  * review-tool/server.js — tiny local server for manually re-categorizing a
  * batch before merge. No dependencies. Serves the review page + two endpoints:
  *   GET  /data.json   -> the batch (image-pipeline/review-tool/data.json)
+ *   GET  /corrections.json -> picks saved so far (to resume a review)
  *   POST /save         -> writes corrections to image-pipeline/review-tool/corrections.json
  *
  * Run: node image-pipeline/review-tool/server.js [port]
@@ -25,6 +26,11 @@ const server = http.createServer((req, res) => {
   }
   if (req.method === 'GET' && req.url === '/data.json') {
     return send(res, 200, 'application/json', fs.readFileSync(path.join(DIR, 'data.json')));
+  }
+  // Saved picks, so a review can be closed and resumed (the page autosaves).
+  if (req.method === 'GET' && req.url === '/corrections.json') {
+    const file = path.join(DIR, 'corrections.json');
+    return send(res, 200, 'application/json', fs.existsSync(file) ? fs.readFileSync(file) : '[]');
   }
   // Local previews for a batch reviewed BEFORE upload (review-tool/previews/{hash8}.webp).
   const pv = req.method === 'GET' && /^\/previews\/([a-f0-9]{8}\.webp)$/.exec(req.url);
