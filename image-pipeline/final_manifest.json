@@ -16155,7 +16155,8 @@
     ],
     "hdOnly": false,
     "index": 28,
-    "addedAt": "2026-05-07"
+    "addedAt": "2026-05-07",
+    "hd": true
   },
   {
     "id": "library-:29",
@@ -21273,8 +21274,9 @@
       "soft colors"
     ],
     "hdOnly": false,
-    "index": 21,
-    "addedAt": "2026-04-17"
+    "index": 135,
+    "addedAt": "2026-04-17",
+    "hd": true
   },
   {
     "id": "spring-background-:22",
@@ -23802,7 +23804,8 @@
     ],
     "hdOnly": false,
     "index": 29,
-    "addedAt": "2026-04-17"
+    "addedAt": "2026-04-17",
+    "hd": true
   },
   {
     "id": "urban-loft-:30",
@@ -31606,7 +31609,9 @@
       "stylish interior"
     ],
     "hdOnly": false,
-    "addedAt": "2026-07-02"
+    "addedAt": "2026-07-02",
+    "index": 109,
+    "hd": true
   },
   {
     "id": "office-spaces:geometric-panel-wall-mix-wood-textures-colors-creating-8fc766af",
@@ -32668,7 +32673,9 @@
       "natural light"
     ],
     "hdOnly": false,
-    "addedAt": "2026-07-02"
+    "addedAt": "2026-07-02",
+    "index": 110,
+    "hd": true
   },
   {
     "id": "office-spaces:lounge-area-leather-sofas-stone-accent-wall-large-windows-802eb722",
@@ -37337,7 +37344,9 @@
       "virtual meetings"
     ],
     "hdOnly": false,
-    "addedAt": "2026-08-01"
+    "addedAt": "2026-08-01",
+    "index": 57,
+    "hd": true
   },
   {
     "id": "urban-lofts:stylish-urban-loft-living-room-leather-sofas-wooden-229921e9",
@@ -37590,7 +37599,9 @@
       "virtual meetings"
     ],
     "hdOnly": false,
-    "addedAt": "2026-08-01"
+    "addedAt": "2026-08-01",
+    "index": 93,
+    "hd": true
   },
   {
     "id": "office-spaces:bright-office-space-large-windows-greenery-outside-wooden-f624848a",
@@ -44369,7 +44380,9 @@
       "warm tones"
     ],
     "hdOnly": false,
-    "addedAt": "2026-10-04"
+    "addedAt": "2026-10-04",
+    "index": 111,
+    "hd": true
   },
   {
     "id": "christmas-backgrounds:softly-textured-wall-branch-green-plant-creating-serene-b8824e81",
