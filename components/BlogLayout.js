@@ -1,3 +1,5 @@
+import AdSlot from './AdSlot';
+import { AD_SLOTS } from '../lib/adsense';
 import Head from 'next/head';
 import Link from 'next/link';
 import Footer from './Footer';
@@ -129,6 +131,7 @@ export default function BlogLayout({
           </div>
           
           {children}
+          <AdSlot slot={AD_SLOTS.blogPost} />
         </main>
 
         <Footer />

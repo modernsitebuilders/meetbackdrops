@@ -5,6 +5,8 @@
 // children receive its fields directly and reconstruct nothing. There is no
 // pipeline, no boundary, no fallback layer: the function IS the contract.
 
+import AdSlot from '../../../components/AdSlot';
+import { AD_SLOTS } from '../../../lib/adsense';
 import Link from 'next/link';
 import { useState } from 'react';
 import Layout from '../../../components/Layout';
@@ -154,6 +156,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
                 downloadingImage={downloadingImage}
               />
 
+              <AdSlot slot={AD_SLOTS.categoryAfterGrid} />
               <CollectionsForCategory collections={collections} />
               <FaqAccordion
                 faqs={faqs}
@@ -184,6 +187,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
                 downloadingImage={downloadingImage}
               />
 
+              <AdSlot slot={AD_SLOTS.categoryAfterGrid} />
               <CollectionsForCategory collections={collections} />
               <FaqAccordion
                 faqs={faqs}

@@ -95,7 +95,7 @@ export default function Privacy() {
                 color: '#6b7280',
                 fontSize: '1.1rem'
               }}>
-                Last updated: October 18, 2026
+                Last updated: October 31, 2026
               </p>
             </div>
 
@@ -264,7 +264,8 @@ export default function Privacy() {
                   We use cookies and similar tracking technologies to enhance your experience on our website:
                 </p>
                 <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#6b7280', marginBottom: '1rem'}}>
-                  <li><strong>Google Analytics:</strong> We use Google Analytics (loaded through Google Tag Manager) to measure how visitors use the site. It sets first-party cookies (such as <code>_ga</code>) and sends usage data to Google. Advertising storage, ad personalization, and ad-related data sharing are turned off. You can opt out with Google&apos;s <a href="https://tools.google.com/dlpage/gaoptout" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">browser add-on</a>; see <a href="https://policies.google.com/technologies/partner-sites" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">how Google uses data from sites that use its services</a>.</li>
+                  <li><strong>Google Analytics:</strong> We use Google Analytics (loaded through Google Tag Manager) to measure how visitors use the site. It sets first-party cookies (such as <code>_ga</code>) and sends usage data to Google. You can opt out with Google&apos;s <a href="https://tools.google.com/dlpage/gaoptout" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">browser add-on</a>; see <a href="https://policies.google.com/technologies/partner-sites" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">how Google uses data from sites that use its services</a>.</li>
+                  <li><strong>Advertising (Google AdSense):</strong> We show ads served by Google. Google and its partners use cookies to serve ads based on your prior visits to this and other websites. Visitors in the EEA, UK, and Switzerland are asked for consent before personalized ads are shown. You can opt out of personalized advertising in Google&apos;s <a href="https://adssettings.google.com" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">Ads Settings</a>, or opt out of many third-party vendors&apos; cookies at <a href="https://www.aboutads.info/choices" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">aboutads.info</a>. See <a href="https://policies.google.com/technologies/ads" style={{color: '#9a6a3a'}} target="_blank" rel="noopener noreferrer">how Google uses cookies in advertising</a>.</li>
                   <li><strong>Visitor and session IDs</strong> (<code>sb_visitor_id</code>, <code>sb_session</code>, <code>sb_first_visit</code>): Random identifiers stored in your browser&apos;s local storage so our own analytics can tell new visits from return visits. They contain no personal details.</li>
                   <li><strong>Visit source</strong> (<code>entry_referrer</code>, <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>): Stored in session storage, which clears when you close the tab, so a download can be credited to the site or campaign that brought you here.</li>
                   <li><strong>Download limits</strong> (<code>sb_download_count</code>, <code>sb_ratelimit_hits</code>, <code>sb_email_bonus_used</code>, <code>sb_hd_sample_used</code>, <code>sb_hd_sample_email</code>): Track your free downloads, whether you have used the email bonus download or free HD sample, and how often you have reached the limit.</li>

@@ -9,10 +9,21 @@ export default function Document() {
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            // Ads: personalized outside the EEA/UK/CH; denied there until the
+            // AdSense consent message (Privacy & messaging) records a choice.
             gtag('consent', 'default', {
               ad_storage: 'denied',
               ad_user_data: 'denied',
               ad_personalization: 'denied',
+              analytics_storage: 'granted',
+              functionality_storage: 'granted',
+              security_storage: 'granted',
+              region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','GB','CH']
+            });
+            gtag('consent', 'default', {
+              ad_storage: 'granted',
+              ad_user_data: 'granted',
+              ad_personalization: 'granted',
               analytics_storage: 'granted',
               functionality_storage: 'granted',
               security_storage: 'granted'
@@ -80,7 +91,8 @@ export default function Document() {
         <meta name="format-detection" content="telephone=no" />
         <meta name="referrer" content="origin-when-cross-origin" />
         <meta name="color-scheme" content="light" />
-<meta name="p:domain_verify" content="46bcaae45119c33542c11b465d99d116"/>
+<meta name="google-adsense-account" content="ca-pub-8364914545820320" />
+        <meta name="p:domain_verify" content="46bcaae45119c33542c11b465d99d116"/>
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}

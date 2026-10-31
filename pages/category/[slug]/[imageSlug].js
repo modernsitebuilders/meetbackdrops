@@ -1,3 +1,5 @@
+import AdSlot from '../../../components/AdSlot';
+import { AD_SLOTS } from '../../../lib/adsense';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Layout from '../../../components/Layout';
@@ -409,6 +411,8 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                 useCases={discovery.useCases}
               />
             )}
+
+            <AdSlot slot={AD_SLOTS.imagePage} />
 
             {/* Persona collections — which professions surface this image */}
             {personaCollections.length > 0 && (

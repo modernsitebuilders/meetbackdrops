@@ -3,10 +3,13 @@ import Head from 'next/head';
 import Script from 'next/script';
 import Analytics from '../components/Analytics';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { getOrCreateSession } from '../lib/sessionTracking';
 import { WishlistProvider } from '../lib/WishlistContext';
+import { ADSENSE_CLIENT, adsAllowedOn } from '../lib/adsense';
 
 export default function App({ Component, pageProps }) {
+  const { pathname } = useRouter();
   useEffect(() => {
     getOrCreateSession();
   }, []);
@@ -36,6 +39,14 @@ export default function App({ Component, pageProps }) {
        <Analytics /> 
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-QMD6NEPFWR" strategy="afterInteractive" />
       <Script id="google-analytics" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QMD6NEPFWR');`}</Script>
+      {adsAllowedOn(pathname) && (
+        <Script
+          id="adsense"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
+      )}
       <Component {...pageProps} />
     </WishlistProvider>
   );
