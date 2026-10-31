@@ -61,6 +61,30 @@ function pickSeasonalFeature(date = new Date()) {
   return SEASONAL_FEATURES.find((f) => f.months.includes(month)) || null;
 }
 
+// The season's top images for the feature's thumbnail strip, ranked by the same
+// site-wide popularity score as every grid (lib/popularity.js). Server-side only.
+async function pickSeasonalImages(feature, count = 4) {
+  const fs = require('fs');
+  const path = require('path');
+  const { getCategoryIndex } = await import('../lib/imageIndex');
+  let scores = {};
+  try {
+    const file = path.join(process.cwd(), 'public', 'data', 'image-scores-static.json');
+    scores = JSON.parse(fs.readFileSync(file, 'utf8')).scores || {};
+  } catch (e) {
+    console.error('Seasonal feature: failed to read scores:', e.message);
+  }
+  const slug = feature.href.split('/').pop();
+  return getCategoryIndex(slug)
+    .map((img) => ({ img, score: scores[img.filename]?.score ?? 0 }))
+    .sort((a, b) => b.score - a.score || String(b.img.addedAt).localeCompare(String(a.img.addedAt)))
+    .slice(0, count)
+    .map(({ img }) => ({
+      src: `https://assets.streambackdrops.com/webp/${img.folder}/${img.filename}`,
+      alt: img.alt || '',
+    }));
+}
+
 const YoutubeEmbed = dynamic(() => import('../components/YoutubeEmbed'), { ssr: false });
 
 // Lazy load the category grid - only loads when scrolled into view
@@ -224,6 +248,27 @@ export default function Home({ reviewsData, seasonal }) {
               background: 'linear-gradient(90deg, #fffaf0 0%, #fff 60%)',
             }}
           >
+            {seasonal.images?.length > 0 && (
+              <div style={{
+                // 4 across on desktop, 2x2 on phones
+                display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+                gap: '0.5rem', width: '100%',
+              }}>
+                {seasonal.images.map((img) => (
+                  <div key={img.src} style={{
+                    position: 'relative', aspectRatio: '16 / 9', overflow: 'hidden', borderRadius: '8px',
+                  }}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 640px) 24vw, 260px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
             <div style={{ textAlign: 'left' }}>
               <div style={{
                 fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase',
@@ -418,5 +463,7 @@ export default function Home({ reviewsData, seasonal }) {
 export async function getStaticProps() {
   const { getReviewsData } = await import('../lib/reviews');
   const reviewsData = await getReviewsData();
-  return { props: { reviewsData, seasonal: pickSeasonalFeature() }, revalidate: 3600 };
+  const feature = pickSeasonalFeature();
+  const seasonal = feature ? { ...feature, images: await pickSeasonalImages(feature) } : null;
+  return { props: { reviewsData, seasonal }, revalidate: 3600 };
 }
