@@ -85,6 +85,29 @@ async function pickSeasonalImages(feature, count = 4) {
     }));
 }
 
+const HOME_GUIDE = [
+  {
+    title: 'Match the background to the call',
+    body: 'A job interview or board update calls for a quiet, uncluttered room: a bookshelf, a neutral wall, a softly lit office. Standups and client check-ins can carry more personality, like a coffee shop, a loft, or a seasonal set. When in doubt, pick the plainer one.',
+    links: [['/blog/job-interview-backgrounds', 'Job interview backgrounds'], ['/blog/backgrounds-by-industry', 'Backgrounds by industry']],
+  },
+  {
+    title: 'Light yourself to match the scene',
+    body: 'The quickest giveaway of a virtual background is lighting that disagrees with it. Face a window or a soft lamp, keep the light in front of you, and choose a background about as bright as your room. A dark library behind a brightly lit face looks pasted on.',
+    links: [['/blog/lighting-tips', 'Lighting tips']],
+  },
+  {
+    title: 'Dress for contrast',
+    body: 'Clothing that matches the wall makes your outline blend into it. On bright, white-walled sets, navy or charcoal reads cleanly; on dark wood and library sets, lighter tops do. Every background page here lists its main colors and what to wear with it.',
+    links: [['/blog/background-mistakes', 'Common background mistakes']],
+  },
+  {
+    title: 'Use the right file',
+    body: 'Zoom, Teams, and Google Meet all take a 16:9 PNG or JPG. Every background here downloads as a 1456 × 816 PNG. If a background looks soft on a call, the usual cause is compression or camera settings, not the file.',
+    links: [['/blog/why-zoom-background-blurry', 'Why is my Zoom background blurry?'], ['/blog/virtual-background-setup-by-platform', 'Setup by platform']],
+  },
+];
+
 const YoutubeEmbed = dynamic(() => import('../components/YoutubeEmbed'), { ssr: false });
 
 // Lazy load the category grid - only loads when scrolled into view
@@ -451,6 +474,41 @@ export default function Home({ reviewsData, seasonal }) {
           >
             See all profession collections →
           </Link>
+        </section>
+
+        {/* Editorial guide — the homepage's one block of written prose (the rest
+            is navigation), linking into the blog guides that go deeper. */}
+        <section style={{ maxWidth: '760px', margin: '4rem auto 1rem', padding: '0 1rem' }}>
+          <h2 style={{
+            fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+            fontWeight: 600, letterSpacing: '-0.02em',
+            fontSize: 'clamp(1.6rem, 3vw, 2.1rem)',
+            color: '#111827', margin: '0 0 0.9rem', textAlign: 'center',
+          }}>
+            Choosing a background for professional video calls
+          </h2>
+          <p style={{ color: '#4b5563', lineHeight: 1.7, margin: '0 0 1.75rem', textAlign: 'center' }}>
+            Your background is the first thing people see on a call, before you say a word.
+            These four choices matter most, with guides that go deeper on each.
+          </p>
+          {HOME_GUIDE.map((g) => (
+            <div key={g.title} style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: '#111827', margin: '0 0 0.4rem' }}>
+                {g.title}
+              </h3>
+              <p style={{ color: '#374151', lineHeight: 1.7, margin: '0 0 0.4rem' }}>{g.body}</p>
+              <p style={{ margin: 0, fontSize: '0.9rem' }}>
+                {g.links.map(([href, label], i) => (
+                  <span key={href}>
+                    {i > 0 && <span style={{ color: '#9ca3af' }}> · </span>}
+                    <Link prefetch={false} href={href} style={{ color: '#9a6a3a', fontWeight: 600, textDecoration: 'none' }}>
+                      {label} →
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            </div>
+          ))}
         </section>
 
         {/* Category Grid - Lazy loaded */}

@@ -31,8 +31,8 @@ export default function WhyDifferent() {
       <h2 className={styles.heading}>Engineered Sets, Not Stock Photos</h2>
       <p className={styles.subtitle}>
         Generic stock libraries shoot once and license forever. We design each
-        background as a 4K set, then test it on the cameras and codecs that compress
-        your image in real time.
+        background as a 4K set, then compose it to hold up under the compression
+        video calls apply in real time.
       </p>
 
       <div className={styles.compareWrap}>
