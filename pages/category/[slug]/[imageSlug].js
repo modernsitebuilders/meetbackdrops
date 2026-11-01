@@ -19,7 +19,7 @@ import { buildImagePageTitle, buildImagePageDescription, buildImageDisplayTitle 
 
 const CDN = 'https://assets.streambackdrops.com';
 
-export default function ImagePage({ image, related, categoryName, personaCollections = [], discovery = null, reviewsData = null }) {
+export default function ImagePage({ image, related, categoryName, personaCollections = [], discovery = null, reviewsData = null, about = null }) {
   const {
     handleDownload,
     showReviewModal,
@@ -193,7 +193,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
                 {hasReviews && (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.82rem', color: '#4b5563' }}>
                     <span aria-hidden="true" style={{ color: '#E0A82E', letterSpacing: '0.06em', fontSize: '0.9rem' }}>★★★★★</span>
-                    <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · {reviewCount} client reviews</span>
+                    <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · Rated by {reviewCount} MeetBackdrops users</span>
                   </div>
                 )}
               </div>
@@ -303,6 +303,45 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               </section>
             )}
 
+            {/* About this background — per-image copy from the alt text, tags and
+                the image's measured pixels (lib/imageAbout.js). This is the page's
+                own content; everything else on it is shared across all images. */}
+            {about && (
+              <section style={{ marginBottom: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb' }}>
+                <h2 style={{ fontSize: '1.15rem', fontWeight: 600, color: '#111827', margin: '0 0 0.8rem' }}>
+                  About this background
+                </h2>
+                <div style={{ fontSize: '0.95rem', color: '#374151', lineHeight: 1.65 }}>
+                  {about.inFrame && (
+                    <p style={{ margin: '0 0 0.75rem' }}>
+                      <strong style={{ color: '#111827' }}>In the frame:</strong> {about.inFrame}
+                    </p>
+                  )}
+                  {about.scene && <p style={{ margin: '0 0 0.75rem' }}>{about.scene}</p>}
+                  {about.onCamera.length > 0 && (
+                    <>
+                      <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111827', margin: '1.1rem 0 0.4rem' }}>
+                        Looking your best in front of it
+                      </h3>
+                      <ul style={{ margin: '0 0 0.75rem', paddingLeft: '1.2rem', display: 'grid', gap: '0.35rem' }}>
+                        {about.onCamera.map((line) => <li key={line}>{line}</li>)}
+                      </ul>
+                    </>
+                  )}
+                </div>
+                {about.details.length > 0 && (
+                  <dl className="mb-about-details">
+                    {about.details.map(([label, value]) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </section>
+            )}
+
             {/* How to use — visible after the user has the file. Lightweight, no JS state. */}
             <details style={{
               marginBottom: '1.5rem',
@@ -382,8 +421,8 @@ export default function ImagePage({ image, related, categoryName, personaCollect
               </Link>
             </div>
 
-            {/* Tags */}
-            {image.tags?.length > 0 && (
+            {/* Tags — folded into the About block's detail rows when it renders. */}
+            {!about && image.tags?.length > 0 && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '3rem' }}>
                 {image.tags.map(tag => (
                   <span
@@ -632,6 +671,29 @@ export default function ImagePage({ image, related, categoryName, personaCollect
             .mb-related-strip { grid-auto-columns: minmax(160px, 1fr); }
           }
 
+          .mb-about-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.6rem 1.5rem;
+            margin: 1rem 0 0;
+            padding: 1rem 1.1rem;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+          }
+          .mb-about-details dt {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #9a6a3a;
+            font-weight: 600;
+          }
+          .mb-about-details dd {
+            margin: 0.15rem 0 0;
+            font-size: 0.88rem;
+            color: #374151;
+          }
+
           .mb-sticky-cta {
             position: fixed;
             left: 0;
@@ -786,8 +848,16 @@ export async function getStaticProps({ params }) {
     console.error('Image-page reviews lookup failed:', e.message);
   }
 
+  let about = null;
+  try {
+    const { buildImageAbout } = require('../../../lib/imageAbout');
+    about = buildImageAbout(image, categoryName);
+  } catch (e) {
+    console.error('Image about-block build failed:', e.message);
+  }
+
   return {
-    props: { image, related, categoryName, personaCollections, discovery, reviewsData },
+    props: { image, related, categoryName, personaCollections, discovery, reviewsData, about },
     revalidate: 86400,
   };
 }

@@ -42,8 +42,9 @@ node merge-batch.js
 echo "▶ 4/7  sync counts from manifest"
 node sync-counts.js
 
-echo "▶ 5/7  regenerate sitemaps"
+echo "▶ 5/7  regenerate sitemaps + measure new images for their About block"
 cd "$ROOT" && npm run generate:sitemaps
+node scripts/generate-image-visual-facts.js
 
 echo "▶ 6/7  validate production build"
 if npm run build >/tmp/run-batch-build.log 2>&1; then

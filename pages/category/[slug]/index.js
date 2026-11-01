@@ -94,7 +94,7 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
               color: '#4b5563',
             }}>
               <span aria-hidden="true" style={{ color: '#E0A82E', letterSpacing: '0.06em', fontSize: '0.95rem' }}>★★★★★</span>
-              <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · {reviewCount} client reviews</span>
+              <span><strong style={{ color: '#111827' }}>{rating.toFixed(1)}</strong> · Rated by {reviewCount} MeetBackdrops users</span>
             </div>
           )}
 

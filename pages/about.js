@@ -91,7 +91,7 @@ export default function About() {
                   On a video call, your background speaks before you do. MeetBackdrops designs interiors — modern offices, libraries, galleries, and conference rooms — engineered to convey authority on Zoom, Teams, and Google Meet.
                 </p>
                 <p style={{color: '#374151', fontSize: '1.1rem', lineHeight: 1.75}}>
-                  Every environment is composed for camera, upscaled to 4K, and tested across the codecs that broadcast you to your colleagues, clients, and boards. Samples are freely available for individual professionals; brands integrate their logo into studio environments through our <Link href="/branded-backgrounds" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Branded Backgrounds</Link> program.
+                  Every environment is composed for camera, upscaled to 4K, and designed to stay crisp through the compression that carries you to colleagues, clients, and boards. Samples are freely available for individual professionals; brands integrate their logo into studio environments through our <Link href="/branded-backgrounds" style={{color: '#9a6a3a', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Branded Backgrounds</Link> program.
                 </p>
               </section>
 
@@ -119,7 +119,7 @@ export default function About() {
                       Free Backgrounds
                     </h3>
                     <p style={{color: '#6b7280'}}>
-                      Over {TOTAL_IMAGES_FORMATTED} professional virtual backgrounds. Home offices, conference rooms, and more. All completely free to download and use.
+                      {TOTAL_IMAGES_FORMATTED} professional virtual backgrounds — home offices, conference rooms, libraries, and more. Every one is free to download and use, no signup.
                     </p>
                   </div>
                   <div>
@@ -159,10 +159,11 @@ export default function About() {
                     color: '#15803d',
                     marginBottom: '1rem'
                   }}>
-                    Always Free
+                    Free, With an HD Upgrade
                   </h3>
                   <p style={{color: '#15803d'}}>
-                    Our backgrounds will always be free. No signup needed. No watermarks. No hidden fees. Just download and use.
+                    Every background is free at call resolution. No signup, no watermarks. If you need more detail for recordings, editing, or print,{' '}
+                    <Link href="/hd" style={{color: '#15803d', textDecoration: 'underline', textUnderlineOffset: '3px'}}>HD Editions</Link> are available at 2912 × 1632.
                   </p>
                 </div>
                 <ul style={{
@@ -189,7 +190,7 @@ export default function About() {
                   Our Quality Standards
                 </h3>
                 <p style={{color: '#6b7280', marginBottom: '1rem'}}>
-                  Every background is tested before we publish it. We make sure each one works perfectly on video calls. Here's what we focus on:
+                  Every background is reviewed before it goes live and is composed for a seated webcam frame, so it reads clearly on video calls. Here's what we focus on:
                 </p>
                 <div style={{
                   display: 'grid',
@@ -242,7 +243,7 @@ export default function About() {
                       Works Everywhere
                     </h4>
                     <p style={{color: '#92400e', fontSize: '0.9rem'}}>
-                      Tested on Zoom, Teams, Google Meet, and more
+                      Sized and formatted for Zoom, Teams, Google Meet, and Webex
                     </p>
                   </div>
                 </div>
