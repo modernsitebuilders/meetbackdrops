@@ -30,10 +30,6 @@ export default function SocialProof({ reviewsData }) {
           <span className={styles.statLabel}>Curated Categories</span>
         </div>
 
-        <div className={styles.stat}>
-          <strong className={styles.statNumber}>#1</strong>
-          <span className={styles.statLabel}>Cited by ChatGPT for professional virtual backgrounds</span>
-        </div>
       </div>
     </section>
   );
