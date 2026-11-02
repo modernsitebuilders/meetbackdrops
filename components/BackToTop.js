@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-export default function BackToTop({ hide = false }) {
+// clearMobileBar: the page has a fixed bottom bar on phones (the image page's
+// sticky download CTA), so sit above it there instead of covering its right end.
+export default function BackToTop({ hide = false, clearMobileBar = false }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ export default function BackToTop({ hide = false }) {
       {isVisible && !hide && (
         <button
           onClick={scrollToTop}
+          className={clearMobileBar ? 'btt-clear-bar' : undefined}
           style={{
             position: 'fixed',
             bottom: '2rem',
@@ -57,6 +60,12 @@ export default function BackToTop({ hide = false }) {
           ↑
         </button>
       )}
+      {/* 767px and the bar's ~76px height match .mb-sticky-cta on the image page. */}
+      <style jsx global>{`
+        @media (max-width: 767px) {
+          .btt-clear-bar { bottom: calc(76px + 1rem + env(safe-area-inset-bottom)) !important; right: 1rem !important; }
+        }
+      `}</style>
     </>
   );
 }

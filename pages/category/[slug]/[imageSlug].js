@@ -712,7 +712,7 @@ export default function ImagePage({ image, related, categoryName, personaCollect
           }
         `}</style>
 
-        <BackToTop />
+        <BackToTop clearMobileBar />
       </Layout>
     </>
   );
