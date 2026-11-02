@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // AdSense loads only on the production deployment. Vercel preview URLs
+  // (meetbackdrops-<hash>.vercel.app) were serving ads and showing up as
+  // separate sites in AdSense. VERCEL_ENV is set by Vercel at build time.
+  env: {
+    ADS_ENABLED: process.env.VERCEL_ENV === 'production' ? '1' : '',
+  },
   outputFileTracingExcludes: {
     '*': [
       './public/images/**/*',
