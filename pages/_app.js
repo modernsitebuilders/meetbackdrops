@@ -6,13 +6,14 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getOrCreateSession } from '../lib/sessionTracking';
 import { WishlistProvider } from '../lib/WishlistContext';
-import { ADSENSE_CLIENT, adsAllowedOn } from '../lib/adsense';
+import { ADSENSE_CLIENT, adsAllowedOn, skipVignettesOnNoAdLinks } from '../lib/adsense';
 
 export default function App({ Component, pageProps }) {
   const { pathname } = useRouter();
   useEffect(() => {
     getOrCreateSession();
   }, []);
+  useEffect(() => skipVignettesOnNoAdLinks(), []);
 
   return (
     <WishlistProvider>
