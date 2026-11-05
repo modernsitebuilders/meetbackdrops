@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import DownloadOffer, { getDownloadOffer } from './DownloadOffer';
+import { getLastDownload } from '../lib/lastDownload';
 
 export default function ReviewModal({ onClose, downloadCount = 1 }) {
   const [rating, setRating] = useState(0);
@@ -7,6 +9,8 @@ export default function ReviewModal({ onClose, downloadCount = 1 }) {
   const [email, setEmail] = useState('');
   const [showThankYou, setShowThankYou] = useState(false);
   const [showOptionalFields, setShowOptionalFields] = useState(false);
+  // Frozen at open: the offer must not change under the visitor mid-rating.
+  const [offer] = useState(() => getDownloadOffer(getLastDownload()));
 
   const getResponseMessage = (stars) => {
     switch(stars) {
@@ -368,6 +372,7 @@ export default function ReviewModal({ onClose, downloadCount = 1 }) {
         <h2 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#111827', marginBottom: '0.5rem' }}>
           Download Complete!
         </h2>
+        <DownloadOffer offer={offer} />
         <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '1rem' }}>
           How'd we do?
         </p>
