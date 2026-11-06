@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { isAdmin } from '../../lib/adminAuth';
 import {
   n0, compact, pct1, money, rate, pretty, monthLabel,
   Delta, Sparkline, TrendChart, Columns, BarRows, Funnel, SegmentedBar, Heatmap,
@@ -84,7 +83,8 @@ export default function AdminInsights() {
   const [heatField, setHeatField] = useState('downloads');
 
   useEffect(() => {
-    if (!isAdmin()) { window.location.href = '/'; return; }
+    // No client-side redirect: the insights API is the real gate (open in dev,
+    // ADMIN_DASHBOARD_KEY in production), and the key prompt below handles it.
     setOk(true);
     const saved = Number(new URLSearchParams(window.location.search).get('days'));
     if (RANGES.some((r) => r.d === saved)) setDays(saved);
@@ -102,6 +102,9 @@ export default function AdminInsights() {
       if (!res.ok) throw new Error(j.error || `HTTP ${res.status}`);
       setNeedKey(null);
       setData(j);
+      // A successful load proves this is an admin browser: set the flag that keeps
+      // this browser's own visits out of analytics and unlocks the older /admin/* pages.
+      try { localStorage.setItem('meetbackdrops_admin', 'true'); } catch {}
     } catch (e) {
       setError(e.message);
     } finally {
@@ -149,7 +152,7 @@ export default function AdminInsights() {
 
         {data && <Dashboard d={data} loading={loading} trendField={trendField} setTrendField={setTrendField} heatField={heatField} setHeatField={setHeatField} />}
 
-        <Tools />
+        {data && <Tools />}
       </div>
     </>
   );
