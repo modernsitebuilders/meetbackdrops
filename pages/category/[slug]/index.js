@@ -23,23 +23,11 @@ import cloudinaryUrls from '../../../cloudinary-urls.json';
 import { useImageDownload } from '../../../lib/useImageDownload';
 import BackToTop from '../../../components/BackToTop';
 import HDComparisonHero from '../../../components/HDComparisonHero';
-import CategoryHub from '../../../components/CategoryHub/CategoryHub';
 import CollectionsForCategory from '../../../components/CollectionsForCategory';
 import CategoryPlatformLinks from '../../../components/CategoryPlatformLinks';
 import FaqAccordion from '../../../components/FaqAccordion';
 import { seo } from '../../../lib/seo/seo.js';
 import { getFAQs } from '../../../data/faqData.js';
-
-const WALL_SHELVES_HUB_FEATURED = [
-  { filename: 'minimalist-interior-wooden-shelf-holding-books-potted-plant-47fe79fc.webp', title: 'Wall Shelves Bright Background 51', folder: 'wall-shelves-bright' },
-  { filename: 'minimalist-shelving-books-dried-plants-neutral-tones-softly-6536c05c.webp', title: 'Wall Shelves Bright Background 54', folder: 'wall-shelves-bright' },
-  { filename: 'minimalist-shelf-various-vases-neutral-tones-soft-greenery-e6eddef7.webp', title: 'Wall Shelves Bright Background 55', folder: 'wall-shelves-bright' },
-  { filename: 'bright-modern-interior-white-wall-shelves-holding-books-35facfd9.webp', title: 'Wall Shelves Bright Background 10', folder: 'wall-shelves-bright' },
-  { filename: 'two-wooden-shelves-against-white-wall-one-books-plant-other-d50bd43b.webp', title: 'Wall Shelves Bright Background 1' , folder: 'wall-shelves-bright' },
-];
-
-const HUB_SUBHEAD =
-  'Studio-styled wall shelves — designed shelf by shelf for camera, not lifted from a stock library.';
 
 function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collections = [], faqs = [], reviewsData }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -98,106 +86,36 @@ function CategoryContent({ slug, scores = {}, metadata = {}, seoData, collection
             </div>
           )}
 
-          {slug === 'wall-shelves' ? (
-            <>
-              <CategoryHub
-                slug={slug}
-                scores={scores}
-                featuredImages={WALL_SHELVES_HUB_FEATURED}
-                onImageClick={setPreviewImage}
-                h1={seoData.h1}
-                subhead={HUB_SUBHEAD}
-              />
+          <>
+            <CategoryHeader
+              h1={seoData.h1}
+              eyebrow={eyebrow}
+              description={category.description}
+            />
 
-              <section
-                id="full-library"
-                style={{
-                  marginTop: '5rem',
-                  paddingTop: '3rem',
-                  borderTop: '1px solid #e6e2dc',
-                  textAlign: 'center',
-                }}
-              >
-                <div style={{
-                  fontSize: '0.7rem',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: '#9a6a3a',
-                  fontWeight: 600,
-                  marginBottom: '1rem',
-                }}>
-                  The full collection
-                </div>
-                <h2 style={{
-                  fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
-                  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-                  fontWeight: 600,
-                  letterSpacing: '-0.02em',
-                  color: '#111827',
-                  margin: '0 0 0.75rem',
-                }}>
-                  Every Wall Shelf background
-                </h2>
-                <p style={{ fontSize: '0.95rem', color: '#6b7280', margin: '0 0 2.5rem', lineHeight: 1.6 }}>
-                  The complete category library, composed for camera and tuned for codec compression.
-                </p>
-              </section>
+            <HDComparisonHero slug={slug} images={category.images} scores={scores} />
 
-              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
+            <ImageGrid
+              images={category.images}
+              scores={scores}
+              slug={slug}
+              metadata={metadata}
+              onImageClick={setPreviewImage}
+              onDownload={(image) => handleDownload(image, slug)}
+              cloudinaryUrls={cloudinaryUrls}
+              downloadingImage={downloadingImage}
+            />
 
-              <ImageGrid
-                images={category.images}
-                scores={scores}
-                slug={slug}
-                metadata={metadata}
-                onImageClick={setPreviewImage}
-                onDownload={(image) => handleDownload(image, slug)}
-                cloudinaryUrls={cloudinaryUrls}
-                downloadingImage={downloadingImage}
-              />
-
-              <AdSlot slot={AD_SLOTS.categoryAfterGrid} />
-              <CollectionsForCategory collections={collections} />
-              <FaqAccordion
-                faqs={faqs}
-                heading={`${category.name} backgrounds — frequently asked`}
-              />
-              <RelatedCategories currentSlug={slug} />
-              <CategoryPlatformLinks categoryName={category.name} categorySlug={slug} />
-              <CategorySEOContent category={category} slug={slug} />
-            </>
-          ) : (
-            <>
-              <CategoryHeader
-                h1={seoData.h1}
-                eyebrow={eyebrow}
-                description={category.description}
-              />
-
-              <HDComparisonHero slug={slug} images={category.images} scores={scores} />
-
-              <ImageGrid
-                images={category.images}
-                scores={scores}
-                slug={slug}
-                metadata={metadata}
-                onImageClick={setPreviewImage}
-                onDownload={(image) => handleDownload(image, slug)}
-                cloudinaryUrls={cloudinaryUrls}
-                downloadingImage={downloadingImage}
-              />
-
-              <AdSlot slot={AD_SLOTS.categoryAfterGrid} />
-              <CollectionsForCategory collections={collections} />
-              <FaqAccordion
-                faqs={faqs}
-                heading={`${category.name} backgrounds — frequently asked`}
-              />
-              <RelatedCategories currentSlug={slug} />
-              <CategoryPlatformLinks categoryName={category.name} categorySlug={slug} />
-              <CategorySEOContent category={category} slug={slug} />
-            </>
-          )}
+            <AdSlot slot={AD_SLOTS.categoryAfterGrid} />
+            <CollectionsForCategory collections={collections} />
+            <FaqAccordion
+              faqs={faqs}
+              heading={`${category.name} backgrounds — frequently asked`}
+            />
+            <RelatedCategories currentSlug={slug} />
+            <CategoryPlatformLinks categoryName={category.name} categorySlug={slug} />
+            <CategorySEOContent category={category} slug={slug} />
+          </>
         </div>
       </div>
 
