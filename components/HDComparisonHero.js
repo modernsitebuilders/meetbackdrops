@@ -41,7 +41,11 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   // SSR/ISR HTML always contains the promo (control); holdout visitors drop it after
   // hydration so the control arm is byte-identical to pre-experiment behaviour.
   const [variant, setVariant] = useState('hero_shown');
-  useEffect(() => { setVariant(getHeroVariant()); }, []);
+  // The exposure beacon must wait for the real arm. Before 2026-11-07 it fired on the
+  // first (SSR-default 'hero_shown') render, so holdout visitors were logged as shown
+  // and the per-session dedupe swallowed their real 'hero_hidden' exposure.
+  const [variantReady, setVariantReady] = useState(false);
+  useEffect(() => { setVariant(getHeroVariant()); setVariantReady(true); }, []);
 
   // office-spaces: always use the fixed comparison pair
   let baseId, hdId, imageFolder, freeUrl;
@@ -148,12 +152,12 @@ export default function HDComparisonHero({ slug, images = [], scores = {} }) {
   };
 
   if (variant === HERO_HIDDEN) {
-    return <ExposureBeacon slug={slug} variant={variant} />;
+    return variantReady ? <ExposureBeacon slug={slug} variant={variant} /> : null;
   }
 
   return (
     <>
-      <ExposureBeacon slug={slug} variant={variant} />
+      {variantReady && <ExposureBeacon slug={slug} variant={variant} />}
       <div style={{
         marginTop: '3rem',
         marginBottom: '2rem',

@@ -11,6 +11,13 @@
 
 import pg from 'pg';
 
+// Exposure logging was broken until 2026-11-07 (holdout visitors were logged as
+// 'hero_shown'), so earlier data can't separate the arms. Count from the fix onward.
+// Override: `npm run ab:hd-compare -- --since 2026-11-10`
+const sinceIdx = process.argv.indexOf('--since');
+const SINCE = sinceIdx > -1 && process.argv[sinceIdx + 1] ? process.argv[sinceIdx + 1] : '2026-11-07';
+if (!/^\d{4}-\d{2}-\d{2}$/.test(SINCE)) { console.error('--since must be YYYY-MM-DD'); process.exit(1); }
+
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 
 const SQL = `
@@ -21,6 +28,7 @@ WITH exp AS (
     AND coalesce(is_bot, false) = false
     AND visitor_id NOT IN ('unknown', '')
     AND user_agent NOT ILIKE '%localhost%'
+    AND event_at >= $1::date
   GROUP BY 1, 2
 ),
 -- A visitor stored in only one arm (localStorage is sticky). If a rare visitor shows
@@ -50,7 +58,8 @@ SELECT arm, count(*) AS visitors,
   count(*) FILTER (WHERE bought)     AS bought
 FROM o GROUP BY 1 ORDER BY 1`;
 
-const { rows } = await pool.query(SQL);
+console.log(`HD compare A/B — exposures since ${SINCE}`);
+const { rows } = await pool.query(SQL, [SINCE]);
 await pool.end();
 
 if (!rows.length) {

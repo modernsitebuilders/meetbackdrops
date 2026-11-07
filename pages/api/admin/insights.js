@@ -29,6 +29,8 @@ const HD_INTEREST = `('cat_page_hd_compare_clicked','slider_used','hd_preview_op
 const ET = `(event_at AT TIME ZONE 'America/New_York')`;
 
 const ALLOWED_DAYS = [7, 14, 30, 90, 180, 365];
+// Entry pages whose job isn't a free download (sales/legal/utility) — never flag as leaks.
+const NON_DOWNLOAD_PAGES = /^\/(hd|license|terms|privacy|contact|branded-backgrounds|image-lookup)(\/|$|\?)/;
 
 // Per-session rollup over [lo, hi). First-event attributes (source, landing page,
 // device, visitor type) come from DISTINCT ON so a session is attributed once.
@@ -459,17 +461,23 @@ function buildInsights(d) {
       body: `${ai.sessions.toLocaleString()} sessions from ChatGPT, Perplexity, and similar, converting at ${rate(ai.dl_sessions, ai.sessions).toFixed(1)}% (site average ${cr.toFixed(1)}%).` });
   }
 
-  // Landing-page leak: high traffic, low conversion.
-  const lp = d.landing.filter((l) => l.sessions >= Math.max(40, cur.sessions * 0.03) && l.k !== '(unknown)');
-  const leak = lp.map((l) => ({ ...l, cr: rate(l.dl_sessions, l.sessions) })).sort((a, b) => a.cr - b.cr)[0];
-  if (leak && leak.cr < cr * 0.6) {
+  // Landing-page leak / star. Judged on ENGAGED sessions: one-hit crawler visits
+  // pile onto some entry pages (notably /) and would otherwise flag a page as
+  // leaky when its real visitors convert fine. /hd is a sales page, not a
+  // download page, so it's excluded.
+  const ecr = rate(cur.dl_sessions, cur.engaged);
+  const lp = d.landing
+    .filter((l) => l.engaged >= Math.max(30, cur.engaged * 0.02) && l.k !== '(unknown)' && !NON_DOWNLOAD_PAGES.test(l.k))
+    .map((l) => ({ ...l, cr: rate(l.dl_sessions, l.engaged) }));
+  const leak = [...lp].sort((a, b) => a.cr - b.cr)[0];
+  if (leak && leak.cr < ecr * 0.6) {
     out.push({ tone: 'warn', title: `Leaky landing page: ${leak.k}`,
-      body: `${leak.sessions.toLocaleString()} sessions land here but only ${leak.cr.toFixed(1)}% download (site average ${cr.toFixed(1)}%). The best lever is usually moving backgrounds higher on the page.` });
+      body: `Only ${leak.cr.toFixed(1)}% of its ${leak.engaged.toLocaleString()} engaged visitors download (site average ${ecr.toFixed(1)}%). The best lever is usually moving backgrounds higher on the page.` });
   }
-  const star = lp.map((l) => ({ ...l, cr: rate(l.dl_sessions, l.sessions) })).sort((a, b) => b.cr - a.cr)[0];
-  if (star && star.cr > cr * 1.3 && star !== leak) {
+  const star = [...lp].sort((a, b) => b.cr - a.cr)[0];
+  if (star && star.cr > ecr * 1.3 && star !== leak) {
     out.push({ tone: 'good', title: `Best-converting entry: ${star.k}`,
-      body: `${star.cr.toFixed(1)}% of its ${star.sessions.toLocaleString()} sessions download. Worth pointing more internal links and search intent here.` });
+      body: `${star.cr.toFixed(1)}% of its ${star.engaged.toLocaleString()} engaged visitors download (site average ${ecr.toFixed(1)}%). Worth pointing more internal links and search intent here.` });
   }
 
   // Devices.

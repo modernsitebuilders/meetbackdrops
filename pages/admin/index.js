@@ -288,8 +288,8 @@ function Dashboard({ d, loading, trendField, setTrendField, heatField, setHeatFi
 
       {/* ---------- landing pages ---------- */}
       <section className="card">
-        <SectionHead title="Landing pages" sub="Where sessions start, and how often they end in a download. Flags compare against the site average." />
-        <Expandable rows={d.landing} initial={12}>{(rows) => <LandingTable rows={rows} siteCr={crCur} />}</Expandable>
+        <SectionHead title="Landing pages" sub="Where sessions start. Conversion is downloads per engaged visitor, so crawler bounces don't distort it; flags compare against the site average." />
+        <Expandable rows={d.landing} initial={12}>{(rows) => <LandingTable rows={rows} siteCr={rate(cur.dl_sessions, cur.engaged)} />}</Expandable>
       </section>
 
       {/* ---------- categories ---------- */}
@@ -508,12 +508,12 @@ function LandingTable({ rows, siteCr }) {
     <div className="table-scroll">
       <table className="tbl">
         <thead>
-          <tr><th>Page</th><th style={{ width: '24%' }}>Sessions</th><th className="num">Engaged</th><th className="num">Download conv.</th><th className="num">Downloads</th><th className="num">HD interest</th><th className="num">Sessions vs prev</th></tr>
+          <tr><th>Page</th><th style={{ width: '24%' }}>Sessions</th><th className="num">Engaged</th><th className="num">Engaged → download</th><th className="num">Downloads</th><th className="num">HD interest</th><th className="num">Sessions vs prev</th></tr>
         </thead>
         <tbody>
           {rows.map((r) => {
-            const cr = rate(r.dl_sessions, r.sessions);
-            const big = r.sessions >= 40;
+            const cr = rate(r.dl_sessions, r.engaged);
+            const big = r.engaged >= 30 && !/^\/(hd|license|terms|privacy|contact|branded-backgrounds|image-lookup)(\/|$)/.test(r.k);
             return (
               <tr key={r.k}>
                 <td className="path"><a href={r.k.startsWith('/') ? r.k : undefined} target="_blank" rel="noreferrer">{r.k}</a></td>
