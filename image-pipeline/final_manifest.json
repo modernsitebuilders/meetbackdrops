@@ -34825,6 +34825,8 @@
       "executive video calls"
     ],
     "hdOnly": false,
+    "index": 128,
+    "hd": true,
     "addedAt": "2026-07-24"
   },
   {
@@ -35498,6 +35500,8 @@
       "online presentations"
     ],
     "hdOnly": false,
+    "index": 129,
+    "hd": true,
     "addedAt": "2026-07-24"
   },
   {
@@ -48506,6 +48510,8 @@
       "warm lighting"
     ],
     "hdOnly": false,
+    "index": 131,
+    "hd": true,
     "addedAt": "2026-10-31"
   },
   {
@@ -51177,6 +51183,8 @@
       "comfortable"
     ],
     "hdOnly": false,
+    "index": 130,
+    "hd": true,
     "addedAt": "2026-10-31"
   },
   {
@@ -52651,6 +52659,8 @@
       "festive"
     ],
     "hdOnly": false,
+    "index": 132,
+    "hd": true,
     "addedAt": "2026-10-31"
   },
   {
