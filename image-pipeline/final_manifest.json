@@ -14574,6 +14574,7 @@
     ],
     "hdOnly": false,
     "index": 88,
+    "hd": true,
     "addedAt": "2026-05-06"
   },
   {
@@ -36307,6 +36308,8 @@
       "minimalist"
     ],
     "hdOnly": false,
+    "index": 112,
+    "hd": true,
     "addedAt": "2026-08-01"
   },
   {
@@ -44664,6 +44667,8 @@
       "virtual meetings"
     ],
     "hdOnly": false,
+    "index": 94,
+    "hd": true,
     "addedAt": "2026-10-04"
   },
   {
@@ -45954,6 +45959,8 @@
       "comfortable"
     ],
     "hdOnly": false,
+    "index": 113,
+    "hd": true,
     "addedAt": "2026-10-04"
   },
   {
