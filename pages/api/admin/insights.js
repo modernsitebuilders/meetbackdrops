@@ -384,9 +384,19 @@ async function stripeRevenue(days, anchor) {
   const stripe = new Stripe(key);
   const end = Math.floor(Date.now() / 1000);
   const yearAgo = end - 365 * 86400;
+  // The Stripe account is shared with other sites (WolfResume, PromptDynamo), so
+  // only count charges whose checkout session is ours (metadata.site, the same
+  // gate the webhook uses), or — for older sessions created before that tag —
+  // whose return URL is on our domain. Charges themselves carry no site metadata.
+  const ours = new Set();
+  const ourHost = /^https:\/\/(www\.)?(meetbackdrops|streambackdrops)\.com\//;
+  for await (const s of stripe.checkout.sessions.list({ created: { gte: yearAgo }, limit: 100 })) {
+    if (!s.payment_intent) continue;
+    if (s.metadata?.site === 'streambackdrops' || (!s.metadata?.site && ourHost.test(s.success_url || ''))) ours.add(s.payment_intent);
+  }
   const charges = [];
   for await (const c of stripe.charges.list({ created: { gte: yearAgo }, limit: 100 })) {
-    if (c.status === 'succeeded' && c.livemode) charges.push(c);
+    if (c.status === 'succeeded' && c.livemode && ours.has(c.payment_intent)) charges.push(c);
     if (charges.length > 2000) break;
   }
   const net = (c) => (c.amount - (c.amount_refunded || 0)) / 100;
