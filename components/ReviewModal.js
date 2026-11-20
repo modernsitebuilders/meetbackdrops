@@ -372,7 +372,6 @@ export default function ReviewModal({ onClose, downloadCount = 1 }) {
         <h2 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#111827', marginBottom: '0.5rem' }}>
           Download Complete!
         </h2>
-        <DownloadOffer offer={offer} />
         <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '1rem' }}>
           How'd we do?
         </p>
@@ -398,6 +397,10 @@ export default function ReviewModal({ onClose, downloadCount = 1 }) {
             </button>
           ))}
         </div>
+
+        {/* Below the stars on purpose: leading with the offer cut ratings from
+            ~1.5% of downloads to near zero (Nov 2026). */}
+        <DownloadOffer offer={offer} />
 
         <button
           onClick={onClose}
