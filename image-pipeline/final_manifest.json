@@ -32119,7 +32119,9 @@
       "wooden furniture"
     ],
     "hdOnly": false,
-    "addedAt": "2026-07-02"
+    "addedAt": "2026-07-02",
+    "index": 114,
+    "hd": true
   },
   {
     "id": "kitchens:contemporary-kitchen-wooden-furniture-neutral-color-palette-0d71be92",
