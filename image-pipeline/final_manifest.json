@@ -33136,7 +33136,9 @@
       "online presentations"
     ],
     "hdOnly": false,
-    "addedAt": "2026-07-02"
+    "addedAt": "2026-07-02",
+    "index": 13,
+    "hd": true
   },
   {
     "id": "neutral-backgrounds:textured-wall-warm-tones-soft-shadow-creating-cozy-fbef9379",
@@ -34943,7 +34945,9 @@
       "minimalist"
     ],
     "hdOnly": false,
-    "addedAt": "2026-07-24"
+    "addedAt": "2026-07-24",
+    "index": 12,
+    "hd": true
   },
   {
     "id": "home-office:modern-home-office-desk-bookshelves-large-windows-allowing-9880caf9",
@@ -38139,7 +38143,9 @@
       "elegant"
     ],
     "hdOnly": false,
-    "addedAt": "2026-08-01"
+    "addedAt": "2026-08-01",
+    "index": 11,
+    "hd": true
   },
   {
     "id": "bookshelves:wooden-table-front-large-bookshelf-filled-books-illuminated-f71525fc",
@@ -40442,7 +40448,9 @@
       "high-fidelity"
     ],
     "hdOnly": false,
-    "addedAt": "2026-09-01"
+    "addedAt": "2026-09-01",
+    "index": 14,
+    "hd": true
   },
   {
     "id": "neutral-backgrounds:textured-green-wall-shelf-books-greenery-designed-eba67800",
