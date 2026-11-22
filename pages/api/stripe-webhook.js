@@ -2,6 +2,8 @@ import Stripe from 'stripe';
 import { Redis } from '@upstash/redis';
 import { insertAnalyticsEventSafe } from '../../lib/neonEvents.mjs';
 import { sendStudioAlert, formatMoney } from '../../lib/studioAlert';
+import { reassembleProductIds } from '../../lib/checkoutProducts';
+import { attributedEventRow } from '../../lib/checkoutAttribution';
 
 const isTest = process.env.STRIPE_MODE === 'test';
 
@@ -29,28 +31,10 @@ const redis = new Redis({
 // rides in on session.metadata (a_sid/a_vid/a_src/..., lib/checkoutAttribution.js).
 async function recordRevenueEvent(session, eventType, filename, category) {
   try {
-    const m = session?.metadata || {};
-    // ET wall-clock string matching the format pages/api/analytics.js writes, built
-    // from the Stripe session creation instant so it's stable across redeliveries.
+    // Timestamp from the Stripe session creation instant, so it's stable across
+    // redeliveries (see Dedup above).
     const created = session?.created ? new Date(session.created * 1000) : new Date();
-    const et = (opts) => created.toLocaleString('en-US', { timeZone: 'America/New_York', ...opts });
-    const row = [
-      et({ year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-      eventType,
-      m.a_src || 'direct',
-      filename,
-      category,
-      m.a_pv != null ? parseInt(m.a_pv, 10) || 0 : 0,
-      0,
-      m.a_vtype || 'new',
-      m.a_land || '',
-      m.a_sid || '',
-      m.a_vid || 'unknown',
-      created.toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
-      created.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-      'stripe-webhook',
-      'stripe-webhook',
-    ];
+    const row = attributedEventRow(session?.metadata, created, eventType, filename, category, 'stripe-webhook');
     // Queue for the Sheet (system of record) + live-mirror to Neon, exactly like
     // pages/api/analytics.js. Both dedup on the shared cell-hash, so the
     // sheet→Neon reconciliation won't double-insert.
@@ -107,24 +91,6 @@ export const config = {
     bodyParser: false,
   },
 };
-
-// Reassemble the full product-id list from the numbered metadata keys written
-// by create-checkout.js (product_ids, product_ids_2, product_ids_3, …). The
-// chunks are contiguous, so stop at the first missing key.
-function reassembleProductIds(metadata) {
-  const parts = [];
-  for (let i = 1; ; i++) {
-    const key = i === 1 ? 'product_ids' : `product_ids_${i}`;
-    const value = metadata[key];
-    if (value == null) break;
-    parts.push(value);
-  }
-  return parts
-    .join(',')
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-}
 
 function getRawBody(req) {
   return new Promise((resolve, reject) => {

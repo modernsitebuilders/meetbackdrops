@@ -1,5 +1,6 @@
 import Stripe from 'stripe';
 import { getProduct } from '../../lib/products';
+import { reassembleProductIds } from '../../lib/checkoutProducts';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -21,17 +22,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ verified: false, error: 'Payment not completed' });
     }
 
-    // Support both bundle (product_ids) and single (product_id) metadata
-    const rawIds =
-      session.metadata?.product_ids ||
-      session.metadata?.productId ||
-      session.metadata?.product_id;
+    // Bundles spread their ids over product_ids, product_ids_2, …; singles may
+    // set only product_id. reassembleProductIds handles both.
+    const ids = reassembleProductIds(session.metadata);
 
-    if (!rawIds) {
+    if (ids.length === 0) {
       return res.status(400).json({ verified: false, error: 'No product IDs in session metadata' });
     }
 
-    const ids = rawIds.split(',').map(s => s.trim()).filter(Boolean);
     const products = ids.map(id => getProduct(id)).filter(Boolean);
 
     if (products.length === 0) {
