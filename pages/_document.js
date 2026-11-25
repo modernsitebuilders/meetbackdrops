@@ -81,8 +81,27 @@ export default function Document() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "@id": "https://meetbackdrops.com/#website",
               "name": "MeetBackdrops",
               "url": "https://meetbackdrops.com"
+            })
+          }}
+        />
+
+        {/* Shared David Miles author entity — identical @id across every site in
+            the Modern Site Builders network, so Google resolves one operator
+            behind all of them. Keep the @id byte-for-byte in sync with the other
+            sites (see modernsitebuilders.com hub + each site's siteConfig AUTHOR). */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "@id": "https://modernsitebuilders.com/#david-miles",
+              "name": "David Miles",
+              "url": "https://modernsitebuilders.com/author/david-miles",
+              "sameAs": ["https://www.linkedin.com/in/dave-miles-webdev/"]
             })
           }}
         />
