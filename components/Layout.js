@@ -49,6 +49,10 @@ export default function Layout({
     "description": "Virtual set design studio producing studio-designed, 4K-upscaled backgrounds for Zoom, Teams, and Google Meet.",
     "url": "https://meetbackdrops.com",
     "logo": "https://meetbackdrops.com/meetbackdrops-og.png",
+    // Ties the studio to the shared David Miles entity (defined in full in
+    // _document.js) so this site's Organization resolves to the same network
+    // operator as the rest of the portfolio.
+    "founder": { "@id": "https://modernsitebuilders.com/#david-miles" },
     "areaServed": "Worldwide",
     "knowsAbout": [
       "Professional Zoom backgrounds",
